@@ -7,6 +7,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 There is no build, lint, or test tooling here. The git repo pushes to the public https://github.com/alcaloide2000/Egypt (branch `main`). The project is a set of standalone HTML pages (claude.ai Artifacts) about ancient Egypt, saved locally under `artifacts/`:
 
 - `artifacts/ancient-egypt-history-main-points.html` is **the main deliverable**: a combined Nile locator map, search bar, info cards and timeline. Nearly all work goes here.
+- `artifacts/alimana-tour-slideshow.html` is the tour slideshow on its own, for sharing without the rest of the page. It is published as a separate artifact, https://claude.ai/artifact/1CQwtaWufy3Jt5zMPXg88a. Its markup, CSS and script are copied from `#tourShow` in the main page, so when the slideshow changes, update both files.
 - `artifacts/nile-valley-timeline.html` is an earlier standalone timeline. It has been replaced by the combined page and kept as-is. Don't update it unless asked.
 - `artifacts/chat-transcript.md` is the history of the original cloud session that built the pages. It records every site added and every design decision. Read it before changing content conventions.
 
