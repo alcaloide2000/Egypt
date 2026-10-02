@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-There is no build, lint, or test tooling here, and no git repo. The project is a set of standalone HTML pages (claude.ai Artifacts) about ancient Egypt, saved locally under `artifacts/`:
+There is no build, lint, or test tooling here. The git repo pushes to the public https://github.com/alcaloide2000/Egypt (branch `main`). The project is a set of standalone HTML pages (claude.ai Artifacts) about ancient Egypt, saved locally under `artifacts/`:
 
 - `artifacts/ancient-egypt-history-main-points.html` is **the main deliverable**: a combined Nile locator map, search bar, info cards and timeline. Nearly all work goes here.
 - `artifacts/nile-valley-timeline.html` is an earlier standalone timeline. It has been replaced by the combined page and kept as-is. Don't update it unless asked.
