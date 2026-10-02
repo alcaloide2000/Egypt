@@ -25,6 +25,8 @@ The saved files begin with a publish-time wrapper (`<!doctype html><html><head>�
 
 It is one large file (~6,200 lines): inline CSS, inline SVG and one small script at the end. External loads are limited to Google Fonts (Fraunces, Public Sans, IBM Plex Mono). Images can't be loaded, so every "picture" is a hand-drawn inline SVG illustration.
 
+The page has two tabs (`.tabs` bar at the top of `.page`): **Main points** (`#panel-main`: masthead, search, map, cards, timeline) and **Private Alimaña Tour** (`#panel-tour`: the user's booked C La Vie trip, 19–24 Nov 2026, as `.day-card`s). Above the day cards sits `#tourShow`, an auto-playing slideshow (8 slides with inline SVG art and a route bar whose boat moves per slide); its script pauses it while the tab is hidden. Tour stops link to `#card-<slug>`; a second small script at the end switches to the tab holding a hash target, and `#tour` opens the tour tab. Don't give tour content the `info-card` class or the search will count it.
+
 Adding a site usually means touching **four places** that must stay consistent:
 
 1. **Map marker**: a `<g class="site-marker" transform="translate(x,y)">` inside the map `<svg viewBox="0 0 600 860">`. It has a glyph plus `<text>` label and sub-label. Pyramids get triangle/step glyphs, people and temples get other shapes. Crowded clusters (Cairo–Giza–Saqqara corridor, Theban west bank) have been hand-respaced to stop labels overlapping.
