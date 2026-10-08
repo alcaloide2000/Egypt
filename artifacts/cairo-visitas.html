@@ -1,0 +1,315 @@
+<title>Visitas en El Cairo</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* Layout: one reading column; poll ranking first, then a three-day draft and what doesn't fit. Tokens shared with the Ancient Egypt pages. */
+  :root {
+    --bg: #ede3cc;
+    --bg-panel: #f7f1e1;
+    --ink: #2b2420;
+    --ink-soft: #5b4f3f;
+    --sand-line: #c9b48c;
+    --ochre: #b5551f;
+    --nile: #2e6e77;
+    --gold: #a9791f;
+    --indigo: #5b4f8f;
+    --rose: #9c3f5e;
+    --malachite: #3c7a5a;
+    --shadow: rgba(43, 36, 32, 0.14);
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --bg-panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --sand-line: #57544c;
+      --ochre: #e58a4d; --nile: #6fc2c4; --gold: #d9a83c; --indigo: #a99bd9; --rose: #e08aa6; --malachite: #5fae87;
+      --shadow: rgba(0, 0, 0, 0.35); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --bg-panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --sand-line: #57544c;
+    --ochre: #e58a4d; --nile: #6fc2c4; --gold: #d9a83c; --indigo: #a99bd9; --rose: #e08aa6; --malachite: #5fae87;
+    --shadow: rgba(0, 0, 0, 0.35); color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.5;
+  }
+  .page {
+    max-width: 880px;
+    margin: 0 auto;
+    padding-block: clamp(1.5rem, 5vw, 3.5rem) 3rem;
+    padding-inline: 16px;
+    display: grid;
+    gap: clamp(2rem, 5vw, 3rem);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin: 0 0 0.8rem;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(2rem, 6vw, 3rem);
+    line-height: 1.05;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.8rem;
+    text-wrap: balance;
+  }
+  h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.35rem, 3.5vw, 1.75rem);
+    line-height: 1.15;
+    margin: 0 0 0.4rem;
+    text-wrap: balance;
+  }
+  .lede, .section-note { margin: 0; color: var(--ink-soft); max-width: 40rem; }
+  .lede { font-size: 1.05rem; }
+  .section-note { font-size: 0.95rem; margin-bottom: 1.1rem; }
+
+  /* poll ranking */
+  .poll {
+    background: var(--bg-panel);
+    border: 1px solid var(--sand-line);
+    border-radius: 14px;
+    box-shadow: 0 1px 2px var(--shadow);
+    margin: 0;
+    padding: 0.4rem clamp(1rem, 3vw, 1.5rem);
+    list-style: none;
+  }
+  .poll li {
+    display: grid;
+    grid-template-columns: 4.2rem minmax(0, 1fr);
+    gap: 0.9rem;
+    padding-block: 1rem;
+    border-bottom: 1px solid var(--sand-line);
+  }
+  .poll li:last-child { border-bottom: none; }
+  .votes { display: grid; gap: 0.3rem; align-content: start; padding-top: 0.2rem; }
+  .pips { display: flex; gap: 0.25rem; }
+  .pip { width: 0.8rem; height: 0.8rem; border-radius: 50%; border: 1.5px solid var(--nile); background: transparent; }
+  .pip.on { background: var(--nile); }
+  .vote-count { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .poll li.none .pip { border-color: var(--sand-line); }
+  .poll h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.12rem; margin: 0 0 0.2rem; }
+  .poll li.none h3 { color: var(--ink-soft); }
+  .meta { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); margin: 0 0 0.35rem; }
+  .poll p.desc { margin: 0; font-size: 0.93rem; color: var(--ink-soft); max-width: 38rem; }
+
+  /* three-day draft */
+  .days {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr));
+    gap: clamp(0.9rem, 2.5vw, 1.25rem);
+  }
+  .day {
+    background: var(--bg-panel);
+    border: 1px solid var(--sand-line);
+    border-top: 4px solid var(--accent);
+    border-radius: 14px;
+    padding: 1.1rem 1.2rem 1.2rem;
+    display: grid;
+    align-content: start;
+    gap: 0.6rem;
+  }
+  .day-date { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); margin: 0; }
+  .day h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.2rem; line-height: 1.2; margin: 0; }
+  .slots { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.55rem; }
+  .slots li { display: grid; grid-template-columns: 4.6rem minmax(0, 1fr); gap: 0.5rem; font-size: 0.9rem; }
+  .slot-time { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); padding-top: 0.15rem; }
+  .slot-note { display: block; color: var(--ink-soft); font-size: 0.82rem; }
+  .tag-opt { font-family: var(--font-mono); font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-soft); border: 1px solid var(--sand-line); border-radius: 999px; padding: 0.05rem 0.45rem; margin-left: 0.3rem; white-space: nowrap; }
+
+  /* what doesn't fit + notes */
+  .split { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: clamp(0.9rem, 2.5vw, 1.25rem); }
+  .box { background: var(--bg-panel); border: 1px solid var(--sand-line); border-radius: 14px; padding: 1.1rem 1.25rem; }
+  .box h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.1rem; margin: 0 0 0.6rem; }
+  .box ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.5rem; font-size: 0.92rem; }
+  .box li::marker { color: var(--ochre); }
+  .box strong { font-weight: 600; }
+
+  .foot { font-family: var(--font-mono); font-size: 0.74rem; color: var(--ink-soft); margin: 0; }
+  .foot a { color: var(--ink); border-bottom: 1px solid var(--sand-line); text-decoration: none; }
+  .foot a:hover, .foot a:focus-visible { border-bottom-color: currentColor; }
+  a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+</style>
+
+<main class="page">
+  <header>
+    <p class="eyebrow">El Cairo · 25&ndash;27 de noviembre de 2026 · con Omarcel</p>
+    <h1>Visitas en El Cairo</h1>
+    <p class="lede">Las doce actividades de la encuesta del grupo, ordenadas por votos, con un borrador para repartirlas en los tres días con nuestro guía Omarcel. Las duraciones son aproximadas.</p>
+  </header>
+
+  <section aria-labelledby="poll-h">
+    <h2 id="poll-h">Resultados de la encuesta</h2>
+    <p class="section-note">Cada punto es un voto. Recuento según la encuesta del grupo.</p>
+    <ol class="poll">
+      <li>
+        <div class="votes" aria-label="3 votos"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><span class="vote-count">3 votos</span></div>
+        <div>
+          <h3>Mercado Khan el-Khalili</h3>
+          <p class="meta">Cairo islámico · aprox. 2 h</p>
+          <p class="desc">El gran bazar del Cairo medieval, fundado en 1382: callejones de especias, lámparas, plata y cafés como el Fishawi. Mejor a última hora de la tarde.</p>
+        </div>
+      </li>
+      <li>
+        <div class="votes" aria-label="3 votos"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip on"></span></div><span class="vote-count">3 votos</span></div>
+        <div>
+          <h3>Compra de oro</h3>
+          <p class="meta">Calle de los orfebres (El-Sagha), junto a Khan el-Khalili · mínimo 2 h</p>
+          <p class="desc">El oro se vende al peso, al precio del gramo del día más la mano de obra; conviene comparar en varias tiendas antes de decidir.</p>
+        </div>
+      </li>
+      <li>
+        <div class="votes" aria-label="2 votos"><div class="pips"><span class="pip on"></span><span class="pip on"></span><span class="pip"></span></div><span class="vote-count">2 votos</span></div>
+        <div>
+          <h3>Día en Alejandría</h3>
+          <p class="meta">A unos 220 km · día completo, unas 3 h de carretera por trayecto</p>
+          <p class="desc">La ciudad de Alejandro Magno en el Mediterráneo: la Biblioteca Alejandrina, la ciudadela de Qaitbay sobre el solar del antiguo Faro, las catacumbas de Kom el-Shoqafa y la Columna de Pompeyo.</p>
+        </div>
+      </li>
+      <li>
+        <div class="votes" aria-label="1 voto"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><span class="vote-count">1 voto</span></div>
+        <div>
+          <h3>Pirámides de Giza</h3>
+          <p class="meta">Giza · aprox. 3&ndash;4 h</p>
+          <p class="desc">Las pirámides de Keops, Kefrén y Micerinos y la Gran Esfinge, c. 2560&ndash;2510 a. C.</p>
+        </div>
+      </li>
+      <li>
+        <div class="votes" aria-label="1 voto"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><span class="vote-count">1 voto</span></div>
+        <div>
+          <h3>Museo de Giza</h3>
+          <p class="meta">Gran Museo Egipcio, a unos 2 km de las pirámides · aprox. 3&ndash;4 h</p>
+          <p class="desc">El nuevo gran museo, abierto por completo en noviembre de 2025, con el ajuar de Tutankamón reunido por primera vez.</p>
+        </div>
+      </li>
+      <li>
+        <div class="votes" aria-label="1 voto"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><span class="vote-count">1 voto</span></div>
+        <div>
+          <h3>Pirámides de Saqqara</h3>
+          <p class="meta">Unos 30 km al sur del centro · aprox. 3 h</p>
+          <p class="desc">La pirámide escalonada de Zoser, c. 2670 a. C., la primera gran construcción de piedra tallada, y las mastabas con relieves de la vida cotidiana.</p>
+        </div>
+      </li>
+      <li>
+        <div class="votes" aria-label="1 voto"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><span class="vote-count">1 voto</span></div>
+        <div>
+          <h3>Barrio copto e iglesias</h3>
+          <p class="meta">Cairo antiguo · aprox. 2&ndash;3 h</p>
+          <p class="desc">La Iglesia Colgante, San Sergio (donde la tradición sitúa a la Sagrada Familia), la sinagoga Ben Ezra y el Museo Copto, dentro de la antigua fortaleza romana de Babilonia.</p>
+        </div>
+      </li>
+      <li>
+        <div class="votes" aria-label="1 voto"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><span class="vote-count">1 voto</span></div>
+        <div>
+          <h3>Compra de gafas</h3>
+          <p class="meta">Mínimo 2 h</p>
+          <p class="desc">Tiempo reservado para comprar gafas; el lugar está por decidir.</p>
+        </div>
+      </li>
+      <li>
+        <div class="votes" aria-label="1 voto"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><span class="vote-count">1 voto</span></div>
+        <div>
+          <h3>Ciudadela</h3>
+          <p class="meta">Cairo islámico · aprox. 2 h</p>
+          <p class="desc">La fortaleza que empezó Saladino en 1176, con la Mezquita de Alabastro de Muhammad Ali (1830&ndash;1848) y vistas sobre toda la ciudad.</p>
+        </div>
+      </li>
+      <li>
+        <div class="votes" aria-label="1 voto"><div class="pips"><span class="pip on"></span><span class="pip"></span><span class="pip"></span></div><span class="vote-count">1 voto</span></div>
+        <div>
+          <h3>Mezquitas del Cairo antiguo</h3>
+          <p class="meta">Cairo islámico · aprox. 2&ndash;3 h</p>
+          <p class="desc">Sultán Hassan y Al-Rifa'i, al pie de la Ciudadela; Ibn Tulun (879), la más antigua conservada tal cual; y Al-Azhar (970), junto a Khan el-Khalili.</p>
+        </div>
+      </li>
+      <li class="none">
+        <div class="votes" aria-label="0 votos"><div class="pips"><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><span class="vote-count">0 votos</span></div>
+        <div>
+          <h3>Museo antiguo</h3>
+          <p class="meta">Museo Egipcio de la plaza Tahrir · aprox. 2&ndash;3 h</p>
+          <p class="desc">El museo de 1902, que conserva piezas como la Paleta de Narmer.</p>
+        </div>
+      </li>
+      <li class="none">
+        <div class="votes" aria-label="0 votos"><div class="pips"><span class="pip"></span><span class="pip"></span><span class="pip"></span></div><span class="vote-count">0 votos</span></div>
+        <div>
+          <h3>Paseo por el Nilo en faluca</h3>
+          <p class="meta">Aprox. 1 h, mejor al atardecer</p>
+          <p class="desc">Un paseo en la barca de vela tradicional del Nilo.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="plan-h">
+    <h2 id="plan-h">Borrador para los tres días</h2>
+    <p class="section-note">Una propuesta para comentar con Omarcel. Agrupa las visitas por zonas para no cruzar la ciudad dos veces el mismo día.</p>
+    <div class="days">
+      <article class="day" style="--accent: var(--indigo);">
+        <p class="day-date">Miércoles 25 nov</p>
+        <h3>Giza</h3>
+        <ul class="slots">
+          <li><span class="slot-time">Mañana</span><span>Pirámides de Giza y la Esfinge</span></li>
+          <li><span class="slot-time">Tarde</span><span>Gran Museo Egipcio <span class="slot-note">A unos 2 km de las pirámides.</span></span></li>
+        </ul>
+      </article>
+      <article class="day" style="--accent: var(--rose);">
+        <p class="day-date">Jueves 26 nov</p>
+        <h3>Saqqara y Cairo copto</h3>
+        <ul class="slots">
+          <li><span class="slot-time">Mañana</span><span>Pirámides de Saqqara</span></li>
+          <li><span class="slot-time">Tarde</span><span>Barrio copto e iglesias <span class="slot-note">Queda de camino al volver del sur.</span></span></li>
+          <li><span class="slot-time">Atardecer</span><span>Faluca por el Nilo<span class="tag-opt">opcional</span></span></li>
+        </ul>
+      </article>
+      <article class="day" style="--accent: var(--gold);">
+        <p class="day-date">Viernes 27 nov</p>
+        <h3>Cairo islámico</h3>
+        <ul class="slots">
+          <li><span class="slot-time">Mañana</span><span>Ciudadela y mezquitas <span class="slot-note">Mejor temprano: el viernes las mezquitas cierran a las visitas durante la oración del mediodía.</span></span></li>
+          <li><span class="slot-time">Tarde</span><span>Compra de oro en El-Sagha</span></li>
+          <li><span class="slot-time">Noche</span><span>Mercado Khan el-Khalili</span></li>
+        </ul>
+      </article>
+    </div>
+  </section>
+
+  <section class="split" aria-label="Pendiente y notas">
+    <div class="box">
+      <h3>No caben en el borrador</h3>
+      <ul>
+        <li><strong>Día en Alejandría</strong> (2 votos). Ocupa un día entero; si se elige, puede sustituir al jueves y pasar Saqqara o el barrio copto a otro día.</li>
+        <li><strong>Compra de gafas</strong> (mínimo 2 h). Puede ir el jueves por la tarde en lugar del barrio copto, o en un hueco que proponga Omarcel.</li>
+        <li><strong>Museo antiguo</strong> (0 votos). Queda fuera salvo que sobre tiempo.</li>
+      </ul>
+    </div>
+    <div class="box">
+      <h3>Para tener en cuenta</h3>
+      <ul>
+        <li>El viernes es el día festivo semanal en Egipto: algunas tiendas abren más tarde.</li>
+        <li>En mezquitas e iglesias hay que llevar hombros y rodillas cubiertos, y en las mezquitas descalzarse.</li>
+        <li>Para el oro y las gafas, reservar al menos 2 horas cada uno, como pide la encuesta.</li>
+      </ul>
+    </div>
+  </section>
+
+  <p class="foot">Parte del <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour">Private Alimaña Tour</a>, 18&ndash;28 de noviembre de 2026.</p>
+</main>
