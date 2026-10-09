@@ -1141,6 +1141,7 @@
   <nav class="tabs" role="tablist" aria-label="Page sections">
     <button type="button" class="tab" role="tab" id="tab-main" aria-controls="panel-main" aria-selected="true">Main points</button>
     <button type="button" class="tab" role="tab" id="tab-tour" aria-controls="panel-tour" aria-selected="false" tabindex="-1">Private Alimaña Tour</button>
+    <button type="button" class="tab" role="tab" id="tab-cairo" aria-controls="panel-cairo" aria-selected="false" tabindex="-1">Visitas en El Cairo</button>
   </nav>
 
   <div class="tab-panel" id="panel-main" role="tabpanel" aria-labelledby="tab-main">
@@ -6919,6 +6920,44 @@
     </div>
   </div>
 
+  <div class="tab-panel" id="panel-cairo" role="tabpanel" aria-labelledby="tab-cairo" hidden>
+    <header class="masthead">
+      <p class="eyebrow">Cairo · 25&ndash;27 November 2026 · with Omarcel</p>
+      <h1>Visitas en El Cairo</h1>
+      <p class="lede">The group's poll of twelve Cairo activities, ranked by votes, with a draft plan for the three days with our guide Omarcel. Khan el-Khalili and buying gold lead with three votes each, then a day in Alexandria with two. The full page, in Spanish, also lists what doesn't fit and practical notes.</p>
+      <a class="wiki-link" style="color: var(--ochre); font-size: 0.85rem;" href="https://claude.ai/artifact/VYVyoGbgZEToWVzMM2r5Ff" target="_blank" rel="noopener noreferrer">Open Visitas en El Cairo ↗</a>
+    </header>
+
+    <div class="day-grid">
+      <article class="day-card" style="--accent: var(--indigo);">
+        <p class="day-num">Wed 25 Nov</p>
+        <h3>Giza</h3>
+        <ul class="stop-list">
+          <li>Morning · <a href="#card-giza">Pyramids of Giza</a> and the <a href="#card-sphinx">Sphinx</a></li>
+          <li>Afternoon · Grand Egyptian Museum<span class="stop-note">About 2 km from the pyramids.</span></li>
+        </ul>
+      </article>
+      <article class="day-card" style="--accent: var(--rose);">
+        <p class="day-num">Thu 26 Nov</p>
+        <h3>Saqqara &amp; Coptic Cairo</h3>
+        <ul class="stop-list">
+          <li>Morning · <a href="#card-saqqara">Pyramids of Saqqara</a></li>
+          <li>Afternoon · Coptic quarter and churches</li>
+          <li>Sunset · Felucca on the Nile (optional)</li>
+        </ul>
+      </article>
+      <article class="day-card" style="--accent: var(--gold);">
+        <p class="day-num">Fri 27 Nov</p>
+        <h3>Islamic Cairo</h3>
+        <ul class="stop-list">
+          <li>Morning · Citadel and mosques<span class="stop-note">Go early: mosques close to visitors during Friday midday prayer.</span></li>
+          <li>Afternoon · Buying gold in El-Sagha</li>
+          <li>Evening · Khan el-Khalili bazaar</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -7035,7 +7074,7 @@
   tabs.forEach(function (tab, i) {
     tab.addEventListener('click', function () {
       select(tab, false);
-      try { history.replaceState(null, '', tab.id === 'tab-tour' ? '#tour' : location.pathname + location.search); } catch (e) {}
+      try { history.replaceState(null, '', tab.id === 'tab-main' ? location.pathname + location.search : '#' + tab.id.slice(4)); } catch (e) {}
     });
     tab.addEventListener('keydown', function (e) {
       var next = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : null;
@@ -7049,7 +7088,7 @@
   function followHash() {
     var id = location.hash.slice(1);
     if (!id) return;
-    if (id === 'tour') { select(document.getElementById('tab-tour'), false); return; }
+    if (id === 'tour' || id === 'cairo') { select(document.getElementById('tab-' + id), false); return; }
     var target = document.getElementById(id);
     var panel = target && target.closest('.tab-panel');
     if (!panel || !panel.hidden) return;
