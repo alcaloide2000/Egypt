@@ -771,6 +771,9 @@
   }
   .note-list li:last-child { border-bottom: none; padding-bottom: 0; }
 
+  .note-list a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sand-line); }
+  .note-list a:hover, .note-list a:focus-visible { border-bottom-color: currentColor; }
+
   .note-year {
     font-family: "IBM Plex Mono", ui-monospace, monospace;
     font-size: 0.82rem;
@@ -1142,6 +1145,7 @@
     <button type="button" class="tab" role="tab" id="tab-main" aria-controls="panel-main" aria-selected="true">Main points</button>
     <button type="button" class="tab" role="tab" id="tab-tour" aria-controls="panel-tour" aria-selected="false" tabindex="-1">Private Alimaña Tour</button>
     <button type="button" class="tab" role="tab" id="tab-cairo" aria-controls="panel-cairo" aria-selected="false" tabindex="-1">Visitas en El Cairo</button>
+    <button type="button" class="tab" role="tab" id="tab-uned" aria-controls="panel-uned" aria-selected="false" tabindex="-1">Curso UNED</button>
   </nav>
 
   <div class="tab-panel" id="panel-main" role="tabpanel" aria-labelledby="tab-main">
@@ -6958,6 +6962,120 @@
     </div>
   </div>
 
+  <div class="tab-panel" id="panel-uned" role="tabpanel" aria-labelledby="tab-uned" hidden>
+    <header class="masthead">
+      <p class="eyebrow">UNED Tudela · Online course · March&ndash;April 2025</p>
+      <h1>Introducción a la historia del Antiguo Egipto</h1>
+      <p class="lede">A ten-hour introductory course from the UNED centre in Tudela (Navarra): five Thursday sessions of two hours, 18:00&ndash;20:00, taught online by Dr Eva Tobalina Oraá, historian and lecturer at UNIR. It runs from the Nile flood and the first pharaohs to Cleopatra VII. These are summary notes of each class. Underlined names link to their card in the Main points tab.</p>
+    </header>
+
+    <div class="day-grid">
+      <article class="day-card" style="--accent: var(--ochre);">
+        <p class="day-num">Class 1 · March 2025</p>
+        <h3>The gift of the Nile and the Old Kingdom</h3>
+        <ul class="stop-list">
+          <li>Herodotus's "gift of the Nile": the gentle summer flood, nilometers, and a river you can sail both ways</li>
+          <li>The Scorpion King and the <a href="#card-narmer">Narmer Palette</a>: unification c. 3150 BC</li>
+          <li><a href="#card-saqqara">Djoser</a> settles the capital at Memphis and makes Ra the supreme god</li>
+          <li>Body, shadow, name, <em>ka</em> and <em>ba</em>; mummification and mastabas on the west bank</li>
+          <li>From the Step Pyramid to Sneferu's <a href="#card-dahshur">Bent and Red Pyramids</a></li>
+          <li><a href="#card-giza">Khufu's Great Pyramid</a> and the Wadi al-Jarf papyri, the logbook of an official who worked on it</li>
+        </ul>
+        <p class="day-meta">The recurring theme starts here: pharaoh against the priesthood</p>
+      </article>
+
+      <article class="day-card" style="--accent: var(--indigo);">
+        <p class="day-num">Class 2 · March 2025</p>
+        <h3>End of the Old Kingdom to the Middle Kingdom</h3>
+        <ul class="stop-list">
+          <li>Khafre, the <a href="#card-sphinx">Great Sphinx</a> and Menkaure's much smaller pyramid</li>
+          <li>Shepseskaf breaks with the priests of Ra; small Dynasty 5 pyramids beside huge <a href="#card-abusir">sun temples</a></li>
+          <li>Unas and the first Pyramid Texts; Mereruka's great mastaba</li>
+          <li>Pepi II's endless reign and the collapse c. 2181 BC; the Admonitions of Ipuwer</li>
+          <li>Herakleopolis against Thebes; <a href="#card-mentuhotep2">Mentuhotep II</a> reunites Egypt c. 2040 BC</li>
+          <li><a href="#card-amenemhat1">Amenemhat I</a>'s reforms and murder; the Story of Sinuhe</li>
+        </ul>
+        <p class="day-meta">Dates follow Barry Kemp; they can vary by a century between authors</p>
+      </article>
+
+      <article class="day-card" style="--accent: var(--turquoise);">
+        <p class="day-num">Class 3 · Thu 27 Mar 2025</p>
+        <h3>The Middle Kingdom, the Hyksos and a new empire</h3>
+        <ul class="stop-list">
+          <li>The careworn royal portraits of Dynasty 12; <a href="#card-senusret3">Senusret III</a> in Nubia and Byblos</li>
+          <li>Osiris, Isis and Horus; the weighing of the heart against Maat's feather; <em>shabtis</em></li>
+          <li>Sobekneferu, a woman, closes Dynasty 12</li>
+          <li>Hyksos chariots at Avaris; <a href="#card-kamose">Kamose</a> and <a href="#card-ahmose1">Ahmose</a> drive them out</li>
+          <li>New rivals, Mitanni and the Hittites; <a href="#card-amenhotep1">Amenhotep I</a> and the Valley of the Kings</li>
+        </ul>
+        <p class="day-meta">Also: the three candidate settings for the Exodus</p>
+      </article>
+
+      <article class="day-card" style="--accent: var(--gold);">
+        <p class="day-num">Class 4 · Thu 3 Apr 2025</p>
+        <h3>Dynasty 18</h3>
+        <ul class="stop-list">
+          <li><a href="#card-hatshepsut">Hatshepsut</a>: divine birth, Deir el-Bahari and the expedition to Punt</li>
+          <li><a href="#card-thutmose3">Thutmose III</a>'s conquests and the "Botanical Garden" at <a href="#card-karnak">Karnak</a></li>
+          <li>Thutmose IV's Dream Stele; <a href="#card-amenhotep3">Amenhotep III</a>, Queen Tiye and the Colossi of Memnon</li>
+          <li><a href="#card-akhenaten">Akhenaten</a>, <a href="#card-nefertiti">Nefertiti</a>, the Aten and Amarna art</li>
+          <li><a href="#card-tutankhamun">Tutankhamun</a>, Ay and <a href="#card-horemheb">Horemheb</a> restore Amun</li>
+        </ul>
+        <p class="day-meta">Temples as the primeval mound: pylons, court, hypostyle, dark sanctuary</p>
+      </article>
+
+      <article class="day-card" style="--accent: var(--rose);">
+        <p class="day-num">Class 5 · Thu 10 Apr 2025</p>
+        <h3>From Ramesses to Cleopatra</h3>
+        <ul class="stop-list">
+          <li><a href="#card-seti1">Seti I</a>: the Abydos King List and tomb KV17</li>
+          <li><a href="#card-ramesses2">Ramesses II</a>: Kadesh, <a href="#card-abusimbel">Abu Simbel</a> and the Ramesseum</li>
+          <li><a href="#card-twosret">Twosret</a>, <a href="#card-setnakhte">Setnakhte</a>, and <a href="#card-ramesses3">Ramesses III</a> against the Sea Peoples</li>
+          <li>Libyan and Kushite pharaohs, the Assyrians, the Saite renaissance and the Persians</li>
+          <li>Alexander, the Ptolemies, the Rosetta Stone and Cleopatra VII's death in 30 BC</li>
+        </ul>
+        <p class="day-meta">The Late Period: Dynasty 21 to the Ptolemies</p>
+      </article>
+    </div>
+
+    <div class="below-grid">
+      <div class="note-card">
+        <h3>Reading list</h3>
+        <ul class="note-list">
+          <li><span class="note-year">Pictures</span><span>Jean-Claude Golvin's reconstruction drawings of ancient Egypt</span></li>
+          <li><span class="note-year">Handbooks</span><span>Histories of ancient Egypt by Barry Kemp, Ian Shaw or Nicolas Grimal</span></li>
+          <li><span class="note-year">Sources</span><span>José Miguel Serrano Delgado, <em>Textos para la historia antigua de Egipto</em></span></li>
+          <li><span class="note-year">Afterlife</span><span>The Book of the Dead, in Boris de Rachewiltz's Spanish edition</span></li>
+          <li><span class="note-year">Discovery</span><span>Howard Carter on Tutankhamun's tomb; Giovanni Belzoni's travels in Egypt and Nubia</span></li>
+          <li><span class="note-year">Women</span><span>Teresa Bedman, <em>Reinas de Egipto</em></span></li>
+          <li><span class="note-year">Myth</span><span>Gómez Espelosín on how Egypt fascinated the Greeks, and still fascinates us</span></li>
+          <li><span class="note-year">Daily life</span><span>José Miguel Parra, <em>La vida cotidiana en el antiguo Egipto</em></span></li>
+        </ul>
+      </div>
+      <div class="note-card">
+        <h3>Tips for the trip</h3>
+        <ul class="note-list">
+          <li><span class="note-year">Valley</span><span>The Valley of the Kings ticket covers three of the tombs open that day. Pay extra for Seti I's tomb, KV17, the finest of all.</span></li>
+          <li><span class="note-year">Luxor</span><span>Visit the Luxor Museum, which most tours skip.</span></li>
+          <li><span class="note-year">Online</span><span>The <a href="https://thebanmappingproject.com/" target="_blank" rel="noopener noreferrer">Theban Mapping Project</a> has plans, photos and history for every tomb in the Valley (in English).</span></li>
+          <li><span class="note-year">Museum</span><span>The Grand Egyptian Museum has been fully open since November 2025, Tutankhamun galleries included.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note-card" style="margin-top: clamp(1.25rem, 3vw, 2rem);">
+      <h3>Where these notes differ from the recordings</h3>
+      <ul class="note-list">
+        <li><span class="note-year">Narmer</span><span>The Narmer Palette was excavated at Hierakonpolis, not near Thinis.</span></li>
+        <li><span class="note-year">Menkaure</span><span>His pyramid was about 65 m high, not 100 m.</span></li>
+        <li><span class="note-year">Dahshur</span><span>The Black Pyramid's capstone was found in 1900, not 1990.</span></li>
+        <li><span class="note-year">Iron</span><span>Tutankhamun's iron dagger is made of meteoritic iron, confirmed by a 2016 study.</span></li>
+        <li><span class="note-year">Obelisk</span><span>Hatshepsut's standing obelisk at Karnak is about 30 m, not 33 m.</span></li>
+        <li><span class="note-year">Erasure</span><span>Most Egyptologists date the erasure of Hatshepsut's name to late in Thutmose III's reign; the lecturer credits mainly Seti I and Ramesses II.</span></li>
+      </ul>
+    </div>
+  </div>
+
 </div>
 
 <script>
@@ -7088,7 +7206,7 @@
   function followHash() {
     var id = location.hash.slice(1);
     if (!id) return;
-    if (id === 'tour' || id === 'cairo') { select(document.getElementById('tab-' + id), false); return; }
+    if (id === 'tour' || id === 'cairo' || id === 'uned') { select(document.getElementById('tab-' + id), false); return; }
     var target = document.getElementById(id);
     var panel = target && target.closest('.tab-panel');
     if (!panel || !panel.hidden) return;
