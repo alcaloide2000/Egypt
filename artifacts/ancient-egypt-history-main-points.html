@@ -937,6 +937,23 @@
   }
   .tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
+  .lang-switch { display: flex; gap: 0.4rem; margin: 0 0 1.25rem; }
+  .lang-switch button {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: transparent;
+    border: 1px solid var(--sand-line);
+    border-radius: 999px;
+    padding: 0.35rem 0.8rem;
+    cursor: pointer;
+  }
+  .lang-switch button:hover { color: var(--ink); border-color: var(--ink-soft); }
+  .lang-switch button[aria-pressed="true"] { color: var(--bg-panel); background: var(--nile); border-color: var(--nile); }
+  .lang-switch button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
   .route-strip {
     display: flex;
     flex-wrap: wrap;
@@ -6963,6 +6980,12 @@
   </div>
 
   <div class="tab-panel" id="panel-uned" role="tabpanel" aria-labelledby="tab-uned" hidden>
+    <div class="lang-switch" id="unedLang" role="group" aria-label="Language / Idioma">
+      <button type="button" data-set="en" aria-pressed="true">English</button>
+      <button type="button" data-set="es" aria-pressed="false">Español</button>
+    </div>
+
+    <div data-lang="en" lang="en">
     <header class="masthead">
       <p class="eyebrow">UNED Tudela · Online course · March&ndash;April 2025</p>
       <h1>Introducción a la historia del Antiguo Egipto</h1>
@@ -7073,6 +7096,121 @@
         <li><span class="note-year">Obelisk</span><span>Hatshepsut's standing obelisk at Karnak is about 30 m, not 33 m.</span></li>
         <li><span class="note-year">Erasure</span><span>Most Egyptologists date the erasure of Hatshepsut's name to late in Thutmose III's reign; the lecturer credits mainly Seti I and Ramesses II.</span></li>
       </ul>
+    </div>
+    </div>
+
+    <div data-lang="es" lang="es" hidden>
+    <header class="masthead">
+      <p class="eyebrow">UNED Tudela · Curso en línea · marzo&ndash;abril de 2025</p>
+      <h1>Introducción a la historia del Antiguo Egipto</h1>
+      <p class="lede">Un curso de introducción de diez horas del centro de la UNED en Tudela (Navarra): cinco sesiones de dos horas los jueves, de 18:00 a 20:00, impartidas en línea por la Dra. Eva Tobalina Oraá, historiadora y profesora de la UNIR. Va desde la crecida del Nilo y los primeros faraones hasta Cleopatra VII. Estos son apuntes resumidos de cada clase. Los nombres subrayados enlazan con su ficha en la pestaña Main points.</p>
+    </header>
+
+    <div class="day-grid">
+      <article class="day-card" style="--accent: var(--ochre);">
+        <p class="day-num">Clase 1 · marzo de 2025</p>
+        <h3>El don del Nilo y el Imperio Antiguo</h3>
+        <ul class="stop-list">
+          <li>El «don del Nilo» de Heródoto: la crecida suave del verano, los nilómetros y un río navegable en ambos sentidos</li>
+          <li>El rey Escorpión y la <a href="#card-narmer">paleta de Narmer</a>: la unificación, h. 3150 a. C.</li>
+          <li><a href="#card-saqqara">Zoser</a> fija la capital en Menfis y convierte a Ra en el dios supremo</li>
+          <li>Cuerpo, sombra, nombre, <em>ka</em> y <em>ba</em>; la momificación y las mastabas en la orilla occidental</li>
+          <li>De la pirámide escalonada a las pirámides <a href="#card-dahshur">acodada y roja</a> de Snofru</li>
+          <li>La <a href="#card-giza">Gran Pirámide de Keops</a> y los papiros de Wadi al-Jarf, el diario de un funcionario que trabajó en ella</li>
+        </ul>
+        <p class="day-meta">Aquí empieza el hilo conductor del curso: el faraón frente al clero</p>
+      </article>
+
+      <article class="day-card" style="--accent: var(--indigo);">
+        <p class="day-num">Clase 2 · marzo de 2025</p>
+        <h3>Del final del Imperio Antiguo al Imperio Medio</h3>
+        <ul class="stop-list">
+          <li>Kefrén, la <a href="#card-sphinx">Gran Esfinge</a> y la pirámide, mucho más pequeña, de Micerino</li>
+          <li>Shepseskaf rompe con el clero de Ra; pirámides pequeñas de la dinastía V junto a enormes <a href="#card-abusir">templos solares</a></li>
+          <li>Unas y los primeros Textos de las Pirámides; la gran mastaba de Mereruka</li>
+          <li>El reinado interminable de Pepi II y el hundimiento, h. 2181 a. C.; las Lamentaciones de Ipuwer</li>
+          <li>Heracleópolis contra Tebas; <a href="#card-mentuhotep2">Mentuhotep II</a> reunifica Egipto, h. 2040 a. C.</li>
+          <li>Las reformas y el asesinato de <a href="#card-amenemhat1">Amenemes I</a>; la Historia de Sinuhé</li>
+        </ul>
+        <p class="day-meta">Las fechas siguen a Barry Kemp; según el autor pueden variar hasta un siglo</p>
+      </article>
+
+      <article class="day-card" style="--accent: var(--turquoise);">
+        <p class="day-num">Clase 3 · 27 de marzo de 2025</p>
+        <h3>El Imperio Medio, los hicsos y un nuevo imperio</h3>
+        <ul class="stop-list">
+          <li>Los retratos reales, de gesto cansado, de la dinastía XII; <a href="#card-senusret3">Sesostris III</a> en Nubia y en Biblos</li>
+          <li>Osiris, Isis y Horus; el peso del corazón frente a la pluma de Maat; los <em>ushebtis</em></li>
+          <li>Una mujer, Sobekneferu, cierra la dinastía XII</li>
+          <li>Los carros de los hicsos en Avaris; <a href="#card-kamose">Kamose</a> y <a href="#card-ahmose1">Amosis</a> los expulsan</li>
+          <li>Nuevos rivales, Mitanni y los hititas; <a href="#card-amenhotep1">Amenofis I</a> y el Valle de los Reyes</li>
+        </ul>
+        <p class="day-meta">Además: los tres posibles escenarios del Éxodo</p>
+      </article>
+
+      <article class="day-card" style="--accent: var(--gold);">
+        <p class="day-num">Clase 4 · 3 de abril de 2025</p>
+        <h3>La dinastía XVIII</h3>
+        <ul class="stop-list">
+          <li><a href="#card-hatshepsut">Hatshepsut</a>: el nacimiento divino, Deir el-Bahari y la expedición al Punt</li>
+          <li>Las conquistas de <a href="#card-thutmose3">Tutmosis III</a> y el «jardín botánico» de <a href="#card-karnak">Karnak</a></li>
+          <li>La estela del sueño de Tutmosis IV; <a href="#card-amenhotep3">Amenofis III</a>, la reina Tiy y los colosos de Memnón</li>
+          <li><a href="#card-akhenaten">Akenatón</a>, <a href="#card-nefertiti">Nefertiti</a>, el dios Atón y el arte de Amarna</li>
+          <li><a href="#card-tutankhamun">Tutankamón</a>, Ay y <a href="#card-horemheb">Horemheb</a> restauran a Amón</li>
+        </ul>
+        <p class="day-meta">El templo como colina primordial: pilonos, patio, sala hipóstila y santuario en penumbra</p>
+      </article>
+
+      <article class="day-card" style="--accent: var(--rose);">
+        <p class="day-num">Clase 5 · 10 de abril de 2025</p>
+        <h3>De Ramsés a Cleopatra</h3>
+        <ul class="stop-list">
+          <li><a href="#card-seti1">Seti I</a>: la lista real de Abidos y la tumba KV17</li>
+          <li><a href="#card-ramesses2">Ramsés II</a>: Qadesh, <a href="#card-abusimbel">Abu Simbel</a> y el Rameseo</li>
+          <li><a href="#card-twosret">Tausert</a>, <a href="#card-setnakhte">Setnajt</a> y <a href="#card-ramesses3">Ramsés III</a> frente a los Pueblos del Mar</li>
+          <li>Faraones libios y kushitas, los asirios, el renacimiento saíta y los persas</li>
+          <li>Alejandro, los Ptolomeos, la piedra de Rosetta y la muerte de Cleopatra VII en el 30 a. C.</li>
+        </ul>
+        <p class="day-meta">La Baja Época: de la dinastía XXI a los Ptolomeos</p>
+      </article>
+    </div>
+
+    <div class="below-grid">
+      <div class="note-card">
+        <h3>Bibliografía</h3>
+        <ul class="note-list">
+          <li><span class="note-year">Imágenes</span><span>Las reconstrucciones dibujadas del antiguo Egipto de Jean-Claude Golvin</span></li>
+          <li><span class="note-year">Manuales</span><span>Las historias del antiguo Egipto de Barry Kemp, Ian Shaw o Nicolas Grimal</span></li>
+          <li><span class="note-year">Fuentes</span><span>José Miguel Serrano Delgado, <em>Textos para la historia antigua de Egipto</em></span></li>
+          <li><span class="note-year">Más allá</span><span>El Libro de los Muertos, en la edición española de Boris de Rachewiltz</span></li>
+          <li><span class="note-year">Hallazgos</span><span>Howard Carter sobre la tumba de Tutankamón; los viajes de Giovanni Belzoni por Egipto y Nubia</span></li>
+          <li><span class="note-year">Mujeres</span><span>Teresa Bedman, <em>Reinas de Egipto</em></span></li>
+          <li><span class="note-year">Mito</span><span>Gómez Espelosín, sobre cómo Egipto fascinó a los griegos y nos sigue fascinando</span></li>
+          <li><span class="note-year">Vida diaria</span><span>José Miguel Parra, <em>La vida cotidiana en el antiguo Egipto</em></span></li>
+        </ul>
+      </div>
+      <div class="note-card">
+        <h3>Consejos para el viaje</h3>
+        <ul class="note-list">
+          <li><span class="note-year">Valle</span><span>La entrada al Valle de los Reyes incluye tres de las tumbas abiertas ese día. Merece la pena pagar aparte la de Seti I, KV17, la más espectacular.</span></li>
+          <li><span class="note-year">Luxor</span><span>Visitar el Museo de Luxor, que casi ningún circuito incluye.</span></li>
+          <li><span class="note-year">En línea</span><span>El <a href="https://thebanmappingproject.com/" target="_blank" rel="noopener noreferrer">Theban Mapping Project</a> tiene planos, fotos e historia de todas las tumbas del Valle (en inglés).</span></li>
+          <li><span class="note-year">Museo</span><span>El Gran Museo Egipcio está abierto por completo desde noviembre de 2025, salas de Tutankamón incluidas.</span></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="note-card" style="margin-top: clamp(1.25rem, 3vw, 2rem);">
+      <h3>Dónde estos apuntes corrigen las grabaciones</h3>
+      <ul class="note-list">
+        <li><span class="note-year">Narmer</span><span>La paleta de Narmer se excavó en Hieracómpolis, no cerca de Tinis.</span></li>
+        <li><span class="note-year">Micerino</span><span>Su pirámide medía unos 65 m de altura, no 100 m.</span></li>
+        <li><span class="note-year">Dahshur</span><span>El piramidión de la pirámide negra se encontró en 1900, no en 1990.</span></li>
+        <li><span class="note-year">Hierro</span><span>El puñal de hierro de Tutankamón es de hierro meteórico, según confirmó un estudio de 2016.</span></li>
+        <li><span class="note-year">Obelisco</span><span>El obelisco de Hatshepsut que sigue en pie en Karnak mide unos 30 m, no 33 m.</span></li>
+        <li><span class="note-year">Borrado</span><span>La mayoría de los egiptólogos sitúan el borrado del nombre de Hatshepsut al final del reinado de Tutmosis III; la profesora lo atribuye sobre todo a Seti I y Ramsés II.</span></li>
+      </ul>
+    </div>
     </div>
   </div>
 
@@ -7215,6 +7353,28 @@
   }
   window.addEventListener('hashchange', followHash);
   followHash();
+})();
+
+// English / Spanish switch on the Curso UNED tab; the choice is remembered per browser.
+(function () {
+  var sw = document.getElementById('unedLang');
+  if (!sw) return;
+  var blocks = Array.prototype.slice.call(document.querySelectorAll('#panel-uned [data-lang]'));
+  var buttons = Array.prototype.slice.call(sw.querySelectorAll('button'));
+
+  function setLang(lang) {
+    blocks.forEach(function (b) { b.hidden = b.getAttribute('data-lang') !== lang; });
+    buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set') === lang ? 'true' : 'false'); });
+    try { localStorage.setItem('unedLang', lang); } catch (e) {}
+  }
+
+  buttons.forEach(function (b) {
+    b.addEventListener('click', function () { setLang(b.getAttribute('data-set')); });
+  });
+
+  var saved = null;
+  try { saved = localStorage.getItem('unedLang'); } catch (e) {}
+  setLang(saved === 'es' ? 'es' : 'en');
 })();
 </script>
 
