@@ -8,7 +8,7 @@ There is no build, lint, or test tooling here. The git repo pushes to the public
 
 - `artifacts/ancient-egypt-history-main-points.html` is **the main deliverable**: a combined Nile locator map, search bar, info cards and timeline. Nearly all work goes here.
 - `artifacts/alimana-tour-slideshow.html` is the tour slideshow on its own, for sharing without the rest of the page. It is published as a separate artifact, https://claude.ai/artifact/1CQwtaWufy3Jt5zMPXg88a. Its markup, CSS and script are copied from `#tourShow` in the main page, so when the slideshow changes, update both files.
-- `artifacts/visitas-en-el-cairo.html` is a separate Spanish-language page for the three Cairo days (25–27 Nov 2026, with the guide Omarcel): the group's poll results ranked by votes, a draft day-by-day plan, and what doesn't fit. It is published as https://claude.ai/artifact/VYVyoGbgZEToWVzMM2r5Ff and shares the main page's colour tokens.
+- `artifacts/cairo-visitas.html` (in Spanish) lists the Cairo activities from the group's poll, ranked by votes, with a draft plan for the three days with Omarcel (25–27 Nov). The tour tab's Cairo day card links to it. It is published as a separate artifact, https://claude.ai/artifact/VYVyoGbgZEToWVzMM2r5Ff.
 - `artifacts/nile-valley-timeline.html` is an earlier standalone timeline. It has been replaced by the combined page and kept as-is. Don't update it unless asked.
 - `artifacts/chat-transcript.md` is the history of the original cloud session that built the pages. It records every site added and every design decision. Read it before changing content conventions.
 
@@ -27,7 +27,7 @@ The saved files begin with a publish-time wrapper (`<!doctype html><html><head>�
 
 It is one large file (~6,200 lines): inline CSS, inline SVG and one small script at the end. External loads are limited to Google Fonts (Fraunces, Public Sans, IBM Plex Mono). Images can't be loaded, so every "picture" is a hand-drawn inline SVG illustration.
 
-The page has two tabs (`.tabs` bar at the top of `.page`): **Main points** (`#panel-main`: masthead, search, map, cards, timeline) and **Private Alimaña Tour** (`#panel-tour`: the user's booked C La Vie trip, 19–24 Nov 2026, as `.day-card`s). Above the day cards sits `#tourShow`, an auto-playing slideshow (8 slides with inline SVG art and a route bar whose boat moves per slide); its script pauses it while the tab is hidden. Tour stops link to `#card-<slug>`; a second small script at the end switches to the tab holding a hash target, and `#tour` opens the tour tab. Don't give tour content the `info-card` class or the search will count it.
+The page has two tabs (`.tabs` bar at the top of `.page`): **Main points** (`#panel-main`: masthead, search, map, cards, timeline) and **Private Alimaña Tour** (`#panel-tour`: the user's trip, 18–28 Nov 2026: flight Madrid → Cairo and a night in Cairo, the booked C La Vie Aswan–Luxor program, a night flight Luxor → Cairo on the 24th, three days in Cairo with their guide Omarcel and the flight home on the 28th, as `.day-card`s). Above the day cards sits `#tourShow`, an auto-playing slideshow (10 slides with inline SVG art and a route bar whose boat moves per slide); its script pauses it while the tab is hidden. Tour stops link to `#card-<slug>`; a second small script at the end switches to the tab holding a hash target, and `#tour` opens the tour tab. Don't give tour content the `info-card` class or the search will count it.
 
 Adding a site usually means touching **four places** that must stay consistent:
 
