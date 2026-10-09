@@ -771,9 +771,6 @@
   }
   .note-list li:last-child { border-bottom: none; padding-bottom: 0; }
 
-  .note-list a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sand-line); }
-  .note-list a:hover, .note-list a:focus-visible { border-bottom-color: currentColor; }
-
   .note-year {
     font-family: "IBM Plex Mono", ui-monospace, monospace;
     font-size: 0.82rem;
@@ -937,23 +934,6 @@
   }
   .tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
-  .lang-switch { display: flex; gap: 0.4rem; margin: 0 0 1.25rem; }
-  .lang-switch button {
-    font-family: "IBM Plex Mono", ui-monospace, monospace;
-    font-size: 0.72rem;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    background: transparent;
-    border: 1px solid var(--sand-line);
-    border-radius: 999px;
-    padding: 0.35rem 0.8rem;
-    cursor: pointer;
-  }
-  .lang-switch button:hover { color: var(--ink); border-color: var(--ink-soft); }
-  .lang-switch button[aria-pressed="true"] { color: var(--bg-panel); background: var(--nile); border-color: var(--nile); }
-  .lang-switch button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
-
   .route-strip {
     display: flex;
     flex-wrap: wrap;
@@ -1096,11 +1076,8 @@
   @media (max-width: 700px) {
     .show-route { overflow: visible; margin-bottom: 1.7rem; }
     .route-label-desktop { display: none; }
-    .route-label-mobile { display: inline; font-size: 23px; }
+    .route-label-mobile { display: inline; font-size: 21px; }
   }
-  .route-flight { stroke: var(--ink-soft); stroke-width: 1.2; stroke-dasharray: 2 5; fill: none; opacity: 0.8; }
-  .route-plane { font-size: 12px; fill: var(--ink-soft); }
-  .show-route { overflow: visible; }
   .route-boat { transition: transform 1.2s ease-in-out; }
   .route-boat path { fill: var(--ochre); }
 
@@ -1161,8 +1138,6 @@
   <nav class="tabs" role="tablist" aria-label="Page sections">
     <button type="button" class="tab" role="tab" id="tab-main" aria-controls="panel-main" aria-selected="true">Main points</button>
     <button type="button" class="tab" role="tab" id="tab-tour" aria-controls="panel-tour" aria-selected="false" tabindex="-1">Private Alimaña Tour</button>
-    <button type="button" class="tab" role="tab" id="tab-cairo" aria-controls="panel-cairo" aria-selected="false" tabindex="-1">Visitas en El Cairo</button>
-    <button type="button" class="tab" role="tab" id="tab-uned" aria-controls="panel-uned" aria-selected="false" tabindex="-1">Curso UNED</button>
   </nav>
 
   <div class="tab-panel" id="panel-main" role="tabpanel" aria-labelledby="tab-main">
@@ -6365,12 +6340,10 @@
 
   <div class="tab-panel" id="panel-tour" role="tabpanel" aria-labelledby="tab-tour" hidden>
     <header class="masthead">
-      <p class="eyebrow">Madrid → Cairo → Aswan → Luxor → Cairo → Madrid · 18&ndash;28 November 2026</p>
+      <p class="eyebrow">Aswan → Luxor · 19&ndash;24 November 2026</p>
       <h1>Private Alimaña Tour</h1>
-      <p class="lede">Eleven days in Egypt: the flight from Madrid and a night in Cairo, then six days down the Nile with C La Vie Travel Egypt: Abu Simbel from Aswan, three nights sailing north aboard the dahabeya <em>C La Vie 1</em> (Sekhmet itinerary, Double Suite with private terrace, two guests), then Luxor, a private day trip to Dendera and Abydos, and the night flight from Luxor back to Cairo on the 24th. Then three days in Cairo with our guide Omarcel, and the flight home to Madrid on the 28th. A Spanish-speaking Egyptologist guide is with you throughout. Underlined stops link to their card in the Main points tab.</p>
+      <p class="lede">Six days down the Nile with C La Vie Travel Egypt: Abu Simbel from Aswan, three nights sailing north aboard the dahabeya <em>C La Vie 1</em> (Sekhmet itinerary, Double Suite with private terrace, two guests), then Luxor and a private day trip to Dendera and Abydos. A Spanish-speaking Egyptologist guide is with you throughout. Underlined stops link to their card in the Main points tab.</p>
       <ol class="route-strip" aria-label="Route">
-        <li>Madrid</li>
-        <li>Cairo</li>
         <li>Aswan</li>
         <li>Abu Simbel</li>
         <li>Philae</li>
@@ -6378,8 +6351,6 @@
         <li>Edfu</li>
         <li>Luxor</li>
         <li>Dendera &amp; Abydos</li>
-        <li>Cairo</li>
-        <li>Madrid</li>
       </ol>
     </header>
 
@@ -6433,7 +6404,7 @@
 
       <div class="show-stage" id="showStage" aria-live="off">
         <!-- 0 · title -->
-        <div class="show-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 10" data-boat="690" style="--accent: var(--ochre);">
+        <div class="show-slide is-active" role="group" aria-roledescription="slide" aria-label="1 of 8" data-boat="170" style="--accent: var(--ochre);">
           <svg class="show-art" viewBox="0 0 320 200" role="img" aria-label="A dahabeya with two white sails on the Nile at sunset, palms on the bank">
             <rect width="320" height="200" fill="url(#showDusk)" />
             <g class="zoom">
@@ -6452,62 +6423,18 @@
             </g>
           </svg>
           <div class="show-text">
-            <p class="day-num">18&ndash;28 November 2026 · Madrid ⇄ Egypt</p>
+            <p class="day-num">19&ndash;24 November 2026 · Aswan → Luxor</p>
             <h3>Private Alimaña Tour</h3>
-            <p>A flight from Madrid and a night in Cairo, then six days on the Nile with a Spanish-speaking Egyptologist: three nights aboard the dahabeya <em>C La Vie 1</em>, plus private days at Abu Simbel and at Dendera &amp; Abydos, then three days in Cairo with Omarcel.</p>
+            <p>Six days on the Nile with a Spanish-speaking Egyptologist: three nights aboard the dahabeya <em>C La Vie 1</em>, plus private days at Abu Simbel and at Dendera &amp; Abydos.</p>
             <ul>
-              <li>Cairo · Abu Simbel · Philae · Kom Ombo</li>
-              <li>Edfu · Luxor · Dendera &amp; Abydos · Cairo</li>
+              <li>Abu Simbel · Philae · Kom Ombo</li>
+              <li>Edfu · Luxor · Dendera &amp; Abydos</li>
             </ul>
           </div>
         </div>
 
-        <!-- 1 · Madrid → Cairo -->
-        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="2 of 10" data-boat="690" style="--accent: var(--solar);">
-          <svg class="show-art" viewBox="0 0 320 200" role="img" aria-label="A plane descending over Cairo at dusk: domes and minarets along the Nile, the Giza pyramids on the horizon">
-            <rect width="320" height="200" fill="url(#showDusk)" />
-            <g class="zoom">
-              <!-- Giza pyramids faint on the western horizon -->
-              <g fill="#c98f5a" opacity="0.75">
-                <path d="M18,128 L44,96 L70,128 Z" />
-                <path d="M60,128 L82,102 L104,128 Z" />
-                <path d="M98,128 L112,112 L126,128 Z" />
-              </g>
-              <!-- city skyline: domes and minarets -->
-              <g fill="#7a4a3a">
-                <rect x="130" y="112" width="190" height="20" />
-                <path d="M150,112 A16,16 0 0,1 182,112 Z" />
-                <rect x="186" y="74" width="6" height="40" /><path d="M186,74 L189,64 L192,74 Z" />
-                <path d="M200,112 A22,22 0 0,1 244,112 Z" />
-                <rect x="250" y="80" width="6" height="34" /><path d="M250,80 L253,70 L256,80 Z" />
-                <rect x="262" y="96" width="22" height="18" />
-                <path d="M286,112 A14,14 0 0,1 314,112 Z" />
-                <rect x="140" y="88" width="5" height="26" /><path d="M140,88 L142.5,80 L145,88 Z" />
-              </g>
-              <rect y="130" width="320" height="70" fill="url(#showWater)" />
-              <g stroke="#f7d892" stroke-width="1.4" opacity="0.5">
-                <line x1="200" y1="146" x2="240" y2="146" /><line x1="208" y1="156" x2="232" y2="156" />
-              </g>
-              <!-- plane on its approach, with a contrail -->
-              <path d="M300,22 C250,30 200,40 160,52" stroke="#fbf4e4" stroke-width="2" fill="none" stroke-dasharray="6 5" opacity="0.8" />
-              <g transform="translate(150,56) rotate(-14)" fill="#fbf4e4" stroke="#7a4a3a" stroke-width="0.8">
-                <path d="M-22,0 C-22,-3 -18,-4 -12,-4 L16,-4 C22,-4 24,-1 24,0 C24,1 22,4 16,4 L-12,4 C-18,4 -22,3 -22,0 Z" />
-                <path d="M0,-3 L-8,-16 L-3,-16 L8,-3 Z" />
-                <path d="M0,3 L-8,16 L-3,16 L8,3 Z" />
-                <path d="M16,-3 L21,-10 L24,-10 L22,-2 Z" />
-              </g>
-            </g>
-          </svg>
-          <div class="show-text">
-            <p class="day-num">Day 1 · Wed 18 Nov</p>
-            <h3>Madrid → Cairo</h3>
-            <p>The flight from Madrid lands in Cairo for the first night of the trip, ready to head south to Aswan the next morning.</p>
-            <ul><li>Flight Madrid → Cairo</li><li>Night in Cairo</li></ul>
-          </div>
-        </div>
-
-        <!-- 2 · Abu Simbel -->
-        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="3 of 10" data-boat="30" style="--accent: var(--malachite);">
+        <!-- 1 · Abu Simbel -->
+        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="2 of 8" data-boat="30" style="--accent: var(--malachite);">
           <svg class="show-art" viewBox="0 0 320 200" role="img" aria-label="The Great Temple of Abu Simbel: four seated colossi of Ramesses II cut into a sandstone cliff above Lake Nasser">
             <rect width="320" height="200" fill="url(#showDay)" />
             <g class="zoom">
@@ -6524,15 +6451,15 @@
             </g>
           </svg>
           <div class="show-text">
-            <p class="day-num">Day 2 · Thu 19 Nov</p>
+            <p class="day-num">Day 1 · Thu 19 Nov</p>
             <h3>Arrival in Aswan · Abu Simbel</h3>
             <p>Welcome at about 9:00 AM, then south by private car to the temples Ramesses II cut into the cliff, c. 1264 BC. Night in Aswan.</p>
             <ul><li>Great Temple of Ramesses II</li><li>Small temple of Nefertari</li></ul>
           </div>
         </div>
 
-        <!-- 3 · Philae -->
-        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="4 of 10" data-boat="130" style="--accent: var(--lapis);">
+        <!-- 2 · Philae -->
+        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="3 of 8" data-boat="130" style="--accent: var(--lapis);">
           <svg class="show-art" viewBox="0 0 320 200" role="img" aria-label="The Temple of Isis on Philae: a twin-towered pylon and a columned kiosk on an island, with a small boat">
             <rect width="320" height="200" fill="url(#showDay)" />
             <g class="zoom">
@@ -6553,15 +6480,15 @@
             </g>
           </svg>
           <div class="show-text">
-            <p class="day-num">Day 3 · Fri 20 Nov</p>
+            <p class="day-num">Day 2 · Fri 20 Nov</p>
             <h3>Philae · All aboard</h3>
             <p>By boat to the Temple of Isis on Agilkia Island, then lunch on the dahabeya as she casts off and sails north.</p>
             <ul><li>Temple of Isis, Ptolemaic</li><li>Dahabeya night 1 · full board</li></ul>
           </div>
         </div>
 
-        <!-- 4 · Kom Ombo -->
-        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="5 of 10" data-boat="260" style="--accent: var(--turquoise);">
+        <!-- 3 · Kom Ombo -->
+        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="4 of 8" data-boat="260" style="--accent: var(--turquoise);">
           <svg class="show-art" viewBox="0 0 320 200" role="img" aria-label="Kom Ombo's double temple on a riverbank, with twin doorways and a crocodile in the water below">
             <rect width="320" height="200" fill="url(#showDay)" />
             <g class="zoom">
@@ -6589,15 +6516,15 @@
             </g>
           </svg>
           <div class="show-text">
-            <p class="day-num">Day 4 · Sat 21 Nov</p>
+            <p class="day-num">Day 3 · Sat 21 Nov</p>
             <h3>Kom Ombo</h3>
             <p>Breakfast under sail, then a temple split exactly in two: one half for the crocodile god Sobek, the other for the falcon god Haroeris.</p>
             <ul><li>Ptolemaic double temple</li><li>Dahabeya night 2 · full board</li></ul>
           </div>
         </div>
 
-        <!-- 5 · Edfu -->
-        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="6 of 10" data-boat="350" style="--accent: var(--indigo);">
+        <!-- 4 · Edfu -->
+        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="5 of 8" data-boat="350" style="--accent: var(--indigo);">
           <svg class="show-art" viewBox="0 0 320 200" role="img" aria-label="The towering pylon of the Temple of Horus at Edfu, with a granite falcon statue standing before it">
             <rect width="320" height="200" fill="url(#showDay)" />
             <g class="zoom">
@@ -6618,15 +6545,15 @@
             </g>
           </svg>
           <div class="show-text">
-            <p class="day-num">Day 5 · Sun 22 Nov</p>
+            <p class="day-num">Day 4 · Sun 22 Nov</p>
             <h3>Edfu · Temple of Horus</h3>
             <p>Built c. 237&ndash;57 BC and still roofed: one of the best-preserved temples in Egypt. Then on downriver, past ancient Nekhen.</p>
             <ul><li>Granite falcons at the gate</li><li>Dahabeya night 3 · full board</li></ul>
           </div>
         </div>
 
-        <!-- 6 · Luxor -->
-        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="7 of 10" data-boat="460" style="--accent: var(--gold);">
+        <!-- 5 · Luxor -->
+        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="6 of 8" data-boat="460" style="--accent: var(--gold);">
           <svg class="show-art" viewBox="0 0 320 200" role="img" aria-label="Thebes: Hatshepsut's terraced temple under the cliffs, the two Colossi of Memnon in front and Karnak's columns across the river">
             <rect width="320" height="200" fill="url(#showDay)" />
             <g class="zoom">
@@ -6654,15 +6581,15 @@
             </g>
           </svg>
           <div class="show-text">
-            <p class="day-num">Day 6 · Mon 23 Nov</p>
+            <p class="day-num">Day 5 · Mon 23 Nov</p>
             <h3>Luxor · Thebes, both banks</h3>
             <p>Off the boat after breakfast for a full day in ancient Thebes, then on to the Luxor hotel.</p>
             <ul><li>Valley of the Kings</li><li>Temple of Hatshepsut · Colossi of Memnon</li><li>Karnak Temple</li></ul>
           </div>
         </div>
 
-        <!-- 7 · Dendera & Abydos -->
-        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="8 of 10" data-boat="590" style="--accent: var(--rose);">
+        <!-- 6 · Dendera & Abydos -->
+        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="7 of 8" data-boat="590" style="--accent: var(--rose);">
           <svg class="show-art" viewBox="0 0 320 200" role="img" aria-label="Hathor-headed columns at Dendera beneath a starry ceiling, and a row of royal cartouches from the Abydos King List">
             <rect width="320" height="200" fill="#2c3550" />
             <g class="zoom">
@@ -6688,55 +6615,15 @@
             </g>
           </svg>
           <div class="show-text">
-            <p class="day-num">Day 7 · Tue 24 Nov</p>
+            <p class="day-num">Day 6 · Tue 24 Nov</p>
             <h3>Dendera &amp; Abydos</h3>
-            <p>A private day trip north: Hathor's temple, roof and zodiac ceiling intact, then Seti I's temple with its list of 76 kings. Back in Luxor around 5:00 PM for the night flight to Cairo, and the night there.</p>
-            <ul><li>Temple of Hathor, Dendera</li><li>Temple of Seti I, Abydos</li><li>Night flight Luxor → Cairo</li></ul>
+            <p>A private day trip north: Hathor's temple, roof and zodiac ceiling intact, then Seti I's temple with its list of 76 kings. Back in Luxor around 5:00 PM.</p>
+            <ul><li>Temple of Hathor, Dendera</li><li>Temple of Seti I, Abydos</li></ul>
           </div>
         </div>
 
-        <!-- 8 · Cairo with Omarcel -->
-        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="9 of 10" data-boat="690" style="--accent: var(--kush);">
-          <svg class="show-art" viewBox="0 0 320 200" role="img" aria-label="Cairo by day: the lotus-topped Cairo Tower and city blocks along the Nile, a felucca on the water and the pyramids on the horizon">
-            <rect width="320" height="200" fill="url(#showDay)" />
-            <g class="zoom">
-              <g fill="#d2a46e" opacity="0.8">
-                <path d="M230,122 L254,92 L278,122 Z" />
-                <path d="M270,122 L288,100 L306,122 Z" />
-              </g>
-              <!-- city blocks -->
-              <g fill="#b98b5e">
-                <rect x="0" y="96" width="34" height="30" /><rect x="38" y="84" width="26" height="42" /><rect x="68" y="102" width="30" height="24" />
-                <rect x="150" y="90" width="28" height="36" /><rect x="182" y="104" width="40" height="22" />
-              </g>
-              <g fill="#f3e2c0" opacity="0.7">
-                <rect x="6" y="102" width="4" height="4" /><rect x="16" y="102" width="4" height="4" /><rect x="44" y="92" width="4" height="4" /><rect x="54" y="92" width="4" height="4" /><rect x="156" y="98" width="4" height="4" /><rect x="166" y="98" width="4" height="4" />
-              </g>
-              <!-- Cairo Tower: lattice shaft with a lotus-shaped top -->
-              <g transform="translate(122,126)">
-                <path d="M-6,0 L-4,-78 L4,-78 L6,0 Z" fill="#c8b394" stroke="#7a5a32" stroke-width="0.8" />
-                <g stroke="#7a5a32" stroke-width="0.6" opacity="0.6">
-                  <line x1="-5" y1="-20" x2="5" y2="-30" /><line x1="-5" y1="-30" x2="5" y2="-20" />
-                  <line x1="-5" y1="-46" x2="5" y2="-56" /><line x1="-5" y1="-56" x2="5" y2="-46" />
-                </g>
-                <path d="M-11,-78 C-10,-88 -6,-92 0,-94 C6,-92 10,-88 11,-78 Z" fill="#c8b394" stroke="#7a5a32" stroke-width="0.8" />
-                <line x1="0" y1="-94" x2="0" y2="-104" stroke="#7a5a32" stroke-width="1.2" />
-              </g>
-              <rect y="126" width="320" height="74" fill="url(#showWater)" />
-              <g transform="translate(220,170) scale(0.6)"><path d="M-30,0 L30,0 L22,8 L-22,8 Z" fill="#7a4a2a" /><path d="M-4,0 L-4,-48 L24,-4 Z" fill="#fbf4e4" stroke="#b49a72" /></g>
-              <use href="#showPalm" transform="translate(300,126) scale(0.8)" />
-            </g>
-          </svg>
-          <div class="show-text">
-            <p class="day-num">Days 8&ndash;10 · Wed 25 &ndash; Fri 27 Nov</p>
-            <h3>Cairo with Omarcel</h3>
-            <p>Back in the capital after the night flight from Luxor, for three days in Cairo with our guide, Omarcel.</p>
-            <ul><li>Wed 25 · Thu 26 · Fri 27 Nov</li><li>Program to be confirmed with Omarcel</li></ul>
-          </div>
-        </div>
-
-        <!-- 9 · farewell -->
-        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="10 of 10" data-boat="690" style="--accent: var(--gold);">
+        <!-- 7 · farewell -->
+        <div class="show-slide" role="group" aria-roledescription="slide" aria-label="8 of 8" data-boat="590" style="--accent: var(--gold);">
           <svg class="show-art" viewBox="0 0 320 200" role="img" aria-label="The dahabeya moored under a night sky full of stars, a crescent moon over the Nile">
             <rect width="320" height="200" fill="url(#showNight)" />
             <g class="zoom">
@@ -6756,30 +6643,26 @@
             </g>
           </svg>
           <div class="show-text">
-            <p class="day-num">Day 11 · Sat 28 Nov · Cairo → Madrid</p>
+            <p class="day-num">After 24 November</p>
             <h3>¡Buen viaje, alimañas!</h3>
-            <p>Eleven days in Egypt and three nights on the river, from Ramesses II's cliff at Abu Simbel to Seti I's kings at Abydos, then Cairo and the flight home to Madrid.</p>
+            <p>Six days and three nights on the river, from Ramesses II's cliff at Abu Simbel to Seti I's kings at Abydos.</p>
           </div>
         </div>
       </div>
 
-      <svg class="show-route" viewBox="0 0 720 60" role="img" aria-label="Route: flight to Cairo, then from Abu Simbel north to Abydos, and a flight from Luxor back to Cairo; the boat marks where each slide takes place">
+      <svg class="show-route" viewBox="0 0 640 60" role="img" aria-label="Route from Abu Simbel north to Abydos; the boat marks where each slide takes place">
         <path class="route-trip" d="M30,34 C70,22 130,22 170,34" />
         <path class="route-trip" d="M460,34 C500,22 560,22 590,34" />
         <line class="route-line" x1="130" y1="34" x2="460" y2="34" />
-        <path class="route-flight" d="M690,34 C600,-6 260,-6 170,34" />
-        <path class="route-flight" d="M460,34 C520,10 630,10 690,34" />
-        <text class="route-plane" x="430" y="12" text-anchor="middle">✈</text>
         <g class="route-stops">
-          <circle class="route-stop" data-slide="2" cx="30" cy="34" r="5" />
-          <circle class="route-stop" data-slide="3" cx="130" cy="34" r="5" />
-          <circle class="route-stop" data-slide="2" cx="170" cy="34" r="5" />
-          <circle class="route-stop" data-slide="4" cx="260" cy="34" r="5" />
-          <circle class="route-stop" data-slide="5" cx="350" cy="34" r="5" />
-          <circle class="route-stop" data-slide="6" cx="460" cy="34" r="5" />
-          <circle class="route-stop" data-slide="7" cx="540" cy="34" r="5" />
-          <circle class="route-stop" data-slide="7" cx="590" cy="34" r="5" />
-          <circle class="route-stop" data-slide="1" cx="690" cy="34" r="5" />
+          <circle class="route-stop" data-slide="1" cx="30" cy="34" r="5" />
+          <circle class="route-stop" data-slide="2" cx="130" cy="34" r="5" />
+          <circle class="route-stop" data-slide="1" cx="170" cy="34" r="5" />
+          <circle class="route-stop" data-slide="3" cx="260" cy="34" r="5" />
+          <circle class="route-stop" data-slide="4" cx="350" cy="34" r="5" />
+          <circle class="route-stop" data-slide="5" cx="460" cy="34" r="5" />
+          <circle class="route-stop" data-slide="6" cx="540" cy="34" r="5" />
+          <circle class="route-stop" data-slide="6" cx="590" cy="34" r="5" />
         </g>
         <g class="route-label route-label-desktop" text-anchor="middle">
           <text x="30" y="54">Abu Simbel</text>
@@ -6790,7 +6673,6 @@
           <text x="460" y="54">Luxor</text>
           <text x="538" y="54">Dendera</text>
           <text x="598" y="54">Abydos</text>
-          <text x="690" y="54">Cairo</text>
         </g>
         <!-- phones: bigger labels in two staggered rows, drawn below the viewBox (overflow visible) -->
         <g class="route-label route-label-mobile" text-anchor="middle">
@@ -6802,9 +6684,8 @@
           <text x="460" y="91">Luxor</text>
           <text x="540" y="62">Dendera</text>
           <text x="634" y="91" text-anchor="end">Abydos</text>
-          <text x="714" y="62" text-anchor="end">Cairo</text>
         </g>
-        <g class="route-boat" id="routeBoat" style="transform: translate(690px, 0)">
+        <g class="route-boat" id="routeBoat" style="transform: translate(170px, 0)">
           <path d="M-9,24 L9,24 L6,28 L-6,28 Z" />
           <path d="M-2,24 L-2,12 L6,22 Z" />
         </g>
@@ -6820,19 +6701,8 @@
     </section>
 
     <div class="day-grid">
-      <article class="day-card" style="--accent: var(--solar);">
-        <p class="day-num">Day 1 · Wed 18 Nov</p>
-        <h3>Madrid → Cairo</h3>
-        <p>Fly from Madrid to Cairo and spend the first night in the capital, ready to continue south to Aswan the next morning.</p>
-        <ul class="stop-list">
-          <li>Flight Madrid → Cairo</li>
-          <li>Night in Cairo <span class="stop-note">The pyramids of <a href="#card-giza">Giza</a> stand on the city's western edge.</span></li>
-        </ul>
-        <p class="day-meta">Night 1 · Cairo</p>
-      </article>
-
       <article class="day-card" style="--accent: var(--malachite);">
-        <p class="day-num">Day 2 · Thu 19 Nov</p>
+        <p class="day-num">Day 1 · Thu 19 Nov</p>
         <h3>Arrival in Aswan · Abu Simbel</h3>
         <p>Met on arrival in Aswan around 9:00 AM by the C La Vie representative and your guide, then straight out on the private excursion south to Abu Simbel. Back to Aswan for the night, ready to board the next morning.</p>
         <ul class="stop-list">
@@ -6842,7 +6712,7 @@
       </article>
 
       <article class="day-card" style="--accent: var(--lapis);">
-        <p class="day-num">Day 3 · Fri 20 Nov</p>
+        <p class="day-num">Day 2 · Fri 20 Nov</p>
         <h3>Philae · Embarkation</h3>
         <p>Guide meets you around 9:00&ndash;10:00 AM. After Philae, board the dahabeya for lunch and set sail north.</p>
         <ul class="stop-list">
@@ -6852,7 +6722,7 @@
       </article>
 
       <article class="day-card" style="--accent: var(--turquoise);">
-        <p class="day-num">Day 4 · Sat 21 Nov</p>
+        <p class="day-num">Day 3 · Sat 21 Nov</p>
         <h3>Kom Ombo</h3>
         <p>Breakfast on board while sailing, then a stop at Kom Ombo before continuing downriver.</p>
         <ul class="stop-list">
@@ -6862,7 +6732,7 @@
       </article>
 
       <article class="day-card" style="--accent: var(--indigo);">
-        <p class="day-num">Day 5 · Sun 22 Nov</p>
+        <p class="day-num">Day 4 · Sun 22 Nov</p>
         <h3>Edfu</h3>
         <p>Sail on to Edfu, then continue north towards Luxor. Downstream of Edfu the boat passes the west-bank site of Nekhen, where the Narmer Palette was found.</p>
         <ul class="stop-list">
@@ -6873,7 +6743,7 @@
       </article>
 
       <article class="day-card" style="--accent: var(--gold);">
-        <p class="day-num">Day 6 · Mon 23 Nov</p>
+        <p class="day-num">Day 5 · Mon 23 Nov</p>
         <h3>Luxor · Valley of the Kings · Karnak</h3>
         <p>Disembark after breakfast and spend the day on both banks of ancient Thebes, then transfer to the Luxor hotel.</p>
         <ul class="stop-list">
@@ -6886,38 +6756,14 @@
       </article>
 
       <article class="day-card" style="--accent: var(--rose);">
-        <p class="day-num">Day 7 · Tue 24 Nov</p>
+        <p class="day-num">Day 6 · Tue 24 Nov</p>
         <h3>Dendera &amp; Abydos</h3>
-        <p>Private full-day excursion north of Luxor with your guide and A/C vehicle, back in Luxor around 5:00 PM, then the night flight to Cairo.</p>
+        <p>Private full-day excursion north of Luxor with your guide and A/C vehicle, back in Luxor around 5:00 PM.</p>
         <ul class="stop-list">
           <li><a href="#card-dendera">Temple of Hathor, Dendera</a> <span class="stop-note">Look up for the zodiac ceiling; the original is in the Louvre, a cast stands in its place.</span></li>
           <li><a href="#card-abydos">Temple of Seti I, Abydos</a> <span class="stop-note">Home of the Abydos King List, 76 royal names carved in order.</span></li>
-          <li>Night flight Luxor → Cairo</li>
         </ul>
-        <p class="day-meta">Additional private excursion, after the dahabeya program · night in Cairo</p>
-      </article>
-
-      <article class="day-card" style="--accent: var(--kush);">
-        <p class="day-num">Days 8&ndash;10 · Wed 25 &ndash; Fri 27 Nov</p>
-        <h3>Cairo with Omarcel</h3>
-        <p>Three days in Cairo with our guide, Omarcel.</p>
-        <ul class="stop-list">
-          <li>Wed 25 Nov · Cairo with Omarcel</li>
-          <li>Thu 26 Nov · Cairo with Omarcel</li>
-          <li>Fri 27 Nov · Cairo with Omarcel</li>
-        </ul>
-        <p class="day-meta">Nights in Cairo · day-by-day program to be confirmed with Omarcel</p>
-        <a class="wiki-link" style="color: var(--kush);" href="https://claude.ai/artifact/VYVyoGbgZEToWVzMM2r5Ff" target="_blank" rel="noopener noreferrer">Visitas en El Cairo: poll &amp; draft plan ↗</a>
-      </article>
-
-      <article class="day-card" style="--accent: var(--ochre);">
-        <p class="day-num">Day 11 · Sat 28 Nov</p>
-        <h3>Cairo → Madrid</h3>
-        <p>Flight home from Cairo to Madrid.</p>
-        <ul class="stop-list">
-          <li>Flight Cairo → Madrid</li>
-        </ul>
-        <p class="day-meta">End of the trip</p>
+        <p class="day-meta">Additional private excursion, after the dahabeya program</p>
       </article>
     </div>
 
@@ -6925,294 +6771,17 @@
       <div class="note-card">
         <h3>Booking summary</h3>
         <ul class="note-list">
-          <li><span class="note-year">Flight</span><span>Madrid → Cairo, Wed 18 Nov; Luxor → Cairo, night of Tue 24 Nov; Cairo → Madrid, Sat 28 Nov</span></li>
           <li><span class="note-year">Operator</span><span>C La Vie Travel Egypt</span></li>
           <li><span class="note-year">Boat</span><span>Dahabeya <em>C La Vie 1</em>, Sekhmet itinerary, 3 nights / 4 days, 20&ndash;23 Nov</span></li>
           <li><span class="note-year">Cabin</span><span>Double Suite with private terrace, 2 guests</span></li>
-          <li><span class="note-year">Guide</span><span>Spanish-speaking Egyptologist, 19&ndash;24 Nov</span></li>
-          <li><span class="note-year">Cairo</span><span>Omarcel, our guide, Wed 25 &ndash; Fri 27 Nov</span></li>
+          <li><span class="note-year">Guide</span><span>Spanish-speaking Egyptologist, every day</span></li>
           <li><span class="note-year">Extras</span><span>Private Abu Simbel excursion; private Dendera &amp; Abydos excursion</span></li>
         </ul>
       </div>
       <div class="note-card">
         <h3>Still to arrange</h3>
-        <p style="margin: -0.4rem 0 0; color: var(--ink-soft); font-size: 0.95rem;">The connection from Cairo to Aswan on the morning of 19 November; hotel in Aswan for the night of the 19th; the Luxor hotel from 23 November; the day-by-day program with Omarcel for 25&ndash;27 November; and final payment for the dahabeya and excursions.</p>
+        <p style="margin: -0.4rem 0 0; color: var(--ink-soft); font-size: 0.95rem;">Hotel in Aswan for the night of 19 November; the Luxor hotel from 23 November; onward travel after the Dendera &amp; Abydos day; and final payment for the dahabeya and excursions.</p>
       </div>
-    </div>
-  </div>
-
-  <div class="tab-panel" id="panel-cairo" role="tabpanel" aria-labelledby="tab-cairo" hidden>
-    <header class="masthead">
-      <p class="eyebrow">Cairo · 25&ndash;27 November 2026 · with Omarcel</p>
-      <h1>Visitas en El Cairo</h1>
-      <p class="lede">The group's poll of twelve Cairo activities, ranked by votes, with a draft plan for the three days with our guide Omarcel. Khan el-Khalili and buying gold lead with three votes each, then a day in Alexandria with two. The full page, in Spanish, also lists what doesn't fit and practical notes.</p>
-      <a class="wiki-link" style="color: var(--ochre); font-size: 0.85rem;" href="https://claude.ai/artifact/VYVyoGbgZEToWVzMM2r5Ff" target="_blank" rel="noopener noreferrer">Open Visitas en El Cairo ↗</a>
-    </header>
-
-    <div class="day-grid">
-      <article class="day-card" style="--accent: var(--indigo);">
-        <p class="day-num">Wed 25 Nov</p>
-        <h3>Giza</h3>
-        <ul class="stop-list">
-          <li>Morning · <a href="#card-giza">Pyramids of Giza</a> and the <a href="#card-sphinx">Sphinx</a></li>
-          <li>Afternoon · Grand Egyptian Museum<span class="stop-note">About 2 km from the pyramids.</span></li>
-        </ul>
-      </article>
-      <article class="day-card" style="--accent: var(--rose);">
-        <p class="day-num">Thu 26 Nov</p>
-        <h3>Saqqara &amp; Coptic Cairo</h3>
-        <ul class="stop-list">
-          <li>Morning · <a href="#card-saqqara">Pyramids of Saqqara</a></li>
-          <li>Afternoon · Coptic quarter and churches</li>
-          <li>Sunset · Felucca on the Nile (optional)</li>
-        </ul>
-      </article>
-      <article class="day-card" style="--accent: var(--gold);">
-        <p class="day-num">Fri 27 Nov</p>
-        <h3>Islamic Cairo</h3>
-        <ul class="stop-list">
-          <li>Morning · Citadel and mosques<span class="stop-note">Go early: mosques close to visitors during Friday midday prayer.</span></li>
-          <li>Afternoon · Buying gold in El-Sagha</li>
-          <li>Evening · Khan el-Khalili bazaar</li>
-        </ul>
-      </article>
-    </div>
-  </div>
-
-  <div class="tab-panel" id="panel-uned" role="tabpanel" aria-labelledby="tab-uned" hidden>
-    <div class="lang-switch" id="unedLang" role="group" aria-label="Language / Idioma">
-      <button type="button" data-set="en" aria-pressed="true">English</button>
-      <button type="button" data-set="es" aria-pressed="false">Español</button>
-    </div>
-
-    <div data-lang="en" lang="en">
-    <header class="masthead">
-      <p class="eyebrow">UNED Tudela · Online course · March&ndash;April 2025</p>
-      <h1>Introducción a la historia del Antiguo Egipto</h1>
-      <p class="lede">A ten-hour introductory course from the UNED centre in Tudela (Navarra): five Thursday sessions of two hours, 18:00&ndash;20:00, taught online by Dr Eva Tobalina Oraá, historian and lecturer at UNIR. It runs from the Nile flood and the first pharaohs to Cleopatra VII. These are summary notes of each class. Underlined names link to their card in the Main points tab.</p>
-      <a class="wiki-link" style="color: var(--malachite); font-size: 0.85rem;" href="https://claude.ai/artifact/WMkdWhLeEmPLPgwuKFpVKu" target="_blank" rel="noopener noreferrer">Open the course mind map (in Spanish) ↗</a>
-    </header>
-
-    <div class="day-grid">
-      <article class="day-card" style="--accent: var(--ochre);">
-        <p class="day-num">Class 1 · March 2025</p>
-        <h3>The gift of the Nile and the Old Kingdom</h3>
-        <ul class="stop-list">
-          <li>Herodotus's "gift of the Nile": the gentle summer flood, nilometers, and a river you can sail both ways</li>
-          <li>The Scorpion King and the <a href="#card-narmer">Narmer Palette</a>: unification c. 3150 BC</li>
-          <li><a href="#card-saqqara">Djoser</a> settles the capital at Memphis and makes Ra the supreme god</li>
-          <li>Body, shadow, name, <em>ka</em> and <em>ba</em>; mummification and mastabas on the west bank</li>
-          <li>From the Step Pyramid to Sneferu's <a href="#card-dahshur">Bent and Red Pyramids</a></li>
-          <li><a href="#card-giza">Khufu's Great Pyramid</a> and the Wadi al-Jarf papyri, the logbook of an official who worked on it</li>
-        </ul>
-        <p class="day-meta">The recurring theme starts here: pharaoh against the priesthood</p>
-      </article>
-
-      <article class="day-card" style="--accent: var(--indigo);">
-        <p class="day-num">Class 2 · March 2025</p>
-        <h3>End of the Old Kingdom to the Middle Kingdom</h3>
-        <ul class="stop-list">
-          <li>Khafre, the <a href="#card-sphinx">Great Sphinx</a> and Menkaure's much smaller pyramid</li>
-          <li>Shepseskaf breaks with the priests of Ra; small Dynasty 5 pyramids beside huge <a href="#card-abusir">sun temples</a></li>
-          <li>Unas and the first Pyramid Texts; Mereruka's great mastaba</li>
-          <li>Pepi II's endless reign and the collapse c. 2181 BC; the Admonitions of Ipuwer</li>
-          <li>Herakleopolis against Thebes; <a href="#card-mentuhotep2">Mentuhotep II</a> reunites Egypt c. 2040 BC</li>
-          <li><a href="#card-amenemhat1">Amenemhat I</a>'s reforms and murder; the Story of Sinuhe</li>
-        </ul>
-        <p class="day-meta">Dates follow Barry Kemp; they can vary by a century between authors</p>
-      </article>
-
-      <article class="day-card" style="--accent: var(--turquoise);">
-        <p class="day-num">Class 3 · Thu 27 Mar 2025</p>
-        <h3>The Middle Kingdom, the Hyksos and a new empire</h3>
-        <ul class="stop-list">
-          <li>The careworn royal portraits of Dynasty 12; <a href="#card-senusret3">Senusret III</a> in Nubia and Byblos</li>
-          <li>Osiris, Isis and Horus; the weighing of the heart against Maat's feather; <em>shabtis</em></li>
-          <li>Sobekneferu, a woman, closes Dynasty 12</li>
-          <li>Hyksos chariots at Avaris; <a href="#card-kamose">Kamose</a> and <a href="#card-ahmose1">Ahmose</a> drive them out</li>
-          <li>New rivals, Mitanni and the Hittites; <a href="#card-amenhotep1">Amenhotep I</a> and the Valley of the Kings</li>
-        </ul>
-        <p class="day-meta">Also: the three candidate settings for the Exodus</p>
-      </article>
-
-      <article class="day-card" style="--accent: var(--gold);">
-        <p class="day-num">Class 4 · Thu 3 Apr 2025</p>
-        <h3>Dynasty 18</h3>
-        <ul class="stop-list">
-          <li><a href="#card-hatshepsut">Hatshepsut</a>: divine birth, Deir el-Bahari and the expedition to Punt</li>
-          <li><a href="#card-thutmose3">Thutmose III</a>'s conquests and the "Botanical Garden" at <a href="#card-karnak">Karnak</a></li>
-          <li>Thutmose IV's Dream Stele; <a href="#card-amenhotep3">Amenhotep III</a>, Queen Tiye and the Colossi of Memnon</li>
-          <li><a href="#card-akhenaten">Akhenaten</a>, <a href="#card-nefertiti">Nefertiti</a>, the Aten and Amarna art</li>
-          <li><a href="#card-tutankhamun">Tutankhamun</a>, Ay and <a href="#card-horemheb">Horemheb</a> restore Amun</li>
-        </ul>
-        <p class="day-meta">Temples as the primeval mound: pylons, court, hypostyle, dark sanctuary</p>
-      </article>
-
-      <article class="day-card" style="--accent: var(--rose);">
-        <p class="day-num">Class 5 · Thu 10 Apr 2025</p>
-        <h3>From Ramesses to Cleopatra</h3>
-        <ul class="stop-list">
-          <li><a href="#card-seti1">Seti I</a>: the Abydos King List and tomb KV17</li>
-          <li><a href="#card-ramesses2">Ramesses II</a>: Kadesh, <a href="#card-abusimbel">Abu Simbel</a> and the Ramesseum</li>
-          <li><a href="#card-twosret">Twosret</a>, <a href="#card-setnakhte">Setnakhte</a>, and <a href="#card-ramesses3">Ramesses III</a> against the Sea Peoples</li>
-          <li>Libyan and Kushite pharaohs, the Assyrians, the Saite renaissance and the Persians</li>
-          <li>Alexander, the Ptolemies, the Rosetta Stone and Cleopatra VII's death in 30 BC</li>
-        </ul>
-        <p class="day-meta">The Late Period: Dynasty 21 to the Ptolemies</p>
-      </article>
-    </div>
-
-    <div class="below-grid">
-      <div class="note-card">
-        <h3>Reading list</h3>
-        <ul class="note-list">
-          <li><span class="note-year">Pictures</span><span>Jean-Claude Golvin's reconstruction drawings of ancient Egypt</span></li>
-          <li><span class="note-year">Handbooks</span><span>Histories of ancient Egypt by Barry Kemp, Ian Shaw or Nicolas Grimal</span></li>
-          <li><span class="note-year">Sources</span><span>José Miguel Serrano Delgado, <em>Textos para la historia antigua de Egipto</em></span></li>
-          <li><span class="note-year">Afterlife</span><span>The Book of the Dead, in Boris de Rachewiltz's Spanish edition</span></li>
-          <li><span class="note-year">Discovery</span><span>Howard Carter on Tutankhamun's tomb; Giovanni Belzoni's travels in Egypt and Nubia</span></li>
-          <li><span class="note-year">Women</span><span>Teresa Bedman, <em>Reinas de Egipto</em></span></li>
-          <li><span class="note-year">Myth</span><span>Gómez Espelosín on how Egypt fascinated the Greeks, and still fascinates us</span></li>
-          <li><span class="note-year">Daily life</span><span>José Miguel Parra, <em>La vida cotidiana en el antiguo Egipto</em></span></li>
-        </ul>
-      </div>
-      <div class="note-card">
-        <h3>Tips for the trip</h3>
-        <ul class="note-list">
-          <li><span class="note-year">Valley</span><span>The Valley of the Kings ticket covers three of the tombs open that day. Pay extra for Seti I's tomb, KV17, the finest of all.</span></li>
-          <li><span class="note-year">Luxor</span><span>Visit the Luxor Museum, which most tours skip.</span></li>
-          <li><span class="note-year">Online</span><span>The <a href="https://thebanmappingproject.com/" target="_blank" rel="noopener noreferrer">Theban Mapping Project</a> has plans, photos and history for every tomb in the Valley (in English).</span></li>
-          <li><span class="note-year">Museum</span><span>The Grand Egyptian Museum has been fully open since November 2025, Tutankhamun galleries included.</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="note-card" style="margin-top: clamp(1.25rem, 3vw, 2rem);">
-      <h3>Where these notes differ from the recordings</h3>
-      <ul class="note-list">
-        <li><span class="note-year">Narmer</span><span>The Narmer Palette was excavated at Hierakonpolis, not near Thinis.</span></li>
-        <li><span class="note-year">Menkaure</span><span>His pyramid was about 65 m high, not 100 m.</span></li>
-        <li><span class="note-year">Dahshur</span><span>The Black Pyramid's capstone was found in 1900, not 1990.</span></li>
-        <li><span class="note-year">Iron</span><span>Tutankhamun's iron dagger is made of meteoritic iron, confirmed by a 2016 study.</span></li>
-        <li><span class="note-year">Obelisk</span><span>Hatshepsut's standing obelisk at Karnak is about 30 m, not 33 m.</span></li>
-        <li><span class="note-year">Erasure</span><span>Most Egyptologists date the erasure of Hatshepsut's name to late in Thutmose III's reign; the lecturer credits mainly Seti I and Ramesses II.</span></li>
-      </ul>
-    </div>
-    </div>
-
-    <div data-lang="es" lang="es" hidden>
-    <header class="masthead">
-      <p class="eyebrow">UNED Tudela · Curso en línea · marzo&ndash;abril de 2025</p>
-      <h1>Introducción a la historia del Antiguo Egipto</h1>
-      <p class="lede">Un curso de introducción de diez horas del centro de la UNED en Tudela (Navarra): cinco sesiones de dos horas los jueves, de 18:00 a 20:00, impartidas en línea por la Dra. Eva Tobalina Oraá, historiadora y profesora de la UNIR. Va desde la crecida del Nilo y los primeros faraones hasta Cleopatra VII. Estos son apuntes resumidos de cada clase. Los nombres subrayados enlazan con su ficha en la pestaña Main points.</p>
-      <a class="wiki-link" style="color: var(--malachite); font-size: 0.85rem;" href="https://claude.ai/artifact/WMkdWhLeEmPLPgwuKFpVKu" target="_blank" rel="noopener noreferrer">Abrir el mapa mental del curso ↗</a>
-    </header>
-
-    <div class="day-grid">
-      <article class="day-card" style="--accent: var(--ochre);">
-        <p class="day-num">Clase 1 · marzo de 2025</p>
-        <h3>El don del Nilo y el Imperio Antiguo</h3>
-        <ul class="stop-list">
-          <li>El «don del Nilo» de Heródoto: la crecida suave del verano, los nilómetros y un río navegable en ambos sentidos</li>
-          <li>El rey Escorpión y la <a href="#card-narmer">paleta de Narmer</a>: la unificación, h. 3150 a. C.</li>
-          <li><a href="#card-saqqara">Zoser</a> fija la capital en Menfis y convierte a Ra en el dios supremo</li>
-          <li>Cuerpo, sombra, nombre, <em>ka</em> y <em>ba</em>; la momificación y las mastabas en la orilla occidental</li>
-          <li>De la pirámide escalonada a las pirámides <a href="#card-dahshur">acodada y roja</a> de Snofru</li>
-          <li>La <a href="#card-giza">Gran Pirámide de Keops</a> y los papiros de Wadi al-Jarf, el diario de un funcionario que trabajó en ella</li>
-        </ul>
-        <p class="day-meta">Aquí empieza el hilo conductor del curso: el faraón frente al clero</p>
-      </article>
-
-      <article class="day-card" style="--accent: var(--indigo);">
-        <p class="day-num">Clase 2 · marzo de 2025</p>
-        <h3>Del final del Imperio Antiguo al Imperio Medio</h3>
-        <ul class="stop-list">
-          <li>Kefrén, la <a href="#card-sphinx">Gran Esfinge</a> y la pirámide, mucho más pequeña, de Micerino</li>
-          <li>Shepseskaf rompe con el clero de Ra; pirámides pequeñas de la dinastía V junto a enormes <a href="#card-abusir">templos solares</a></li>
-          <li>Unas y los primeros Textos de las Pirámides; la gran mastaba de Mereruka</li>
-          <li>El reinado interminable de Pepi II y el hundimiento, h. 2181 a. C.; las Lamentaciones de Ipuwer</li>
-          <li>Heracleópolis contra Tebas; <a href="#card-mentuhotep2">Mentuhotep II</a> reunifica Egipto, h. 2040 a. C.</li>
-          <li>Las reformas y el asesinato de <a href="#card-amenemhat1">Amenemes I</a>; la Historia de Sinuhé</li>
-        </ul>
-        <p class="day-meta">Las fechas siguen a Barry Kemp; según el autor pueden variar hasta un siglo</p>
-      </article>
-
-      <article class="day-card" style="--accent: var(--turquoise);">
-        <p class="day-num">Clase 3 · 27 de marzo de 2025</p>
-        <h3>El Imperio Medio, los hicsos y un nuevo imperio</h3>
-        <ul class="stop-list">
-          <li>Los retratos reales, de gesto cansado, de la dinastía XII; <a href="#card-senusret3">Sesostris III</a> en Nubia y en Biblos</li>
-          <li>Osiris, Isis y Horus; el peso del corazón frente a la pluma de Maat; los <em>ushebtis</em></li>
-          <li>Una mujer, Sobekneferu, cierra la dinastía XII</li>
-          <li>Los carros de los hicsos en Avaris; <a href="#card-kamose">Kamose</a> y <a href="#card-ahmose1">Amosis</a> los expulsan</li>
-          <li>Nuevos rivales, Mitanni y los hititas; <a href="#card-amenhotep1">Amenofis I</a> y el Valle de los Reyes</li>
-        </ul>
-        <p class="day-meta">Además: los tres posibles escenarios del Éxodo</p>
-      </article>
-
-      <article class="day-card" style="--accent: var(--gold);">
-        <p class="day-num">Clase 4 · 3 de abril de 2025</p>
-        <h3>La dinastía XVIII</h3>
-        <ul class="stop-list">
-          <li><a href="#card-hatshepsut">Hatshepsut</a>: el nacimiento divino, Deir el-Bahari y la expedición al Punt</li>
-          <li>Las conquistas de <a href="#card-thutmose3">Tutmosis III</a> y el «jardín botánico» de <a href="#card-karnak">Karnak</a></li>
-          <li>La estela del sueño de Tutmosis IV; <a href="#card-amenhotep3">Amenofis III</a>, la reina Tiy y los colosos de Memnón</li>
-          <li><a href="#card-akhenaten">Akenatón</a>, <a href="#card-nefertiti">Nefertiti</a>, el dios Atón y el arte de Amarna</li>
-          <li><a href="#card-tutankhamun">Tutankamón</a>, Ay y <a href="#card-horemheb">Horemheb</a> restauran a Amón</li>
-        </ul>
-        <p class="day-meta">El templo como colina primordial: pilonos, patio, sala hipóstila y santuario en penumbra</p>
-      </article>
-
-      <article class="day-card" style="--accent: var(--rose);">
-        <p class="day-num">Clase 5 · 10 de abril de 2025</p>
-        <h3>De Ramsés a Cleopatra</h3>
-        <ul class="stop-list">
-          <li><a href="#card-seti1">Seti I</a>: la lista real de Abidos y la tumba KV17</li>
-          <li><a href="#card-ramesses2">Ramsés II</a>: Qadesh, <a href="#card-abusimbel">Abu Simbel</a> y el Rameseo</li>
-          <li><a href="#card-twosret">Tausert</a>, <a href="#card-setnakhte">Setnajt</a> y <a href="#card-ramesses3">Ramsés III</a> frente a los Pueblos del Mar</li>
-          <li>Faraones libios y kushitas, los asirios, el renacimiento saíta y los persas</li>
-          <li>Alejandro, los Ptolomeos, la piedra de Rosetta y la muerte de Cleopatra VII en el 30 a. C.</li>
-        </ul>
-        <p class="day-meta">La Baja Época: de la dinastía XXI a los Ptolomeos</p>
-      </article>
-    </div>
-
-    <div class="below-grid">
-      <div class="note-card">
-        <h3>Bibliografía</h3>
-        <ul class="note-list">
-          <li><span class="note-year">Imágenes</span><span>Las reconstrucciones dibujadas del antiguo Egipto de Jean-Claude Golvin</span></li>
-          <li><span class="note-year">Manuales</span><span>Las historias del antiguo Egipto de Barry Kemp, Ian Shaw o Nicolas Grimal</span></li>
-          <li><span class="note-year">Fuentes</span><span>José Miguel Serrano Delgado, <em>Textos para la historia antigua de Egipto</em></span></li>
-          <li><span class="note-year">Más allá</span><span>El Libro de los Muertos, en la edición española de Boris de Rachewiltz</span></li>
-          <li><span class="note-year">Hallazgos</span><span>Howard Carter sobre la tumba de Tutankamón; los viajes de Giovanni Belzoni por Egipto y Nubia</span></li>
-          <li><span class="note-year">Mujeres</span><span>Teresa Bedman, <em>Reinas de Egipto</em></span></li>
-          <li><span class="note-year">Mito</span><span>Gómez Espelosín, sobre cómo Egipto fascinó a los griegos y nos sigue fascinando</span></li>
-          <li><span class="note-year">Vida diaria</span><span>José Miguel Parra, <em>La vida cotidiana en el antiguo Egipto</em></span></li>
-        </ul>
-      </div>
-      <div class="note-card">
-        <h3>Consejos para el viaje</h3>
-        <ul class="note-list">
-          <li><span class="note-year">Valle</span><span>La entrada al Valle de los Reyes incluye tres de las tumbas abiertas ese día. Merece la pena pagar aparte la de Seti I, KV17, la más espectacular.</span></li>
-          <li><span class="note-year">Luxor</span><span>Visitar el Museo de Luxor, que casi ningún circuito incluye.</span></li>
-          <li><span class="note-year">En línea</span><span>El <a href="https://thebanmappingproject.com/" target="_blank" rel="noopener noreferrer">Theban Mapping Project</a> tiene planos, fotos e historia de todas las tumbas del Valle (en inglés).</span></li>
-          <li><span class="note-year">Museo</span><span>El Gran Museo Egipcio está abierto por completo desde noviembre de 2025, salas de Tutankamón incluidas.</span></li>
-        </ul>
-      </div>
-    </div>
-
-    <div class="note-card" style="margin-top: clamp(1.25rem, 3vw, 2rem);">
-      <h3>Dónde estos apuntes corrigen las grabaciones</h3>
-      <ul class="note-list">
-        <li><span class="note-year">Narmer</span><span>La paleta de Narmer se excavó en Hieracómpolis, no cerca de Tinis.</span></li>
-        <li><span class="note-year">Micerino</span><span>Su pirámide medía unos 65 m de altura, no 100 m.</span></li>
-        <li><span class="note-year">Dahshur</span><span>El piramidión de la pirámide negra se encontró en 1900, no en 1990.</span></li>
-        <li><span class="note-year">Hierro</span><span>El puñal de hierro de Tutankamón es de hierro meteórico, según confirmó un estudio de 2016.</span></li>
-        <li><span class="note-year">Obelisco</span><span>El obelisco de Hatshepsut que sigue en pie en Karnak mide unos 30 m, no 33 m.</span></li>
-        <li><span class="note-year">Borrado</span><span>La mayoría de los egiptólogos sitúan el borrado del nombre de Hatshepsut al final del reinado de Tutmosis III; la profesora lo atribuye sobre todo a Seti I y Ramsés II.</span></li>
-      </ul>
-    </div>
     </div>
   </div>
 
@@ -7332,7 +6901,7 @@
   tabs.forEach(function (tab, i) {
     tab.addEventListener('click', function () {
       select(tab, false);
-      try { history.replaceState(null, '', tab.id === 'tab-main' ? location.pathname + location.search : '#' + tab.id.slice(4)); } catch (e) {}
+      try { history.replaceState(null, '', tab.id === 'tab-tour' ? '#tour' : location.pathname + location.search); } catch (e) {}
     });
     tab.addEventListener('keydown', function (e) {
       var next = e.key === 'ArrowRight' ? i + 1 : e.key === 'ArrowLeft' ? i - 1 : null;
@@ -7346,7 +6915,7 @@
   function followHash() {
     var id = location.hash.slice(1);
     if (!id) return;
-    if (id === 'tour' || id === 'cairo' || id === 'uned') { select(document.getElementById('tab-' + id), false); return; }
+    if (id === 'tour') { select(document.getElementById('tab-tour'), false); return; }
     var target = document.getElementById(id);
     var panel = target && target.closest('.tab-panel');
     if (!panel || !panel.hidden) return;
@@ -7355,28 +6924,6 @@
   }
   window.addEventListener('hashchange', followHash);
   followHash();
-})();
-
-// English / Spanish switch on the Curso UNED tab; the choice is remembered per browser.
-(function () {
-  var sw = document.getElementById('unedLang');
-  if (!sw) return;
-  var blocks = Array.prototype.slice.call(document.querySelectorAll('#panel-uned [data-lang]'));
-  var buttons = Array.prototype.slice.call(sw.querySelectorAll('button'));
-
-  function setLang(lang) {
-    blocks.forEach(function (b) { b.hidden = b.getAttribute('data-lang') !== lang; });
-    buttons.forEach(function (b) { b.setAttribute('aria-pressed', b.getAttribute('data-set') === lang ? 'true' : 'false'); });
-    try { localStorage.setItem('unedLang', lang); } catch (e) {}
-  }
-
-  buttons.forEach(function (b) {
-    b.addEventListener('click', function () { setLang(b.getAttribute('data-set')); });
-  });
-
-  var saved = null;
-  try { saved = localStorage.getItem('unedLang'); } catch (e) {}
-  setLang(saved === 'es' ? 'es' : 'en');
 })();
 </script>
 
