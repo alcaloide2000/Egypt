@@ -8,6 +8,7 @@ There is no build, lint, or test tooling here. The git repo pushes to the public
 
 - `artifacts/ancient-egypt-history-main-points.html` is **the main deliverable**: a combined Nile locator map, search bar, info cards and timeline. Nearly all work goes here.
 - `artifacts/alimana-tour-slideshow.html` is the tour slideshow on its own, for sharing without the rest of the page. It is published as a separate artifact, https://claude.ai/artifact/1CQwtaWufy3Jt5zMPXg88a. Its markup, CSS and script are copied from `#tourShow` in the main page, so when the slideshow changes, update both files.
+- `artifacts/visitas-en-el-cairo.html` is a separate Spanish-language page for the three Cairo days (25–27 Nov 2026, with the guide Omarcel): the group's poll results ranked by votes, a draft day-by-day plan, and what doesn't fit. It is published as https://claude.ai/artifact/VYVyoGbgZEToWVzMM2r5Ff and shares the main page's colour tokens.
 - `artifacts/nile-valley-timeline.html` is an earlier standalone timeline. It has been replaced by the combined page and kept as-is. Don't update it unless asked.
 - `artifacts/chat-transcript.md` is the history of the original cloud session that built the pages. It records every site added and every design decision. Read it before changing content conventions.
 
