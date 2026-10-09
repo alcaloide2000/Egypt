@@ -212,6 +212,42 @@
   @media (prefers-reduced-motion: reduce) {
     .links path { transition: none; }
   }
+
+  /* timeline */
+  .timeline { display: grid; gap: 0.8rem; }
+  .timeline h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
+    margin: 0;
+  }
+  .section-note { margin: 0; color: var(--ink-soft); font-size: 0.92rem; max-width: 46rem; }
+  .tl-scroll {
+    overflow-x: auto;
+    background: var(--bg-panel);
+    border: 1px solid var(--sand-line);
+    border-radius: 14px;
+    padding: 0.75rem 0.5rem;
+    box-shadow: 0 1px 2px var(--shadow);
+  }
+  .tl-scroll svg { display: block; width: 100%; min-width: 820px; height: auto; overflow: visible; }
+  .tl-year { font-family: var(--font-mono); font-size: 10px; fill: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .tl-event { font-family: var(--font-body); font-size: 12px; fill: var(--ink); }
+  .tl-period { font-family: var(--font-body); font-size: 11px; font-weight: 600; }
+  .tl-class { font-family: var(--font-mono); font-size: 10px; }
+  .tl-tick { font-family: var(--font-mono); font-size: 10px; fill: var(--ink-soft); }
+  .tl-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+  .tl-legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
+  .sw { width: 1.4rem; height: 0.7rem; border-radius: 3px; flex: none; }
+  .sw-imperio { background: var(--nile); }
+  .sw-otro { background: var(--nile); opacity: 0.5; }
+  .sw-intermedio { background: repeating-linear-gradient(135deg, var(--sand-line) 0 3px, transparent 3px 6px); border: 1px solid var(--sand-line); }
 </style>
 
 <main class="page">
@@ -328,6 +364,19 @@
     </article>
   </section>
 
+  <section class="timeline" aria-labelledby="tl-h">
+    <h2 id="tl-h">Línea del tiempo</h2>
+    <p class="section-note">Tres mil años a escala. La franja de colores muestra el tramo que cubrió cada clase, con los mismos colores que el mapa. Todas las fechas son antes de Cristo y aproximadas.</p>
+    <div class="tl-scroll">
+      <svg id="tl" viewBox="0 0 1160 300" role="img" aria-label="Línea del tiempo del Antiguo Egipto de h. 3150 a 30 a. C.: época tinita, Imperio Antiguo (2686–2181), Primer Periodo Intermedio, Imperio Medio (2040–1780), Segundo Periodo Intermedio, Imperio Nuevo (1550–1070), Tercer Periodo Intermedio, Baja Época y época ptolemaica (332–30), con los hitos principales del curso."></svg>
+    </div>
+    <div class="tl-legend">
+      <span><i class="sw sw-imperio"></i>Imperio: Egipto unificado</span>
+      <span><i class="sw sw-intermedio"></i>Periodo intermedio: Egipto dividido</span>
+      <span><i class="sw sw-otro"></i>Época tinita, Baja Época y Ptolomeos</span>
+    </div>
+  </section>
+
   <p class="foot">
     <span>Cronología aproximada, según Barry Kemp</span>
     <span>Apuntes completos: <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#uned">pestaña Curso UNED</a></span>
@@ -386,6 +435,140 @@
 
   if (window.ResizeObserver) new ResizeObserver(draw).observe(map);
   window.addEventListener('resize', draw);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  draw();
+})();
+
+// Proportional timeline, 3150 to 30 BC. Event labels are measured and stacked into lanes so they never overlap.
+(function () {
+  var svg = document.getElementById('tl');
+  if (!svg) return;
+  var NS = 'http://www.w3.org/2000/svg';
+  // the axis stops short of the right edge so the last labels have room without shifting left
+  var Y0 = 3150, Y1 = 30, X0 = 24, X1 = 1010, W = 1160;
+  function sx(y) { return X0 + (Y0 - y) / (Y0 - Y1) * (X1 - X0); }
+
+  var periods = [
+    { from: 3150, to: 2686, kind: 'otro', name: 'Época tinita', short: 'Tinita', dyn: 'Dinastías I–II' },
+    { from: 2686, to: 2181, kind: 'imperio', name: 'Imperio Antiguo', short: 'I. Antiguo', dyn: 'Dinastías III–VI' },
+    { from: 2181, to: 2040, kind: 'intermedio', name: 'I Periodo Int.', short: 'I PI', dyn: 'Dinastías VII–XI' },
+    { from: 2040, to: 1780, kind: 'imperio', name: 'Imperio Medio', short: 'I. Medio', dyn: 'Dinastías XI–XII' },
+    { from: 1780, to: 1550, kind: 'intermedio', name: 'II Periodo Int.', short: 'II PI', dyn: 'Dinastías XIII–XVII' },
+    { from: 1550, to: 1070, kind: 'imperio', name: 'Imperio Nuevo', short: 'I. Nuevo', dyn: 'Dinastías XVIII–XX' },
+    { from: 1070, to: 664, kind: 'intermedio', name: 'III Periodo Intermedio', short: 'III PI', dyn: 'Dinastías XXI–XXV' },
+    { from: 664, to: 332, kind: 'otro', name: 'Baja Época', short: 'Baja Ép.', dyn: 'Dinastías XXVI–XXXI' },
+    { from: 332, to: 30, kind: 'otro', name: 'Ptolomeos', short: 'Ptol.', dyn: 'Alejandro y los Ptolomeos' }
+  ];
+  var classes = [
+    { from: 3150, to: 2560, c: 'ochre', label: 'Clase 1' },
+    { from: 2560, to: 1960, c: 'indigo', label: 'Clase 2' },
+    { from: 1960, to: 1500, c: 'turquoise', label: 'Clase 3' },
+    { from: 1500, to: 1295, c: 'gold', label: 'Clase 4' },
+    { from: 1295, to: 30, c: 'rose', label: 'Clase 5' }
+  ];
+  var events = [
+    { y: 3150, year: 'h. 3150', name: 'Unificación: Narmer' },
+    { y: 2670, year: 'h. 2670', name: 'Pirámide escalonada de Zoser' },
+    { y: 2560, year: 'h. 2560', name: 'Gran Pirámide de Keops' },
+    { y: 2040, year: 'h. 2040', name: 'Mentuhotep II reunifica' },
+    { y: 1550, year: 'h. 1550', name: 'Amosis expulsa a los hicsos' },
+    { y: 1479, year: '1479', name: 'Hatshepsut' },
+    { y: 1350, year: 'h. 1350', name: 'Akenatón y Amarna' },
+    { y: 1274, year: 'h. 1274', name: 'Batalla de Qadesh' },
+    { y: 1175, year: 'h. 1175', name: 'Ramsés III y los Pueblos del Mar' },
+    { y: 715, year: 'h. 715', name: 'Faraones kushitas' },
+    { y: 525, year: '525', name: 'Conquista persa' },
+    { y: 332, year: '332', name: 'Alejandro en Egipto' },
+    { y: 196, year: '196', name: 'Piedra de Rosetta' },
+    { y: 30, year: '30', name: 'Muerte de Cleopatra VII' }
+  ];
+
+  function el(name, attrs, text) {
+    var n = document.createElementNS(NS, name);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  function draw() {
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+    var defs = el('defs', {});
+    var pat = el('pattern', { id: 'tlHatch', width: 6, height: 6, patternUnits: 'userSpaceOnUse', patternTransform: 'rotate(45)' });
+    pat.appendChild(el('rect', { width: 6, height: 6, style: 'fill: var(--bg-panel)' }));
+    pat.appendChild(el('line', { x1: 0, y1: 0, x2: 0, y2: 6, style: 'stroke: var(--sand-line); stroke-width: 3' }));
+    defs.appendChild(pat);
+    svg.appendChild(defs);
+
+    // Measure event labels, then stack them into lanes (lane 0 sits nearest the bar).
+    // Labels run rightwards from their own leader, and each leader stops under its own label.
+    // Placing them from right to left, a label goes one lane above every leader that falls
+    // under it, so no leader ever passes through a label.
+    var placed = [];
+    var laneCount = 0;
+    events.slice().sort(function (a, b) { return a.y - b.y; }).forEach(function (e) {
+      var x = sx(e.y);
+      var t1 = el('text', { 'class': 'tl-year', x: 0, y: -100 }, e.year);
+      var t2 = el('text', { 'class': 'tl-event', x: 0, y: -100 }, e.name);
+      svg.appendChild(t1); svg.appendChild(t2);
+      var w = Math.max(t1.getComputedTextLength(), t2.getComputedTextLength()) + 4;
+      var left = Math.min(x - 3, W - 4 - w);
+      var right = left + w;
+      var lane = 0;
+      placed.forEach(function (q) {
+        if (q.x <= right + 12) lane = Math.max(lane, q.lane + 1);
+      });
+      placed.push({ e: e, x: x, t1: t1, t2: t2, lane: lane, left: left, right: right });
+      laneCount = Math.max(laneCount, lane + 1);
+    });
+
+    var LANE = 32;
+    var barY = 14 + laneCount * LANE + 10;
+    var barH = 34;
+    var classY = barY + barH + 22;
+    var tickY = classY + 34;
+    var H = tickY + 22;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+
+    placed.forEach(function (p) {
+      var nameY = barY - 12 - p.lane * LANE;
+      p.t1.setAttribute('x', p.left); p.t1.setAttribute('y', nameY - 13);
+      p.t2.setAttribute('x', p.left); p.t2.setAttribute('y', nameY);
+      svg.insertBefore(el('line', { x1: p.x, y1: nameY + 4, x2: p.x, y2: barY, style: 'stroke: var(--ink-soft); stroke-width: 1; opacity: 0.6' }), svg.firstChild.nextSibling);
+    });
+
+    // period bar
+    periods.forEach(function (pd) {
+      var x = sx(pd.from), w = sx(pd.to) - sx(pd.from);
+      var fill = pd.kind === 'intermedio' ? 'url(#tlHatch)' : 'var(--nile)';
+      var rect = el('rect', { x: x, y: barY, width: w, height: barH,
+        style: 'fill: ' + fill + '; stroke: var(--bg-panel); stroke-width: 1.5;' + (pd.kind === 'otro' ? ' fill-opacity: 0.5' : '') });
+      rect.appendChild(el('title', {}, pd.name + ', h. ' + pd.from + '–' + pd.to + ' a. C. · ' + pd.dyn));
+      svg.appendChild(rect);
+      var color = pd.kind === 'imperio' ? 'var(--bg-panel)' : 'var(--ink)';
+      var label = el('text', { 'class': 'tl-period', x: x + w / 2, y: barY + barH / 2 + 4, 'text-anchor': 'middle', style: 'fill: ' + color }, pd.name);
+      svg.appendChild(label);
+      if (label.getComputedTextLength() > w - 8) label.textContent = pd.short;
+      if (label.getComputedTextLength() > w - 4) label.textContent = '';
+    });
+    placed.forEach(function (p) { svg.appendChild(el('circle', { cx: p.x, cy: barY, r: 3.2, style: 'fill: var(--ink)' })); });
+
+    // which class covered which stretch
+    classes.forEach(function (c) {
+      var x = sx(c.from), w = sx(c.to) - sx(c.from);
+      svg.appendChild(el('rect', { x: x + 1, y: classY - 14, width: w - 2, height: 6, rx: 3, style: 'fill: var(--' + c.c + ')' }));
+      svg.appendChild(el('text', { 'class': 'tl-class', x: x + w / 2, y: classY + 6, 'text-anchor': 'middle', style: 'fill: var(--' + c.c + ')' }, c.label));
+    });
+
+    // century scale
+    svg.appendChild(el('line', { x1: X0, y1: tickY - 12, x2: X1, y2: tickY - 12, style: 'stroke: var(--sand-line); stroke-width: 1' }));
+    [3000, 2500, 2000, 1500, 1000, 500].forEach(function (y) {
+      var x = sx(y);
+      svg.appendChild(el('line', { x1: x, y1: tickY - 16, x2: x, y2: tickY - 8, style: 'stroke: var(--ink-soft); stroke-width: 1' }));
+      svg.appendChild(el('text', { 'class': 'tl-tick', x: x, y: tickY + 6, 'text-anchor': 'middle' }, y + ' a. C.'));
+    });
+  }
+
   if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
   draw();
 })();
