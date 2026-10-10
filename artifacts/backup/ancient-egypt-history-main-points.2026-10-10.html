@@ -1169,7 +1169,7 @@
   <header class="masthead">
     <p class="eyebrow">Upper &amp; Lower Egypt · 3500&ndash;200 BC</p>
     <h1>The Nile, Site by Site and Century by Century</h1>
-    <p class="lede">Seventy-two sites, monuments and rulers across three thousand years, from Predynastic Hierakonpolis to Ptolemaic Philae and the pyramids of Kush at Meroë: a locator map showing where each one stands on the Nile, paired below with a timeline of when each was built or reigned — including the crowded quarter-century of pyramid experiments between Djoser's first steps at Saqqara and Khufu's Great Pyramid at Giza.</p>
+    <p class="lede">Seventy-one sites, monuments and rulers across three thousand years, from Predynastic Hierakonpolis to Ptolemaic Philae and the pyramids of Kush at Meroë: a locator map showing where each one stands on the Nile, paired below with a timeline of when each was built or reigned — including the crowded quarter-century of pyramid experiments between Djoser's first steps at Saqqara and Khufu's Great Pyramid at Giza.</p>
   </header>
 
   <form class="search-bar" id="siteSearchForm" role="search" aria-label="Search sites by word">
@@ -3916,32 +3916,20 @@
       </div>
       </div>
 
-      <p class="map-caption">El-Kurru and Meroë lie far outside this map's frame — a separate inset below, not a continuation of the river above.</p>
+      <p class="map-caption">Meroë lies far outside this map's frame — a separate inset below, not a continuation of the river above.</p>
 
       <div class="map-frame" style="margin-top: 0.4rem;">
         <svg viewBox="0 0 600 170" role="img" aria-labelledby="meroeMapTitle meroeMapDesc">
-          <title id="meroeMapTitle">Inset map locating el-Kurru and Meroë, far south of Egypt in the Kingdom of Kush</title>
-          <desc id="meroeMapDesc">A small inset, separate from the main map above, showing Meroë on the Nile's east bank in Sudan, roughly 650&nbsp;km south of Abu Simbel and near the river's sixth cataract — site of the Kushite pyramid fields — and, downstream near Napata, el-Kurru, where Piye was buried under a pyramid.</desc>
+          <title id="meroeMapTitle">Inset map locating Meroë, far south of Egypt in the Kingdom of Kush</title>
+          <desc id="meroeMapDesc">A small inset, separate from the main map above, showing Meroë on the Nile's east bank in Sudan, roughly 650&nbsp;km south of Abu Simbel and near the river's sixth cataract — site of the Kushite pyramid fields.</desc>
 
           <rect x="0" y="0" width="600" height="170" fill="var(--desert)" />
           <line class="graticule" x1="10" y1="4" x2="590" y2="4" />
-          <text class="graticule-label" x="300" y="20" text-anchor="middle">Kush, in Sudan: el-Kurru near Napata, and Meroë ~650&nbsp;km south of Abu Simbel</text>
+          <text class="graticule-label" x="300" y="20" text-anchor="middle">Meroë lies ~650&nbsp;km south of Abu Simbel, in Sudan</text>
 
           <!-- schematic river continuation, not to scale or true course -->
           <path class="river" d="M300,32 C295,50 290,66 292,82 C293,90 296,95 298,102" />
           <path class="river-core" d="M300,32 C295,50 290,66 292,82 C293,90 296,95 298,102" />
-
-
-          <!-- El-Kurru, near Napata: royal cemetery of Piye and the 25th-Dynasty kings, downstream of Meroë -->
-          <g class="site-marker" transform="translate(291,62)">
-            <circle class="kush-ring" r="5.5" />
-            <circle class="kush-ring d2" r="5.5" />
-            <!-- single steep pyramid over a rock-cut tomb -->
-            <path d="M-4,-4 L0,-20 L4,-4 Z" fill="var(--kush)" />
-            <circle cx="0" cy="0" r="4.5" fill="var(--kush)" stroke="var(--bg-panel)" stroke-width="1.4" />
-            <text class="kush-label" x="-12" y="4" text-anchor="end">El-Kurru</text>
-            <text class="kush-label sub" x="-12" y="16" text-anchor="end">Pyramid of Piye · near Napata</text>
-          </g>
 
           <!-- Meroe pyramids, royal necropolis of the Kingdom of Kush: steep-sided, unlike Egypt's pyramids -->
           <g class="site-marker" transform="translate(300,102)">
@@ -3958,53 +3946,6 @@
             <text class="kush-label sub" x="14" y="17">Kingdom of Kush, Sudan</text>
           </g>
         </svg>
-
-        <button
-          type="button"
-          class="hotspot"
-          style="--accent: var(--kush); left: 48.5%; top: 36.47%;"
-          aria-describedby="piyeTooltip"
-          aria-label="Show the Victory Stela of Piye illustration"
-        ></button>
-
-        <div class="tooltip" id="piyeTooltip" role="tooltip" style="--accent: var(--kush); left: 48.5%; top: 36.47%;">
-          <svg class="illustration" viewBox="0 0 100 128" role="img" aria-labelledby="piyeIllusTitle">
-            <title id="piyeIllusTitle">Illustration of the granite Victory Stela of Piye from Gebel Barkal, with a lunette scene of defeated princes and a led horse above rows of text</title>
-            <defs>
-              <linearGradient id="piyeGranite" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stop-color="#6e6a66" />
-                <stop offset="100%" stop-color="#46423f" />
-              </linearGradient>
-            </defs>
-            <!-- round-topped granite stela -->
-            <path d="M12,122 L12,34 C12,16 28,6 50,6 C72,6 88,16 88,34 L88,122 Z" fill="url(#piyeGranite)" stroke="#2c2926" stroke-width="1.4" />
-            <!-- winged sun disc -->
-            <circle cx="50" cy="16" r="3" fill="var(--kush)" />
-            <path d="M30,17 C38,13 44,14 47,16 M53,16 C56,14 62,13 70,17" fill="none" stroke="var(--kush)" stroke-width="1.6" stroke-linecap="round" />
-            <!-- lunette: Amun and Piye (left), princes bowing and a horse led forward (right) -->
-            <g fill="#c9c2b8" opacity="0.9">
-              <rect x="24" y="26" width="5" height="16" rx="2" />
-              <circle cx="26.5" cy="24" r="2.6" />
-              <rect x="33" y="28" width="5" height="14" rx="2" />
-              <circle cx="35.5" cy="26" r="2.4" />
-              <path d="M46,42 L46,36 C46,33 49,32 51,34 L52,42 Z" />
-              <path d="M54,42 L54,37 C54,34 57,33 59,35 L60,42 Z" />
-            </g>
-            <!-- the horse, echoing Piye's rebuke to Nimlot for letting his horses go hungry -->
-            <path d="M62,42 L63,34 C64,31 68,30 72,31 L76,28 L78,30 L76,33 L77,42 L75,42 L74,36 L66,36 L65,42 Z" fill="#c9c2b8" opacity="0.9" />
-            <line x1="18" y1="44" x2="82" y2="44" stroke="#c9c2b8" stroke-width="1" opacity="0.6" />
-            <!-- dense rows of incised text: the campaign narrative -->
-            <g stroke="#a39b90" stroke-width="1" opacity="0.6">
-              <line x1="20" y1="52" x2="80" y2="52" /><line x1="20" y1="60" x2="80" y2="60" /><line x1="20" y1="68" x2="80" y2="68" />
-              <line x1="20" y1="76" x2="80" y2="76" /><line x1="20" y1="84" x2="80" y2="84" /><line x1="20" y1="92" x2="80" y2="92" />
-              <line x1="20" y1="100" x2="80" y2="100" /><line x1="20" y1="108" x2="80" y2="108" />
-            </g>
-          </svg>
-          <p class="tooltip-caption">
-            <strong>Gebel Barkal — Victory Stela of Piye</strong>
-            Illustrated stela: the granite record of Piye's conquest of Egypt, c. 728 BC, with defeated princes and a led horse in its lunette. Found in 1862, now in the Egyptian Museum, Cairo.
-          </p>
-        </div>
 
         <button
           type="button"
@@ -4086,7 +4027,6 @@
         <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Sheikh Abd el-Qurna, Tombs of the Nobles</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Lisht, pyramids of Amenemhat I &amp; Senusret I</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Tod, Temple of Montu (Tod Treasure)</span>
-        <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>El-Kurru, pyramid of Piye</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Meroë Pyramids, Kingdom of Kush</span>
       </div>
 
@@ -5772,31 +5712,6 @@
         <a class="wiki-link" style="color: var(--malachite);" href="https://en.wikipedia.org/wiki/Abu_Simbel_temples" target="_blank" rel="noopener noreferrer">Read on Wikipedia ↗</a>
       </div>
 
-      <div class="info-card" id="card-piye" style="margin-top: 1rem;">
-        <span class="tag" style="color: var(--kush); border-color: var(--kush);">25TH DYNASTY · KUSH CONQUERS EGYPT</span>
-        <h2>Piye <span class="ancient-name">— Piankhi</span></h2>
-        <p>For fifteen centuries Egypt had ruled or raided Nubia; Piye turned that around. A king of Kush reigning from Napata, near the Nile's fourth cataract, and a devout worshipper of Amun, he sailed north around 728&nbsp;BC against a coalition of Delta princes led by Tefnakht of Sais, took Memphis, and received the submission of every ruler in Egypt. He is usually counted as the founder of the 25th Dynasty, Egypt's "Black Pharaohs." He told the story on a granite Victory Stela set up in the Amun temple at Gebel Barkal, found there in 1862 and now in the Egyptian Museum, Cairo: one passage has him ignore the defeated king Nimlot of Hermopolis's treasure and go straight to the stables, furious that the horses had been left hungry. Instead of ruling from Egypt, Piye went home to Napata. He was buried at el-Kurru under a steep pyramid, reviving a royal tomb form Egypt itself had abandoned some 800 years earlier, with his horses buried in their own graves nearby. His successors Shabaka and Taharqa ruled Egypt directly, until Assyrian invasions and the rise of Psamtik&nbsp;I ended Kushite rule there by 656&nbsp;BC.</p>
-        <dl class="coords">
-          <div>
-            <dt>Location</dt>
-            <dd>El-Kurru (tomb) and Gebel Barkal (stela), near Napata, Sudan</dd>
-          </div>
-          <div>
-            <dt>Reign</dt>
-            <dd>c. 744–714 BC</dd>
-          </div>
-          <div>
-            <dt>Dynasty</dt>
-            <dd>25th, Kushite; usually counted its founder in Egypt</dd>
-          </div>
-          <div>
-            <dt>Significance</dt>
-            <dd>First Kushite king to rule Egypt; the Victory Stela</dd>
-          </div>
-        </dl>
-        <a class="wiki-link" style="color: var(--kush);" href="https://en.wikipedia.org/wiki/Piye" target="_blank" rel="noopener noreferrer">Read on Wikipedia ↗</a>
-      </div>
-
       <div class="info-card" id="card-meroe" style="margin-top: 1rem;">
         <span class="tag" style="color: var(--kush); border-color: var(--kush);">BEYOND EGYPT · KINGDOM OF KUSH</span>
         <h2>Meroë <span class="ancient-name">— Pyramids of Kush</span></h2>
@@ -5849,22 +5764,22 @@
     <p class="lede">The same sites and rulers, placed in time instead of space — from Predynastic Hierakonpolis to Ptolemaic Philae, with a crowded quarter-millennium of pyramid-building in between. The axis breaks where centuries pass with nothing here to show.</p>
 
     <div class="chart-panel" aria-label="Timeline of ancient Egyptian monuments, 3500 to 200 BC">
-      <svg viewBox="0 0 2710 1000" role="img" aria-labelledby="tlTitle tlDesc">
+      <svg viewBox="0 0 2550 1000" role="img" aria-labelledby="tlTitle tlDesc">
         <title id="tlTitle">Timeline of ancient Egyptian and Kushite sites, 3500 BC to the 4th century AD</title>
-        <desc id="tlDesc">A broken horizontal timeline from 3500 BC onward. A dense cluster of Old Kingdom pyramid-building sits between 2690 and 2445 BC, following Hierakonpolis's Painted Tomb, the Narmer Palette, and the start of Abydos's royal tombs. After a First Intermediate Period gap, a possibly legendary Mentuhotep I opens the Theban 11th Dynasty around 2135 BC, Intef II pushes north around 2112–2063 BC, Mentuhotep II reunifies Egypt and founds the Middle Kingdom around 2055–2004 BC, Amenemhat I founds the 12th Dynasty and moves the capital north around 1991–1962 BC, his son Senusret I builds the White Chapel at Karnak around 1971–1926 BC, and Amenemhat II's reign, around 1919–1885 BC, is marked by a treasure of Mesopotamian and Aegean silver and lapis lazuli buried at the Temple of Montu in Tod, and Senusret III, the most powerful Middle Kingdom king, fortifies the Nubian border around 1878–1839 BC. A small separate segment marks the Second Intermediate Period: Nubkheperre Intef, a Theban 17th-Dynasty king, around 1571–1565 BC, followed by Kamose, the last king of that line, sailing against the Hyksos around 1555–1550 BC. The New Kingdom segment now opens with Ahmose I, who expels the Hyksos and builds the last native Egyptian pyramid at South Abydos around 1550–1525 BC, alongside his queen Ahmose-Nefertari, later deified and worshipped at Deir el-Medina for roughly four centuries. His son Amenhotep I follows immediately, around 1525–1504 BC, the first king to separate his tomb from his mortuary temple — so thoroughly that his tomb has never been found. Thutmose I follows around 1504–1492 BC, the first king confirmed buried in the Valley of the Kings, who campaigned as far as the Euphrates and raised obelisks at Karnak. His son Thutmose II follows around 1493–1479 BC, husband of Hatshepsut and, since 2025, the subject of the first newly confirmed royal tomb since Tutankhamun's. Hatshepsut herself then rules as pharaoh around 1479–1458 BC, building her Deir el-Bahari temple beside Mentuhotep II's. Thutmose III then rules alone from about 1458–1425 BC, Egypt's most successful military king, whose Karnak Annals record the Battle of Megiddo and roughly sixteen other campaigns. Two generations later, Amenhotep III rules at the height of Egypt's imperial wealth, around 1391–1353 BC, building the largest mortuary temple ever attempted, now reduced to its two Colossi of Memnon. His son Akhenaten follows immediately, around 1353–1336 BC, abandoning Egypt's traditional gods for the sun disc Aten alone and building a new capital at Amarna — a reign later kings erased from the record. After a short gap, Tutankhamun rules as a child king around 1332–1323 BC, restoring the old gods — and his small, hastily built tomb, found nearly untouched in 1922, becomes ancient Egypt's most famous archaeological discovery. The general Horemheb then rules around 1319–1292 BC, finishing the restoration and erasing the Amarna kings from official memory, before naming his own vizier as successor: Ramesses I, who reigns barely a year or two around 1292–1290 BC but founds the 19th Dynasty, and whose own mummy resurfaces in a Canadian museum before returning to Egypt in 2003. His son Seti I then rules around 1290–1279 BC, campaigning abroad, continuing Karnak's Great Hypostyle Hall, building the King List temple at Abydos, and cutting the longest, first fully decorated tomb in the Valley of the Kings. Seti's son Ramesses II then rules an exceptional 66 years, around 1279–1213 BC, fighting the Hittites to a draw at Kadesh before signing history's oldest surviving peace treaty, building Abu Simbel and his own Ramesseum, and fathering over a hundred children. His thirteenth son Merneptah, already old himself, then rules around 1213–1203 BC, defeating a Libyan and Sea Peoples invasion and leaving the Merneptah Stele, whose closing lines carry the oldest known mention of Israel. Merneptah's son Seti II then rules around 1203–1197 BC, contested for years by the rival king Amenmesse in the south, building a small way station for the sacred barques at Karnak, and marrying Twosret, who would later rule Egypt herself. The child king Siptah then reigns around 1197–1191 BC, a club-footed boy ruling in name only under Twosret and the chancellor Bay. Twosret then rules as pharaoh in her own right around 1191–1189 BC, one of Egypt's few female kings, before her tomb and temple are usurped and effaced by her successor Setnakhte, who rules around 1189–1186 BC, restoring order after a period of chaos and founding the 20th Dynasty as father of Ramesses III. Ramesses III then rules around 1186–1155 BC, defeating the invading Sea Peoples at the Battle of the Delta, building Medinet Habu, and dying in a harem conspiracy after the earliest recorded labor strike. Eight more Ramesside kings follow in rapid succession over the next eighty years, a period of increasing decline: Ramesses IV around 1155–1149 BC, who tried his father's assassins; Ramesses V around 1149–1145 BC, whose mummy shows a possible smallpox infection; Ramesses VI around 1145–1137 BC, who usurped his nephew's tomb and inadvertently buried Tutankhamun's entrance under construction debris; Ramesses VII around 1137–1130 BC; Ramesses VIII around 1130–1129 BC, the shortest and least documented reign of the group; Ramesses IX around 1129–1111 BC, whose court documented widespread tomb robbery; Ramesses X around 1111–1107 BC, barely attested; and finally Ramesses XI around 1107–1077 BC, the last king of the New Kingdom, whose reign ends with Egypt splitting between the High Priests of Amun at Thebes and a new line of kings in the north. After the New Kingdom, a short separate segment marks Piye, the king of Kush who ruled from Napata, reigned around 744–714 BC and conquered Egypt around 728 BC, founding its 25th Dynasty. Isolated later points follow after another long gap: Abu Simbel around 1250 BC, within Ramesses II's own reign, Philae around 265 BC, and Dendera's temple, begun in 54 BC and finished under Roman rule. Abydos alone spans both the early cluster and the later period, with its King List temple. A final, separate segment marks Meroë, far south in the Kingdom of Kush rather than Egypt itself: a royal pyramid field built from around 270 BC, when King Arkamani is said to have become the first king buried there instead of at Napata, through the 4th century AD.</desc>
+        <desc id="tlDesc">A broken horizontal timeline from 3500 BC onward. A dense cluster of Old Kingdom pyramid-building sits between 2690 and 2445 BC, following Hierakonpolis's Painted Tomb, the Narmer Palette, and the start of Abydos's royal tombs. After a First Intermediate Period gap, a possibly legendary Mentuhotep I opens the Theban 11th Dynasty around 2135 BC, Intef II pushes north around 2112–2063 BC, Mentuhotep II reunifies Egypt and founds the Middle Kingdom around 2055–2004 BC, Amenemhat I founds the 12th Dynasty and moves the capital north around 1991–1962 BC, his son Senusret I builds the White Chapel at Karnak around 1971–1926 BC, and Amenemhat II's reign, around 1919–1885 BC, is marked by a treasure of Mesopotamian and Aegean silver and lapis lazuli buried at the Temple of Montu in Tod, and Senusret III, the most powerful Middle Kingdom king, fortifies the Nubian border around 1878–1839 BC. A small separate segment marks the Second Intermediate Period: Nubkheperre Intef, a Theban 17th-Dynasty king, around 1571–1565 BC, followed by Kamose, the last king of that line, sailing against the Hyksos around 1555–1550 BC. The New Kingdom segment now opens with Ahmose I, who expels the Hyksos and builds the last native Egyptian pyramid at South Abydos around 1550–1525 BC, alongside his queen Ahmose-Nefertari, later deified and worshipped at Deir el-Medina for roughly four centuries. His son Amenhotep I follows immediately, around 1525–1504 BC, the first king to separate his tomb from his mortuary temple — so thoroughly that his tomb has never been found. Thutmose I follows around 1504–1492 BC, the first king confirmed buried in the Valley of the Kings, who campaigned as far as the Euphrates and raised obelisks at Karnak. His son Thutmose II follows around 1493–1479 BC, husband of Hatshepsut and, since 2025, the subject of the first newly confirmed royal tomb since Tutankhamun's. Hatshepsut herself then rules as pharaoh around 1479–1458 BC, building her Deir el-Bahari temple beside Mentuhotep II's. Thutmose III then rules alone from about 1458–1425 BC, Egypt's most successful military king, whose Karnak Annals record the Battle of Megiddo and roughly sixteen other campaigns. Two generations later, Amenhotep III rules at the height of Egypt's imperial wealth, around 1391–1353 BC, building the largest mortuary temple ever attempted, now reduced to its two Colossi of Memnon. His son Akhenaten follows immediately, around 1353–1336 BC, abandoning Egypt's traditional gods for the sun disc Aten alone and building a new capital at Amarna — a reign later kings erased from the record. After a short gap, Tutankhamun rules as a child king around 1332–1323 BC, restoring the old gods — and his small, hastily built tomb, found nearly untouched in 1922, becomes ancient Egypt's most famous archaeological discovery. The general Horemheb then rules around 1319–1292 BC, finishing the restoration and erasing the Amarna kings from official memory, before naming his own vizier as successor: Ramesses I, who reigns barely a year or two around 1292–1290 BC but founds the 19th Dynasty, and whose own mummy resurfaces in a Canadian museum before returning to Egypt in 2003. His son Seti I then rules around 1290–1279 BC, campaigning abroad, continuing Karnak's Great Hypostyle Hall, building the King List temple at Abydos, and cutting the longest, first fully decorated tomb in the Valley of the Kings. Seti's son Ramesses II then rules an exceptional 66 years, around 1279–1213 BC, fighting the Hittites to a draw at Kadesh before signing history's oldest surviving peace treaty, building Abu Simbel and his own Ramesseum, and fathering over a hundred children. His thirteenth son Merneptah, already old himself, then rules around 1213–1203 BC, defeating a Libyan and Sea Peoples invasion and leaving the Merneptah Stele, whose closing lines carry the oldest known mention of Israel. Merneptah's son Seti II then rules around 1203–1197 BC, contested for years by the rival king Amenmesse in the south, building a small way station for the sacred barques at Karnak, and marrying Twosret, who would later rule Egypt herself. The child king Siptah then reigns around 1197–1191 BC, a club-footed boy ruling in name only under Twosret and the chancellor Bay. Twosret then rules as pharaoh in her own right around 1191–1189 BC, one of Egypt's few female kings, before her tomb and temple are usurped and effaced by her successor Setnakhte, who rules around 1189–1186 BC, restoring order after a period of chaos and founding the 20th Dynasty as father of Ramesses III. Ramesses III then rules around 1186–1155 BC, defeating the invading Sea Peoples at the Battle of the Delta, building Medinet Habu, and dying in a harem conspiracy after the earliest recorded labor strike. Eight more Ramesside kings follow in rapid succession over the next eighty years, a period of increasing decline: Ramesses IV around 1155–1149 BC, who tried his father's assassins; Ramesses V around 1149–1145 BC, whose mummy shows a possible smallpox infection; Ramesses VI around 1145–1137 BC, who usurped his nephew's tomb and inadvertently buried Tutankhamun's entrance under construction debris; Ramesses VII around 1137–1130 BC; Ramesses VIII around 1130–1129 BC, the shortest and least documented reign of the group; Ramesses IX around 1129–1111 BC, whose court documented widespread tomb robbery; Ramesses X around 1111–1107 BC, barely attested; and finally Ramesses XI around 1107–1077 BC, the last king of the New Kingdom, whose reign ends with Egypt splitting between the High Priests of Amun at Thebes and a new line of kings in the north. Isolated later points follow after another long gap: Abu Simbel around 1250 BC, within Ramesses II's own reign, Philae around 265 BC, and Dendera's temple, begun in 54 BC and finished under Roman rule. Abydos alone spans both the early cluster and the later period, with its King List temple. A final, separate segment marks Meroë, far south in the Kingdom of Kush rather than Egypt itself: a royal pyramid field built from around 270 BC, when King Arkamani is said to have become the first king buried there instead of at Napata, through the 4th century AD.</desc>
 
         <!-- era bands -->
         <rect x="80" y="55" width="300" height="245" fill="var(--sand-line)" opacity="0.22" />
         <rect x="410" y="55" width="500" height="245" fill="var(--sand-line)" opacity="0.34" />
         <rect x="1471" y="55" width="536" height="245" fill="var(--sand-line)" opacity="0.22" />
-        <rect x="2207" y="55" width="205" height="245" fill="var(--sand-line)" opacity="0.34" />
-        <rect x="2452" y="55" width="210" height="245" fill="var(--sand-line)" opacity="0.22" />
+        <rect x="2047" y="55" width="205" height="245" fill="var(--sand-line)" opacity="0.34" />
+        <rect x="2292" y="55" width="210" height="245" fill="var(--sand-line)" opacity="0.22" />
 
         <text class="tl-era-label" x="230" y="45" text-anchor="middle">PREDYNASTIC</text>
         <text class="tl-era-label" x="660" y="45" text-anchor="middle">EARLY DYNASTIC &amp; OLD KINGDOM</text>
         <text class="tl-era-label" x="1739" y="45" text-anchor="middle">NEW KINGDOM</text>
-        <text class="tl-era-label" x="2277" y="45" text-anchor="middle">PTOLEMAIC</text>
-        <text class="tl-era-label" x="2557" y="45" text-anchor="middle">KUSH</text>
+        <text class="tl-era-label" x="2117" y="45" text-anchor="middle">PTOLEMAIC</text>
+        <text class="tl-era-label" x="2397" y="45" text-anchor="middle">KUSH</text>
 
         <!-- Abydos dedicated lane: royal tombs, Predynastic to end of 2nd Dynasty -->
         <line x1="155" y1="200" x2="155" y2="85" stroke="var(--rose)" stroke-width="1" stroke-dasharray="2 3" opacity="0.5" />
@@ -5881,8 +5796,8 @@
         <line class="tl-axis" x1="940" y1="200" x2="1224" y2="200" />
         <line class="tl-axis" x1="1262" y1="200" x2="1348" y2="200" />
         <line class="tl-axis" x1="1471" y1="200" x2="2007" y2="200" />
-        <line class="tl-axis" x1="2207" y1="200" x2="2412" y2="200" />
-        <line class="tl-axis" x1="2452" y1="200" x2="2662" y2="200" />
+        <line class="tl-axis" x1="2047" y1="200" x2="2252" y2="200" />
+        <line class="tl-axis" x1="2292" y1="200" x2="2502" y2="200" />
 
         <!-- break marks -->
         <g class="tl-break">
@@ -5906,8 +5821,8 @@
           <line x1="2025" y1="193" x2="2035" y2="207" />
         </g>
         <g class="tl-break">
-          <line x1="2422" y1="193" x2="2432" y2="207" />
-          <line x1="2430" y1="193" x2="2440" y2="207" />
+          <line x1="2262" y1="193" x2="2272" y2="207" />
+          <line x1="2270" y1="193" x2="2280" y2="207" />
         </g>
 
         <!-- Hierakonpolis: Painted Tomb, span -->
@@ -6295,53 +6210,35 @@
 
         <!-- Philae: span -->
         <a href="#card-philae" class="tl-link" aria-label="Jump to the Philae card">
-          <rect x="2228" y="197" width="55" height="6" rx="3" fill="var(--lapis)" />
-          <line x1="2255" y1="197" x2="2255" y2="160" stroke="var(--lapis)" class="tl-leader" />
-          <text class="tl-name" x="2255" y="150" text-anchor="middle" fill="var(--lapis)">Philae</text>
-          <text class="tl-date" x="2255" y="164" text-anchor="middle">Isis temple, 285 BC</text>
+          <rect x="2068" y="197" width="55" height="6" rx="3" fill="var(--lapis)" />
+          <line x1="2095" y1="197" x2="2095" y2="160" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2095" y="150" text-anchor="middle" fill="var(--lapis)">Philae</text>
+          <text class="tl-date" x="2095" y="164" text-anchor="middle">Isis temple, 285 BC</text>
         </a>
 
         <!-- Serapeum: still active in the Ptolemaic period, contemporary with Philae -->
         <a href="#card-serapeum" class="tl-link" aria-label="Jump to the Serapeum card">
-          <circle cx="2307" cy="200" r="4" fill="var(--bg-panel)" stroke="var(--indigo)" stroke-width="1.8" />
-          <line x1="2307" y1="204" x2="2307" y2="230" stroke="var(--indigo)" class="tl-leader" stroke-dasharray="2 2" />
-          <text class="tl-name" x="2307" y="245" text-anchor="middle" fill="var(--indigo)">Serapeum still active</text>
-          <text class="tl-date" x="2307" y="259" text-anchor="middle">Apis bulls, since c. 1390 BC</text>
+          <circle cx="2147" cy="200" r="4" fill="var(--bg-panel)" stroke="var(--indigo)" stroke-width="1.8" />
+          <line x1="2147" y1="204" x2="2147" y2="230" stroke="var(--indigo)" class="tl-leader" stroke-dasharray="2 2" />
+          <text class="tl-name" x="2147" y="245" text-anchor="middle" fill="var(--indigo)">Serapeum still active</text>
+          <text class="tl-date" x="2147" y="259" text-anchor="middle">Apis bulls, since c. 1390 BC</text>
         </a>
 
         <!-- Dendera: point, begun well after Philae, continues past this chart's scope into Roman rule -->
         <a href="#card-dendera" class="tl-link" aria-label="Jump to the Dendera card">
-          <circle cx="2392" cy="200" r="4.5" fill="var(--bg-panel)" stroke="var(--lapis)" stroke-width="1.8" />
-          <line x1="2392" y1="196" x2="2392" y2="160" stroke="var(--lapis)" class="tl-leader" stroke-dasharray="2 2" />
-          <text class="tl-name" x="2392" y="150" text-anchor="middle" fill="var(--lapis)">Dendera</text>
-          <text class="tl-date" x="2392" y="164" text-anchor="middle">Begun 54 BC</text>
+          <circle cx="2232" cy="200" r="4.5" fill="var(--bg-panel)" stroke="var(--lapis)" stroke-width="1.8" />
+          <line x1="2232" y1="196" x2="2232" y2="160" stroke="var(--lapis)" class="tl-leader" stroke-dasharray="2 2" />
+          <text class="tl-name" x="2232" y="150" text-anchor="middle" fill="var(--lapis)">Dendera</text>
+          <text class="tl-date" x="2232" y="164" text-anchor="middle">Begun 54 BC</text>
         </a>
 
         <!-- Meroe: span, a separate kingdom (Kush), not Egypt — royal pyramid field spanning six centuries -->
         <a href="#card-meroe" class="tl-link" aria-label="Jump to the Meroe Pyramids card">
-          <rect x="2452" y="197" width="210" height="6" rx="3" fill="var(--kush)" />
-          <line x1="2557" y1="197" x2="2557" y2="160" stroke="var(--kush)" class="tl-leader" />
-          <text class="tl-name" x="2557" y="150" text-anchor="middle" fill="var(--kush)">Meroë Pyramids</text>
-          <text class="tl-date" x="2557" y="164" text-anchor="middle">Kingdom of Kush, Sudan</text>
+          <rect x="2292" y="197" width="210" height="6" rx="3" fill="var(--kush)" />
+          <line x1="2397" y1="197" x2="2397" y2="160" stroke="var(--kush)" class="tl-leader" />
+          <text class="tl-name" x="2397" y="150" text-anchor="middle" fill="var(--kush)">Meroë Pyramids</text>
+          <text class="tl-date" x="2397" y="164" text-anchor="middle">Kingdom of Kush, Sudan</text>
         </a>
-
-
-        <!-- 25th Dynasty segment (c. 760–650 BC): Piye, the Kushite king who conquered Egypt -->
-        <rect x="2047" y="55" width="120" height="245" fill="var(--sand-line)" opacity="0.28" />
-        <text class="tl-era-label" x="2107" y="45" text-anchor="middle">25TH DYNASTY</text>
-        <line class="tl-axis" x1="2047" y1="200" x2="2167" y2="200" />
-        <g class="tl-break">
-          <line x1="2177" y1="193" x2="2187" y2="207" />
-          <line x1="2185" y1="193" x2="2195" y2="207" />
-        </g>
-        <a href="#card-piye" class="tl-link" aria-label="Jump to the Piye card">
-          <rect x="2064" y="197" width="33" height="6" rx="3" fill="var(--kush)" />
-          <line x1="2080" y1="197" x2="2080" y2="160" stroke="var(--kush)" class="tl-leader" />
-          <text class="tl-name" x="2080" y="150" text-anchor="middle" fill="var(--kush)">Piye</text>
-          <text class="tl-date" x="2080" y="164" text-anchor="middle">c. 744–714 BC</text>
-        </a>
-        <g class="tl-tick"><line x1="2107" y1="200" x2="2107" y2="208" /></g>
-        <g class="tl-tick-label" text-anchor="middle"><text x="2107" y="222">c. 760&ndash;650 BC</text></g>
 
         <!-- year ticks -->
         <g class="tl-tick">
@@ -6353,8 +6250,8 @@
           <line x1="910" y1="200" x2="910" y2="208" />
           <line x1="1082" y1="200" x2="1082" y2="208" />
           <line x1="1305" y1="200" x2="1305" y2="208" />
-          <line x1="2277" y1="200" x2="2277" y2="208" />
-          <line x1="2557" y1="200" x2="2557" y2="208" />
+          <line x1="2117" y1="200" x2="2117" y2="208" />
+          <line x1="2397" y1="200" x2="2397" y2="208" />
         </g>
         <g class="tl-tick-label" text-anchor="middle">
           <text x="80" y="222">3500</text>
@@ -6364,8 +6261,8 @@
           <text x="910" y="222">2400</text>
           <text x="1082" y="222">2135&ndash;1839</text>
           <text x="1305" y="222">1571&ndash;1550</text>
-          <text x="2277" y="222">250 BC</text>
-          <text x="2557" y="222">270 BC&ndash;4th c. AD</text>
+          <text x="2117" y="222">250 BC</text>
+          <text x="2397" y="222">270 BC&ndash;4th c. AD</text>
         </g>
       </svg>
       <p class="chart-caption">Broken axis — years are to scale within each segment, not across the gaps between them.</p>
@@ -6416,7 +6313,6 @@
       <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Ramesses IX</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Ramesses X</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Ramesses XI</span>
-      <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Piye (25th Dynasty, Kush)</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Abu Simbel</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Philae</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Dendera</span>
