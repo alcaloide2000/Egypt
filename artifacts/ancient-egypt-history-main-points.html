@@ -1200,7 +1200,7 @@
   <header class="masthead">
     <p class="eyebrow">Upper &amp; Lower Egypt · 3500&ndash;200 BC</p>
     <h1>The Nile, Site by Site and Century by Century</h1>
-    <p class="lede">Eighty-six sites, monuments and rulers across three thousand years, from Predynastic Hierakonpolis to Ptolemaic Philae and the pyramids of Kush at Meroë: a locator map showing where each one stands on the Nile, paired below with a timeline of when each was built or reigned — including the crowded quarter-century of pyramid experiments between Djoser's first steps at Saqqara and Khufu's Great Pyramid at Giza.</p>
+    <p class="lede">Eighty-seven sites, monuments and rulers across three thousand years, from Predynastic Hierakonpolis to Ptolemaic Philae and the pyramids of Kush at Meroë: a locator map showing where each one stands on the Nile, paired below with a timeline of when each was built or reigned — including the crowded quarter-century of pyramid experiments between Djoser's first steps at Saqqara and Khufu's Great Pyramid at Giza.</p>
   </header>
 
   <form class="search-bar" id="siteSearchForm" role="search" aria-label="Search sites by word">
@@ -1225,7 +1225,7 @@
       <div class="map-frame">
       <svg viewBox="0 0 600 860" role="img" aria-labelledby="mapTitle mapDesc">
         <title id="mapTitle">Map of the Nile Valley from Cairo to Abu Simbel</title>
-        <desc id="mapDesc">A schematic north-to-south map of the Nile showing Cairo, Asyut, Luxor, Edfu and Aswan, with Behbeit el-Hagar in the northern Delta, where Nectanebo II began a granite temple of Isis, Sais in the western Delta, capital of Psamtik I, Naukratis west of it, the Greek trading port of Ahmose II, and Necho II's canal towards the Red Sea east of it, finished by Darius I, and Pelusium in the north-eastern Delta, where the Persian king Cambyses II conquered Egypt in 525 BC, then the Great Pyramid of Giza, the sun temples of Abusir, and Saqqara's Step Pyramid of Djoser near Cairo, the older Gisr el-Mudir enclosure, Dahshur's Bent and Red Pyramids, and the collapsed pyramid of Meidum further south, Abydos's royal necropolis and King List between Asyut and Luxor, Hierakonpolis (Nekhen) marked near 25°N as the findspot of the Painted Tomb (Tomb 100), the Narmer Palette, and the Fort of Khasekhemwy, Philae's Temple of Isis and Elephantine's small step pyramid near Aswan, with the Aramaic papyri of Darius II's reign, and the Great Temple of Abu Simbel near the southern edge of the map, where Psamtik II's mercenaries scratched Greek graffiti in 592 BC.</desc>
+        <desc id="mapDesc">A schematic north-to-south map of the Nile showing Cairo, Asyut, Luxor, Edfu and Aswan, with Behbeit el-Hagar in the northern Delta, where Nectanebo II began a granite temple of Isis, Sais in the western Delta, capital of Psamtik I, Naukratis west of it, the Greek trading port of Ahmose II where Nectanebo I set up a stela, and Necho II's canal towards the Red Sea east of it, finished by Darius I, and Pelusium in the north-eastern Delta, where the Persian king Cambyses II conquered Egypt in 525 BC, then the Great Pyramid of Giza, the sun temples of Abusir, and Saqqara's Step Pyramid of Djoser near Cairo, the older Gisr el-Mudir enclosure, Dahshur's Bent and Red Pyramids, and the collapsed pyramid of Meidum further south, Abydos's royal necropolis and King List between Asyut and Luxor, Hierakonpolis (Nekhen) marked near 25°N as the findspot of the Painted Tomb (Tomb 100), the Narmer Palette, and the Fort of Khasekhemwy, Philae's Temple of Isis and Elephantine's small step pyramid near Aswan, with the Aramaic papyri of Darius II's reign, and the Great Temple of Abu Simbel near the southern edge of the map, where Psamtik II's mercenaries scratched Greek graffiti in 592 BC.</desc>
 
         <rect x="0" y="0" width="600" height="860" fill="var(--desert)" />
 
@@ -1357,6 +1357,14 @@
           <circle cx="0" cy="0" r="4" fill="var(--malachite)" stroke="var(--bg-panel)" stroke-width="1.4" />
           <text class="abu-label" x="-12" y="4" text-anchor="end">Naukratis</text>
           <text class="abu-label sub" x="-12" y="16" text-anchor="end">Greek port of Ahmose II</text>
+
+          <!-- Nectanebo I: the Naukratis Stela of 380 BC, a tithe on Greek trade for the temple of Neith at Sais -->
+          <g transform="translate(14,10)">
+            <circle class="abu-ring" r="3.8" />
+            <circle class="abu-ring d2" r="3.8" />
+            <path d="M-3,-4 L-3,-11 C-3,-14.5 3,-14.5 3,-11 L3,-4 Z" fill="var(--malachite)" opacity="0.9" />
+            <circle cx="0" cy="0" r="3.2" fill="var(--malachite)" stroke="var(--bg-panel)" stroke-width="1.1" />
+          </g>
         </g>
 
         <!-- Nubkheperre Intef, Dra Abu el-Naga: 17th-Dynasty Theban king, Second Intermediate Period, small pyramid-tomb -->
@@ -2175,6 +2183,54 @@
         <p class="tooltip-caption">
           <strong>Pelusium — the Persian conquest</strong>
           Illustrated Persian spearman: in 525 BC Cambyses II's army beat Psamtik III at Pelusium, the gateway to Egypt from Asia, and Egypt became a Persian province.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="hotspot"
+        style="--accent: var(--malachite); left: 35%; top: 10.93%;"
+        aria-describedby="nectanebo1Tooltip"
+        aria-label="Show the Naukratis Stela of Nectanebo I illustration"
+      ></button>
+
+      <div class="tooltip" id="nectanebo1Tooltip" role="tooltip" style="--accent: var(--malachite); left: 35%; top: 10.93%;">
+        <svg class="illustration" viewBox="0 0 100 128" role="img" aria-labelledby="nectanebo1IllusTitle">
+          <title id="nectanebo1IllusTitle">Illustration of the black granite Naukratis Stela of Nectanebo I, with the king offering to the goddess Neith under a winged sun disc above columns of hieroglyphs</title>
+          <defs>
+            <linearGradient id="nectanebo1Granite" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#3c3c3a" />
+              <stop offset="100%" stop-color="#1c1c1b" />
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="100" height="128" fill="#e8c88f" opacity="0.4" />
+          <path d="M18,122 L18,30 C18,14 32,6 50,6 C68,6 82,14 82,30 L82,122 Z" fill="url(#nectanebo1Granite)" stroke="#0e0e0d" stroke-width="1.3" />
+          <!-- winged sun disc -->
+          <circle cx="50" cy="18" r="4" fill="#cfc6b0" />
+          <path d="M46,18 C40,14 32,14 26,17 C32,18 40,20 46,20 Z M54,18 C60,14 68,14 74,17 C68,18 60,20 54,20 Z" fill="#cfc6b0" />
+          <!-- lunette: the king offering to Neith with her red crown -->
+          <g fill="#cfc6b0">
+            <circle cx="36" cy="30" r="2.6" />
+            <path d="M33,33 L39,33 L40,46 L32,46 Z" />
+            <path d="M39,36 L45,34 L45,36 L40,38 Z" />
+            <circle cx="62" cy="30" r="2.6" />
+            <path d="M58,26 L58,22 L61,22 L61,25 L66,25 L66,28 Z" />
+            <path d="M59,33 L65,33 L64,46 L60,46 Z" />
+          </g>
+          <line x1="22" y1="50" x2="78" y2="50" stroke="#cfc6b0" stroke-width="0.8" />
+          <!-- columns of hieroglyphs -->
+          <g fill="#cfc6b0" opacity="0.85">
+            <circle cx="27" cy="57" r="1.6" /><rect x="25.5" y="62" width="3" height="3" /><path d="M25,71 L29,71 L27,67 Z" /><rect x="26" y="74" width="2" height="6" /><circle cx="27" cy="85" r="1.6" /><rect x="25.5" y="90" width="3" height="3" /><path d="M25,100 L29,100 L27,96 Z" /><rect x="26" y="104" width="2" height="6" />
+            <path d="M35,59 L39,59 L37,55 Z" /><rect x="35.5" y="62" width="3" height="3" /><circle cx="37" cy="70" r="1.6" /><rect x="36" y="74" width="2" height="6" /><path d="M35,87 L39,87 L37,83 Z" /><circle cx="37" cy="92" r="1.6" /><rect x="35.5" y="98" width="3" height="3" /><rect x="36" y="104" width="2" height="6" />
+            <rect x="45.5" y="55" width="3" height="3" /><circle cx="47" cy="63" r="1.6" /><path d="M45,71 L49,71 L47,67 Z" /><rect x="46" y="74" width="2" height="6" /><rect x="45.5" y="84" width="3" height="3" /><circle cx="47" cy="92" r="1.6" /><path d="M45,100 L49,100 L47,96 Z" /><rect x="45.5" y="104" width="3" height="3" />
+            <circle cx="57" cy="57" r="1.6" /><path d="M55,65 L59,65 L57,61 Z" /><rect x="56" y="68" width="2" height="6" /><rect x="55.5" y="78" width="3" height="3" /><circle cx="57" cy="86" r="1.6" /><path d="M55,94 L59,94 L57,90 Z" /><rect x="56" y="98" width="2" height="6" />
+            <rect x="65.5" y="55" width="3" height="3" /><path d="M65,63 L69,63 L67,59 Z" /><circle cx="67" cy="68" r="1.6" /><rect x="66" y="72" width="2" height="6" /><path d="M65,86 L69,86 L67,82 Z" /><rect x="65.5" y="90" width="3" height="3" /><circle cx="67" cy="98" r="1.6" /><rect x="66" y="103" width="2" height="6" />
+            <path d="M73,59 L77,59 L75,55 Z" /><circle cx="75" cy="64" r="1.6" /><rect x="74" y="68" width="2" height="6" /><rect x="73.5" y="78" width="3" height="3" /><path d="M73,88 L77,88 L75,84 Z" /><circle cx="75" cy="93" r="1.6" />
+          </g>
+        </svg>
+        <p class="tooltip-caption">
+          <strong>Naukratis — stela of Nectanebo I</strong>
+          Illustrated stela: in his first year, 380 BC, Nectanebo I gave the temple of Neith at Sais a tenth of the taxes on Greek goods passing through Naukratis. A twin stela was found under the sea at Thonis-Heracleion in 2001.
         </p>
       </div>
 
@@ -4704,6 +4760,7 @@
         <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Abu Simbel, graffiti of Psamtik II's army</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Naukratis, Greek port of Ahmose II</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Behbeit el-Hagar, Isis temple of Nectanebo II</span>
+        <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Naukratis, stela of Nectanebo I</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--persia)"></span>Pelusium, Persian conquest by Cambyses II</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--persia)"></span>Wadi Tumilat, canal stelae of Darius I</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--persia)"></span>Elephantine, Aramaic papyri of Darius II's reign</span>
@@ -6744,6 +6801,31 @@
         <a class="wiki-link" style="color: var(--persia);" href="https://en.wikipedia.org/wiki/Artaxerxes_II" target="_blank" rel="noopener noreferrer">Read on Wikipedia ↗</a>
       </div>
 
+      <div class="info-card" id="card-nectanebo1" style="margin-top: 1rem;">
+        <span class="tag" style="color: var(--malachite); border-color: var(--malachite);">30TH DYNASTY · FOUNDER</span>
+        <h2>Nectanebo I <span class="ancient-name">— Nakhtnebef, Nectanebo I, Kheperkare</span></h2>
+        <p>An army officer from Sebennytos in the central Delta, son of a general named Djedhor, who seized the throne from Nepherites&nbsp;II in 380&nbsp;BC and founded the 30th Dynasty, the last line of native kings. In his first year he set up the Naukratis Stela, granting the temple of the goddess Neith at Sais a tenth of the duties on goods imported through the Greek port of Naukratis and on goods made there. A twin of it was found under the sea at the sunken port of Thonis-Heracleion in 2001. In 373&nbsp;BC a large Persian army under Pharnabazus, with the Athenian general Iphicrates, forced the Mendesian mouth of the Nile. Nectanebo held Memphis, the invaders quarrelled, and the Nile flood drove them out. Egypt then had peace for a generation, and he spent it building. The avenue of human-headed sphinxes between Luxor and Karnak bears his name. He is also credited with Karnak's unfinished first pylon and with the oldest surviving buildings on Philae and the oldest birth house at Dendera. He died in 362&nbsp;BC, and his son Teos succeeded him, followed by his grandson Nectanebo&nbsp;II.</p>
+        <dl class="coords">
+          <div>
+            <dt>Location</dt>
+            <dd>Naukratis (stela); sphinx avenue at Luxor; Philae; Sebennytos, home of the dynasty</dd>
+          </div>
+          <div>
+            <dt>Reign</dt>
+            <dd>380–362 BC</dd>
+          </div>
+          <div>
+            <dt>Dynasty</dt>
+            <dd>30th (Sebennytic), founder</dd>
+          </div>
+          <div>
+            <dt>Significance</dt>
+            <dd>Beat off the Persian invasion of 373 BC; great builder; Naukratis Stela</dd>
+          </div>
+        </dl>
+        <a class="wiki-link" style="color: var(--malachite);" href="https://en.wikipedia.org/wiki/Nectanebo_I" target="_blank" rel="noopener noreferrer">Read on Wikipedia ↗</a>
+      </div>
+
       <div class="info-card" id="card-nectanebo2" style="margin-top: 1rem;">
         <span class="tag" style="color: var(--malachite); border-color: var(--malachite);">30TH DYNASTY · THE LAST NATIVE PHARAOH</span>
         <h2>Nectanebo II <span class="ancient-name">— Nakhthorhebyt, Nakhthorheb, Senedjemibre</span></h2>
@@ -6823,7 +6905,7 @@
     <div class="chart-panel" aria-label="Timeline of ancient Egyptian monuments, 3500 to 200 BC">
       <svg viewBox="0 0 3047 1000" role="img" aria-labelledby="tlTitle tlDesc">
         <title id="tlTitle">Timeline of ancient Egyptian and Kushite sites, 3500 BC to the 4th century AD</title>
-        <desc id="tlDesc">A broken horizontal timeline from 3500 BC onward. A dense cluster of Old Kingdom pyramid-building sits between 2690 and 2445 BC, following Hierakonpolis's Painted Tomb, the Narmer Palette, and the start of Abydos's royal tombs. After a First Intermediate Period gap, a possibly legendary Mentuhotep I opens the Theban 11th Dynasty around 2135 BC, Intef II pushes north around 2112–2063 BC, Mentuhotep II reunifies Egypt and founds the Middle Kingdom around 2055–2004 BC, Amenemhat I founds the 12th Dynasty and moves the capital north around 1991–1962 BC, his son Senusret I builds the White Chapel at Karnak around 1971–1926 BC, and Amenemhat II's reign, around 1919–1885 BC, is marked by a treasure of Mesopotamian and Aegean silver and lapis lazuli buried at the Temple of Montu in Tod, and Senusret III, the most powerful Middle Kingdom king, fortifies the Nubian border around 1878–1839 BC. A small separate segment marks the Second Intermediate Period: Nubkheperre Intef, a Theban 17th-Dynasty king, around 1571–1565 BC, followed by Kamose, the last king of that line, sailing against the Hyksos around 1555–1550 BC. The New Kingdom segment now opens with Ahmose I, who expels the Hyksos and builds the last native Egyptian pyramid at South Abydos around 1550–1525 BC, alongside his queen Ahmose-Nefertari, later deified and worshipped at Deir el-Medina for roughly four centuries. His son Amenhotep I follows immediately, around 1525–1504 BC, the first king to separate his tomb from his mortuary temple — so thoroughly that his tomb has never been found. Thutmose I follows around 1504–1492 BC, the first king confirmed buried in the Valley of the Kings, who campaigned as far as the Euphrates and raised obelisks at Karnak. His son Thutmose II follows around 1493–1479 BC, husband of Hatshepsut and, since 2025, the subject of the first newly confirmed royal tomb since Tutankhamun's. Hatshepsut herself then rules as pharaoh around 1479–1458 BC, building her Deir el-Bahari temple beside Mentuhotep II's. Thutmose III then rules alone from about 1458–1425 BC, Egypt's most successful military king, whose Karnak Annals record the Battle of Megiddo and roughly sixteen other campaigns. Two generations later, Amenhotep III rules at the height of Egypt's imperial wealth, around 1391–1353 BC, building the largest mortuary temple ever attempted, now reduced to its two Colossi of Memnon. His son Akhenaten follows immediately, around 1353–1336 BC, abandoning Egypt's traditional gods for the sun disc Aten alone and building a new capital at Amarna — a reign later kings erased from the record. After a short gap, Tutankhamun rules as a child king around 1332–1323 BC, restoring the old gods — and his small, hastily built tomb, found nearly untouched in 1922, becomes ancient Egypt's most famous archaeological discovery. The general Horemheb then rules around 1319–1292 BC, finishing the restoration and erasing the Amarna kings from official memory, before naming his own vizier as successor: Ramesses I, who reigns barely a year or two around 1292–1290 BC but founds the 19th Dynasty, and whose own mummy resurfaces in a Canadian museum before returning to Egypt in 2003. His son Seti I then rules around 1290–1279 BC, campaigning abroad, continuing Karnak's Great Hypostyle Hall, building the King List temple at Abydos, and cutting the longest, first fully decorated tomb in the Valley of the Kings. Seti's son Ramesses II then rules an exceptional 66 years, around 1279–1213 BC, fighting the Hittites to a draw at Kadesh before signing history's oldest surviving peace treaty, building Abu Simbel and his own Ramesseum, and fathering over a hundred children. His thirteenth son Merneptah, already old himself, then rules around 1213–1203 BC, defeating a Libyan and Sea Peoples invasion and leaving the Merneptah Stele, whose closing lines carry the oldest known mention of Israel. Merneptah's son Seti II then rules around 1203–1197 BC, contested for years by the rival king Amenmesse in the south, building a small way station for the sacred barques at Karnak, and marrying Twosret, who would later rule Egypt herself. The child king Siptah then reigns around 1197–1191 BC, a club-footed boy ruling in name only under Twosret and the chancellor Bay. Twosret then rules as pharaoh in her own right around 1191–1189 BC, one of Egypt's few female kings, before her tomb and temple are usurped and effaced by her successor Setnakhte, who rules around 1189–1186 BC, restoring order after a period of chaos and founding the 20th Dynasty as father of Ramesses III. Ramesses III then rules around 1186–1155 BC, defeating the invading Sea Peoples at the Battle of the Delta, building Medinet Habu, and dying in a harem conspiracy after the earliest recorded labor strike. Eight more Ramesside kings follow in rapid succession over the next eighty years, a period of increasing decline: Ramesses IV around 1155–1149 BC, who tried his father's assassins; Ramesses V around 1149–1145 BC, whose mummy shows a possible smallpox infection; Ramesses VI around 1145–1137 BC, who usurped his nephew's tomb and inadvertently buried Tutankhamun's entrance under construction debris; Ramesses VII around 1137–1130 BC; Ramesses VIII around 1130–1129 BC, the shortest and least documented reign of the group; Ramesses IX around 1129–1111 BC, whose court documented widespread tomb robbery; Ramesses X around 1111–1107 BC, barely attested; and finally Ramesses XI around 1107–1077 BC, the last king of the New Kingdom, whose reign ends with Egypt splitting between the High Priests of Amun at Thebes and a new line of kings in the north. After the New Kingdom, a short separate segment marks Piye, the king of Kush who ruled from Napata, reigned around 744–714 BC and conquered Egypt around 728 BC, founding its 25th Dynasty, followed by his brother Shabaka, around 705–690 BC, who ruled Egypt directly from Memphis, and by Piye's son Taharqa, 690–664 BC, who fought the Assyrian invasions and was buried under the largest pyramid in Kush, and finally by Tantamani, 664–656 BC, the last Kushite king to rule in Egypt, driven out after the Assyrian sack of Thebes. In parallel from 664 BC, and alone from 656 BC, Psamtik I of Sais reunites Egypt and founds the 26th Dynasty, reigning until 610 BC; his son Necho II follows, 610–595 BC, fighting in the Levant and starting a canal to the Red Sea; then his son Psamtik II, 595–589 BC, who campaigned deep into Nubia in 592 BC; and Ahmose II (Amasis), 570–526 BC, a general who seized the throne from Apries and gave the Greeks their own trading port at Naukratis, dying months before the Persian conquest of 525 BC. A short Persian bar follows: Cambyses II, who conquered Egypt at Pelusium in 525 BC and ruled it as the first king of the 27th Dynasty until 522 BC; then Darius I, 522–486 BC, who finished Necho's canal to the Red Sea; Xerxes I, 486–465 BC, who crushed an Egyptian revolt in 484 BC; Artaxerxes I, 465–424 BC, who faced the revolt of Inaros and an Athenian fleet; Darius II, 423–404 BC, whose reign is lit up by the Aramaic papyri of Elephantine; and Artaxerxes II, recognised in Egypt only from 404 to about 400 BC, as Egypt broke away under Amyrtaeus. After sixty years of independence comes a short 30th Dynasty band with Nectanebo II, 360–342 BC, the last native pharaoh, overthrown by the Persian reconquest of 343–342 BC. Isolated later points follow after another long gap: Abu Simbel around 1250 BC, within Ramesses II's own reign, Philae around 265 BC, and Dendera's temple, begun in 54 BC and finished under Roman rule. Abydos alone spans both the early cluster and the later period, with its King List temple. A final, separate segment marks Meroë, far south in the Kingdom of Kush rather than Egypt itself: a royal pyramid field built from around 270 BC, when King Arkamani is said to have become the first king buried there instead of at Napata, through the 4th century AD.</desc>
+        <desc id="tlDesc">A broken horizontal timeline from 3500 BC onward. A dense cluster of Old Kingdom pyramid-building sits between 2690 and 2445 BC, following Hierakonpolis's Painted Tomb, the Narmer Palette, and the start of Abydos's royal tombs. After a First Intermediate Period gap, a possibly legendary Mentuhotep I opens the Theban 11th Dynasty around 2135 BC, Intef II pushes north around 2112–2063 BC, Mentuhotep II reunifies Egypt and founds the Middle Kingdom around 2055–2004 BC, Amenemhat I founds the 12th Dynasty and moves the capital north around 1991–1962 BC, his son Senusret I builds the White Chapel at Karnak around 1971–1926 BC, and Amenemhat II's reign, around 1919–1885 BC, is marked by a treasure of Mesopotamian and Aegean silver and lapis lazuli buried at the Temple of Montu in Tod, and Senusret III, the most powerful Middle Kingdom king, fortifies the Nubian border around 1878–1839 BC. A small separate segment marks the Second Intermediate Period: Nubkheperre Intef, a Theban 17th-Dynasty king, around 1571–1565 BC, followed by Kamose, the last king of that line, sailing against the Hyksos around 1555–1550 BC. The New Kingdom segment now opens with Ahmose I, who expels the Hyksos and builds the last native Egyptian pyramid at South Abydos around 1550–1525 BC, alongside his queen Ahmose-Nefertari, later deified and worshipped at Deir el-Medina for roughly four centuries. His son Amenhotep I follows immediately, around 1525–1504 BC, the first king to separate his tomb from his mortuary temple — so thoroughly that his tomb has never been found. Thutmose I follows around 1504–1492 BC, the first king confirmed buried in the Valley of the Kings, who campaigned as far as the Euphrates and raised obelisks at Karnak. His son Thutmose II follows around 1493–1479 BC, husband of Hatshepsut and, since 2025, the subject of the first newly confirmed royal tomb since Tutankhamun's. Hatshepsut herself then rules as pharaoh around 1479–1458 BC, building her Deir el-Bahari temple beside Mentuhotep II's. Thutmose III then rules alone from about 1458–1425 BC, Egypt's most successful military king, whose Karnak Annals record the Battle of Megiddo and roughly sixteen other campaigns. Two generations later, Amenhotep III rules at the height of Egypt's imperial wealth, around 1391–1353 BC, building the largest mortuary temple ever attempted, now reduced to its two Colossi of Memnon. His son Akhenaten follows immediately, around 1353–1336 BC, abandoning Egypt's traditional gods for the sun disc Aten alone and building a new capital at Amarna — a reign later kings erased from the record. After a short gap, Tutankhamun rules as a child king around 1332–1323 BC, restoring the old gods — and his small, hastily built tomb, found nearly untouched in 1922, becomes ancient Egypt's most famous archaeological discovery. The general Horemheb then rules around 1319–1292 BC, finishing the restoration and erasing the Amarna kings from official memory, before naming his own vizier as successor: Ramesses I, who reigns barely a year or two around 1292–1290 BC but founds the 19th Dynasty, and whose own mummy resurfaces in a Canadian museum before returning to Egypt in 2003. His son Seti I then rules around 1290–1279 BC, campaigning abroad, continuing Karnak's Great Hypostyle Hall, building the King List temple at Abydos, and cutting the longest, first fully decorated tomb in the Valley of the Kings. Seti's son Ramesses II then rules an exceptional 66 years, around 1279–1213 BC, fighting the Hittites to a draw at Kadesh before signing history's oldest surviving peace treaty, building Abu Simbel and his own Ramesseum, and fathering over a hundred children. His thirteenth son Merneptah, already old himself, then rules around 1213–1203 BC, defeating a Libyan and Sea Peoples invasion and leaving the Merneptah Stele, whose closing lines carry the oldest known mention of Israel. Merneptah's son Seti II then rules around 1203–1197 BC, contested for years by the rival king Amenmesse in the south, building a small way station for the sacred barques at Karnak, and marrying Twosret, who would later rule Egypt herself. The child king Siptah then reigns around 1197–1191 BC, a club-footed boy ruling in name only under Twosret and the chancellor Bay. Twosret then rules as pharaoh in her own right around 1191–1189 BC, one of Egypt's few female kings, before her tomb and temple are usurped and effaced by her successor Setnakhte, who rules around 1189–1186 BC, restoring order after a period of chaos and founding the 20th Dynasty as father of Ramesses III. Ramesses III then rules around 1186–1155 BC, defeating the invading Sea Peoples at the Battle of the Delta, building Medinet Habu, and dying in a harem conspiracy after the earliest recorded labor strike. Eight more Ramesside kings follow in rapid succession over the next eighty years, a period of increasing decline: Ramesses IV around 1155–1149 BC, who tried his father's assassins; Ramesses V around 1149–1145 BC, whose mummy shows a possible smallpox infection; Ramesses VI around 1145–1137 BC, who usurped his nephew's tomb and inadvertently buried Tutankhamun's entrance under construction debris; Ramesses VII around 1137–1130 BC; Ramesses VIII around 1130–1129 BC, the shortest and least documented reign of the group; Ramesses IX around 1129–1111 BC, whose court documented widespread tomb robbery; Ramesses X around 1111–1107 BC, barely attested; and finally Ramesses XI around 1107–1077 BC, the last king of the New Kingdom, whose reign ends with Egypt splitting between the High Priests of Amun at Thebes and a new line of kings in the north. After the New Kingdom, a short separate segment marks Piye, the king of Kush who ruled from Napata, reigned around 744–714 BC and conquered Egypt around 728 BC, founding its 25th Dynasty, followed by his brother Shabaka, around 705–690 BC, who ruled Egypt directly from Memphis, and by Piye's son Taharqa, 690–664 BC, who fought the Assyrian invasions and was buried under the largest pyramid in Kush, and finally by Tantamani, 664–656 BC, the last Kushite king to rule in Egypt, driven out after the Assyrian sack of Thebes. In parallel from 664 BC, and alone from 656 BC, Psamtik I of Sais reunites Egypt and founds the 26th Dynasty, reigning until 610 BC; his son Necho II follows, 610–595 BC, fighting in the Levant and starting a canal to the Red Sea; then his son Psamtik II, 595–589 BC, who campaigned deep into Nubia in 592 BC; and Ahmose II (Amasis), 570–526 BC, a general who seized the throne from Apries and gave the Greeks their own trading port at Naukratis, dying months before the Persian conquest of 525 BC. A short Persian bar follows: Cambyses II, who conquered Egypt at Pelusium in 525 BC and ruled it as the first king of the 27th Dynasty until 522 BC; then Darius I, 522–486 BC, who finished Necho's canal to the Red Sea; Xerxes I, 486–465 BC, who crushed an Egyptian revolt in 484 BC; Artaxerxes I, 465–424 BC, who faced the revolt of Inaros and an Athenian fleet; Darius II, 423–404 BC, whose reign is lit up by the Aramaic papyri of Elephantine; and Artaxerxes II, recognised in Egypt only from 404 to about 400 BC, as Egypt broke away under Amyrtaeus. After sixty years of independence comes a short 30th Dynasty band with its founder Nectanebo I, 380–362 BC, who beat off a Persian invasion in 373 BC, and Nectanebo II, 360–342 BC, the last native pharaoh, overthrown by the Persian reconquest of 343–342 BC. Isolated later points follow after another long gap: Abu Simbel around 1250 BC, within Ramesses II's own reign, Philae around 265 BC, and Dendera's temple, begun in 54 BC and finished under Roman rule. Abydos alone spans both the early cluster and the later period, with its King List temple. A final, separate segment marks Meroë, far south in the Kingdom of Kush rather than Egypt itself: a royal pyramid field built from around 270 BC, when King Arkamani is said to have become the first king buried there instead of at Napata, through the 4th century AD.</desc>
 
         <!-- era bands -->
         <rect x="80" y="55" width="300" height="245" fill="var(--sand-line)" opacity="0.22" />
@@ -7413,6 +7495,13 @@
           <text class="tl-name" x="2486" y="240" fill="var(--malachite)">Nectanebo II</text>
           <text class="tl-date" x="2486" y="254">360–342 BC</text>
         </a>
+        <!-- Nectanebo I (Nakhtnebef): 380–362 BC, founder of the 30th Dynasty -->
+        <a href="#card-nectanebo1" class="tl-link" aria-label="Jump to the Nectanebo I card">
+          <rect x="2461" y="197" width="20" height="6" rx="3" fill="var(--malachite)" />
+          <line x1="2476" y1="203" x2="2476" y2="262" stroke="var(--malachite)" class="tl-leader" />
+          <text class="tl-name" x="2482" y="275" fill="var(--malachite)">Nectanebo I</text>
+          <text class="tl-date" x="2482" y="289">380–362 BC</text>
+        </a>
 
         <!-- year ticks -->
         <g class="tl-tick">
@@ -7501,6 +7590,7 @@
       <span class="legend-item"><span class="legend-dot" style="background:var(--persia)"></span>Artaxerxes I (27th Dynasty, Persian)</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--persia)"></span>Darius II (27th Dynasty, Persian)</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--persia)"></span>Artaxerxes II (27th Dynasty, Persian)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Nectanebo I (30th Dynasty)</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Nectanebo II (30th Dynasty)</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Abu Simbel</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Philae</span>
