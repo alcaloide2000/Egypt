@@ -1288,7 +1288,7 @@
   <header class="masthead">
     <p class="eyebrow">Upper &amp; Lower Egypt · 3500&ndash;200 BC</p>
     <h1>The Nile, Site by Site and Century by Century</h1>
-    <p class="lede">Ninety-four sites, monuments and rulers across three thousand years, from Predynastic Hierakonpolis to Ptolemaic Philae and the pyramids of Kush at Meroë: a locator map showing where each one stands on the Nile, paired below with a timeline of when each was built or reigned — including the crowded quarter-century of pyramid experiments between Djoser's first steps at Saqqara and Khufu's Great Pyramid at Giza.</p>
+    <p class="lede">Ninety-five sites, monuments and rulers across three thousand years, from Predynastic Hierakonpolis to Ptolemaic Philae and the pyramids of Kush at Meroë: a locator map showing where each one stands on the Nile, paired below with a timeline of when each was built or reigned — including the crowded quarter-century of pyramid experiments between Djoser's first steps at Saqqara and Khufu's Great Pyramid at Giza.</p>
   </header>
 
   <form class="search-bar" id="siteSearchForm" role="search" aria-label="Search sites by word">
@@ -1313,7 +1313,7 @@
       <div class="map-frame">
       <svg viewBox="0 0 600 860" role="img" aria-labelledby="mapTitle mapDesc">
         <title id="mapTitle">Map of the Nile Valley from Cairo to Abu Simbel</title>
-        <desc id="mapDesc">A schematic north-to-south map of the Nile showing Cairo, Asyut, Luxor, Edfu with Ptolemy III's Temple of Horus, and Aswan, with Alexandria on the north-west coast, founded by Alexander the Great in 331 BC and made the capital by Ptolemy I, where Ptolemy IV built the Sema for Alexander's body, Behbeit el-Hagar in the northern Delta, where Nectanebo II began a granite temple of Isis, Sais in the western Delta, capital of Psamtik I, Naukratis west of it, the Greek trading port of Ahmose II where Nectanebo I set up a stela, and Necho II's canal towards the Red Sea east of it, finished by Darius I, and Pelusium in the north-eastern Delta, where the Persian kings Cambyses II in 525 BC and Artaxerxes III in 343 BC conquered Egypt, then the Great Pyramid of Giza, the sun temples of Abusir, and Saqqara's Step Pyramid of Djoser near Cairo, the older Gisr el-Mudir enclosure, Dahshur's Bent and Red Pyramids, and the collapsed pyramid of Meidum further south, Abydos's royal necropolis and King List between Asyut and Luxor, Hierakonpolis (Nekhen) marked near 25°N as the findspot of the Painted Tomb (Tomb 100), the Narmer Palette, and the Fort of Khasekhemwy, Philae's Temple of Isis and Elephantine's small step pyramid near Aswan, with the Aramaic papyri of Darius II's reign, and the Great Temple of Abu Simbel near the southern edge of the map, where Psamtik II's mercenaries scratched Greek graffiti in 592 BC.</desc>
+        <desc id="mapDesc">A schematic north-to-south map of the Nile showing Cairo, Asyut, Luxor, Edfu with Ptolemy III's Temple of Horus, and Aswan, with Alexandria on the north-west coast, founded by Alexander the Great in 331 BC and made the capital by Ptolemy I, where Ptolemy IV built the Sema for Alexander's body, Rosetta, where the Rosetta Stone of Ptolemy V was found, Behbeit el-Hagar in the northern Delta, where Nectanebo II began a granite temple of Isis, Sais in the western Delta, capital of Psamtik I, Naukratis west of it, the Greek trading port of Ahmose II where Nectanebo I set up a stela, and Necho II's canal towards the Red Sea east of it, finished by Darius I, and Pelusium in the north-eastern Delta, where the Persian kings Cambyses II in 525 BC and Artaxerxes III in 343 BC conquered Egypt, then the Great Pyramid of Giza, the sun temples of Abusir, and Saqqara's Step Pyramid of Djoser near Cairo, the older Gisr el-Mudir enclosure, Dahshur's Bent and Red Pyramids, and the collapsed pyramid of Meidum further south, Abydos's royal necropolis and King List between Asyut and Luxor, Hierakonpolis (Nekhen) marked near 25°N as the findspot of the Painted Tomb (Tomb 100), the Narmer Palette, and the Fort of Khasekhemwy, Philae's Temple of Isis and Elephantine's small step pyramid near Aswan, with the Aramaic papyri of Darius II's reign, and the Great Temple of Abu Simbel near the southern edge of the map, where Psamtik II's mercenaries scratched Greek graffiti in 592 BC.</desc>
 
         <rect x="0" y="0" width="600" height="860" fill="var(--desert)" />
 
@@ -1485,6 +1485,17 @@
             <circle cx="0" cy="-15.5" r="1.3" fill="var(--lapis)" />
             <circle cx="0" cy="0" r="3.2" fill="var(--lapis)" stroke="var(--bg-panel)" stroke-width="1.1" />
           </g>
+        </g>
+
+        <!-- Rosetta (Rashid), on the Rosetta branch of the Nile: findspot of the Rosetta Stone, a decree of Ptolemy V -->
+        <g class="site-marker" transform="translate(228,62)">
+          <circle class="temple-ring" r="5" />
+          <circle class="temple-ring d2" r="5" />
+          <!-- the Stone: a dark slab with its broken top edge -->
+          <path d="M-5,-6 L-5,-19 L-2,-21 L1,-18 L3,-21 L5,-19 L5,-6 Z" fill="var(--ink-soft)" />
+          <g stroke="var(--bg-panel)" stroke-width="0.6" opacity="0.8"><line x1="-3.5" y1="-15" x2="3.5" y2="-15" /><line x1="-3.5" y1="-12" x2="3.5" y2="-12" /><line x1="-3.5" y1="-9" x2="3.5" y2="-9" /></g>
+          <circle cx="0" cy="0" r="4" fill="var(--lapis)" stroke="var(--bg-panel)" stroke-width="1.4" />
+          <text class="temple-label" x="12" y="4">Rosetta</text>
         </g>
 
         <!-- Naukratis, west of Sais: the Greek trading port Ahmose II (Amasis) granted to Greek merchants -->
@@ -2489,6 +2500,51 @@
         <p class="tooltip-caption">
           <strong>Alexandria — Alexander the Great</strong>
           Illustrated coin: after the oracle of Amun at Siwa hailed him as the god's son, Alexander was shown with the ram's horns of Ammon. In 331 BC he founded Alexandria on the coast here.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="hotspot"
+        style="--accent: var(--lapis); left: 38%; top: 7.21%;"
+        aria-describedby="ptolemy5Tooltip"
+        aria-label="Show the Rosetta Stone illustration"
+      ></button>
+
+      <div class="tooltip" id="ptolemy5Tooltip" role="tooltip" style="--accent: var(--lapis); left: 38%; top: 7.21%;">
+        <svg class="illustration" viewBox="0 0 100 128" role="img" aria-labelledby="ptolemy5IllusTitle">
+          <title id="ptolemy5IllusTitle">Illustration of the Rosetta Stone: a broken slab of dark granodiorite with three bands of writing, hieroglyphs at the top, demotic in the middle and Greek at the bottom</title>
+          <defs>
+            <linearGradient id="ptolemy5Stone" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#55524e" />
+              <stop offset="100%" stop-color="#2c2a28" />
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="100" height="128" fill="#e8c88f" opacity="0.4" />
+          <path d="M14,122 L12,40 L20,30 L30,34 L38,18 L52,22 L60,12 L74,20 L84,16 L88,40 L88,122 Z" fill="url(#ptolemy5Stone)" stroke="#161514" stroke-width="1.2" />
+          <!-- hieroglyphs (top, broken) -->
+          <g fill="#cfc6b0" opacity="0.85">
+            <circle cx="24" cy="44" r="1.5" /><rect x="29" y="42" width="3" height="3" /><path d="M36,46 L40,46 L38,42 Z" /><rect x="44" y="42" width="2" height="5" /><circle cx="51" cy="40" r="1.5" /><path d="M56,44 L60,44 L58,40 Z" /><rect x="64" y="38" width="3" height="3" /><circle cx="72" cy="36" r="1.5" /><rect x="78" y="36" width="2" height="5" />
+            <rect x="20" y="50" width="3" height="3" /><circle cx="28" cy="52" r="1.5" /><path d="M33,54 L37,54 L35,50 Z" /><rect x="41" y="50" width="2" height="5" /><rect x="47" y="50" width="3" height="3" /><circle cx="55" cy="52" r="1.5" /><path d="M60,54 L64,54 L62,50 Z" /><rect x="68" y="50" width="2" height="5" /><circle cx="75" cy="52" r="1.5" /><rect x="80" y="50" width="3" height="3" />
+          </g>
+          <line x1="16" y1="62" x2="86" y2="62" stroke="#8a847a" stroke-width="0.6" />
+          <!-- demotic (middle) -->
+          <g stroke="#cfc6b0" stroke-width="1" opacity="0.8" fill="none">
+            <path d="M20,70 q3,-3 6,0 t6,0 l8,0 q3,-3 6,0 l10,0 q2,-2 4,0 t6,0 l10,0" />
+            <path d="M20,78 l6,0 q3,-3 6,0 l10,0 q3,-3 6,0 t6,0 l8,0 q2,-2 4,0 l12,0" />
+            <path d="M20,86 q3,-3 6,0 l12,0 q3,-3 6,0 l6,0 q2,-2 4,0 t6,0 l14,0" />
+          </g>
+          <line x1="16" y1="92" x2="86" y2="92" stroke="#8a847a" stroke-width="0.6" />
+          <!-- Greek (bottom) -->
+          <g font-family="'IBM Plex Mono', monospace" font-size="5.2" fill="#cfc6b0" opacity="0.9">
+            <text x="19" y="100">ΒΑΣΙΛΕΥΟΝΤΟΣ ΤΟΥ ΝΕΟΥ</text>
+            <text x="19" y="107">ΚΑΙ ΠΑΡΑΛΑΒΟΝΤΟΣ ΤΗΝ</text>
+            <text x="19" y="114">ΒΑΣΙΛΕΙΑΝ ΠΑΡΑ ΤΟΥ</text>
+          </g>
+        </svg>
+        <p class="tooltip-caption">
+          <strong>Rosetta — the Rosetta Stone</strong>
+          Illustrated stone: a decree of the priests for Ptolemy V, issued at Memphis in 196 BC in hieroglyphs, demotic and Greek. French soldiers found it at Rosetta in 1799, and it let Champollion decipher hieroglyphs in 1822.
         </p>
       </div>
 
@@ -5150,6 +5206,7 @@
         <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Alexandria, founded by Alexander the Great</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Alexandria, capital of Ptolemy I (Pharos, Library)</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Alexandria, the Sema of Ptolemy IV</span>
+        <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Rosetta, findspot of the Rosetta Stone (Ptolemy V)</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Philae, Isis temple begun by Ptolemy II</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Edfu, Temple of Horus founded by Ptolemy III</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Naukratis, Greek port of Ahmose II</span>
@@ -7421,6 +7478,31 @@
         <a class="wiki-link" style="color: var(--lapis);" href="https://en.wikipedia.org/wiki/Ptolemy_IV_Philopator" target="_blank" rel="noopener noreferrer">Read on Wikipedia ↗</a>
       </div>
 
+      <div class="info-card" id="card-ptolemy5" style="margin-top: 1rem;">
+        <span class="tag" style="color: var(--lapis); border-color: var(--lapis);">PTOLEMAIC DYNASTY · THE ROSETTA STONE</span>
+        <h2>Ptolemy V Epiphanes <span class="ancient-name">— Ptolomeo V Epífanes, "God Manifest"</span></h2>
+        <p>The son of Ptolemy&nbsp;IV and Arsinoe&nbsp;III, who became king at about five years old in 204&nbsp;BC. His father's death was kept secret, his mother was murdered, and the regents Agathocles and Sosibius ruled until an Alexandrian mob tore Agathocles to pieces in 203&nbsp;BC. The weakness was quickly exploited: in the Fifth Syrian War Antiochus&nbsp;III beat the Ptolemaic army at Panium in 200&nbsp;BC and took Judaea and Coele-Syria for good, and the Thebaid stayed in revolt under native pharaohs. In 196&nbsp;BC the king was crowned at Memphis in the Egyptian manner, and a synod of priests there passed a decree in his honour, granting him a cult in return for tax remissions and gifts to the temples. One copy, carved on a slab of granodiorite in hieroglyphs, demotic and Greek, was found by French soldiers at Rosetta in 1799: the Rosetta Stone, now in the British Museum, which let Jean-François Champollion decipher hieroglyphs in 1822. In 186&nbsp;BC his generals finally retook Thebes and captured the rebel pharaoh Ankhwennefer, ending twenty years of revolt. In 193&nbsp;BC he married Cleopatra&nbsp;I, daughter of Antiochus&nbsp;III and the first of the Ptolemaic Cleopatras. He died, probably poisoned, in 180&nbsp;BC.</p>
+        <dl class="coords">
+          <div>
+            <dt>Location</dt>
+            <dd>Memphis (coronation and decree, 196 BC); Rosetta (findspot of the Stone)</dd>
+          </div>
+          <div>
+            <dt>Reign</dt>
+            <dd>204–180 BC</dd>
+          </div>
+          <div>
+            <dt>Dynasty</dt>
+            <dd>Ptolemaic, son of Ptolemy IV</dd>
+          </div>
+          <div>
+            <dt>Significance</dt>
+            <dd>The Rosetta Stone; end of the Theban revolt; loss of Syria</dd>
+          </div>
+        </dl>
+        <a class="wiki-link" style="color: var(--lapis);" href="https://en.wikipedia.org/wiki/Ptolemy_V_Epiphanes" target="_blank" rel="noopener noreferrer">Read on Wikipedia ↗</a>
+      </div>
+
       <div class="info-card" id="card-meroe" style="margin-top: 1rem;">
         <span class="tag" style="color: var(--kush); border-color: var(--kush);">BEYOND EGYPT · KINGDOM OF KUSH</span>
         <h2>Meroë <span class="ancient-name">— Pyramids of Kush</span></h2>
@@ -7475,7 +7557,7 @@
     <div class="chart-panel" aria-label="Timeline of ancient Egyptian monuments, 3500 to 200 BC">
       <svg viewBox="0 0 3097 1000" role="img" aria-labelledby="tlTitle tlDesc">
         <title id="tlTitle">Timeline of ancient Egyptian and Kushite sites, 3500 BC to the 4th century AD</title>
-        <desc id="tlDesc">A broken horizontal timeline from 3500 BC onward. A dense cluster of Old Kingdom pyramid-building sits between 2690 and 2445 BC, following Hierakonpolis's Painted Tomb, the Narmer Palette, and the start of Abydos's royal tombs. After a First Intermediate Period gap, a possibly legendary Mentuhotep I opens the Theban 11th Dynasty around 2135 BC, Intef II pushes north around 2112–2063 BC, Mentuhotep II reunifies Egypt and founds the Middle Kingdom around 2055–2004 BC, Amenemhat I founds the 12th Dynasty and moves the capital north around 1991–1962 BC, his son Senusret I builds the White Chapel at Karnak around 1971–1926 BC, and Amenemhat II's reign, around 1919–1885 BC, is marked by a treasure of Mesopotamian and Aegean silver and lapis lazuli buried at the Temple of Montu in Tod, and Senusret III, the most powerful Middle Kingdom king, fortifies the Nubian border around 1878–1839 BC. A small separate segment marks the Second Intermediate Period: Nubkheperre Intef, a Theban 17th-Dynasty king, around 1571–1565 BC, followed by Kamose, the last king of that line, sailing against the Hyksos around 1555–1550 BC. The New Kingdom segment now opens with Ahmose I, who expels the Hyksos and builds the last native Egyptian pyramid at South Abydos around 1550–1525 BC, alongside his queen Ahmose-Nefertari, later deified and worshipped at Deir el-Medina for roughly four centuries. His son Amenhotep I follows immediately, around 1525–1504 BC, the first king to separate his tomb from his mortuary temple — so thoroughly that his tomb has never been found. Thutmose I follows around 1504–1492 BC, the first king confirmed buried in the Valley of the Kings, who campaigned as far as the Euphrates and raised obelisks at Karnak. His son Thutmose II follows around 1493–1479 BC, husband of Hatshepsut and, since 2025, the subject of the first newly confirmed royal tomb since Tutankhamun's. Hatshepsut herself then rules as pharaoh around 1479–1458 BC, building her Deir el-Bahari temple beside Mentuhotep II's. Thutmose III then rules alone from about 1458–1425 BC, Egypt's most successful military king, whose Karnak Annals record the Battle of Megiddo and roughly sixteen other campaigns. Two generations later, Amenhotep III rules at the height of Egypt's imperial wealth, around 1391–1353 BC, building the largest mortuary temple ever attempted, now reduced to its two Colossi of Memnon. His son Akhenaten follows immediately, around 1353–1336 BC, abandoning Egypt's traditional gods for the sun disc Aten alone and building a new capital at Amarna — a reign later kings erased from the record. After a short gap, Tutankhamun rules as a child king around 1332–1323 BC, restoring the old gods — and his small, hastily built tomb, found nearly untouched in 1922, becomes ancient Egypt's most famous archaeological discovery. The general Horemheb then rules around 1319–1292 BC, finishing the restoration and erasing the Amarna kings from official memory, before naming his own vizier as successor: Ramesses I, who reigns barely a year or two around 1292–1290 BC but founds the 19th Dynasty, and whose own mummy resurfaces in a Canadian museum before returning to Egypt in 2003. His son Seti I then rules around 1290–1279 BC, campaigning abroad, continuing Karnak's Great Hypostyle Hall, building the King List temple at Abydos, and cutting the longest, first fully decorated tomb in the Valley of the Kings. Seti's son Ramesses II then rules an exceptional 66 years, around 1279–1213 BC, fighting the Hittites to a draw at Kadesh before signing history's oldest surviving peace treaty, building Abu Simbel and his own Ramesseum, and fathering over a hundred children. His thirteenth son Merneptah, already old himself, then rules around 1213–1203 BC, defeating a Libyan and Sea Peoples invasion and leaving the Merneptah Stele, whose closing lines carry the oldest known mention of Israel. Merneptah's son Seti II then rules around 1203–1197 BC, contested for years by the rival king Amenmesse in the south, building a small way station for the sacred barques at Karnak, and marrying Twosret, who would later rule Egypt herself. The child king Siptah then reigns around 1197–1191 BC, a club-footed boy ruling in name only under Twosret and the chancellor Bay. Twosret then rules as pharaoh in her own right around 1191–1189 BC, one of Egypt's few female kings, before her tomb and temple are usurped and effaced by her successor Setnakhte, who rules around 1189–1186 BC, restoring order after a period of chaos and founding the 20th Dynasty as father of Ramesses III. Ramesses III then rules around 1186–1155 BC, defeating the invading Sea Peoples at the Battle of the Delta, building Medinet Habu, and dying in a harem conspiracy after the earliest recorded labor strike. Eight more Ramesside kings follow in rapid succession over the next eighty years, a period of increasing decline: Ramesses IV around 1155–1149 BC, who tried his father's assassins; Ramesses V around 1149–1145 BC, whose mummy shows a possible smallpox infection; Ramesses VI around 1145–1137 BC, who usurped his nephew's tomb and inadvertently buried Tutankhamun's entrance under construction debris; Ramesses VII around 1137–1130 BC; Ramesses VIII around 1130–1129 BC, the shortest and least documented reign of the group; Ramesses IX around 1129–1111 BC, whose court documented widespread tomb robbery; Ramesses X around 1111–1107 BC, barely attested; and finally Ramesses XI around 1107–1077 BC, the last king of the New Kingdom, whose reign ends with Egypt splitting between the High Priests of Amun at Thebes and a new line of kings in the north. After the New Kingdom, a short separate segment marks Piye, the king of Kush who ruled from Napata, reigned around 744–714 BC and conquered Egypt around 728 BC, founding its 25th Dynasty, followed by his brother Shabaka, around 705–690 BC, who ruled Egypt directly from Memphis, and by Piye's son Taharqa, 690–664 BC, who fought the Assyrian invasions and was buried under the largest pyramid in Kush, and finally by Tantamani, 664–656 BC, the last Kushite king to rule in Egypt, driven out after the Assyrian sack of Thebes. In parallel from 664 BC, and alone from 656 BC, Psamtik I of Sais reunites Egypt and founds the 26th Dynasty, reigning until 610 BC; his son Necho II follows, 610–595 BC, fighting in the Levant and starting a canal to the Red Sea; then his son Psamtik II, 595–589 BC, who campaigned deep into Nubia in 592 BC; and Ahmose II (Amasis), 570–526 BC, a general who seized the throne from Apries and gave the Greeks their own trading port at Naukratis, dying months before the Persian conquest of 525 BC. A short Persian bar follows: Cambyses II, who conquered Egypt at Pelusium in 525 BC and ruled it as the first king of the 27th Dynasty until 522 BC; then Darius I, 522–486 BC, who finished Necho's canal to the Red Sea; Xerxes I, 486–465 BC, who crushed an Egyptian revolt in 484 BC; Artaxerxes I, 465–424 BC, who faced the revolt of Inaros and an Athenian fleet; Darius II, 423–404 BC, whose reign is lit up by the Aramaic papyri of Elephantine; and Artaxerxes II, recognised in Egypt only from 404 to about 400 BC, as Egypt broke away under Amyrtaeus. After sixty years of independence comes a short 30th Dynasty band with its founder Nectanebo I, 380–362 BC, who beat off a Persian invasion in 373 BC, and Nectanebo II, 360–342 BC, the last native pharaoh, overthrown by the Persian reconquest of 343–342 BC. Two short Persian bars follow: Artaxerxes III, who reconquered Egypt in 343 BC and ruled it until 338 BC, and Darius III, 336–332 BC, whose governor surrendered Egypt to Alexander the Great without a fight; Alexander's own short bar, 332–323 BC, closes the segment. Isolated later points follow after another long gap: Abu Simbel around 1250 BC, within Ramesses II's own reign, Ptolemy I Soter, Alexander's general, king of Egypt 305–282 BC and founder of the Ptolemaic dynasty, his son Ptolemy II Philadelphus, 285–246 BC, who finished the Pharos and built much of Philae's temple of Isis, his son Ptolemy III Euergetes, 246–222 BC, who founded the temple of Horus at Edfu, and Ptolemy IV Philopator, 221–204 BC, victor at Raphia, Philae around 265 BC, and Dendera's temple, begun in 54 BC and finished under Roman rule. Abydos alone spans both the early cluster and the later period, with its King List temple. A final, separate segment marks Meroë, far south in the Kingdom of Kush rather than Egypt itself: a royal pyramid field built from around 270 BC, when King Arkamani is said to have become the first king buried there instead of at Napata, through the 4th century AD.</desc>
+        <desc id="tlDesc">A broken horizontal timeline from 3500 BC onward. A dense cluster of Old Kingdom pyramid-building sits between 2690 and 2445 BC, following Hierakonpolis's Painted Tomb, the Narmer Palette, and the start of Abydos's royal tombs. After a First Intermediate Period gap, a possibly legendary Mentuhotep I opens the Theban 11th Dynasty around 2135 BC, Intef II pushes north around 2112–2063 BC, Mentuhotep II reunifies Egypt and founds the Middle Kingdom around 2055–2004 BC, Amenemhat I founds the 12th Dynasty and moves the capital north around 1991–1962 BC, his son Senusret I builds the White Chapel at Karnak around 1971–1926 BC, and Amenemhat II's reign, around 1919–1885 BC, is marked by a treasure of Mesopotamian and Aegean silver and lapis lazuli buried at the Temple of Montu in Tod, and Senusret III, the most powerful Middle Kingdom king, fortifies the Nubian border around 1878–1839 BC. A small separate segment marks the Second Intermediate Period: Nubkheperre Intef, a Theban 17th-Dynasty king, around 1571–1565 BC, followed by Kamose, the last king of that line, sailing against the Hyksos around 1555–1550 BC. The New Kingdom segment now opens with Ahmose I, who expels the Hyksos and builds the last native Egyptian pyramid at South Abydos around 1550–1525 BC, alongside his queen Ahmose-Nefertari, later deified and worshipped at Deir el-Medina for roughly four centuries. His son Amenhotep I follows immediately, around 1525–1504 BC, the first king to separate his tomb from his mortuary temple — so thoroughly that his tomb has never been found. Thutmose I follows around 1504–1492 BC, the first king confirmed buried in the Valley of the Kings, who campaigned as far as the Euphrates and raised obelisks at Karnak. His son Thutmose II follows around 1493–1479 BC, husband of Hatshepsut and, since 2025, the subject of the first newly confirmed royal tomb since Tutankhamun's. Hatshepsut herself then rules as pharaoh around 1479–1458 BC, building her Deir el-Bahari temple beside Mentuhotep II's. Thutmose III then rules alone from about 1458–1425 BC, Egypt's most successful military king, whose Karnak Annals record the Battle of Megiddo and roughly sixteen other campaigns. Two generations later, Amenhotep III rules at the height of Egypt's imperial wealth, around 1391–1353 BC, building the largest mortuary temple ever attempted, now reduced to its two Colossi of Memnon. His son Akhenaten follows immediately, around 1353–1336 BC, abandoning Egypt's traditional gods for the sun disc Aten alone and building a new capital at Amarna — a reign later kings erased from the record. After a short gap, Tutankhamun rules as a child king around 1332–1323 BC, restoring the old gods — and his small, hastily built tomb, found nearly untouched in 1922, becomes ancient Egypt's most famous archaeological discovery. The general Horemheb then rules around 1319–1292 BC, finishing the restoration and erasing the Amarna kings from official memory, before naming his own vizier as successor: Ramesses I, who reigns barely a year or two around 1292–1290 BC but founds the 19th Dynasty, and whose own mummy resurfaces in a Canadian museum before returning to Egypt in 2003. His son Seti I then rules around 1290–1279 BC, campaigning abroad, continuing Karnak's Great Hypostyle Hall, building the King List temple at Abydos, and cutting the longest, first fully decorated tomb in the Valley of the Kings. Seti's son Ramesses II then rules an exceptional 66 years, around 1279–1213 BC, fighting the Hittites to a draw at Kadesh before signing history's oldest surviving peace treaty, building Abu Simbel and his own Ramesseum, and fathering over a hundred children. His thirteenth son Merneptah, already old himself, then rules around 1213–1203 BC, defeating a Libyan and Sea Peoples invasion and leaving the Merneptah Stele, whose closing lines carry the oldest known mention of Israel. Merneptah's son Seti II then rules around 1203–1197 BC, contested for years by the rival king Amenmesse in the south, building a small way station for the sacred barques at Karnak, and marrying Twosret, who would later rule Egypt herself. The child king Siptah then reigns around 1197–1191 BC, a club-footed boy ruling in name only under Twosret and the chancellor Bay. Twosret then rules as pharaoh in her own right around 1191–1189 BC, one of Egypt's few female kings, before her tomb and temple are usurped and effaced by her successor Setnakhte, who rules around 1189–1186 BC, restoring order after a period of chaos and founding the 20th Dynasty as father of Ramesses III. Ramesses III then rules around 1186–1155 BC, defeating the invading Sea Peoples at the Battle of the Delta, building Medinet Habu, and dying in a harem conspiracy after the earliest recorded labor strike. Eight more Ramesside kings follow in rapid succession over the next eighty years, a period of increasing decline: Ramesses IV around 1155–1149 BC, who tried his father's assassins; Ramesses V around 1149–1145 BC, whose mummy shows a possible smallpox infection; Ramesses VI around 1145–1137 BC, who usurped his nephew's tomb and inadvertently buried Tutankhamun's entrance under construction debris; Ramesses VII around 1137–1130 BC; Ramesses VIII around 1130–1129 BC, the shortest and least documented reign of the group; Ramesses IX around 1129–1111 BC, whose court documented widespread tomb robbery; Ramesses X around 1111–1107 BC, barely attested; and finally Ramesses XI around 1107–1077 BC, the last king of the New Kingdom, whose reign ends with Egypt splitting between the High Priests of Amun at Thebes and a new line of kings in the north. After the New Kingdom, a short separate segment marks Piye, the king of Kush who ruled from Napata, reigned around 744–714 BC and conquered Egypt around 728 BC, founding its 25th Dynasty, followed by his brother Shabaka, around 705–690 BC, who ruled Egypt directly from Memphis, and by Piye's son Taharqa, 690–664 BC, who fought the Assyrian invasions and was buried under the largest pyramid in Kush, and finally by Tantamani, 664–656 BC, the last Kushite king to rule in Egypt, driven out after the Assyrian sack of Thebes. In parallel from 664 BC, and alone from 656 BC, Psamtik I of Sais reunites Egypt and founds the 26th Dynasty, reigning until 610 BC; his son Necho II follows, 610–595 BC, fighting in the Levant and starting a canal to the Red Sea; then his son Psamtik II, 595–589 BC, who campaigned deep into Nubia in 592 BC; and Ahmose II (Amasis), 570–526 BC, a general who seized the throne from Apries and gave the Greeks their own trading port at Naukratis, dying months before the Persian conquest of 525 BC. A short Persian bar follows: Cambyses II, who conquered Egypt at Pelusium in 525 BC and ruled it as the first king of the 27th Dynasty until 522 BC; then Darius I, 522–486 BC, who finished Necho's canal to the Red Sea; Xerxes I, 486–465 BC, who crushed an Egyptian revolt in 484 BC; Artaxerxes I, 465–424 BC, who faced the revolt of Inaros and an Athenian fleet; Darius II, 423–404 BC, whose reign is lit up by the Aramaic papyri of Elephantine; and Artaxerxes II, recognised in Egypt only from 404 to about 400 BC, as Egypt broke away under Amyrtaeus. After sixty years of independence comes a short 30th Dynasty band with its founder Nectanebo I, 380–362 BC, who beat off a Persian invasion in 373 BC, and Nectanebo II, 360–342 BC, the last native pharaoh, overthrown by the Persian reconquest of 343–342 BC. Two short Persian bars follow: Artaxerxes III, who reconquered Egypt in 343 BC and ruled it until 338 BC, and Darius III, 336–332 BC, whose governor surrendered Egypt to Alexander the Great without a fight; Alexander's own short bar, 332–323 BC, closes the segment. Isolated later points follow after another long gap: Abu Simbel around 1250 BC, within Ramesses II's own reign, Ptolemy I Soter, Alexander's general, king of Egypt 305–282 BC and founder of the Ptolemaic dynasty, his son Ptolemy II Philadelphus, 285–246 BC, who finished the Pharos and built much of Philae's temple of Isis, his son Ptolemy III Euergetes, 246–222 BC, who founded the temple of Horus at Edfu, Ptolemy IV Philopator, 221–204 BC, victor at Raphia, and Ptolemy V Epiphanes, 204–180 BC, king of the Rosetta Stone, Philae around 265 BC, and Dendera's temple, begun in 54 BC and finished under Roman rule. Abydos alone spans both the early cluster and the later period, with its King List temple. A final, separate segment marks Meroë, far south in the Kingdom of Kush rather than Egypt itself: a royal pyramid field built from around 270 BC, when King Arkamani is said to have become the first king buried there instead of at Napata, through the 4th century AD.</desc>
 
         <!-- era bands -->
         <rect x="80" y="55" width="300" height="245" fill="var(--sand-line)" opacity="0.22" />
@@ -7928,9 +8010,9 @@
         <!-- Serapeum: still active in the Ptolemaic period, contemporary with Philae -->
         <a href="#card-serapeum" class="tl-link" aria-label="Jump to the Serapeum card">
           <circle cx="2760" cy="200" r="4" fill="var(--bg-panel)" stroke="var(--indigo)" stroke-width="1.8" />
-          <line x1="2760" y1="204" x2="2760" y2="332" stroke="var(--indigo)" class="tl-leader" stroke-dasharray="2 2" />
-          <text class="tl-name" x="2760" y="345" text-anchor="middle" fill="var(--indigo)">Serapeum still active</text>
-          <text class="tl-date" x="2760" y="359" text-anchor="middle">Apis bulls, since c. 1390 BC</text>
+          <line x1="2760" y1="204" x2="2760" y2="367" stroke="var(--indigo)" class="tl-leader" stroke-dasharray="2 2" />
+          <text class="tl-name" x="2760" y="380" text-anchor="middle" fill="var(--indigo)">Serapeum still active</text>
+          <text class="tl-date" x="2760" y="394" text-anchor="middle">Apis bulls, since c. 1390 BC</text>
         </a>
 
         <!-- Ptolemy I Soter: satrap from 323 BC, king 305–282 BC; drawn in a lane just under the axis, below Philae's bar -->
@@ -7943,23 +8025,30 @@
         <!-- Ptolemy II Philadelphus: co-ruler from 285 BC, alone 282–246 BC; same lane under the axis -->
         <a href="#card-ptolemy2" class="tl-link" aria-label="Jump to the Ptolemy II card">
           <rect x="2645" y="205" width="21" height="5" rx="2.5" fill="var(--lapis)" />
-          <line x1="2660" y1="210" x2="2660" y2="297" stroke="var(--lapis)" class="tl-leader" />
-          <text class="tl-name" x="2656" y="310" fill="var(--lapis)">Ptolemy II</text>
-          <text class="tl-date" x="2656" y="324">285–246 BC</text>
+          <line x1="2660" y1="210" x2="2660" y2="332" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2656" y="345" fill="var(--lapis)">Ptolemy II</text>
+          <text class="tl-date" x="2656" y="359">285–246 BC</text>
         </a>
         <!-- Ptolemy III Euergetes: 246–222 BC; same lane under the axis -->
         <a href="#card-ptolemy3" class="tl-link" aria-label="Jump to the Ptolemy III card">
           <rect x="2666" y="205" width="14" height="5" rx="2.5" fill="var(--lapis)" />
-          <line x1="2676" y1="210" x2="2676" y2="262" stroke="var(--lapis)" class="tl-leader" />
-          <text class="tl-name" x="2672" y="275" fill="var(--lapis)">Ptolemy III</text>
-          <text class="tl-date" x="2672" y="289">246–222 BC</text>
+          <line x1="2676" y1="210" x2="2676" y2="297" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2672" y="310" fill="var(--lapis)">Ptolemy III</text>
+          <text class="tl-date" x="2672" y="324">246–222 BC</text>
         </a>
         <!-- Ptolemy IV Philopator: 221–204 BC; same lane under the axis -->
         <a href="#card-ptolemy4" class="tl-link" aria-label="Jump to the Ptolemy IV card">
           <rect x="2681" y="205" width="10" height="5" rx="2.5" fill="var(--lapis)" />
-          <line x1="2686" y1="210" x2="2686" y2="228" stroke="var(--lapis)" class="tl-leader" />
-          <text class="tl-name" x="2682" y="240" fill="var(--lapis)">Ptolemy IV</text>
-          <text class="tl-date" x="2682" y="254">221–204 BC</text>
+          <line x1="2686" y1="210" x2="2686" y2="262" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2682" y="275" fill="var(--lapis)">Ptolemy IV</text>
+          <text class="tl-date" x="2682" y="289">221–204 BC</text>
+        </a>
+        <!-- Ptolemy V Epiphanes: 204–180 BC, the Rosetta Stone; same lane under the axis -->
+        <a href="#card-ptolemy5" class="tl-link" aria-label="Jump to the Ptolemy V card">
+          <rect x="2691" y="205" width="14" height="5" rx="2.5" fill="var(--lapis)" />
+          <line x1="2700" y1="210" x2="2700" y2="228" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2696" y="240" fill="var(--lapis)">Ptolemy V</text>
+          <text class="tl-date" x="2696" y="254">204–180 BC</text>
         </a>
 
         <!-- Dendera: point, begun well after Philae, continues past this chart's scope into Roman rule -->
@@ -8223,6 +8312,7 @@
       <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolemy II Philadelphus (Ptolemaic)</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolemy III Euergetes (Ptolemaic)</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolemy IV Philopator (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolemy V Epiphanes (Ptolemaic)</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Abu Simbel</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Philae</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Dendera</span>
