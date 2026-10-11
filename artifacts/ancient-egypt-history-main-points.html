@@ -1169,7 +1169,7 @@
   <header class="masthead">
     <p class="eyebrow">Upper &amp; Lower Egypt · 3500&ndash;200 BC</p>
     <h1>The Nile, Site by Site and Century by Century</h1>
-    <p class="lede">Seventy-four sites, monuments and rulers across three thousand years, from Predynastic Hierakonpolis to Ptolemaic Philae and the pyramids of Kush at Meroë: a locator map showing where each one stands on the Nile, paired below with a timeline of when each was built or reigned — including the crowded quarter-century of pyramid experiments between Djoser's first steps at Saqqara and Khufu's Great Pyramid at Giza.</p>
+    <p class="lede">Seventy-five sites, monuments and rulers across three thousand years, from Predynastic Hierakonpolis to Ptolemaic Philae and the pyramids of Kush at Meroë: a locator map showing where each one stands on the Nile, paired below with a timeline of when each was built or reigned — including the crowded quarter-century of pyramid experiments between Djoser's first steps at Saqqara and Khufu's Great Pyramid at Giza.</p>
   </header>
 
   <form class="search-bar" id="siteSearchForm" role="search" aria-label="Search sites by word">
@@ -3921,7 +3921,7 @@
       <div class="map-frame" style="margin-top: 0.4rem;">
         <svg viewBox="0 0 600 170" role="img" aria-labelledby="meroeMapTitle meroeMapDesc">
           <title id="meroeMapTitle">Inset map locating el-Kurru, Nuri and Meroë, far south of Egypt in the Kingdom of Kush</title>
-          <desc id="meroeMapDesc">A small inset, separate from the main map above, showing Meroë on the Nile's east bank in Sudan, roughly 650&nbsp;km south of Abu Simbel and near the river's sixth cataract — site of the Kushite pyramid fields — and, downstream near Napata, el-Kurru, where Piye and his brother Shabaka were buried under pyramids, and nearby Nuri, where Taharqa was buried under the largest pyramid in Kush.</desc>
+          <desc id="meroeMapDesc">A small inset, separate from the main map above, showing Meroë on the Nile's east bank in Sudan, roughly 650&nbsp;km south of Abu Simbel and near the river's sixth cataract — site of the Kushite pyramid fields — and, downstream near Napata, el-Kurru, where Piye, his brother Shabaka and Tantamani were buried, and nearby Nuri, where Taharqa was buried under the largest pyramid in Kush.</desc>
 
           <rect x="0" y="0" width="600" height="170" fill="var(--desert)" />
           <line class="graticule" x1="10" y1="4" x2="590" y2="4" />
@@ -3941,13 +3941,21 @@
             <path d="M-4,-4 L0,-20 L4,-4 Z" fill="var(--kush)" />
             <circle cx="0" cy="0" r="4.5" fill="var(--kush)" stroke="var(--bg-panel)" stroke-width="1.4" />
             <text class="kush-label" x="-12" y="4" text-anchor="end">El-Kurru</text>
-            <text class="kush-label sub" x="-12" y="16" text-anchor="end">Pyramids of Piye &amp; Shabaka · near Napata</text>
+            <text class="kush-label sub" x="-12" y="16" text-anchor="end">Royal tombs: Piye, Shabaka, Tantamani</text>
 
             <!-- Shabaka, Piye's brother and successor, buried in his own pyramid at el-Kurru -->
             <g transform="translate(10,-9)">
               <circle class="palette-ring" r="3.8" />
               <circle class="palette-ring d2" r="3.8" />
               <path d="M-3,-3 L0,-14 L3,-3 Z" fill="var(--kush)" opacity="0.85" />
+              <circle cx="0" cy="0" r="3.2" fill="var(--kush)" stroke="var(--bg-panel)" stroke-width="1.1" />
+            </g>
+
+            <!-- Tantamani, last Kushite king in Egypt, buried here in a tomb with painted chambers -->
+            <g transform="translate(16,10)">
+              <circle class="palette-ring" r="3.8" />
+              <circle class="palette-ring d2" r="3.8" />
+              <rect x="-3.5" y="-11" width="7" height="8" fill="var(--kush)" opacity="0.85" />
               <circle cx="0" cy="0" r="3.2" fill="var(--kush)" stroke="var(--bg-panel)" stroke-width="1.1" />
             </g>
           </g>
@@ -4110,6 +4118,46 @@
         <button
           type="button"
           class="hotspot"
+          style="--accent: var(--kush); left: 51.17%; top: 42.35%;"
+          aria-describedby="tantamaniTooltip"
+          aria-label="Show the painted tomb of Tantamani illustration"
+        ></button>
+
+        <div class="tooltip" id="tantamaniTooltip" role="tooltip" style="--accent: var(--kush); left: 51.17%; top: 42.35%;">
+          <svg class="illustration" viewBox="0 0 100 128" role="img" aria-labelledby="tantamaniIllusTitle">
+            <title id="tantamaniIllusTitle">Illustration of the painted burial chamber of Tantamani at el-Kurru: the king led by a jackal-headed god beneath a blue ceiling of yellow stars</title>
+            <rect x="6" y="8" width="88" height="112" fill="#e9dcc4" stroke="#8a6a3a" stroke-width="1.4" />
+            <rect x="6" y="8" width="88" height="26" fill="#2f4f7a" />
+            <g fill="#f2cf5b">
+              <path d="M18,16 l1.2,2.6 2.8,0.3 -2.1,1.9 0.6,2.7 -2.5,-1.4 -2.5,1.4 0.6,-2.7 -2.1,-1.9 2.8,-0.3 Z" />
+              <path d="M38,20 l1.2,2.6 2.8,0.3 -2.1,1.9 0.6,2.7 -2.5,-1.4 -2.5,1.4 0.6,-2.7 -2.1,-1.9 2.8,-0.3 Z" />
+              <path d="M58,15 l1.2,2.6 2.8,0.3 -2.1,1.9 0.6,2.7 -2.5,-1.4 -2.5,1.4 0.6,-2.7 -2.1,-1.9 2.8,-0.3 Z" />
+              <path d="M78,20 l1.2,2.6 2.8,0.3 -2.1,1.9 0.6,2.7 -2.5,-1.4 -2.5,1.4 0.6,-2.7 -2.1,-1.9 2.8,-0.3 Z" />
+            </g>
+            <!-- jackal-headed god leading the king by the hand -->
+            <g fill="#2a2420">
+              <path d="M30,108 L30,62 C30,56 33,52 37,52 C41,52 44,56 44,62 L44,108 Z" />
+              <path d="M33,52 L35,40 L38,47 L42,41 L41,52 Z" />
+            </g>
+            <!-- the king: dark skin, white kilt, Kushite cap crown with twin uraei -->
+            <g>
+              <path d="M56,108 L56,64 C56,58 59,54 63,54 C67,54 70,58 70,64 L70,108 Z" fill="#6b3a24" />
+              <rect x="55" y="80" width="16" height="14" fill="#f4efe4" />
+              <path d="M57,54 C57,46 69,46 69,54 Z" fill="#c9a227" />
+              <circle cx="60" cy="47" r="1.4" fill="var(--kush)" /><circle cx="66" cy="47" r="1.4" fill="var(--kush)" />
+            </g>
+            <line x1="44" y1="70" x2="56" y2="70" stroke="#2a2420" stroke-width="2" />
+            <rect x="6" y="108" width="88" height="12" fill="#c9a46c" opacity="0.6" />
+          </svg>
+          <p class="tooltip-caption">
+            <strong>El-Kurru — the painted tomb of Tantamani</strong>
+            Illustrated chamber: his burial chambers still keep their paintings of the king with the gods under a starry ceiling.
+          </p>
+        </div>
+
+        <button
+          type="button"
+          class="hotspot"
           style="--accent: var(--kush); left: 50%; top: 77.65%;"
           aria-describedby="meroeTooltip"
           aria-label="Show the Meroe pyramids illustration"
@@ -4187,7 +4235,7 @@
         <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Sheikh Abd el-Qurna, Tombs of the Nobles</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Lisht, pyramids of Amenemhat I &amp; Senusret I</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Tod, Temple of Montu (Tod Treasure)</span>
-        <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>El-Kurru, pyramids of Piye &amp; Shabaka</span>
+        <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>El-Kurru, tombs of Piye, Shabaka &amp; Tantamani</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Nuri, pyramid of Taharqa</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Meroë Pyramids, Kingdom of Kush</span>
       </div>
@@ -5949,6 +5997,31 @@
         <a class="wiki-link" style="color: var(--kush);" href="https://en.wikipedia.org/wiki/Taharqa" target="_blank" rel="noopener noreferrer">Read on Wikipedia ↗</a>
       </div>
 
+      <div class="info-card" id="card-tantamani" style="margin-top: 1rem;">
+        <span class="tag" style="color: var(--kush); border-color: var(--kush);">25TH DYNASTY · THE LAST IN EGYPT</span>
+        <h2>Tantamani <span class="ancient-name">— Tanutamani, Tanutamun, Bakare</span></h2>
+        <p>Taharqa's successor and probably a son of Shabaka, he was the last Kushite king to rule in Egypt. His Dream Stela, found at Gebel Barkal in 1862 and now in the Egyptian Museum, Cairo, tells how in his first year he dreamed of two serpents, one on his right and one on his left, and took it as a sign that he would rule both Upper and Lower Egypt. He marched north in 664&nbsp;BC, was welcomed at Elephantine and Thebes, retook Memphis from the Assyrians' Egyptian vassals and received the Delta princes' submission. The answer came quickly: Ashurbanipal's army drove him south again and sacked Thebes in 663&nbsp;BC, a disaster remembered in the Bible's Book of Nahum. Thebes still counted his reign for a few more years, until Psamtik&nbsp;I of Sais took control of all Egypt in 656&nbsp;BC, ending the 25th Dynasty there. Tantamani went on ruling Kush from Napata and was buried at el-Kurru, where his burial chambers still keep their vivid paintings of the king with the gods.</p>
+        <dl class="coords">
+          <div>
+            <dt>Location</dt>
+            <dd>El-Kurru (painted tomb) and Gebel Barkal (Dream Stela), near Napata, Sudan</dd>
+          </div>
+          <div>
+            <dt>Reign</dt>
+            <dd>664–656 BC in Egypt; in Kush until c. 653 BC</dd>
+          </div>
+          <div>
+            <dt>Dynasty</dt>
+            <dd>25th, Kushite; last of the line in Egypt</dd>
+          </div>
+          <div>
+            <dt>Significance</dt>
+            <dd>Dream Stela; lost Egypt after the Assyrian sack of Thebes</dd>
+          </div>
+        </dl>
+        <a class="wiki-link" style="color: var(--kush);" href="https://en.wikipedia.org/wiki/Tantamani" target="_blank" rel="noopener noreferrer">Read on Wikipedia ↗</a>
+      </div>
+
       <div class="info-card" id="card-meroe" style="margin-top: 1rem;">
         <span class="tag" style="color: var(--kush); border-color: var(--kush);">BEYOND EGYPT · KINGDOM OF KUSH</span>
         <h2>Meroë <span class="ancient-name">— Pyramids of Kush</span></h2>
@@ -6003,7 +6076,7 @@
     <div class="chart-panel" aria-label="Timeline of ancient Egyptian monuments, 3500 to 200 BC">
       <svg viewBox="0 0 2710 1000" role="img" aria-labelledby="tlTitle tlDesc">
         <title id="tlTitle">Timeline of ancient Egyptian and Kushite sites, 3500 BC to the 4th century AD</title>
-        <desc id="tlDesc">A broken horizontal timeline from 3500 BC onward. A dense cluster of Old Kingdom pyramid-building sits between 2690 and 2445 BC, following Hierakonpolis's Painted Tomb, the Narmer Palette, and the start of Abydos's royal tombs. After a First Intermediate Period gap, a possibly legendary Mentuhotep I opens the Theban 11th Dynasty around 2135 BC, Intef II pushes north around 2112–2063 BC, Mentuhotep II reunifies Egypt and founds the Middle Kingdom around 2055–2004 BC, Amenemhat I founds the 12th Dynasty and moves the capital north around 1991–1962 BC, his son Senusret I builds the White Chapel at Karnak around 1971–1926 BC, and Amenemhat II's reign, around 1919–1885 BC, is marked by a treasure of Mesopotamian and Aegean silver and lapis lazuli buried at the Temple of Montu in Tod, and Senusret III, the most powerful Middle Kingdom king, fortifies the Nubian border around 1878–1839 BC. A small separate segment marks the Second Intermediate Period: Nubkheperre Intef, a Theban 17th-Dynasty king, around 1571–1565 BC, followed by Kamose, the last king of that line, sailing against the Hyksos around 1555–1550 BC. The New Kingdom segment now opens with Ahmose I, who expels the Hyksos and builds the last native Egyptian pyramid at South Abydos around 1550–1525 BC, alongside his queen Ahmose-Nefertari, later deified and worshipped at Deir el-Medina for roughly four centuries. His son Amenhotep I follows immediately, around 1525–1504 BC, the first king to separate his tomb from his mortuary temple — so thoroughly that his tomb has never been found. Thutmose I follows around 1504–1492 BC, the first king confirmed buried in the Valley of the Kings, who campaigned as far as the Euphrates and raised obelisks at Karnak. His son Thutmose II follows around 1493–1479 BC, husband of Hatshepsut and, since 2025, the subject of the first newly confirmed royal tomb since Tutankhamun's. Hatshepsut herself then rules as pharaoh around 1479–1458 BC, building her Deir el-Bahari temple beside Mentuhotep II's. Thutmose III then rules alone from about 1458–1425 BC, Egypt's most successful military king, whose Karnak Annals record the Battle of Megiddo and roughly sixteen other campaigns. Two generations later, Amenhotep III rules at the height of Egypt's imperial wealth, around 1391–1353 BC, building the largest mortuary temple ever attempted, now reduced to its two Colossi of Memnon. His son Akhenaten follows immediately, around 1353–1336 BC, abandoning Egypt's traditional gods for the sun disc Aten alone and building a new capital at Amarna — a reign later kings erased from the record. After a short gap, Tutankhamun rules as a child king around 1332–1323 BC, restoring the old gods — and his small, hastily built tomb, found nearly untouched in 1922, becomes ancient Egypt's most famous archaeological discovery. The general Horemheb then rules around 1319–1292 BC, finishing the restoration and erasing the Amarna kings from official memory, before naming his own vizier as successor: Ramesses I, who reigns barely a year or two around 1292–1290 BC but founds the 19th Dynasty, and whose own mummy resurfaces in a Canadian museum before returning to Egypt in 2003. His son Seti I then rules around 1290–1279 BC, campaigning abroad, continuing Karnak's Great Hypostyle Hall, building the King List temple at Abydos, and cutting the longest, first fully decorated tomb in the Valley of the Kings. Seti's son Ramesses II then rules an exceptional 66 years, around 1279–1213 BC, fighting the Hittites to a draw at Kadesh before signing history's oldest surviving peace treaty, building Abu Simbel and his own Ramesseum, and fathering over a hundred children. His thirteenth son Merneptah, already old himself, then rules around 1213–1203 BC, defeating a Libyan and Sea Peoples invasion and leaving the Merneptah Stele, whose closing lines carry the oldest known mention of Israel. Merneptah's son Seti II then rules around 1203–1197 BC, contested for years by the rival king Amenmesse in the south, building a small way station for the sacred barques at Karnak, and marrying Twosret, who would later rule Egypt herself. The child king Siptah then reigns around 1197–1191 BC, a club-footed boy ruling in name only under Twosret and the chancellor Bay. Twosret then rules as pharaoh in her own right around 1191–1189 BC, one of Egypt's few female kings, before her tomb and temple are usurped and effaced by her successor Setnakhte, who rules around 1189–1186 BC, restoring order after a period of chaos and founding the 20th Dynasty as father of Ramesses III. Ramesses III then rules around 1186–1155 BC, defeating the invading Sea Peoples at the Battle of the Delta, building Medinet Habu, and dying in a harem conspiracy after the earliest recorded labor strike. Eight more Ramesside kings follow in rapid succession over the next eighty years, a period of increasing decline: Ramesses IV around 1155–1149 BC, who tried his father's assassins; Ramesses V around 1149–1145 BC, whose mummy shows a possible smallpox infection; Ramesses VI around 1145–1137 BC, who usurped his nephew's tomb and inadvertently buried Tutankhamun's entrance under construction debris; Ramesses VII around 1137–1130 BC; Ramesses VIII around 1130–1129 BC, the shortest and least documented reign of the group; Ramesses IX around 1129–1111 BC, whose court documented widespread tomb robbery; Ramesses X around 1111–1107 BC, barely attested; and finally Ramesses XI around 1107–1077 BC, the last king of the New Kingdom, whose reign ends with Egypt splitting between the High Priests of Amun at Thebes and a new line of kings in the north. After the New Kingdom, a short separate segment marks Piye, the king of Kush who ruled from Napata, reigned around 744–714 BC and conquered Egypt around 728 BC, founding its 25th Dynasty, followed by his brother Shabaka, around 705–690 BC, who ruled Egypt directly from Memphis, and by Piye's son Taharqa, 690–664 BC, who fought the Assyrian invasions and was buried under the largest pyramid in Kush. Isolated later points follow after another long gap: Abu Simbel around 1250 BC, within Ramesses II's own reign, Philae around 265 BC, and Dendera's temple, begun in 54 BC and finished under Roman rule. Abydos alone spans both the early cluster and the later period, with its King List temple. A final, separate segment marks Meroë, far south in the Kingdom of Kush rather than Egypt itself: a royal pyramid field built from around 270 BC, when King Arkamani is said to have become the first king buried there instead of at Napata, through the 4th century AD.</desc>
+        <desc id="tlDesc">A broken horizontal timeline from 3500 BC onward. A dense cluster of Old Kingdom pyramid-building sits between 2690 and 2445 BC, following Hierakonpolis's Painted Tomb, the Narmer Palette, and the start of Abydos's royal tombs. After a First Intermediate Period gap, a possibly legendary Mentuhotep I opens the Theban 11th Dynasty around 2135 BC, Intef II pushes north around 2112–2063 BC, Mentuhotep II reunifies Egypt and founds the Middle Kingdom around 2055–2004 BC, Amenemhat I founds the 12th Dynasty and moves the capital north around 1991–1962 BC, his son Senusret I builds the White Chapel at Karnak around 1971–1926 BC, and Amenemhat II's reign, around 1919–1885 BC, is marked by a treasure of Mesopotamian and Aegean silver and lapis lazuli buried at the Temple of Montu in Tod, and Senusret III, the most powerful Middle Kingdom king, fortifies the Nubian border around 1878–1839 BC. A small separate segment marks the Second Intermediate Period: Nubkheperre Intef, a Theban 17th-Dynasty king, around 1571–1565 BC, followed by Kamose, the last king of that line, sailing against the Hyksos around 1555–1550 BC. The New Kingdom segment now opens with Ahmose I, who expels the Hyksos and builds the last native Egyptian pyramid at South Abydos around 1550–1525 BC, alongside his queen Ahmose-Nefertari, later deified and worshipped at Deir el-Medina for roughly four centuries. His son Amenhotep I follows immediately, around 1525–1504 BC, the first king to separate his tomb from his mortuary temple — so thoroughly that his tomb has never been found. Thutmose I follows around 1504–1492 BC, the first king confirmed buried in the Valley of the Kings, who campaigned as far as the Euphrates and raised obelisks at Karnak. His son Thutmose II follows around 1493–1479 BC, husband of Hatshepsut and, since 2025, the subject of the first newly confirmed royal tomb since Tutankhamun's. Hatshepsut herself then rules as pharaoh around 1479–1458 BC, building her Deir el-Bahari temple beside Mentuhotep II's. Thutmose III then rules alone from about 1458–1425 BC, Egypt's most successful military king, whose Karnak Annals record the Battle of Megiddo and roughly sixteen other campaigns. Two generations later, Amenhotep III rules at the height of Egypt's imperial wealth, around 1391–1353 BC, building the largest mortuary temple ever attempted, now reduced to its two Colossi of Memnon. His son Akhenaten follows immediately, around 1353–1336 BC, abandoning Egypt's traditional gods for the sun disc Aten alone and building a new capital at Amarna — a reign later kings erased from the record. After a short gap, Tutankhamun rules as a child king around 1332–1323 BC, restoring the old gods — and his small, hastily built tomb, found nearly untouched in 1922, becomes ancient Egypt's most famous archaeological discovery. The general Horemheb then rules around 1319–1292 BC, finishing the restoration and erasing the Amarna kings from official memory, before naming his own vizier as successor: Ramesses I, who reigns barely a year or two around 1292–1290 BC but founds the 19th Dynasty, and whose own mummy resurfaces in a Canadian museum before returning to Egypt in 2003. His son Seti I then rules around 1290–1279 BC, campaigning abroad, continuing Karnak's Great Hypostyle Hall, building the King List temple at Abydos, and cutting the longest, first fully decorated tomb in the Valley of the Kings. Seti's son Ramesses II then rules an exceptional 66 years, around 1279–1213 BC, fighting the Hittites to a draw at Kadesh before signing history's oldest surviving peace treaty, building Abu Simbel and his own Ramesseum, and fathering over a hundred children. His thirteenth son Merneptah, already old himself, then rules around 1213–1203 BC, defeating a Libyan and Sea Peoples invasion and leaving the Merneptah Stele, whose closing lines carry the oldest known mention of Israel. Merneptah's son Seti II then rules around 1203–1197 BC, contested for years by the rival king Amenmesse in the south, building a small way station for the sacred barques at Karnak, and marrying Twosret, who would later rule Egypt herself. The child king Siptah then reigns around 1197–1191 BC, a club-footed boy ruling in name only under Twosret and the chancellor Bay. Twosret then rules as pharaoh in her own right around 1191–1189 BC, one of Egypt's few female kings, before her tomb and temple are usurped and effaced by her successor Setnakhte, who rules around 1189–1186 BC, restoring order after a period of chaos and founding the 20th Dynasty as father of Ramesses III. Ramesses III then rules around 1186–1155 BC, defeating the invading Sea Peoples at the Battle of the Delta, building Medinet Habu, and dying in a harem conspiracy after the earliest recorded labor strike. Eight more Ramesside kings follow in rapid succession over the next eighty years, a period of increasing decline: Ramesses IV around 1155–1149 BC, who tried his father's assassins; Ramesses V around 1149–1145 BC, whose mummy shows a possible smallpox infection; Ramesses VI around 1145–1137 BC, who usurped his nephew's tomb and inadvertently buried Tutankhamun's entrance under construction debris; Ramesses VII around 1137–1130 BC; Ramesses VIII around 1130–1129 BC, the shortest and least documented reign of the group; Ramesses IX around 1129–1111 BC, whose court documented widespread tomb robbery; Ramesses X around 1111–1107 BC, barely attested; and finally Ramesses XI around 1107–1077 BC, the last king of the New Kingdom, whose reign ends with Egypt splitting between the High Priests of Amun at Thebes and a new line of kings in the north. After the New Kingdom, a short separate segment marks Piye, the king of Kush who ruled from Napata, reigned around 744–714 BC and conquered Egypt around 728 BC, founding its 25th Dynasty, followed by his brother Shabaka, around 705–690 BC, who ruled Egypt directly from Memphis, and by Piye's son Taharqa, 690–664 BC, who fought the Assyrian invasions and was buried under the largest pyramid in Kush, and finally by Tantamani, 664–656 BC, the last Kushite king to rule in Egypt, driven out after the Assyrian sack of Thebes. Isolated later points follow after another long gap: Abu Simbel around 1250 BC, within Ramesses II's own reign, Philae around 265 BC, and Dendera's temple, begun in 54 BC and finished under Roman rule. Abydos alone spans both the early cluster and the later period, with its King List temple. A final, separate segment marks Meroë, far south in the Kingdom of Kush rather than Egypt itself: a royal pyramid field built from around 270 BC, when King Arkamani is said to have become the first king buried there instead of at Napata, through the 4th century AD.</desc>
 
         <!-- era bands -->
         <rect x="80" y="55" width="300" height="245" fill="var(--sand-line)" opacity="0.22" />
@@ -6495,14 +6568,20 @@
         <a href="#card-shabaka" class="tl-link" aria-label="Jump to the Shabaka card">
           <rect x="2107" y="197" width="16" height="6" rx="3" fill="var(--kush)" opacity="0.8" />
           <line x1="2115" y1="203" x2="2115" y2="225" stroke="var(--kush)" class="tl-leader" />
-          <text class="tl-name" x="2111" y="240" fill="var(--kush)">Shabaka</text>
-          <text class="tl-date" x="2111" y="254">c. 705–690 BC</text>
+          <text class="tl-name" x="2119" y="240" text-anchor="end" fill="var(--kush)">Shabaka</text>
+          <text class="tl-date" x="2119" y="254" text-anchor="end">c. 705–690 BC</text>
         </a>
         <a href="#card-taharqa" class="tl-link" aria-label="Jump to the Taharqa card">
           <rect x="2123" y="197" width="28" height="6" rx="3" fill="var(--kush)" />
           <line x1="2137" y1="197" x2="2137" y2="125" stroke="var(--kush)" class="tl-leader" />
           <text class="tl-name" x="2133" y="115" fill="var(--kush)">Taharqa</text>
           <text class="tl-date" x="2133" y="129">690–664 BC</text>
+        </a>
+        <a href="#card-tantamani" class="tl-link" aria-label="Jump to the Tantamani card">
+          <rect x="2152" y="197" width="9" height="6" rx="3" fill="var(--kush)" opacity="0.8" />
+          <line x1="2156" y1="203" x2="2156" y2="260" stroke="var(--kush)" class="tl-leader" />
+          <text class="tl-name" x="2160" y="275" text-anchor="end" fill="var(--kush)">Tantamani</text>
+          <text class="tl-date" x="2160" y="289" text-anchor="end">664–656 BC</text>
         </a>
         <g class="tl-tick"><line x1="2101" y1="200" x2="2101" y2="208" /></g>
         <g class="tl-tick-label" text-anchor="end"><text x="2101" y="222">c. 760&ndash;650 BC</text></g>
@@ -6583,6 +6662,7 @@
       <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Piye (25th Dynasty, Kush)</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Shabaka (25th Dynasty, Kush)</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Taharqa (25th Dynasty, Kush)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Tantamani (25th Dynasty, Kush)</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Abu Simbel</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Philae</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Dendera</span>
