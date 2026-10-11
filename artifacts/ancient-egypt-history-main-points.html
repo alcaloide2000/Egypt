@@ -1169,7 +1169,7 @@
   <header class="masthead">
     <p class="eyebrow">Upper &amp; Lower Egypt · 3500&ndash;200 BC</p>
     <h1>The Nile, Site by Site and Century by Century</h1>
-    <p class="lede">Seventy-seven sites, monuments and rulers across three thousand years, from Predynastic Hierakonpolis to Ptolemaic Philae and the pyramids of Kush at Meroë: a locator map showing where each one stands on the Nile, paired below with a timeline of when each was built or reigned — including the crowded quarter-century of pyramid experiments between Djoser's first steps at Saqqara and Khufu's Great Pyramid at Giza.</p>
+    <p class="lede">Seventy-eight sites, monuments and rulers across three thousand years, from Predynastic Hierakonpolis to Ptolemaic Philae and the pyramids of Kush at Meroë: a locator map showing where each one stands on the Nile, paired below with a timeline of when each was built or reigned — including the crowded quarter-century of pyramid experiments between Djoser's first steps at Saqqara and Khufu's Great Pyramid at Giza.</p>
   </header>
 
   <form class="search-bar" id="siteSearchForm" role="search" aria-label="Search sites by word">
@@ -1194,7 +1194,7 @@
       <div class="map-frame">
       <svg viewBox="0 0 600 860" role="img" aria-labelledby="mapTitle mapDesc">
         <title id="mapTitle">Map of the Nile Valley from Cairo to Abu Simbel</title>
-        <desc id="mapDesc">A schematic north-to-south map of the Nile showing Cairo, Asyut, Luxor, Edfu and Aswan, with Sais in the western Delta, capital of Psamtik I, and Necho II's canal towards the Red Sea east of it, then the Great Pyramid of Giza, the sun temples of Abusir, and Saqqara's Step Pyramid of Djoser near Cairo, the older Gisr el-Mudir enclosure, Dahshur's Bent and Red Pyramids, and the collapsed pyramid of Meidum further south, Abydos's royal necropolis and King List between Asyut and Luxor, Hierakonpolis (Nekhen) marked near 25°N as the findspot of the Painted Tomb (Tomb 100), the Narmer Palette, and the Fort of Khasekhemwy, Philae's Temple of Isis and Elephantine's small step pyramid near Aswan, and the Great Temple of Abu Simbel near the southern edge of the map.</desc>
+        <desc id="mapDesc">A schematic north-to-south map of the Nile showing Cairo, Asyut, Luxor, Edfu and Aswan, with Sais in the western Delta, capital of Psamtik I, and Necho II's canal towards the Red Sea east of it, then the Great Pyramid of Giza, the sun temples of Abusir, and Saqqara's Step Pyramid of Djoser near Cairo, the older Gisr el-Mudir enclosure, Dahshur's Bent and Red Pyramids, and the collapsed pyramid of Meidum further south, Abydos's royal necropolis and King List between Asyut and Luxor, Hierakonpolis (Nekhen) marked near 25°N as the findspot of the Painted Tomb (Tomb 100), the Narmer Palette, and the Fort of Khasekhemwy, Philae's Temple of Isis and Elephantine's small step pyramid near Aswan, and the Great Temple of Abu Simbel near the southern edge of the map, where Psamtik II's mercenaries scratched Greek graffiti in 592 BC.</desc>
 
         <rect x="0" y="0" width="600" height="860" fill="var(--desert)" />
 
@@ -1907,6 +1907,14 @@
           <circle cx="0" cy="0" r="5.5" fill="var(--malachite)" stroke="var(--bg-panel)" stroke-width="1.5" />
           <text class="abu-label" x="12" y="4">Abu Simbel</text>
           <text class="abu-label sub" x="12" y="17">Great Temple of Ramesses II</text>
+
+          <!-- Psamtik II: his mercenaries' Greek graffiti, cut in 592 BC on a colossus's leg -->
+          <g transform="translate(-16,-8)">
+            <circle class="abu-ring" r="3.8" />
+            <circle class="abu-ring d2" r="3.8" />
+            <path d="M-3,-4 L-3,-13 L3,-13 L3,-4 Z M-1.6,-11 L1.6,-11 M-1.6,-8.5 L1.6,-8.5 M-1.6,-6 L1.6,-6" fill="var(--malachite)" stroke="var(--bg-panel)" stroke-width="0.7" opacity="0.9" />
+            <circle cx="0" cy="0" r="3.2" fill="var(--malachite)" stroke="var(--bg-panel)" stroke-width="1.1" />
+          </g>
         </g>
       </svg>
 
@@ -2124,6 +2132,50 @@
         <p class="tooltip-caption">
           <strong>Abu Simbel — Great Temple</strong>
           Illustrated facade: four seated colossi of Ramesses II cut into sandstone, relocated in 1968 to escape Lake Nasser.
+        </p>
+      </div>
+
+      <button
+        type="button"
+        class="hotspot"
+        style="--accent: var(--malachite); left: 39%; top: 94.19%;"
+        aria-describedby="psamtik2Tooltip"
+        aria-label="Show the Greek graffiti of Psamtik II's soldiers at Abu Simbel"
+      ></button>
+
+      <div class="tooltip" id="psamtik2Tooltip" role="tooltip" style="--accent: var(--malachite); left: 39%; top: 94.19%;">
+        <svg class="illustration" viewBox="0 0 100 128" role="img" aria-labelledby="psamtik2IllusTitle">
+          <title id="psamtik2IllusTitle">Illustration of the leg of a seated colossus at Abu Simbel, scratched with Greek letters by Psamtik II's mercenaries</title>
+          <defs>
+            <linearGradient id="psamtik2Stone" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#b98f52" />
+              <stop offset="55%" stop-color="#dcb576" />
+              <stop offset="100%" stop-color="#a47b42" />
+            </linearGradient>
+          </defs>
+          <rect x="0" y="0" width="100" height="128" fill="#e8c88f" opacity="0.4" />
+          <!-- the colossus's knee and shin, with the throne block behind -->
+          <rect x="6" y="10" width="20" height="112" fill="#8f6f3e" opacity="0.55" />
+          <path d="M22,122 L22,30 C22,14 36,6 52,6 C68,6 80,14 80,30 L80,122 Z" fill="url(#psamtik2Stone)" stroke="#5c451f" stroke-width="1.3" />
+          <path d="M22,32 C40,26 62,26 80,32" fill="none" stroke="#5c451f" stroke-width="0.9" opacity="0.6" />
+          <path d="M14,122 L88,122 L88,116 L14,116 Z" fill="#7a5c30" />
+          <!-- scratched Greek graffiti -->
+          <g font-family="'IBM Plex Mono', monospace" font-size="7.2" fill="#4a3518" opacity="0.85">
+            <text x="28" y="46">ΒΑΣΙΛΕΟΣ</text>
+            <text x="28" y="56">ΕΛΘΟΝΤΟΣ</text>
+            <text x="28" y="66">ΕΣ ΕΛΕΦΑΝ</text>
+            <text x="28" y="76">ΤΙΝΑΝ ΨΑ</text>
+            <text x="28" y="86">ΜΑΤΙΧΟ</text>
+          </g>
+          <g stroke="#4a3518" stroke-width="0.6" opacity="0.5">
+            <line x1="30" y1="96" x2="56" y2="96" />
+            <line x1="30" y1="102" x2="66" y2="102" />
+            <line x1="30" y1="108" x2="48" y2="108" />
+          </g>
+        </svg>
+        <p class="tooltip-caption">
+          <strong>Abu Simbel — graffiti of Psamtik II's army</strong>
+          Illustrated leg of a colossus: Greek mercenaries returning from his Nubian campaign of 592 BC scratched their names on it, "when King Psammetichus came to Elephantine".
         </p>
       </div>
 
@@ -4338,6 +4390,7 @@
         <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Tod, Temple of Montu (Tod Treasure)</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Sais, capital of Psamtik I (26th Dynasty)</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Wadi Tumilat, canal of Necho II</span>
+        <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Abu Simbel, graffiti of Psamtik II's army</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>El-Kurru, tombs of Piye, Shabaka &amp; Tantamani</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Nuri, pyramid of Taharqa</span>
         <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Meroë Pyramids, Kingdom of Kush</span>
@@ -6175,6 +6228,31 @@
         <a class="wiki-link" style="color: var(--malachite);" href="https://en.wikipedia.org/wiki/Necho_II" target="_blank" rel="noopener noreferrer">Read on Wikipedia ↗</a>
       </div>
 
+      <div class="info-card" id="card-psamtik2" style="margin-top: 1rem;">
+        <span class="tag" style="color: var(--malachite); border-color: var(--malachite);">26TH DYNASTY · NUBIAN CAMPAIGN</span>
+        <h2>Psamtik II <span class="ancient-name">— Psammetichus II, Psamético II, Neferibre</span></h2>
+        <p>Necho II's son, who reigned only six years. His best-known act was a campaign deep into Nubia in 592&nbsp;BC against the Kushite king Aspelta, with Egyptian troops under a general named Amasis and foreign troops under Potasimto. The army reached at least the region of the third cataract, and perhaps Napata itself. On the way back, Greek, Carian and Phoenician mercenaries scratched their names on the legs of the colossi of Ramesses&nbsp;II at Abu Simbel; the longest Greek graffito begins "When King Psammetichus came to Elephantine…" and is one of the oldest Greek inscriptions known. At home Psamtik had the names of the Kushite kings of the 25th Dynasty hacked out of their monuments, and in his first year his daughter Ankhnesneferibre was adopted at Thebes as heir to the God's Wife of Amun. An obelisk he raised at Heliopolis was taken to Rome by Augustus and stands today in Piazza di Montecitorio. His son Apries succeeded him.</p>
+        <dl class="coords">
+          <div>
+            <dt>Location</dt>
+            <dd>Sais (capital); graffiti at Abu Simbel</dd>
+          </div>
+          <div>
+            <dt>Reign</dt>
+            <dd>595–589 BC</dd>
+          </div>
+          <div>
+            <dt>Dynasty</dt>
+            <dd>26th (Saite), son of Necho II</dd>
+          </div>
+          <div>
+            <dt>Significance</dt>
+            <dd>Nubian campaign of 592 BC; among the oldest Greek inscriptions</dd>
+          </div>
+        </dl>
+        <a class="wiki-link" style="color: var(--malachite);" href="https://en.wikipedia.org/wiki/Psamtik_II" target="_blank" rel="noopener noreferrer">Read on Wikipedia ↗</a>
+      </div>
+
       <div class="info-card" id="card-meroe" style="margin-top: 1rem;">
         <span class="tag" style="color: var(--kush); border-color: var(--kush);">BEYOND EGYPT · KINGDOM OF KUSH</span>
         <h2>Meroë <span class="ancient-name">— Pyramids of Kush</span></h2>
@@ -6229,7 +6307,7 @@
     <div class="chart-panel" aria-label="Timeline of ancient Egyptian monuments, 3500 to 200 BC">
       <svg viewBox="0 0 2775 1000" role="img" aria-labelledby="tlTitle tlDesc">
         <title id="tlTitle">Timeline of ancient Egyptian and Kushite sites, 3500 BC to the 4th century AD</title>
-        <desc id="tlDesc">A broken horizontal timeline from 3500 BC onward. A dense cluster of Old Kingdom pyramid-building sits between 2690 and 2445 BC, following Hierakonpolis's Painted Tomb, the Narmer Palette, and the start of Abydos's royal tombs. After a First Intermediate Period gap, a possibly legendary Mentuhotep I opens the Theban 11th Dynasty around 2135 BC, Intef II pushes north around 2112–2063 BC, Mentuhotep II reunifies Egypt and founds the Middle Kingdom around 2055–2004 BC, Amenemhat I founds the 12th Dynasty and moves the capital north around 1991–1962 BC, his son Senusret I builds the White Chapel at Karnak around 1971–1926 BC, and Amenemhat II's reign, around 1919–1885 BC, is marked by a treasure of Mesopotamian and Aegean silver and lapis lazuli buried at the Temple of Montu in Tod, and Senusret III, the most powerful Middle Kingdom king, fortifies the Nubian border around 1878–1839 BC. A small separate segment marks the Second Intermediate Period: Nubkheperre Intef, a Theban 17th-Dynasty king, around 1571–1565 BC, followed by Kamose, the last king of that line, sailing against the Hyksos around 1555–1550 BC. The New Kingdom segment now opens with Ahmose I, who expels the Hyksos and builds the last native Egyptian pyramid at South Abydos around 1550–1525 BC, alongside his queen Ahmose-Nefertari, later deified and worshipped at Deir el-Medina for roughly four centuries. His son Amenhotep I follows immediately, around 1525–1504 BC, the first king to separate his tomb from his mortuary temple — so thoroughly that his tomb has never been found. Thutmose I follows around 1504–1492 BC, the first king confirmed buried in the Valley of the Kings, who campaigned as far as the Euphrates and raised obelisks at Karnak. His son Thutmose II follows around 1493–1479 BC, husband of Hatshepsut and, since 2025, the subject of the first newly confirmed royal tomb since Tutankhamun's. Hatshepsut herself then rules as pharaoh around 1479–1458 BC, building her Deir el-Bahari temple beside Mentuhotep II's. Thutmose III then rules alone from about 1458–1425 BC, Egypt's most successful military king, whose Karnak Annals record the Battle of Megiddo and roughly sixteen other campaigns. Two generations later, Amenhotep III rules at the height of Egypt's imperial wealth, around 1391–1353 BC, building the largest mortuary temple ever attempted, now reduced to its two Colossi of Memnon. His son Akhenaten follows immediately, around 1353–1336 BC, abandoning Egypt's traditional gods for the sun disc Aten alone and building a new capital at Amarna — a reign later kings erased from the record. After a short gap, Tutankhamun rules as a child king around 1332–1323 BC, restoring the old gods — and his small, hastily built tomb, found nearly untouched in 1922, becomes ancient Egypt's most famous archaeological discovery. The general Horemheb then rules around 1319–1292 BC, finishing the restoration and erasing the Amarna kings from official memory, before naming his own vizier as successor: Ramesses I, who reigns barely a year or two around 1292–1290 BC but founds the 19th Dynasty, and whose own mummy resurfaces in a Canadian museum before returning to Egypt in 2003. His son Seti I then rules around 1290–1279 BC, campaigning abroad, continuing Karnak's Great Hypostyle Hall, building the King List temple at Abydos, and cutting the longest, first fully decorated tomb in the Valley of the Kings. Seti's son Ramesses II then rules an exceptional 66 years, around 1279–1213 BC, fighting the Hittites to a draw at Kadesh before signing history's oldest surviving peace treaty, building Abu Simbel and his own Ramesseum, and fathering over a hundred children. His thirteenth son Merneptah, already old himself, then rules around 1213–1203 BC, defeating a Libyan and Sea Peoples invasion and leaving the Merneptah Stele, whose closing lines carry the oldest known mention of Israel. Merneptah's son Seti II then rules around 1203–1197 BC, contested for years by the rival king Amenmesse in the south, building a small way station for the sacred barques at Karnak, and marrying Twosret, who would later rule Egypt herself. The child king Siptah then reigns around 1197–1191 BC, a club-footed boy ruling in name only under Twosret and the chancellor Bay. Twosret then rules as pharaoh in her own right around 1191–1189 BC, one of Egypt's few female kings, before her tomb and temple are usurped and effaced by her successor Setnakhte, who rules around 1189–1186 BC, restoring order after a period of chaos and founding the 20th Dynasty as father of Ramesses III. Ramesses III then rules around 1186–1155 BC, defeating the invading Sea Peoples at the Battle of the Delta, building Medinet Habu, and dying in a harem conspiracy after the earliest recorded labor strike. Eight more Ramesside kings follow in rapid succession over the next eighty years, a period of increasing decline: Ramesses IV around 1155–1149 BC, who tried his father's assassins; Ramesses V around 1149–1145 BC, whose mummy shows a possible smallpox infection; Ramesses VI around 1145–1137 BC, who usurped his nephew's tomb and inadvertently buried Tutankhamun's entrance under construction debris; Ramesses VII around 1137–1130 BC; Ramesses VIII around 1130–1129 BC, the shortest and least documented reign of the group; Ramesses IX around 1129–1111 BC, whose court documented widespread tomb robbery; Ramesses X around 1111–1107 BC, barely attested; and finally Ramesses XI around 1107–1077 BC, the last king of the New Kingdom, whose reign ends with Egypt splitting between the High Priests of Amun at Thebes and a new line of kings in the north. After the New Kingdom, a short separate segment marks Piye, the king of Kush who ruled from Napata, reigned around 744–714 BC and conquered Egypt around 728 BC, founding its 25th Dynasty, followed by his brother Shabaka, around 705–690 BC, who ruled Egypt directly from Memphis, and by Piye's son Taharqa, 690–664 BC, who fought the Assyrian invasions and was buried under the largest pyramid in Kush, and finally by Tantamani, 664–656 BC, the last Kushite king to rule in Egypt, driven out after the Assyrian sack of Thebes. In parallel from 664 BC, and alone from 656 BC, Psamtik I of Sais reunites Egypt and founds the 26th Dynasty, reigning until 610 BC; his son Necho II follows, 610–595 BC, fighting in the Levant and starting a canal to the Red Sea. Isolated later points follow after another long gap: Abu Simbel around 1250 BC, within Ramesses II's own reign, Philae around 265 BC, and Dendera's temple, begun in 54 BC and finished under Roman rule. Abydos alone spans both the early cluster and the later period, with its King List temple. A final, separate segment marks Meroë, far south in the Kingdom of Kush rather than Egypt itself: a royal pyramid field built from around 270 BC, when King Arkamani is said to have become the first king buried there instead of at Napata, through the 4th century AD.</desc>
+        <desc id="tlDesc">A broken horizontal timeline from 3500 BC onward. A dense cluster of Old Kingdom pyramid-building sits between 2690 and 2445 BC, following Hierakonpolis's Painted Tomb, the Narmer Palette, and the start of Abydos's royal tombs. After a First Intermediate Period gap, a possibly legendary Mentuhotep I opens the Theban 11th Dynasty around 2135 BC, Intef II pushes north around 2112–2063 BC, Mentuhotep II reunifies Egypt and founds the Middle Kingdom around 2055–2004 BC, Amenemhat I founds the 12th Dynasty and moves the capital north around 1991–1962 BC, his son Senusret I builds the White Chapel at Karnak around 1971–1926 BC, and Amenemhat II's reign, around 1919–1885 BC, is marked by a treasure of Mesopotamian and Aegean silver and lapis lazuli buried at the Temple of Montu in Tod, and Senusret III, the most powerful Middle Kingdom king, fortifies the Nubian border around 1878–1839 BC. A small separate segment marks the Second Intermediate Period: Nubkheperre Intef, a Theban 17th-Dynasty king, around 1571–1565 BC, followed by Kamose, the last king of that line, sailing against the Hyksos around 1555–1550 BC. The New Kingdom segment now opens with Ahmose I, who expels the Hyksos and builds the last native Egyptian pyramid at South Abydos around 1550–1525 BC, alongside his queen Ahmose-Nefertari, later deified and worshipped at Deir el-Medina for roughly four centuries. His son Amenhotep I follows immediately, around 1525–1504 BC, the first king to separate his tomb from his mortuary temple — so thoroughly that his tomb has never been found. Thutmose I follows around 1504–1492 BC, the first king confirmed buried in the Valley of the Kings, who campaigned as far as the Euphrates and raised obelisks at Karnak. His son Thutmose II follows around 1493–1479 BC, husband of Hatshepsut and, since 2025, the subject of the first newly confirmed royal tomb since Tutankhamun's. Hatshepsut herself then rules as pharaoh around 1479–1458 BC, building her Deir el-Bahari temple beside Mentuhotep II's. Thutmose III then rules alone from about 1458–1425 BC, Egypt's most successful military king, whose Karnak Annals record the Battle of Megiddo and roughly sixteen other campaigns. Two generations later, Amenhotep III rules at the height of Egypt's imperial wealth, around 1391–1353 BC, building the largest mortuary temple ever attempted, now reduced to its two Colossi of Memnon. His son Akhenaten follows immediately, around 1353–1336 BC, abandoning Egypt's traditional gods for the sun disc Aten alone and building a new capital at Amarna — a reign later kings erased from the record. After a short gap, Tutankhamun rules as a child king around 1332–1323 BC, restoring the old gods — and his small, hastily built tomb, found nearly untouched in 1922, becomes ancient Egypt's most famous archaeological discovery. The general Horemheb then rules around 1319–1292 BC, finishing the restoration and erasing the Amarna kings from official memory, before naming his own vizier as successor: Ramesses I, who reigns barely a year or two around 1292–1290 BC but founds the 19th Dynasty, and whose own mummy resurfaces in a Canadian museum before returning to Egypt in 2003. His son Seti I then rules around 1290–1279 BC, campaigning abroad, continuing Karnak's Great Hypostyle Hall, building the King List temple at Abydos, and cutting the longest, first fully decorated tomb in the Valley of the Kings. Seti's son Ramesses II then rules an exceptional 66 years, around 1279–1213 BC, fighting the Hittites to a draw at Kadesh before signing history's oldest surviving peace treaty, building Abu Simbel and his own Ramesseum, and fathering over a hundred children. His thirteenth son Merneptah, already old himself, then rules around 1213–1203 BC, defeating a Libyan and Sea Peoples invasion and leaving the Merneptah Stele, whose closing lines carry the oldest known mention of Israel. Merneptah's son Seti II then rules around 1203–1197 BC, contested for years by the rival king Amenmesse in the south, building a small way station for the sacred barques at Karnak, and marrying Twosret, who would later rule Egypt herself. The child king Siptah then reigns around 1197–1191 BC, a club-footed boy ruling in name only under Twosret and the chancellor Bay. Twosret then rules as pharaoh in her own right around 1191–1189 BC, one of Egypt's few female kings, before her tomb and temple are usurped and effaced by her successor Setnakhte, who rules around 1189–1186 BC, restoring order after a period of chaos and founding the 20th Dynasty as father of Ramesses III. Ramesses III then rules around 1186–1155 BC, defeating the invading Sea Peoples at the Battle of the Delta, building Medinet Habu, and dying in a harem conspiracy after the earliest recorded labor strike. Eight more Ramesside kings follow in rapid succession over the next eighty years, a period of increasing decline: Ramesses IV around 1155–1149 BC, who tried his father's assassins; Ramesses V around 1149–1145 BC, whose mummy shows a possible smallpox infection; Ramesses VI around 1145–1137 BC, who usurped his nephew's tomb and inadvertently buried Tutankhamun's entrance under construction debris; Ramesses VII around 1137–1130 BC; Ramesses VIII around 1130–1129 BC, the shortest and least documented reign of the group; Ramesses IX around 1129–1111 BC, whose court documented widespread tomb robbery; Ramesses X around 1111–1107 BC, barely attested; and finally Ramesses XI around 1107–1077 BC, the last king of the New Kingdom, whose reign ends with Egypt splitting between the High Priests of Amun at Thebes and a new line of kings in the north. After the New Kingdom, a short separate segment marks Piye, the king of Kush who ruled from Napata, reigned around 744–714 BC and conquered Egypt around 728 BC, founding its 25th Dynasty, followed by his brother Shabaka, around 705–690 BC, who ruled Egypt directly from Memphis, and by Piye's son Taharqa, 690–664 BC, who fought the Assyrian invasions and was buried under the largest pyramid in Kush, and finally by Tantamani, 664–656 BC, the last Kushite king to rule in Egypt, driven out after the Assyrian sack of Thebes. In parallel from 664 BC, and alone from 656 BC, Psamtik I of Sais reunites Egypt and founds the 26th Dynasty, reigning until 610 BC; his son Necho II follows, 610–595 BC, fighting in the Levant and starting a canal to the Red Sea; then his son Psamtik II, 595–589 BC, who campaigned deep into Nubia in 592 BC. Isolated later points follow after another long gap: Abu Simbel around 1250 BC, within Ramesses II's own reign, Philae around 265 BC, and Dendera's temple, begun in 54 BC and finished under Roman rule. Abydos alone spans both the early cluster and the later period, with its King List temple. A final, separate segment marks Meroë, far south in the Kingdom of Kush rather than Egypt itself: a royal pyramid field built from around 270 BC, when King Arkamani is said to have become the first king buried there instead of at Napata, through the 4th century AD.</desc>
 
         <!-- era bands -->
         <rect x="80" y="55" width="300" height="245" fill="var(--sand-line)" opacity="0.22" />
@@ -6707,9 +6785,9 @@
         <!-- 25th Dynasty segment (c. 760–650 BC): Piye, the Kushite king who conquered Egypt -->
         <rect x="2047" y="55" width="113" height="245" fill="var(--sand-line)" opacity="0.28" />
         <text class="tl-era-label" x="2104" y="45" text-anchor="middle">25TH DYN.</text>
-        <rect x="2160" y="55" width="72" height="245" fill="var(--sand-line)" opacity="0.16" />
-        <text class="tl-era-label" x="2196" y="45" text-anchor="middle">26TH DYN.</text>
-        <line class="tl-axis" x1="2047" y1="200" x2="2232" y2="200" />
+        <rect x="2160" y="55" width="78" height="245" fill="var(--sand-line)" opacity="0.16" />
+        <text class="tl-era-label" x="2199" y="45" text-anchor="middle">26TH DYN.</text>
+        <line class="tl-axis" x1="2047" y1="200" x2="2238" y2="200" />
         <g class="tl-break">
           <line x1="2242" y1="193" x2="2252" y2="207" />
           <line x1="2250" y1="193" x2="2260" y2="207" />
@@ -6739,7 +6817,7 @@
           <text class="tl-date" x="2160" y="289" text-anchor="end">664–656 BC</text>
         </a>
         <g class="tl-tick"><line x1="2101" y1="200" x2="2101" y2="208" /></g>
-        <g class="tl-tick-label" text-anchor="end"><text x="2101" y="222">c. 760&ndash;590 BC</text></g>
+        <g class="tl-tick-label" text-anchor="end"><text x="2101" y="222">c. 760&ndash;585 BC</text></g>
         <!-- Psamtik I: rules from Sais from 664 BC, alongside the last Kushite claim, alone from 656 BC; drawn in a lane just under the axis -->
         <a href="#card-psamtik1" class="tl-link" aria-label="Jump to the Psamtik I card">
           <rect x="2152" y="205" width="59" height="5" rx="2.5" fill="var(--malachite)" />
@@ -6752,6 +6830,12 @@
           <line x1="2219" y1="203" x2="2219" y2="225" stroke="var(--malachite)" class="tl-leader" />
           <text class="tl-name" x="2215" y="240" fill="var(--malachite)">Necho II</text>
           <text class="tl-date" x="2215" y="254">610–595 BC</text>
+        </a>
+        <a href="#card-psamtik2" class="tl-link" aria-label="Jump to the Psamtik II card">
+          <rect x="2227" y="197" width="7" height="6" rx="3" fill="var(--malachite)" />
+          <line x1="2230" y1="197" x2="2230" y2="125" stroke="var(--malachite)" class="tl-leader" />
+          <text class="tl-name" x="2226" y="115" fill="var(--malachite)">Psamtik II</text>
+          <text class="tl-date" x="2226" y="129">595–589 BC</text>
         </a>
 
         <!-- year ticks -->
@@ -6833,6 +6917,7 @@
       <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Tantamani (25th Dynasty, Kush)</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Psamtik I (26th Dynasty)</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Necho II (26th Dynasty)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Psamtik II (26th Dynasty)</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Abu Simbel</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Philae</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Dendera</span>
