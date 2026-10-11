@@ -999,6 +999,94 @@
   }
   .route-strip li + li::before { content: "→"; margin-right: 0.5rem; color: var(--nile); }
 
+  /* Tour through time: the tour's places in the order they were built */
+  .tour-time {
+    margin: 2.2rem 0 0;
+    background: var(--bg-panel);
+    border: 1px solid var(--sand-line);
+    border-radius: 14px;
+    padding: clamp(1.1rem, 2.5vw, 1.6rem);
+    box-shadow: 0 1px 2px var(--shadow);
+  }
+  .tour-time h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
+    margin: 0 0 0.4rem;
+  }
+  .tour-time > p { color: var(--ink-soft); font-size: 0.93rem; margin: 0 0 1rem; max-width: 62ch; }
+  .tt-ribbon-wrap { overflow-x: auto; margin: 0 0 1.2rem; -webkit-overflow-scrolling: touch; }
+  .tt-ribbon { display: block; width: 100%; min-width: 640px; height: auto; }
+  .tt-ribbon .tt-band { fill: var(--sand-line); opacity: 0.28; }
+  .tt-ribbon .tt-band-label { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 8.5px; letter-spacing: 0.06em; fill: var(--ink-soft); }
+  .tt-ribbon .tt-axis { stroke: var(--ink-soft); stroke-width: 1.2; }
+  .tt-ribbon .tt-tick { stroke: var(--ink-soft); stroke-width: 1; }
+  .tt-ribbon .tt-tick-label { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 9px; fill: var(--ink-soft); }
+  .tt-ribbon .tt-span { stroke-width: 5; stroke-linecap: round; opacity: 0.55; }
+  .tt-ribbon .tt-dot { stroke: var(--bg-panel); stroke-width: 1.4; }
+  .tt-list { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--sand-line); display: grid; gap: 0.7rem; }
+  .tt-era {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0.8rem 0 0 -1.1rem;
+    padding-left: 1.1rem;
+    position: relative;
+  }
+  .tt-era:first-child { margin-top: 0; }
+  .tt-era::before {
+    content: "";
+    position: absolute;
+    left: -0.42rem;
+    top: 0.25em;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 2px;
+    background: var(--sand-line);
+  }
+  .tt-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 9.5rem 1fr auto;
+    gap: 0.2rem 1rem;
+    align-items: baseline;
+  }
+  .tt-item::before {
+    content: "";
+    position: absolute;
+    left: calc(-1.1rem - 6px);
+    top: 0.35em;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent, var(--ochre));
+    box-shadow: 0 0 0 2px var(--bg-panel);
+  }
+  .tt-date { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.8rem; color: var(--ink-soft); }
+  .tt-place { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.02rem; color: var(--ink); }
+  a.tt-place { text-decoration: none; border-bottom: 1px solid var(--sand-line); }
+  a.tt-place:hover { border-bottom-color: var(--accent, var(--ochre)); }
+  .tt-what { display: block; color: var(--ink-soft); font-size: 0.86rem; }
+  .tt-what a { color: inherit; }
+  .tt-day {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    color: var(--accent, var(--ochre));
+    border: 1px solid var(--accent, var(--ochre));
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+  }
+  .tt-day.draft { border-style: dashed; }
+  .tt-legend { margin: 1rem 0 0; font-size: 0.8rem; color: var(--ink-soft); }
+  @media (max-width: 700px) {
+    .tt-item { grid-template-columns: 1fr; }
+    .tt-day { justify-self: start; white-space: normal; }
+  }
+
   .day-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr));
@@ -8571,6 +8659,96 @@
         <p class="day-meta">End of the trip</p>
       </article>
     </div>
+
+    <section class="tour-time" aria-labelledby="tourTimeTitle">
+      <p class="day-num" style="--accent: var(--ochre);">The tour through time</p>
+      <h2 id="tourTimeTitle">Every stop, in the order it was built</h2>
+      <p>The places on the tour, from the oldest to the newest rather than in the order we visit them. The strip shows how far apart in time they are; the list gives each date and the day we are there, in that day's colour. Cairo stops come from the draft plan with Omarcel, marked with a dashed chip, and may change.</p>
+        <div class="tt-ribbon-wrap">
+          <svg class="tt-ribbon" viewBox="0 0 1000 74" role="img" aria-labelledby="ttRibbonTitle">
+            <title id="ttRibbonTitle">Strip from 3500 BC to AD 2025 with one dot for each place on the tour, coloured by tour day: most cluster in the pyramid age, the New Kingdom and the Ptolemaic period, with the Cairo sights of the last days far to the right</title>
+            <rect class="tt-band" x="40.0" y="18" width="66.5" height="30" />
+            <text class="tt-band-label" x="73.2" y="13" text-anchor="middle">PREDYN.</text>
+            <rect class="tt-band" x="175.4" y="18" width="84.0" height="30" />
+            <text class="tt-band-label" x="217.4" y="13" text-anchor="middle">OLD KINGDOM</text>
+            <rect class="tt-band" x="280.4" y="18" width="67.4" height="30" />
+            <text class="tt-band-label" x="314.1" y="13" text-anchor="middle">MIDDLE K.</text>
+            <rect class="tt-band" x="364.4" y="18" width="80.0" height="30" />
+            <text class="tt-band-label" x="404.4" y="13" text-anchor="middle">NEW KINGDOM</text>
+            <rect class="tt-band" x="567.0" y="18" width="50.3" height="30" />
+            <text class="tt-band-label" x="592.1" y="13" text-anchor="middle">PTOL.</text>
+            <rect class="tt-band" x="617.3" y="18" width="111.6" height="30" />
+            <text class="tt-band-label" x="673.1" y="13" text-anchor="middle">ROMAN</text>
+            <rect class="tt-band" x="728.9" y="18" width="145.8" height="30" />
+            <text class="tt-band-label" x="801.8" y="13" text-anchor="middle">MEDIEVAL ISLAMIC</text>
+            <line class="tt-axis" x1="40.0" y1="40" x2="960.0" y2="40" />
+            <line class="tt-tick" x1="123.2" y1="40" x2="123.2" y2="52" />
+            <text class="tt-tick-label" x="123.2" y="65" text-anchor="middle">3000 BC</text>
+            <line class="tt-tick" x1="289.5" y1="40" x2="289.5" y2="52" />
+            <text class="tt-tick-label" x="289.5" y="65" text-anchor="middle">2000 BC</text>
+            <line class="tt-tick" x1="455.9" y1="40" x2="455.9" y2="52" />
+            <text class="tt-tick-label" x="455.9" y="65" text-anchor="middle">1000 BC</text>
+            <line class="tt-tick" x1="622.4" y1="40" x2="622.4" y2="52" />
+            <text class="tt-tick-label" x="622.4" y="65" text-anchor="middle">AD 1</text>
+            <line class="tt-tick" x1="788.6" y1="40" x2="788.6" y2="52" />
+            <text class="tt-tick-label" x="788.6" y="65" text-anchor="middle">AD 1000</text>
+            <line class="tt-tick" x1="955.0" y1="40" x2="955.0" y2="52" />
+            <text class="tt-tick-label" x="955.0" y="65" text-anchor="middle">AD 2000</text>
+            <line class="tt-span" x1="40.0" y1="40" x2="106.5" y2="40" stroke="var(--indigo)" />
+            <circle class="tt-dot" cx="40.0" cy="40" r="4.5" fill="var(--indigo)"><title>Hierakonpolis (Nekhen), c. 3500–3100 BC</title></circle>
+            <circle class="tt-dot" cx="178.1" cy="40" r="4.5" fill="var(--kush)"><title>Step Pyramid of Djoser, Saqqara, c. 2670 BC</title></circle>
+            <circle class="tt-dot" cx="196.4" cy="40" r="4.5" fill="var(--kush)"><title>Great Pyramid of Giza, c. 2560 BC</title></circle>
+            <circle class="tt-dot" cx="198.0" cy="40" r="4.5" fill="var(--kush)"><title>Great Sphinx, c. 2550 BC</title></circle>
+            <line class="tt-span" x1="294.5" y1="40" x2="617.3" y2="40" stroke="var(--gold)" />
+            <circle class="tt-dot" cx="294.5" cy="40" r="4.5" fill="var(--gold)"><title>Karnak Temple, c. 1970 BC – Roman times</title></circle>
+            <line class="tt-span" x1="372.1" y1="40" x2="443.1" y2="40" stroke="var(--gold)" />
+            <circle class="tt-dot" cx="372.1" cy="40" r="4.5" fill="var(--gold)"><title>Valley of the Kings, c. 1504–1077 BC</title></circle>
+            <line class="tt-span" x1="376.2" y1="40" x2="379.7" y2="40" stroke="var(--gold)" />
+            <circle class="tt-dot" cx="376.2" cy="40" r="4.5" fill="var(--gold)"><title>Temple of Hatshepsut, c. 1479–1458 BC</title></circle>
+            <line class="tt-span" x1="390.9" y1="40" x2="397.2" y2="40" stroke="var(--gold)" />
+            <circle class="tt-dot" cx="390.9" cy="40" r="4.5" fill="var(--gold)"><title>Colossi of Memnon, c. 1391–1353 BC</title></circle>
+            <circle class="tt-dot" cx="407.7" cy="40" r="4.5" fill="var(--rose)"><title>Temple of Seti I, Abydos, c. 1290 BC</title></circle>
+            <line class="tt-span" x1="412.0" y1="40" x2="415.3" y2="40" stroke="var(--malachite)" />
+            <circle class="tt-dot" cx="412.0" cy="40" r="4.5" fill="var(--malachite)"><title>Abu Simbel, c. 1264–1244 BC</title></circle>
+            <circle class="tt-dot" cx="574.9" cy="40" r="4.5" fill="var(--lapis)"><title>Philae, Temple of Isis, c. 285–246 BC onward</title></circle>
+            <line class="tt-span" x1="582.8" y1="40" x2="612.8" y2="40" stroke="var(--indigo)" />
+            <circle class="tt-dot" cx="582.8" cy="40" r="4.5" fill="var(--indigo)"><title>Temple of Horus, Edfu, 237–57 BC</title></circle>
+            <line class="tt-span" x1="592.3" y1="40" x2="614.5" y2="40" stroke="var(--turquoise)" />
+            <circle class="tt-dot" cx="592.3" cy="40" r="4.5" fill="var(--turquoise)"><title>Kom Ombo Temple, c. 180–47 BC</title></circle>
+            <line class="tt-span" x1="613.3" y1="40" x2="625.6" y2="40" stroke="var(--rose)" />
+            <circle class="tt-dot" cx="613.3" cy="40" r="4.5" fill="var(--rose)"><title>Temple of Hathor, Dendera, 54 BC – Roman times</title></circle>
+            <circle class="tt-dot" cx="638.9" cy="40" r="4.5" fill="var(--kush)"><title>Coptic Cairo, from c. AD 100</title></circle>
+            <circle class="tt-dot" cx="817.9" cy="40" r="4.5" fill="var(--kush)"><title>Citadel of Saladin, begun AD 1176</title></circle>
+            <circle class="tt-dot" cx="852.2" cy="40" r="4.5" fill="var(--kush)"><title>Khan el-Khalili, from AD 1382</title></circle>
+            <circle class="tt-dot" cx="959.2" cy="40" r="4.5" fill="var(--kush)"><title>Grand Egyptian Museum, opened 2025</title></circle>
+          </svg>
+        </div>
+        <ol class="tt-list">
+          <li class="tt-era">Before the pharaohs</li>
+          <li class="tt-item" style="--accent: var(--indigo);"><span class="tt-date">c. 3500–3100 BC</span><span><a class="tt-place" href="#card-hierakonpolis">Hierakonpolis (Nekhen)</a><span class="tt-what">City of Egypt's first kings, where the Narmer Palette was found.</span></span><span class="tt-day">Day 5 · Sun 22 Nov · from the boat</span></li>
+          <li class="tt-era">Old Kingdom · the pyramid age</li>
+          <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">c. 2670 BC</span><span><a class="tt-place" href="#card-saqqara">Step Pyramid of Djoser, Saqqara</a><span class="tt-what">The first pyramid, and the oldest large stone building in the world.</span></span><span class="tt-day draft">Thu 26 Nov · draft</span></li>
+          <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">c. 2560 BC</span><span><a class="tt-place" href="#card-giza">Great Pyramid of Giza</a><span class="tt-what">Khufu's pyramid, the only one of the Seven Wonders still standing.</span></span><span class="tt-day draft">Wed 25 Nov · draft</span></li>
+          <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">c. 2550 BC</span><span><a class="tt-place" href="#card-sphinx">Great Sphinx</a><span class="tt-what">Carved from the bedrock with Khafre's pyramid complex.</span></span><span class="tt-day draft">Wed 25 Nov · draft</span></li>
+          <li class="tt-era">Middle and New Kingdom · Thebes and Abydos</li>
+          <li class="tt-item" style="--accent: var(--gold);"><span class="tt-date">c. 1970 BC – Roman times</span><span><a class="tt-place" href="#card-karnak">Karnak Temple</a><span class="tt-what">Begun in the Middle Kingdom and enlarged by king after king for two thousand years.</span></span><span class="tt-day">Day 6 · Mon 23 Nov</span></li>
+          <li class="tt-item" style="--accent: var(--gold);"><span class="tt-date">c. 1504–1077 BC</span><span><span class="tt-place">Valley of the Kings</span><span class="tt-what">Royal tombs of the New Kingdom, among them <a href="#card-tutankhamun">Tutankhamun</a>'s (c. 1323 BC), <a href="#card-seti1">Seti I</a>'s (c. 1279 BC) and <a href="#card-ramesses6">Ramesses VI</a>'s (c. 1137 BC).</span></span><span class="tt-day">Day 6 · Mon 23 Nov</span></li>
+          <li class="tt-item" style="--accent: var(--gold);"><span class="tt-date">c. 1479–1458 BC</span><span><a class="tt-place" href="#card-hatshepsut">Temple of Hatshepsut</a><span class="tt-what">The terraced temple of the woman who ruled as pharaoh, at Deir el-Bahari.</span></span><span class="tt-day">Day 6 · Mon 23 Nov</span></li>
+          <li class="tt-item" style="--accent: var(--gold);"><span class="tt-date">c. 1391–1353 BC</span><span><a class="tt-place" href="#card-amenhotep3">Colossi of Memnon</a><span class="tt-what">All that stands of Amenhotep III's mortuary temple.</span></span><span class="tt-day">Day 6 · Mon 23 Nov</span></li>
+          <li class="tt-item" style="--accent: var(--rose);"><span class="tt-date">c. 1290 BC</span><span><a class="tt-place" href="#card-abydos">Temple of Seti I, Abydos</a><span class="tt-what">Seti I's temple to Osiris, with the King List of 76 royal names.</span></span><span class="tt-day">Day 7 · Tue 24 Nov</span></li>
+          <li class="tt-item" style="--accent: var(--malachite);"><span class="tt-date">c. 1264–1244 BC</span><span><a class="tt-place" href="#card-abusimbel">Abu Simbel</a><span class="tt-what">Ramesses II's Great Temple and Nefertari's small temple, moved uphill in 1964–68.</span></span><span class="tt-day">Day 2 · Thu 19 Nov</span></li>
+          <li class="tt-era">Ptolemies and Romans · the last temples</li>
+          <li class="tt-item" style="--accent: var(--lapis);"><span class="tt-date">c. 285–246 BC onward</span><span><a class="tt-place" href="#card-philae">Philae, Temple of Isis</a><span class="tt-what">Begun under Ptolemy II; rebuilt on Agilkia Island in 1977–80.</span></span><span class="tt-day">Day 3 · Fri 20 Nov</span></li>
+          <li class="tt-item" style="--accent: var(--indigo);"><span class="tt-date">237–57 BC</span><span><span class="tt-place">Temple of Horus, Edfu</span><span class="tt-what">Built under the Ptolemies; one of the best-preserved temples in Egypt.</span></span><span class="tt-day">Day 5 · Sun 22 Nov</span></li>
+          <li class="tt-item" style="--accent: var(--turquoise);"><span class="tt-date">c. 180–47 BC</span><span><span class="tt-place">Kom Ombo Temple</span><span class="tt-what">A double temple, shared by the crocodile god Sobek and the falcon god Haroeris.</span></span><span class="tt-day">Day 4 · Sat 21 Nov</span></li>
+          <li class="tt-item" style="--accent: var(--rose);"><span class="tt-date">54 BC – Roman times</span><span><a class="tt-place" href="#card-dendera">Temple of Hathor, Dendera</a><span class="tt-what">Begun under Ptolemy XII and finished under Roman emperors; its zodiac ceiling is a cast of the Louvre original.</span></span><span class="tt-day">Day 7 · Tue 24 Nov</span></li>
+          <li class="tt-era">After the pharaohs · Cairo</li>
+          <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">from c. AD 100</span><span><span class="tt-place">Coptic Cairo</span><span class="tt-what">Inside the walls of the Roman fortress of Babylon, with some of Egypt's oldest churches.</span></span><span class="tt-day draft">Thu 26 Nov · draft</span></li>
+          <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">begun AD 1176</span><span><span class="tt-place">Citadel of Saladin</span><span class="tt-what">Saladin's fortress on the Muqattam hills, crowned by the Ottoman-style mosque of Muhammad Ali (1830s–40s).</span></span><span class="tt-day draft">Fri 27 Nov · draft</span></li>
+          <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">from AD 1382</span><span><span class="tt-place">Khan el-Khalili</span><span class="tt-what">The great bazaar of medieval Cairo, still trading.</span></span><span class="tt-day draft">Fri 27 Nov · draft</span></li>
+          <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">opened 2025</span><span><span class="tt-place">Grand Egyptian Museum</span><span class="tt-what">Tutankhamun's treasures and a hundred thousand other objects, 2 km from the pyramids.</span></span><span class="tt-day draft">Wed 25 Nov · draft</span></li>
+        </ol>
+    </section>
 
     <div class="below-grid">
       <div class="note-card">
