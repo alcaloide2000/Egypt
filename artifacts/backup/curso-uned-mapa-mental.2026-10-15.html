@@ -1,0 +1,575 @@
+<meta charset="utf-8" />
+<title>Curso UNED · Mapa mental</title>
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* Layout: the course title at the centre, the five classes and the cross-cutting themes as six branches around it; one column on phones. Tokens shared with the Ancient Egypt pages. */
+  :root {
+    --bg: #ede3cc;
+    --bg-panel: #f7f1e1;
+    --ink: #2b2420;
+    --ink-soft: #5b4f3f;
+    --sand-line: #c9b48c;
+    --ochre: #b5551f;
+    --nile: #2e6e77;
+    --gold: #a9791f;
+    --indigo: #5b4f8f;
+    --rose: #9c3f5e;
+    --turquoise: #0e8f8a;
+    --malachite: #3c7a5a;
+    --shadow: rgba(43, 36, 32, 0.14);
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --bg-panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --sand-line: #57544c;
+      --ochre: #e58a4d; --nile: #6fc2c4; --gold: #d9a83c; --indigo: #a99bd9; --rose: #e08aa6;
+      --turquoise: #4fd8d1; --malachite: #5fae87; --shadow: rgba(0, 0, 0, 0.35); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --bg-panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --sand-line: #57544c;
+    --ochre: #e58a4d; --nile: #6fc2c4; --gold: #d9a83c; --indigo: #a99bd9; --rose: #e08aa6;
+    --turquoise: #4fd8d1; --malachite: #5fae87; --shadow: rgba(0, 0, 0, 0.35); color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.45;
+  }
+  .page {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding-block: clamp(1.5rem, 4vw, 3rem) 2.5rem;
+    padding-inline: 16px;
+    display: grid;
+    gap: clamp(1.5rem, 4vw, 2.5rem);
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin: 0 0 0.6rem;
+  }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    line-height: 1.1;
+    margin: 0 0 0.6rem;
+    text-wrap: balance;
+  }
+  .lede { margin: 0; max-width: 42rem; color: var(--ink-soft); }
+
+  /* the map */
+  .map {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(210px, 0.62fr) minmax(0, 1fr);
+    grid-auto-rows: auto;
+    gap: 2.25rem clamp(3rem, 6vw, 5.5rem);
+    align-items: center;
+  }
+  .links {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    overflow: visible;
+    pointer-events: none;
+    z-index: 0;
+  }
+  .links path { fill: none; stroke-width: 2.2; opacity: 0.55; transition: opacity 0.2s ease, stroke-width 0.2s ease; }
+  .links circle { stroke: none; }
+  .links path.is-on { opacity: 1; stroke-width: 3; }
+
+  .root {
+    grid-column: 2;
+    grid-row: 1 / span 3;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    background: var(--bg-panel);
+    border: 2px solid var(--ink);
+    border-radius: 50% / 38%;
+    padding: 2.2rem 1.4rem;
+    box-shadow: 0 6px 18px var(--shadow);
+    display: grid;
+    gap: 0.5rem;
+    justify-items: center;
+  }
+  .root .eyebrow { margin: 0; color: var(--nile); }
+  .root h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.35rem;
+    line-height: 1.15;
+    margin: 0;
+    text-wrap: balance;
+  }
+  .root p { margin: 0; font-size: 0.85rem; color: var(--ink-soft); }
+  .root .facts { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.04em; }
+
+  .branch {
+    position: relative;
+    z-index: 1;
+    min-width: 0;
+    display: grid;
+    gap: 0.55rem;
+  }
+  .branch.l { grid-column: 1; }
+  .branch.r { grid-column: 3; }
+  .branch:nth-of-type(1) { grid-row: 1; }
+  .branch:nth-of-type(2) { grid-row: 2; }
+  .branch:nth-of-type(3) { grid-row: 3; }
+  .branch:nth-of-type(4) { grid-row: 1; }
+  .branch:nth-of-type(5) { grid-row: 2; }
+  .branch:nth-of-type(6) { grid-row: 3; }
+
+  .branch-head {
+    background: var(--bg-panel);
+    border: 2px solid var(--c);
+    border-radius: 12px;
+    padding: 0.6rem 0.85rem;
+    box-shadow: 0 1px 2px var(--shadow);
+  }
+  .branch-num {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--c);
+  }
+  .branch-head h3 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.08rem;
+    line-height: 1.2;
+    margin: 0.15rem 0 0;
+    text-wrap: balance;
+  }
+  .era { display: block; margin-top: 0.2rem; font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+
+  .leaves {
+    list-style: none;
+    margin: 0 0 0 0.9rem;
+    padding: 0.1rem 0 0.1rem 0.9rem;
+    border-left: 2px solid var(--c);
+    display: grid;
+    gap: 0.35rem;
+  }
+  .leaves li {
+    position: relative;
+    font-size: 0.86rem;
+    line-height: 1.35;
+  }
+  .leaves li::before {
+    content: "";
+    position: absolute;
+    left: -1.25rem;
+    top: 0.5em;
+    width: 0.55rem;
+    height: 2px;
+    background: var(--c);
+  }
+  .leaves strong { font-weight: 600; }
+
+  .foot {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.5rem;
+    font-family: var(--font-mono);
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    border-top: 1px solid var(--sand-line);
+    padding-top: 1rem;
+  }
+  .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sand-line); }
+  .foot a:hover, .foot a:focus-visible { border-bottom-color: currentColor; }
+  a:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  @media (max-width: 900px) {
+    .map { grid-template-columns: minmax(0, 1fr); gap: 1.25rem; }
+    .root, .branch.l, .branch.r { grid-column: 1; grid-row: auto !important; }
+    .root { border-radius: 18px; padding: 1.4rem 1.2rem; }
+    .links { display: none; }
+    .branch { margin-left: 1rem; padding-left: 1rem; border-left: 2px dashed var(--sand-line); }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .links path { transition: none; }
+  }
+
+  /* timeline */
+  .timeline { display: grid; gap: 0.8rem; }
+  .timeline h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
+    margin: 0;
+  }
+  .section-note { margin: 0; color: var(--ink-soft); font-size: 0.92rem; max-width: 46rem; }
+  .tl-scroll {
+    overflow-x: auto;
+    background: var(--bg-panel);
+    border: 1px solid var(--sand-line);
+    border-radius: 14px;
+    padding: 0.75rem 0.5rem;
+    box-shadow: 0 1px 2px var(--shadow);
+  }
+  .tl-scroll svg { display: block; width: 100%; min-width: 820px; height: auto; overflow: visible; }
+  .tl-year { font-family: var(--font-mono); font-size: 10px; fill: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .tl-event { font-family: var(--font-body); font-size: 12px; fill: var(--ink); }
+  .tl-period { font-family: var(--font-body); font-size: 11px; font-weight: 600; }
+  .tl-class { font-family: var(--font-mono); font-size: 10px; }
+  .tl-tick { font-family: var(--font-mono); font-size: 10px; fill: var(--ink-soft); }
+  .tl-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem 1.4rem;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+  .tl-legend span { display: inline-flex; align-items: center; gap: 0.45rem; }
+  .sw { width: 1.4rem; height: 0.7rem; border-radius: 3px; flex: none; }
+  .sw-imperio { background: var(--nile); }
+  .sw-otro { background: var(--nile); opacity: 0.5; }
+  .sw-intermedio { background: repeating-linear-gradient(135deg, var(--sand-line) 0 3px, transparent 3px 6px); border: 1px solid var(--sand-line); }
+</style>
+
+<main class="page">
+  <header>
+    <p class="eyebrow">UNED Tudela · Curso en línea · marzo&ndash;abril de 2025</p>
+    <h1>Mapa mental del curso</h1>
+    <p class="lede">Las cinco clases de la Dra. Eva Tobalina Oraá sobre la historia del Antiguo Egipto, de la unificación a Cleopatra VII, y los temas que recorren todo el curso. Las fechas son aproximadas.</p>
+  </header>
+
+  <section class="map" id="map" aria-label="Mapa mental del curso">
+    <svg class="links" id="links" aria-hidden="true"></svg>
+
+    <div class="root" id="root">
+      <p class="eyebrow">5 clases · 10 horas</p>
+      <h2>Introducción a la historia del Antiguo Egipto</h2>
+      <p>Tres mil años, del don del Nilo a la provincia romana</p>
+      <p class="facts">h. 3150 &ndash; 30 a. C.</p>
+    </div>
+
+    <article class="branch l" style="--c: var(--ochre);" data-c="ochre">
+      <div class="branch-head">
+        <span class="branch-num">Clase 1</span>
+        <h3>El don del Nilo y el Imperio Antiguo</h3>
+        <span class="era">h. 3150 &ndash; 2560 a. C.</span>
+      </div>
+      <ul class="leaves">
+        <li><strong>El Nilo:</strong> crecida suave, limo negro, nilómetros, río navegable en ambos sentidos</li>
+        <li><strong>Unificación:</strong> el rey Escorpión, la paleta de Narmer, Menes</li>
+        <li><strong>Zoser:</strong> capital en Menfis, Ra dios supremo, nomos y visir</li>
+        <li><strong>Más allá:</strong> <em>ka</em>, <em>ba</em>, momificación y mastabas en la orilla oeste</li>
+        <li><strong>Pirámides:</strong> Saqqara, Meidum, Dahshur y por fin Giza</li>
+        <li><strong>Keops:</strong> la Gran Pirámide y el diario de Merer (Wadi al-Jarf)</li>
+      </ul>
+    </article>
+
+    <article class="branch l" style="--c: var(--indigo);" data-c="indigo">
+      <div class="branch-head">
+        <span class="branch-num">Clase 2</span>
+        <h3>Fin del Imperio Antiguo, Primer Periodo Intermedio e Imperio Medio</h3>
+        <span class="era">h. 2560 &ndash; 1960 a. C.</span>
+      </div>
+      <ul class="leaves">
+        <li><strong>Giza:</strong> Kefrén, la Gran Esfinge y la pirámide menor de Micerino</li>
+        <li><strong>Shepseskaf</strong> rompe con el clero de Ra y vuelve a la mastaba</li>
+        <li><strong>Dinastía V:</strong> templos solares y Textos de las Pirámides de Unas</li>
+        <li><strong>Colapso:</strong> Pepi II, h. 2181 a. C.; las Lamentaciones de Ipuwer</li>
+        <li><strong>Reunificación:</strong> Heracleópolis contra Tebas; Mentuhotep II</li>
+        <li><strong>Amenemes I:</strong> reformas, asesinato e Historia de Sinuhé</li>
+      </ul>
+    </article>
+
+    <article class="branch l" style="--c: var(--turquoise);" data-c="turquoise">
+      <div class="branch-head">
+        <span class="branch-num">Clase 3 · 27 mar.</span>
+        <h3>Imperio Medio, hicsos y comienzo del Imperio Nuevo</h3>
+        <span class="era">h. 1960 &ndash; 1500 a. C.</span>
+      </div>
+      <ul class="leaves">
+        <li><strong>Dinastía XII:</strong> retratos de gesto cansado; Sesostris III en Nubia y Biblos</li>
+        <li><strong>Mito:</strong> Osiris, Isis y Horus; el peso del corazón; ushebtis</li>
+        <li><strong>Sobekneferu,</strong> una mujer, cierra la dinastía XII</li>
+        <li><strong>Hicsos:</strong> carros de guerra, Avaris, la carta interceptada de Kamose</li>
+        <li><strong>Amosis</strong> los expulsa; nuevos rivales: Mitanni e hititas</li>
+        <li><strong>Amenofis I</strong> y el Valle de los Reyes</li>
+      </ul>
+    </article>
+
+    <article class="branch r" style="--c: var(--gold);" data-c="gold">
+      <div class="branch-head">
+        <span class="branch-num">Clase 4 · 3 abr.</span>
+        <h3>La dinastía XVIII</h3>
+        <span class="era">h. 1500 &ndash; 1295 a. C.</span>
+      </div>
+      <ul class="leaves">
+        <li><strong>Hatshepsut:</strong> hija de Amón, Deir el-Bahari, la expedición al Punt</li>
+        <li><strong>Tutmosis III:</strong> Megido y Qadesh; el «Napoleón egipcio»</li>
+        <li><strong>Tutmosis IV:</strong> la estela del sueño entre las patas de la Esfinge</li>
+        <li><strong>Amenofis III</strong> y Tiy: paz, bodas diplomáticas, colosos de Memnón</li>
+        <li><strong>Amarna:</strong> Akenatón, Nefertiti y el disco solar Atón</li>
+        <li><strong>Restauración:</strong> Tutankamón, Ay y Horemheb vuelven a Amón</li>
+      </ul>
+    </article>
+
+    <article class="branch r" style="--c: var(--rose);" data-c="rose">
+      <div class="branch-head">
+        <span class="branch-num">Clase 5 · 10 abr.</span>
+        <h3>De los Ramésidas a Cleopatra</h3>
+        <span class="era">h. 1295 &ndash; 30 a. C.</span>
+      </div>
+      <ul class="leaves">
+        <li><strong>Seti I:</strong> la lista real de Abidos y la tumba KV17</li>
+        <li><strong>Ramsés II:</strong> Qadesh, el tratado con los hititas, Abu Simbel</li>
+        <li><strong>Crisis:</strong> Tausert, Setnajt; Ramsés III y los Pueblos del Mar</li>
+        <li><strong>División:</strong> teocracia de Amón, faraones libios y kushitas, asirios</li>
+        <li><strong>Renacimiento saíta,</strong> persas y Nectanebo</li>
+        <li><strong>Final:</strong> Alejandro, los Ptolomeos, la piedra de Rosetta, Cleopatra VII</li>
+      </ul>
+    </article>
+
+    <article class="branch r" style="--c: var(--malachite);" data-c="malachite">
+      <div class="branch-head">
+        <span class="branch-num">Todo el curso</span>
+        <h3>Hilos conductores</h3>
+        <span class="era">temas que vuelven en cada clase</span>
+      </div>
+      <ul class="leaves">
+        <li><strong>Faraón contra clero:</strong> Ra frente a Shepseskaf, Amón frente a Akenatón, la teocracia de Tebas</li>
+        <li><strong>Mujeres faraón:</strong> Nitocris (dudosa), Sobekneferu, Hatshepsut, Tausert, Cleopatra VII</li>
+        <li><strong>Del <em>ka</em> al <em>ba</em>:</strong> mastaba, hipogeo; Textos de las Pirámides, de los Sarcófagos, Libro de los Muertos</li>
+        <li><strong>Capitales:</strong> Tinis, Menfis, Itjtawy, Tebas, Amarna, Sais, Alejandría</li>
+        <li><strong>Vecinos:</strong> Nubia y Kush, Biblos, Mitanni, hititas, asirios, persas, Roma</li>
+        <li><strong>Fuentes:</strong> Heródoto, Manetón y las listas reales</li>
+      </ul>
+    </article>
+  </section>
+
+  <section class="timeline" aria-labelledby="tl-h">
+    <h2 id="tl-h">Línea del tiempo</h2>
+    <p class="section-note">Tres mil años a escala. La franja de colores muestra el tramo que cubrió cada clase, con los mismos colores que el mapa. Todas las fechas son antes de Cristo y aproximadas.</p>
+    <div class="tl-scroll">
+      <svg id="tl" viewBox="0 0 1160 300" role="img" aria-label="Línea del tiempo del Antiguo Egipto de h. 3150 a 30 a. C.: época tinita, Imperio Antiguo (2686–2181), Primer Periodo Intermedio, Imperio Medio (2040–1780), Segundo Periodo Intermedio, Imperio Nuevo (1550–1070), Tercer Periodo Intermedio, Baja Época y época ptolemaica (332–30), con los hitos principales del curso."></svg>
+    </div>
+    <div class="tl-legend">
+      <span><i class="sw sw-imperio"></i>Imperio: Egipto unificado</span>
+      <span><i class="sw sw-intermedio"></i>Periodo intermedio: Egipto dividido</span>
+      <span><i class="sw sw-otro"></i>Época tinita, Baja Época y Ptolomeos</span>
+    </div>
+  </section>
+
+  <p class="foot">
+    <span>Cronología aproximada, según Barry Kemp</span>
+    <span>Apuntes completos: <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#uned">pestaña Curso UNED</a></span>
+  </p>
+</main>
+
+<script>
+(function () {
+  var map = document.getElementById('map');
+  var root = document.getElementById('root');
+  var svg = document.getElementById('links');
+  var branches = Array.prototype.slice.call(map.querySelectorAll('.branch'));
+  var narrow = window.matchMedia('(max-width: 900px)');
+  var NS = 'http://www.w3.org/2000/svg';
+  var paths = [];
+
+  function draw() {
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+    paths = [];
+    if (narrow.matches) return;
+    var m = map.getBoundingClientRect();
+    var r = root.getBoundingClientRect();
+    var sideCount = { l: 0, r: 0 };
+
+    branches.forEach(function (b, i) {
+      var left = b.classList.contains('l');
+      var side = left ? 'l' : 'r';
+      var k = sideCount[side]++;
+      var h = b.querySelector('.branch-head').getBoundingClientRect();
+      var x1 = (left ? r.left + 6 : r.right - 6) - m.left;
+      var y1 = r.top - m.top + r.height * (0.3 + 0.2 * k);
+      var x2 = (left ? h.right : h.left) - m.left;
+      var y2 = h.top - m.top + h.height / 2;
+      var dx = (x2 - x1) * 0.55;
+      var color = 'var(--' + b.getAttribute('data-c') + ')';
+
+      var p = document.createElementNS(NS, 'path');
+      p.setAttribute('d', 'M' + x1 + ',' + y1 + ' C' + (x1 + dx) + ',' + y1 + ' ' + (x2 - dx) + ',' + y2 + ' ' + x2 + ',' + y2);
+      p.setAttribute('style', 'stroke:' + color);
+      svg.appendChild(p);
+      paths[i] = p;
+
+      var dot = document.createElementNS(NS, 'circle');
+      dot.setAttribute('cx', x1);
+      dot.setAttribute('cy', y1);
+      dot.setAttribute('r', 4);
+      dot.setAttribute('style', 'fill:' + color);
+      svg.appendChild(dot);
+    });
+  }
+
+  branches.forEach(function (b, i) {
+    b.addEventListener('mouseenter', function () { if (paths[i]) paths[i].classList.add('is-on'); });
+    b.addEventListener('mouseleave', function () { if (paths[i]) paths[i].classList.remove('is-on'); });
+  });
+
+  if (window.ResizeObserver) new ResizeObserver(draw).observe(map);
+  window.addEventListener('resize', draw);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  draw();
+})();
+
+// Proportional timeline, 3150 to 30 BC. Event labels are measured and stacked into lanes so they never overlap.
+(function () {
+  var svg = document.getElementById('tl');
+  if (!svg) return;
+  var NS = 'http://www.w3.org/2000/svg';
+  // the axis stops short of the right edge so the last labels have room without shifting left
+  var Y0 = 3150, Y1 = 30, X0 = 24, X1 = 1010, W = 1160;
+  function sx(y) { return X0 + (Y0 - y) / (Y0 - Y1) * (X1 - X0); }
+
+  var periods = [
+    { from: 3150, to: 2686, kind: 'otro', name: 'Época tinita', short: 'Tinita', dyn: 'Dinastías I–II' },
+    { from: 2686, to: 2181, kind: 'imperio', name: 'Imperio Antiguo', short: 'I. Antiguo', dyn: 'Dinastías III–VI' },
+    { from: 2181, to: 2040, kind: 'intermedio', name: 'I Periodo Int.', short: 'I PI', dyn: 'Dinastías VII–XI' },
+    { from: 2040, to: 1780, kind: 'imperio', name: 'Imperio Medio', short: 'I. Medio', dyn: 'Dinastías XI–XII' },
+    { from: 1780, to: 1550, kind: 'intermedio', name: 'II Periodo Int.', short: 'II PI', dyn: 'Dinastías XIII–XVII' },
+    { from: 1550, to: 1070, kind: 'imperio', name: 'Imperio Nuevo', short: 'I. Nuevo', dyn: 'Dinastías XVIII–XX' },
+    { from: 1070, to: 664, kind: 'intermedio', name: 'III Periodo Intermedio', short: 'III PI', dyn: 'Dinastías XXI–XXV' },
+    { from: 664, to: 332, kind: 'otro', name: 'Baja Época', short: 'Baja Ép.', dyn: 'Dinastías XXVI–XXXI' },
+    { from: 332, to: 30, kind: 'otro', name: 'Ptolomeos', short: 'Ptol.', dyn: 'Alejandro y los Ptolomeos' }
+  ];
+  var classes = [
+    { from: 3150, to: 2560, c: 'ochre', label: 'Clase 1' },
+    { from: 2560, to: 1960, c: 'indigo', label: 'Clase 2' },
+    { from: 1960, to: 1500, c: 'turquoise', label: 'Clase 3' },
+    { from: 1500, to: 1295, c: 'gold', label: 'Clase 4' },
+    { from: 1295, to: 30, c: 'rose', label: 'Clase 5' }
+  ];
+  var events = [
+    { y: 3150, year: 'h. 3150', name: 'Unificación: Narmer' },
+    { y: 2670, year: 'h. 2670', name: 'Pirámide escalonada de Zoser' },
+    { y: 2560, year: 'h. 2560', name: 'Gran Pirámide de Keops' },
+    { y: 2040, year: 'h. 2040', name: 'Mentuhotep II reunifica' },
+    { y: 1550, year: 'h. 1550', name: 'Amosis expulsa a los hicsos' },
+    { y: 1479, year: '1479', name: 'Hatshepsut' },
+    { y: 1350, year: 'h. 1350', name: 'Akenatón y Amarna' },
+    { y: 1274, year: 'h. 1274', name: 'Batalla de Qadesh' },
+    { y: 1175, year: 'h. 1175', name: 'Ramsés III y los Pueblos del Mar' },
+    { y: 715, year: 'h. 715', name: 'Faraones kushitas' },
+    { y: 525, year: '525', name: 'Conquista persa' },
+    { y: 332, year: '332', name: 'Alejandro en Egipto' },
+    { y: 196, year: '196', name: 'Piedra de Rosetta' },
+    { y: 30, year: '30', name: 'Muerte de Cleopatra VII' }
+  ];
+
+  function el(name, attrs, text) {
+    var n = document.createElementNS(NS, name);
+    for (var k in attrs) n.setAttribute(k, attrs[k]);
+    if (text != null) n.textContent = text;
+    return n;
+  }
+
+  function draw() {
+    while (svg.firstChild) svg.removeChild(svg.firstChild);
+
+    var defs = el('defs', {});
+    var pat = el('pattern', { id: 'tlHatch', width: 6, height: 6, patternUnits: 'userSpaceOnUse', patternTransform: 'rotate(45)' });
+    pat.appendChild(el('rect', { width: 6, height: 6, style: 'fill: var(--bg-panel)' }));
+    pat.appendChild(el('line', { x1: 0, y1: 0, x2: 0, y2: 6, style: 'stroke: var(--sand-line); stroke-width: 3' }));
+    defs.appendChild(pat);
+    svg.appendChild(defs);
+
+    // Measure event labels, then stack them into lanes (lane 0 sits nearest the bar).
+    // Labels run rightwards from their own leader, and each leader stops under its own label.
+    // Placing them from right to left, a label goes one lane above every leader that falls
+    // under it, so no leader ever passes through a label.
+    var placed = [];
+    var laneCount = 0;
+    events.slice().sort(function (a, b) { return a.y - b.y; }).forEach(function (e) {
+      var x = sx(e.y);
+      var t1 = el('text', { 'class': 'tl-year', x: 0, y: -100 }, e.year);
+      var t2 = el('text', { 'class': 'tl-event', x: 0, y: -100 }, e.name);
+      svg.appendChild(t1); svg.appendChild(t2);
+      var w = Math.max(t1.getComputedTextLength(), t2.getComputedTextLength()) + 4;
+      var left = Math.min(x - 3, W - 4 - w);
+      var right = left + w;
+      var lane = 0;
+      placed.forEach(function (q) {
+        if (q.x <= right + 12) lane = Math.max(lane, q.lane + 1);
+      });
+      placed.push({ e: e, x: x, t1: t1, t2: t2, lane: lane, left: left, right: right });
+      laneCount = Math.max(laneCount, lane + 1);
+    });
+
+    var LANE = 32;
+    var barY = 14 + laneCount * LANE + 10;
+    var barH = 34;
+    var classY = barY + barH + 22;
+    var tickY = classY + 34;
+    var H = tickY + 22;
+    svg.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+
+    placed.forEach(function (p) {
+      var nameY = barY - 12 - p.lane * LANE;
+      p.t1.setAttribute('x', p.left); p.t1.setAttribute('y', nameY - 13);
+      p.t2.setAttribute('x', p.left); p.t2.setAttribute('y', nameY);
+      svg.insertBefore(el('line', { x1: p.x, y1: nameY + 4, x2: p.x, y2: barY, style: 'stroke: var(--ink-soft); stroke-width: 1; opacity: 0.6' }), svg.firstChild.nextSibling);
+    });
+
+    // period bar
+    periods.forEach(function (pd) {
+      var x = sx(pd.from), w = sx(pd.to) - sx(pd.from);
+      var fill = pd.kind === 'intermedio' ? 'url(#tlHatch)' : 'var(--nile)';
+      var rect = el('rect', { x: x, y: barY, width: w, height: barH,
+        style: 'fill: ' + fill + '; stroke: var(--bg-panel); stroke-width: 1.5;' + (pd.kind === 'otro' ? ' fill-opacity: 0.5' : '') });
+      rect.appendChild(el('title', {}, pd.name + ', h. ' + pd.from + '–' + pd.to + ' a. C. · ' + pd.dyn));
+      svg.appendChild(rect);
+      var color = pd.kind === 'imperio' ? 'var(--bg-panel)' : 'var(--ink)';
+      var label = el('text', { 'class': 'tl-period', x: x + w / 2, y: barY + barH / 2 + 4, 'text-anchor': 'middle', style: 'fill: ' + color }, pd.name);
+      svg.appendChild(label);
+      if (label.getComputedTextLength() > w - 8) label.textContent = pd.short;
+      if (label.getComputedTextLength() > w - 4) label.textContent = '';
+    });
+    placed.forEach(function (p) { svg.appendChild(el('circle', { cx: p.x, cy: barY, r: 3.2, style: 'fill: var(--ink)' })); });
+
+    // which class covered which stretch
+    classes.forEach(function (c) {
+      var x = sx(c.from), w = sx(c.to) - sx(c.from);
+      svg.appendChild(el('rect', { x: x + 1, y: classY - 14, width: w - 2, height: 6, rx: 3, style: 'fill: var(--' + c.c + ')' }));
+      svg.appendChild(el('text', { 'class': 'tl-class', x: x + w / 2, y: classY + 6, 'text-anchor': 'middle', style: 'fill: var(--' + c.c + ')' }, c.label));
+    });
+
+    // century scale
+    svg.appendChild(el('line', { x1: X0, y1: tickY - 12, x2: X1, y2: tickY - 12, style: 'stroke: var(--sand-line); stroke-width: 1' }));
+    [3000, 2500, 2000, 1500, 1000, 500].forEach(function (y) {
+      var x = sx(y);
+      svg.appendChild(el('line', { x1: x, y1: tickY - 16, x2: x, y2: tickY - 8, style: 'stroke: var(--ink-soft); stroke-width: 1' }));
+      svg.appendChild(el('text', { 'class': 'tl-tick', x: x, y: tickY + 6, 'text-anchor': 'middle' }, y + ' a. C.'));
+    });
+  }
+
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+  draw();
+})();
+</script>
