@@ -45,7 +45,7 @@ All colours are CSS custom properties on `:root`. Each one is defined three time
 
 ### Search script
 
-The `<script>` at the bottom filters `.info-card` elements by full-text match and wraps hits in `<mark class="hit">` using safe DOM text nodes (no innerHTML). It dims non-matching `.site-marker` groups and scrolls to the first match. New cards and markers are picked up automatically as long as they use those classes.
+The `<script>` at the bottom filters `.info-card` elements by full-text match and wraps hits in `<mark class="hit">` using safe DOM text nodes (no innerHTML). It dims non-matching `.site-marker` groups and scrolls to the first match. New cards and markers are picked up automatically as long as they use those classes. A card can carry a `<button class="highlight-btn" data-highlight="…">` (Djoser's does) that fills the search with that word, so the matching markers stay lit and the rest dim; give related markers a `<title>` with the ruler's names (Djoser, Zoser, Netjerikhet) so every spelling finds them.
 
 ## Working conventions
 

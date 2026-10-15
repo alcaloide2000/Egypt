@@ -939,6 +939,20 @@
 
   .site-marker { transition: opacity 0.2s ease; }
   .site-marker.is-dimmed { opacity: 0.16; }
+  .highlight-btn {
+    font: inherit;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--accent, var(--ochre));
+    background: transparent;
+    border: 1px solid var(--accent, var(--ochre));
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    margin: 0 0 0.9rem;
+    cursor: pointer;
+  }
+  .highlight-btn:hover, .highlight-btn:focus-visible { background: var(--accent, var(--ochre)); color: var(--bg-panel); outline: none; }
 
   .tabs {
     display: flex;
@@ -1288,7 +1302,7 @@
   <header class="masthead">
     <p class="eyebrow">Upper &amp; Lower Egypt · 3500&ndash;200 BC</p>
     <h1>The Nile, Site by Site and Century by Century</h1>
-    <p class="lede">A hundred and six sites, monuments and rulers across three thousand years, from Predynastic Hierakonpolis to Ptolemaic Philae and the pyramids of Kush at Meroë: a locator map showing where each one stands on the Nile, paired below with a timeline of when each was built or reigned — including the crowded quarter-century of pyramid experiments between Djoser's first steps at Saqqara and Khufu's Great Pyramid at Giza.</p>
+    <p class="lede">A hundred and seven sites, monuments and rulers across three thousand years, from Predynastic Hierakonpolis to Ptolemaic Philae and the pyramids of Kush at Meroë: a locator map showing where each one stands on the Nile, paired below with a timeline of when each was built or reigned — including the crowded quarter-century of pyramid experiments between Djoser's first steps at Saqqara and Khufu's Great Pyramid at Giza.</p>
   </header>
 
   <form class="search-bar" id="siteSearchForm" role="search" aria-label="Search sites by word">
@@ -1780,6 +1794,7 @@
 
         <!-- Elephantine Island (Abu): small 3rd-Dynasty step pyramid, an island in the Nile at Aswan -->
         <g class="site-marker" transform="translate(300,650)">
+          <title>Elephantine, Aswan; on nearby Sehel Island, the Famine Stela tells a legend of Djoser (Zoser)</title>
           <circle class="eleph-ring" r="6" />
           <circle class="eleph-ring d2" r="6" />
           <!-- small three-stepped pyramid glyph -->
@@ -1804,6 +1819,7 @@
 
         <!-- Saqqara, Step Pyramid of Djoser: Old Kingdom necropolis of Memphis, just south of Cairo -->
         <g class="site-marker" transform="translate(272,270)">
+          <title>Saqqara: the Step Pyramid of Djoser (Zoser, Netjerikhet)</title>
           <circle class="saqqara-ring" r="7" />
           <circle class="saqqara-ring d2" r="7" />
           <!-- stepped pyramid glyph -->
@@ -5602,10 +5618,42 @@
         <a class="wiki-link" style="color: var(--solar);" href="https://en.wikipedia.org/wiki/Abu_Gorab" target="_blank" rel="noopener noreferrer">Read on Wikipedia ↗</a>
       </div>
 
+      <div class="info-card" id="card-djoser" style="margin-top: 1rem;">
+        <span class="tag" style="color: var(--indigo); border-color: var(--indigo);">3RD DYNASTY · THE FIRST PYRAMID</span>
+        <h2>Djoser <span class="ancient-name">— Zoser, Netjerikhet</span></h2>
+        <button type="button" class="highlight-btn" style="--accent: var(--indigo);" data-highlight="Djoser">Highlight Djoser's places on the map ↑</button>
+        <p>The king who first built in stone on a monumental scale, around 2670&nbsp;BC. In his own time he was called by his Horus name, Netjerikhet, "divine of body"; the name Djoser (Zoser in older books and in Spanish) appears only in later texts. He was probably the son of Khasekhemwy, the last king of the 2nd Dynasty, and of Queen Nimaathap. His official Imhotep designed for him the Step Pyramid at Saqqara: a mastaba enlarged in stages into six steps, about 62&nbsp;m high, inside an enclosure of some 545 by 278&nbsp;m with a panelled wall over 10&nbsp;m tall and stone copies of the buildings for his jubilee festival. Underground, galleries are lined with blue faience tiles. In a sealed chamber beside the pyramid, the serdab, stood a seated limestone statue of the king, the oldest life-size statue known from Egypt; the original is now in Cairo and a cast looks out through the spy-holes. Inscriptions record expeditions to the turquoise mines of the Sinai, and fragments of a shrine from Heliopolis carry his name. Two thousand years later his fame was still alive: on Sehel Island near Aswan, the Ptolemaic "Famine Stela" claims that Djoser, advised by Imhotep, ended seven years of famine by honouring the god Khnum of Elephantine. Imhotep himself was later worshipped as a god of medicine.</p>
+        <ul class="note-list" style="margin: 0 0 0.9rem;">
+          <li><span class="note-year">Saqqara</span><span><a href="#card-saqqara">Step Pyramid and serdab statue</a>, c. 2670 BC; on the tour on Thu 26 Nov (draft plan)</span></li>
+          <li><span class="note-year">Sinai</span><span>Reliefs of his expeditions at Wadi Maghara, the turquoise mines</span></li>
+          <li><span class="note-year">Heliopolis</span><span>Fragments of a shrine bearing his name, now in Turin</span></li>
+          <li><span class="note-year">Sehel</span><span>The Famine Stela, a later legend about him, on an island near <a href="#card-elephantine">Elephantine</a> and Aswan</span></li>
+        </ul>
+        <dl class="coords">
+          <div>
+            <dt>Location</dt>
+            <dd>Saqqara (Step Pyramid), near Memphis</dd>
+          </div>
+          <div>
+            <dt>Reign</dt>
+            <dd>c. 2670–2650 BC (dates vary by a few decades)</dd>
+          </div>
+          <div>
+            <dt>Dynasty</dt>
+            <dd>3rd, probably son of Khasekhemwy</dd>
+          </div>
+          <div>
+            <dt>Significance</dt>
+            <dd>First pyramid and first monumental stone building; patron of Imhotep</dd>
+          </div>
+        </dl>
+        <a class="wiki-link" style="color: var(--indigo);" href="https://en.wikipedia.org/wiki/Djoser" target="_blank" rel="noopener noreferrer">Read on Wikipedia ↗</a>
+      </div>
+
       <div class="info-card" id="card-saqqara" style="margin-top: 1rem;">
         <span class="tag" style="color: var(--indigo); border-color: var(--indigo);">NORTH · NEAR CAIRO</span>
         <h2>Saqqara <span class="ancient-name">— Step Pyramid</span></h2>
-        <p>The necropolis of ancient Memphis, on the Nile's west bank. Djoser's Step Pyramid, designed by his architect Imhotep in the Third Dynasty, is the world's oldest large-scale cut-stone monument. It grew in stages rather than as one design: a square mastaba first, then enlarged outward and upward at least twice more, each new shell built around the last, before settling into its final six-tiered form.</p>
+        <p>The necropolis of ancient Memphis, on the Nile's west bank. <a href="#card-djoser">Djoser</a>'s Step Pyramid, designed by his architect Imhotep in the Third Dynasty, is the world's oldest large-scale cut-stone monument. It grew in stages rather than as one design: a square mastaba first, then enlarged outward and upward at least twice more, each new shell built around the last, before settling into its final six-tiered form.</p>
         <dl class="coords">
           <div>
             <dt>Location</dt>
@@ -8171,7 +8219,7 @@
         </a>
 
         <!-- Old Kingdom pyramids bracket -->
-        <circle cx="445" cy="200" r="4" fill="var(--indigo)" />
+        <a href="#card-djoser" class="tl-link" aria-label="Jump to the Djoser card"><circle cx="445" cy="200" r="4" fill="var(--indigo)"><title>Djoser's Step Pyramid, Saqqara, c. 2670 BC</title></circle></a>
         <circle cx="513" cy="200" r="4" fill="var(--indigo)" />
         <circle cx="565" cy="200" r="4" fill="var(--indigo)" />
         <rect x="582" y="197" width="35" height="6" rx="3" fill="var(--indigo)" />
@@ -9600,7 +9648,7 @@
           <li class="tt-era">Before the pharaohs</li>
           <li class="tt-item" style="--accent: var(--indigo);"><span class="tt-date">c. 3500–3100 BC</span><span><a class="tt-place" href="#card-hierakonpolis">Hierakonpolis (Nekhen)</a><span class="tt-what">City of Egypt's first kings, where the Narmer Palette was found.</span></span><span class="tt-day">Day 5 · Sun 22 Nov · from the boat</span></li>
           <li class="tt-era">Old Kingdom · the pyramid age</li>
-          <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">c. 2670 BC</span><span><a class="tt-place" href="#card-saqqara">Step Pyramid of Djoser, Saqqara</a><span class="tt-what">The first pyramid, and the oldest large stone building in the world.</span></span><span class="tt-day draft">Thu 26 Nov · draft</span></li>
+          <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">c. 2670 BC</span><span><a class="tt-place" href="#card-saqqara">Step Pyramid of Djoser, Saqqara</a><span class="tt-what">The first pyramid, built for <a href="#card-djoser">Djoser</a>, and the oldest large stone building in the world.</span></span><span class="tt-day draft">Thu 26 Nov · draft</span></li>
           <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">c. 2560 BC</span><span><a class="tt-place" href="#card-giza">Great Pyramid of Giza</a><span class="tt-what">Khufu's pyramid, the only one of the Seven Wonders still standing.</span></span><span class="tt-day draft">Wed 25 Nov · draft</span></li>
           <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">c. 2550 BC</span><span><a class="tt-place" href="#card-sphinx">Great Sphinx</a><span class="tt-what">Carved from the bedrock with Khafre's pyramid complex.</span></span><span class="tt-day draft">Wed 25 Nov · draft</span></li>
           <li class="tt-era">Middle and New Kingdom · Thebes and Abydos</li>
@@ -9704,7 +9752,7 @@
         <ul class="stop-list">
           <li>Herodotus's "gift of the Nile": the gentle summer flood, nilometers, and a river you can sail both ways</li>
           <li>The Scorpion King and the <a href="#card-narmer">Narmer Palette</a>: unification c. 3150 BC</li>
-          <li><a href="#card-saqqara">Djoser</a> settles the capital at Memphis and makes Ra the supreme god</li>
+          <li><a href="#card-djoser">Djoser</a> settles the capital at Memphis and makes Ra the supreme god</li>
           <li>Body, shadow, name, <em>ka</em> and <em>ba</em>; mummification and mastabas on the west bank</li>
           <li>From the Step Pyramid to Sneferu's <a href="#card-dahshur">Bent and Red Pyramids</a></li>
           <li><a href="#card-giza">Khufu's Great Pyramid</a> and the Wadi al-Jarf papyri, the logbook of an official who worked on it</li>
@@ -9826,7 +9874,7 @@
         <ul class="stop-list">
           <li>El «don del Nilo» de Heródoto: la crecida suave del verano, los nilómetros y un río navegable en ambos sentidos</li>
           <li>El rey Escorpión y la <a href="#card-narmer">paleta de Narmer</a>: la unificación, h. 3150 a. C.</li>
-          <li><a href="#card-saqqara">Zoser</a> fija la capital en Menfis y convierte a Ra en el dios supremo</li>
+          <li><a href="#card-djoser">Zoser</a> fija la capital en Menfis y convierte a Ra en el dios supremo</li>
           <li>Cuerpo, sombra, nombre, <em>ka</em> y <em>ba</em>; la momificación y las mastabas en la orilla occidental</li>
           <li>De la pirámide escalonada a las pirámides <a href="#card-dahshur">acodada y roja</a> de Snofru</li>
           <li>La <a href="#card-giza">Gran Pirámide de Keops</a> y los papiros de Wadi al-Jarf, el diario de un funcionario que trabajó en ella</li>
@@ -10023,6 +10071,16 @@
   }
 
   input.addEventListener('input', applyFilter);
+
+  document.querySelectorAll('.highlight-btn[data-highlight]').forEach(function (btn) {
+    btn.addEventListener('click', function () {
+      input.value = btn.getAttribute('data-highlight');
+      lastScrolledCard = null;
+      applyFilter();
+      var map = document.querySelector('svg[aria-labelledby="mapTitle mapDesc"]');
+      if (map) setTimeout(function () { map.scrollIntoView({ behavior: 'smooth', block: 'center' }); }, 50);
+    });
+  });
   clearBtn.addEventListener('click', function () {
     input.value = '';
     applyFilter();
