@@ -714,6 +714,14 @@
     color: var(--ink-soft);
   }
   .legend-item { display: flex; align-items: center; gap: 0.45rem; }
+  .legend-item.is-featured, .tt-item.is-featured {
+    background: color-mix(in srgb, var(--hl, var(--ochre)) 18%, var(--bg-panel));
+    border-radius: 999px;
+  }
+  .legend-item.is-featured { padding: 0.1rem 0.65rem 0.1rem 0.5rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+  .tt-item.is-featured { border-radius: 10px; padding: 0.45rem 0.6rem; margin: -0.45rem -0.6rem; }
+  .tt-item.is-featured::before { left: calc(-0.5rem - 6px); top: calc(0.45rem + 0.35em); }
+  .tl-highlight { fill: var(--indigo); opacity: 0.16; }
   .legend-dot {
     width: 0.6rem;
     height: 0.6rem;
@@ -8224,6 +8232,8 @@
         </a>
 
         <!-- Old Kingdom pyramids bracket -->
+        <!-- highlight behind Djoser's bar and label -->
+        <path class="tl-highlight" d="M440,193 h44 a4,4 0 0 1 4,4 v20 h68 a4,4 0 0 1 4,4 v28 a4,4 0 0 1 -4,4 h-110 a4,4 0 0 1 -4,-4 v-28 h-2 a4,4 0 0 1 -4,-4 v-20 a4,4 0 0 1 4,-4 z" />
         <!-- Djoser: reign c. 2670–2650 BC (1.7 px/yr in this segment), Step Pyramid at Saqqara; label below the axis -->
         <a href="#card-djoser" class="tl-link" aria-label="Jump to the Djoser card">
           <rect x="445" y="197" width="34" height="6" rx="3" fill="var(--indigo)"><title>Djoser, c. 2670–2650 BC: the Step Pyramid at Saqqara</title></rect>
@@ -8911,6 +8921,7 @@
       <span class="legend-item"><span class="legend-dot" style="background:var(--rose)"></span>Abydos</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--ochre-dim)"></span>Khasekhemwy's enclosures</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--indigo)"></span>Step-to-true pyramids</span>
+      <a class="legend-item is-featured" style="--hl: var(--indigo);" href="#card-djoser"><span class="legend-dot" style="background:var(--indigo)"></span>Djoser, Step Pyramid, c. 2670–2650 BC</a>
       <span class="legend-item"><span class="legend-dot" style="background:var(--solar)"></span>Abusir, Sun Temple</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--ink-soft)"></span>Palermo Stone</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Mentuhotep I (uncertain)</span>
@@ -9628,6 +9639,7 @@
             <text class="tt-tick-label" x="955.0" y="65" text-anchor="middle">AD 2000</text>
             <line class="tt-span" x1="40.0" y1="40" x2="106.5" y2="40" stroke="var(--indigo)" />
             <circle class="tt-dot" cx="40.0" cy="40" r="4.5" fill="var(--indigo)"><title>Hierakonpolis (Nekhen), c. 3500–3100 BC</title></circle>
+            <circle cx="178.1" cy="40" r="8" fill="none" stroke="var(--indigo)" stroke-width="1.6" />
             <circle class="tt-dot" cx="178.1" cy="40" r="4.5" fill="var(--kush)"><title>Step Pyramid of Djoser, Saqqara, c. 2670 BC</title></circle>
             <circle class="tt-dot" cx="196.4" cy="40" r="4.5" fill="var(--kush)"><title>Great Pyramid of Giza, c. 2560 BC</title></circle>
             <circle class="tt-dot" cx="198.0" cy="40" r="4.5" fill="var(--kush)"><title>Great Sphinx, c. 2550 BC</title></circle>
@@ -9659,7 +9671,7 @@
           <li class="tt-era">Before the pharaohs</li>
           <li class="tt-item" style="--accent: var(--indigo);"><span class="tt-date">c. 3500–3100 BC</span><span><a class="tt-place" href="#card-hierakonpolis">Hierakonpolis (Nekhen)</a><span class="tt-what">City of Egypt's first kings, where the Narmer Palette was found.</span></span><span class="tt-day">Day 5 · Sun 22 Nov · from the boat</span></li>
           <li class="tt-era">Old Kingdom · the pyramid age</li>
-          <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">c. 2670 BC</span><span><a class="tt-place" href="#card-saqqara">Step Pyramid of Djoser, Saqqara</a><span class="tt-what">The first pyramid, built for <a href="#card-djoser">Djoser</a>, and the oldest large stone building in the world.</span></span><span class="tt-day draft">Thu 26 Nov · draft</span></li>
+          <li class="tt-item is-featured" style="--accent: var(--kush); --hl: var(--indigo);"><span class="tt-date">c. 2670 BC</span><span><a class="tt-place" href="#card-saqqara">Step Pyramid of Djoser, Saqqara</a><span class="tt-what">The first pyramid, built for <a href="#card-djoser">Djoser</a>, and the oldest large stone building in the world.</span></span><span class="tt-day draft">Thu 26 Nov · draft</span></li>
           <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">c. 2560 BC</span><span><a class="tt-place" href="#card-giza">Great Pyramid of Giza</a><span class="tt-what">Khufu's pyramid, the only one of the Seven Wonders still standing.</span></span><span class="tt-day draft">Wed 25 Nov · draft</span></li>
           <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">c. 2550 BC</span><span><a class="tt-place" href="#card-sphinx">Great Sphinx</a><span class="tt-what">Carved from the bedrock with Khafre's pyramid complex.</span></span><span class="tt-day draft">Wed 25 Nov · draft</span></li>
           <li class="tt-era">Middle and New Kingdom · Thebes and Abydos</li>
