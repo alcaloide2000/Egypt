@@ -719,7 +719,7 @@
     border-radius: 999px;
   }
   .legend-item.is-featured { padding: 0.1rem 0.65rem 0.1rem 0.5rem; font-weight: 600; color: var(--ink); text-decoration: none; }
-  .tt-item.is-featured { border-radius: 10px; padding: 0.45rem 0.6rem; margin: -0.45rem -0.6rem; }
+  .tt-item.is-featured { border-radius: 10px; padding: 0.45rem 0.6rem; margin: 0 -0.6rem; }
   .tt-item.is-featured::before { left: calc(-0.5rem - 6px); top: calc(0.45rem + 0.35em); }
   .tl-highlight { fill: var(--indigo); opacity: 0.16; }
   .legend-dot {
@@ -1769,6 +1769,7 @@
 
         <!-- Giza, Pyramids of Khufu and Khafre + Great Sphinx: the culmination of Sneferu's trial-and-error, Old Kingdom summit -->
         <g class="site-marker" transform="translate(240,200)">
+          <title>Giza: the Great Pyramid of Khufu (Cheops, Khnum-Khufu)</title>
           <circle class="eleph-ring" r="7" />
           <circle class="eleph-ring d2" r="7" />
           <!-- Khafre's pyramid, second and slightly smaller peak -->
@@ -1955,6 +1956,7 @@
 
         <!-- Abydos, Umm el-Qa'ab & Temple of Seti I: Early Dynastic royal necropolis and Osiris cult center -->
         <g class="site-marker" transform="translate(310,484)">
+          <title>Abydos, where the only complete statue of Khufu, a tiny ivory figure, was found</title>
           <circle class="abydos-ring" r="7" />
           <circle class="abydos-ring d2" r="7" />
           <!-- cartouche glyph, echoing the Abydos King List of royal names -->
@@ -5502,10 +5504,17 @@
 
     <aside class="info-panel">
       <p class="no-results" id="noResults" hidden>No sites match that word. Try a name, a king, or a material — “granite,” “Osiris,” “Ramesses.”</p>
-      <div class="info-card" id="card-giza">
+      <div class="info-card featured" id="card-giza" style="--accent: var(--indigo);">
         <span class="tag" style="color: var(--indigo); border-color: var(--indigo);">4TH DYNASTY · THE SUMMIT</span>
-        <h2>Giza <span class="ancient-name">— Great Pyramid</span></h2>
+        <h2>Giza <span class="ancient-name">— Great Pyramid of Khufu</span></h2>
+        <button type="button" class="highlight-btn" style="--accent: var(--indigo);" data-highlight="Khufu">Highlight Khufu's places on the map ↑</button>
         <p>Built by Khufu, Sneferu's son — the payoff of his father's trial and error at Meidum and Dahshur. The largest pyramid ever built and the last-standing Wonder of the Ancient World, it held the record for tallest human-made structure for roughly 3,800 years.</p>
+        <ul class="note-list" style="margin: 0 0 0.9rem;">
+          <li><span class="note-year">Giza</span><span>The Great Pyramid, c. 2560 BC; on the tour on Wed 25 Nov (draft plan)</span></li>
+          <li><span class="note-year">Museum</span><span>His cedar "solar boat", 43 m long, found in a pit beside the pyramid in 1954 and now in the Grand Egyptian Museum, also on Wed 25 Nov</span></li>
+          <li><span class="note-year">Red Sea</span><span>Wadi al-Jarf, his harbour, where the papyri of the official Merer, the oldest inscribed papyri known, record limestone shipped to the pyramid</span></li>
+          <li><span class="note-year">Abydos</span><span>The only complete statue of him, an ivory figure 7.5 cm tall, found by Petrie at <a href="#card-abydos">Abydos</a> in 1903 and now in Cairo</span></li>
+        </ul>
         <dl class="coords">
           <div>
             <dt>Location</dt>
@@ -8244,7 +8253,8 @@
         <circle cx="513" cy="200" r="4" fill="var(--indigo)" />
         <circle cx="565" cy="200" r="4" fill="var(--indigo)" />
         <rect x="582" y="197" width="35" height="6" rx="3" fill="var(--indigo)" />
-        <rect x="600" y="197" width="34" height="6" rx="3" fill="var(--indigo)" opacity="0.85" />
+        <rect class="tl-highlight" x="596" y="192" width="42" height="16" rx="5" />
+        <a href="#card-giza" class="tl-link" aria-label="Jump to the Khufu and Giza card"><rect x="600" y="197" width="34" height="6" rx="3" fill="var(--indigo)" opacity="0.85"><title>Khufu's Great Pyramid at Giza, c. 2580–2560 BC</title></rect></a>
         <rect x="638" y="197" width="44" height="6" rx="3" fill="var(--indigo)" opacity="0.65" />
         <rect x="682" y="197" width="50" height="6" rx="3" fill="var(--indigo)" opacity="0.5" />
         <rect x="734" y="197" width="8" height="6" rx="2" fill="var(--indigo)" opacity="0.4" />
@@ -8261,6 +8271,7 @@
         <text class="tl-date" x="600" y="177" text-anchor="middle">Mastaba of Ti, official (not royal), mid-5th Dyn.</text>
 
         <!-- Death of Khufu: reign-end point, hollow marker distinguishes a biographical event from a monument -->
+        <rect class="tl-highlight" x="589" y="255" width="70" height="35" rx="5" />
         <a href="#card-giza" class="tl-link" aria-label="Jump to the Giza card">
           <circle cx="624" cy="200" r="4" fill="var(--bg-panel)" stroke="var(--indigo)" stroke-width="1.8" />
           <line x1="624" y1="204" x2="624" y2="255" stroke="var(--indigo)" class="tl-leader" stroke-dasharray="2 2" />
@@ -8922,6 +8933,7 @@
       <span class="legend-item"><span class="legend-dot" style="background:var(--ochre-dim)"></span>Khasekhemwy's enclosures</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--indigo)"></span>Step-to-true pyramids</span>
       <a class="legend-item is-featured" style="--hl: var(--indigo);" href="#card-djoser"><span class="legend-dot" style="background:var(--indigo)"></span>Djoser, Step Pyramid, c. 2670–2650 BC</a>
+      <a class="legend-item is-featured" style="--hl: var(--indigo);" href="#card-giza"><span class="legend-dot" style="background:var(--indigo)"></span>Khufu, Great Pyramid, c. 2560 BC</a>
       <span class="legend-item"><span class="legend-dot" style="background:var(--solar)"></span>Abusir, Sun Temple</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--ink-soft)"></span>Palermo Stone</span>
       <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Mentuhotep I (uncertain)</span>
@@ -9641,6 +9653,7 @@
             <circle class="tt-dot" cx="40.0" cy="40" r="4.5" fill="var(--indigo)"><title>Hierakonpolis (Nekhen), c. 3500–3100 BC</title></circle>
             <circle cx="178.1" cy="40" r="8" fill="none" stroke="var(--indigo)" stroke-width="1.6" />
             <circle class="tt-dot" cx="178.1" cy="40" r="4.5" fill="var(--kush)"><title>Step Pyramid of Djoser, Saqqara, c. 2670 BC</title></circle>
+            <circle cx="196.4" cy="40" r="8" fill="none" stroke="var(--indigo)" stroke-width="1.6" />
             <circle class="tt-dot" cx="196.4" cy="40" r="4.5" fill="var(--kush)"><title>Great Pyramid of Giza, c. 2560 BC</title></circle>
             <circle class="tt-dot" cx="198.0" cy="40" r="4.5" fill="var(--kush)"><title>Great Sphinx, c. 2550 BC</title></circle>
             <line class="tt-span" x1="294.5" y1="40" x2="617.3" y2="40" stroke="var(--gold)" />
@@ -9672,7 +9685,7 @@
           <li class="tt-item" style="--accent: var(--indigo);"><span class="tt-date">c. 3500–3100 BC</span><span><a class="tt-place" href="#card-hierakonpolis">Hierakonpolis (Nekhen)</a><span class="tt-what">City of Egypt's first kings, where the Narmer Palette was found.</span></span><span class="tt-day">Day 5 · Sun 22 Nov · from the boat</span></li>
           <li class="tt-era">Old Kingdom · the pyramid age</li>
           <li class="tt-item is-featured" style="--accent: var(--kush); --hl: var(--indigo);"><span class="tt-date">c. 2670 BC</span><span><a class="tt-place" href="#card-saqqara">Step Pyramid of Djoser, Saqqara</a><span class="tt-what">The first pyramid, built for <a href="#card-djoser">Djoser</a>, and the oldest large stone building in the world.</span></span><span class="tt-day draft">Thu 26 Nov · draft</span></li>
-          <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">c. 2560 BC</span><span><a class="tt-place" href="#card-giza">Great Pyramid of Giza</a><span class="tt-what">Khufu's pyramid, the only one of the Seven Wonders still standing.</span></span><span class="tt-day draft">Wed 25 Nov · draft</span></li>
+          <li class="tt-item is-featured" style="--accent: var(--kush); --hl: var(--indigo);"><span class="tt-date">c. 2560 BC</span><span><a class="tt-place" href="#card-giza">Great Pyramid of Giza</a><span class="tt-what">Khufu's pyramid, the only one of the Seven Wonders still standing.</span></span><span class="tt-day draft">Wed 25 Nov · draft</span></li>
           <li class="tt-item" style="--accent: var(--kush);"><span class="tt-date">c. 2550 BC</span><span><a class="tt-place" href="#card-sphinx">Great Sphinx</a><span class="tt-what">Carved from the bedrock with Khafre's pyramid complex.</span></span><span class="tt-day draft">Wed 25 Nov · draft</span></li>
           <li class="tt-era">Middle and New Kingdom · Thebes and Abydos</li>
           <li class="tt-item" style="--accent: var(--gold);"><span class="tt-date">c. 1970 BC – Roman times</span><span><a class="tt-place" href="#card-karnak">Karnak Temple</a><span class="tt-what">Begun in the Middle Kingdom and enlarged by king after king for two thousand years.</span></span><span class="tt-day">Day 6 · Mon 23 Nov</span></li>
