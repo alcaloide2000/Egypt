@@ -246,6 +246,11 @@
     box-shadow: 0 1px 2px var(--shadow);
   }
 
+  .info-card.featured {
+    background: color-mix(in srgb, var(--accent, var(--ochre)) 18%, var(--bg-panel));
+    border-color: color-mix(in srgb, var(--accent, var(--ochre)) 45%, var(--sand-line));
+  }
+
   .info-card.unlocated {
     border-style: dashed;
     box-shadow: none;
@@ -5618,7 +5623,7 @@
         <a class="wiki-link" style="color: var(--solar);" href="https://en.wikipedia.org/wiki/Abu_Gorab" target="_blank" rel="noopener noreferrer">Read on Wikipedia ↗</a>
       </div>
 
-      <div class="info-card" id="card-djoser" style="margin-top: 1rem;">
+      <div class="info-card featured" id="card-djoser" style="margin-top: 1rem; --accent: var(--indigo);">
         <span class="tag" style="color: var(--indigo); border-color: var(--indigo);">3RD DYNASTY · THE FIRST PYRAMID</span>
         <h2>Djoser <span class="ancient-name">— Netjerikhet</span></h2>
         <button type="button" class="highlight-btn" style="--accent: var(--indigo);" data-highlight="Djoser">Highlight Djoser's places on the map ↑</button>
