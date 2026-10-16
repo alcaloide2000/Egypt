@@ -1,0 +1,428 @@
+<meta charset="utf-8" />
+<title>Curso UNED · Clase 1</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* Layout: a study dossier for one class. Masthead, a numbered contents strip (the order of the class), then six sections in one reading column, each with a figure drawn to scale where the subject has numbers. Tokens shared with the Ancient Egypt pages. */
+  :root {
+    --bg: #ede3cc;
+    --bg-panel: #f7f1e1;
+    --ink: #2b2420;
+    --ink-soft: #5b4f3f;
+    --sand-line: #c9b48c;
+    --ochre: #b5551f;
+    --nile: #2e6e77;
+    --gold: #a9791f;
+    --indigo: #5b4f8f;
+    --malachite: #3c7a5a;
+    --silt: #3b3229;
+    --shadow: rgba(43, 36, 32, 0.12);
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --bg-panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --sand-line: #57544c;
+      --ochre: #e58a4d; --nile: #6fc2c4; --gold: #d9a83c; --indigo: #a99bd9; --malachite: #5fae87;
+      --silt: #1f1e1c; --shadow: rgba(0, 0, 0, 0.35); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --bg-panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --sand-line: #57544c;
+    --ochre: #e58a4d; --nile: #6fc2c4; --gold: #d9a83c; --indigo: #a99bd9; --malachite: #5fae87;
+    --silt: #1f1e1c; --shadow: rgba(0, 0, 0, 0.35); color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .page {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid;
+    gap: clamp(2rem, 5vw, 3.25rem);
+  }
+  a { color: inherit; text-decoration-color: var(--sand-line); text-underline-offset: 0.18em; }
+  a:hover { text-decoration-color: currentColor; }
+  a:focus-visible { outline: 2px solid var(--ochre); outline-offset: 2px; border-radius: 2px; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin: 0;
+  }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.05; }
+  h2 { font-size: clamp(1.35rem, 3vw, 1.75rem); line-height: 1.15; }
+  h3 { font-size: 1.05rem; line-height: 1.25; }
+  p { margin: 0; }
+  .prose { max-width: 40rem; display: grid; gap: 0.9rem; }
+
+  /* masthead */
+  .masthead { display: grid; gap: 0.75rem; border-bottom: 1px solid var(--sand-line); padding-bottom: 1.5rem; }
+  .lede { max-width: 40rem; color: var(--ink-soft); font-size: 1.05rem; }
+  .back-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; font-size: 0.85rem; }
+  .back-links a { color: var(--malachite); font-weight: 500; }
+
+  /* contents: the real order of the class */
+  .contents { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.5rem 1.5rem; counter-reset: sec; }
+  .contents li { counter-increment: sec; display: flex; gap: 0.6rem; align-items: baseline; font-size: 0.92rem; }
+  .contents li::before { content: counter(sec); font-family: var(--font-mono); font-size: 0.75rem; color: var(--ochre); min-width: 1.1rem; }
+
+  /* sections */
+  section { display: grid; gap: 1.1rem; scroll-margin-top: 1rem; }
+  .sec-head { display: grid; gap: 0.35rem; }
+  .sec-num { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+
+  figure { margin: 0; display: grid; gap: 0.5rem; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x svg { display: block; width: 100%; min-width: 640px; height: auto; }
+  figcaption { font-size: 0.82rem; color: var(--ink-soft); max-width: 40rem; }
+  svg text { font-family: var(--font-body); fill: var(--ink); }
+  svg .mono { font-family: var(--font-mono); }
+  svg .soft { fill: var(--ink-soft); }
+
+  /* fact boxes and glossary */
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.75rem; }
+  .fact { background: var(--bg-panel); border: 1px solid var(--sand-line); border-radius: 6px; padding: 0.8rem 0.95rem; display: grid; gap: 0.2rem; align-content: start; min-width: 0; }
+  .fact .k { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ochre); }
+  .fact .v { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.2; }
+  .fact p { font-size: 0.86rem; color: var(--ink-soft); }
+
+  .gloss { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0.75rem; margin: 0; }
+  .gloss div { border-top: 2px solid var(--indigo); padding-top: 0.5rem; display: grid; gap: 0.15rem; min-width: 0; }
+  .gloss dt { font-family: var(--font-display); font-size: 1.15rem; }
+  .gloss dt span { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); margin-left: 0.35rem; }
+  .gloss dd { margin: 0; font-size: 0.88rem; color: var(--ink-soft); }
+
+  .nuance { border-left: 3px solid var(--gold); padding: 0.2rem 0 0.2rem 0.9rem; max-width: 40rem; font-size: 0.92rem; color: var(--ink-soft); }
+  .nuance strong { color: var(--ink); font-weight: 600; }
+
+  .quote { font-family: var(--font-display); font-style: italic; font-size: 1.15rem; line-height: 1.45; max-width: 36rem; color: var(--ink); border-left: 3px solid var(--nile); padding-left: 0.9rem; }
+  .quote cite { display: block; font-family: var(--font-mono); font-style: normal; font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.35rem; letter-spacing: 0.05em; }
+
+  .closing { background: var(--bg-panel); border: 1px solid var(--sand-line); border-radius: 8px; padding: clamp(1rem, 3vw, 1.5rem); display: grid; gap: 0.75rem; }
+  .closing ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem; max-width: 42rem; }
+
+  footer { font-size: 0.8rem; color: var(--ink-soft); border-top: 1px solid var(--sand-line); padding-top: 1rem; }
+</style>
+
+<main class="page">
+  <header class="masthead">
+    <p class="eyebrow">Curso UNED Tudela · Clase 1 · marzo de 2025</p>
+    <h1>El don del Nilo y el Imperio Antiguo</h1>
+    <p class="lede">Apuntes desarrollados de la primera clase de <em>Introducción a la historia del Antiguo Egipto</em>, con la Dra. Eva Tobalina Oraá. Del río que lo hace todo posible a la Gran Pirámide, h. 3300&ndash;2560 a. C. Los nombres subrayados enlazan con su ficha en la página principal.</p>
+    <div class="back-links">
+      <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#uned" target="_blank" rel="noopener noreferrer">Volver a la pestaña Curso UNED ↗</a>
+      <a href="https://claude.ai/artifact/WMkdWhLeEmPLPgwuKFpVKu" target="_blank" rel="noopener noreferrer">Mapa mental del curso ↗</a>
+    </div>
+  </header>
+
+  <nav aria-label="Contenido de la clase">
+    <ol class="contents">
+      <li><a href="#nilo">El Nilo y su crecida</a></li>
+      <li><a href="#unificacion">La unificación</a></li>
+      <li><a href="#djoser">Djoser y el Estado</a></li>
+      <li><a href="#mas-alla">Ka, ba y mastabas</a></li>
+      <li><a href="#piramides">De la escalera a la pirámide</a></li>
+      <li><a href="#keops">Keops y el diario de Merer</a></li>
+    </ol>
+  </nav>
+
+  <!-- timeline of the class, to scale: x = 20 + (3300 − año) × 1.1294 -->
+  <figure>
+    <div class="scroll-x">
+      <svg viewBox="0 0 1000 150" role="img" aria-labelledby="chronoTitle">
+        <title id="chronoTitle">Cronología de la clase, de h. 3300 a h. 2450 a. C., a escala</title>
+        <rect x="20" y="96" width="225.9" height="28" fill="var(--sand-line)" opacity="0.55"/>
+        <rect x="245.9" y="96" width="467.6" height="28" fill="var(--nile)" opacity="0.28"/>
+        <rect x="713.5" y="96" width="82.4" height="28" fill="var(--indigo)" opacity="0.35"/>
+        <rect x="795.9" y="96" width="134.4" height="28" fill="var(--gold)" opacity="0.4"/>
+        <rect x="930.3" y="96" width="49.7" height="28" fill="var(--malachite)" opacity="0.3"/>
+        <text x="30" y="115" font-size="12">Dinastía 0</text>
+        <text x="256" y="115" font-size="12">Dinastías I–II · época tinita</text>
+        <text x="754.7" y="115" font-size="12" text-anchor="middle">III</text>
+        <text x="863.1" y="115" font-size="12" text-anchor="middle">IV</text>
+        <text x="955.2" y="115" font-size="12" text-anchor="middle">V</text>
+        <g stroke="var(--ink-soft)" stroke-width="1">
+          <line x1="76.5" y1="34" x2="76.5" y2="96"/>
+          <line x1="189.4" y1="59" x2="189.4" y2="96"/>
+          <line x1="245.9" y1="84" x2="245.9" y2="96"/>
+          <line x1="731.5" y1="84" x2="731.5" y2="96"/>
+          <line x1="795.9" y1="59" x2="795.9" y2="96"/>
+          <line x1="823" y1="34" x2="823" y2="96"/>
+          <line x1="855.8" y1="59" x2="855.8" y2="96"/>
+        </g>
+        <g font-size="13">
+          <text x="80.5" y="34">Tumba U-j de Abidos · h. 3250</text>
+          <text x="193.4" y="59">Rey Escorpión · h. 3150</text>
+          <text x="249.9" y="84">Narmer · h. 3100</text>
+          <text x="727.5" y="84" text-anchor="end">Djoser · h. 2670</text>
+          <text x="791.9" y="59" text-anchor="end">Snofru · h. 2613</text>
+          <text x="819" y="34" text-anchor="end">Keops · h. 2589</text>
+          <text x="859.8" y="59">Merer · h. 2560</text>
+        </g>
+        <g class="mono soft" font-size="11">
+          <text x="20" y="142">3300 a. C.</text>
+          <text x="471.8" y="142" text-anchor="middle">2900</text>
+          <text x="980" y="142" text-anchor="end">2450</text>
+        </g>
+        <line x1="471.8" y1="124" x2="471.8" y2="130" stroke="var(--ink-soft)"/>
+      </svg>
+    </div>
+    <figcaption>Fechas aproximadas, que según el autor pueden variar hasta un siglo; el curso sigue a Barry Kemp. Las dos primeras dinastías ocupan más tiempo que las tres siguientes juntas.</figcaption>
+  </figure>
+
+  <!-- 1 -->
+  <section id="nilo" aria-labelledby="nilo-h">
+    <div class="sec-head">
+      <p class="sec-num">1 · El río</p>
+      <h2 id="nilo-h">El don del Nilo</h2>
+    </div>
+    <div class="prose">
+      <p>Heródoto, que visitó Egipto hacia 450 a. C., llamó al país «don del Nilo». Casi no llueve: todo depende de la crecida que cada verano traían las lluvias monzónicas de Etiopía por el Nilo Azul y el Atbara. A diferencia del Tigris y el Éufrates, la crecida del Nilo era suave y previsible. Llegaba, cubría los campos y se retiraba dejando un limo negro y fértil.</p>
+      <p>De ahí el nombre que los egipcios daban a su tierra: <em>Kemet</em>, «la Negra», frente a <em>Deshret</em>, «la Roja», el desierto. La franja cultivable tiene pocos kilómetros de ancho; el desierto empieza donde termina el agua.</p>
+    </div>
+
+    <figure>
+      <div class="scroll-x">
+        <svg viewBox="0 0 760 190" role="img" aria-labelledby="floodTitle">
+          <title id="floodTitle">El año del Nilo: nivel del río mes a mes y las tres estaciones del calendario egipcio</title>
+          <!-- months: x = 40 + mes × 56.67 (mes 0 = 1 de enero) -->
+          <g stroke="var(--sand-line)" stroke-width="1">
+            <line x1="40" y1="130" x2="720" y2="130"/>
+          </g>
+          <path d="M40 112 C 70 116, 100 120, 125 122 S 210 127, 238 126 S 330 120, 380 92 S 450 30, 493 26 S 560 40, 607 78 S 680 102, 720 112 L 720 130 L 40 130 Z" fill="var(--nile)" opacity="0.25"/>
+          <path d="M40 112 C 70 116, 100 120, 125 122 S 210 127, 238 126 S 330 120, 380 92 S 450 30, 493 26 S 560 40, 607 78 S 680 102, 720 112" fill="none" stroke="var(--nile)" stroke-width="2.5"/>
+          <line x1="414" y1="20" x2="414" y2="130" stroke="var(--gold)" stroke-dasharray="3 3"/>
+          <text x="410" y="18" font-size="12" text-anchor="end">Orto de Sirio, h. 19 de julio</text>
+          <text x="499" y="40" font-size="12">Máximo, septiembre</text>
+          <!-- seasons: Akhet mid-Jul–mid-Nov, Peret mid-Nov–mid-Mar, Shemu mid-Mar–mid-Jul -->
+          <rect x="40" y="138" width="113.3" height="22" fill="var(--malachite)" opacity="0.3"/>
+          <rect x="153.3" y="138" width="226.7" height="22" fill="var(--gold)" opacity="0.35"/>
+          <rect x="380" y="138" width="226.7" height="22" fill="var(--nile)" opacity="0.35"/>
+          <rect x="606.7" y="138" width="113.3" height="22" fill="var(--malachite)" opacity="0.3"/>
+          <g font-size="12" text-anchor="middle">
+            <text x="96.7" y="153">Peret</text>
+            <text x="266.7" y="153">Shemu · cosecha</text>
+            <text x="493.3" y="153">Akhet · inundación</text>
+            <text x="663.3" y="153">Peret · siembra</text>
+          </g>
+          <g class="mono soft" font-size="10" text-anchor="middle">
+            <text x="68.3" y="178">ene</text><text x="125" y="178">feb</text><text x="181.7" y="178">mar</text>
+            <text x="238.3" y="178">abr</text><text x="295" y="178">may</text><text x="351.7" y="178">jun</text>
+            <text x="408.3" y="178">jul</text><text x="465" y="178">ago</text><text x="521.7" y="178">sep</text>
+            <text x="578.3" y="178">oct</text><text x="635" y="178">nov</text><text x="691.7" y="178">dic</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Curva esquemática del nivel del río en Menfis antes de la presa de Asuán (1970). El año egipcio tenía tres estaciones de cuatro meses, y empezaba con la crecida.</figcaption>
+    </figure>
+
+    <div class="facts">
+      <div class="fact">
+        <span class="k">Nilómetros</span>
+        <span class="v">16 codos</span>
+        <p>Escaleras graduadas junto al río, como la de Elefantina, medían la crecida. Con ella se calculaban los impuestos. Plinio da 16 codos en Menfis como la crecida de la abundancia; 12, hambre.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Navegar en ambos sentidos</span>
+        <span class="v">Corriente al norte, viento al sur</span>
+        <p>La corriente lleva río abajo; el viento dominante sopla del norte e impulsa la vela río arriba. El jeroglífico de «ir al sur» es un barco con la vela izada; el de «ir al norte», sin vela.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Dos tierras</span>
+        <span class="v">Alto y Bajo Egipto</span>
+        <p>El valle estrecho del sur (Alto Egipto) y el delta abierto del norte (Bajo Egipto). El rey es «señor de las Dos Tierras» y lleva la doble corona.</p>
+      </div>
+    </div>
+    <p class="nuance">Para verlo en el mapa: <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-elephantine" target="_blank" rel="noopener noreferrer">Elefantina</a>, en Asuán, tiene uno de los nilómetros más antiguos; la primera catarata marcaba la frontera sur del Egipto faraónico.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="unificacion" aria-labelledby="unif-h">
+    <div class="sec-head">
+      <p class="sec-num">2 · El primer Estado</p>
+      <h2 id="unif-h">El rey Escorpión, Narmer y Menes</h2>
+    </div>
+    <div class="prose">
+      <p>A finales del IV milenio, las jefaturas del Alto Egipto (Nekhen, Nagada, Abidos) se fueron imponiendo hasta dominar todo el valle y el delta. En la tumba U-j de Abidos, h. 3250 a. C., aparecieron etiquetas de hueso con los signos más antiguos de escritura egipcia conocidos.</p>
+      <p>La cabeza de maza del rey Escorpión, hallada en <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-hierakonpolis" target="_blank" rel="noopener noreferrer">Hieracómpolis (Nekhen)</a> y hoy en el Ashmolean de Oxford, muestra a un rey con la corona blanca del sur abriendo un canal con una azada: el rey como garante del agua.</p>
+      <p>La <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-narmer" target="_blank" rel="noopener noreferrer">paleta de Narmer</a>, de esquisto y 64 cm de alto, se encontró en el mismo yacimiento en 1897&ndash;98 y está en el Museo Egipcio de El Cairo. Por una cara Narmer lleva la corona blanca y golpea a un enemigo; por la otra, la corona roja del norte, desfila ante enemigos decapitados. En el centro, dos animales de cuello largo entrelazado: las Dos Tierras unidas, h. 3150&ndash;3100 a. C.</p>
+      <p>Heródoto y Manetón llaman Menes al primer rey, fundador de Menfis. Hoy se le identifica con Narmer o con su sucesor, Aha.</p>
+    </div>
+    <p class="nuance"><strong>Corrección.</strong> En la grabación se sitúa la paleta cerca de Tinis; se excavó en Hieracómpolis, en el depósito de un templo.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="djoser" aria-labelledby="djoser-h">
+    <div class="sec-head">
+      <p class="sec-num">3 · Dinastía III, h. 2670 a. C.</p>
+      <h2 id="djoser-h">Djoser y la máquina del Estado</h2>
+    </div>
+    <div class="prose">
+      <p><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-djoser" target="_blank" rel="noopener noreferrer">Djoser</a> (su nombre de Horus era Netjerikhet) abre el Imperio Antiguo. Con él Menfis se consolida como capital y <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-saqqara" target="_blank" rel="noopener noreferrer">Saqqara</a>, en el desierto sobre la ciudad, como necrópolis real. Su arquitecto, Imhotep, era también canciller y sumo sacerdote de Heliópolis, la ciudad del sol: el culto a Ra ya pesa en la corte.</p>
+      <p>El país se administra por <em>nomos</em>, provincias con su capital, su dios y su gobernador (el nomarca). Por encima de todos está el visir (<em>tjaty</em>), que dirige la justicia, el tesoro, los archivos y las obras del rey.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">Nomos</span>
+        <span class="v">42</span>
+        <p>22 en el Alto Egipto y 20 en el Bajo, según las listas clásicas, que se fijaron más tarde.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Visir</span>
+        <span class="v">Tjaty</span>
+        <p>El segundo del rey. Bajo Keops lo fue Hemiunu, al que se atribuye la dirección de la Gran Pirámide.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Ra</span>
+        <span class="v">Heliópolis</span>
+        <p>El dios sol gana peso durante las dinastías III a V: desde Djedefra, hijo de Keops, los reyes se llaman «hijo de Ra».</p>
+      </div>
+    </div>
+    <p class="nuance"><strong>Matiz.</strong> Menfis ya era la capital desde la dinastía I, según la tradición que atribuye su fundación a Menes; y Ra no se convierte en el dios supremo de golpe, sino a lo largo del Imperio Antiguo. Lo nuevo con Djoser es la escala: el primer gran monumento de piedra y una corte que puede organizarlo.</p>
+  </section>
+
+  <!-- 4 -->
+  <section id="mas-alla" aria-labelledby="mas-h">
+    <div class="sec-head">
+      <p class="sec-num">4 · La muerte</p>
+      <h2 id="mas-h">Cuerpo, sombra, nombre, <em>ka</em> y <em>ba</em></h2>
+    </div>
+    <div class="prose">
+      <p>Para los egipcios la persona tenía varias partes, y todas debían sobrevivir. Si se destruía el cuerpo o se borraba el nombre, la persona moría del todo. Por eso se conservaba el cadáver, se escribía el nombre en la tumba y se dejaban ofrendas.</p>
+    </div>
+    <dl class="gloss">
+      <div><dt>Khet <span>cuerpo</span></dt><dd>El soporte de todo lo demás. De ahí la momificación.</dd></div>
+      <div><dt>Shut <span>sombra</span></dt><dd>Inseparable del cuerpo; protege y acompaña.</dd></div>
+      <div><dt>Ren <span>nombre</span></dt><dd>Mientras se pronuncia, la persona vive. Borrarlo es matarla.</dd></div>
+      <div><dt>Ka <span>fuerza vital</span></dt><dd>El doble que nace con la persona y se alimenta de las ofrendas. Se escribe con dos brazos alzados.</dd></div>
+      <div><dt>Ba <span>personalidad</span></dt><dd>Un pájaro con cabeza humana que sale de la tumba de día y vuelve al cuerpo de noche.</dd></div>
+    </dl>
+    <div class="prose">
+      <p>Las tumbas se construían en la orilla occidental, donde se pone el sol. La forma clásica del Imperio Antiguo es la <em>mastaba</em> (en árabe, «banco»): un bloque rectangular de adobe o piedra sobre un pozo que baja a la cámara. Arriba, una capilla con la falsa puerta por la que el <em>ka</em> salía a recibir las ofrendas, y un <em>serdab</em>, un cuarto cerrado con la estatua del difunto.</p>
+      <p>La momificación aún estaba en sus inicios. La evisceración más antigua documentada es la de Hetepheres I, esposa de Snofru y madre de Keops, cuyo cofre de vasos canopos se halló en Guiza. Los 70 días con natrón que describe Heródoto son de una época muy posterior.</p>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="piramides" aria-labelledby="pir-h">
+    <div class="sec-head">
+      <p class="sec-num">5 · Un siglo de ensayos, h. 2670&ndash;2560 a. C.</p>
+      <h2 id="pir-h">De la pirámide escalonada a la pirámide perfecta</h2>
+    </div>
+    <div class="prose">
+      <p>Imhotep empezó con una mastaba de piedra y la amplió hasta apilar seis escalones: la pirámide escalonada de Djoser, el primer gran edificio de piedra tallada. En tres generaciones se pasó de ahí a la Gran Pirámide, y casi todo el camino lo recorrió un solo rey, <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-sneferu" target="_blank" rel="noopener noreferrer">Snofru</a>, fundador de la dinastía IV.</p>
+    </div>
+
+    <figure>
+      <div class="scroll-x">
+        <!-- 1 unidad = 1 metro; base en y = 180 -->
+        <svg viewBox="0 0 1060 240" role="img" aria-labelledby="pyrTitle">
+          <title id="pyrTitle">Perfiles de las cinco pirámides de la clase, a la misma escala</title>
+          <line x1="0" y1="180" x2="1060" y2="180" stroke="var(--sand-line)" stroke-width="1.5"/>
+          <!-- Djoser: seis escalones, 62,5 m, base 121 m -->
+          <g fill="var(--indigo)" fill-opacity="0.35" stroke="var(--indigo)" stroke-width="1.2">
+            <rect x="19.5" y="169.6" width="121" height="10.4"/>
+            <rect x="26.5" y="159.2" width="107" height="10.4"/>
+            <rect x="33.5" y="148.8" width="93" height="10.4"/>
+            <rect x="40.5" y="138.4" width="79" height="10.4"/>
+            <rect x="47.5" y="128" width="65" height="10.4"/>
+            <rect x="54.5" y="117.5" width="51" height="10.5"/>
+          </g>
+          <!-- Meidum: pirámide proyectada (92 m) y la ruina actual -->
+          <polygon points="173,180 245,88 317,180" fill="none" stroke="var(--ochre)" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <polygon points="173,180 205,162 285,162 317,180" fill="var(--sand-line)" stroke="var(--ochre)" stroke-width="1"/>
+          <polygon points="212,162 214,140 220,140 222,115 268,115 270,140 276,140 278,162" fill="var(--ochre)" fill-opacity="0.35" stroke="var(--ochre)" stroke-width="1.2"/>
+          <!-- Acodada: 54,5° hasta 47 m, luego 43° -->
+          <polygon points="340.7,180 374.2,133 435,76.3 495.8,133 529.3,180" fill="var(--malachite)" fill-opacity="0.32" stroke="var(--malachite)" stroke-width="1.2"/>
+          <!-- Roja: 43°, 105 m, base 220 m -->
+          <polygon points="560,180 670,75 780,180" fill="var(--ochre)" fill-opacity="0.3" stroke="var(--ochre)" stroke-width="1.2"/>
+          <!-- Gran Pirámide: 146,6 m, base 230,3 m -->
+          <polygon points="809.9,180 925,33.4 1040.1,180" fill="var(--gold)" fill-opacity="0.38" stroke="var(--gold)" stroke-width="1.4"/>
+          <g font-size="13" text-anchor="middle">
+            <text x="80" y="202">Djoser, Saqqara</text>
+            <text x="245" y="202">Meidum</text>
+            <text x="435" y="202">Acodada, Dahshur</text>
+            <text x="670" y="202">Roja, Dahshur</text>
+            <text x="925" y="202">Keops, Guiza</text>
+          </g>
+          <g class="mono soft" font-size="11" text-anchor="middle">
+            <text x="80" y="220">62,5 m · seis escalones</text>
+            <text x="245" y="220">92 m previstos · Huni/Snofru</text>
+            <text x="435" y="220">105 m · 54° y luego 43°</text>
+            <text x="670" y="220">105 m · 43°</text>
+            <text x="925" y="220">146,6 m · 52°</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Alturas y bases originales, a escala (Keops mide hoy unos 138,5 m). En Meidum, la línea discontinua es la pirámide que se quiso hacer; lo sólido es lo que queda: la torre del núcleo sobre sus escombros.</figcaption>
+    </figure>
+
+    <div class="prose">
+      <p><strong>Meidum.</strong> Empezada como pirámide escalonada, probablemente por Huni, y convertida por Snofru en pirámide lisa rellenando los escalones. El revestimiento exterior acabó derrumbándose y dejó a la vista el núcleo.</p>
+      <p><strong>La acodada.</strong> En <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-dahshur" target="_blank" rel="noopener noreferrer">Dahshur</a>, Snofru empezó una pirámide de 54° que dio problemas de estabilidad; a media altura se redujo la pendiente a 43°, y de ahí su perfil quebrado. Conserva gran parte del revestimiento.</p>
+      <p><strong>La roja.</strong> Con los 43° desde la base, la primera pirámide lisa que salió bien. Snofru movió más piedra que ningún otro faraón.</p>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="keops" aria-labelledby="keops-h">
+    <div class="sec-head">
+      <p class="sec-num">6 · Dinastía IV, h. 2589&ndash;2566 a. C.</p>
+      <h2 id="keops-h">Keops y el diario de Merer</h2>
+    </div>
+    <div class="prose">
+      <p>Keops (Jufu, Khnum-Khufu), hijo de Snofru, construyó en <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-giza" target="_blank" rel="noopener noreferrer">Guiza</a> la Gran Pirámide: unos 2,3 millones de bloques, 146,6 m de altura y el edificio más alto del mundo durante casi cuatro mil años. Del rey que la mandó hacer solo se conserva una estatuilla de marfil de 7,5 cm, hallada en <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-abydos" target="_blank" rel="noopener noreferrer">Abidos</a>.</p>
+      <p>En 2013, el equipo de Pierre Tallet encontró en Wadi al-Jarf, un puerto del mar Rojo, los papiros escritos más antiguos conocidos. Entre ellos está el diario de Merer, un inspector que dirigía una cuadrilla de unos 40 hombres. Durante meses anotó, día a día, sus viajes en barco con bloques de caliza desde las canteras de Tura, en la orilla oriental, hasta Guiza, por canales abiertos con la crecida.</p>
+    </div>
+    <blockquote class="quote">Pasamos el día en Tura; cargamos piedra; zarpamos hacia el Horizonte de Keops.<cite>Paráfrasis del estilo del diario de Merer · h. 2560 a. C.</cite></blockquote>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">Fecha del diario</span>
+        <span class="v">Año 27 de Keops</span>
+        <p>«El año siguiente al 13.º recuento del ganado», hacia el final del reinado, cuando la pirámide estaba casi terminada.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Su jefe</span>
+        <span class="v">Ankhhaf</span>
+        <p>Medio hermano de Keops, al frente del puerto de Guiza, la «Entrada del lago de Keops».</p>
+      </div>
+      <div class="fact">
+        <span class="k">Qué demuestra</span>
+        <span class="v">Trabajo organizado</span>
+        <p>Cuadrillas pagadas y abastecidas por el Estado, con raciones y registros. Ni esclavos ni extraterrestres.</p>
+      </div>
+    </div>
+  </section>
+
+  <aside class="closing" aria-labelledby="close-h">
+    <h3 id="close-h">El hilo conductor del curso</h3>
+    <p class="prose">Esta clase plantea la tensión que recorre todo el curso: el faraón frente al clero. Cuanto más grande es la pirámide, más tierras y ofrendas necesita su culto, y más poder acumulan los sacerdotes, sobre todo los de Ra en Heliópolis. En la clase 2, Shepseskaf rompe con ellos.</p>
+    <ul>
+      <li>Para repasar: ¿por qué la crecida del Nilo hizo posible un Estado tan centralizado?</li>
+      <li>¿Qué muestra cada cara de la paleta de Narmer?</li>
+      <li>¿Qué cambia entre la Acodada y la Roja?</li>
+      <li>¿Qué nos dice el diario de Merer de quién construyó la Gran Pirámide?</li>
+    </ul>
+  </aside>
+
+  <footer>Apuntes propios a partir de la clase y de la bibliografía del curso (Kemp, Shaw, Grimal). No reproducen la grabación. Fechas «h.» (hacia), a. C.</footer>
+</main>
