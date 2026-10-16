@@ -1,0 +1,391 @@
+<meta charset="utf-8" />
+<title>Curso UNED · Clase 2</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* Layout: a study dossier for one class. Masthead, a numbered contents strip (the order of the class), then six sections in one reading column, each with a figure drawn to scale where the subject has numbers. Tokens shared with the Ancient Egypt pages. */
+  :root {
+    --bg: #ede3cc;
+    --bg-panel: #f7f1e1;
+    --ink: #2b2420;
+    --ink-soft: #5b4f3f;
+    --sand-line: #c9b48c;
+    --ochre: #b5551f;
+    --nile: #2e6e77;
+    --gold: #a9791f;
+    --indigo: #5b4f8f;
+    --malachite: #3c7a5a;
+    --silt: #3b3229;
+    --shadow: rgba(43, 36, 32, 0.12);
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --bg-panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --sand-line: #57544c;
+      --ochre: #e58a4d; --nile: #6fc2c4; --gold: #d9a83c; --indigo: #a99bd9; --malachite: #5fae87;
+      --silt: #1f1e1c; --shadow: rgba(0, 0, 0, 0.35); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --bg-panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --sand-line: #57544c;
+    --ochre: #e58a4d; --nile: #6fc2c4; --gold: #d9a83c; --indigo: #a99bd9; --malachite: #5fae87;
+    --silt: #1f1e1c; --shadow: rgba(0, 0, 0, 0.35); color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .page {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid;
+    gap: clamp(2rem, 5vw, 3.25rem);
+  }
+  a { color: inherit; text-decoration-color: var(--sand-line); text-underline-offset: 0.18em; }
+  a:hover { text-decoration-color: currentColor; }
+  a:focus-visible { outline: 2px solid var(--ochre); outline-offset: 2px; border-radius: 2px; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin: 0;
+  }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.05; }
+  h2 { font-size: clamp(1.35rem, 3vw, 1.75rem); line-height: 1.15; }
+  h3 { font-size: 1.05rem; line-height: 1.25; }
+  p { margin: 0; }
+  .prose { max-width: 40rem; display: grid; gap: 0.9rem; }
+
+  /* masthead */
+  .masthead { display: grid; gap: 0.75rem; border-bottom: 1px solid var(--sand-line); padding-bottom: 1.5rem; }
+  .lede { max-width: 40rem; color: var(--ink-soft); font-size: 1.05rem; }
+  .back-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; font-size: 0.85rem; }
+  .back-links a { color: var(--malachite); font-weight: 500; }
+
+  /* contents: the real order of the class */
+  .contents { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.5rem 1.5rem; counter-reset: sec; }
+  .contents li { counter-increment: sec; display: flex; gap: 0.6rem; align-items: baseline; font-size: 0.92rem; }
+  .contents li::before { content: counter(sec); font-family: var(--font-mono); font-size: 0.75rem; color: var(--ochre); min-width: 1.1rem; }
+
+  /* sections */
+  section { display: grid; gap: 1.1rem; scroll-margin-top: 1rem; }
+  .sec-head { display: grid; gap: 0.35rem; }
+  .sec-num { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+
+  figure { margin: 0; display: grid; gap: 0.5rem; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x svg { display: block; width: 100%; min-width: 640px; height: auto; }
+  figcaption { font-size: 0.82rem; color: var(--ink-soft); max-width: 40rem; }
+  svg text { font-family: var(--font-body); fill: var(--ink); }
+  svg .mono { font-family: var(--font-mono); }
+  svg .soft { fill: var(--ink-soft); }
+
+  /* fact boxes and glossary */
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.75rem; }
+  .fact { background: var(--bg-panel); border: 1px solid var(--sand-line); border-radius: 6px; padding: 0.8rem 0.95rem; display: grid; gap: 0.2rem; align-content: start; min-width: 0; }
+  .fact .k { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ochre); }
+  .fact .v { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.2; }
+  .fact p { font-size: 0.86rem; color: var(--ink-soft); }
+
+  .gloss { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0.75rem; margin: 0; }
+  .gloss div { border-top: 2px solid var(--indigo); padding-top: 0.5rem; display: grid; gap: 0.15rem; min-width: 0; }
+  .gloss dt { font-family: var(--font-display); font-size: 1.15rem; }
+  .gloss dt span { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); margin-left: 0.35rem; }
+  .gloss dd { margin: 0; font-size: 0.88rem; color: var(--ink-soft); }
+
+  .nuance { border-left: 3px solid var(--gold); padding: 0.2rem 0 0.2rem 0.9rem; max-width: 40rem; font-size: 0.92rem; color: var(--ink-soft); }
+  .nuance strong { color: var(--ink); font-weight: 600; }
+
+  .quote { font-family: var(--font-display); font-style: italic; font-size: 1.15rem; line-height: 1.45; max-width: 36rem; color: var(--ink); border-left: 3px solid var(--nile); padding-left: 0.9rem; }
+  .quote cite { display: block; font-family: var(--font-mono); font-style: normal; font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.35rem; letter-spacing: 0.05em; }
+
+  .closing { background: var(--bg-panel); border: 1px solid var(--sand-line); border-radius: 8px; padding: clamp(1rem, 3vw, 1.5rem); display: grid; gap: 0.75rem; }
+  .closing ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem; max-width: 42rem; }
+
+  footer { font-size: 0.8rem; color: var(--ink-soft); border-top: 1px solid var(--sand-line); padding-top: 1rem; }
+</style>
+
+
+<main class="page">
+  <header class="masthead">
+    <p class="eyebrow">Curso UNED Tudela · Clase 2 · marzo de 2025</p>
+    <h1>Del final del Imperio Antiguo al Imperio Medio</h1>
+    <p class="lede">Apuntes desarrollados de la segunda clase de <em>Introducción a la historia del Antiguo Egipto</em>, con la Dra. Eva Tobalina Oraá. De Kefrén y la Esfinge al asesinato de Amenemes I, h. 2560&ndash;1956 a. C.: cómo el Estado de las pirámides se debilita, se rompe y se rehace. Los nombres subrayados enlazan con su ficha en la página principal.</p>
+    <div class="back-links">
+      <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#uned" target="_blank" rel="noopener noreferrer">Volver a la pestaña Curso UNED ↗</a>
+      <a href="https://claude.ai/artifact/EMAUdhDxkPGrfZcTenuoBz" target="_blank" rel="noopener noreferrer">← Clase 1 en detalle</a>
+      <a href="https://claude.ai/artifact/WMkdWhLeEmPLPgwuKFpVKu" target="_blank" rel="noopener noreferrer">Mapa mental del curso ↗</a>
+    </div>
+  </header>
+
+  <nav aria-label="Contenido de la clase">
+    <ol class="contents">
+      <li><a href="#kefren">Kefrén, la Esfinge y Micerino</a></li>
+      <li><a href="#ra">Shepseskaf y los templos solares</a></li>
+      <li><a href="#unas">Unas y los Textos de las Pirámides</a></li>
+      <li><a href="#colapso">Pepi II y el colapso</a></li>
+      <li><a href="#tebas">Heracleópolis contra Tebas</a></li>
+      <li><a href="#amenemes">Amenemes I y Sinuhé</a></li>
+    </ol>
+  </nav>
+
+  <!-- timeline of the class, to scale: x = 20 + (2600 − año) × 1.3714 -->
+  <figure>
+    <div class="scroll-x">
+      <svg viewBox="0 0 1010 210" role="img" aria-labelledby="chronoTitle">
+        <title id="chronoTitle">Cronología de la clase, de h. 2600 a h. 1900 a. C., a escala</title>
+        <rect x="20" y="96" width="145.4" height="28" fill="var(--gold)" opacity="0.4"/>
+        <rect x="165.4" y="96" width="204.4" height="28" fill="var(--malachite)" opacity="0.3"/>
+        <rect x="369.8" y="96" width="224.8" height="28" fill="var(--nile)" opacity="0.28"/>
+        <rect x="594.6" y="96" width="193.4" height="28" fill="var(--sand-line)" opacity="0.55"/>
+        <rect x="788" y="96" width="192" height="28" fill="var(--indigo)" opacity="0.32"/>
+        <g font-size="12" text-anchor="middle">
+          <text x="92.7" y="115">Dinastía IV</text>
+          <text x="267.6" y="115">Dinastía V</text>
+          <text x="482.2" y="115">Dinastía VI</text>
+          <text x="691.3" y="115">Primer Periodo Intermedio</text>
+          <text x="884" y="115">Imperio Medio</text>
+        </g>
+        <g stroke="var(--ink-soft)" stroke-width="1">
+          <line x1="77.6" y1="34" x2="77.6" y2="96"/>
+          <line x1="113.3" y1="59" x2="113.3" y2="96"/>
+          <line x1="153" y1="84" x2="153" y2="96"/>
+          <line x1="461.6" y1="34" x2="461.6" y2="96"/>
+          <line x1="594.6" y1="59" x2="594.6" y2="96"/>
+          <line x1="253.1" y1="124" x2="253.1" y2="163"/>
+          <line x1="328.6" y1="124" x2="328.6" y2="138"/>
+          <line x1="788" y1="124" x2="788" y2="163"/>
+          <line x1="863.4" y1="124" x2="863.4" y2="138"/>
+        </g>
+        <g font-size="13">
+          <text x="81.6" y="34">Kefrén · h. 2558</text>
+          <text x="117.3" y="59">Micerino · h. 2532</text>
+          <text x="157" y="84">Shepseskaf · h. 2503</text>
+          <text x="465.6" y="34">Pepi II · h. 2278–2184</text>
+          <text x="598.6" y="59">Colapso · h. 2181</text>
+          <text x="257.1" y="173">Templo solar de Niuserra · h. 2430</text>
+          <text x="332.6" y="148">Unas · h. 2375</text>
+          <text x="792" y="173">Mentuhotep II · h. 2040</text>
+          <text x="867.4" y="148">Amenemes I · h. 1985</text>
+        </g>
+        <g class="mono soft" font-size="11">
+          <text x="20" y="200">2600 a. C.</text>
+          <text x="431.4" y="200" text-anchor="middle">2300</text>
+          <text x="842.8" y="200" text-anchor="middle">2000</text>
+          <text x="980" y="200" text-anchor="end">1900</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>Fechas aproximadas según Barry Kemp, que sigue el curso; según el autor pueden variar hasta un siglo (Ian Shaw, por ejemplo, sitúa la reunificación de Mentuhotep II h. 2055 a. C.).</figcaption>
+  </figure>
+
+  <!-- 1 -->
+  <section id="kefren" aria-labelledby="kefren-h">
+    <div class="sec-head">
+      <p class="sec-num">1 · Dinastía IV, h. 2558&ndash;2503 a. C.</p>
+      <h2 id="kefren-h">Kefrén, la Esfinge y Micerino</h2>
+    </div>
+    <div class="prose">
+      <p>Tras Keops reinó brevemente su hijo Djedefra, que se hizo enterrar en Abu Rawash y fue el primero en llamarse «hijo de Ra». Luego otro hijo de Keops, <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-khafre" target="_blank" rel="noopener noreferrer">Kefrén</a> (Jafra), levantó en <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-giza" target="_blank" rel="noopener noreferrer">Guiza</a> la segunda pirámide. Es algo más baja que la de su padre, pero está en un terreno más alto y parece mayor; aún conserva en la cima parte del revestimiento de caliza blanca.</p>
+      <p>Junto a su templo del valle se talló en la roca la <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-sphinx" target="_blank" rel="noopener noreferrer">Gran Esfinge</a>, un león con cabeza de rey, que casi todos los egiptólogos atribuyen a Kefrén. Micerino (Menkaura), su hijo, construyó una pirámide mucho más pequeña, con las hiladas inferiores de granito rojo de Asuán. De su templo del valle salen las famosas tríadas: el rey entre la diosa Hathor y la divinidad de un nomo.</p>
+    </div>
+
+    <figure>
+      <div class="scroll-x">
+        <!-- 1 unidad = 1 metro; base en y = 170 -->
+        <svg viewBox="0 0 1000 225" role="img" aria-labelledby="pyrTitle">
+          <title id="pyrTitle">Perfiles de las pirámides de la clase a la misma escala, de Keops a Pepi II</title>
+          <line x1="0" y1="170" x2="1000" y2="170" stroke="var(--sand-line)" stroke-width="1.5"/>
+          <polygon points="19.9,170 135,23.4 250.1,170" fill="none" stroke="var(--gold)" stroke-width="1.2" stroke-dasharray="4 3"/>
+          <polygon points="272.4,170 380,26.5 487.6,170" fill="var(--gold)" fill-opacity="0.38" stroke="var(--gold)" stroke-width="1.4"/>
+          <polygon points="518.9,170 570,105 621.1,170" fill="var(--ochre)" fill-opacity="0.32" stroke="var(--ochre)" stroke-width="1.2"/>
+          <polygon points="660.6,170 700,122.7 739.4,170" fill="var(--malachite)" fill-opacity="0.32" stroke="var(--malachite)" stroke-width="1.2"/>
+          <polygon points="786.1,170 815,127 843.9,170" fill="var(--nile)" fill-opacity="0.3" stroke="var(--nile)" stroke-width="1.2"/>
+          <polygon points="895.6,170 935,117.5 974.4,170" fill="var(--nile)" fill-opacity="0.3" stroke="var(--nile)" stroke-width="1.2"/>
+          <g font-size="13" text-anchor="middle">
+            <text x="135" y="192">Keops, como referencia</text>
+            <text x="380" y="192">Kefrén, Guiza</text>
+            <text x="570" y="192">Micerino, Guiza</text>
+            <text x="700" y="192">Sahura, Abusir</text>
+            <text x="815" y="192">Unas</text>
+            <text x="935" y="192">Pepi II</text>
+          </g>
+          <g class="mono soft" font-size="11" text-anchor="middle">
+            <text x="135" y="210">146,6 m · dinastía IV</text>
+            <text x="380" y="210">143,5 m · dinastía IV</text>
+            <text x="570" y="210">65 m · dinastía IV</text>
+            <text x="700" y="210">47 m · dinastía V</text>
+            <text x="815" y="210">43 m · V</text>
+            <text x="935" y="210">52 m · VI</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Alturas originales a escala. Tras Micerino, ninguna pirámide real pasa de unos 70 m (la de Neferirkara) y casi todas se quedan en 50, con núcleos son de piedra menuda y cascote: lo grande pasa a ser el templo, no la tumba. Unas y Pepi II están en Saqqara.</figcaption>
+    </figure>
+
+    <div class="facts">
+      <div class="fact">
+        <span class="k">La Esfinge</span>
+        <span class="v">73 × 20 m</span>
+        <p>Largo y alto. Tallada en un afloramiento de caliza que quedó al extraer bloques; la nariz falta desde antes del siglo XV.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Tríadas de Micerino</span>
+        <span class="v">Grauvaca</span>
+        <p>Halladas por George Reisner en 1908; hoy entre el Museo Egipcio de El Cairo y el de Bellas Artes de Boston.</p>
+      </div>
+    </div>
+    <p class="nuance"><strong>Corrección.</strong> En la grabación se dice que la pirámide de Micerino medía unos 100 m; medía unos 65 m.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="ra" aria-labelledby="ra-h">
+    <div class="sec-head">
+      <p class="sec-num">2 · Dinastías IV y V, h. 2503&ndash;2375 a. C.</p>
+      <h2 id="ra-h">Shepseskaf rompe con Ra; la dinastía V vuelve a él</h2>
+    </div>
+    <div class="prose">
+      <p>Shepseskaf, último rey de la dinastía IV, no construyó una pirámide sino una gran mastaba en Saqqara Sur, la Mastabat al-Faraun, y no llevó el nombre de Ra. El curso lo lee como una ruptura con el clero de Heliópolis, cada vez más rico gracias a las fundaciones de los reyes.</p>
+      <p>La dinastía V lo devuelve todo a Ra. El papiro Westcar, un cuento escrito siglos después, cuenta que sus tres primeros reyes eran hijos de Ra y de la mujer de un sacerdote. Userkaf, Sahura, Neferirkara y Niuserra se enterraron en <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-abusir" target="_blank" rel="noopener noreferrer">Abusir</a>, en pirámides pequeñas. A su lado levantaron templos solares: un patio abierto con un gran obelisco achaparrado sobre un podio y un altar para las ofrendas al sol.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">Templos solares</span>
+        <span class="v">6 citados, 2 hallados</span>
+        <p>Los textos nombran seis; se han excavado el de Userkaf y el de Niuserra en Abu Gurab.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Papiros de Abusir</span>
+        <span class="v">El archivo más antiguo</span>
+        <p>Cuentas y turnos de los sacerdotes del templo funerario de Neferirkara: quién vigilaba, qué ofrendas llegaban y de dónde.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Sahura</span>
+        <span class="v">Barcos al Punt</span>
+        <p>Sus relieves muestran barcos de vuelta de Biblos, y la Piedra de Palermo anota una expedición al país de Punt, en el sur del mar Rojo.</p>
+      </div>
+    </div>
+    <p class="nuance"><strong>Matiz.</strong> No hay textos que expliquen la mastaba de Shepseskaf. La ruptura con los sacerdotes de Ra es una interpretación posible, no un hecho documentado; otros autores piensan en un reinado corto o en una vuelta a modelos más antiguos.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="unas" aria-labelledby="unas-h">
+    <div class="sec-head">
+      <p class="sec-num">3 · Final de la dinastía V, h. 2375&ndash;2345 a. C.</p>
+      <h2 id="unas-h">Unas y los Textos de las Pirámides</h2>
+    </div>
+    <div class="prose">
+      <p>Unas, el último rey de la dinastía V, se hizo enterrar en <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-saqqara" target="_blank" rel="noopener noreferrer">Saqqara</a>, junto al recinto de Djoser. Por fuera su pirámide es la más pequeña del Imperio Antiguo; por dentro es la primera con las paredes cubiertas de jeroglíficos pintados de azul: los Textos de las Pirámides, el corpus religioso más antiguo del mundo.</p>
+      <p>Son fórmulas para que el rey muerto suba al cielo, se una a las estrellas que nunca se ponen y viaje con Ra en su barca. Hasta entonces el más allá dependía de las imágenes y las ofrendas; ahora la palabra escrita también lo garantiza. Los reyes y reinas de la dinastía VI los copiaron, y en el Imperio Medio pasaron, como Textos de los Sarcófagos, a los ataúdes de los particulares.</p>
+      <p>En la dinastía VI, Mereruka, visir y yerno del rey Teti, se construyó en Saqqara la mayor mastaba de un particular: más de 30 salas, con escenas de la vida diaria, de la pesca a la caza del hipopótamo. Que un funcionario tuviera una tumba así dice mucho del poder que iba acumulando la élite.</p>
+    </div>
+    <blockquote class="quote">Unas no ha muerto: ha partido vivo.<cite>Idea que repiten los Textos de las Pirámides de Unas · h. 2350 a. C.</cite></blockquote>
+  </section>
+
+  <!-- 4 -->
+  <section id="colapso" aria-labelledby="colapso-h">
+    <div class="sec-head">
+      <p class="sec-num">4 · Dinastía VI y Primer Periodo Intermedio, h. 2278&ndash;2160 a. C.</p>
+      <h2 id="colapso-h">El reinado interminable de Pepi II y el hundimiento</h2>
+    </div>
+    <div class="prose">
+      <p>Pepi II subió al trono con unos seis años. Manetón le atribuye 94 años de reinado; la mayoría de los egiptólogos le dan unos 64, aun así de los más largos de la historia. Sobrevivió a sus herederos y dejó una sucesión difícil.</p>
+      <p>Al principio de su reinado, el niño escribió al jefe de expediciones Harkhuf, que volvía de Nubia, para pedirle que cuidara día y noche del pigmeo bailarín que traía: lo quería ver llegar sano. Harkhuf copió la carta en la fachada de su tumba en Asuán, orgulloso.</p>
+      <p>Hacia 2181 a. C. el poder central se deshace. Durante más de un siglo hay reyes efímeros en Menfis y los gobernadores de provincia actúan por su cuenta.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">Los nomarcas</span>
+        <span class="v">Cargos hereditarios</span>
+        <p>Los gobernadores ya no se entierran junto al rey sino en su provincia, y se transmiten el cargo de padre a hijo.</p>
+      </div>
+      <div class="fact">
+        <span class="k">El coste del más allá</span>
+        <span class="v">Tierras exentas</span>
+        <p>Cada pirámide necesitaba tierras y sacerdotes para siempre, a menudo libres de impuestos. El tesoro real se iba vaciando.</p>
+      </div>
+      <div class="fact">
+        <span class="k">El clima</span>
+        <span class="v">Crecidas bajas</span>
+        <p>Hacia 2200 a. C. una fase seca redujo las crecidas en todo el noreste de África; las inscripciones del periodo hablan de hambre.</p>
+      </div>
+    </div>
+    <div class="prose">
+      <p>Las Lamentaciones de Ipuwer, en un papiro de Leiden, describen un mundo al revés: los pobres se hacen ricos, el río es sangre, nadie ara. El curso las usa como eco de esa crisis.</p>
+    </div>
+    <p class="nuance"><strong>Matiz.</strong> Las Lamentaciones son un texto literario copiado en el Imperio Nuevo y quizá compuesto en el Imperio Medio, no una crónica escrita durante el colapso. Sirven para ver cómo recordaban los egipcios aquel tiempo, no como testimonio directo.</p>
+  </section>
+
+  <!-- 5 -->
+  <section id="tebas" aria-labelledby="tebas-h">
+    <div class="sec-head">
+      <p class="sec-num">5 · Dinastías IX a XI, h. 2160&ndash;2040 a. C.</p>
+      <h2 id="tebas-h">Heracleópolis contra Tebas</h2>
+    </div>
+    <div class="prose">
+      <p>En el norte, los reyes de Heracleópolis (dinastías IX y X), la familia de los Jety, dominaban el Egipto Medio y el delta. A uno de ellos se dirige la <em>Enseñanza para Merikara</em>, consejos de un rey a su hijo sobre cómo gobernar. En el sur, los gobernadores de Tebas se proclamaron reyes: la dinastía XI de los Antef (<a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-intef2" target="_blank" rel="noopener noreferrer">Antef II</a> reinó medio siglo y llevó la guerra hasta Abidos).</p>
+      <p>Tras décadas de guerra, <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-mentuhotep2" target="_blank" rel="noopener noreferrer">Mentuhotep II</a> conquistó Heracleópolis y reunificó Egipto hacia 2040 a. C. Es el fundador del Imperio Medio. Cambió de nombre de Horus a lo largo del reinado, el último Sematauy, «el que une las Dos Tierras», y se hizo enterrar en Deir el-Bahari, en la orilla occidental de Tebas, en un templo de terrazas que mil años después inspiraría a Hatshepsut.</p>
+      <p>Tebas, hasta entonces una ciudad de provincias, se convierte en una de las capitales de Egipto, y su dios Amón empieza su ascenso.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">Los soldados de Mentuhotep</span>
+        <span class="v">60 cuerpos</span>
+        <p>En una tumba colectiva junto a su templo se hallaron los cuerpos de unos 60 soldados muertos en combate, con heridas de flecha.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Dos capitales</span>
+        <span class="v">Heracleópolis y Tebas</span>
+        <p>Heracleópolis, cerca del Fayum; Tebas, 500 km al sur, la actual Luxor.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="amenemes" aria-labelledby="amen-h">
+    <div class="sec-head">
+      <p class="sec-num">6 · Dinastía XII, h. 1985&ndash;1956 a. C.</p>
+      <h2 id="amen-h">Amenemes I y la Historia de Sinuhé</h2>
+    </div>
+    <div class="prose">
+      <p>Una inscripción en las canteras de Uadi Hammamat menciona a un visir llamado Amenemhat que dirigía una expedición para el último Mentuhotep. Casi seguro es el mismo hombre que fundó la dinastía XII: <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-amenemhat1" target="_blank" rel="noopener noreferrer">Amenemes I</a> (Amenemhat I), un rey sin sangre real.</p>
+      <p>Sus reformas: trasladó la capital al norte, a una ciudad nueva llamada Itjtawy, «la que se apodera de las Dos Tierras», cerca de el-Lisht; fijó las fronteras de los nomos; levantó los Muros del Príncipe para cerrar el delta oriental a los asiáticos; y asoció al trono a su hijo, <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-senusret1" target="_blank" rel="noopener noreferrer">Sesostris I</a>, una corregencia que los reyes de la dinastía repetirán.</p>
+      <p>Murió asesinado en una conjura del harén, hacia 1956 a. C., mientras su hijo estaba en campaña en Libia. La <em>Enseñanza de Amenemes</em> pone en boca del rey muerto un consejo amargo a su hijo: no confíes en nadie.</p>
+    </div>
+    <div class="prose">
+      <p>Ese mismo momento abre la <strong>Historia de Sinuhé</strong>, el gran relato de la literatura egipcia. Sinuhé, un cortesano, oye la noticia de la muerte del rey, huye por miedo y vive muchos años en Retenu (Siria-Palestina), donde prospera y se casa. Ya viejo, Sesostris I le perdona y le deja volver para ser enterrado en Egipto, lo que más desea.</p>
+    </div>
+    <p class="nuance"><strong>Para no confundir.</strong> <em>Sinuhé, el egipcio</em> (1945), la novela de Mika Waltari de la bibliografía, solo toma el nombre: su Sinuhé es un médico de la época de Akenatón, unos 600 años después.</p>
+  </section>
+
+  <aside class="closing" aria-labelledby="close-h">
+    <h3 id="close-h">El hilo conductor del curso</h3>
+    <p style="max-width: 42rem;">El faraón frente al clero sigue aquí, y se suma otro rival: la élite de las provincias. Las fundaciones funerarias enriquecen a los templos y los nomarcas hereditarios se hacen fuertes; cuando además falla el Nilo, el Estado se rompe. El Imperio Medio lo rehace desde Tebas, con reyes que se presentan como pastores de su pueblo. En la clase 3, <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-senusret3" target="_blank" rel="noopener noreferrer">Sesostris III</a> acaba con el poder de los nomarcas.</p>
+    <ul>
+      <li>Para repasar: ¿qué cambia en las pirámides después de Micerino, y qué pasa a ser lo grande?</li>
+      <li>¿Qué son los Textos de las Pirámides y quién los usa después?</li>
+      <li>Tres causas del colapso del Imperio Antiguo.</li>
+      <li>¿Por qué empieza la Historia de Sinuhé con la muerte de Amenemes I?</li>
+    </ul>
+  </aside>
+
+  <footer>Apuntes propios a partir de la clase y de la bibliografía del curso (Kemp, Shaw, Grimal, Serrano Delgado). No reproducen la grabación. Fechas «h.» (hacia), a. C., según Kemp.</footer>
+</main>
