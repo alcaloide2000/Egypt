@@ -1,0 +1,408 @@
+<meta charset="utf-8" />
+<title>Curso UNED · Clase 3</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* Layout: a study dossier for one class. Masthead, a numbered contents strip (the order of the class), then six sections in one reading column, each with a figure drawn to scale where the subject has numbers. Tokens shared with the Ancient Egypt pages. */
+  :root {
+    --bg: #ede3cc;
+    --bg-panel: #f7f1e1;
+    --ink: #2b2420;
+    --ink-soft: #5b4f3f;
+    --sand-line: #c9b48c;
+    --ochre: #b5551f;
+    --nile: #2e6e77;
+    --gold: #a9791f;
+    --indigo: #5b4f8f;
+    --malachite: #3c7a5a;
+    --silt: #3b3229;
+    --shadow: rgba(43, 36, 32, 0.12);
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --bg-panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --sand-line: #57544c;
+      --ochre: #e58a4d; --nile: #6fc2c4; --gold: #d9a83c; --indigo: #a99bd9; --malachite: #5fae87;
+      --silt: #1f1e1c; --shadow: rgba(0, 0, 0, 0.35); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --bg-panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --sand-line: #57544c;
+    --ochre: #e58a4d; --nile: #6fc2c4; --gold: #d9a83c; --indigo: #a99bd9; --malachite: #5fae87;
+    --silt: #1f1e1c; --shadow: rgba(0, 0, 0, 0.35); color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .page {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid;
+    gap: clamp(2rem, 5vw, 3.25rem);
+  }
+  a { color: inherit; text-decoration-color: var(--sand-line); text-underline-offset: 0.18em; }
+  a:hover { text-decoration-color: currentColor; }
+  a:focus-visible { outline: 2px solid var(--ochre); outline-offset: 2px; border-radius: 2px; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin: 0;
+  }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.05; }
+  h2 { font-size: clamp(1.35rem, 3vw, 1.75rem); line-height: 1.15; }
+  h3 { font-size: 1.05rem; line-height: 1.25; }
+  p { margin: 0; }
+  .prose { max-width: 40rem; display: grid; gap: 0.9rem; }
+
+  /* masthead */
+  .masthead { display: grid; gap: 0.75rem; border-bottom: 1px solid var(--sand-line); padding-bottom: 1.5rem; }
+  .lede { max-width: 40rem; color: var(--ink-soft); font-size: 1.05rem; }
+  .back-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; font-size: 0.85rem; }
+  .back-links a { color: var(--malachite); font-weight: 500; }
+
+  /* contents: the real order of the class */
+  .contents { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.5rem 1.5rem; counter-reset: sec; }
+  .contents li { counter-increment: sec; display: flex; gap: 0.6rem; align-items: baseline; font-size: 0.92rem; }
+  .contents li::before { content: counter(sec); font-family: var(--font-mono); font-size: 0.75rem; color: var(--ochre); min-width: 1.1rem; }
+
+  /* sections */
+  section { display: grid; gap: 1.1rem; scroll-margin-top: 1rem; }
+  .sec-head { display: grid; gap: 0.35rem; }
+  .sec-num { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+
+  figure { margin: 0; display: grid; gap: 0.5rem; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x svg { display: block; width: 100%; min-width: 640px; height: auto; }
+  figcaption { font-size: 0.82rem; color: var(--ink-soft); max-width: 40rem; }
+  svg text { font-family: var(--font-body); fill: var(--ink); }
+  svg .mono { font-family: var(--font-mono); }
+  svg .soft { fill: var(--ink-soft); }
+
+  /* fact boxes and glossary */
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.75rem; }
+  .fact { background: var(--bg-panel); border: 1px solid var(--sand-line); border-radius: 6px; padding: 0.8rem 0.95rem; display: grid; gap: 0.2rem; align-content: start; min-width: 0; }
+  .fact .k { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ochre); }
+  .fact .v { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.2; }
+  .fact p { font-size: 0.86rem; color: var(--ink-soft); }
+
+  .gloss { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0.75rem; margin: 0; }
+  .gloss div { border-top: 2px solid var(--indigo); padding-top: 0.5rem; display: grid; gap: 0.15rem; min-width: 0; }
+  .gloss dt { font-family: var(--font-display); font-size: 1.15rem; }
+  .gloss dt span { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); margin-left: 0.35rem; }
+  .gloss dd { margin: 0; font-size: 0.88rem; color: var(--ink-soft); }
+
+  .nuance { border-left: 3px solid var(--gold); padding: 0.2rem 0 0.2rem 0.9rem; max-width: 40rem; font-size: 0.92rem; color: var(--ink-soft); }
+  .nuance strong { color: var(--ink); font-weight: 600; }
+
+  .quote { font-family: var(--font-display); font-style: italic; font-size: 1.15rem; line-height: 1.45; max-width: 36rem; color: var(--ink); border-left: 3px solid var(--nile); padding-left: 0.9rem; }
+  .quote cite { display: block; font-family: var(--font-mono); font-style: normal; font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.35rem; letter-spacing: 0.05em; }
+
+  .closing { background: var(--bg-panel); border: 1px solid var(--sand-line); border-radius: 8px; padding: clamp(1rem, 3vw, 1.5rem); display: grid; gap: 0.75rem; }
+  .closing ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem; max-width: 42rem; }
+
+  footer { font-size: 0.8rem; color: var(--ink-soft); border-top: 1px solid var(--sand-line); padding-top: 1rem; }
+</style>
+
+
+<main class="page">
+  <header class="masthead">
+    <p class="eyebrow">Curso UNED Tudela · Clase 3 · 27 de marzo de 2025</p>
+    <h1>El Imperio Medio, los hicsos y un nuevo imperio</h1>
+    <p class="lede">Apuntes desarrollados de la tercera clase de <em>Introducción a la historia del Antiguo Egipto</em>, con la Dra. Eva Tobalina Oraá. De los reyes de rostro cansado de la dinastía XII a la expulsión de los hicsos y los primeros faraones del Imperio Nuevo, h. 1985&ndash;1500 a. C. Los nombres subrayados enlazan con su ficha en la página principal.</p>
+    <div class="back-links">
+      <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#uned" target="_blank" rel="noopener noreferrer">Volver a la pestaña Curso UNED ↗</a>
+      <a href="https://claude.ai/artifact/KuCNWpVHmgFwPESPVGzBc4" target="_blank" rel="noopener noreferrer">← Clase 2 en detalle</a>
+      <a href="https://claude.ai/artifact/WMkdWhLeEmPLPgwuKFpVKu" target="_blank" rel="noopener noreferrer">Mapa mental del curso ↗</a>
+    </div>
+  </header>
+
+  <nav aria-label="Contenido de la clase">
+    <ol class="contents">
+      <li><a href="#dinastia12">La dinastía XII</a></li>
+      <li><a href="#osiris">Osiris y el juicio del muerto</a></li>
+      <li><a href="#sobekneferu">Sobekneferu</a></li>
+      <li><a href="#hicsos">Los hicsos y su expulsión</a></li>
+      <li><a href="#imperio">Un nuevo imperio</a></li>
+      <li><a href="#exodo">¿Y el Éxodo?</a></li>
+    </ol>
+  </nav>
+
+  <!-- timeline of the class, to scale: x = 20 + (2000 − año) × 1.74545 -->
+  <figure>
+    <div class="scroll-x">
+      <svg viewBox="0 0 1010 210" role="img" aria-labelledby="chronoTitle">
+        <title id="chronoTitle">Cronología de la clase, de h. 2000 a h. 1450 a. C., a escala</title>
+        <rect x="20" y="96" width="26.2" height="28" fill="var(--indigo)" opacity="0.18"/>
+        <rect x="46.2" y="96" width="370" height="28" fill="var(--indigo)" opacity="0.32"/>
+        <rect x="416.2" y="96" width="389.3" height="28" fill="var(--sand-line)" opacity="0.55"/>
+        <rect x="805.5" y="96" width="174.5" height="28" fill="var(--gold)" opacity="0.4"/>
+        <g font-size="12" text-anchor="middle">
+          <text x="231.2" y="115">Dinastía XII · Imperio Medio</text>
+          <text x="610.9" y="115">Segundo Periodo Intermedio</text>
+          <text x="892.8" y="115">Imperio Nuevo</text>
+        </g>
+        <g stroke="var(--ink-soft)" stroke-width="1">
+          <line x1="70.6" y1="34" x2="70.6" y2="96"/>
+          <line x1="232.9" y1="59" x2="232.9" y2="96"/>
+          <line x1="315" y1="84" x2="315" y2="96"/>
+          <line x1="796.7" y1="84" x2="796.7" y2="96"/>
+          <line x1="805.5" y1="59" x2="805.5" y2="96"/>
+          <line x1="849.1" y1="34" x2="849.1" y2="96"/>
+          <line x1="409.2" y1="124" x2="409.2" y2="163"/>
+          <line x1="630.9" y1="124" x2="630.9" y2="138"/>
+          <line x1="885.7" y1="124" x2="885.7" y2="163"/>
+        </g>
+        <g font-size="13">
+          <text x="74.6" y="34">Sesostris I · h. 1971</text>
+          <text x="236.9" y="59">Sesostris III · h. 1878</text>
+          <text x="319" y="84">Amenemes III · h. 1831</text>
+          <text x="792.7" y="84" text-anchor="end">Kamose · h. 1555</text>
+          <text x="801.5" y="59" text-anchor="end">Amosis toma Avaris · h. 1550</text>
+          <text x="845.1" y="34" text-anchor="end">Amenofis I · h. 1525</text>
+          <text x="413.2" y="173">Sobekneferu · h. 1777</text>
+          <text x="634.9" y="148">Hicsos en Avaris · h. 1650</text>
+          <text x="881.7" y="173" text-anchor="end">Tutmosis I, Valle de los Reyes · h. 1504</text>
+        </g>
+        <g class="mono soft" font-size="11">
+          <text x="20" y="200">2000 a. C.</text>
+          <text x="194.5" y="200" text-anchor="middle">1900</text>
+          <text x="543.6" y="200" text-anchor="middle">1700</text>
+          <text x="980" y="200" text-anchor="end">1450</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>Fechas aproximadas, las mismas que usa la página principal; según el autor pueden variar unos decenios. Los hicsos reinan en el norte mientras los reyes tebanos de la dinastía XVII gobiernan el sur.</figcaption>
+  </figure>
+
+  <!-- 1 -->
+  <section id="dinastia12" aria-labelledby="d12-h">
+    <div class="sec-head">
+      <p class="sec-num">1 · Dinastía XII, h. 1985&ndash;1773 a. C.</p>
+      <h2 id="d12-h">Reyes de rostro cansado</h2>
+    </div>
+    <div class="prose">
+      <p>Los sucesores de Amenemes I gobernaron dos siglos con una estabilidad que Egipto no volvería a tener hasta el Imperio Nuevo. <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-senusret1" target="_blank" rel="noopener noreferrer">Sesostris I</a> llenó el país de templos; de él se conserva en <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-karnak" target="_blank" rel="noopener noreferrer">Karnak</a> la Capilla Blanca, reconstruida con bloques que se habían reutilizado como relleno.</p>
+      <p>Sus retratos cambian. Las estatuas de <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-senusret3" target="_blank" rel="noopener noreferrer">Sesostris III</a> y de su hijo Amenemes III muestran párpados pesados, arrugas y orejas grandes: no el dios eternamente joven del Imperio Antiguo, sino un rey que vigila y carga con el peso del gobierno. La literatura de la época presenta al faraón como el buen pastor de su pueblo.</p>
+      <p>Sesostris III llevó la frontera sur a la segunda catarata y la cerró con una cadena de fortalezas de adobe (Buhen, Mirgissa, Semna) frente al reino de Kerma, en Kush. Hacia el norte, Biblos, en la costa del Líbano, era el puerto de la madera de cedro, y sus príncipes usaban títulos egipcios. En el interior, los grandes nomarcas desaparecen: sus hijos se educan en la corte y la administración pasa a depender del rey.</p>
+      <p>Amenemes III puso en cultivo el Fayum y se construyó dos pirámides: la Pirámide Negra de <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-dahshur" target="_blank" rel="noopener noreferrer">Dahshur</a>, que se hundió por el peso, y la de Hawara, cuyo templo funerario, con cientos de salas, es el «Laberinto» que admiraron Heródoto y Estrabón.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">Estela de Semna</span>
+        <span class="v">«Más al sur que mis padres»</span>
+        <p>Sesostris III fija la frontera en el año 16 y pide a sus sucesores que la mantengan: quien la abandone no es hijo suyo.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Egipcio clásico</span>
+        <span class="v">El egipcio medio</span>
+        <p>La lengua de esta época se tuvo por modelo durante siglos. Es la de Sinuhé, el Náufrago y el Campesino Elocuente, y la que se aprende hoy en los cursos de jeroglíficos.</p>
+      </div>
+      <div class="fact">
+        <span class="k">La Pirámide Negra</span>
+        <span class="v">Piramidión de granito gris</span>
+        <p>Su piedra de remate, de granito pulido con inscripciones, está en el Museo Egipcio de El Cairo.</p>
+      </div>
+    </div>
+    <p class="nuance"><strong>Corrección.</strong> En la grabación se dice que el piramidión de la Pirámide Negra apareció en 1990; se encontró en 1900.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="osiris" aria-labelledby="osiris-h">
+    <div class="sec-head">
+      <p class="sec-num">2 · La religión</p>
+      <h2 id="osiris-h">Osiris, Isis y Horus, y el peso del corazón</h2>
+    </div>
+    <div class="prose">
+      <p>El mito, en su forma más completa, lo cuenta Plutarco, pero sus piezas están en los textos egipcios desde el Imperio Antiguo. Osiris, rey de Egipto, es asesinado por su hermano Set. Isis, su esposa, reúne su cuerpo, lo devuelve a la vida el tiempo justo para concebir un hijo, Horus, y lo cría escondido en los pantanos del delta. Horus vence a Set y hereda el trono; Osiris pasa a reinar sobre los muertos.</p>
+      <p>Cada faraón vivo es Horus y cada faraón muerto se convierte en Osiris. En el Imperio Medio ese destino se abre a todos: cualquiera que tenga una tumba en regla puede ser «un Osiris». <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-abydos" target="_blank" rel="noopener noreferrer">Abidos</a>, donde se creía enterrada su cabeza, se convierte en el gran centro de peregrinación. Allí se representaban cada año los misterios de Osiris, y miles de personas dejaban estelas a lo largo del camino de la procesión.</p>
+    </div>
+
+    <figure>
+      <div class="scroll-x">
+        <svg viewBox="0 0 640 250" role="img" aria-labelledby="weighTitle">
+          <title id="weighTitle">El juicio del muerto: el corazón en un platillo de la balanza y la pluma de Maat en el otro</title>
+          <!-- balanza -->
+          <rect x="300" y="222" width="40" height="8" fill="var(--ink-soft)"/>
+          <line x1="320" y1="222" x2="320" y2="62" stroke="var(--ink-soft)" stroke-width="4"/>
+          <circle cx="320" cy="60" r="6" fill="var(--gold)"/>
+          <line x1="190" y1="72" x2="450" y2="72" stroke="var(--ink-soft)" stroke-width="4" stroke-linecap="round"/>
+          <g stroke="var(--ink-soft)" stroke-width="1.2">
+            <line x1="200" y1="72" x2="172" y2="150"/><line x1="200" y1="72" x2="228" y2="150"/>
+            <line x1="440" y1="72" x2="412" y2="150"/><line x1="440" y1="72" x2="468" y2="150"/>
+          </g>
+          <path d="M166 150 Q200 172 234 150 Z" fill="var(--gold)" fill-opacity="0.45" stroke="var(--gold)"/>
+          <path d="M406 150 Q440 172 474 150 Z" fill="var(--gold)" fill-opacity="0.45" stroke="var(--gold)"/>
+          <!-- corazón (ib), en forma de vasija -->
+          <path d="M188 147 C 186 134, 190 126, 194 124 L 206 124 C 210 126, 214 134, 212 147 Z" fill="var(--ochre)" fill-opacity="0.75" stroke="var(--ochre)"/>
+          <path d="M192 124 C 190 118, 196 116, 196 120 M208 124 C 210 118, 204 116, 204 120" fill="none" stroke="var(--ochre)" stroke-width="1.5"/>
+          <!-- pluma de Maat -->
+          <path d="M440 148 C 432 136, 431 116, 436 104 C 440 98, 447 96, 449 100 C 448 112, 446 132, 442 148 Z" fill="var(--malachite)" fill-opacity="0.45" stroke="var(--malachite)"/>
+          <line x1="441" y1="148" x2="446" y2="102" stroke="var(--malachite)" stroke-width="1"/>
+          <g font-size="13" text-anchor="middle">
+            <text x="200" y="192">El corazón (<tspan font-style="italic">ib</tspan>)</text>
+            <text x="440" y="192">La pluma de Maat</text>
+          </g>
+          <g class="mono soft" font-size="11" text-anchor="middle">
+            <text x="200" y="208">guarda los actos de la vida</text>
+            <text x="440" y="208">la verdad y el orden</text>
+          </g>
+          <g font-size="12">
+            <text x="20" y="40">Anubis</text>
+            <text x="20" y="56" class="soft" font-size="11">ajusta la balanza</text>
+            <text x="620" y="40" text-anchor="end">Thot</text>
+            <text x="620" y="56" class="soft" font-size="11" text-anchor="end">anota el veredicto</text>
+            <text x="320" y="246" text-anchor="middle" class="soft" font-size="11">Si el corazón pesa más, Ammit, la Devoradora, se lo come y el muerto desaparece para siempre.</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Esquema de la escena. Antes de la pesada, el muerto recita ante 42 jueces la «confesión negativa»: no he robado, no he matado, no he mentido…</figcaption>
+    </figure>
+
+    <div class="facts">
+      <div class="fact">
+        <span class="k">Ushebtis</span>
+        <span class="v">«Los que responden»</span>
+        <p>Figurillas que trabajan por el muerto cuando le llaman a las labores del campo en el más allá. Aparecen en el Imperio Medio; más tarde se ponían 365, una por día, más sus capataces.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Textos de los Sarcófagos</span>
+        <span class="v">El más allá para todos</span>
+        <p>Fórmulas que antes eran de los reyes se pintan dentro de los ataúdes de particulares.</p>
+      </div>
+    </div>
+    <p class="nuance"><strong>Matiz.</strong> La idea de un juicio después de la muerte ya está en el Imperio Medio, pero la escena de la balanza tal como la conocemos, con Anubis, Thot y Ammit, es la del Libro de los Muertos del Imperio Nuevo.</p>
+  </section>
+
+  <!-- 3 -->
+  <section id="sobekneferu" aria-labelledby="sobek-h">
+    <div class="sec-head">
+      <p class="sec-num">3 · Final de la dinastía XII, h. 1777&ndash;1773 a. C.</p>
+      <h2 id="sobek-h">Una mujer cierra la dinastía: Sobekneferu</h2>
+    </div>
+    <div class="prose">
+      <p>Amenemes IV reinó poco y no dejó heredero varón. Le sucedió Sobekneferu, probablemente hija de Amenemes III: la primera mujer que con seguridad gobernó Egipto como rey, con la titulatura real completa. Un torso suyo en el Louvre la muestra con el faldellín real encima del vestido de mujer, mezclando los dos atuendos.</p>
+      <p>Reinó unos cuatro años. Con ella termina la dinastía XII. La XIII mantuvo la capital en Itjtawy, pero con decenas de reyes de reinados muy cortos, mientras en el delta oriental se instalaba una población cada vez mayor de origen asiático.</p>
+    </div>
+    <p class="nuance">Hatshepsut, en la clase 4, tendrá un precedente: Sobekneferu ya había usado los títulos de un rey varón dos siglos y medio antes.</p>
+  </section>
+
+  <!-- 4 -->
+  <section id="hicsos" aria-labelledby="hicsos-h">
+    <div class="sec-head">
+      <p class="sec-num">4 · Segundo Periodo Intermedio, h. 1650&ndash;1550 a. C.</p>
+      <h2 id="hicsos-h">Los hicsos en Avaris y la guerra tebana</h2>
+    </div>
+    <div class="prose">
+      <p>«Hicsos» viene del egipcio <em>heqa khasut</em>, «gobernantes de países extranjeros». No llegaron en una gran invasión: eran descendientes de los asiáticos asentados en el delta que acabaron tomando el poder. Su dinastía, la XV, gobernó desde Avaris, la actual Tell el-Dab'a, excavada desde 1966 por Manfred Bietak, y cobraba tributo a los reyes tebanos del sur. Sus reyes más conocidos son Khyan y Apepi.</p>
+      <p>Con ellos se generalizan en Egipto el caballo y el carro de guerra, el arco compuesto y nuevas armas de bronce. Los egipcios los adoptaron y con ellos construirían su imperio.</p>
+      <p>En Tebas, la dinastía XVII (con reyes como <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-nubkheperre" target="_blank" rel="noopener noreferrer">Nubjeperra Antef</a>) empezó la guerra. La momia de Seqenenra Tao tiene el cráneo partido por hachas de tipo asiático: murió combatiendo. Su hijo <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-kamose" target="_blank" rel="noopener noreferrer">Kamose</a> llegó hasta Avaris y lo contó en dos estelas en Karnak. Su hermano <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ahmose1" target="_blank" rel="noopener noreferrer">Amosis</a> tomó Avaris hacia 1550 a. C., persiguió a los hicsos hasta Canaán y sitió Sharuhen durante tres años.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">La carta interceptada</span>
+        <span class="v">Apepi escribe a Kush</span>
+        <p>Kamose cuenta que capturó un mensajero de Apepi que pedía al rey de Kerma que atacara Tebas por el sur. Tebas estaba entre dos enemigos.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Un testigo</span>
+        <span class="v">Ahmose, hijo de Abana</span>
+        <p>Soldado de El-Kab que en su tumba cuenta el asedio de Avaris y de Sharuhen, y el oro que recibió del rey por su valor.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Una disputa famosa</span>
+        <span class="v">Los hipopótamos</span>
+        <p>Un cuento posterior hace que Apepi se queje a Seqenenra de que los hipopótamos de Tebas, a más de 600 km, no le dejan dormir en Avaris.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5 -->
+  <section id="imperio" aria-labelledby="imp-h">
+    <div class="sec-head">
+      <p class="sec-num">5 · Dinastía XVIII, h. 1550&ndash;1492 a. C.</p>
+      <h2 id="imp-h">Un nuevo imperio y nuevos rivales</h2>
+    </div>
+    <div class="prose">
+      <p>Expulsar a los hicsos cambió la mentalidad de Egipto: la frontera ya no se defiende, se adelanta. El Imperio Nuevo se lanza sobre Canaán, Siria y Nubia, y allí encuentra rivales de su tamaño.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">Mitanni</span>
+        <span class="v">Alto Éufrates</span>
+        <p>Reino hurrita del norte de Siria, con una élite de guerreros de carro, los <em>maryannu</em>. Primero enemigo, luego aliado por matrimonios.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Los hititas</span>
+        <span class="v">Anatolia, capital Hattusa</span>
+        <p>Su rey Mursili I saqueó Babilonia hacia 1595 a. C. Serán el gran rival del siglo XIII.</p>
+      </div>
+    </div>
+    <div class="prose">
+      <p><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-amenhotep1" target="_blank" rel="noopener noreferrer">Amenofis I</a>, hijo de Amosis, reinó unos 21 años en paz. Con su madre, Ahmose-Nefertari, fue venerado como dios protector por los artesanos de Deir el-Medina, el pueblo de los que excavaban y decoraban las tumbas reales.</p>
+      <p>Con esta dinastía nace el Valle de los Reyes. Para frenar a los saqueadores, la tumba se esconde en un valle seco de la orilla oeste de Tebas y el templo funerario se construye aparte, en la llanura. Ineni, el arquitecto de <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-thutmose1" target="_blank" rel="noopener noreferrer">Tutmosis I</a>, presume en su tumba de haber excavado la del rey «sin que nadie viera, sin que nadie oyera».</p>
+    </div>
+    <p class="nuance"><strong>Matiz.</strong> No se ha identificado con seguridad la tumba de Amenofis I (se proponen la KV39 en el Valle y otra en Dra Abu el-Naga). La primera tumba real segura del Valle de los Reyes es la de Tutmosis I.</p>
+  </section>
+
+  <!-- 6 -->
+  <section id="exodo" aria-labelledby="exodo-h">
+    <div class="sec-head">
+      <p class="sec-num">6 · Un debate</p>
+      <h2 id="exodo-h">¿Y el Éxodo?</h2>
+    </div>
+    <div class="prose">
+      <p>Ninguna fuente egipcia menciona a Moisés ni la salida de los israelitas. Por eso se han propuesto distintos momentos de la historia de Egipto para situar el relato bíblico. Las tres propuestas más citadas:</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">h. 1550 a. C.</span>
+        <span class="v">La expulsión de los hicsos</span>
+        <p>Flavio Josefo, citando a Manetón, ya identificó a los hicsos expulsados por Amosis con los antepasados de los israelitas.</p>
+      </div>
+      <div class="fact">
+        <span class="k">h. 1446 a. C.</span>
+        <span class="v">La cronología bíblica</span>
+        <p>El libro de los Reyes sitúa el Éxodo 480 años antes del templo de Salomón, lo que lleva a Tutmosis III o Amenofis II.</p>
+      </div>
+      <div class="fact">
+        <span class="k">h. 1250 a. C.</span>
+        <span class="v">Ramsés II</span>
+        <p>El Éxodo dice que los hebreos construyeron la ciudad de «Ramsés», que encaja con Pi-Ramsés, la capital de Ramsés II en el delta.</p>
+      </div>
+    </div>
+    <p class="nuance">El primer dato egipcio seguro es la estela de <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-merneptah" target="_blank" rel="noopener noreferrer">Merenptah</a>, h. 1208 a. C., que nombra a «Israel» como un pueblo ya asentado en Canaán.</p>
+  </section>
+
+  <aside class="closing" aria-labelledby="close-h">
+    <h3 id="close-h">El hilo conductor del curso</h3>
+    <p style="max-width: 42rem;">Tras la expulsión de los hicsos, el dios de Tebas, Amón, se lleva el mérito de la victoria y una parte enorme del botín. Sus sacerdotes de Karnak serán desde ahora el clero más rico de Egipto: el rival del faraón en las clases 4 y 5.</p>
+    <ul>
+      <li>Para repasar: ¿qué dicen los retratos de Sesostris III sobre cómo se veía a sí mismo el rey?</li>
+      <li>¿Quién pesa el corazón, contra qué, y qué pasa si pesa más?</li>
+      <li>¿Qué trajeron los hicsos que luego usó el Imperio Nuevo?</li>
+      <li>¿Por qué se separa la tumba real del templo funerario?</li>
+    </ul>
+  </aside>
+
+  <footer>Apuntes propios a partir de la clase y de la bibliografía del curso (Kemp, Shaw, Grimal, De Rachewiltz). No reproducen la grabación. Fechas «h.» (hacia), a. C., como en la página principal.</footer>
+</main>
