@@ -1,0 +1,390 @@
+<meta charset="utf-8" />
+<title>Curso UNED · Clase 5</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* Layout: a study dossier for one class. Masthead, a numbered contents strip (the order of the class), then six sections in one reading column, each with a figure drawn to scale where the subject has numbers. Tokens shared with the Ancient Egypt pages. */
+  :root {
+    --bg: #ede3cc;
+    --bg-panel: #f7f1e1;
+    --ink: #2b2420;
+    --ink-soft: #5b4f3f;
+    --sand-line: #c9b48c;
+    --ochre: #b5551f;
+    --nile: #2e6e77;
+    --gold: #a9791f;
+    --indigo: #5b4f8f;
+    --malachite: #3c7a5a;
+    --silt: #3b3229;
+    --shadow: rgba(43, 36, 32, 0.12);
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --bg-panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --sand-line: #57544c;
+      --ochre: #e58a4d; --nile: #6fc2c4; --gold: #d9a83c; --indigo: #a99bd9; --malachite: #5fae87;
+      --silt: #1f1e1c; --shadow: rgba(0, 0, 0, 0.35); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --bg-panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --sand-line: #57544c;
+    --ochre: #e58a4d; --nile: #6fc2c4; --gold: #d9a83c; --indigo: #a99bd9; --malachite: #5fae87;
+    --silt: #1f1e1c; --shadow: rgba(0, 0, 0, 0.35); color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .page {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid;
+    gap: clamp(2rem, 5vw, 3.25rem);
+  }
+  a { color: inherit; text-decoration-color: var(--sand-line); text-underline-offset: 0.18em; }
+  a:hover { text-decoration-color: currentColor; }
+  a:focus-visible { outline: 2px solid var(--ochre); outline-offset: 2px; border-radius: 2px; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin: 0;
+  }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.05; }
+  h2 { font-size: clamp(1.35rem, 3vw, 1.75rem); line-height: 1.15; }
+  h3 { font-size: 1.05rem; line-height: 1.25; }
+  p { margin: 0; }
+  .prose { max-width: 40rem; display: grid; gap: 0.9rem; }
+
+  /* masthead */
+  .masthead { display: grid; gap: 0.75rem; border-bottom: 1px solid var(--sand-line); padding-bottom: 1.5rem; }
+  .lede { max-width: 40rem; color: var(--ink-soft); font-size: 1.05rem; }
+  .back-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; font-size: 0.85rem; }
+  .back-links a { color: var(--malachite); font-weight: 500; }
+
+  /* contents: the real order of the class */
+  .contents { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.5rem 1.5rem; counter-reset: sec; }
+  .contents li { counter-increment: sec; display: flex; gap: 0.6rem; align-items: baseline; font-size: 0.92rem; }
+  .contents li::before { content: counter(sec); font-family: var(--font-mono); font-size: 0.75rem; color: var(--ochre); min-width: 1.1rem; }
+
+  /* sections */
+  section { display: grid; gap: 1.1rem; scroll-margin-top: 1rem; }
+  .sec-head { display: grid; gap: 0.35rem; }
+  .sec-num { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+
+  figure { margin: 0; display: grid; gap: 0.5rem; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x svg { display: block; width: 100%; min-width: 640px; height: auto; }
+  figcaption { font-size: 0.82rem; color: var(--ink-soft); max-width: 40rem; }
+  svg text { font-family: var(--font-body); fill: var(--ink); }
+  svg .mono { font-family: var(--font-mono); }
+  svg .soft { fill: var(--ink-soft); }
+
+  /* fact boxes and glossary */
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.75rem; }
+  .fact { background: var(--bg-panel); border: 1px solid var(--sand-line); border-radius: 6px; padding: 0.8rem 0.95rem; display: grid; gap: 0.2rem; align-content: start; min-width: 0; }
+  .fact .k { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ochre); }
+  .fact .v { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.2; }
+  .fact p { font-size: 0.86rem; color: var(--ink-soft); }
+
+  .gloss { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0.75rem; margin: 0; }
+  .gloss div { border-top: 2px solid var(--indigo); padding-top: 0.5rem; display: grid; gap: 0.15rem; min-width: 0; }
+  .gloss dt { font-family: var(--font-display); font-size: 1.15rem; }
+  .gloss dt span { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); margin-left: 0.35rem; }
+  .gloss dd { margin: 0; font-size: 0.88rem; color: var(--ink-soft); }
+
+  .nuance { border-left: 3px solid var(--gold); padding: 0.2rem 0 0.2rem 0.9rem; max-width: 40rem; font-size: 0.92rem; color: var(--ink-soft); }
+  .nuance strong { color: var(--ink); font-weight: 600; }
+
+  .quote { font-family: var(--font-display); font-style: italic; font-size: 1.15rem; line-height: 1.45; max-width: 36rem; color: var(--ink); border-left: 3px solid var(--nile); padding-left: 0.9rem; }
+  .quote cite { display: block; font-family: var(--font-mono); font-style: normal; font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.35rem; letter-spacing: 0.05em; }
+
+  .closing { background: var(--bg-panel); border: 1px solid var(--sand-line); border-radius: 8px; padding: clamp(1rem, 3vw, 1.5rem); display: grid; gap: 0.75rem; }
+  .closing ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem; max-width: 42rem; }
+
+  footer { font-size: 0.8rem; color: var(--ink-soft); border-top: 1px solid var(--sand-line); padding-top: 1rem; }
+</style>
+
+
+<main class="page">
+  <header class="masthead">
+    <p class="eyebrow">Curso UNED Tudela · Clase 5 · 10 de abril de 2025</p>
+    <h1>De los Ramésidas a Cleopatra</h1>
+    <p class="lede">Apuntes desarrollados de la quinta y última clase de <em>Introducción a la historia del Antiguo Egipto</em>, con la Dra. Eva Tobalina Oraá. Doce siglos en una sesión: el esplendor de Ramsés II, la crisis del final del Imperio Nuevo, los faraones libios y kushitas, el renacimiento saíta, los persas, Alejandro y los Ptolomeos, h. 1290&ndash;30 a. C. Los nombres subrayados enlazan con su ficha en la página principal.</p>
+    <div class="back-links">
+      <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#uned" target="_blank" rel="noopener noreferrer">Volver a la pestaña Curso UNED ↗</a>
+      <a href="https://claude.ai/artifact/LDwcCYL46iY3XJYdwixCpS" target="_blank" rel="noopener noreferrer">← Clase 4 en detalle</a>
+      <a href="https://claude.ai/artifact/WMkdWhLeEmPLPgwuKFpVKu" target="_blank" rel="noopener noreferrer">Mapa mental del curso ↗</a>
+    </div>
+  </header>
+
+  <nav aria-label="Contenido de la clase">
+    <ol class="contents">
+      <li><a href="#ramses">Seti I y Ramsés II</a></li>
+      <li><a href="#crisis">La crisis del Imperio Nuevo</a></li>
+      <li><a href="#division">Libios, kushitas y asirios</a></li>
+      <li><a href="#saitas">Saítas y persas</a></li>
+      <li><a href="#ptolomeos">Alejandro y los Ptolomeos</a></li>
+      <li><a href="#cleopatra">Cleopatra VII</a></li>
+    </ol>
+  </nav>
+
+  <!-- timeline of the class, to scale: x = 20 + (1300 − año) × 0.73846 -->
+  <figure>
+    <div class="scroll-x">
+      <svg viewBox="0 0 1010 210" role="img" aria-labelledby="chronoTitle">
+        <title id="chronoTitle">Cronología de la clase, de h. 1300 a. C. al cambio de era, a escala</title>
+        <rect x="23.7" y="96" width="166.1" height="28" fill="var(--gold)" opacity="0.4"/>
+        <rect x="189.8" y="96" width="299.9" height="28" fill="var(--sand-line)" opacity="0.55"/>
+        <rect x="489.7" y="96" width="245.1" height="28" fill="var(--malachite)" opacity="0.3"/>
+        <rect x="734.8" y="96" width="223" height="28" fill="var(--nile)" opacity="0.3"/>
+        <rect x="957.8" y="96" width="22.2" height="28" fill="var(--indigo)" opacity="0.32"/>
+        <g font-size="12" text-anchor="middle">
+          <text x="106.8" y="115">Ramésidas</text>
+          <text x="339.8" y="115">Tercer Periodo Intermedio</text>
+          <text x="612.3" y="115">Baja Época</text>
+          <text x="846.3" y="115">Ptolomeos</text>
+        </g>
+        <g stroke="var(--ink-soft)" stroke-width="1">
+          <line x1="27.4" y1="34" x2="27.4" y2="96"/>
+          <line x1="39.2" y1="59" x2="39.2" y2="96"/>
+          <line x1="110.8" y1="84" x2="110.8" y2="96"/>
+          <line x1="489.7" y1="34" x2="489.7" y2="96"/>
+          <line x1="592.3" y1="59" x2="592.3" y2="96"/>
+          <line x1="726.7" y1="84" x2="726.7" y2="96"/>
+          <line x1="957.8" y1="34" x2="957.8" y2="96"/>
+          <line x1="189.8" y1="124" x2="189.8" y2="163"/>
+          <line x1="442.4" y1="124" x2="442.4" y2="138"/>
+          <line x1="734.8" y1="124" x2="734.8" y2="163"/>
+          <line x1="835.3" y1="124" x2="835.3" y2="138"/>
+        </g>
+        <g font-size="13">
+          <text x="31.4" y="34">Seti I · h. 1290</text>
+          <text x="43.2" y="59">Batalla de Qadesh · 1274</text>
+          <text x="114.8" y="84">Pueblos del Mar · h. 1177</text>
+          <text x="493.7" y="34">Asiria saquea Tebas · 664</text>
+          <text x="596.3" y="59">Cambises conquista Egipto · 525</text>
+          <text x="730.7" y="84">Nectanebo II · 343</text>
+          <text x="953.8" y="34" text-anchor="end">Muerte de Cleopatra VII · 30</text>
+          <text x="193.8" y="173">Fin del Imperio Nuevo · h. 1070</text>
+          <text x="446.4" y="148">Piye conquista Egipto · h. 728</text>
+          <text x="738.8" y="173">Alejandro en Egipto · 332</text>
+          <text x="839.3" y="148">Piedra de Rosetta · 196</text>
+        </g>
+        <g class="mono soft" font-size="11">
+          <text x="20" y="200">1300 a. C.</text>
+          <text x="241.5" y="200" text-anchor="middle">1000</text>
+          <text x="610.8" y="200" text-anchor="middle">500</text>
+          <text x="906.2" y="200" text-anchor="middle">100</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>Fechas aproximadas hasta el siglo VII a. C.; desde el saqueo de Tebas, en 664, las fechas son seguras. La franja final es la época romana, que empieza en el 30 a. C.</figcaption>
+  </figure>
+
+  <!-- 1 -->
+  <section id="ramses" aria-labelledby="ram-h">
+    <div class="sec-head">
+      <p class="sec-num">1 · Dinastía XIX, h. 1290&ndash;1213 a. C.</p>
+      <h2 id="ram-h">Seti I y Ramsés II</h2>
+    </div>
+    <div class="prose">
+      <p>La dinastía XIX la fundó un general de Horemheb, Ramsés I, que reinó apenas dos años. Su hijo <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-seti1" target="_blank" rel="noopener noreferrer">Seti I</a> levantó en <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-abydos" target="_blank" rel="noopener noreferrer">Abidos</a> un templo con una lista de 76 reyes a los que él y su hijo rinden culto. Es tan importante lo que incluye como lo que calla: no aparecen Hatshepsut ni los reyes de Amarna. Su tumba, la KV17, es la más larga y mejor decorada del Valle de los Reyes; la descubrió Giovanni Belzoni en 1817.</p>
+      <p><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses2" target="_blank" rel="noopener noreferrer">Ramsés II</a> reinó 66 años y llenó Egipto de su nombre. En 1274 a. C. se enfrentó en Qadesh, en Siria, al rey hitita Muwatalli II. Cayó en una emboscada y estuvo a punto de perder; la batalla acabó en tablas, pero él la contó como un triunfo personal en los muros de cinco templos.</p>
+      <p>Unos quince años después firmó con el nuevo rey hitita, Hattusili III, el tratado de paz más antiguo del que se conservan los dos textos, el egipcio y el hitita. Más tarde se casó con dos princesas hititas.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">Abu Simbel</span>
+        <span class="v">Trasladado en 1964&ndash;68</span>
+        <p>Sus dos templos se cortaron en bloques y se subieron 65 m para salvarlos del lago Nasser. Dos veces al año, hacia el 22 de febrero y el 22 de octubre, el sol entra hasta el santuario.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Pi-Ramsés</span>
+        <span class="v">Capital en el delta</span>
+        <p>Una ciudad nueva en el delta oriental, cerca de Avaris, más próxima a Siria. Es la «Ramsés» del libro del Éxodo.</p>
+      </div>
+      <div class="fact">
+        <span class="k">El Rameseo</span>
+        <span class="v">«Ozimandias»</span>
+        <p>Su templo funerario en Tebas. El coloso caído inspiró en 1818 el soneto de Shelley; Ozimandias es el nombre griego de Ramsés.</p>
+      </div>
+    </div>
+    <p class="nuance">Para ver en la página principal: <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-abusimbel" target="_blank" rel="noopener noreferrer">Abu Simbel</a>, que visitáis el 19 de noviembre. El libro de Belzoni, <em>Viajes por Egipto y Nubia</em>, está en la bibliografía del curso.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="crisis" aria-labelledby="crisis-h">
+    <div class="sec-head">
+      <p class="sec-num">2 · Dinastías XIX y XX, h. 1213&ndash;1070 a. C.</p>
+      <h2 id="crisis-h">Tausert, Setnajt, Ramsés III y los Pueblos del Mar</h2>
+    </div>
+    <div class="prose">
+      <p>A <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-merneptah" target="_blank" rel="noopener noreferrer">Merenptah</a>, hijo número trece de Ramsés II, le siguieron disputas por el trono. La reina <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-twosret" target="_blank" rel="noopener noreferrer">Tausert</a> acabó reinando sola unos dos años, una de las pocas mujeres faraón. Tras ella, <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-setnakhte" target="_blank" rel="noopener noreferrer">Setnajt</a> fundó la dinastía XX.</p>
+      <p>Su hijo <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses3" target="_blank" rel="noopener noreferrer">Ramsés III</a> fue el último gran faraón del Imperio Nuevo. Hacia 1177 a. C., en su octavo año, rechazó en el delta a los Pueblos del Mar, una coalición de pueblos desplazados que acababa de destruir el reino hitita y las ciudades de la costa siria. Lo contó en los relieves de su templo de Medinet Habu, con la primera batalla naval representada de la historia.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">La primera huelga</span>
+        <span class="v">Año 29 de Ramsés III</span>
+        <p>Los artesanos de Deir el-Medina dejaron de trabajar porque no les llegaban las raciones de grano. Lo anotó un escriba en un papiro hoy en Turín.</p>
+      </div>
+      <div class="fact">
+        <span class="k">La conjura del harén</span>
+        <span class="v">Degollado</span>
+        <p>Una esposa secundaria, Tiy, conspiró para poner en el trono a su hijo. Un TAC de la momia en 2012 mostró que al rey le cortaron el cuello.</p>
+      </div>
+      <div class="fact">
+        <span class="k">El robo de tumbas</span>
+        <span class="v">Juicios en Tebas</span>
+        <p>Bajo Ramsés IX y Ramsés XI se juzgó a bandas que saqueaban las tumbas reales. Los sacerdotes acabaron escondiendo las momias en escondrijos como el de Deir el-Bahari.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="division" aria-labelledby="div-h">
+    <div class="sec-head">
+      <p class="sec-num">3 · Tercer Periodo Intermedio, h. 1070&ndash;664 a. C.</p>
+      <h2 id="div-h">La teocracia de Amón, los faraones libios y kushitas, y los asirios</h2>
+    </div>
+    <div class="prose">
+      <p>Con el último Ramsés, Egipto se partió en dos. En Tebas, el sumo sacerdote de Amón, Herihor, se puso los títulos reales y gobernó el sur en nombre del dios: el verdadero rey era Amón, que decidía por oráculo. En el norte reinaba la dinastía XXI desde Tanis. Era la victoria final del clero de Amón, el hilo conductor de todo el curso.</p>
+      <p>Después llegaron al trono los descendientes de mercenarios libios asentados en el delta. Uno de ellos, Sheshonq I, es el Sisac de la Biblia, que saqueó Jerusalén hacia 925 a. C. y dejó la lista de ciudades conquistadas en Karnak.</p>
+      <p>Desde el sur, los reyes de Kush, con capital en Napata, se veían como los verdaderos guardianes de Amón. Hacia 728 a. C. <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-piye" target="_blank" rel="noopener noreferrer">Piye</a> bajó por el Nilo y sometió a todos los príncipes del delta. Sus sucesores, <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-shabaka" target="_blank" rel="noopener noreferrer">Shabaka</a> y <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-taharqa" target="_blank" rel="noopener noreferrer">Taharqa</a>, formaron la dinastía XXV, la de los «faraones negros».</p>
+      <p>Pero llegaba Asiria. Asarhaddón tomó Menfis en 671 a. C. y en 664 Asurbanipal saqueó Tebas, el golpe más duro de su historia; el profeta Nahum lo recuerda como la caída de «No-Amón».</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">La estela de Piye</span>
+        <span class="v">Un rey que amaba los caballos</span>
+        <p>Cuenta su campaña con detalle. Al entrar en los establos de un príncipe vencido, se indigna más por ver los caballos hambrientos que por la rebelión.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Pirámides en Nubia</span>
+        <span class="v">El-Kurru y Nuri</span>
+        <p>Los reyes kushitas volvieron a enterrarse en pirámides, unos ocho siglos después de las últimas pirámides reales de Egipto. Más tarde, en <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-meroe" target="_blank" rel="noopener noreferrer">Meroe</a>, construyeron cientos.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="saitas" aria-labelledby="sai-h">
+    <div class="sec-head">
+      <p class="sec-num">4 · Baja Época, 664&ndash;332 a. C.</p>
+      <h2 id="sai-h">El renacimiento saíta, los persas y Nectanebo</h2>
+    </div>
+    <div class="prose">
+      <p><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-psamtik1" target="_blank" rel="noopener noreferrer">Psamético I</a>, un príncipe de Sais puesto por los asirios, se libró de ellos y en 656 a. C. reunificó Egipto. La dinastía XXVI, la saíta, miró al pasado: copió el arte y los textos del Imperio Antiguo como modelo de un Egipto glorioso. Al mismo tiempo se abrió a los griegos: mercenarios jonios y carios, y un puerto comercial griego en Náucratis.</p>
+      <p><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-necho2" target="_blank" rel="noopener noreferrer">Necao II</a> empezó un canal del Nilo al mar Rojo y, según Heródoto, envió a marinos fenicios a dar la vuelta a África. En 525 a. C. el persa <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-cambyses" target="_blank" rel="noopener noreferrer">Cambises II</a> venció en Pelusio y Egipto pasó a ser una satrapía del imperio persa, la dinastía XXVII.</p>
+      <p>Hubo un último periodo de independencia, las dinastías XXVIII a XXX. Su último rey, <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-nectanebo2" target="_blank" rel="noopener noreferrer">Nectanebo II</a>, fue el último faraón nacido en Egipto: en 343 a. C. los persas volvieron y él huyó al sur.</p>
+    </div>
+    <p class="nuance">Durante esos siglos visitó Egipto Heródoto, hacia 450 a. C., bajo dominio persa: es la fuente del «don del Nilo» con el que empezó la clase 1.</p>
+  </section>
+
+  <!-- 5 -->
+  <section id="ptolomeos" aria-labelledby="pto-h">
+    <div class="sec-head">
+      <p class="sec-num">5 · 332&ndash;51 a. C.</p>
+      <h2 id="pto-h">Alejandro, los Ptolomeos y la Piedra de Rosetta</h2>
+    </div>
+    <div class="prose">
+      <p>En 332 a. C. <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-alexander" target="_blank" rel="noopener noreferrer">Alejandro Magno</a> entró en Egipto sin lucha; los egipcios le recibieron como un libertador de los persas. Viajó al oráculo de Amón en el oasis de Siwa, que le saludó como hijo del dios, y fundó Alejandría en la costa.</p>
+      <p>A su muerte, su general <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy1" target="_blank" rel="noopener noreferrer">Ptolomeo I</a> se quedó con Egipto y fundó la última dinastía, que duró casi tres siglos. Los Ptolomeos gobernaban en griego desde Alejandría, con su Biblioteca, su Museo y su Faro, pero en los templos aparecían como faraones. Construyeron o terminaron los grandes templos de <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-philae" target="_blank" rel="noopener noreferrer">File</a>, Edfu, Kom Ombo y <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-dendera" target="_blank" rel="noopener noreferrer">Dendera</a>.</p>
+      <p>En 196 a. C. los sacerdotes reunidos en Menfis aprobaron un decreto en honor de <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy5" target="_blank" rel="noopener noreferrer">Ptolomeo V</a> y lo grabaron en estelas en tres escrituras. Una de ellas es la Piedra de Rosetta.</p>
+    </div>
+
+    <figure>
+      <div class="scroll-x">
+        <!-- la piedra a escala: 1 cm = 1,6 unidades (114 × 72 cm) -->
+        <svg viewBox="0 0 640 240" role="img" aria-labelledby="rosettaTitle">
+          <title id="rosettaTitle">Esquema de la Piedra de Rosetta, a escala, con sus tres escrituras</title>
+          <polygon points="40,62 74,34 112,26 158,30 155,48 155,214 40,214" fill="var(--ink-soft)" fill-opacity="0.18" stroke="var(--ink-soft)" stroke-width="1.5"/>
+          <polygon points="40,62 74,34 112,26 158,30 155,48 155,84 40,84" fill="var(--gold)" fill-opacity="0.45"/>
+          <rect x="40" y="84" width="115" height="62" fill="var(--nile)" fill-opacity="0.35"/>
+          <rect x="40" y="146" width="115" height="68" fill="var(--malachite)" fill-opacity="0.35"/>
+          <g stroke="var(--ink-soft)" stroke-width="0.6" opacity="0.6">
+            <line x1="48" y1="70" x2="148" y2="70"/><line x1="48" y1="78" x2="148" y2="78"/>
+            <line x1="46" y1="94" x2="150" y2="94"/><line x1="46" y1="104" x2="150" y2="104"/><line x1="46" y1="114" x2="150" y2="114"/><line x1="46" y1="124" x2="150" y2="124"/><line x1="46" y1="134" x2="150" y2="134"/>
+            <line x1="46" y1="156" x2="150" y2="156"/><line x1="46" y1="166" x2="150" y2="166"/><line x1="46" y1="176" x2="150" y2="176"/><line x1="46" y1="186" x2="150" y2="186"/><line x1="46" y1="196" x2="150" y2="196"/><line x1="46" y1="206" x2="150" y2="206"/>
+          </g>
+          <g stroke="var(--ink-soft)" stroke-width="1">
+            <line x1="160" y1="66" x2="196" y2="66"/>
+            <line x1="160" y1="115" x2="196" y2="115"/>
+            <line x1="160" y1="180" x2="196" y2="180"/>
+          </g>
+          <g font-size="13">
+            <text x="202" y="62">Jeroglíficos · 14 líneas conservadas</text>
+            <text x="202" y="111">Demótico · 32 líneas</text>
+            <text x="202" y="176">Griego · 54 líneas</text>
+          </g>
+          <g class="mono soft" font-size="11">
+            <text x="202" y="78">la escritura de los templos; falta casi toda</text>
+            <text x="202" y="127">la escritura de uso diario</text>
+            <text x="202" y="192">la lengua de la corte: la que se podía leer</text>
+            <text x="40" y="232">114 × 72 cm · granodiorita · Museo Británico</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Esquema a escala del contorno y de las tres franjas, simplificado. La encontraron soldados franceses en 1799 en Rashid (Rosetta), en el delta; pasó a Inglaterra en 1801.</figcaption>
+    </figure>
+
+    <div class="facts">
+      <div class="fact">
+        <span class="k">Champollion</span>
+        <span class="v">27 de septiembre de 1822</span>
+        <p>Comparando los cartuchos de Ptolomeo en la Piedra y de Cleopatra en un obelisco de File, dedujo el valor de los signos. Anunció su desciframiento en su <em>Carta a M. Dacier</em>.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Qué dice</span>
+        <span class="v">Un decreto de sacerdotes</span>
+        <p>Agradece al rey sus donaciones a los templos y la rebaja de impuestos, y ordena honrarle en todos los santuarios. El clero y el rey, otra vez.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="cleopatra" aria-labelledby="cleo-h">
+    <div class="sec-head">
+      <p class="sec-num">6 · 51&ndash;30 a. C.</p>
+      <h2 id="cleo-h">Cleopatra VII, la última</h2>
+    </div>
+    <div class="prose">
+      <p><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-cleopatra7" target="_blank" rel="noopener noreferrer">Cleopatra VII</a> llegó al trono a los 18 años junto a su hermano Ptolomeo XIII. Según Plutarco, fue la primera de su familia en aprender egipcio, entre otras muchas lenguas. Apartada del poder, se alió con Julio César, que la repuso en el trono; tuvo con él a su hijo Cesarión.</p>
+      <p>Tras la muerte de César se unió a Marco Antonio, con quien tuvo tres hijos, frente a Octavio. Derrotados en Accio en el 31 a. C., Antonio se suicidó y, en agosto del 30 a. C., Cleopatra también. Octavio mandó matar a Cesarión, el último Ptolomeo.</p>
+      <p>Egipto pasó a ser una provincia de Roma, gobernada por un prefecto que dependía directamente del emperador. Los templos siguieron funcionando siglos: la última inscripción jeroglífica conocida, en File, es del año 394 d. C.</p>
+    </div>
+    <p class="nuance">Cleopatra cierra la lista de mujeres que gobernaron Egipto que recorre el curso: Sobekneferu, Hatshepsut, Tausert y ella, con Nitocris como figura dudosa al final del Imperio Antiguo.</p>
+  </section>
+
+  <aside class="closing" aria-labelledby="close-h">
+    <h3 id="close-h">El hilo conductor, hasta el final</h3>
+    <p style="max-width: 42rem;">El curso empezó con el faraón como dios en la tierra y termina con un emperador romano lejano. Entre medias, el poder de los templos no dejó de crecer: Ra frente a Shepseskaf, Amón frente a Akenatón, los sumos sacerdotes de Tebas gobernando como reyes y, al final, los sacerdotes de Menfis honrando a un rey griego en la Piedra de Rosetta. Las capitales cuentan la misma historia: Tinis, Menfis, Itjtawy, Tebas, Amarna, Pi-Ramsés, Tanis, Sais y Alejandría.</p>
+    <ul>
+      <li>Para repasar: ¿qué pasó en Qadesh y cómo lo contó Ramsés II?</li>
+      <li>¿Quiénes eran los Pueblos del Mar y dónde se les representa?</li>
+      <li>¿Quién gobernó el sur de Egipto tras el último Ramsés?</li>
+      <li>¿Por qué la Piedra de Rosetta permitió leer los jeroglíficos?</li>
+    </ul>
+  </aside>
+
+  <footer>Apuntes propios a partir de la clase y de la bibliografía del curso (Kemp, Shaw, Grimal, Belzoni). No reproducen la grabación. Fechas «h.» (hacia), a. C., como en la página principal.</footer>
+</main>
