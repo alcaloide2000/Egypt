@@ -1,0 +1,429 @@
+<meta charset="utf-8" />
+<title>Curso UNED · Clase 4</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:ital,wght@0,400;0,500;0,600;1,400&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  /* Layout: a study dossier for one class. Masthead, a numbered contents strip (the order of the class), then six sections in one reading column, each with a figure drawn to scale where the subject has numbers. Tokens shared with the Ancient Egypt pages. */
+  :root {
+    --bg: #ede3cc;
+    --bg-panel: #f7f1e1;
+    --ink: #2b2420;
+    --ink-soft: #5b4f3f;
+    --sand-line: #c9b48c;
+    --ochre: #b5551f;
+    --nile: #2e6e77;
+    --gold: #a9791f;
+    --indigo: #5b4f8f;
+    --malachite: #3c7a5a;
+    --silt: #3b3229;
+    --shadow: rgba(43, 36, 32, 0.12);
+    --font-display: "Fraunces", Georgia, serif;
+    --font-body: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+    --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --bg-panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --sand-line: #57544c;
+      --ochre: #e58a4d; --nile: #6fc2c4; --gold: #d9a83c; --indigo: #a99bd9; --malachite: #5fae87;
+      --silt: #1f1e1c; --shadow: rgba(0, 0, 0, 0.35); color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --bg-panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --sand-line: #57544c;
+    --ochre: #e58a4d; --nile: #6fc2c4; --gold: #d9a83c; --indigo: #a99bd9; --malachite: #5fae87;
+    --silt: #1f1e1c; --shadow: rgba(0, 0, 0, 0.35); color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  .page {
+    max-width: 62rem;
+    margin: 0 auto;
+    padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+    display: grid;
+    gap: clamp(2rem, 5vw, 3.25rem);
+  }
+  a { color: inherit; text-decoration-color: var(--sand-line); text-underline-offset: 0.18em; }
+  a:hover { text-decoration-color: currentColor; }
+  a:focus-visible { outline: 2px solid var(--ochre); outline-offset: 2px; border-radius: 2px; }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin: 0;
+  }
+  h1, h2, h3 { font-family: var(--font-display); font-weight: 600; text-wrap: balance; margin: 0; }
+  h1 { font-size: clamp(1.9rem, 5vw, 3rem); line-height: 1.05; }
+  h2 { font-size: clamp(1.35rem, 3vw, 1.75rem); line-height: 1.15; }
+  h3 { font-size: 1.05rem; line-height: 1.25; }
+  p { margin: 0; }
+  .prose { max-width: 40rem; display: grid; gap: 0.9rem; }
+
+  /* masthead */
+  .masthead { display: grid; gap: 0.75rem; border-bottom: 1px solid var(--sand-line); padding-bottom: 1.5rem; }
+  .lede { max-width: 40rem; color: var(--ink-soft); font-size: 1.05rem; }
+  .back-links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.25rem; font-size: 0.85rem; }
+  .back-links a { color: var(--malachite); font-weight: 500; }
+
+  /* contents: the real order of the class */
+  .contents { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0.5rem 1.5rem; counter-reset: sec; }
+  .contents li { counter-increment: sec; display: flex; gap: 0.6rem; align-items: baseline; font-size: 0.92rem; }
+  .contents li::before { content: counter(sec); font-family: var(--font-mono); font-size: 0.75rem; color: var(--ochre); min-width: 1.1rem; }
+
+  /* sections */
+  section { display: grid; gap: 1.1rem; scroll-margin-top: 1rem; }
+  .sec-head { display: grid; gap: 0.35rem; }
+  .sec-num { font-family: var(--font-mono); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-soft); }
+
+  figure { margin: 0; display: grid; gap: 0.5rem; }
+  .scroll-x { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll-x svg { display: block; width: 100%; min-width: 640px; height: auto; }
+  figcaption { font-size: 0.82rem; color: var(--ink-soft); max-width: 40rem; }
+  svg text { font-family: var(--font-body); fill: var(--ink); }
+  svg .mono { font-family: var(--font-mono); }
+  svg .soft { fill: var(--ink-soft); }
+
+  /* fact boxes and glossary */
+  .facts { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: 0.75rem; }
+  .fact { background: var(--bg-panel); border: 1px solid var(--sand-line); border-radius: 6px; padding: 0.8rem 0.95rem; display: grid; gap: 0.2rem; align-content: start; min-width: 0; }
+  .fact .k { font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ochre); }
+  .fact .v { font-family: var(--font-display); font-size: 1.25rem; line-height: 1.2; }
+  .fact p { font-size: 0.86rem; color: var(--ink-soft); }
+
+  .gloss { display: grid; grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr)); gap: 0.75rem; margin: 0; }
+  .gloss div { border-top: 2px solid var(--indigo); padding-top: 0.5rem; display: grid; gap: 0.15rem; min-width: 0; }
+  .gloss dt { font-family: var(--font-display); font-size: 1.15rem; }
+  .gloss dt span { font-family: var(--font-mono); font-size: 0.72rem; color: var(--ink-soft); margin-left: 0.35rem; }
+  .gloss dd { margin: 0; font-size: 0.88rem; color: var(--ink-soft); }
+
+  .nuance { border-left: 3px solid var(--gold); padding: 0.2rem 0 0.2rem 0.9rem; max-width: 40rem; font-size: 0.92rem; color: var(--ink-soft); }
+  .nuance strong { color: var(--ink); font-weight: 600; }
+
+  .quote { font-family: var(--font-display); font-style: italic; font-size: 1.15rem; line-height: 1.45; max-width: 36rem; color: var(--ink); border-left: 3px solid var(--nile); padding-left: 0.9rem; }
+  .quote cite { display: block; font-family: var(--font-mono); font-style: normal; font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.35rem; letter-spacing: 0.05em; }
+
+  .closing { background: var(--bg-panel); border: 1px solid var(--sand-line); border-radius: 8px; padding: clamp(1rem, 3vw, 1.5rem); display: grid; gap: 0.75rem; }
+  .closing ul { margin: 0; padding-left: 1.1rem; display: grid; gap: 0.35rem; max-width: 42rem; }
+
+  footer { font-size: 0.8rem; color: var(--ink-soft); border-top: 1px solid var(--sand-line); padding-top: 1rem; }
+</style>
+
+
+<main class="page">
+  <header class="masthead">
+    <p class="eyebrow">Curso UNED Tudela · Clase 4 · 3 de abril de 2025</p>
+    <h1>La dinastía XVIII</h1>
+    <p class="lede">Apuntes desarrollados de la cuarta clase de <em>Introducción a la historia del Antiguo Egipto</em>, con la Dra. Eva Tobalina Oraá. El siglo y medio de mayor poder de Egipto: Hatshepsut, las conquistas de Tutmosis III, el lujo de Amenofis III, la revolución de Amarna y la vuelta a Amón, h. 1504&ndash;1292 a. C. Los nombres subrayados enlazan con su ficha en la página principal.</p>
+    <div class="back-links">
+      <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#uned" target="_blank" rel="noopener noreferrer">Volver a la pestaña Curso UNED ↗</a>
+      <a href="https://claude.ai/artifact/4JDNxH58SqFDm9rdgax7VL" target="_blank" rel="noopener noreferrer">← Clase 3 en detalle</a>
+      <a href="https://claude.ai/artifact/WMkdWhLeEmPLPgwuKFpVKu" target="_blank" rel="noopener noreferrer">Mapa mental del curso ↗</a>
+    </div>
+  </header>
+
+  <nav aria-label="Contenido de la clase">
+    <ol class="contents">
+      <li><a href="#hatshepsut">Hatshepsut</a></li>
+      <li><a href="#tutmosis3">Tutmosis III</a></li>
+      <li><a href="#amenofis3">Tutmosis IV y Amenofis III</a></li>
+      <li><a href="#amarna">Akenatón y Amarna</a></li>
+      <li><a href="#restauracion">La vuelta a Amón</a></li>
+      <li><a href="#templo">Cómo se lee un templo</a></li>
+    </ol>
+  </nav>
+
+  <!-- timeline of the class, to scale: x = 20 + (1550 − año) × 3.6923 -->
+  <figure>
+    <div class="scroll-x">
+      <svg viewBox="0 0 1010 210" role="img" aria-labelledby="chronoTitle">
+        <title id="chronoTitle">Cronología de la clase, de h. 1550 a h. 1290 a. C., a escala</title>
+        <rect x="20" y="96" width="727.4" height="28" fill="var(--gold)" opacity="0.4"/>
+        <rect x="747.4" y="96" width="110.8" height="28" fill="var(--ochre)" opacity="0.35"/>
+        <rect x="858.2" y="96" width="114.4" height="28" fill="var(--nile)" opacity="0.3"/>
+        <rect x="972.6" y="96" width="7.4" height="28" fill="var(--indigo)" opacity="0.32"/>
+        <g font-size="12" text-anchor="middle">
+          <text x="383.7" y="115">Dinastía XVIII · los Tutmósidas</text>
+          <text x="802.8" y="115">Amarna</text>
+          <text x="915.4" y="115">Restauración</text>
+        </g>
+        <g stroke="var(--ink-soft)" stroke-width="1">
+          <line x1="189.8" y1="34" x2="189.8" y2="96"/>
+          <line x1="282.2" y1="59" x2="282.2" y2="96"/>
+          <line x1="363.4" y1="84" x2="363.4" y2="96"/>
+          <line x1="573.8" y1="34" x2="573.8" y2="96"/>
+          <line x1="607.1" y1="59" x2="607.1" y2="96"/>
+          <line x1="747.4" y1="84" x2="747.4" y2="96"/>
+          <line x1="824.9" y1="124" x2="824.9" y2="163"/>
+          <line x1="872.9" y1="124" x2="872.9" y2="138"/>
+        </g>
+        <g font-size="13">
+          <text x="193.8" y="34">Tutmosis I · h. 1504</text>
+          <text x="286.2" y="59">Hatshepsut · h. 1479</text>
+          <text x="367.4" y="84">Batalla de Megiddo · h. 1457</text>
+          <text x="577.8" y="34">Tutmosis IV · h. 1400</text>
+          <text x="611.1" y="59">Amenofis III · h. 1391</text>
+          <text x="751.4" y="84">Akenatón · h. 1353</text>
+          <text x="828.9" y="173">Tutankamón · h. 1332</text>
+          <text x="876.9" y="148">Horemheb · h. 1319</text>
+        </g>
+        <g class="mono soft" font-size="11">
+          <text x="20" y="200">1550 a. C.</text>
+          <text x="204.6" y="200" text-anchor="middle">1500</text>
+          <text x="573.8" y="200" text-anchor="middle">1400</text>
+          <text x="943.1" y="200" text-anchor="middle">1300</text>
+        </g>
+      </svg>
+    </div>
+    <figcaption>Fechas aproximadas, las mismas que usa la página principal. Los años de Hatshepsut y los primeros de Tutmosis III se solapan: reinaron juntos.</figcaption>
+  </figure>
+
+  <!-- 1 -->
+  <section id="hatshepsut" aria-labelledby="hat-h">
+    <div class="sec-head">
+      <p class="sec-num">1 · h. 1479&ndash;1458 a. C.</p>
+      <h2 id="hat-h">Hatshepsut, hija de Amón</h2>
+    </div>
+    <div class="prose">
+      <p><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-hatshepsut" target="_blank" rel="noopener noreferrer">Hatshepsut</a> era hija de <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-thutmose1" target="_blank" rel="noopener noreferrer">Tutmosis I</a> y esposa de su medio hermano Tutmosis II. Cuando este murió, el heredero, Tutmosis III, hijo de una esposa secundaria, era un niño. Ella gobernó primero como regente y hacia su séptimo año se coronó rey, con la titulatura completa de un faraón varón. Tutmosis III siguió siendo rey a su lado, en segundo plano.</p>
+      <p>Para justificarlo, mandó representar su nacimiento divino en su templo de Deir el-Bahari: Amón visita a la reina Ahmose tomando la forma de Tutmosis I, y el dios Khnum modela a la niña en su torno de alfarero. Ese templo, <em>Djeser-djeseru</em>, «el más sagrado de los sagrados», con tres terrazas al pie del acantilado, lo construyó su mayordomo Senenmut junto al de Mentuhotep II.</p>
+      <p>En sus relieves está también la expedición al Punt del año 9: barcos que vuelven por el mar Rojo con árboles de incienso en cestas, ébano, oro y monos, y el retrato de la reina del Punt, Ati.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">Obeliscos de Karnak</span>
+        <span class="v">Unos 30 m</span>
+        <p>Dos obeliscos de granito rojo de Asuán, levantados en el año 16. Uno sigue en pie: es el más alto que queda en Egipto.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Cómo se la representa</span>
+        <span class="v">Con barba postiza</span>
+        <p>Las primeras estatuas la muestran como mujer; las posteriores, con el cuerpo, el tocado y la barba ceremonial de un rey.</p>
+      </div>
+    </div>
+    <p class="nuance"><strong>Correcciones.</strong> El obelisco que sigue en pie mide unos 30 m, no 33. Y su nombre no lo borraron Seti I y Ramsés II, como se dice en la grabación: la mayoría de los egiptólogos sitúa el borrado al final del reinado de Tutmosis III, unos veinte años después de su muerte, para asegurar la sucesión de su hijo. Más tarde las listas reales, como la de Seti I en Abidos, ni siquiera la nombran.</p>
+  </section>
+
+  <!-- 2 -->
+  <section id="tutmosis3" aria-labelledby="t3-h">
+    <div class="sec-head">
+      <p class="sec-num">2 · h. 1479&ndash;1425 a. C.</p>
+      <h2 id="t3-h">Tutmosis III, el conquistador</h2>
+    </div>
+    <div class="prose">
+      <p>Ya solo en el trono, <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-thutmose3" target="_blank" rel="noopener noreferrer">Tutmosis III</a> hizo diecisiete campañas en Canaán y Siria en unos veinte años. La primera fue la más famosa: hacia 1457 a. C. una coalición de príncipes cananeos, encabezada por el rey de Qadesh, le esperaba en Megiddo. Contra el consejo de sus generales, llevó al ejército por un desfiladero estrecho, el paso de Aruna, cayó por sorpresa sobre el enemigo y tomó la ciudad tras siete meses de asedio.</p>
+      <p>Llevó a Egipto a los hijos de los príncipes vencidos para educarlos en la corte y devolverlos luego como aliados fieles. Llegó al Éufrates y dejó allí una estela junto a la de su abuelo Tutmosis I. Por todo ello el egiptólogo James Breasted le llamó el «Napoleón de Egipto».</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">Anales</span>
+        <span class="v">En los muros de Karnak</span>
+        <p>Su escriba Tjaneni copió el diario de campaña en el templo de <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-karnak" target="_blank" rel="noopener noreferrer">Karnak</a>: rutas, botín y tributos, año por año.</p>
+      </div>
+      <div class="fact">
+        <span class="k">El «jardín botánico»</span>
+        <span class="v">Plantas de Siria</span>
+        <p>En su sala de fiestas de Karnak, el Akh-menu, hizo grabar las plantas y animales exóticos que trajo de la campaña del año 25.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Su tumba</span>
+        <span class="v">KV34</span>
+        <p>En el Valle de los Reyes, con el libro del Amduat pintado como un papiro desplegado en las paredes de la cámara.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 3 -->
+  <section id="amenofis3" aria-labelledby="a3-h">
+    <div class="sec-head">
+      <p class="sec-num">3 · h. 1400&ndash;1353 a. C.</p>
+      <h2 id="a3-h">El sueño de Tutmosis IV y el lujo de Amenofis III</h2>
+    </div>
+    <div class="prose">
+      <p>Entre las patas de la <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-sphinx" target="_blank" rel="noopener noreferrer">Gran Esfinge</a> sigue en pie la Estela del Sueño. Cuenta que el joven príncipe Tutmosis, de caza en Guiza, se durmió a la sombra de la Esfinge, medio enterrada en la arena. En sueños el dios le prometió el trono si le liberaba de ella. Tutmosis IV la desenterró y fue rey: una historia que suena a propaganda de quien quizá no era el heredero previsto.</p>
+      <p>Su hijo <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-amenhotep3" target="_blank" rel="noopener noreferrer">Amenofis III</a> heredó el Egipto más rico de la historia y lo gastó en construir: el templo de Luxor, el Tercer Pilono de Karnak y un templo funerario inmenso en la orilla oeste, del que solo quedan los Colosos de Memnón, de unos 18 m.</p>
+      <p>Su gran esposa real, Tiy, no era de sangre real: era hija de Yuya y Tuya, una familia de funcionarios de Ajmim. Aun así aparece en las estatuas al mismo tamaño que el rey y mantuvo correspondencia propia con reyes extranjeros.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">Las cartas de Amarna</span>
+        <span class="v">Unas 380 tablillas</span>
+        <p>Cartas en acadio, la lengua diplomática de la época, entre el faraón y los reyes de Babilonia, Mitanni, Asiria, Hatti y los príncipes de Canaán. Se hallaron en Amarna en 1887.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Bodas diplomáticas</span>
+        <span class="v">Princesas de Mitanni</span>
+        <p>Un escarabeo conmemorativo anuncia en el año 10 la llegada de Gilukhepa, hija del rey de Mitanni, con 317 mujeres de su séquito.</p>
+      </div>
+      <div class="fact">
+        <span class="k">Los colosos que cantaban</span>
+        <span class="v">Memnón</span>
+        <p>Tras un terremoto en el 27 a. C., uno de ellos «cantaba» al amanecer. Los griegos lo tomaron por Memnón saludando a su madre, la Aurora. Calló tras una restauración romana.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 4 -->
+  <section id="amarna" aria-labelledby="amarna-h">
+    <div class="sec-head">
+      <p class="sec-num">4 · h. 1353&ndash;1336 a. C.</p>
+      <h2 id="amarna-h">Akenatón, Nefertiti y el disco solar</h2>
+    </div>
+    <div class="prose">
+      <p>Amenofis IV empezó su reinado en Tebas, pero hacia su quinto año dio un giro sin precedentes. Puso por encima de todos los dioses a Atón, el disco del sol, se cambió el nombre por <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-akhenaten" target="_blank" rel="noopener noreferrer">Akenatón</a>, «útil para Atón», cerró los templos de Amón y fundó una capital nueva en un desierto virgen del Egipto Medio: Ajetatón, «el horizonte de Atón», la actual Amarna.</p>
+      <p>Atón no tiene imagen: es el disco con rayos que acaban en manos y ofrecen el signo de la vida al rey y a la reina. Solo la familia real habla con él; el pueblo adora a la familia real. El Gran Himno a Atón, grabado en la tumba de Ay en Amarna, tiene pasajes muy parecidos al Salmo 104.</p>
+      <p>El arte cambia tanto como la religión: cuerpos alargados, vientres y caderas marcados, y escenas íntimas del rey, <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-nefertiti" target="_blank" rel="noopener noreferrer">Nefertiti</a> y sus seis hijas, que se besan y juegan bajo los rayos del sol.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">El busto de Nefertiti</span>
+        <span class="v">Berlín</span>
+        <p>Hallado en 1912 en el taller del escultor Tutmosis, en Amarna, por la expedición alemana de Ludwig Borchardt. Era un modelo de taller: le falta un ojo.</p>
+      </div>
+      <div class="fact">
+        <span class="k">La ciudad</span>
+        <span class="v">Unos 15 años de vida</span>
+        <p>Se construyó deprisa con <em>talatat</em>, pequeños bloques de piedra fáciles de transportar, y se abandonó poco después de la muerte del rey.</p>
+      </div>
+    </div>
+    <p class="nuance"><strong>Matiz.</strong> Se suele hablar de «monoteísmo», pero los egiptólogos discuten si lo fue: los demás dioses no desaparecen del todo al principio, y el culto pasa por el rey, no llega directamente a la gente.</p>
+  </section>
+
+  <!-- 5 -->
+  <section id="restauracion" aria-labelledby="rest-h">
+    <div class="sec-head">
+      <p class="sec-num">5 · h. 1332&ndash;1292 a. C.</p>
+      <h2 id="rest-h">Tutankamón, Ay y Horemheb: la vuelta a Amón</h2>
+    </div>
+    <div class="prose">
+      <p>El niño Tutankatón, probablemente hijo de Akenatón, subió al trono con unos ocho o nueve años. Sus consejeros le cambiaron el nombre a <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-tutankhamun" target="_blank" rel="noopener noreferrer">Tutankamón</a>, «imagen viva de Amón», abandonaron Amarna y en la Estela de la Restauración de Karnak describieron un país en ruinas, con los templos cerrados y los dioses ofendidos. Murió hacia los 19 años.</p>
+      <p>Su viuda, Anjesenamón, escribió al rey hitita Suppiluliuma pidiéndole un hijo para casarse con él y hacerlo faraón. El príncipe hitita enviado, Zannanza, murió por el camino. Reinó entonces Ay, un anciano cortesano, y después el general <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-horemheb" target="_blank" rel="noopener noreferrer">Horemheb</a>.</p>
+      <p>Horemheb hizo como si Amarna no hubiera existido: contó sus años desde la muerte de Amenofis III, borró a Akenatón, Tutankamón y Ay, y usó los <em>talatat</em> de los templos de Atón como relleno de los pilonos de Karnak, donde se han recuperado decenas de miles. Sin hijos, dejó el trono a otro militar, Paramessu: Ramsés I.</p>
+    </div>
+    <div class="facts">
+      <div class="fact">
+        <span class="k">KV62</span>
+        <span class="v">4 de noviembre de 1922</span>
+        <p>Howard Carter, financiado por lord Carnarvon, encontró el primer escalón. Unos 5.400 objetos; la máscara de oro pesa unos 10 kg. Su libro <em>La tumba de Tutankhamon</em> está en la bibliografía.</p>
+      </div>
+      <div class="fact">
+        <span class="k">La daga de hierro</span>
+        <span class="v">Hierro de meteorito</span>
+        <p>Su hoja, de hierro en una época de bronce, viene de un meteorito, como confirmó un análisis de 2016.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6 -->
+  <section id="templo" aria-labelledby="templo-h">
+    <div class="sec-head">
+      <p class="sec-num">6 · Arquitectura</p>
+      <h2 id="templo-h">Cómo se lee un templo del Imperio Nuevo</h2>
+    </div>
+    <div class="prose">
+      <p>Un templo egipcio reproduce la creación: el momento en que el primer montículo de tierra emergió de las aguas del caos. Se avanza de la luz a la oscuridad y de lo público a lo secreto. El suelo sube y el techo baja a cada sala, hasta el santuario, donde solo el rey y los sumos sacerdotes podían entrar a vestir, perfumar y alimentar la estatua del dios.</p>
+    </div>
+
+    <figure>
+      <div class="scroll-x">
+        <svg viewBox="0 0 760 240" role="img" aria-labelledby="templeTitle">
+          <title id="templeTitle">Corte esquemático de un templo: pilono, patio abierto, sala hipóstila y santuario, con el suelo que sube y el techo que baja</title>
+          <!-- sombra creciente -->
+          <rect x="300" y="70" width="220" height="114" fill="var(--ink-soft)" opacity="0.12"/>
+          <rect x="520" y="100" width="80" height="76" fill="var(--ink-soft)" opacity="0.24"/>
+          <rect x="600" y="118" width="100" height="58" fill="var(--ink-soft)" opacity="0.36"/>
+          <!-- suelo -->
+          <polyline points="20,190 300,190 300,184 520,184 520,176 700,176 700,190 740,190" fill="none" stroke="var(--ink-soft)" stroke-width="2"/>
+          <!-- pilono -->
+          <polygon points="40,190 54,50 96,50 110,190" fill="var(--gold)" fill-opacity="0.45" stroke="var(--gold)" stroke-width="1.4"/>
+          <rect x="66" y="128" width="18" height="62" fill="var(--bg)"/>
+          <!-- patio: muro y columnata lateral -->
+          <line x1="110" y1="110" x2="300" y2="110" stroke="var(--sand-line)" stroke-dasharray="4 4"/>
+          <g fill="var(--ochre)" fill-opacity="0.4">
+            <rect x="130" y="120" width="8" height="70"/><rect x="170" y="120" width="8" height="70"/>
+            <rect x="210" y="120" width="8" height="70"/><rect x="250" y="120" width="8" height="70"/>
+          </g>
+          <!-- hipóstila -->
+          <rect x="300" y="64" width="220" height="6" fill="var(--ink-soft)"/>
+          <g fill="var(--nile)" fill-opacity="0.55">
+            <rect x="318" y="78" width="12" height="106"/><rect x="354" y="78" width="12" height="106"/>
+            <rect x="390" y="78" width="12" height="106"/><rect x="426" y="78" width="12" height="106"/>
+            <rect x="462" y="78" width="12" height="106"/><rect x="498" y="78" width="12" height="106"/>
+          </g>
+          <g fill="var(--malachite)" fill-opacity="0.6">
+            <rect x="313" y="70" width="22" height="8" rx="3"/><rect x="349" y="70" width="22" height="8" rx="3"/>
+            <rect x="385" y="70" width="22" height="8" rx="3"/><rect x="421" y="70" width="22" height="8" rx="3"/>
+            <rect x="457" y="70" width="22" height="8" rx="3"/><rect x="493" y="70" width="22" height="8" rx="3"/>
+          </g>
+          <!-- santuario -->
+          <rect x="520" y="94" width="80" height="6" fill="var(--ink-soft)"/>
+          <rect x="600" y="112" width="100" height="6" fill="var(--ink-soft)"/>
+          <line x1="520" y1="94" x2="520" y2="176" stroke="var(--ink-soft)" stroke-width="2"/>
+          <line x1="600" y1="112" x2="600" y2="176" stroke="var(--ink-soft)" stroke-width="2"/>
+          <line x1="700" y1="112" x2="700" y2="176" stroke="var(--ink-soft)" stroke-width="2"/>
+          <rect x="636" y="140" width="28" height="36" fill="var(--gold)" fill-opacity="0.7" stroke="var(--gold)"/>
+          <!-- sol -->
+          <circle cx="200" cy="40" r="12" fill="var(--gold)" opacity="0.7"/>
+          <g font-size="12">
+            <text x="225" y="44" class="soft">luz</text>
+            <text x="410" y="56" text-anchor="middle" class="soft">penumbra</text>
+            <text x="650" y="104" text-anchor="middle" class="soft">oscuridad</text>
+          </g>
+          <g font-size="13" text-anchor="middle">
+            <text x="75" y="210">Pilono</text>
+            <text x="205" y="210">Patio abierto</text>
+            <text x="410" y="210">Sala hipóstila</text>
+            <text x="610" y="210">Santuario</text>
+          </g>
+          <g class="mono soft" font-size="11" text-anchor="middle">
+            <text x="75" y="226">el horizonte</text>
+            <text x="205" y="226">la luz del sol</text>
+            <text x="410" y="226">el pantano de papiros</text>
+            <text x="610" y="226">el montículo primordial</text>
+          </g>
+        </svg>
+      </div>
+      <figcaption>Esquema, no a escala. Las columnas de la sala hipóstila imitan papiros y lotos que crecen en el pantano que rodeaba el montículo. La estatua del dios estaba en una capilla de piedra, el <em>naos</em>.</figcaption>
+    </figure>
+
+    <div class="facts">
+      <div class="fact">
+        <span class="k">El pilono</span>
+        <span class="v">Dos torres, un sol</span>
+        <p>Sus dos torres dibujan el jeroglífico del horizonte, dos montañas entre las que sale el sol. El rey aparece en sus caras golpeando a los enemigos: fuera queda el caos.</p>
+      </div>
+      <div class="fact">
+        <span class="k">La gran sala hipóstila</span>
+        <span class="v">134 columnas</span>
+        <p>La de Karnak, terminada por Seti I y Ramsés II, tiene 134 columnas; las doce centrales miden unos 21 m.</p>
+      </div>
+    </div>
+  </section>
+
+  <aside class="closing" aria-labelledby="close-h">
+    <h3 id="close-h">El hilo conductor del curso</h3>
+    <p style="max-width: 42rem;">Nunca fue tan clara la tensión entre el faraón y el clero. Las victorias de Tutmosis III llenan de oro los almacenes de Amón en Karnak; Akenatón intenta prescindir de sus sacerdotes; y la restauración de Tutankamón y Horemheb les devuelve todo. En la clase 5, con los Ramésidas, el sumo sacerdote de Amón acabará gobernando el sur como un rey.</p>
+    <ul>
+      <li>Para repasar: ¿cómo justificó Hatshepsut que una mujer fuera rey?</li>
+      <li>¿Qué hizo Tutmosis III en Megiddo y qué hizo con los hijos de los vencidos?</li>
+      <li>¿Qué cambia en la religión y en el arte con Akenatón?</li>
+      <li>¿Por qué sube el suelo y baja el techo al avanzar por un templo?</li>
+    </ul>
+  </aside>
+
+  <footer>Apuntes propios a partir de la clase y de la bibliografía del curso (Kemp, Shaw, Grimal, Carter). No reproducen la grabación. Fechas «h.» (hacia), a. C., como en la página principal.</footer>
+</main>
