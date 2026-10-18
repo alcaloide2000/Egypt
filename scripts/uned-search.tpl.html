@@ -157,6 +157,7 @@
   .tag:hover, .tag:focus-visible, .tag[aria-expanded="true"] { background: var(--accent, var(--ochre)); color: var(--bg-panel); outline: none; }
   .tag.note { border-style: dashed; }
   .snippet { color: var(--ink-soft); }
+  .where { color: var(--ink); font-weight: 600; }
   .paragraph {
     grid-column: 1 / -1;
     margin: 0.2rem 0 0.4rem;
@@ -185,7 +186,7 @@
 <div class="page">
   <a class="back" href="../artifacts/ancient-egypt-history-main-points.html#uned">← Curso UNED</a>
   <h1>Buscar en las clases del curso UNED</h1>
-  <p class="lede">Encuentra en qué clase se dice una palabra o frase, y dónde aparece en los apuntes y en el mapa mental. Introducción a la historia del Antiguo Egipto, UNED Tudela, primavera de 2025.</p>
+  <p class="lede">Encuentra en qué clase se dice una palabra o frase, y dónde aparece en los apuntes, en el mapa mental y en la página de cada clase. Introducción a la historia del Antiguo Egipto, UNED Tudela, primavera de 2025.</p>
 
   <form class="search-bar" role="search" onsubmit="return false">
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
@@ -207,7 +208,7 @@
   var MAX_HITS = 400;
   var MAP_URL = "../artifacts/curso-uned-mapa-mental.html";
   var ACCENTS = { 0: "var(--malachite)", 1: "var(--ochre)", 2: "var(--indigo)", 3: "var(--turquoise)", 4: "var(--gold)", 5: "var(--rose)" };
-  var INTRO = "Busca en lo que se dijo en las cinco clases y en el texto de los apuntes y del mapa mental, sin preocuparte por las tildes ni las mayúsculas. Las transcripciones no son perfectas, así que algún nombre propio puede estar mal escrito.";
+  var INTRO = "Busca en lo que se dijo en las cinco clases y en el texto de los apuntes, del mapa mental y de las páginas de cada clase, sin preocuparte por las tildes ni las mayúsculas. Las transcripciones no son perfectas, así que algún nombre propio puede estar mal escrito.";
 
   /* Lowercase and drop accents, so "dinastia" finds "dinastía". One char in, one char out. */
   function normalize(text) {
@@ -225,7 +226,10 @@
     return Object.assign({}, c, { text: text, offsets: offsets });
   });
   var notes = DATA.notes.map(function (entry) {
-    return { n: entry[0], kind: entry[1], text: entry[2], normalized: normalize(entry[2]).replace(/\s+/g, " ") };
+    return {
+      n: entry[0], kind: entry[1], text: entry[2], href: entry[3], section: entry[4],
+      normalized: normalize(entry[2]).replace(/\s+/g, " "),
+    };
   });
 
   /* Index of the segment that contains character `pos` of the joined text */
@@ -373,16 +377,18 @@
       }
 
       if (result.noteHits.length) {
-        card.appendChild(el("p", "group-title", "En los apuntes y el mapa mental"));
+        card.appendChild(el("p", "group-title", "En los apuntes, el mapa mental y la página de la clase"));
         var notesList = el("ul", "hits");
         result.noteHits.forEach(function (note) {
           var li = el("li");
           var tag = el("a", "tag note", note.kind);
-          tag.href = note.kind === "Mapa mental" ? MAP_URL : "../artifacts/ancient-egypt-history-main-points.html#uned";
+          tag.href = note.href || (note.kind === "Mapa mental" ? MAP_URL : "../artifacts/ancient-egypt-history-main-points.html#uned");
           tag.target = "_blank";
           tag.rel = "noopener noreferrer";
           li.appendChild(tag);
-          li.appendChild(highlighted(note.text, query, 260));
+          var snippet = highlighted(note.text, query, 260);
+          if (note.section) snippet.insertBefore(el("span", "where", note.section + " · "), snippet.firstChild);
+          li.appendChild(snippet);
           notesList.appendChild(li);
         });
         card.appendChild(notesList);
@@ -433,7 +439,7 @@
     status.textContent = data.results.length === 0
       ? "Sin resultados."
       : plural(data.transcriptTotal, "mención", "menciones") + " en las transcripciones y " +
-        data.noteTotal + " en los apuntes y el mapa mental, en " +
+        data.noteTotal + " en los apuntes, el mapa mental y las páginas de las clases, en " +
         plural(data.results.length, "apartado", "apartados") +
         (data.truncated ? " (se muestran las primeras 400)" : "");
     render(q, data);

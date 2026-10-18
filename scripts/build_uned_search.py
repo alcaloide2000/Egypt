@@ -2,7 +2,8 @@
 
 Reads the five class transcriptions from private/uned/clase-N.txt, the mind map
 (artifacts/curso-uned-mapa-mental.html) and the Spanish half of the Curso UNED tab
-of the main page, and writes private/buscar-curso-uned.html with all of it inline.
+of the main page and the five in-depth class pages
+(artifacts/curso-uned-clase-N.html), and writes private/buscar-curso-uned.html with all of it inline.
 
 The output holds the lecturer's full transcripts, so it stays in the gitignored
 private/ folder and is never committed or published.
@@ -78,6 +79,28 @@ def read_mind_map():
     return entries
 
 
+def read_class_pages():
+    """Paragraphs, facts and captions of each in-depth class page, tagged with their section."""
+    entries = []
+    for n in range(1, 6):
+        page = f"curso-uned-clase-{n}.html"
+        source = (ARTIFACTS / page).read_text(encoding="utf8")
+        source = re.sub(r"<(svg|script|style)\b.*?</\1>", "", source, flags=re.S)
+        for anchor, section in re.findall(r'<section id="([^"]+)".*?>(.*?)</section>', source, re.S):
+            heading = strip_tags(re.search(r"<h2[^>]*>(.*?)</h2>", section, re.S).group(1))
+            href = f"../artifacts/{page}#{anchor}"
+            blocks = re.findall(r'<p(?! class="sec-num")[^>]*>(.*?)</p>', section, re.S)
+            blocks += re.findall(r"<li[^>]*>(.*?)</li>", section, re.S)
+            blocks += re.findall(r"<figcaption[^>]*>(.*?)</figcaption>", section, re.S)
+            blocks += [f"{k}: {v}" for k, v in re.findall(
+                r'<span class="k">(.*?)</span>\s*<span class="v">(.*?)</span>', section, re.S)]
+            for block in blocks:
+                text = strip_tags(block)
+                if text:
+                    entries.append([n, "En detalle", text, href, heading])
+    return entries
+
+
 def read_tab():
     """Day cards and note cards of the Spanish block of the Curso UNED tab."""
     source = (ARTIFACTS / "ancient-egypt-history-main-points.html").read_text(encoding="utf8")
@@ -118,7 +141,7 @@ def main():
             "segments": segments,
             "paragraphs": paragraph_starts(segments),
         })
-    data = {"classes": classes, "notes": read_mind_map() + tab_entries}
+    data = {"classes": classes, "notes": read_mind_map() + tab_entries + read_class_pages()}
     # "</" can't appear inside the inline <script>
     payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     page = TEMPLATE.read_text(encoding="utf8").replace("/*DATA*/null", payload)
