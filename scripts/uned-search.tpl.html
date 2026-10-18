@@ -1,0 +1,451 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Buscar en el curso UNED</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #ede3cc;
+    --bg-panel: #f7f1e1;
+    --ink: #2b2420;
+    --ink-soft: #5b4f3f;
+    --ochre: #b5551f;
+    --ochre-dim: #c97a44;
+    --nile: #2e6e77;
+    --sand-line: #c9b48c;
+    --gold: #a9791f;
+    --indigo: #5b4f8f;
+    --turquoise: #0e8f8a;
+    --rose: #9c3f5e;
+    --malachite: #3c7a5a;
+    --shadow: rgba(43, 36, 32, 0.14);
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c;
+      --bg-panel: #3a3936;
+      --ink: #ede3cc;
+      --ink-soft: #b8a98a;
+      --ochre: #e58a4d;
+      --ochre-dim: #c25f28;
+      --nile: #6fc2c4;
+      --sand-line: #57544c;
+      --gold: #d9a83c;
+      --indigo: #a99bd9;
+      --turquoise: #4fd8d1;
+      --rose: #e08aa6;
+      --malachite: #5fae87;
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c;
+    --bg-panel: #3a3936;
+    --ink: #ede3cc;
+    --ink-soft: #b8a98a;
+    --ochre: #e58a4d;
+    --ochre-dim: #c25f28;
+    --nile: #6fc2c4;
+    --sand-line: #57544c;
+    --gold: #d9a83c;
+    --indigo: #a99bd9;
+    --turquoise: #4fd8d1;
+    --rose: #e08aa6;
+    --malachite: #5fae87;
+    --shadow: rgba(0, 0, 0, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.5;
+  }
+  .page { max-width: 860px; margin: 0 auto; padding: clamp(1.5rem, 4vw, 3rem) 16px 3rem; }
+  .back {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.78rem;
+    color: var(--ochre);
+    text-decoration: none;
+    border-bottom: 1px solid var(--sand-line);
+  }
+  .back:hover, .back:focus-visible { border-bottom-color: currentColor; }
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(1.7rem, 4vw, 2.4rem);
+    line-height: 1.1;
+    margin: 1rem 0 0.6rem;
+    text-wrap: balance;
+  }
+  .lede { margin: 0 0 1.5rem; color: var(--ink-soft); }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: var(--bg-panel);
+    border: 1px solid var(--sand-line);
+    border-radius: 999px;
+    padding: 0.7rem 1.1rem;
+    box-shadow: 0 1px 2px var(--shadow);
+  }
+  .search-bar:focus-within { outline: 2px solid var(--ochre-dim); outline-offset: 2px; }
+  .search-bar svg { flex: none; color: var(--ink-soft); }
+  .search-input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    color: var(--ink);
+    font: inherit;
+    font-size: 1rem;
+    outline: none;
+  }
+  .search-input::placeholder { color: var(--ink-soft); }
+  .search-status { margin: 0.8rem 0.4rem 1.5rem; font-size: 0.9rem; color: var(--ink-soft); }
+
+  .result {
+    background: var(--bg-panel);
+    border: 1px solid var(--sand-line);
+    border-top: 4px solid var(--accent, var(--ochre));
+    border-radius: 14px;
+    padding: clamp(1rem, 2.5vw, 1.4rem);
+    box-shadow: 0 1px 2px var(--shadow);
+    margin-bottom: 1.1rem;
+  }
+  .badge {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent, var(--ochre));
+  }
+  .result h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    margin: 0.3rem 0 0.8rem;
+  }
+  .group-title {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    margin: 0.9rem 0 0.4rem;
+  }
+  .hits { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.55rem; }
+  .hits li { display: grid; grid-template-columns: auto 1fr; gap: 0.7rem; align-items: baseline; font-size: 0.92rem; }
+  .tag {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    white-space: nowrap;
+    color: var(--accent, var(--ochre));
+    background: transparent;
+    border: 1px solid var(--accent, var(--ochre));
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+    cursor: pointer;
+    text-decoration: none;
+  }
+  .tag:hover, .tag:focus-visible, .tag[aria-expanded="true"] { background: var(--accent, var(--ochre)); color: var(--bg-panel); outline: none; }
+  .tag.note { border-style: dashed; }
+  .snippet { color: var(--ink-soft); }
+  .paragraph {
+    grid-column: 1 / -1;
+    margin: 0.2rem 0 0.4rem;
+    padding: 0.8rem 1rem;
+    border-left: 3px solid var(--accent, var(--ochre));
+    background: var(--bg);
+    border-radius: 0 8px 8px 0;
+    color: var(--ink);
+    font-size: 0.9rem;
+  }
+  .paragraph .here { background: color-mix(in srgb, var(--accent, var(--ochre)) 16%, transparent); border-radius: 3px; }
+  mark { background: var(--gold); color: var(--bg-panel); border-radius: 3px; padding: 0 0.1em; font-weight: 600; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; margin-top: 1rem; }
+  .links a {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.74rem;
+    color: var(--ink);
+    text-decoration: none;
+    border-bottom: 1px solid var(--sand-line);
+  }
+  .links a:hover, .links a:focus-visible { border-bottom-color: currentColor; }
+  footer { margin-top: 2.5rem; font-size: 0.8rem; color: var(--ink-soft); }
+</style>
+</head>
+<body>
+<div class="page">
+  <a class="back" href="../artifacts/ancient-egypt-history-main-points.html#uned">← Curso UNED</a>
+  <h1>Buscar en las clases del curso UNED</h1>
+  <p class="lede">Encuentra en qué clase se dice una palabra o frase, y dónde aparece en los apuntes y en el mapa mental. Introducción a la historia del Antiguo Egipto, UNED Tudela, primavera de 2025.</p>
+
+  <form class="search-bar" role="search" onsubmit="return false">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+      <circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="2" />
+      <line x1="16.4" y1="16.4" x2="21" y2="21" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+    </svg>
+    <input type="search" class="search-input" id="q" aria-label="Buscar en las clases"
+      placeholder="Por ejemplo: Hatshepsut, Amarna, Libro de los Muertos…" autocomplete="off" autofocus>
+  </form>
+  <p class="search-status" id="status" aria-live="polite"></p>
+  <div id="results"></div>
+
+  <footer>Página local: contiene las transcripciones completas, así que vive en la carpeta <code>private/</code> y no se publica. Se regenera con <code>python scripts/build_uned_search.py</code>.</footer>
+</div>
+
+<script>
+(function () {
+  var DATA = /*DATA*/null;
+  var MAX_HITS = 400;
+  var MAP_URL = "../artifacts/curso-uned-mapa-mental.html";
+  var ACCENTS = { 0: "var(--malachite)", 1: "var(--ochre)", 2: "var(--indigo)", 3: "var(--turquoise)", 4: "var(--gold)", 5: "var(--rose)" };
+  var INTRO = "Busca en lo que se dijo en las cinco clases y en el texto de los apuntes y del mapa mental, sin preocuparte por las tildes ni las mayúsculas. Las transcripciones no son perfectas, así que algún nombre propio puede estar mal escrito.";
+
+  /* Lowercase and drop accents, so "dinastia" finds "dinastía". One char in, one char out. */
+  function normalize(text) {
+    return text.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+  }
+
+  // Join each class's segments into one normalized string, remembering where each segment starts
+  var classes = DATA.classes.map(function (c) {
+    var text = "", offsets = [];
+    c.segments.forEach(function (segment) {
+      if (text) text += " ";
+      offsets.push(text.length);
+      text += normalize(segment);
+    });
+    return Object.assign({}, c, { text: text, offsets: offsets });
+  });
+  var notes = DATA.notes.map(function (entry) {
+    return { n: entry[0], kind: entry[1], text: entry[2], normalized: normalize(entry[2]).replace(/\s+/g, " ") };
+  });
+
+  /* Index of the segment that contains character `pos` of the joined text */
+  function segmentAt(offsets, pos) {
+    var lo = 0, hi = offsets.length - 1;
+    while (lo < hi) {
+      var mid = (lo + hi + 1) >> 1;
+      if (offsets[mid] <= pos) lo = mid;
+      else hi = mid - 1;
+    }
+    return lo;
+  }
+
+  /* Index of the ~900-character paragraph that holds a segment */
+  function paragraphOf(c, segment) {
+    var p = 0;
+    while (p + 1 < c.paragraphs.length && c.paragraphs[p + 1] <= segment) p++;
+    return p;
+  }
+
+  function search(query) {
+    var needle = normalize(query).replace(/\s+/g, " ").trim();
+    var results = {}, transcriptTotal = 0, noteTotal = 0, shown = 0;
+    function resultFor(n) {
+      return results[n] || (results[n] = { n: n, hits: [], noteHits: [] });
+    }
+    classes.forEach(function (c) {
+      var last = -2;
+      for (var pos = c.text.indexOf(needle); pos !== -1; pos = c.text.indexOf(needle, pos + needle.length)) {
+        var i = segmentAt(c.offsets, pos);
+        // Hits in the same or the next sentence read as one mention
+        var repeat = i <= last + 1;
+        last = i;
+        if (repeat) continue;
+        transcriptTotal++;
+        if (++shown > MAX_HITS) continue;
+        resultFor(c.n).hits.push(i);
+      }
+    });
+    notes.forEach(function (note) {
+      if (note.normalized.indexOf(needle) === -1) return;
+      noteTotal++;
+      if (++shown > MAX_HITS) return;
+      resultFor(note.n).noteHits.push(note);
+    });
+    // Classes in order, then "Todo el curso"
+    var list = Object.keys(results).map(Number).sort(function (a, b) { return (a || 9) - (b || 9); })
+      .map(function (n) { return results[n]; });
+    return { results: list, transcriptTotal: transcriptTotal, noteTotal: noteTotal, truncated: shown > MAX_HITS };
+  }
+
+  function plural(n, one, many) { return n + " " + (n === 1 ? one : many); }
+
+  function el(tag, className, text) {
+    var node = document.createElement(tag);
+    if (className) node.className = className;
+    if (text != null) node.textContent = text;
+    return node;
+  }
+
+  /*
+   * Text with the searched phrase highlighted (accent-insensitive). Text longer than
+   * `maxLength` is cut to a window around the first match.
+   */
+  function highlighted(text, query, maxLength) {
+    var phrase = normalize(query).replace(/\s+/g, " ").trim();
+    var prefix = "", suffix = "";
+    text = text.replace(/\s+/g, " ");
+    if (maxLength && text.length > maxLength) {
+      var first = Math.max(0, normalize(text).indexOf(phrase));
+      var start = Math.max(0, Math.min(first - maxLength / 3, text.length - maxLength));
+      start = Math.floor(start);
+      var end = start + maxLength;
+      prefix = start > 0 ? "…" : "";
+      suffix = end < text.length ? "…" : "";
+      text = text.slice(start, end);
+    }
+    var folded = normalize(text);
+    var marks = new Array(text.length).fill(false);
+    for (var at = folded.indexOf(phrase); phrase && at !== -1; at = folded.indexOf(phrase, at + 1)) {
+      marks.fill(true, at, at + phrase.length);
+    }
+    var span = el("span", "snippet");
+    span.appendChild(document.createTextNode(prefix));
+    var from = 0;
+    for (var i = 1; i <= text.length; i++) {
+      if (i === text.length || marks[i] !== marks[from]) {
+        var piece = text.slice(from, i);
+        span.appendChild(marks[from] ? el("mark", null, piece) : document.createTextNode(piece));
+        from = i;
+      }
+    }
+    span.appendChild(document.createTextNode(suffix));
+    return span;
+  }
+
+  /* The whole paragraph around a hit, with the matching sentence tinted */
+  function paragraphBlock(c, segment, query) {
+    var p = paragraphOf(c, segment);
+    var end = c.paragraphs[p + 1] != null ? c.paragraphs[p + 1] : c.segments.length;
+    var block = el("div", "paragraph");
+    for (var i = c.paragraphs[p]; i < end; i++) {
+      var part = highlighted(c.segments[i], query);
+      if (i === segment) part.className = "here";
+      block.appendChild(part);
+      block.appendChild(document.createTextNode(" "));
+    }
+    return block;
+  }
+
+  function render(query, data) {
+    var root = document.getElementById("results");
+    root.textContent = "";
+    data.results.forEach(function (result) {
+      var c = classes[result.n - 1];
+      var card = el("section", "result");
+      card.style.setProperty("--accent", ACCENTS[result.n]);
+      card.appendChild(el("span", "badge", c ? "Clase " + c.n + " · " + c.date : "Todo el curso"));
+      card.appendChild(el("h2", null, c ? c.title : "Hilos conductores, bibliografía y notas"));
+
+      if (result.hits.length) {
+        card.appendChild(el("p", "group-title", "En la transcripción"));
+        var list = el("ul", "hits");
+        result.hits.forEach(function (i) {
+          var li = el("li");
+          var p = paragraphOf(c, i);
+          var tag = el("button", "tag", "¶ " + (p + 1));
+          tag.type = "button";
+          tag.title = "Párrafo " + (p + 1) + " de " + c.paragraphs.length + ": pulsa para leerlo entero";
+          tag.setAttribute("aria-expanded", "false");
+          tag.addEventListener("click", function () {
+            var open = li.querySelector(".paragraph");
+            if (open) { open.remove(); tag.setAttribute("aria-expanded", "false"); return; }
+            li.appendChild(paragraphBlock(c, i, query));
+            tag.setAttribute("aria-expanded", "true");
+          });
+          li.appendChild(tag);
+          // The matching sentence, plus its neighbours when it is short
+          var context = c.segments[i];
+          if (context.length < 160) context = [c.segments[i - 1], context, c.segments[i + 1]].filter(Boolean).join(" ");
+          li.appendChild(highlighted(context, query, 300));
+          list.appendChild(li);
+        });
+        card.appendChild(list);
+      }
+
+      if (result.noteHits.length) {
+        card.appendChild(el("p", "group-title", "En los apuntes y el mapa mental"));
+        var notesList = el("ul", "hits");
+        result.noteHits.forEach(function (note) {
+          var li = el("li");
+          var tag = el("a", "tag note", note.kind);
+          tag.href = note.kind === "Mapa mental" ? MAP_URL : "../artifacts/ancient-egypt-history-main-points.html#uned";
+          tag.target = "_blank";
+          tag.rel = "noopener noreferrer";
+          li.appendChild(tag);
+          li.appendChild(highlighted(note.text, query, 260));
+          notesList.appendChild(li);
+        });
+        card.appendChild(notesList);
+      }
+
+      var links = el("div", "links");
+      if (c && c.videoUrl) {
+        var video = el("a", null, "▶ Vídeo de la clase " + c.n + " ↗");
+        video.href = c.videoUrl;
+        video.target = "_blank";
+        video.rel = "noopener noreferrer";
+        links.appendChild(video);
+      }
+      var map = el("a", null, "Mapa mental →");
+      map.href = MAP_URL;
+      map.target = "_blank";
+      links.appendChild(map);
+      if (c && c.detailUrl) {
+        var detail = el("a", null, "La clase " + c.n + " en detalle ↗");
+        detail.href = c.detailUrl;
+        detail.target = "_blank";
+        detail.rel = "noopener noreferrer";
+        links.appendChild(detail);
+      }
+      card.appendChild(links);
+      root.appendChild(card);
+    });
+  }
+
+  var input = document.getElementById("q");
+  var status = document.getElementById("status");
+  var timer = null;
+
+  function run() {
+    var q = input.value.trim();
+    // Keep the search in the URL (?q=...) so it survives a reload
+    var url = new URL(window.location.href);
+    if (q) url.searchParams.set("q", q);
+    else url.searchParams.delete("q");
+    try { window.history.replaceState(null, "", url); } catch (e) { /* file:// in some browsers */ }
+
+    if (q.length < 2) {
+      status.textContent = INTRO;
+      document.getElementById("results").textContent = "";
+      return;
+    }
+    var data = search(q);
+    status.textContent = data.results.length === 0
+      ? "Sin resultados."
+      : plural(data.transcriptTotal, "mención", "menciones") + " en las transcripciones y " +
+        data.noteTotal + " en los apuntes y el mapa mental, en " +
+        plural(data.results.length, "apartado", "apartados") +
+        (data.truncated ? " (se muestran las primeras 400)" : "");
+    render(q, data);
+  }
+
+  input.addEventListener("input", function () {
+    clearTimeout(timer);
+    timer = setTimeout(run, 200);
+  });
+  input.value = new URLSearchParams(window.location.search).get("q") || "";
+  run();
+})();
+</script>
+</body>
+</html>
