@@ -79,8 +79,11 @@ def read_mind_map():
     return entries
 
 
-def read_class_pages():
-    """Paragraphs, facts and captions of each in-depth class page, tagged with their section."""
+def read_class_pages(details):
+    """Paragraphs, facts and captions of each in-depth class page, tagged with their section.
+
+    Hits link to the published class page (`details`: class number -> artifact URL).
+    """
     entries = []
     for n in range(1, 6):
         page = f"curso-uned-clase-{n}.html"
@@ -88,7 +91,7 @@ def read_class_pages():
         source = re.sub(r"<(svg|script|style)\b.*?</\1>", "", source, flags=re.S)
         for anchor, section in re.findall(r'<section id="([^"]+)".*?>(.*?)</section>', source, re.S):
             heading = strip_tags(re.search(r"<h2[^>]*>(.*?)</h2>", section, re.S).group(1))
-            href = f"../artifacts/{page}#{anchor}"
+            href = f"{details[n]}#{anchor}"
             blocks = re.findall(r'<p(?! class="sec-num")[^>]*>(.*?)</p>', section, re.S)
             blocks += re.findall(r"<li[^>]*>(.*?)</li>", section, re.S)
             blocks += re.findall(r"<figcaption[^>]*>(.*?)</figcaption>", section, re.S)
@@ -141,7 +144,7 @@ def main():
             "segments": segments,
             "paragraphs": paragraph_starts(segments),
         })
-    data = {"classes": classes, "notes": read_mind_map() + tab_entries + read_class_pages()}
+    data = {"classes": classes, "notes": read_mind_map() + tab_entries + read_class_pages(details)}
     # "</" can't appear inside the inline <script>
     payload = json.dumps(data, ensure_ascii=False).replace("</", "<\\/")
     page = TEMPLATE.read_text(encoding="utf8").replace("/*DATA*/null", payload)

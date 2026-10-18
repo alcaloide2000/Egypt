@@ -1,9 +1,5 @@
-<!doctype html>
-<html lang="es">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Buscar en el curso UNED</title>
+<meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
@@ -40,6 +36,7 @@
       --rose: #e08aa6;
       --malachite: #5fae87;
       --shadow: rgba(0, 0, 0, 0.35);
+      color-scheme: dark;
     }
   }
   :root[data-theme="dark"] {
@@ -57,6 +54,7 @@
     --rose: #e08aa6;
     --malachite: #5fae87;
     --shadow: rgba(0, 0, 0, 0.35);
+    color-scheme: dark;
   }
 
   * { box-sizing: border-box; }
@@ -67,7 +65,13 @@
     font-family: "Public Sans", ui-sans-serif, system-ui, sans-serif;
     line-height: 1.5;
   }
-  .page { max-width: 860px; margin: 0 auto; padding: clamp(1.5rem, 4vw, 3rem) 16px 3rem; }
+  .page {
+    max-width: 860px;
+    margin: 0 auto;
+    padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px));
+    padding-right: max(16px, env(safe-area-inset-right, 0px));
+  }
   .back {
     font-family: "IBM Plex Mono", ui-monospace, monospace;
     font-size: 0.78rem;
@@ -181,10 +185,9 @@
   .links a:hover, .links a:focus-visible { border-bottom-color: currentColor; }
   footer { margin-top: 2.5rem; font-size: 0.8rem; color: var(--ink-soft); }
 </style>
-</head>
-<body>
-<div class="page">
-  <a class="back" href="../artifacts/ancient-egypt-history-main-points.html#uned">← Curso UNED</a>
+
+<div class="page" lang="es">
+  <a class="back" href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#uned">← Curso UNED</a>
   <h1>Buscar en las clases del curso UNED</h1>
   <p class="lede">Encuentra en qué clase se dice una palabra o frase, y dónde aparece en los apuntes, en el mapa mental y en la página de cada clase. Introducción a la historia del Antiguo Egipto, UNED Tudela, primavera de 2025.</p>
 
@@ -199,14 +202,15 @@
   <p class="search-status" id="status" aria-live="polite"></p>
   <div id="results"></div>
 
-  <footer>Página local: contiene las transcripciones completas, así que vive en la carpeta <code>private/</code> y no se publica. Se regenera con <code>python scripts/build_uned_search.py</code>.</footer>
+  <footer>Página privada: contiene las transcripciones completas de las clases, así que no se comparte. Se regenera con <code>python scripts/build_uned_search.py</code>.</footer>
 </div>
 
 <script>
 (function () {
   var DATA = /*DATA*/null;
   var MAX_HITS = 400;
-  var MAP_URL = "../artifacts/curso-uned-mapa-mental.html";
+  var MAP_URL = "https://claude.ai/artifact/WMkdWhLeEmPLPgwuKFpVKu";
+  var TAB_URL = "https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#uned";
   var ACCENTS = { 0: "var(--malachite)", 1: "var(--ochre)", 2: "var(--indigo)", 3: "var(--turquoise)", 4: "var(--gold)", 5: "var(--rose)" };
   var INTRO = "Busca en lo que se dijo en las cinco clases y en el texto de los apuntes, del mapa mental y de las páginas de cada clase, sin preocuparte por las tildes ni las mayúsculas. Las transcripciones no son perfectas, así que algún nombre propio puede estar mal escrito.";
 
@@ -382,7 +386,7 @@
         result.noteHits.forEach(function (note) {
           var li = el("li");
           var tag = el("a", "tag note", note.kind);
-          tag.href = note.href || (note.kind === "Mapa mental" ? MAP_URL : "../artifacts/ancient-egypt-history-main-points.html#uned");
+          tag.href = note.href || (note.kind === "Mapa mental" ? MAP_URL : TAB_URL);
           tag.target = "_blank";
           tag.rel = "noopener noreferrer";
           li.appendChild(tag);
@@ -453,5 +457,3 @@
   run();
 })();
 </script>
-</body>
-</html>
