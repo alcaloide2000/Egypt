@@ -1147,6 +1147,8 @@
     margin: 0 0 0.6rem;
   }
   .day-card > p { color: var(--ink-soft); font-size: 0.93rem; margin: 0 0 0.9rem; }
+  .day-card > p a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sand-line); }
+  .day-card > p a:hover, .day-card > p a:focus-visible { border-bottom-color: currentColor; }
   .stop-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.5rem; }
   .stop-list li {
     font-size: 0.9rem;
@@ -9151,6 +9153,7 @@
       <p class="eyebrow">Madrid → Cairo → Aswan → Luxor → Cairo → Madrid · 18&ndash;28 November 2026</p>
       <h1>Private Alimaña Tour</h1>
       <p class="lede">Eleven days in Egypt: the flight from Madrid and a night in Cairo, then six days down the Nile with C La Vie Travel Egypt: Abu Simbel from Aswan, three nights sailing north aboard the dahabeya <em>C La Vie 1</em> (Sekhmet itinerary, Double Suite with private terrace, two guests), then Luxor, a private day trip to Dendera and Abydos, and the night flight from Luxor back to Cairo on the 24th. Then three days with our guide Omarcel, a day trip to Alexandria and two days in Cairo, and the flight home to Madrid on the 28th. A Spanish-speaking Egyptologist guide is with you throughout. Underlined stops link to their card in the Main points tab.</p>
+      <a class="wiki-link" style="color: var(--nile); font-size: 0.85rem;" href="https://github.com/alcaloide2000/Egypt/blob/main/artifacts/alimana-tour-map.kml" target="_blank" rel="noopener noreferrer">All tour stops as a Google My Maps file (KML) ↗</a>
       <ol class="route-strip" aria-label="Route">
         <li>Madrid</li>
         <li>Cairo</li>
@@ -9668,6 +9671,9 @@
           <li><a href="#card-abusimbel">Abu Simbel</a> <span class="stop-note">Great Temple of Ramesses II and the small temple of Nefertari, both moved uphill in the 1960s to escape Lake Nasser.</span></li>
         </ul>
         <p class="day-meta">Private A/C vehicle, guide, entrance fees and transfers · Night · Aswan Nile Palace, Deluxe Double with balcony and Nile view</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0 1.1rem;">
+          <a class="wiki-link" style="color: var(--accent);" href="https://www.google.com/maps/dir/?api=1&amp;origin=Aswan+International+Airport&amp;destination=Aswan+Nile+Palace%2C+Aswan&amp;waypoints=Abu+Simbel+Temples" target="_blank" rel="noopener noreferrer">Day 2 on Google Maps ↗</a>
+        </div>
       </article>
 
       <article class="day-card" style="--accent: var(--lapis);">
@@ -9678,6 +9684,9 @@
           <li><a href="#card-philae">Philae, Temple of Isis</a> <span class="stop-note">Reached by boat, on Agilkia Island, where it was rebuilt in 1977&ndash;80.</span></li>
         </ul>
         <p class="day-meta">Dahabeya night 1 · full board</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0 1.1rem;">
+          <a class="wiki-link" style="color: var(--accent);" href="https://www.google.com/maps/search/?api=1&amp;query=Philae+Temple%2C+Aswan" target="_blank" rel="noopener noreferrer">Philae on Google Maps ↗</a>
+        </div>
       </article>
 
       <article class="day-card" style="--accent: var(--turquoise);">
@@ -9688,6 +9697,9 @@
           <li>Kom Ombo Temple <span class="stop-note">Founded under <a href="#card-ptolemy6">Ptolemy VI</a>, a Ptolemaic double temple, split down the middle between the crocodile god Sobek and the falcon god Haroeris (Horus the Elder).</span></li>
         </ul>
         <p class="day-meta">Dahabeya night 2 · full board</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0 1.1rem;">
+          <a class="wiki-link" style="color: var(--accent);" href="https://www.google.com/maps/search/?api=1&amp;query=Temple+of+Kom+Ombo" target="_blank" rel="noopener noreferrer">Kom Ombo on Google Maps ↗</a>
+        </div>
       </article>
 
       <article class="day-card" style="--accent: var(--indigo);">
@@ -9699,6 +9711,9 @@
           <li><a href="#card-hierakonpolis">Hierakonpolis (Nekhen)</a> <span class="stop-note">Seen from the river, not a scheduled stop.</span></li>
         </ul>
         <p class="day-meta">Dahabeya night 3 · full board</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0 1.1rem;">
+          <a class="wiki-link" style="color: var(--accent);" href="https://www.google.com/maps/search/?api=1&amp;query=Temple+of+Edfu" target="_blank" rel="noopener noreferrer">Edfu on Google Maps ↗</a>
+        </div>
       </article>
 
       <article class="day-card" style="--accent: var(--gold);">
@@ -9712,6 +9727,9 @@
           <li><a href="#card-karnak">Karnak Temple</a> <span class="stop-note">Two thousand years of building for Amun, east bank.</span></li>
         </ul>
         <p class="day-meta">End of dahabeya program · Night · Aracan Eatabe Luxor Hotel, Standard Double</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0 1.1rem;">
+          <a class="wiki-link" style="color: var(--accent);" href="https://www.google.com/maps/dir/?api=1&amp;origin=Valley+of+the+Kings%2C+Luxor&amp;destination=Karnak+Temple%2C+Luxor&amp;waypoints=Temple+of+Hatshepsut%2C+Luxor%7CColossi+of+Memnon%2C+Luxor" target="_blank" rel="noopener noreferrer">Day 6 on Google Maps ↗</a>
+        </div>
       </article>
 
       <article class="day-card" style="--accent: var(--rose);">
@@ -9724,6 +9742,9 @@
           <li>Night flight Luxor → Cairo</li>
         </ul>
         <p class="day-meta">Additional private excursion, after the dahabeya program · night in Cairo</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0 1.1rem;">
+          <a class="wiki-link" style="color: var(--accent);" href="https://www.google.com/maps/dir/?api=1&amp;origin=Luxor%2C+Egypt&amp;destination=Luxor+International+Airport&amp;waypoints=Dendera+Temple+Complex%7CTemple+of+Seti+I%2C+Abydos" target="_blank" rel="noopener noreferrer">Day 7 on Google Maps ↗</a>
+        </div>
       </article>
 
       <article class="day-card" style="--accent: var(--lapis);">
@@ -9737,6 +9758,9 @@
           <li>Pompey's Pillar <span class="stop-note">A granite column of AD 297, raised for the emperor Diocletian.</span></li>
         </ul>
         <p class="day-meta">Draft plan · back to Cairo for the night</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0 1.1rem;">
+          <a class="wiki-link" style="color: var(--accent);" href="https://www.google.com/maps/dir/?api=1&amp;origin=Cairo%2C+Egypt&amp;destination=Pompey%27s+Pillar%2C+Alexandria&amp;waypoints=Bibliotheca+Alexandrina%7CCitadel+of+Qaitbay%2C+Alexandria%7CCatacombs+of+Kom+El+Shoqafa%2C+Alexandria" target="_blank" rel="noopener noreferrer">Day 8 on Google Maps ↗</a>
+        </div>
       </article>
 
       <article class="day-card" style="--accent: var(--kush);">
@@ -9748,6 +9772,10 @@
           <li>Fri 27 Nov · Islamic Cairo and Khan el-Khalili (draft)</li>
         </ul>
         <p class="day-meta">Nights in Cairo · day-by-day program to be confirmed with Omarcel</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 0 1.1rem;">
+          <a class="wiki-link" style="color: var(--accent);" href="https://www.google.com/maps/dir/?api=1&amp;origin=Pyramid+of+Djoser%2C+Saqqara&amp;destination=Grand+Egyptian+Museum&amp;waypoints=Pyramids+of+Giza" target="_blank" rel="noopener noreferrer">Thu 26 on Google Maps ↗</a>
+          <a class="wiki-link" style="color: var(--accent);" href="https://www.google.com/maps/dir/?api=1&amp;origin=Cairo+Citadel&amp;destination=Khan+el-Khalili%2C+Cairo&amp;waypoints=Mosque-Madrasa+of+Sultan+Hassan%2C+Cairo" target="_blank" rel="noopener noreferrer">Fri 27 on Google Maps ↗</a>
+        </div>
         <a class="wiki-link" style="color: var(--kush);" href="https://claude.ai/artifact/VYVyoGbgZEToWVzMM2r5Ff" target="_blank" rel="noopener noreferrer">Visitas en El Cairo: poll &amp; draft plan ↗</a>
       </article>
 

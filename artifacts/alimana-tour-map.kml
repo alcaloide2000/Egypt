@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+<Document>
+<name>Private Alimaña Tour · 18–28 Nov 2026</name>
+<description>Every stop of the tour, one folder (layer) per day. Cairo days 9–10 and Alexandria are the draft plan with Omarcel. Hotel pins are approximate.</description>
+<Style id="d0"><IconStyle><color>ff3aa3f2</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LineStyle><color>ff3aa3f2</color><width>3</width></LineStyle></Style>
+<Style id="d1"><IconStyle><color>ff5a7a3c</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LineStyle><color>ff5a7a3c</color><width>3</width></LineStyle></Style>
+<Style id="d2"><IconStyle><color>ff8a5f2f</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LineStyle><color>ff8a5f2f</color><width>3</width></LineStyle></Style>
+<Style id="d3"><IconStyle><color>ff8a8f0e</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LineStyle><color>ff8a8f0e</color><width>3</width></LineStyle></Style>
+<Style id="d4"><IconStyle><color>ff8f4f5b</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LineStyle><color>ff8f4f5b</color><width>3</width></LineStyle></Style>
+<Style id="d5"><IconStyle><color>ff1f79a9</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LineStyle><color>ff1f79a9</color><width>3</width></LineStyle></Style>
+<Style id="d6"><IconStyle><color>ff5e3f9c</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LineStyle><color>ff5e3f9c</color><width>3</width></LineStyle></Style>
+<Style id="d7"><IconStyle><color>ff8a5f2f</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LineStyle><color>ff8a5f2f</color><width>3</width></LineStyle></Style>
+<Style id="d8"><IconStyle><color>ff2e52a1</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LineStyle><color>ff2e52a1</color><width>3</width></LineStyle></Style>
+<Style id="d9"><IconStyle><color>ff1f7ac0</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LineStyle><color>ff1f7ac0</color><width>3</width></LineStyle></Style>
+<Style id="d10"><IconStyle><color>ff3aa3f2</color><scale>1.1</scale><Icon><href>http://maps.google.com/mapfiles/kml/paddle/wht-blank.png</href></Icon></IconStyle><LineStyle><color>ff3aa3f2</color><width>3</width></LineStyle></Style>
+<Folder><name>Day 1 · Wed 18 Nov · Madrid → Cairo</name>
+<Placemark><name>Cairo International Airport</name><description>Day 1 · Wed 18 Nov · Madrid → Cairo · stop 1. Arrival from Madrid.</description><styleUrl>#d0</styleUrl><Point><coordinates>31.4056,30.1219,0</coordinates></Point></Placemark>
+<Placemark><name>Prime Boutique Hotel Heliopolis Terrace (approx.)</name><description>Day 1 · Wed 18 Nov · Madrid → Cairo · stop 2. Night 1. Approximate position in Heliopolis: check the address on the booking.</description><styleUrl>#d0</styleUrl><Point><coordinates>31.3239,30.0911,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Day 2 · Thu 19 Nov · Aswan · Abu Simbel</name>
+<Placemark><name>Aswan International Airport</name><description>Day 2 · Thu 19 Nov · Aswan · Abu Simbel · stop 1. Arrival in Aswan, met by C La Vie.</description><styleUrl>#d1</styleUrl><Point><coordinates>32.82,23.9644,0</coordinates></Point></Placemark>
+<Placemark><name>Abu Simbel temples</name><description>Day 2 · Thu 19 Nov · Aswan · Abu Simbel · stop 2. Great Temple of Ramesses II and the small temple of Nefertari, c. 1264 BC.</description><styleUrl>#d1</styleUrl><Point><coordinates>31.6258,22.3372,0</coordinates></Point></Placemark>
+<Placemark><name>Aswan Nile Palace (approx.)</name><description>Day 2 · Thu 19 Nov · Aswan · Abu Simbel · stop 3. Night 2, on the Corniche. Approximate position.</description><styleUrl>#d1</styleUrl><Point><coordinates>32.8893,24.0782,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Day 3 · Fri 20 Nov · Philae · embarkation</name>
+<Placemark><name>Philae, Temple of Isis (Agilkia Island)</name><description>Day 3 · Fri 20 Nov · Philae · embarkation · stop 1. By boat to the island; begun under Ptolemy II. Then aboard the dahabeya.</description><styleUrl>#d2</styleUrl><Point><coordinates>32.8844,24.0254,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Day 4 · Sat 21 Nov · Kom Ombo</name>
+<Placemark><name>Kom Ombo Temple</name><description>Day 4 · Sat 21 Nov · Kom Ombo · stop 1. Double temple of Sobek and Haroeris, founded under Ptolemy VI.</description><styleUrl>#d3</styleUrl><Point><coordinates>32.9284,24.4521,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Day 5 · Sun 22 Nov · Edfu</name>
+<Placemark><name>Temple of Horus, Edfu</name><description>Day 5 · Sun 22 Nov · Edfu · stop 1. Built 237-57 BC, one of the best-preserved temples in Egypt.</description><styleUrl>#d4</styleUrl><Point><coordinates>32.8735,24.9779,0</coordinates></Point></Placemark>
+<Placemark><name>Hierakonpolis (Nekhen)</name><description>Day 5 · Sun 22 Nov · Edfu · stop 2. Seen from the river, not a stop. Where the Narmer Palette was found.</description><styleUrl>#d4</styleUrl><Point><coordinates>32.7795,25.0974,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Day 6 · Mon 23 Nov · Luxor</name>
+<Placemark><name>Valley of the Kings</name><description>Day 6 · Mon 23 Nov · Luxor · stop 1. Royal tombs of the New Kingdom.</description><styleUrl>#d5</styleUrl><Point><coordinates>32.6014,25.7402,0</coordinates></Point></Placemark>
+<Placemark><name>Temple of Hatshepsut, Deir el-Bahari</name><description>Day 6 · Mon 23 Nov · Luxor · stop 2. Djeser-djeseru, beside Mentuhotep II's temple.</description><styleUrl>#d5</styleUrl><Point><coordinates>32.6065,25.738,0</coordinates></Point></Placemark>
+<Placemark><name>Colossi of Memnon</name><description>Day 6 · Mon 23 Nov · Luxor · stop 3. All that stands of Amenhotep III's mortuary temple.</description><styleUrl>#d5</styleUrl><Point><coordinates>32.6104,25.7206,0</coordinates></Point></Placemark>
+<Placemark><name>Karnak Temple</name><description>Day 6 · Mon 23 Nov · Luxor · stop 4. Two thousand years of building for Amun.</description><styleUrl>#d5</styleUrl><Point><coordinates>32.6573,25.7188,0</coordinates></Point></Placemark>
+<Placemark><name>Aracan Eatabe Luxor Hotel (approx.)</name><description>Day 6 · Mon 23 Nov · Luxor · stop 5. Night 6, on the Corniche. Approximate position.</description><styleUrl>#d5</styleUrl><Point><coordinates>32.6393,25.6972,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Day 7 · Tue 24 Nov · Dendera &amp; Abydos</name>
+<Placemark><name>Temple of Hathor, Dendera</name><description>Day 7 · Tue 24 Nov · Dendera &amp; Abydos · stop 1. Zodiac ceiling and rooftop chapels.</description><styleUrl>#d6</styleUrl><Point><coordinates>32.6702,26.1418,0</coordinates></Point></Placemark>
+<Placemark><name>Temple of Seti I, Abydos</name><description>Day 7 · Tue 24 Nov · Dendera &amp; Abydos · stop 2. The Abydos King List, 76 royal names.</description><styleUrl>#d6</styleUrl><Point><coordinates>31.919,26.1849,0</coordinates></Point></Placemark>
+<Placemark><name>Luxor International Airport</name><description>Day 7 · Tue 24 Nov · Dendera &amp; Abydos · stop 3. Night flight to Cairo.</description><styleUrl>#d6</styleUrl><Point><coordinates>32.7066,25.671,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Day 8 · Wed 25 Nov · Alexandria (draft)</name>
+<Placemark><name>Bibliotheca Alexandrina</name><description>Day 8 · Wed 25 Nov · Alexandria (draft) · stop 1. Opened 2002, near the site of the Ptolemies' Library.</description><styleUrl>#d7</styleUrl><Point><coordinates>29.9092,31.2089,0</coordinates></Point></Placemark>
+<Placemark><name>Citadel of Qaitbay</name><description>Day 8 · Wed 25 Nov · Alexandria (draft) · stop 2. Sultan Qaitbay's fort of 1477, on the ruins of the Pharos.</description><styleUrl>#d7</styleUrl><Point><coordinates>29.8856,31.214,0</coordinates></Point></Placemark>
+<Placemark><name>Catacombs of Kom el-Shoqafa</name><description>Day 8 · Wed 25 Nov · Alexandria (draft) · stop 3. Roman-era tombs, 2nd century AD.</description><styleUrl>#d7</styleUrl><Point><coordinates>29.8933,31.1786,0</coordinates></Point></Placemark>
+<Placemark><name>Pompey's Pillar</name><description>Day 8 · Wed 25 Nov · Alexandria (draft) · stop 4. Granite column of AD 297, raised for Diocletian.</description><styleUrl>#d7</styleUrl><Point><coordinates>29.8964,31.1825,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Day 9 · Thu 26 Nov · Saqqara &amp; Giza (draft)</name>
+<Placemark><name>Step Pyramid of Djoser, Saqqara</name><description>Day 9 · Thu 26 Nov · Saqqara &amp; Giza (draft) · stop 1. Early morning. The first pyramid, c. 2670 BC.</description><styleUrl>#d8</styleUrl><Point><coordinates>31.2165,29.8713,0</coordinates></Point></Placemark>
+<Placemark><name>Pyramids of Giza</name><description>Day 9 · Thu 26 Nov · Saqqara &amp; Giza (draft) · stop 2. Khufu, Khafre and Menkaure, c. 2560-2510 BC.</description><styleUrl>#d8</styleUrl><Point><coordinates>31.1342,29.9792,0</coordinates></Point></Placemark>
+<Placemark><name>Great Sphinx</name><description>Day 9 · Thu 26 Nov · Saqqara &amp; Giza (draft) · stop 3. Carved with Khafre's pyramid complex.</description><styleUrl>#d8</styleUrl><Point><coordinates>31.1376,29.9753,0</coordinates></Point></Placemark>
+<Placemark><name>Grand Egyptian Museum</name><description>Day 9 · Thu 26 Nov · Saqqara &amp; Giza (draft) · stop 4. Afternoon; Tutankhamun's treasures.</description><styleUrl>#d8</styleUrl><Point><coordinates>31.1196,29.9946,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Day 10 · Fri 27 Nov · Islamic Cairo (draft)</name>
+<Placemark><name>Citadel of Saladin and Muhammad Ali Mosque</name><description>Day 10 · Fri 27 Nov · Islamic Cairo (draft) · stop 1. Morning, before Friday midday prayer.</description><styleUrl>#d9</styleUrl><Point><coordinates>31.2611,30.0299,0</coordinates></Point></Placemark>
+<Placemark><name>Mosque-Madrasa of Sultan Hassan</name><description>Day 10 · Fri 27 Nov · Islamic Cairo (draft) · stop 2. At the foot of the Citadel.</description><styleUrl>#d9</styleUrl><Point><coordinates>31.2564,30.0322,0</coordinates></Point></Placemark>
+<Placemark><name>Khan el-Khalili</name><description>Day 10 · Fri 27 Nov · Islamic Cairo (draft) · stop 3. Gold in El-Sagha next door; bazaar in the evening.</description><styleUrl>#d9</styleUrl><Point><coordinates>31.2623,30.0477,0</coordinates></Point></Placemark>
+</Folder>
+<Folder><name>Day 11 · Sat 28 Nov · Cairo → Madrid</name>
+<Placemark><name>Cairo International Airport</name><description>Day 11 · Sat 28 Nov · Cairo → Madrid · stop 1. Flight home.</description><styleUrl>#d10</styleUrl><Point><coordinates>31.4056,30.1219,0</coordinates></Point></Placemark>
+</Folder>
+</Document>
+</kml>
