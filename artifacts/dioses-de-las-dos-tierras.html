@@ -1,0 +1,367 @@
+<title>Dioses de las Dos Tierras</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout (Spanish version): intro and the family tree, a headdress key and a filter bar, then the gods in four groups of cards, each with an emblem in its own colour. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --ochre: #b5551f; --gold: #a9791f; --lapis: #2f5f8a; --malachite: #3c7a5a; --indigo: #5b4f8f;
+    --rose: #9c3f5e; --solar: #c07a1f; --turquoise: #0e8f8a; --kush: #a1522e; --persia: #7d3c6b;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --ochre: #e58a4d; --gold: #d9a83c; --lapis: #6fa3d1; --malachite: #5fae87; --indigo: #a99bd9;
+    --rose: #e08aa6; --solar: #e8a54d; --turquoise: #4fd8d1; --kush: #d98a5e; --persia: #d494c4; color-scheme: dark; } }
+  :root[data-theme="dark"] { --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --ochre: #e58a4d; --gold: #d9a83c; --lapis: #6fa3d1; --malachite: #5fae87; --indigo: #a99bd9;
+    --rose: #e08aa6; --solar: #e8a54d; --turquoise: #4fd8d1; --kush: #d98a5e; --persia: #d494c4; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1120px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ochre); margin: 0 0 0.8rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 5vw, 3.1rem); line-height: 1.05; margin: 0 0 0.9rem; text-wrap: balance; }
+  .lede { max-width: 44rem; color: var(--ink-soft); font-size: 1.05rem; margin: 0 0 0.8rem; }
+  .intro-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: clamp(1rem, 3vw, 2rem); margin-top: clamp(1.25rem, 3vw, 2rem); align-items: start; }
+  @media (max-width: 820px) { .intro-grid { grid-template-columns: 1fr; } }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(1rem, 2.5vw, 1.4rem); min-width: 0; }
+  .panel h2 { font-family: var(--display); font-weight: 600; font-size: 1.25rem; margin: 0 0 0.5rem; }
+  .panel > p { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 0.7rem; }
+  .rules { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.65rem; font-size: 0.92rem; color: var(--ink-soft); }
+  .rules b { color: var(--ink); }
+  .scroll { overflow-x: auto; }
+  .tree { display: block; width: 100%; min-width: 520px; height: auto; }
+  .tree .n { fill: var(--bg); stroke: var(--line); stroke-width: 1.2; }
+  .tree a .n { stroke: var(--ochre); }
+  .tree a:hover .n, .tree a:focus-visible .n { fill: var(--panel); stroke-width: 2; }
+  .tree .nt { font-family: var(--display); font-weight: 600; font-size: 14px; fill: var(--ink); }
+  .tree .ns { font-family: var(--mono); font-size: 9.5px; fill: var(--ink-soft); }
+  .tree .ln { fill: none; stroke: var(--ink-soft); stroke-width: 1.3; }
+  .tree .dash { stroke-dasharray: 4 4; }
+  .caption { font-family: var(--mono); font-size: 0.7rem; color: var(--ink-soft); margin: 0.5rem 0 0; }
+  .key { width: 100%; border-collapse: collapse; font-size: 0.88rem; }
+  .key td { padding: 0.38rem 0.5rem 0.38rem 0; border-bottom: 1px solid var(--line); vertical-align: top; }
+  .key td:first-child { color: var(--ink-soft); width: 55%; }
+  .key a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); font-weight: 600; }
+  .key a:hover, .key a:focus-visible { border-bottom-color: currentColor; }
+  .toolbar { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; margin: clamp(1.75rem, 4vw, 2.5rem) 0 0; position: sticky; top: env(safe-area-inset-top, 0px); background: var(--bg); padding-block: 0.6rem; z-index: 5; border-bottom: 1px solid var(--line); }
+  .chip { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.03em; color: var(--ink-soft); background: transparent; border: 1px solid var(--line); border-radius: 999px; padding: 0.4rem 0.85rem; cursor: pointer; }
+  .chip:hover { color: var(--ink); border-color: var(--ink-soft); }
+  .chip[aria-pressed="true"] { color: var(--panel); background: var(--ochre); border-color: var(--ochre); }
+  .chip:focus-visible, .search:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .search { flex: 1 1 12rem; min-width: 0; font: inherit; font-size: 0.92rem; color: var(--ink); background: var(--panel); border: 1px solid var(--line); border-radius: 999px; padding: 0.42rem 0.95rem; }
+  .search::placeholder { color: var(--ink-soft); }
+  .count { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); }
+  .group h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3vw, 1.7rem); margin: clamp(1.75rem, 4vw, 2.5rem) 0 0.9rem; }
+  .gods { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr)); gap: clamp(0.9rem, 2vw, 1.2rem); }
+  .god { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 1.1rem 1.15rem 1.15rem; display: flex; flex-direction: column; gap: 0.6rem; min-width: 0; scroll-margin-top: 4.5rem; }
+  .god:target { box-shadow: 0 0 0 2px var(--c); }
+  .god header { display: flex; gap: 0.8rem; align-items: center; }
+  .emblem { flex: none; width: 52px; height: 52px; color: var(--c); background: color-mix(in srgb, var(--c) 12%, var(--panel)); border-radius: 12px; padding: 6px; }
+  .emblem * { fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+  .emblem .f { fill: currentColor; fill-opacity: 0.28; }
+  .god h3 { font-family: var(--display); font-weight: 600; font-size: 1.35rem; line-height: 1.1; margin: 0; color: var(--c); }
+  .alt { margin: 0.15rem 0 0; font-family: var(--mono); font-size: 0.7rem; color: var(--ink-soft); }
+  .role { margin: 0; font-weight: 600; font-size: 0.95rem; }
+  .facts { margin: 0; display: grid; gap: 0.35rem; }
+  .facts div { display: grid; grid-template-columns: 5.4rem 1fr; gap: 0.5rem; padding-bottom: 0.35rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.86rem; }
+  .story { margin: 0; font-size: 0.9rem; color: var(--ink-soft); }
+  .trip { margin-top: auto; display: grid; grid-template-columns: 5.4rem 1fr; gap: 0.5rem; padding-top: 0.4rem; }
+  .trip-k { font-family: var(--mono); font-size: 0.66rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--c); padding-top: 0.15rem; }
+  .trip ul { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.2rem; font-size: 0.84rem; }
+  .trip a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .trip a:hover, .trip a:focus-visible, .foot a:hover, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .empty { margin: 2rem 0; color: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Antiguo Egipto · h. 3000 a. C. – 400 d. C. · <a class="lang" href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o" target="_blank" rel="noopener noreferrer" hreflang="en">English version ↗</a></p>
+  <h1>Dioses de las Dos Tierras</h1>
+  <p class="lede">Egipto tuvo cientos de dioses. La mayoría empezó siendo el dios de una ciudad, y crecieron o se fundieron entre sí a medida que sus ciudades ganaban poder. Estos son los que más veréis en los muros de los templos y en las tumbas, con cómo reconocerlos y dónde verlos durante el viaje.</p>
+
+  <div class="intro-grid">
+    <section class="panel" aria-labelledby="howTitle">
+      <h2 id="howTitle">Cuatro ideas para entenderlos</h2>
+      <ul class="rules">
+        <li><b>Las cabezas de animal son signos, no retratos.</b> Un dios con cabeza de halcón o de chacal muestra uno de sus poderes. El mismo dios puede aparecer como animal, como persona o como una mezcla.</li>
+        <li><b>Los dioses se fusionan.</b> Amón de Tebas se unió al dios del sol y se convirtió en Amón-Ra. Los nombres se combinaban cuando los papeles de dos dioses coincidían.</li>
+        <li><b>Familias de tres.</b> Muchos templos acogían una tríada de padre, madre e hijo, como Amón, Mut y Jonsu en Karnak.</li>
+        <li><b>El rey está entre los dioses y la gente.</b> Solo él, o los sacerdotes en su nombre, servían a los dioses en el templo: los alimentaban, los vestían y mantenían Maat, el orden del mundo.</li>
+      </ul>
+    </section>
+    <section class="panel" aria-labelledby="treeTitle">
+      <h2 id="treeTitle">La familia de Heliópolis</h2>
+      <p>La Enéada, los nueve dioses de Heliópolis: el creador, sus hijos y nietos, y los cuatro bisnietos que protagonizan la historia de Osiris. Pulsa un nombre para leer sobre él.</p>
+      <div class="scroll">
+        <svg class="tree" viewBox="0 0 660 310" role="img" aria-label="Árbol genealógico: Atum creó a Shu y Tefnut; sus hijos Geb y Nut tuvieron a Osiris, Isis, Set y Neftis; Osiris e Isis tuvieron a Horus y, en mitos tardíos, Osiris y Neftis tuvieron a Anubis.">
+<path class="ln" d="M330,48 V98 M250,98 H410 M330,98 V148 M250,148 H410 M330,148 V172 M120,172 H540 M120,172 V192 M260,172 V192 M400,172 V192 M540,172 V192"/>
+<path class="ln" d="M120,232 H260 M190,232 V262 M400,232 H540"/><path class="ln dash" d="M540,232 V247 H470 V262"/>
+<a href="#god-atum"><rect x="255.0" y="8" width="150" height="40" rx="8" class="n"/><text x="330" y="26" class="nt" text-anchor="middle">Atum (Ra-Atum)</text><text x="330" y="41" class="ns" text-anchor="middle">el creador</text></a>
+<rect x="185.0" y="78" width="130" height="40" rx="8" class="n"/><text x="250" y="96" class="nt" text-anchor="middle">Shu</text><text x="250" y="111" class="ns" text-anchor="middle">el aire</text>
+<rect x="345.0" y="78" width="130" height="40" rx="8" class="n"/><text x="410" y="96" class="nt" text-anchor="middle">Tefnut</text><text x="410" y="111" class="ns" text-anchor="middle">la humedad</text>
+<a href="#god-nut"><rect x="185.0" y="128" width="130" height="40" rx="8" class="n"/><text x="250" y="146" class="nt" text-anchor="middle">Geb</text><text x="250" y="161" class="ns" text-anchor="middle">la tierra</text></a>
+<a href="#god-nut"><rect x="345.0" y="128" width="130" height="40" rx="8" class="n"/><text x="410" y="146" class="nt" text-anchor="middle">Nut</text><text x="410" y="161" class="ns" text-anchor="middle">el cielo</text></a>
+<a href="#god-osiris"><rect x="55.0" y="192" width="130" height="40" rx="8" class="n"/><text x="120" y="210" class="nt" text-anchor="middle">Osiris</text><text x="120" y="225" class="ns" text-anchor="middle">rey de los muertos</text></a>
+<a href="#god-isis"><rect x="195.0" y="192" width="130" height="40" rx="8" class="n"/><text x="260" y="210" class="nt" text-anchor="middle">Isis</text><text x="260" y="225" class="ns" text-anchor="middle">la gran maga</text></a>
+<a href="#god-seth"><rect x="335.0" y="192" width="130" height="40" rx="8" class="n"/><text x="400" y="210" class="nt" text-anchor="middle">Set</text><text x="400" y="225" class="ns" text-anchor="middle">tormenta y desierto</text></a>
+<a href="#god-nephthys"><rect x="475.0" y="192" width="130" height="40" rx="8" class="n"/><text x="540" y="210" class="nt" text-anchor="middle">Neftis</text><text x="540" y="225" class="ns" text-anchor="middle">señora de la casa</text></a>
+<a href="#god-horus"><rect x="125.0" y="262" width="130" height="40" rx="8" class="n"/><text x="190" y="280" class="nt" text-anchor="middle">Horus</text><text x="190" y="295" class="ns" text-anchor="middle">hijo de Isis</text></a>
+<a href="#god-anubis"><rect x="405.0" y="262" width="130" height="40" rx="8" class="n"/><text x="470" y="280" class="nt" text-anchor="middle">Anubis</text><text x="470" y="295" class="ns" text-anchor="middle">hijo de Neftis</text></a>
+        </svg>
+      </div>
+      <p class="caption">Las líneas horizontales unen parejas. En discontinua: Anubis entra en la familia solo en mitos tardíos, como hijo de Neftis y Osiris.</p>
+    </section>
+  </div>
+
+  <section class="panel" aria-labelledby="keyTitle" style="margin-top: clamp(1rem, 3vw, 1.5rem);">
+    <h2 id="keyTitle">Quién es quién: fíjate en la cabeza</h2>
+    <p>En el muro de un templo, el tocado o la cabeza de animal suele decirte qué dios estás viendo.</p>
+    <div class="scroll"><table class="key"><tbody><tr><td>Disco solar sobre cabeza de halcón</td><td><a href="#god-ra">Ra (Ra-Horajti)</a></td></tr><tr><td>Dos plumas altas</td><td><a href="#god-amun">Amón (Montu lleva plumas con disco)</a></td></tr><tr><td>Corona blanca con plumas, cayado y mayal</td><td><a href="#god-osiris">Osiris</a></td></tr><tr><td>Un trono sobre la cabeza</td><td><a href="#god-isis">Isis</a></td></tr><tr><td>Cuernos de vaca alrededor de un disco solar</td><td><a href="#god-hathor">Hathor (más tarde también Isis)</a></td></tr><tr><td>Una sola pluma de avestruz</td><td><a href="#god-maat">Maat</a></td></tr><tr><td>Cabeza de halcón con la doble corona</td><td><a href="#god-horus">Horus</a></td></tr><tr><td>Cabeza de ibis</td><td><a href="#god-thoth">Thot</a></td></tr><tr><td>Cabeza de chacal</td><td><a href="#god-anubis">Anubis</a></td></tr><tr><td>Cabeza de carnero de cuernos ondulados</td><td><a href="#god-khnum">Jnum (el carnero de Amón tiene los cuernos curvados)</a></td></tr><tr><td>Cabeza de cocodrilo</td><td><a href="#god-sobek">Sobek</a></td></tr><tr><td>Cabeza de leona</td><td><a href="#god-sekhmet">Sejmet</a></td></tr><tr><td>Cabeza de gata</td><td><a href="#god-bastet">Bastet</a></td></tr><tr><td>Vendas de momia y casquete</td><td><a href="#god-ptah">Ptah</a></td></tr><tr><td>Disco con rayos que acaban en manos</td><td><a href="#god-aten">Atón</a></td></tr><tr><td>Hipopótamo de pie</td><td><a href="#god-taweret">Tueris</a></td></tr></tbody></table></div>
+  </section>
+
+  <div class="toolbar" role="search">
+    <button type="button" class="chip" data-f="all" aria-pressed="true">Todos</button><button type="button" class="chip" data-f="sun" aria-pressed="false">El sol y la creación</button><button type="button" class="chip" data-f="family" aria-pressed="false">La familia de Osiris</button><button type="button" class="chip" data-f="death" aria-pressed="false">La muerte y el juicio</button><button type="button" class="chip" data-f="nile" aria-pressed="false">El Nilo, la casa y la protección</button>
+    <label for="godSearch" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Buscar dioses</label>
+    <input id="godSearch" class="search" type="search" placeholder="Busca: un nombre, un animal, un lugar…" autocomplete="off">
+    <span class="count" id="godCount" aria-live="polite"></span>
+  </div>
+
+    <section class="group" data-group="sun" aria-labelledby="h-sun">
+      <h2 id="h-sun">El sol y la creación</h2>
+      <div class="gods">
+      <article class="god" id="god-ra" data-group="sun" style="--c: var(--solar);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="25" r="11" class="f"/><path d="M13,31 C8,31 8,22 13,22 C16,22 16,27 13,27"/></svg><div><h3>Ra</h3><p class="alt">Re · Ra-Horajti, Jepri, Atum (sus formas a lo largo del día)</p></div></header>
+        <p class="role">El sol, rey de los dioses</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Un hombre con cabeza de halcón coronada por el disco solar, con una cobra (el ureo) enroscada alrededor.</dd></div><div><dt>Su casa</dt><dd>Heliópolis (Iunu), hoy en el noreste de El Cairo.</dd></div></dl>
+        <p class="story">Cada día Ra cruza el cielo en su barca. Cada noche navega por la Duat, el mundo inferior, y lucha contra la serpiente Apofis, la fuerza del caos, para que el sol pueda salir de nuevo. Al amanecer era Jepri, el escarabajo; a mediodía, Ra-Horajti; al atardecer, el anciano Atum. Desde la dinastía IV los reyes se llamaron «Hijo de Ra», y las pirámides y los obeliscos imitaban los rayos del sol.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li>Día 1 · Heliópolis, donde está vuestro hotel</li><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-abusimbel" target="_blank" rel="noopener noreferrer">Día 2 · Abu Simbel ↗</a></li><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses6" target="_blank" rel="noopener noreferrer">Día 6 · tumbas reales del Valle de los Reyes ↗</a></li></ul></div>
+      </article>
+      <article class="god" id="god-amun" data-group="sun" style="--c: var(--lapis);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M17,40 L17,10 C17,5 23,5 23,10 L23,40 Z M25,40 L25,10 C25,5 31,5 31,10 L31,40 Z" class="f"/><path d="M12,40 H36 V44 H12 Z"/></svg><div><h3>Amón</h3><p class="alt">Amun, Amón-Ra · con su esposa Mut y su hijo Jonsu</p></div></header>
+        <p class="role">«El oculto», rey de los dioses en el Reino Nuevo</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Un hombre con una corona alta de dos plumas, a veces de piel azul; también en forma de carnero.</dd></div><div><dt>Su casa</dt><dd>Tebas (Luxor): Karnak y el templo de Luxor.</dd></div></dl>
+        <p class="story">Era un dios local de Tebas que creció con los reyes tebanos. Cuando ellos reunificaron Egipto, se unió al dios del sol como Amón-Ra y pasó a ser el rey de los dioses. Con Mut y su hijo Jonsu, la luna, formaba la tríada tebana. Cada año, en la fiesta de Opet, su estatua viajaba en barca de Karnak al templo de Luxor. Sus sacerdotes llegaron a ser tan ricos y poderosos que Ajenatón cerró sus templos; volvieron a abrirse tras su muerte.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-karnak" target="_blank" rel="noopener noreferrer">Día 6 · Karnak ↗</a></li><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-amenhotep3" target="_blank" rel="noopener noreferrer">Día 6 · templo de Luxor ↗</a></li><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-abusimbel" target="_blank" rel="noopener noreferrer">Día 2 · santuario de Abu Simbel ↗</a></li></ul></div>
+      </article>
+      <article class="god" id="god-aten" data-group="sun" style="--c: var(--gold);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="14" r="8" class="f"/><path d="M24,22 V38 M19,21 L13,36 M29,21 L35,36 M16,18 L6,30 M32,18 L42,30"/><circle cx="24" cy="40" r="2"/><circle cx="12.5" cy="38" r="2"/><circle cx="35.5" cy="38" r="2"/><circle cx="5" cy="32" r="2"/><circle cx="43" cy="32" r="2"/></svg><div><h3>Atón</h3><p class="alt">Aten</p></div></header>
+        <p class="role">El disco solar en sí</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Sin forma humana: un disco cuyos rayos acaban en manitas que ofrecen el anj, el signo de la vida, a la familia real.</dd></div><div><dt>Su casa</dt><dd>Ajetatón (Amarna), la nueva capital que Ajenatón construyó para él.</dd></div></dl>
+        <p class="story">Ajenatón (h. 1353–1336 a. C.) convirtió a Atón en el único dios de Egipto, cerró los demás templos y trasladó la corte a Amarna. Los templos de Atón no tenían techo, para que el sol entrara directamente. Tras su muerte, Tutankamón volvió a Amón y a los dioses de siempre, y los reyes posteriores intentaron borrar de la historia los años de Amarna.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-akhenaten" target="_blank" rel="noopener noreferrer">Ficha de Ajenatón ↗</a></li></ul></div>
+      </article>
+      <article class="god" id="god-atum" data-group="sun" style="--c: var(--ochre);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M19,42 C19,30 21,12 25,9 C29,12 30,30 30,42 Z" class="f"/><path d="M10,42 V22 H16 V34 H33 V9 H38 V42 Z M16,22 C12,16 14,12 18,14"/></svg><div><h3>Atum</h3><p class="alt">Tem</p></div></header>
+        <p class="role">El creador que se hizo a sí mismo</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Un hombre con la doble corona del Alto y el Bajo Egipto.</dd></div><div><dt>Su casa</dt><dd>Heliópolis.</dd></div></dl>
+        <p class="story">Antes del mundo solo existía Nun, un agua oscura e infinita. Atum surgió de ella sobre el primer montículo de tierra, el benben, y creó él solo a la primera pareja de dioses, Shu y Tefnut. Sus descendientes forman la Enéada, los nueve dioses de Heliópolis (mira el árbol genealógico). El piramidión que corona una pirámide y la punta de un obelisco evocan aquel primer montículo.</p>
+        
+      </article>
+      <article class="god" id="god-ptah" data-group="sun" style="--c: var(--turquoise);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M20,14 H28 V42 H20 Z" class="f"/><path d="M14,12 H34 M14,17 H34 M14,22 H34 M14,27 H34 M16,42 H32"/></svg><div><h3>Ptah</h3><p class="alt">con Sejmet y Nefertum, la tríada de Menfis</p></div></header>
+        <p class="role">Creador de Menfis, patrón de los artesanos</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Un hombre envuelto como una momia, con un casquete ceñido y barba recta, que sostiene un cetro que une los signos del poder, la estabilidad y la vida.</dd></div><div><dt>Su casa</dt><dd>Menfis, la antigua capital al sur de El Cairo.</dd></div></dl>
+        <p class="story">En la versión menfita de la creación, Ptah hizo el mundo pensándolo con el corazón y pronunciándolo con la lengua. El texto se conserva en la Piedra de Shabaka, hoy en el Museo Británico. Los constructores, escultores y orfebres estaban bajo su protección. Su imagen viva en la tierra era el toro Apis. En Abu Simbel es el único dios del santuario al que el sol nunca ilumina.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-abusimbel" target="_blank" rel="noopener noreferrer">Día 2 · Abu Simbel ↗</a></li><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-shabaka" target="_blank" rel="noopener noreferrer">Ficha de Shabaka ↗</a></li></ul></div>
+      </article>
+      <article class="god" id="god-montu" data-group="sun" style="--c: var(--kush);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M18,30 V8 C18,4 23,4 23,8 V30 Z M25,30 V8 C25,4 30,4 30,8 V30 Z"/><circle cx="24" cy="36" r="7" class="f"/></svg><div><h3>Montu</h3><p class="alt">Mentu</p></div></header>
+        <p class="role">Dios de la guerra de Tebas</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Un hombre con cabeza de halcón, dos plumas y un disco solar.</dd></div><div><dt>Su casa</dt><dd>Armant (Iuny), Medamud y Tod, cerca de Tebas; un recinto en Karnak.</dd></div></dl>
+        <p class="story">Montu fue el gran dios de Tebas antes que Amón. Los reyes que reunificaron Egipto llevaban su nombre: Mentuhotep significa «Montu está satisfecho». Los faraones del Reino Nuevo iban a la batalla «como un Montu enfurecido».</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-mentuhotep2" target="_blank" rel="noopener noreferrer">Ficha de Mentuhotep II ↗</a></li><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-karnak" target="_blank" rel="noopener noreferrer">Día 6 · Karnak ↗</a></li></ul></div>
+      </article>
+      </div>
+    </section>
+    <section class="group" data-group="family" aria-labelledby="h-family">
+      <h2 id="h-family">La familia de Osiris</h2>
+      <div class="gods">
+      <article class="god" id="god-osiris" data-group="family" style="--c: var(--malachite);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M14,44 L28,12 C30,6 39,8 36,15"/><path d="M34,44 L20,14 M20,14 L11,9 M20,14 L13,6 M20,14 L17,4"/></svg><div><h3>Osiris</h3><p class="alt">Usir · Unnefer, «el perfecto»</p></div></header>
+        <p class="role">Rey de los muertos, dios del renacer</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Un rey envuelto como una momia, de piel verde o negra, con una alta corona blanca con plumas (la atef), que sostiene el cayado y el mayal.</dd></div><div><dt>Su casa</dt><dd>Abidos, donde se creía que estaba su tumba.</dd></div></dl>
+        <p class="story">Osiris reinó en Egipto hasta que su hermano Set, celoso, lo mató y esparció su cuerpo. Su esposa Isis encontró los pedazos, los unió en la primera momia y lo devolvió a la vida el tiempo justo para concebir a su hijo Horus. Osiris pasó a reinar en el mundo de los muertos. El verde y el negro son los colores de las cosechas nuevas y del limo del Nilo, así que su muerte y su regreso también representaban la crecida y la siega. Todo difunto aspiraba a convertirse en «un Osiris».</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-abydos" target="_blank" rel="noopener noreferrer">Día 7 · Abidos ↗</a></li><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-seti1" target="_blank" rel="noopener noreferrer">Día 6 · Valle de los Reyes ↗</a></li></ul></div>
+      </article>
+      <article class="god" id="god-isis" data-group="family" style="--c: var(--rose);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M14,42 V12 H22 V26 H34 V42 Z" class="f"/><path d="M17,38 H31"/></svg><div><h3>Isis</h3><p class="alt">Aset</p></div></header>
+        <p class="role">Esposa de Osiris, madre de Horus, gran maga</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Una mujer con un trono sobre la cabeza, el signo que escribe su nombre. Más tarde lleva también cuernos de vaca con un disco solar, como Hathor.</dd></div><div><dt>Su casa</dt><dd>Filé, cerca de Asuán.</dd></div></dl>
+        <p class="story">Isis recompuso a Osiris y escondió al pequeño Horus en los pantanos de papiro del Delta hasta que tuvo edad para enfrentarse a Set. Era el modelo de esposa fiel y madre protectora, y su magia podía curar. Su culto se extendió por el mundo griego y romano hasta Britania. Filé fue el último templo egipcio en activo; lo cerró el emperador Justiniano hacia el año 537.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-philae" target="_blank" rel="noopener noreferrer">Día 3 · Filé ↗</a></li></ul></div>
+      </article>
+      <article class="god" id="god-seth" data-group="family" style="--c: var(--persia);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M24,44 V14 M21,44 L24,39 L27,44 M24,14 L31,10 L29,7 M24,14 L19,9"/></svg><div><h3>Set</h3><p class="alt">Seth, Sutej</p></div></header>
+        <p class="role">Las tormentas, el desierto y el caos</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Un hombre con la cabeza del «animal de Set», una criatura desconocida de hocico curvo y orejas de punta cuadrada.</dd></div><div><dt>Su casa</dt><dd>Ombos (Naqada), en el Alto Egipto, y Avaris, en el Delta.</dd></div></dl>
+        <p class="story">Set asesinó a su hermano Osiris y luchó durante ochenta años con Horus por el trono. Pero también era fuerte y útil: desde la proa de la barca de Ra, alancea cada noche a Apofis. Los hicsos lo adoraban en Avaris, y de allí procedían los reyes ramésidas; por eso el nombre de Seti I significa «el de Set». En épocas tardías quedó solo como el enemigo.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-seti1" target="_blank" rel="noopener noreferrer">Ficha de Seti I ↗</a></li></ul></div>
+      </article>
+      <article class="god" id="god-nephthys" data-group="family" style="--c: var(--indigo);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M14,20 Q24,8 34,20 Z" class="f"/><path d="M14,24 H34 V42 H14 Z M14,36 H22"/></svg><div><h3>Neftis</h3><p class="alt">Nebet-Hut, «señora de la casa»</p></div></header>
+        <p class="role">Protectora de los muertos</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Una mujer con los signos de una casa y una cesta sobre la cabeza, que escriben su nombre.</dd></div><div><dt>Su casa</dt><dd>Sin gran templo propio; aparece junto a Isis en todas partes.</dd></div></dl>
+        <p class="story">Era la esposa de Set, pero se puso del lado de su hermana Isis y lloró con ella a Osiris. Las dos hermanas aparecen como milanos, aves rapaces, en los extremos de los sarcófagos reales, extendiendo las alas sobre el difunto. En relatos tardíos es la madre de Anubis, hijo de Osiris.</p>
+        
+      </article>
+      <article class="god" id="god-horus" data-group="family" style="--c: var(--lapis);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M7,20 C15,12 33,12 41,20 C33,26 15,26 7,20 Z"/><circle cx="24" cy="19.5" r="4" class="f"/><path d="M8,12 C18,7 32,7 40,12 M20,25 L18,39 M27,25 C29,34 37,36 37,30 C37,27 34,27 34,30"/></svg><div><h3>Horus</h3><p class="alt">Heru · Harsiese, «hijo de Isis»; Haroeris, «el Viejo»</p></div></header>
+        <p class="role">El cielo y la realeza</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Un halcón, o un hombre con cabeza de halcón y la doble corona.</dd></div><div><dt>Su casa</dt><dd>Edfu; Hieracómpolis (Nejen) en los primeros tiempos.</dd></div></dl>
+        <p class="story">El hijo de Isis y Osiris creció para vengar a su padre y arrebatarle el trono a Set. En la lucha, Set le arrancó un ojo. Thot lo curó, y el udyat, el Ojo de Horus, se convirtió en el amuleto protector más común. Cada rey vivo era Horus en la tierra, y su primer nombre real era su «nombre de Horus». En Kom Ombo, una forma más antigua, Horus el Viejo, comparte el templo con Sobek.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy3" target="_blank" rel="noopener noreferrer">Día 5 · Edfu ↗</a></li><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy6" target="_blank" rel="noopener noreferrer">Día 4 · Kom Ombo ↗</a></li><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-hierakonpolis" target="_blank" rel="noopener noreferrer">Ficha de Hieracómpolis ↗</a></li></ul></div>
+      </article>
+      <article class="god" id="god-nut" data-group="family" style="--c: var(--indigo);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M6,42 V24 C6,9 42,9 42,24 V42"/><path d="M4,44 H44"/><circle cx="14" cy="19" r="1.6" class="f"/><circle cx="24" cy="15" r="1.6" class="f"/><circle cx="34" cy="19" r="1.6" class="f"/><circle cx="19" cy="24" r="1.6" class="f"/><circle cx="29" cy="24" r="1.6" class="f"/></svg><div><h3>Nut y Geb</h3><p class="alt">con sus padres Shu (el aire) y Tefnut (la humedad)</p></div></header>
+        <p class="role">El cielo y la tierra</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Nut es una mujer arqueada sobre el mundo, con el cuerpo cubierto de estrellas. Geb yace bajo ella, a veces verde de plantas.</dd></div><div><dt>Su casa</dt><dd>Heliópolis, como parte de la Enéada.</dd></div></dl>
+        <p class="story">Shu, el aire, sostiene a su hija Nut separada de su esposo Geb, la tierra. Cada tarde Nut se traga el sol y cada mañana lo vuelve a dar a luz, por eso su cuerpo se extiende por los techos de las tumbas reales y las tapas de los sarcófagos. Sus hijos son Osiris, Isis, Set y Neftis.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses6" target="_blank" rel="noopener noreferrer">Día 6 · tumba de Ramsés VI ↗</a></li><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-dendera" target="_blank" rel="noopener noreferrer">Día 7 · techos de Dendera ↗</a></li></ul></div>
+      </article>
+      </div>
+    </section>
+    <section class="group" data-group="death" aria-labelledby="h-death">
+      <h2 id="h-death">La muerte y el juicio</h2>
+      <div class="gods">
+      <article class="god" id="god-anubis" data-group="death" style="--c: var(--ink);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M6,40 H42 V35 H32 V24 L36,16 L35,7 L31,13 L29,6 L27,15 L27,26 L14,29 C9,30 7,34 6,40 Z" class="f"/><path d="M6,40 C3,38 2,33 5,31"/></svg><div><h3>Anubis</h3><p class="alt">Anpu, Inpu</p></div></header>
+        <p class="role">El embalsamamiento y las necrópolis</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Un chacal negro tumbado sobre una capilla, o un hombre con cabeza de chacal. El negro es el color del renacer, no de la muerte.</dd></div><div><dt>Su casa</dt><dd>Cinópolis, en el Egipto Medio, y todas las necrópolis.</dd></div></dl>
+        <p class="story">Los chacales rondaban los cementerios del desierto, así que los egipcios hicieron de un chacal su guardián. Anubis inventó el embalsamamiento para Osiris, y los sacerdotes que vendaban las momias llevaban su máscara. En la Sala del Juicio conduce al difunto y vigila la balanza. Un Anubis tallado sobre su capilla custodiaba el tesoro de la tumba de Tutankamón.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-tutankhamun" target="_blank" rel="noopener noreferrer">Ficha de Tutankamón ↗</a></li></ul></div>
+      </article>
+      <article class="god" id="god-thoth" data-group="death" style="--c: var(--turquoise);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="18" r="8" class="f"/><path d="M11,24 A13,13 0 0 0 37,24 A15,11 0 0 1 11,24 Z" class="f"/></svg><div><h3>Thot</h3><p class="alt">Dyehuty · el Hermes Trismegisto de los griegos</p></div></header>
+        <p class="role">La escritura, la sabiduría y la luna</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Un hombre con cabeza de ibis, o un babuino; a menudo con un creciente lunar y un disco.</dd></div><div><dt>Su casa</dt><dd>Hermópolis (Jemenu), en el Egipto Medio.</dd></div></dl>
+        <p class="story">Thot inventó la escritura y contaba el tiempo, así que los escribas le rezaban antes de ponerse a trabajar. Curó el Ojo de Horus y resolvió la disputa entre Horus y Set. En la Sala del Juicio anota el resultado del pesaje. En la Baja Época se enterraron para él millones de ibis y babuinos momificados.</p>
+        
+      </article>
+      <article class="god" id="god-maat" data-group="death" style="--c: var(--gold);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M24,7 C33,12 32,33 26,41 H22 C19,31 18,15 24,7 Z" class="f"/><path d="M24,7 C20,4 17,8 20,11 M24,12 V41"/></svg><div><h3>Maat</h3><p class="alt">Ma'at</p></div></header>
+        <p class="role">La verdad, la justicia y el orden del mundo</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Una mujer con una sola pluma de avestruz sobre la cabeza.</dd></div><div><dt>Su casa</dt><dd>En todas partes: Maat era una idea tanto como una diosa.</dd></div></dl>
+        <p class="story">Maat es el orden justo de las cosas: que salga el sol, que llegue la crecida, que haya justicia en los tribunales. El primer deber del rey era mantenerla, y en los muros de los templos aparece ofreciendo a los dioses una pequeña figura de ella. Tras la muerte, el corazón se pesaba contra su pluma. Si pesaba más, cargado de faltas, lo devoraba Ammit, un monstruo mitad cocodrilo, león e hipopótamo.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/4JDNxH58SqFDm9rdgax7VL#osiris" target="_blank" rel="noopener noreferrer">El pesaje del corazón, curso UNED, clase 3 ↗</a></li></ul></div>
+      </article>
+      </div>
+    </section>
+    <section class="group" data-group="nile" aria-labelledby="h-nile">
+      <h2 id="h-nile">El Nilo, la casa y la protección</h2>
+      <div class="gods">
+      <article class="god" id="god-hathor" data-group="nile" style="--c: var(--rose);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M9,12 C9,30 17,35 24,35 C31,35 39,30 39,12"/><circle cx="24" cy="24" r="7" class="f"/><path d="M24,35 V43"/></svg><div><h3>Hathor</h3><p class="alt">Hut-Hor, «casa de Horus»</p></div></header>
+        <p class="role">El amor, la música, la alegría y la maternidad</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Una vaca, o una mujer con cuernos de vaca y un disco solar; en las columnas, un rostro con orejas de vaca.</dd></div><div><dt>Su casa</dt><dd>Dendera.</dd></div></dl>
+        <p class="story">Hathor era la diosa de la música, la danza, la bebida y el amor, y nodriza del rey. En la orilla occidental de Tebas era la «Señora del Occidente», que recibía a los muertos. En sus fiestas se agitaba su sonajero, el sistro, y las columnas de Dendera llevan su rostro. En Abu Simbel el templo pequeño es suyo, compartido con la reina Nefertari.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-dendera" target="_blank" rel="noopener noreferrer">Día 7 · Dendera ↗</a></li><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-abusimbel" target="_blank" rel="noopener noreferrer">Día 2 · Abu Simbel, el templo pequeño ↗</a></li></ul></div>
+      </article>
+      <article class="god" id="god-sekhmet" data-group="nile" style="--c: var(--ochre);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="26" r="9" class="f"/><path d="M24,6 L27,13 L21,13 Z M10,12 L16,16 L12,19 Z M38,12 L32,16 L36,19 Z M6,28 L13,26 L13,31 Z M42,28 L35,26 L35,31 Z"/></svg><div><h3>Sejmet</h3><p class="alt">Sekhmet, «la poderosa»</p></div></header>
+        <p class="role">Leona de la guerra y la peste, y sanadora</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Una mujer con cabeza de leona y un disco solar.</dd></div><div><dt>Su casa</dt><dd>Menfis, como esposa de Ptah.</dd></div></dl>
+        <p class="story">Cuando los hombres se rebelaron contra el anciano Ra, este envió a su ojo en forma de Sejmet para castigarlos, y casi acabó con ellos. Para detenerla, Ra inundó los campos de cerveza teñida de rojo como la sangre. Ella la bebió, se durmió y despertó como la apacible Hathor. Sus sacerdotes eran también médicos. Amenofis III levantó cientos de estatuas de granito de ella en Tebas.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-amenhotep3" target="_blank" rel="noopener noreferrer">Ficha de Amenofis III ↗</a></li></ul></div>
+      </article>
+      <article class="god" id="god-bastet" data-group="nile" style="--c: var(--gold);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M18,44 C13,44 13,30 18,26 V14 L16,6 L21,11 H27 L32,6 L30,14 V26 C35,30 35,44 30,44 Z" class="f"/><path d="M30,42 C39,42 41,35 36,31"/></svg><div><h3>Bastet</h3><p class="alt">Bast</p></div></header>
+        <p class="role">La casa, las mujeres y los gatos</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Una gata, o una mujer con cabeza de gata, a veces con un sistro y una cesta.</dd></div><div><dt>Su casa</dt><dd>Bubastis, en el Delta oriental.</dd></div></dl>
+        <p class="story">Bastet empezó como una leona feroz y se suavizó hasta ser una gata, protectora del hogar frente a serpientes y males. Heródoto describe su fiesta en Bubastis, con barcas llenas de peregrinos que cantaban. Los gatos le eran tan sagrados que matar uno podía costar la vida, y se momificaron por cientos de miles.</p>
+        
+      </article>
+      <article class="god" id="god-sobek" data-group="nile" style="--c: var(--malachite);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M3,29 L14,25 L30,23 L45,25 L45,29 L30,31 L14,32 Z" class="f"/><path d="M14,32 L12,37 M22,31 L21,36 M30,31 L31,36 M36,30 L38,35 M38,25 L39,22"/></svg><div><h3>Sobek</h3><p class="alt">Sebek</p></div></header>
+        <p class="role">Dios cocodrilo del Nilo</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Un cocodrilo, o un hombre con cabeza de cocodrilo, coronado con plumas y un disco solar.</dd></div><div><dt>Su casa</dt><dd>El Fayum (Cocodrilópolis) y Kom Ombo.</dd></div></dl>
+        <p class="story">Los cocodrilos eran los animales más peligrosos del Nilo, así que los egipcios adoraban a uno para estar a salvo y compartir su fuerza. Sobek estaba ligado a la fertilidad de las orillas y al poder real; la reina Sobekneferu, del Reino Medio, llevaba su nombre. Los cocodrilos sagrados vivían en estanques y se momificaban al morir.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy6" target="_blank" rel="noopener noreferrer">Día 4 · Kom Ombo, con su museo del cocodrilo ↗</a></li></ul></div>
+      </article>
+      <article class="god" id="god-khnum" data-group="nile" style="--c: var(--kush);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M18,33 C13,27 15,19 20,17 H28 C33,19 35,27 30,33 Z" class="f"/><path d="M12,37 H36 L32,41 H16 Z M24,41 V45 M20,17 V13 H28 V17"/></svg><div><h3>Jnum</h3><p class="alt">Jnemu</p></div></header>
+        <p class="role">El alfarero que da forma a las personas</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Un hombre con cabeza de carnero de cuernos largos, ondulados y horizontales.</dd></div><div><dt>Su casa</dt><dd>La isla Elefantina, en Asuán, y Esna.</dd></div></dl>
+        <p class="story">Jnum modelaba a cada niño y a su ka en su torno de alfarero y los colocaba en el vientre de la madre. En Elefantina guardaba las cavernas donde se creía que nacía el Nilo. La Estela del Hambre, en la isla de Sehel, cuenta cómo Djoser acabó con siete años de hambruna honrándolo.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-elephantine" target="_blank" rel="noopener noreferrer">Día 2 · Asuán, Elefantina ↗</a></li><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-djoser" target="_blank" rel="noopener noreferrer">Ficha de Djoser ↗</a></li></ul></div>
+      </article>
+      <article class="god" id="god-hapi" data-group="nile" style="--c: var(--lapis);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M8,30 l4,-4 l4,4 l4,-4 l4,4 l4,-4 l4,4 l4,-4 l4,4 M8,37 l4,-4 l4,4 l4,-4 l4,4 l4,-4 l4,4 l4,-4 l4,4 M8,44 l4,-4 l4,4 l4,-4 l4,4 l4,-4 l4,4 l4,-4 l4,4 M24,22 V10"/><path d="M24,10 L15,4 H33 Z" class="f"/></svg><div><h3>Hapi</h3><p class="alt">Hapy</p></div></header>
+        <p class="role">La crecida del Nilo</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Un hombre rollizo, con barriga y pechos, signo de abundancia, con papiros o lotos en la cabeza y cargado de ofrendas.</dd></div><div><dt>Su casa</dt><dd>Gebel el-Silsila y las cataratas.</dd></div></dl>
+        <p class="story">Hapi no era el río sino la crecida que llegaba cada verano y cubría los campos de limo negro. Sin él había hambre. Los himnos le daban las gracias, y los reyes arrojaban ofrendas al río para asegurarse de que volviera. A menudo aparece por parejas, atando las plantas del Alto y el Bajo Egipto.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/EMAUdhDxkPGrfZcTenuoBz#nilo" target="_blank" rel="noopener noreferrer">La crecida del Nilo, curso UNED, clase 1 ↗</a></li></ul></div>
+      </article>
+      <article class="god" id="god-taweret" data-group="nile" style="--c: var(--turquoise);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M16,44 V24 C16,9 32,9 32,24 V44 M11,31 H37 M20,44 V31 M28,44 V31"/></svg><div><h3>Tueris</h3><p class="alt">Taueret, «la grande»</p></div></header>
+        <p class="role">Protectora del parto</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Una hipopótama preñada, de pie, con patas de león y cola de cocodrilo, que apoya la mano en el signo sa de la protección.</dd></div><div><dt>Su casa</dt><dd>Altares domésticos; sin gran templo.</dd></div></dl>
+        <p class="story">Su feroz mezcla de animales espantaba todo lo que pudiera dañar a una madre o a un bebé. Tueris aparece en camas, reposacabezas y amuletos, y las mujeres le rezaban antes de dar a luz. Era una diosa de las casas más que de los templos.</p>
+        
+      </article>
+      <article class="god" id="god-bes" data-group="nile" style="--c: var(--solar);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M12,36 H36 V41 H12 Z" class="f"/><path d="M14,36 C10,24 12,14 16,10 C18,18 18,28 18,36 M21,36 C19,22 20,10 24,5 C28,10 29,22 27,36 M30,36 C30,28 30,18 32,10 C36,14 38,24 34,36"/></svg><div><h3>Bes</h3></div></header>
+        <p class="role">Protector de la casa, los niños y la diversión</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Un enano barbudo con melena, orejas y cola de león, que saca la lengua y lleva una corona de plumas. Algo poco habitual: te mira de frente.</dd></div><div><dt>Su casa</dt><dd>En todos los hogares; en las casas del nacimiento (mammisi) de los templos tardíos.</dd></div></dl>
+        <p class="story">Bes bailaba, tocaba música y hacía muecas para ahuyentar a los demonios y las serpientes de los niños dormidos y de las mujeres de parto. Su imagen se pintaba en las paredes, se tallaba en las camas y se llevaba como amuleto. Parece temible, pero era el dios más amigable de la casa.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-dendera" target="_blank" rel="noopener noreferrer">Día 7 · casa del nacimiento de Dendera ↗</a></li></ul></div>
+      </article>
+      <article class="god" id="god-apis" data-group="nile" style="--c: var(--ink);">
+        <header><svg class="emblem" viewBox="0 0 48 48" aria-hidden="true"><path d="M8,16 C10,29 18,32 24,32 C30,32 38,29 40,16"/><circle cx="24" cy="22" r="6" class="f"/><path d="M21,36 H27 L24,42 Z" class="f"/></svg><div><h3>Apis</h3><p class="alt">Hapi (otra palabra distinta del dios de la crecida) · más tarde Serapis</p></div></header>
+        <p class="role">El toro sagrado de Menfis</p>
+        <dl class="facts"><div><dt>Cómo es</dt><dd>Un toro negro con un triángulo blanco en la frente y un disco solar entre los cuernos.</dd></div><div><dt>Su casa</dt><dd>Menfis; enterrado en Saqqara.</dd></div></dl>
+        <p class="story">Un único toro real era Apis en cada momento, la imagen viva de Ptah, elegido por unas marcas especiales. Al morir se momificaba y se enterraba en un enorme sarcófago de granito en el Serapeo de Saqqara. Los Ptolomeos fundieron a Osiris y Apis en Serapis, un dios para griegos y egipcios, cuyo gran templo estaba en Alejandría, donde hoy se alza la Columna de Pompeyo.</p>
+        <div class="trip"><span class="trip-k">Dónde verlo</span><ul><li><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-serapeum" target="_blank" rel="noopener noreferrer">Días 9–10 · Saqqara, el Serapeo ↗</a></li><li>Día 8 · Alejandría, Columna de Pompeyo</li></ul></div>
+      </article>
+      </div>
+    </section>
+  <p class="empty" id="godEmpty" hidden>Ningún dios coincide con esa búsqueda. Prueba con un animal, como «gata» o «halcón», o con un lugar, como «Karnak».</p>
+
+  <p class="foot">Forma parte de <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k" target="_blank" rel="noopener noreferrer">Ancient Egypt History Main Points ↗</a> (en inglés). Los enlaces de «Dónde verlo» abren la ficha correspondiente de la página principal (en inglés), el día del viaje en que veréis al dios, o una página del curso de la UNED.</p>
+</div>
+
+<script>
+  (function () {
+    var chips = document.querySelectorAll('.chip');
+    var input = document.getElementById('godSearch');
+    var count = document.getElementById('godCount');
+    var empty = document.getElementById('godEmpty');
+    var gods = document.querySelectorAll('.god');
+    var groups = document.querySelectorAll('.group');
+    var filter = 'all';
+    function norm(s) { return s.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, ''); }
+    function apply() {
+      var q = norm(input.value.trim()); var shown = 0;
+      gods.forEach(function (g) {
+        var ok = (filter === 'all' || g.dataset.group === filter) && (!q || norm(g.textContent).indexOf(q) !== -1);
+        g.hidden = !ok; if (ok) shown++;
+      });
+      groups.forEach(function (sec) { sec.hidden = !sec.querySelector('.god:not([hidden])'); });
+      count.textContent = shown + ' de ' + gods.length + ' dioses';
+      empty.hidden = shown !== 0;
+    }
+    chips.forEach(function (c) {
+      c.addEventListener('click', function () {
+        filter = c.dataset.f;
+        chips.forEach(function (o) { o.setAttribute('aria-pressed', o === c ? 'true' : 'false'); });
+        apply();
+      });
+    });
+    input.addEventListener('input', apply);
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest && e.target.closest('a[href^="#god-"]');
+      if (!a) return;
+      var t = document.querySelector(a.getAttribute('href'));
+      if (t && t.hidden) { filter = 'all'; input.value = ''; chips.forEach(function (o) { o.setAttribute('aria-pressed', o.dataset.f === 'all' ? 'true' : 'false'); }); apply(); }
+    });
+    apply();
+  })();
+</script>
