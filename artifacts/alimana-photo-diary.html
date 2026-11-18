@@ -64,7 +64,9 @@
   .empty { font-size: 0.84rem; color: var(--ink-soft); margin: 0; }
   .add { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 0.7rem; font-family: var(--mono); font-size: 0.8rem; color: var(--c); border: 1.5px dashed var(--c); border-radius: 999px; padding: 0.5rem 0.95rem; cursor: pointer; min-height: 44px; }
   .add:hover { background: color-mix(in srgb, var(--c) 10%, transparent); }
-  .add input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+  .add { position: relative; overflow: hidden; }
+  .add input { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; font-size: 2rem; }
+  .hint { font-size: 0.84rem; color: var(--ink-soft); margin: 0.2rem 0 0; max-width: 40rem; }
   .add[hidden] { display: none; }
   .progress { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-soft); margin: 0.45rem 0 0; }
   .progress.bad { color: var(--bad); }
@@ -97,6 +99,7 @@
   <p class="eyebrow">Private Alimaña Tour · 18–28 November 2026</p>
   <h1>Alimaña Photo Diary</h1>
   <p class="lede">Photos from every stop of the trip, day by day. Tap <b>Add photos</b> under a place to upload from your camera or library; tap a photo to see it large and add a caption. Back to the <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">tour plan ↗</a></p>
+  <p class="hint">If tapping <b>Add photos</b> does nothing, open this page in Safari or Chrome instead of the Claude app: some apps don't let pages open the camera or photo library.</p>
   <p class="status" id="status" aria-live="polite">Loading photos…</p>
   <nav class="days" id="days" aria-label="Jump to a day"></nav>
   <div id="diary"></div>
