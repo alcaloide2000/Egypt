@@ -1,0 +1,409 @@
+<title>Alimaña Photo Diary</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: a sticky strip of day chips, then one section per tour day with a block per stop: name, photo grid, add button. A full-screen viewer opens on tap. Built for phones first. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c; --shade: rgba(28, 24, 21, 0.97);
+    --d1: #c07a1f; --d2: #3c7a5a; --d3: #2f5f8a; --d4: #0e8f8a; --d5: #5b4f8f; --d6: #a9791f;
+    --d7: #9c3f5e; --d8: #2f7fb0; --d9: #a1522e; --d10: #b5551f; --d11: #c07a1f; --ok: #3c7a5a; --bad: #9c3f5e;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c; --shade: rgba(16, 15, 14, 0.98);
+      --d1: #e8a54d; --d2: #5fae87; --d3: #6fa3d1; --d4: #4fd8d1; --d5: #a99bd9; --d6: #d9a83c;
+      --d7: #e08aa6; --d8: #7fb8e0; --d9: #d98a5e; --d10: #e58a4d; --d11: #e8a54d; --ok: #5fae87; --bad: #e08aa6;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c; --shade: rgba(16, 15, 14, 0.98);
+    --d1: #e8a54d; --d2: #5fae87; --d3: #6fa3d1; --d4: #4fd8d1; --d5: #a99bd9; --d6: #d9a83c;
+    --d7: #e08aa6; --d8: #7fb8e0; --d9: #d98a5e; --d10: #e58a4d; --d11: #e8a54d; --ok: #5fae87; --bad: #e08aa6;
+    color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.5; }
+  body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--bg); }
+  .page { max-width: 1040px; margin: 0 auto; padding-block: clamp(1.25rem, 4vw, 2.5rem) 4rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--d10); margin: 0 0 0.6rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(1.9rem, 6vw, 2.8rem); line-height: 1.05; margin: 0 0 0.6rem; }
+  .lede { color: var(--ink-soft); margin: 0 0 0.5rem; max-width: 40rem; }
+  .lede a, .foot a, .about { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .lede a:hover, .foot a:hover, .about:hover { border-bottom-color: currentColor; }
+  .status { font-family: var(--mono); font-size: 0.78rem; color: var(--ink-soft); margin: 0.6rem 0 0; min-height: 1.2em; }
+  .status.bad { color: var(--bad); }
+  .days { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--bg); display: flex; gap: 0.4rem; overflow-x: auto; padding-block: 0.7rem; margin: 1rem 0 0; border-bottom: 1px solid var(--line); scrollbar-width: none; }
+  .days::-webkit-scrollbar { display: none; }
+  .chip { flex: none; font-family: var(--mono); font-size: 0.74rem; color: var(--c); border: 1px solid var(--c); border-radius: 999px; padding: 0.35rem 0.7rem; text-decoration: none; white-space: nowrap; }
+  .chip.today { background: var(--c); color: var(--panel); }
+  .chip .n { font-variant-numeric: tabular-nums; opacity: 0.8; margin-left: 0.25rem; }
+  .day { margin-top: clamp(1.5rem, 5vw, 2.5rem); scroll-margin-top: 4rem; }
+  .day-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.3rem 0.7rem; border-bottom: 3px solid var(--c); padding-bottom: 0.4rem; margin-bottom: 0.9rem; }
+  .day-num { font-family: var(--mono); font-size: 0.74rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--c); }
+  .day h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.3rem, 4.5vw, 1.7rem); margin: 0; flex: 1 1 auto; }
+  .today-tag { font-family: var(--mono); font-size: 0.7rem; background: var(--c); color: var(--panel); border-radius: 999px; padding: 0.15rem 0.6rem; }
+  .stops { display: grid; gap: 0.9rem; }
+  .stop { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 0.9rem 1rem 1rem; min-width: 0; }
+  .stop-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.8rem; margin-bottom: 0.6rem; }
+  .stop h3 { font-family: var(--display); font-weight: 600; font-size: 1.12rem; margin: 0; }
+  .stop .note { font-size: 0.84rem; color: var(--ink-soft); }
+  .about { font-family: var(--mono); font-size: 0.72rem; margin-left: auto; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(30%, 128px), 1fr)); gap: 0.4rem; }
+  .thumb { position: relative; padding: 0; border: none; background: var(--line); border-radius: 8px; overflow: hidden; aspect-ratio: 1; cursor: zoom-in; max-width: 100%; }
+  .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  .thumb .cap { position: absolute; inset: auto 0 0 0; font-size: 0.68rem; line-height: 1.25; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,0.65)); padding: 0.9rem 0.35rem 0.25rem; text-align: left; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .thumb:focus-visible, .add:focus-within { outline: 2px solid var(--c); outline-offset: 2px; }
+  .empty { font-size: 0.84rem; color: var(--ink-soft); margin: 0; }
+  .add { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 0.7rem; font-family: var(--mono); font-size: 0.8rem; color: var(--c); border: 1.5px dashed var(--c); border-radius: 999px; padding: 0.5rem 0.95rem; cursor: pointer; min-height: 44px; }
+  .add:hover { background: color-mix(in srgb, var(--c) 10%, transparent); }
+  .add input { position: absolute; width: 1px; height: 1px; opacity: 0; pointer-events: none; }
+  .add[hidden] { display: none; }
+  .progress { font-family: var(--mono); font-size: 0.74rem; color: var(--ink-soft); margin: 0.45rem 0 0; }
+  .progress.bad { color: var(--bad); }
+  .foot { margin-top: 3rem; font-size: 0.85rem; color: var(--ink-soft); }
+  /* viewer */
+  .viewer { position: fixed; inset: 0; z-index: 20; background: var(--shade); display: grid; grid-template-rows: auto 1fr auto; color: #f4ead8;
+    padding: calc(env(safe-area-inset-top, 0px) + 0.5rem) max(12px, env(safe-area-inset-right, 0px)) calc(env(safe-area-inset-bottom, 0px) + 0.75rem) max(12px, env(safe-area-inset-left, 0px)); }
+  .viewer[hidden] { display: none; }
+  .v-top { display: flex; align-items: center; gap: 0.5rem; font-family: var(--mono); font-size: 0.74rem; }
+  .v-top .where { flex: 1; min-width: 0; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .v-btn { font: inherit; font-family: var(--mono); font-size: 0.8rem; color: #f4ead8; background: rgba(255,255,255,0.12); border: none; border-radius: 999px; min-width: 44px; min-height: 44px; padding: 0 0.9rem; cursor: pointer; }
+  .v-btn:hover, .v-btn:focus-visible { background: rgba(255,255,255,0.24); outline: none; }
+  .v-btn.danger { background: rgba(224,138,166,0.25); }
+  .v-stage { position: relative; display: grid; place-items: center; min-height: 0; }
+  .v-stage img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; }
+  .v-nav { position: absolute; top: 50%; transform: translateY(-50%); }
+  .v-prev { left: 0; } .v-next { right: 0; }
+  .v-bottom { display: grid; gap: 0.45rem; padding-top: 0.5rem; max-width: 46rem; width: 100%; margin: 0 auto; }
+  .v-cap { width: 100%; font: inherit; font-size: 0.95rem; color: #f4ead8; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 10px; padding: 0.55rem 0.7rem; }
+  .v-cap::placeholder { color: rgba(244,234,216,0.6); }
+  .v-cap[readonly] { border-color: transparent; background: transparent; padding-inline: 0; }
+  .v-meta { font-family: var(--mono); font-size: 0.72rem; color: rgba(244,234,216,0.75); display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; align-items: center; }
+  .v-meta .sp { flex: 1; }
+  .confirm { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; }
+  .confirm[hidden] { display: none; }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Private Alimaña Tour · 18–28 November 2026</p>
+  <h1>Alimaña Photo Diary</h1>
+  <p class="lede">Photos from every stop of the trip, day by day. Tap <b>Add photos</b> under a place to upload from your camera or library; tap a photo to see it large and add a caption. Back to the <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">tour plan ↗</a></p>
+  <p class="status" id="status" aria-live="polite">Loading photos…</p>
+  <nav class="days" id="days" aria-label="Jump to a day"></nav>
+  <div id="diary"></div>
+  <p class="foot">Photos are shrunk to about 2000 pixels before upload, so they load quickly on mobile data. Everyone who can open this page sees them; only people with edit access can add or delete photos.</p>
+</div>
+
+<div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="Photo">
+  <div class="v-top"><span class="where" id="vWhere"></span><button class="v-btn" id="vClose" type="button" aria-label="Close">✕ Close</button></div>
+  <div class="v-stage">
+    <img id="vImg" alt="">
+    <button class="v-btn v-nav v-prev" id="vPrev" type="button" aria-label="Previous photo">‹</button>
+    <button class="v-btn v-nav v-next" id="vNext" type="button" aria-label="Next photo">›</button>
+  </div>
+  <div class="v-bottom">
+    <label for="vCap" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Caption</label>
+    <input class="v-cap" id="vCap" type="text" maxlength="200" placeholder="Add a caption…" autocomplete="off">
+    <div class="v-meta"><span id="vBy"></span><span id="vWhen"></span><span class="sp"></span>
+      <a class="v-btn" id="vOpen" href="#" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;text-decoration:none;">Full size ↗</a>
+      <button class="v-btn danger" id="vDel" type="button" hidden>Delete</button>
+    </div>
+    <div class="confirm" id="vConfirm" hidden><span>Delete this photo for everyone?</span><button class="v-btn danger" id="vYes" type="button">Yes, delete</button><button class="v-btn" id="vNo" type="button">Keep it</button></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var MAIN = 'https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-';
+  var DAYS = [
+    { n: 1, date: '2026-11-18', label: 'Wed 18 Nov', title: 'Madrid → Cairo', stops: [
+      ['cairo', 'Arrival in Cairo', 'Heliopolis, first night', null]] },
+    { n: 2, date: '2026-11-19', label: 'Thu 19 Nov', title: 'Aswan · Abu Simbel', stops: [
+      ['aswan', 'Aswan', 'Arrival and the Nile Palace', 'elephantine'],
+      ['abusimbel', 'Abu Simbel', 'Ramesses II and Nefertari', 'abusimbel']] },
+    { n: 3, date: '2026-11-20', label: 'Fri 20 Nov', title: 'Philae · All aboard', stops: [
+      ['philae', 'Philae, Temple of Isis', 'By boat to Agilkia Island', 'philae'],
+      ['dahabeya', 'On board the dahabeya', 'Embarkation, life on the Nile', null]] },
+    { n: 4, date: '2026-11-21', label: 'Sat 21 Nov', title: 'Kom Ombo', stops: [
+      ['komombo', 'Kom Ombo Temple', 'Sobek and Horus the Elder', 'ptolemy6']] },
+    { n: 5, date: '2026-11-22', label: 'Sun 22 Nov', title: 'Edfu', stops: [
+      ['edfu', 'Temple of Horus, Edfu', 'The best-preserved temple', 'ptolemy3'],
+      ['hierakonpolis', 'Hierakonpolis (Nekhen)', 'Seen from the river', 'hierakonpolis']] },
+    { n: 6, date: '2026-11-23', label: 'Mon 23 Nov', title: 'Luxor, both banks', stops: [
+      ['valley', 'Valley of the Kings', 'Royal tombs', 'tutankhamun'],
+      ['hatshepsut', 'Temple of Hatshepsut', 'Deir el-Bahari', 'hatshepsut'],
+      ['colossi', 'Colossi of Memnon', 'Amenhotep III', 'amenhotep3'],
+      ['karnak', 'Karnak Temple', 'East bank', 'karnak']] },
+    { n: 7, date: '2026-11-24', label: 'Tue 24 Nov', title: 'Dendera & Abydos', stops: [
+      ['dendera', 'Temple of Hathor, Dendera', 'The zodiac ceiling', 'dendera'],
+      ['abydos', 'Temple of Seti I, Abydos', 'The King List', 'abydos']] },
+    { n: 8, date: '2026-11-25', label: 'Wed 25 Nov', title: 'Alexandria', stops: [
+      ['bibliotheca', 'Bibliotheca Alexandrina', '', null],
+      ['qaitbay', 'Citadel of Qaitbay', 'Where the Pharos stood', null],
+      ['shoqafa', 'Catacombs of Kom el-Shoqafa', '', null],
+      ['pompey', "Pompey's Pillar", '', null]] },
+    { n: 9, date: '2026-11-26', label: 'Thu 26 Nov', title: 'Saqqara & Giza', stops: [
+      ['saqqara', 'Saqqara', 'Step Pyramid of Djoser', 'djoser'],
+      ['giza', 'Pyramids of Giza and the Sphinx', '', 'giza'],
+      ['gem', 'Grand Egyptian Museum', 'Tutankhamun galleries', 'tutankhamun']] },
+    { n: 10, date: '2026-11-27', label: 'Fri 27 Nov', title: 'Islamic Cairo', stops: [
+      ['islamic', 'Islamic Cairo', 'Mosques and the Citadel', null],
+      ['khan', 'Khan el-Khalili', 'The bazaar', null]] },
+    { n: 11, date: '2026-11-28', label: 'Sat 28 Nov', title: 'Cairo → Madrid', stops: [
+      ['home', 'Last day and flight home', '', null]] }
+  ];
+  DAYS.forEach(function (d) { d.stops.push(['other', 'Other moments of the day', 'Anything else worth keeping', null]); });
+
+  var $ = function (id) { return document.getElementById(id); };
+  var statusEl = $('status'), diary = $('diary'), daysNav = $('days');
+  var photos = [];            // all docs, sorted
+  var byStop = {};            // key -> [photo]
+  var gridEls = {}, addEls = {}, progEls = {}, countEls = {};
+  var db = null, assets = null, user = null, myId = null, canWrite = false, canAdmin = false;
+  var names = {};
+
+  function setStatus(t, bad) { statusEl.textContent = t; statusEl.classList.toggle('bad', !!bad); }
+  function todayISO() { var d = new Date(); return d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0'); }
+  var today = todayISO();
+
+  // ---- static layout ----
+  DAYS.forEach(function (d) {
+    var accent = 'var(--d' + d.n + ')';
+    var chip = document.createElement('a');
+    chip.className = 'chip' + (d.date === today ? ' today' : '');
+    chip.href = '#day-' + d.n; chip.style.setProperty('--c', accent);
+    chip.textContent = 'Day ' + d.n;
+    var cnt = document.createElement('span'); cnt.className = 'n'; chip.appendChild(cnt); countEls[d.n] = cnt;
+    daysNav.appendChild(chip);
+
+    var sec = document.createElement('section');
+    sec.className = 'day'; sec.id = 'day-' + d.n; sec.style.setProperty('--c', accent);
+    var head = document.createElement('div'); head.className = 'day-head';
+    var num = document.createElement('span'); num.className = 'day-num'; num.textContent = 'Day ' + d.n + ' · ' + d.label;
+    var h2 = document.createElement('h2'); h2.textContent = d.title;
+    head.appendChild(num); head.appendChild(h2);
+    if (d.date === today) { var tt = document.createElement('span'); tt.className = 'today-tag'; tt.textContent = 'Today'; head.appendChild(tt); }
+    sec.appendChild(head);
+    var stops = document.createElement('div'); stops.className = 'stops';
+    d.stops.forEach(function (s) {
+      var key = d.n + '-' + s[0];
+      var box = document.createElement('div'); box.className = 'stop';
+      var sh = document.createElement('div'); sh.className = 'stop-head';
+      var h3 = document.createElement('h3'); h3.textContent = s[1]; sh.appendChild(h3);
+      if (s[2]) { var nt = document.createElement('span'); nt.className = 'note'; nt.textContent = s[2]; sh.appendChild(nt); }
+      if (s[3]) { var ab = document.createElement('a'); ab.className = 'about'; ab.href = MAIN + s[3]; ab.target = '_blank'; ab.rel = 'noopener noreferrer'; ab.textContent = 'About ↗'; sh.appendChild(ab); }
+      box.appendChild(sh);
+      var grid = document.createElement('div'); grid.className = 'grid'; box.appendChild(grid); gridEls[key] = grid;
+      var add = document.createElement('label'); add.className = 'add'; add.hidden = true;
+      add.innerHTML = '<span aria-hidden="true">＋</span><span>Add photos</span>';
+      var inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*'; inp.multiple = true; inp.id = 'up-' + key;
+      inp.addEventListener('change', function () { var fs = Array.prototype.slice.call(inp.files || []); inp.value = ''; if (fs.length) upload(d.n, key, fs); });
+      add.appendChild(inp); box.appendChild(add); addEls[key] = add;
+      var pr = document.createElement('p'); pr.className = 'progress'; pr.setAttribute('aria-live', 'polite'); box.appendChild(pr); progEls[key] = pr;
+      stops.appendChild(box);
+    });
+    sec.appendChild(stops); diary.appendChild(sec);
+  });
+  renderAll();
+  if (!location.hash) { var td = $('day-' + DAYS.filter(function (d) { return d.date === today; }).map(function (d) { return d.n; })[0]); if (td) setTimeout(function () { td.scrollIntoView(); }, 50); }
+
+  // ---- rendering ----
+  function src(id) { return '/_blob/' + id; }
+  function renderAll() {
+    byStop = {};
+    photos.forEach(function (p) { (byStop[p.stop] = byStop[p.stop] || []).push(p); });
+    Object.keys(gridEls).forEach(function (key) {
+      var grid = gridEls[key], list = byStop[key] || [];
+      grid.textContent = '';
+      if (!list.length) { var e = document.createElement('p'); e.className = 'empty'; e.textContent = 'No photos yet.'; grid.appendChild(e); grid.style.display = 'block'; return; }
+      grid.style.display = '';
+      list.forEach(function (p) {
+        var b = document.createElement('button'); b.type = 'button'; b.className = 'thumb';
+        b.setAttribute('aria-label', 'Open photo' + (p.caption ? ': ' + p.caption : ''));
+        var img = document.createElement('img'); img.loading = 'lazy'; img.alt = p.caption || ''; img.src = src(p.thumb || p.asset);
+        img.onerror = function () { img.style.visibility = 'hidden'; };
+        b.appendChild(img);
+        if (p.caption) { var c = document.createElement('span'); c.className = 'cap'; c.textContent = p.caption; b.appendChild(c); }
+        b.addEventListener('click', function () { openViewer(p.id); });
+        grid.appendChild(b);
+      });
+    });
+    DAYS.forEach(function (d) { var n = photos.filter(function (p) { return p.day === d.n; }).length; countEls[d.n].textContent = n ? '· ' + n : ''; });
+  }
+
+  // ---- image preparation ----
+  function decode(file) {
+    if (window.createImageBitmap) {
+      return createImageBitmap(file, { imageOrientation: 'from-image' }).catch(function () { return viaImg(file); });
+    }
+    return viaImg(file);
+  }
+  function viaImg(file) {
+    return new Promise(function (res, rej) {
+      var u = URL.createObjectURL(file), im = new Image();
+      im.onload = function () { res(im); setTimeout(function () { URL.revokeObjectURL(u); }, 1000); };
+      im.onerror = function () { URL.revokeObjectURL(u); rej({ code: 'decode' }); };
+      im.src = u;
+    });
+  }
+  function toJpeg(bmp, max, q) {
+    var w = bmp.width, h = bmp.height, s = Math.min(1, max / Math.max(w, h));
+    var c = document.createElement('canvas'); c.width = Math.round(w * s); c.height = Math.round(h * s);
+    c.getContext('2d').drawImage(bmp, 0, 0, c.width, c.height);
+    return new Promise(function (res, rej) { c.toBlob(function (b) { b ? res({ blob: b, w: c.width, h: c.height }) : rej({ code: 'decode' }); }, 'image/jpeg', q); });
+  }
+  var DIRECT = ['image/jpeg', 'image/png', 'image/webp', 'image/gif'];
+  function prepare(file) {
+    return decode(file).then(function (bmp) {
+      return Promise.all([toJpeg(bmp, 2000, 0.86), toJpeg(bmp, 480, 0.78)]).then(function (r) { if (bmp.close) bmp.close(); return { full: r[0], thumb: r[1] }; });
+    }, function () {
+      if (DIRECT.indexOf(file.type) !== -1 && file.size <= 20 * 1024 * 1024) return { full: { blob: file, w: 0, h: 0, type: file.type }, thumb: null };
+      throw { code: 'decode' };
+    });
+  }
+  function errText(e) {
+    var c = e && e.code;
+    if (c === 'decode') return 'This photo format can\'t be read here (often HEIC). On iPhone, set Settings › Camera › Formats to "Most Compatible", or share the photo as JPEG.';
+    if (c === 'too_large') return 'That photo is too large (over 20 MB).';
+    if (c === 'unsupported_type') return 'That file type can\'t be stored. Use JPEG, PNG or WebP photos.';
+    if (c === 'quota_or_state') return 'The diary\'s photo storage is full.';
+    if (c === 'rate_limited' || c === 'resource_exhausted') return 'Too many uploads at once. Wait a moment and try again.';
+    if (c === 'not_granted' || c === 'invalid_argument') return 'You don\'t have permission to add photos here.';
+    if (c === 'quota_exceeded') return 'The diary is full.';
+    return 'The upload failed. Check your connection and try again.';
+  }
+  function retryOnce(fn) { return fn().catch(function (e) { if (e && (e.code === 'store_unavailable' || e.code === 'unavailable')) return new Promise(function (r) { setTimeout(r, 1500); }).then(fn); throw e; }); }
+
+  var busy = false, queue = [];
+  function upload(day, key, files) {
+    queue.push({ day: day, key: key, files: files });
+    if (!busy) next();
+  }
+  function next() {
+    var job = queue.shift(); if (!job) { busy = false; return; }
+    busy = true;
+    var pr = progEls[job.key], done = 0, failed = 0, lastErr = null, total = job.files.length;
+    pr.classList.remove('bad');
+    var chain = Promise.resolve();
+    job.files.forEach(function (file, i) {
+      chain = chain.then(function () {
+        pr.textContent = 'Uploading ' + (i + 1) + ' of ' + total + '…';
+        return prepare(file).then(function (pp) {
+          var fullType = pp.full.type || 'image/jpeg';
+          return retryOnce(function () { return assets.upload(pp.full.blob, { type: fullType }); }).then(function (f) {
+            var t = pp.thumb ? retryOnce(function () { return assets.upload(pp.thumb.blob, { type: 'image/jpeg' }); }) : Promise.resolve(null);
+            return t.then(function (th) {
+              return retryOnce(function () {
+                return db.collection('photos').add({ stop: job.key, day: job.day, asset: f.id, thumb: th ? th.id : f.id, w: pp.full.w, h: pp.full.h,
+                  taken: file.lastModified || Date.now(), at: Date.now(), by: myId, caption: '' });
+              });
+            });
+          });
+        }).then(function () { done++; }, function (e) { failed++; lastErr = e; });
+      });
+    });
+    chain.then(function () {
+      if (failed) { pr.classList.add('bad'); pr.textContent = (done ? done + ' added, ' : '') + failed + ' failed. ' + errText(lastErr); }
+      else { pr.textContent = done === 1 ? 'Photo added.' : done + ' photos added.'; setTimeout(function () { if (pr.textContent.indexOf('added') !== -1 && !pr.classList.contains('bad')) pr.textContent = ''; }, 4000); }
+      next();
+    });
+  }
+
+  // ---- viewer ----
+  var viewer = $('viewer'), vImg = $('vImg'), vCap = $('vCap'), cur = null, lastFocus = null;
+  function stopName(key) {
+    var parts = key.split('-'), d = DAYS[+parts[0] - 1]; if (!d) return '';
+    var s = d.stops.filter(function (x) { return x[0] === parts.slice(1).join('-'); })[0];
+    return 'Day ' + d.n + ' · ' + (s ? s[1] : '');
+  }
+  function openViewer(id) {
+    lastFocus = document.activeElement;
+    showPhoto(id); viewer.hidden = false; $('vClose').focus();
+  }
+  function showPhoto(id) {
+    var p = photos.filter(function (x) { return x.id === id; })[0]; if (!p) { closeViewer(); return; }
+    cur = p; $('vConfirm').hidden = true;
+    vImg.src = src(p.asset); vImg.alt = p.caption || 'Photo from ' + stopName(p.stop);
+    $('vOpen').href = src(p.asset);
+    $('vWhere').textContent = stopName(p.stop);
+    vCap.value = p.caption || '';
+    vCap.readOnly = !canWrite; vCap.placeholder = canWrite ? 'Add a caption…' : '';
+    var when = new Date(p.taken || p.at);
+    $('vWhen').textContent = isNaN(when) ? '' : when.toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
+    $('vBy').textContent = p.by && names[p.by] ? 'by ' + names[p.by] : '';
+    $('vDel').hidden = !(assets && (p.by === myId || canAdmin));
+    var list = byStop[p.stop] || [], i = list.indexOf(p);
+    $('vPrev').hidden = i <= 0; $('vNext').hidden = i < 0 || i >= list.length - 1;
+  }
+  function step(dir) { if (!cur) return; var list = byStop[cur.stop] || [], i = list.indexOf(cur) + dir; if (list[i]) { saveCaption(); showPhoto(list[i].id); } }
+  function closeViewer() { saveCaption(); viewer.hidden = true; cur = null; if (lastFocus) lastFocus.focus(); }
+  var saving = Promise.resolve();
+  function saveCaption() {
+    if (!cur || !canWrite) return;
+    var v = vCap.value.trim().slice(0, 200), p = cur;
+    if (v === (p.caption || '')) return;
+    saving = saving.then(function () { return db.collection('photos').doc(p.id).update({ caption: v }); }).catch(function () { setStatus('A caption could not be saved. Try again.', true); });
+  }
+  $('vClose').addEventListener('click', closeViewer);
+  $('vPrev').addEventListener('click', function () { step(-1); });
+  $('vNext').addEventListener('click', function () { step(1); });
+  vCap.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); saveCaption(); vCap.blur(); } e.stopPropagation(); });
+  vCap.addEventListener('blur', saveCaption);
+  document.addEventListener('keydown', function (e) {
+    if (viewer.hidden) return;
+    if (e.key === 'Escape') closeViewer(); else if (e.key === 'ArrowLeft') step(-1); else if (e.key === 'ArrowRight') step(1);
+  });
+  var sx = null;
+  viewer.addEventListener('touchstart', function (e) { if (e.target === vCap) return; sx = e.touches[0].clientX; }, { passive: true });
+  viewer.addEventListener('touchend', function (e) { if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1); });
+  $('vDel').addEventListener('click', function () { $('vConfirm').hidden = false; $('vYes').focus(); });
+  $('vNo').addEventListener('click', function () { $('vConfirm').hidden = true; });
+  $('vYes').addEventListener('click', function () {
+    var p = cur; if (!p) return;
+    $('vConfirm').hidden = true;
+    db.collection('photos').doc(p.id).delete().then(function () {
+      closeViewer();
+      var ids = [p.asset]; if (p.thumb && p.thumb !== p.asset) ids.push(p.thumb);
+      ids.forEach(function (id) { assets.delete(id).catch(function () {}); });
+    }, function () { setStatus('The photo could not be deleted. Try again.', true); });
+  });
+
+  // ---- data ----
+  function resolveNames() {
+    if (!user) return;
+    var ids = photos.map(function (p) { return p.by; }).filter(function (x, i, a) { return x && a.indexOf(x) === i; });
+    if (!ids.length) return;
+    user.profiles(ids).then(function (ps) { ids.forEach(function (id) { var n = ps[id] && ps[id].name; if (n) names[id] = n; }); if (cur) showPhoto(cur.id); });
+  }
+  if (!window.claude || !window.claude.use) { setStatus('Open this page on claude.ai to see and add photos.', true); return; }
+  Promise.all([claude.use('db'), claude.use('assets'), claude.use('user')]).then(function (r) {
+    db = r[0]; assets = r[1]; user = r[2];
+    if (!db) { setStatus('Photos can\'t be loaded here. Open the page on claude.ai, signed in.', true); return; }
+    var who = user ? Promise.all([user.id(), user.can('data.write'), user.canEdit()]) : Promise.resolve([null, null, false]);
+    who.then(function (w) {
+      myId = w[0]; canWrite = w[1] !== false; canAdmin = !!w[2];
+      if (assets && canWrite) Object.keys(addEls).forEach(function (k) { addEls[k].hidden = false; });
+      var loaded = false;
+      var timer = setTimeout(function () { if (!loaded) setStatus('The photo store can\'t be reached yet. Photos will appear when the connection is back.', true); }, 10000);
+      db.collection('photos').orderBy('taken').onSnapshot(function (snap) {
+        photos = snap.docs.map(function (d) { var x = Object.assign({}, d.data()); x.id = d.id; return x; })
+          .filter(function (p) { return typeof p.stop === 'string' && typeof p.asset === 'string' && /^[A-Za-z0-9_-]{8,64}$/.test(p.asset) && (!p.thumb || /^[A-Za-z0-9_-]{8,64}$/.test(p.thumb)); });
+        if (!snap.metadata.fromCache) { loaded = true; clearTimeout(timer); }
+        var n = photos.length;
+        setStatus(loaded || n ? (n ? n + (n === 1 ? ' photo' : ' photos') + ' so far.' : 'No photos yet. Add the first one!') + (assets && canWrite ? '' : ' Only people with edit access can add photos.') : 'Loading photos…');
+        renderAll(); resolveNames();
+        if (cur) showPhoto(cur.id);
+      }, function () { clearTimeout(timer); setStatus('Photos stopped updating. Reload the page to try again.', true); });
+    });
+  });
+})();
+</script>
