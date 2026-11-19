@@ -45,6 +45,8 @@ The live version is the claude.ai artifact **"Ancient Egypt History Main Points"
 - When the live page and the local file differ only in the first wrapper line, there is nothing to merge. Back-up names use the date plus a letter for repeats on the same day (`…2026-10-18.html`, `…2026-10-18b.html`).
 - The cloud session also commits to GitHub, so `git fetch` before pushing. If `origin/main` has moved, rebase onto it. Drop a local "pull from live" commit when GitHub already has the same page, and keep both sides when CLAUDE.md conflicts.
 
+**Shared copy for friends.** Friends who open the main artifact's link see a pinned earlier version (before the tabs), and the owner could not find how to update it. So the current page is also published as a separate copy, https://claude.ai/artifact/MRtoicco5UtFk4gCLzrzve, which the owner shared by link on 19 Nov 2026 and which works for friends. After publishing a change to the main page, republish the same HTML to that copy too (Artifact `publish` with that `url` and a copy of `artifacts/ancient-egypt-history-main-points.html`), and remind the owner that the shared link may need re-sharing if friends see an old version.
+
 The saved files begin with a publish-time wrapper (`<!doctype html><html><head>…<body>`) followed by the authored `<title>`/`<style>`. Edit the authored content, not the wrapper.
 
 ## Architecture of the main page
