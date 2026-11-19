@@ -60,6 +60,9 @@
   .thumb { position: relative; padding: 0; border: none; background: var(--line); border-radius: 8px; overflow: hidden; aspect-ratio: 1; cursor: zoom-in; max-width: 100%; }
   .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .thumb .cap { position: absolute; inset: auto 0 0 0; font-size: 0.68rem; line-height: 1.25; color: #fff; background: linear-gradient(transparent, rgba(0,0,0,0.65)); padding: 0.9rem 0.35rem 0.25rem; text-align: left; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
+  .thumb .play { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 2.4rem; height: 2.4rem; border-radius: 50%; background: rgba(0,0,0,0.55); color: #fff; display: grid; place-items: center; font-size: 0.95rem; padding-left: 0.15rem; }
+  .thumb .dur { position: absolute; top: 0.3rem; right: 0.35rem; font-family: var(--mono); font-size: 0.64rem; color: #fff; background: rgba(0,0,0,0.55); border-radius: 4px; padding: 0 0.3rem; }
+  .thumb.noposter { background: color-mix(in srgb, var(--c) 30%, var(--panel)); }
   .thumb:focus-visible, .add:focus-within { outline: 2px solid var(--c); outline-offset: 2px; }
   .empty { font-size: 0.84rem; color: var(--ink-soft); margin: 0; }
   .add { display: inline-flex; align-items: center; gap: 0.45rem; margin-top: 0.7rem; font-family: var(--mono); font-size: 0.8rem; color: var(--c); border: 1.5px dashed var(--c); border-radius: 999px; padding: 0.5rem 0.95rem; cursor: pointer; min-height: 44px; }
@@ -81,7 +84,9 @@
   .v-btn:hover, .v-btn:focus-visible { background: rgba(255,255,255,0.24); outline: none; }
   .v-btn.danger { background: rgba(224,138,166,0.25); }
   .v-stage { position: relative; display: grid; place-items: center; min-height: 0; }
-  .v-stage img { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; }
+  .v-stage img, .v-stage video { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; }
+  .v-stage video { width: 100%; background: #000; }
+  .v-stage [hidden] { display: none; }
   .v-nav { position: absolute; top: 50%; transform: translateY(-50%); }
   .v-prev { left: 0; } .v-next { right: 0; }
   .v-bottom { display: grid; gap: 0.45rem; padding-top: 0.5rem; max-width: 46rem; width: 100%; margin: 0 auto; }
@@ -98,18 +103,19 @@
 <div class="page">
   <p class="eyebrow">Private Alimaña Tour · 18–28 November 2026</p>
   <h1>Alimaña Photo Diary</h1>
-  <p class="lede">Photos from every stop of the trip, day by day. Tap <b>Add photos</b> under a place to upload from your camera or library; tap a photo to see it large and add a caption. Back to the <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">tour plan ↗</a></p>
-  <p class="hint">If tapping <b>Add photos</b> does nothing, open this page in Safari or Chrome instead of the Claude app: some apps don't let pages open the camera or photo library.</p>
+  <p class="lede">Photos and videos from every stop of the trip, day by day. Tap <b>Add photos or videos</b> under a place to upload from your camera or library; tap one to see it large and add a caption. Back to the <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">tour plan ↗</a></p>
+  <p class="hint">If tapping <b>Add photos or videos</b> does nothing, open this page in Safari or Chrome instead of the Claude app: some apps don't let pages open the camera or photo library.</p>
   <p class="status" id="status" aria-live="polite">Loading photos…</p>
   <nav class="days" id="days" aria-label="Jump to a day"></nav>
   <div id="diary"></div>
-  <p class="foot">Photos are shrunk to about 2000 pixels before upload, so they load quickly on mobile data. Everyone who can open this page sees them; only people with edit access can add or delete photos.</p>
+  <p class="foot">Photos are shrunk to about 2000 pixels before upload, so they load quickly on mobile data. Videos up to 20 MB upload as they are; longer ones (up to 5 minutes) are first shrunk to 720p on your phone, which takes as long as the video lasts, so keep the page open meanwhile. Everyone who can open this page sees them; only people with edit access can add or delete photos.</p>
 </div>
 
 <div class="viewer" id="viewer" hidden role="dialog" aria-modal="true" aria-label="Photo">
   <div class="v-top"><span class="where" id="vWhere"></span><button class="v-btn" id="vClose" type="button" aria-label="Close">✕ Close</button></div>
   <div class="v-stage">
     <img id="vImg" alt="">
+    <video id="vVid" controls playsinline preload="metadata" hidden></video>
     <button class="v-btn v-nav v-prev" id="vPrev" type="button" aria-label="Previous photo">‹</button>
     <button class="v-btn v-nav v-next" id="vNext" type="button" aria-label="Next photo">›</button>
   </div>
@@ -117,10 +123,10 @@
     <label for="vCap" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Caption</label>
     <input class="v-cap" id="vCap" type="text" maxlength="200" placeholder="Add a caption…" autocomplete="off">
     <div class="v-meta"><span id="vBy"></span><span id="vWhen"></span><span class="sp"></span>
-      <a class="v-btn" id="vOpen" href="#" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;text-decoration:none;">Full size ↗</a>
+      <a class="v-btn" id="vOpen" href="#" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;text-decoration:none;">Open file ↗</a>
       <button class="v-btn danger" id="vDel" type="button" hidden>Delete</button>
     </div>
-    <div class="confirm" id="vConfirm" hidden><span>Delete this photo for everyone?</span><button class="v-btn danger" id="vYes" type="button">Yes, delete</button><button class="v-btn" id="vNo" type="button">Keep it</button></div>
+    <div class="confirm" id="vConfirm" hidden><span>Delete this for everyone?</span><button class="v-btn danger" id="vYes" type="button">Yes, delete</button><button class="v-btn" id="vNo" type="button">Keep it</button></div>
   </div>
 </div>
 
@@ -207,8 +213,8 @@
       box.appendChild(sh);
       var grid = document.createElement('div'); grid.className = 'grid'; box.appendChild(grid); gridEls[key] = grid;
       var add = document.createElement('label'); add.className = 'add'; add.hidden = true;
-      add.innerHTML = '<span aria-hidden="true">＋</span><span>Add photos</span>';
-      var inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*'; inp.multiple = true; inp.id = 'up-' + key;
+      add.innerHTML = '<span aria-hidden="true">＋</span><span>Add photos or videos</span>';
+      var inp = document.createElement('input'); inp.type = 'file'; inp.accept = 'image/*,video/*'; inp.multiple = true; inp.id = 'up-' + key;
       inp.addEventListener('change', function () { var fs = Array.prototype.slice.call(inp.files || []); inp.value = ''; if (fs.length) upload(d.n, key, fs); });
       add.appendChild(inp); box.appendChild(add); addEls[key] = add;
       var pr = document.createElement('p'); pr.className = 'progress'; pr.setAttribute('aria-live', 'polite'); box.appendChild(pr); progEls[key] = pr;
@@ -227,14 +233,22 @@
     Object.keys(gridEls).forEach(function (key) {
       var grid = gridEls[key], list = byStop[key] || [];
       grid.textContent = '';
-      if (!list.length) { var e = document.createElement('p'); e.className = 'empty'; e.textContent = 'No photos yet.'; grid.appendChild(e); grid.style.display = 'block'; return; }
+      if (!list.length) { var e = document.createElement('p'); e.className = 'empty'; e.textContent = 'Nothing yet.'; grid.appendChild(e); grid.style.display = 'block'; return; }
       grid.style.display = '';
       list.forEach(function (p) {
         var b = document.createElement('button'); b.type = 'button'; b.className = 'thumb';
-        b.setAttribute('aria-label', 'Open photo' + (p.caption ? ': ' + p.caption : ''));
-        var img = document.createElement('img'); img.loading = 'lazy'; img.alt = p.caption || ''; img.src = src(p.thumb || p.asset);
-        img.onerror = function () { img.style.visibility = 'hidden'; };
-        b.appendChild(img);
+        var isVid = p.kind === 'video';
+        b.setAttribute('aria-label', 'Open ' + (isVid ? 'video' : 'photo') + (p.caption ? ': ' + p.caption : ''));
+        var thumbId = p.thumb || (isVid ? null : p.asset);
+        if (thumbId) {
+          var img = document.createElement('img'); img.loading = 'lazy'; img.alt = p.caption || ''; img.src = src(thumbId);
+          img.onerror = function () { img.style.visibility = 'hidden'; };
+          b.appendChild(img);
+        } else { b.classList.add('noposter'); }
+        if (isVid) {
+          var pl = document.createElement('span'); pl.className = 'play'; pl.setAttribute('aria-hidden', 'true'); pl.textContent = '▶'; b.appendChild(pl);
+          if (p.dur) { var du = document.createElement('span'); du.className = 'dur'; du.textContent = fmtDur(p.dur); b.appendChild(du); }
+        }
         if (p.caption) { var c = document.createElement('span'); c.className = 'cap'; c.textContent = p.caption; b.appendChild(c); }
         b.addEventListener('click', function () { openViewer(p.id); });
         grid.appendChild(b);
@@ -273,12 +287,114 @@
       throw { code: 'decode' };
     });
   }
+  function fmtDur(sec) { sec = Math.round(sec); return Math.floor(sec / 60) + ':' + String(sec % 60).padStart(2, '0'); }
+  var VMAX = 20 * 1024 * 1024 - 256 * 1024, VLONG = 300;
+  function isVideo(file) { return /^video\//.test(file.type) || /\.(mov|mp4|m4v|webm)$/i.test(file.name || ''); }
+  function directType(file) {
+    var t = file.type, n = (file.name || '').toLowerCase();
+    if (t === 'video/webm' || /\.webm$/.test(n)) return 'video/webm';
+    if (t === 'video/mp4' || t === 'video/quicktime' || t === 'video/x-m4v' || /\.(mov|mp4|m4v)$/.test(n)) return 'video/mp4';
+    return null;
+  }
+  function loadVideo(file) {
+    return new Promise(function (res, rej) {
+      var v = document.createElement('video'), u = URL.createObjectURL(file), ok = false;
+      v.preload = 'auto'; v.muted = true; v.playsInline = true; v.setAttribute('playsinline', '');
+      v.onloadeddata = function () { if (!ok) { ok = true; res({ v: v, u: u }); } };
+      v.onerror = function () { if (!ok) { ok = true; rej({ code: 'vdecode', u: u }); } };
+      setTimeout(function () { if (!ok) { ok = true; if (v.videoWidth) res({ v: v, u: u }); else rej({ code: 'vdecode', u: u }); } }, 12000);
+      v.src = u; v.load();
+    });
+  }
+  function grabFrame(v) {
+    return new Promise(function (res) {
+      var done = false;
+      function grab() {
+        if (done) return; done = true;
+        try {
+          var sc = Math.min(1, 480 / Math.max(v.videoWidth, v.videoHeight));
+          var c = document.createElement('canvas'); c.width = Math.max(1, Math.round(v.videoWidth * sc)); c.height = Math.max(1, Math.round(v.videoHeight * sc));
+          c.getContext('2d').drawImage(v, 0, 0, c.width, c.height);
+          c.toBlob(function (b) { res(b); }, 'image/jpeg', 0.78);
+        } catch (e) { res(null); }
+      }
+      v.onseeked = grab;
+      try { v.currentTime = Math.min(0.5, (v.duration || 1) / 2); } catch (e) { grab(); }
+      setTimeout(grab, 4000);
+    });
+  }
+  function pickMime() {
+    var c = ['video/mp4;codecs=avc1.42E01E,mp4a.40.2', 'video/mp4', 'video/webm;codecs=vp9,opus', 'video/webm;codecs=vp8,opus', 'video/webm'];
+    for (var i = 0; i < c.length; i++) if (window.MediaRecorder && MediaRecorder.isTypeSupported && MediaRecorder.isTypeSupported(c[i])) return c[i];
+    return '';
+  }
+  function compressVideo(v, onProgress) {
+    return new Promise(function (res, rej) {
+      var mime = pickMime();
+      if (!mime || !HTMLCanvasElement.prototype.captureStream) { rej({ code: 'vbig' }); return; }
+      var dur = v.duration, sc = Math.min(1, 1280 / Math.max(v.videoWidth, v.videoHeight));
+      var cw = Math.round(v.videoWidth * sc / 2) * 2, ch = Math.round(v.videoHeight * sc / 2) * 2;
+      var c = document.createElement('canvas'); c.width = cw; c.height = ch; var ctx = c.getContext('2d');
+      var stream = c.captureStream(30), ac = null, silent = false;
+      try {
+        var AC = window.AudioContext || window.webkitAudioContext;
+        ac = new AC(); var srcNode = ac.createMediaElementSource(v), dest = ac.createMediaStreamDestination();
+        srcNode.connect(dest); dest.stream.getAudioTracks().forEach(function (t) { stream.addTrack(t); });
+        v.muted = false; if (ac.resume) ac.resume();
+      } catch (e) { v.muted = true; silent = true; }
+      var vbits = Math.max(500000, Math.min(2500000, Math.floor(VMAX * 8 * 0.9 / dur) - 96000));
+      var rec, chunks = [], raf = 0;
+      try { rec = new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: vbits, audioBitsPerSecond: 96000 }); }
+      catch (e) { rej({ code: 'vbig' }); return; }
+      rec.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
+      rec.onstop = function () {
+        cancelAnimationFrame(raf); if (ac && ac.close) ac.close();
+        var blob = new Blob(chunks, { type: mime.split(';')[0] });
+        if (!blob.size) { rej({ code: 'vbig' }); return; }
+        if (blob.size > 20 * 1024 * 1024) { rej({ code: 'too_large' }); return; }
+        res({ blob: blob, type: mime.split(';')[0], w: cw, h: ch, silent: silent });
+      };
+      function tick() {
+        if (!v.paused && !v.ended) { ctx.drawImage(v, 0, 0, cw, ch); onProgress(Math.min(1, v.currentTime / dur)); }
+        raf = requestAnimationFrame(tick);
+      }
+      v.onended = function () { if (rec.state !== 'inactive') rec.stop(); };
+      v.currentTime = 0;
+      function start() { ctx.drawImage(v, 0, 0, cw, ch); rec.start(1000); tick(); }
+      v.play().then(start, function () {
+        v.muted = true; silent = true;
+        v.play().then(start, function () { rej({ code: 'vbig' }); });
+      });
+    });
+  }
+  function prepareVideo(file, onProgress) {
+    return loadVideo(file).then(function (L) {
+      var v = L.v, dur = v.duration || 0, w = v.videoWidth, h = v.videoHeight;
+      var dt = directType(file);
+      return grabFrame(v).then(function (poster) {
+        if (dt && file.size <= VMAX) return { kind: 'video', main: { blob: file, type: dt, w: w, h: h, dur: dur }, poster: poster };
+        if (!w || !dur || !isFinite(dur)) throw { code: 'vbig' };
+        if (dur > VLONG) throw { code: 'vlong' };
+        return compressVideo(v, onProgress).then(function (r) {
+          return { kind: 'video', main: { blob: r.blob, type: r.type, w: r.w, h: r.h, dur: dur }, poster: poster, silent: r.silent };
+        });
+      }).then(function (r) { URL.revokeObjectURL(L.u); return r; }, function (e) { URL.revokeObjectURL(L.u); throw e; });
+    }, function (e) {
+      if (e && e.u) URL.revokeObjectURL(e.u);
+      var dt = directType(file);
+      if (dt && file.size <= VMAX) return { kind: 'video', main: { blob: file, type: dt, w: 0, h: 0, dur: 0 }, poster: null };
+      throw { code: file.size > VMAX ? 'vbig' : 'vdecode' };
+    });
+  }
   function errText(e) {
     var c = e && e.code;
     if (c === 'decode') return 'This photo format can\'t be read here (often HEIC). On iPhone, set Settings › Camera › Formats to "Most Compatible", or share the photo as JPEG.';
-    if (c === 'too_large') return 'That photo is too large (over 20 MB).';
-    if (c === 'unsupported_type') return 'That file type can\'t be stored. Use JPEG, PNG or WebP photos.';
-    if (c === 'quota_or_state') return 'The diary\'s photo storage is full.';
+    if (c === 'too_large') return 'That file is too large (over 20 MB).';
+    if (c === 'vlong') return 'That video is longer than 5 minutes. Trim it on your phone first, then add it.';
+    if (c === 'vbig') return 'That video is over 20 MB and this browser can\'t shrink it. Trim it to about a minute, or try in Chrome or Safari.';
+    if (c === 'vdecode') return 'That video can\'t be read here. Try trimming it or sharing it as MP4.';
+    if (c === 'unsupported_type') return 'That file type can\'t be stored. Use JPEG, PNG or WebP photos, or MP4 or WebM videos.';
+    if (c === 'quota_or_state') return 'The diary\'s storage is full.';
     if (c === 'rate_limited' || c === 'resource_exhausted') return 'Too many uploads at once. Wait a moment and try again.';
     if (c === 'not_granted' || c === 'invalid_argument') return 'You don\'t have permission to add photos here.';
     if (c === 'quota_exceeded') return 'The diary is full.';
@@ -299,16 +415,23 @@
     var chain = Promise.resolve();
     job.files.forEach(function (file, i) {
       chain = chain.then(function () {
-        pr.textContent = 'Uploading ' + (i + 1) + ' of ' + total + '…';
-        return prepare(file).then(function (pp) {
+        var label = (i + 1) + ' of ' + total;
+        pr.textContent = 'Uploading ' + label + '…';
+        var vid = isVideo(file);
+        var prep = vid
+          ? prepareVideo(file, function (f) { pr.textContent = 'Shrinking video ' + label + '… ' + Math.round(f * 100) + '% (keep this page open)'; })
+              .then(function (r) { return { kind: 'video', full: r.main, thumb: r.poster ? { blob: r.poster } : null, dur: r.main.dur, silent: r.silent }; })
+          : prepare(file).then(function (r) { return { kind: 'image', full: r.full, thumb: r.thumb }; });
+        return prep.then(function (pp) {
+          pr.textContent = 'Uploading ' + label + '…';
           var fullType = pp.full.type || 'image/jpeg';
           return retryOnce(function () { return assets.upload(pp.full.blob, { type: fullType }); }).then(function (f) {
-            var t = pp.thumb ? retryOnce(function () { return assets.upload(pp.thumb.blob, { type: 'image/jpeg' }); }) : Promise.resolve(null);
+            var t = pp.thumb ? retryOnce(function () { return assets.upload(pp.thumb.blob, { type: 'image/jpeg' }); }).catch(function () { return null; }) : Promise.resolve(null);
             return t.then(function (th) {
-              return retryOnce(function () {
-                return db.collection('photos').add({ stop: job.key, day: job.day, asset: f.id, thumb: th ? th.id : f.id, w: pp.full.w, h: pp.full.h,
-                  taken: file.lastModified || Date.now(), at: Date.now(), by: myId, caption: '' });
-              });
+              var rec = { stop: job.key, day: job.day, kind: pp.kind, asset: f.id, thumb: th ? th.id : (pp.kind === 'video' ? null : f.id),
+                w: pp.full.w || 0, h: pp.full.h || 0, taken: file.lastModified || Date.now(), at: Date.now(), by: myId, caption: '' };
+              if (pp.kind === 'video') rec.dur = Math.round((pp.dur || 0) * 10) / 10;
+              return retryOnce(function () { return db.collection('photos').add(rec); });
             });
           });
         }).then(function () { done++; }, function (e) { failed++; lastErr = e; });
@@ -316,13 +439,13 @@
     });
     chain.then(function () {
       if (failed) { pr.classList.add('bad'); pr.textContent = (done ? done + ' added, ' : '') + failed + ' failed. ' + errText(lastErr); }
-      else { pr.textContent = done === 1 ? 'Photo added.' : done + ' photos added.'; setTimeout(function () { if (pr.textContent.indexOf('added') !== -1 && !pr.classList.contains('bad')) pr.textContent = ''; }, 4000); }
+      else { pr.textContent = done === 1 ? 'Added.' : done + ' added.'; setTimeout(function () { if (pr.textContent.indexOf('added') !== -1 && !pr.classList.contains('bad')) pr.textContent = ''; }, 4000); }
       next();
     });
   }
 
   // ---- viewer ----
-  var viewer = $('viewer'), vImg = $('vImg'), vCap = $('vCap'), cur = null, lastFocus = null;
+  var viewer = $('viewer'), vImg = $('vImg'), vVid = $('vVid'), vCap = $('vCap'), cur = null, lastFocus = null;
   function stopName(key) {
     var parts = key.split('-'), d = DAYS[+parts[0] - 1]; if (!d) return '';
     var s = d.stops.filter(function (x) { return x[0] === parts.slice(1).join('-'); })[0];
@@ -335,7 +458,16 @@
   function showPhoto(id) {
     var p = photos.filter(function (x) { return x.id === id; })[0]; if (!p) { closeViewer(); return; }
     cur = p; $('vConfirm').hidden = true;
-    vImg.src = src(p.asset); vImg.alt = p.caption || 'Photo from ' + stopName(p.stop);
+    var isVid = p.kind === 'video';
+    vVid.pause();
+    if (isVid) {
+      vImg.hidden = true; vImg.removeAttribute('src');
+      vVid.hidden = false; vVid.src = src(p.asset); if (p.thumb) vVid.poster = src(p.thumb); else vVid.removeAttribute('poster');
+      vVid.setAttribute('aria-label', p.caption || 'Video from ' + stopName(p.stop));
+    } else {
+      vVid.hidden = true; vVid.removeAttribute('src'); vVid.load();
+      vImg.hidden = false; vImg.src = src(p.asset); vImg.alt = p.caption || 'Photo from ' + stopName(p.stop);
+    }
     $('vOpen').href = src(p.asset);
     $('vWhere').textContent = stopName(p.stop);
     vCap.value = p.caption || '';
@@ -348,7 +480,7 @@
     $('vPrev').hidden = i <= 0; $('vNext').hidden = i < 0 || i >= list.length - 1;
   }
   function step(dir) { if (!cur) return; var list = byStop[cur.stop] || [], i = list.indexOf(cur) + dir; if (list[i]) { saveCaption(); showPhoto(list[i].id); } }
-  function closeViewer() { saveCaption(); viewer.hidden = true; cur = null; if (lastFocus) lastFocus.focus(); }
+  function closeViewer() { saveCaption(); vVid.pause(); viewer.hidden = true; cur = null; if (lastFocus) lastFocus.focus(); }
   var saving = Promise.resolve();
   function saveCaption() {
     if (!cur || !canWrite) return;
@@ -362,11 +494,11 @@
   vCap.addEventListener('keydown', function (e) { if (e.key === 'Enter') { e.preventDefault(); saveCaption(); vCap.blur(); } e.stopPropagation(); });
   vCap.addEventListener('blur', saveCaption);
   document.addEventListener('keydown', function (e) {
-    if (viewer.hidden) return;
+    if (viewer.hidden || e.target === vVid) return;
     if (e.key === 'Escape') closeViewer(); else if (e.key === 'ArrowLeft') step(-1); else if (e.key === 'ArrowRight') step(1);
   });
   var sx = null;
-  viewer.addEventListener('touchstart', function (e) { if (e.target === vCap) return; sx = e.touches[0].clientX; }, { passive: true });
+  viewer.addEventListener('touchstart', function (e) { if (e.target === vCap || e.target === vVid) { sx = null; return; } sx = e.touches[0].clientX; }, { passive: true });
   viewer.addEventListener('touchend', function (e) { if (sx === null) return; var dx = e.changedTouches[0].clientX - sx; sx = null; if (Math.abs(dx) > 50) step(dx < 0 ? 1 : -1); });
   $('vDel').addEventListener('click', function () { $('vConfirm').hidden = false; $('vYes').focus(); });
   $('vNo').addEventListener('click', function () { $('vConfirm').hidden = true; });
@@ -377,7 +509,7 @@
       closeViewer();
       var ids = [p.asset]; if (p.thumb && p.thumb !== p.asset) ids.push(p.thumb);
       ids.forEach(function (id) { assets.delete(id).catch(function () {}); });
-    }, function () { setStatus('The photo could not be deleted. Try again.', true); });
+    }, function () { setStatus('It could not be deleted. Try again.', true); });
   });
 
   // ---- data ----
@@ -402,7 +534,7 @@
           .filter(function (p) { return typeof p.stop === 'string' && typeof p.asset === 'string' && /^[A-Za-z0-9_-]{8,64}$/.test(p.asset) && (!p.thumb || /^[A-Za-z0-9_-]{8,64}$/.test(p.thumb)); });
         if (!snap.metadata.fromCache) { loaded = true; clearTimeout(timer); }
         var n = photos.length;
-        setStatus(loaded || n ? (n ? n + (n === 1 ? ' photo' : ' photos') + ' so far.' : 'No photos yet. Add the first one!') + (assets && canWrite ? '' : ' Only people with edit access can add photos.') : 'Loading photos…');
+        setStatus(loaded || n ? (n ? n + (n === 1 ? ' photo or video' : ' photos and videos') + ' so far.' : 'Nothing yet. Add the first photo or video!') + (assets && canWrite ? '' : ' Only people with edit access can add photos and videos.') : 'Loading photos…');
         renderAll(); resolveNames();
         if (cur) showPhoto(cur.id);
       }, function () { clearTimeout(timer); setStatus('Photos stopped updating. Reload the page to try again.', true); });
