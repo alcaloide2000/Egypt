@@ -223,7 +223,13 @@
     sec.appendChild(stops); diary.appendChild(sec);
   });
   renderAll();
-  if (!location.hash) { var td = $('day-' + DAYS.filter(function (d) { return d.date === today; }).map(function (d) { return d.n; })[0]); if (td) setTimeout(function () { td.scrollIntoView(); }, 50); }
+  function goToDay() {
+    var m = /^#day-(\d{1,2})$/.exec(location.hash), el = m ? $('day-' + m[1]) : null;
+    if (!el && !location.hash) el = $('day-' + DAYS.filter(function (d) { return d.date === today; }).map(function (d) { return d.n; })[0]);
+    if (el) setTimeout(function () { el.scrollIntoView(); }, 50);
+  }
+  goToDay();
+  window.addEventListener('hashchange', goToDay);
 
   // ---- rendering ----
   function src(id) { return '/_blob/' + id; }

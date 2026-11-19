@@ -1170,6 +1170,12 @@
   .stop-list a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sand-line); }
   .stop-list a:hover, .stop-list a:focus-visible { border-bottom-color: currentColor; }
   .stop-note { display: block; color: var(--ink-soft); font-size: 0.84rem; }
+  .diary-open { display: inline-flex; align-items: center; gap: 0.4rem; margin-top: 1.1rem; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.9rem; color: var(--bg-panel); background: var(--ochre); border-radius: 999px; padding: 0.7rem 1.3rem; text-decoration: none; }
+  .diary-open:hover, .diary-open:focus-visible { background: var(--ochre-dim); outline: none; }
+  .diary-note { margin: 0.8rem 0 0; font-size: 0.85rem; color: var(--ink-soft); }
+  .diary-today { display: none; margin-left: 0.5rem; padding: 0.05rem 0.5rem; border-radius: 999px; background: var(--accent, var(--ochre)); color: var(--bg-panel); letter-spacing: 0.04em; }
+  .diary-day.is-today { box-shadow: 0 0 0 2px var(--accent, var(--ochre)), 0 1px 2px var(--shadow); }
+  .diary-day.is-today .diary-today { display: inline-block; }
   .day-meta {
     margin: 1rem 0 0;
     padding-top: 0.75rem;
@@ -1314,6 +1320,7 @@
   <nav class="tabs" role="tablist" aria-label="Page sections">
     <button type="button" class="tab" role="tab" id="tab-main" aria-controls="panel-main" aria-selected="true">Main points</button>
     <button type="button" class="tab" role="tab" id="tab-tour" aria-controls="panel-tour" aria-selected="false" tabindex="-1">Private Alimaña Tour</button>
+    <button type="button" class="tab" role="tab" id="tab-diary" aria-controls="panel-diary" aria-selected="false" tabindex="-1">Photo diary</button>
     <button type="button" class="tab" role="tab" id="tab-cairo" aria-controls="panel-cairo" aria-selected="false" tabindex="-1">Visitas en El Cairo</button>
     <button type="button" class="tab" role="tab" id="tab-uned" aria-controls="panel-uned" aria-selected="false" tabindex="-1">Curso UNED</button>
   </nav>
@@ -9931,6 +9938,84 @@
     </div>
   </div>
 
+  <div class="tab-panel" id="panel-diary" role="tabpanel" aria-labelledby="tab-diary" hidden>
+    <header class="masthead">
+      <p class="eyebrow">Private Alimaña Tour · 18&ndash;28 November 2026</p>
+      <h1>Alimaña Photo Diary</h1>
+      <p class="lede">Our photos and videos from every stop, day by day. They live in the diary's own page, where you can add them from your phone, watch them full screen and write captions. Open the diary, or jump straight to a day below.</p>
+      <a class="diary-open" href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi" target="_blank" rel="noopener noreferrer">Open the photo diary ↗</a>
+      <p class="diary-note">The diary is private: ask the owner for access to see it, and for edit access to add photos and videos.</p>
+    </header>
+    <div class="day-grid">
+      <article class="day-card diary-day" data-date="2026-11-18" style="--accent: var(--ochre);">
+        <p class="day-num">Day 1 · Wed 18 Nov<span class="diary-today">Today</span></p>
+        <h3>Madrid → Cairo</h3>
+        <ul class="stop-list"><li>Arrival in Cairo, Heliopolis</li></ul>
+        <a class="wiki-link" style="color: var(--accent);" href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-1" target="_blank" rel="noopener noreferrer">Photos and videos of Day 1 ↗</a>
+      </article>
+      <article class="day-card diary-day" data-date="2026-11-19" style="--accent: var(--malachite);">
+        <p class="day-num">Day 2 · Thu 19 Nov<span class="diary-today">Today</span></p>
+        <h3>Aswan · Abu Simbel</h3>
+        <ul class="stop-list"><li>Aswan</li><li>Abu Simbel</li></ul>
+        <a class="wiki-link" style="color: var(--accent);" href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-2" target="_blank" rel="noopener noreferrer">Photos and videos of Day 2 ↗</a>
+      </article>
+      <article class="day-card diary-day" data-date="2026-11-20" style="--accent: var(--lapis);">
+        <p class="day-num">Day 3 · Fri 20 Nov<span class="diary-today">Today</span></p>
+        <h3>Philae · All aboard</h3>
+        <ul class="stop-list"><li>Philae, Temple of Isis</li><li>On board the dahabeya</li></ul>
+        <a class="wiki-link" style="color: var(--accent);" href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-3" target="_blank" rel="noopener noreferrer">Photos and videos of Day 3 ↗</a>
+      </article>
+      <article class="day-card diary-day" data-date="2026-11-21" style="--accent: var(--turquoise);">
+        <p class="day-num">Day 4 · Sat 21 Nov<span class="diary-today">Today</span></p>
+        <h3>Kom Ombo</h3>
+        <ul class="stop-list"><li>Kom Ombo Temple</li></ul>
+        <a class="wiki-link" style="color: var(--accent);" href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-4" target="_blank" rel="noopener noreferrer">Photos and videos of Day 4 ↗</a>
+      </article>
+      <article class="day-card diary-day" data-date="2026-11-22" style="--accent: var(--indigo);">
+        <p class="day-num">Day 5 · Sun 22 Nov<span class="diary-today">Today</span></p>
+        <h3>Edfu</h3>
+        <ul class="stop-list"><li>Temple of Horus, Edfu</li><li>Hierakonpolis from the river</li></ul>
+        <a class="wiki-link" style="color: var(--accent);" href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-5" target="_blank" rel="noopener noreferrer">Photos and videos of Day 5 ↗</a>
+      </article>
+      <article class="day-card diary-day" data-date="2026-11-23" style="--accent: var(--gold);">
+        <p class="day-num">Day 6 · Mon 23 Nov<span class="diary-today">Today</span></p>
+        <h3>Luxor, both banks</h3>
+        <ul class="stop-list"><li>Valley of the Kings</li><li>Temple of Hatshepsut</li><li>Colossi of Memnon</li><li>Karnak</li></ul>
+        <a class="wiki-link" style="color: var(--accent);" href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-6" target="_blank" rel="noopener noreferrer">Photos and videos of Day 6 ↗</a>
+      </article>
+      <article class="day-card diary-day" data-date="2026-11-24" style="--accent: var(--rose);">
+        <p class="day-num">Day 7 · Tue 24 Nov<span class="diary-today">Today</span></p>
+        <h3>Dendera &amp; Abydos</h3>
+        <ul class="stop-list"><li>Temple of Hathor, Dendera</li><li>Temple of Seti I, Abydos</li></ul>
+        <a class="wiki-link" style="color: var(--accent);" href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-7" target="_blank" rel="noopener noreferrer">Photos and videos of Day 7 ↗</a>
+      </article>
+      <article class="day-card diary-day" data-date="2026-11-25" style="--accent: var(--lapis);">
+        <p class="day-num">Day 8 · Wed 25 Nov<span class="diary-today">Today</span></p>
+        <h3>Alexandria</h3>
+        <ul class="stop-list"><li>Bibliotheca Alexandrina</li><li>Citadel of Qaitbay</li><li>Kom el-Shoqafa</li><li>Pompey's Pillar</li></ul>
+        <a class="wiki-link" style="color: var(--accent);" href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-8" target="_blank" rel="noopener noreferrer">Photos and videos of Day 8 ↗</a>
+      </article>
+      <article class="day-card diary-day" data-date="2026-11-26" style="--accent: var(--kush);">
+        <p class="day-num">Day 9 · Thu 26 Nov<span class="diary-today">Today</span></p>
+        <h3>Saqqara &amp; Giza</h3>
+        <ul class="stop-list"><li>Saqqara</li><li>Pyramids of Giza and the Sphinx</li><li>Grand Egyptian Museum</li></ul>
+        <a class="wiki-link" style="color: var(--accent);" href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-9" target="_blank" rel="noopener noreferrer">Photos and videos of Day 9 ↗</a>
+      </article>
+      <article class="day-card diary-day" data-date="2026-11-27" style="--accent: var(--ochre);">
+        <p class="day-num">Day 10 · Fri 27 Nov<span class="diary-today">Today</span></p>
+        <h3>Islamic Cairo</h3>
+        <ul class="stop-list"><li>Islamic Cairo</li><li>Khan el-Khalili</li></ul>
+        <a class="wiki-link" style="color: var(--accent);" href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-10" target="_blank" rel="noopener noreferrer">Photos and videos of Day 10 ↗</a>
+      </article>
+      <article class="day-card diary-day" data-date="2026-11-28" style="--accent: var(--solar);">
+        <p class="day-num">Day 11 · Sat 28 Nov<span class="diary-today">Today</span></p>
+        <h3>Cairo → Madrid</h3>
+        <ul class="stop-list"><li>Last day and flight home</li></ul>
+        <a class="wiki-link" style="color: var(--accent);" href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-11" target="_blank" rel="noopener noreferrer">Photos and videos of Day 11 ↗</a>
+      </article>
+    </div>
+  </div>
+
   <div class="tab-panel" id="panel-cairo" role="tabpanel" aria-labelledby="tab-cairo" hidden>
     <header class="masthead">
       <p class="eyebrow">Cairo · 25&ndash;27 November 2026 · with Omarcel</p>
@@ -10394,11 +10479,17 @@
     });
   });
 
+  // Mark today's card in the Photo diary tab.
+  (function () {
+    var d = new Date(), iso = d.getFullYear() + '-' + String(d.getMonth() + 1).padStart(2, '0') + '-' + String(d.getDate()).padStart(2, '0');
+    Array.prototype.forEach.call(document.querySelectorAll('.diary-day'), function (el) { if (el.getAttribute('data-date') === iso) el.classList.add('is-today'); });
+  })();
+
   // Open the tab that holds the hash target (e.g. an itinerary stop linking to #card-karnak).
   function followHash() {
     var id = location.hash.slice(1);
     if (!id) return;
-    if (id === 'tour' || id === 'cairo' || id === 'uned') { select(document.getElementById('tab-' + id), false); return; }
+    if (id === 'tour' || id === 'diary' || id === 'cairo' || id === 'uned') { select(document.getElementById('tab-' + id), false); return; }
     var target = document.getElementById(id);
     var panel = target && target.closest('.tab-panel');
     if (!panel || !panel.hidden) return;
