@@ -1,0 +1,322 @@
+<title>Abu Simbel, Two Temples</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: a short intro and the two temples side by side, then a site map, then each temple as a numbered plan beside its numbered notes, then the rescue story and tips. Phone first: everything stacks. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--great); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--great); }
+  .mk:focus-visible { outline: none; }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Nubia · Ramesses II · c. 1264–1244 BC · Day 2 of the Alimaña tour</p>
+  <h1>Abu Simbel, two temples</h1>
+  <p class="lede">Ramesses II had two temples cut straight into the sandstone cliffs above the Nile, near Egypt's southern frontier: a great one for the state gods and for himself, and a smaller one for the goddess Hathor and his queen Nefertari. Both face east, so the rising sun lights their fronts. In the 1960s both were cut into blocks and rebuilt higher up, out of reach of Lake Nasser.</p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-abusimbel" target="_blank" rel="noopener noreferrer">Abu Simbel card ↗</a><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses2" target="_blank" rel="noopener noreferrer">Ramesses II ↗</a><a href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-2" target="_blank" rel="noopener noreferrer">Our Day 2 photos ↗</a></p>
+
+  <div class="pair">
+    <article class="card" style="--c: var(--great);">
+      <span class="kicker">The Great Temple</span>
+      <h2>For the gods, and for Ramesses as a god</h2>
+      <dl class="facts">
+        <div><dt>Gods</dt><dd>Ra-Horakhty, Amun-Ra and Ptah, with Ramesses himself, deified</dd></div>
+        <div><dt>Front</dt><dd>About 30 m high and 35 m wide; four seated colossi of the king, each about 20 m tall</dd></div>
+        <div><dt>Inside</dt><dd>A hall of eight Osiris pillars, a second hall, a vestibule and the sanctuary, over 60 m into the rock</dd></div>
+        <div><dt>Famous for</dt><dd>The sun reaching the sanctuary twice a year, and the reliefs of the battle of Kadesh</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--small);">
+      <span class="kicker">The Small Temple</span>
+      <h2>For Hathor and Queen Nefertari</h2>
+      <dl class="facts">
+        <div><dt>Goddess</dt><dd>Hathor of Ibshek, and Nefertari, the king's great royal wife</dd></div>
+        <div><dt>Front</dt><dd>Six standing statues about 10 m tall: four of Ramesses and two of Nefertari, at the same size as the king</dd></div>
+        <div><dt>Inside</dt><dd>A hall of six Hathor pillars, a vestibule with two side rooms, and the sanctuary</dd></div>
+        <div><dt>Famous for</dt><dd>One of only a few Egyptian temples dedicated to a queen</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="mapTitle">
+    <h2 id="mapTitle">The site today</h2>
+    <p class="section-note">The two temples stand about 100 m apart on the west shore of Lake Nasser, the Small Temple to the north. Since the rescue they sit inside two artificial hills, built over hollow concrete domes, about 65 m higher than and 200 m back from where they were carved.</p>
+    <div class="figure">
+      <svg viewBox="0 0 600 380" role="img" aria-label="Schematic site map, north up. Lake Nasser lies to the east. The Great Temple is cut into the southern artificial hill and the Small Temple into the northern one, about 100 metres apart, both facing east across the lake. A path leads from the visitor entrance in the south-west round the Great Temple's hill to the terrace by the water. Dashed outlines in the lake mark their original positions, now under water.">
+        <rect width="600" height="380" fill="var(--panel)"/>
+        <path class="lake" d="M410,0 C395,70 430,120 405,190 C385,245 420,300 400,380 L600,380 L600,0 Z"/>
+        <text class="t-lake" x="505" y="200" text-anchor="middle">LAKE</text>
+        <text class="t-lake" x="505" y="220" text-anchor="middle">NASSER</text>
+        <!-- original positions -->
+        <rect class="orig" x="455" y="120" width="34" height="22" rx="3"/>
+        <rect class="orig" x="462" y="262" width="44" height="28" rx="3"/>
+        <text class="t-sub" x="535" y="300" text-anchor="middle" style="fill: var(--lake-ink)">original sites,</text>
+        <text class="t-sub" x="535" y="315" text-anchor="middle" style="fill: var(--lake-ink)">now under water</text>
+        <!-- artificial hills -->
+        <ellipse class="rock" cx="300" cy="118" rx="70" ry="52"/>
+        <ellipse class="rock" cx="290" cy="262" rx="95" ry="70"/>
+        <!-- facades -->
+        <rect x="360" y="104" width="12" height="28" rx="2" class="queen"/>
+        <rect x="374" y="244" width="14" height="38" rx="2" class="king"/>
+        <!-- terrace -->
+        <path d="M372,96 C385,150 392,210 390,300" stroke="var(--line)" stroke-width="10" fill="none" stroke-linecap="round"/>
+        <!-- path from entrance -->
+        <path class="dash" d="M70,350 C150,345 230,345 300,338 C350,333 380,320 392,300"/>
+        <circle cx="68" cy="350" r="5" fill="var(--ink)"/>
+        <text class="t-label" x="60" y="335">Visitor entrance</text>
+        <!-- labels -->
+        <text class="t-label" x="290" y="113" text-anchor="middle">Small Temple</text>
+        <text class="t-sub" x="290" y="128" text-anchor="middle">Hathor and Nefertari</text>
+        <text class="t-label" x="285" y="257" text-anchor="middle">Great Temple</text>
+        <text class="t-sub" x="285" y="272" text-anchor="middle">Ramesses II and the gods</text>
+        <path d="M352,150 L352,232" stroke="var(--ink-soft)" stroke-width="1" fill="none"/>
+        <path d="M348,155 L352,148 L356,155 M348,227 L352,234 L356,227" stroke="var(--ink-soft)" stroke-width="1" fill="none"/>
+        <text class="t-sub" x="344" y="195" text-anchor="end">≈ 100 m</text>
+        <text class="t-sub" x="215" y="172" text-anchor="middle">artificial hills over</text>
+        <text class="t-sub" x="215" y="186" text-anchor="middle">concrete domes</text>
+        <!-- sunrise -->
+        <circle class="sunbody" cx="572" cy="60" r="14"/>
+        <path class="ray" d="M556,68 L392,250"/>
+        <path class="ray" d="M556,64 L376,116"/>
+        <text class="t-sub" x="572" y="92" text-anchor="middle">sunrise</text>
+        <!-- north -->
+        <g transform="translate(40,40)"><path d="M0,-16 L6,4 L0,-1 L-6,4 Z" fill="var(--ink-soft)"/><text class="t-sub" x="0" y="18" text-anchor="middle">N</text></g>
+      </svg>
+      <p class="caption">Schematic map, not to scale. Both fronts face the sunrise across the lake.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="gtTitle" style="--c: var(--great);">
+    <h2 id="gtTitle">The Great Temple, step by step</h2>
+    <p class="section-note">Walk in a straight line from the light into the dark: each room is smaller and lower than the last, as in every Egyptian temple, until you reach the gods in the sanctuary. Tap a number on the plan.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="40 150 280 410" role="img" aria-label="Simplified plan of the Great Temple, entrance at the bottom facing east, the sanctuary at the top, deep in the rock. Numbered markers match the notes.">
+          <rect x="40" y="150" width="280" height="410" fill="var(--panel)"/>
+          <path class="rock" d="M70,470 L70,250 Q70,190 130,180 L230,180 Q290,190 290,250 L290,470 Z"/>
+          <rect x="70" y="470" width="220" height="62" fill="var(--line)" opacity="0.45"/>
+          <path class="lake" d="M40,540 Q100,532 160,540 T280,540 T320,540 L320,560 L40,560 Z"/>
+          <!-- rooms -->
+          <rect class="cut" x="135" y="385" width="90" height="85"/>
+          <rect class="cut" x="103" y="392" width="28" height="30"/><rect class="cut" x="103" y="430" width="28" height="30"/>
+          <rect class="cut" x="229" y="392" width="28" height="30"/><rect class="cut" x="229" y="430" width="28" height="30"/>
+          <rect class="cut" x="129" y="403" width="8" height="8" stroke="none"/><rect class="cut" x="129" y="441" width="8" height="8" stroke="none"/>
+          <rect class="cut" x="223" y="403" width="8" height="8" stroke="none"/><rect class="cut" x="223" y="441" width="8" height="8" stroke="none"/>
+          <rect class="cut" x="152" y="343" width="56" height="38"/>
+          <rect class="cut" x="140" y="325" width="80" height="15"/>
+          <rect class="cut" x="145" y="295" width="18" height="25"/><rect class="cut" x="197" y="295" width="18" height="25"/>
+          <rect class="cut" x="168" y="285" width="24" height="37"/>
+          <rect class="cut" x="175" y="379" width="10" height="8" stroke="none"/><rect class="cut" x="175" y="338" width="10" height="7" stroke="none"/>
+          <rect class="cut" x="175" y="320" width="10" height="7" stroke="none"/><rect class="cut" x="172" y="466" width="16" height="8" stroke="none"/>
+          <!-- Osiride pillars -->
+          <g class="pillar-row">
+            <rect class="pillar" x="145" y="394" width="10" height="10"/><rect class="pillar" x="145" y="413" width="10" height="10"/><rect class="pillar" x="145" y="432" width="10" height="10"/><rect class="pillar" x="145" y="451" width="10" height="10"/>
+            <rect class="pillar" x="205" y="394" width="10" height="10"/><rect class="pillar" x="205" y="413" width="10" height="10"/><rect class="pillar" x="205" y="432" width="10" height="10"/><rect class="pillar" x="205" y="451" width="10" height="10"/>
+          </g>
+          <rect class="pillar" x="160" y="350" width="8" height="8"/><rect class="pillar" x="192" y="350" width="8" height="8"/><rect class="pillar" x="160" y="366" width="8" height="8"/><rect class="pillar" x="192" y="366" width="8" height="8"/>
+          <!-- sanctuary statues -->
+          <circle cx="172" cy="291" r="2.6" fill="var(--ink-soft)"/><circle cx="178" cy="291" r="2.6" fill="var(--sun)"/><circle cx="184" cy="291" r="2.6" fill="var(--sun)"/><circle cx="190" cy="291" r="2.6" fill="var(--sun)"/>
+          <!-- colossi -->
+          <rect class="king" x="97" y="472" width="35" height="33" rx="4"/>
+          <rect x="135" y="472" width="35" height="33" rx="4" fill="none" stroke="var(--great)" stroke-width="2" stroke-dasharray="4 3"/>
+          <rect class="king" x="139" y="510" width="22" height="12" rx="3" transform="rotate(-12 150 516)" opacity="0.8"/>
+          <rect class="king" x="190" y="472" width="35" height="33" rx="4"/>
+          <rect class="king" x="228" y="472" width="35" height="33" rx="4"/>
+          <!-- sun ray -->
+          <path class="ray" d="M180,548 L180,293"/>
+          <circle class="sunbody" cx="180" cy="552" r="7"/>
+          <text class="t-sub" x="194" y="553">22 Feb · 22 Oct</text>
+          <!-- orientation & scale -->
+          <text class="t-sub" x="300" y="170" text-anchor="end">W · into the cliff</text>
+          <text class="t-sub" x="48" y="553">E</text>
+          <path d="M75,165 H125" stroke="var(--ink)" stroke-width="2"/><path d="M75,161 V169 M125,161 V169" stroke="var(--ink)" stroke-width="1.5"/>
+          <text class="t-sub" x="100" y="159" text-anchor="middle">≈ 10 m</text>
+          <!-- markers -->
+          <a class="mk" href="#gt-1"><circle cx="114" cy="488" r="9"/><text x="114" y="488">1</text></a>
+          <a class="mk" href="#gt-2"><circle cx="152" cy="488" r="9"/><text x="152" y="488">2</text></a>
+          <a class="mk" href="#gt-3"><circle cx="180" cy="500" r="9"/><text x="180" y="500">3</text></a>
+          <a class="mk" href="#gt-4"><circle cx="276" cy="488" r="9"/><text x="276" y="488">4</text></a>
+          <a class="mk" href="#gt-5"><circle cx="180" cy="420" r="9"/><text x="180" y="420">5</text></a>
+          <a class="mk" href="#gt-6"><circle cx="219" cy="462" r="8"/><text x="219" y="462">6</text></a>
+          <a class="mk" href="#gt-7"><circle cx="117" cy="445" r="9"/><text x="117" y="445">7</text></a>
+          <a class="mk" href="#gt-8"><circle cx="180" cy="362" r="9"/><text x="180" y="362">8</text></a>
+          <a class="mk" href="#gt-9"><circle cx="230" cy="332" r="9"/><text x="230" y="332">9</text></a>
+          <a class="mk" href="#gt-10"><circle cx="180" cy="309" r="9"/><text x="180" y="309">10</text></a>
+        </svg>
+        <p class="caption">Simplified plan with approximate proportions. Entrance at the bottom (east).</p>
+      </div>
+      <ol class="notes">
+        <li id="gt-1"><span class="num">1</span><div><h3>Four colossi of Ramesses</h3><p>The king sits four times across the front, each figure about 20 m high, wearing the double crown. Small figures of his mother Tuya, Queen Nefertari and some of his children stand between and beside the legs.</p></div></li>
+        <li id="gt-2"><span class="num">2</span><div><h3>The broken colossus</h3><p>The second figure from the left lost its head and chest in an earthquake soon after the temple was finished; the pieces still lie at its feet, and the rescuers left them there. On a leg of this figure, Greek mercenaries of Psamtik II scratched their names in about 592 BC, some of the oldest Greek writing known.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-psamtik2" target="_blank" rel="noopener noreferrer">Psamtik II card ↗</a></p></div></li>
+        <li id="gt-3"><span class="num">3</span><div><h3>Ra-Horakhty above the door</h3><p>In a niche over the entrance stands the falcon-headed sun god. At his sides are a sceptre (<i>user</i>) and the goddess Ma'at: read together with the god (<i>Ra</i>) they spell User-Maat-Ra, the king's throne name. The whole front is a giant name tag.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-ra" target="_blank" rel="noopener noreferrer">Ra on the gods page ↗</a></p></div></li>
+        <li id="gt-4"><span class="num">4</span><div><h3>The baboons at the top</h3><p>Along the cornice sits a row of baboons with raised arms. Baboons chatter at dawn, so the Egyptians saw them as greeting the rising sun. Look up before you go in.</p></div></li>
+        <li id="gt-5"><span class="num">5</span><div><h3>Hall of the Osiris pillars</h3><p>Eight pillars, each fronted by a standing Ramesses wrapped like Osiris, the god of rebirth, line the first hall. The ceiling is painted with flying vultures, the goddess Nekhbet protecting the king.</p></div></li>
+        <li id="gt-6"><span class="num">6</span><div><h3>The battle of Kadesh</h3><p>The whole north wall (on your right as you walk in) shows Ramesses' battle against the Hittites in Syria, c. 1274 BC: the army on the march, the camp, spies being beaten, and the king charging alone in his chariot. Egypt claimed a victory; in fact it was a draw, followed years later by a peace treaty.</p></div></li>
+        <li id="gt-7"><span class="num">7</span><div><h3>Side rooms</h3><p>Small rooms open off the first hall, probably stores for temple equipment and offerings. Their walls show the king offering to the gods.</p></div></li>
+        <li id="gt-8"><span class="num">8</span><div><h3>The second hall</h3><p>Four square pillars and scenes of the king and Nefertari before the gods. The rooms get smaller and darker from here on.</p></div></li>
+        <li id="gt-9"><span class="num">9</span><div><h3>The vestibule</h3><p>A narrow cross-room before the sanctuary, with three doors: the middle one leads to the gods, the two side ones to small chapels.</p></div></li>
+        <li id="gt-10"><span class="num">10</span><div><h3>The sanctuary and the sun</h3><p>Four seated statues sit against the back wall: Ptah, Amun-Ra, the deified Ramesses and Ra-Horakhty. Around 22 February and 22 October the rising sun shines straight down the temple and lights three of them. Ptah, linked with the underworld, stays in the dark. The dates moved by about a day when the temple was rebuilt.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-ptah" target="_blank" rel="noopener noreferrer">Ptah ↗</a> · <a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-amun" target="_blank" rel="noopener noreferrer">Amun ↗</a></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="stTitle" style="--c: var(--small);">
+    <h2 id="stTitle">The Small Temple, step by step</h2>
+    <p class="section-note">About 100 m to the north. Smaller and simpler, with some of the most delicate carving of Ramesses' reign.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="60 150 240 250" role="img" aria-label="Simplified plan of the Small Temple, entrance at the bottom facing east, sanctuary at the top. Six facade statues alternate king, queen, king on each side of the door. Numbered markers match the notes.">
+          <rect x="60" y="150" width="240" height="250" fill="var(--panel)"/>
+          <path class="rock" d="M75,330 L75,210 Q75,160 125,158 L235,158 Q285,160 285,210 L285,330 Z"/>
+          <rect x="75" y="330" width="210" height="40" fill="var(--line)" opacity="0.45"/>
+          <path class="lake" d="M60,382 Q110,375 160,382 T260,382 T300,382 L300,400 L60,400 Z"/>
+          <rect class="cut" x="130" y="240" width="100" height="85"/>
+          <rect class="cut" x="125" y="214" width="110" height="16"/>
+          <rect class="cut" x="98" y="207" width="24" height="28"/><rect class="cut" x="238" y="207" width="24" height="28"/>
+          <rect class="cut" x="120" y="217" width="8" height="8" stroke="none"/><rect class="cut" x="232" y="217" width="8" height="8" stroke="none"/>
+          <rect class="cut" x="168" y="170" width="24" height="38"/>
+          <rect class="cut" x="175" y="228" width="10" height="14" stroke="none"/><rect class="cut" x="175" y="205" width="10" height="11" stroke="none"/><rect class="cut" x="172" y="322" width="16" height="10" stroke="none"/>
+          <rect class="pillar" x="155" y="255" width="10" height="10" style="fill: var(--small); opacity: 0.55"/><rect class="pillar" x="155" y="278" width="10" height="10" style="fill: var(--small); opacity: 0.55"/><rect class="pillar" x="155" y="301" width="10" height="10" style="fill: var(--small); opacity: 0.55"/>
+          <rect class="pillar" x="195" y="255" width="10" height="10" style="fill: var(--small); opacity: 0.55"/><rect class="pillar" x="195" y="278" width="10" height="10" style="fill: var(--small); opacity: 0.55"/><rect class="pillar" x="195" y="301" width="10" height="10" style="fill: var(--small); opacity: 0.55"/>
+          <path d="M172,180 Q180,172 188,180 L186,196 L174,196 Z" fill="var(--small)" opacity="0.8"/>
+          <!-- facade statues: king, queen, king | door | king, queen, king -->
+          <rect class="king" x="88" y="332" width="16" height="20" rx="3"/><rect class="queen" x="116" y="332" width="16" height="20" rx="3"/><rect class="king" x="144" y="332" width="16" height="20" rx="3"/>
+          <rect class="king" x="200" y="332" width="16" height="20" rx="3"/><rect class="queen" x="228" y="332" width="16" height="20" rx="3"/><rect class="king" x="256" y="332" width="16" height="20" rx="3"/>
+          <text class="t-sub" x="290" y="168" text-anchor="end">W</text>
+          <text class="t-sub" x="66" y="394">E</text>
+          <rect x="66" y="156" width="9" height="9" rx="2" class="king"/><text class="t-sub" x="79" y="164">Ramesses</text>
+          <rect x="66" y="171" width="9" height="9" rx="2" class="queen"/><text class="t-sub" x="79" y="179">Nefertari</text>
+          <a class="mk" href="#st-1"><circle cx="96" cy="364" r="9"/><text x="96" y="364">1</text></a>
+          <a class="mk" href="#st-2"><circle cx="124" cy="364" r="9"/><text x="124" y="364">2</text></a>
+          <a class="mk" href="#st-3"><circle cx="180" cy="283" r="9"/><text x="180" y="283">3</text></a>
+          <a class="mk" href="#st-4"><circle cx="210" cy="222" r="8"/><text x="210" y="222">4</text></a>
+          <a class="mk" href="#st-5"><circle cx="180" cy="203" r="8"/><text x="180" y="203">5</text></a>
+        </svg>
+        <p class="caption">Simplified plan with approximate proportions. Entrance at the bottom (east).</p>
+      </div>
+      <ol class="notes">
+        <li id="st-1"><span class="num">1</span><div><h3>Six standing statues</h3><p>On each side of the door stand Ramesses, Nefertari and Ramesses again, each about 10 m tall, stepping forward out of the rock between sloping buttresses. Their children stand small beside their legs.</p></div></li>
+        <li id="st-2"><span class="num">2</span><div><h3>A queen as tall as the king</h3><p>Queens were usually shown knee-high beside their husbands. Here Nefertari is the same size as Ramesses, a sign of how highly he placed her. The inscriptions say the temple was made for her, "for whose sake the very sun does shine".</p></div></li>
+        <li id="st-3"><span class="num">3</span><div><h3>Hall of Hathor pillars</h3><p>Six pillars topped with the face of Hathor, with cow's ears, hold up the hall. The walls show Ramesses smiting enemies and Nefertari offering to the gods, carved with unusual grace.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-hathor" target="_blank" rel="noopener noreferrer">Hathor ↗</a></p></div></li>
+        <li id="st-4"><span class="num">4</span><div><h3>Nefertari crowned by the goddesses</h3><p>In the vestibule, Hathor and Isis place the crown on Nefertari's head: the queen is received among the gods. Two small side rooms open off this cross-room.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-isis" target="_blank" rel="noopener noreferrer">Isis ↗</a></p></div></li>
+        <li id="st-5"><span class="num">5</span><div><h3>Hathor as a cow</h3><p>In the sanctuary, Hathor in the form of a cow steps out of the rock, protecting the king who stands below her head.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="rescueTitle">
+    <h2 id="rescueTitle">Lost, found, and moved</h2>
+    <p class="section-note">For over two thousand years sand slowly buried the temples. Then the new Aswan High Dam threatened to drown them for ever.</p>
+    <ol class="timeline">
+      <li><span class="yr">c. 1264 BC</span><p>Work begins under Ramesses II. The temples are finished some twenty years later, around year 24 of his reign.</p></li>
+      <li><span class="yr">c. 592 BC</span><p>Greek, Carian and Phoenician soldiers of Psamtik II, back from a campaign in Nubia, carve graffiti on the colossi.</p></li>
+      <li><span class="yr">AD 1813</span><p>The Swiss traveller Johann Ludwig Burckhardt sees the heads of the colossi sticking out of the sand.</p></li>
+      <li><span class="yr">1817</span><p>Giovanni Belzoni digs his way to the door of the Great Temple and goes inside.</p></li>
+      <li><span class="yr">1964–1968</span><p>An international team led by UNESCO cuts both temples, cliff and all, into more than 1,000 blocks of up to about 30 tonnes, lifts them 65 m and rebuilds them about 200 m back from the river, inside artificial hills on concrete domes. The rebuilt temples open in September 1968.</p></li>
+      <li><span class="yr">1979</span><p>Abu Simbel becomes part of the UNESCO World Heritage site "Nubian Monuments from Abu Simbel to Philae". Philae, our Day 3, was rescued the same way.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">For our visit</h2>
+    <div class="tips">
+      <div class="tip"><h3>Morning light</h3><p>The fronts face east, so they are lit by the morning sun and fall into shade in the afternoon. Take the facade photos early.</p></div>
+      <div class="tip"><h3>Great Temple first</h3><p>Go into the Great Temple, then walk the 100 m along the shore to the Small Temple.</p></div>
+      <div class="tip"><h3>Look right for Kadesh</h3><p>In the first hall, the battle reliefs cover the right-hand (north) wall from floor to ceiling.</p></div>
+      <div class="tip"><h3>Find the seams</h3><p>Look closely at the facades and ceilings: the cuts where the blocks were rejoined in the 1960s are still visible.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Part of <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">the Private Alimaña Tour ↗</a>. Plans are simplified; dates are approximate.</p>
+</div>
