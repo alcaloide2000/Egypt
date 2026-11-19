@@ -1,0 +1,246 @@
+<title>Philae, Island of Isis</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: intro, the island plan beside its numbered notes (followed from the landing to the sanctuary), the rescue map, a timeline and tips. Shares its look with the Abu Simbel page. Phone first: everything stacks. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--great); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--great); }
+  .mk:focus-visible { outline: none; }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .eyebrow { color: var(--small); }
+  .ruin { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 1; }
+  .col { fill: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Aswan · Temple of Isis · c. 380 BC – AD 537 · Day 3 of the Alimaña tour</p>
+  <h1>Philae, island of Isis</h1>
+  <p class="lede">On a small island above the First Cataract, the last great temple of ancient Egypt was built for Isis, the great mother and magician, mostly by the Ptolemies and Roman emperors. Pilgrims came here from Egypt, Nubia and across the Mediterranean, and the old religion lived on at Philae for more than a century after it had died everywhere else. Between 1977 and 1980 every block was moved to Agilkia, a neighbouring island reshaped to look like the original.</p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-philae" target="_blank" rel="noopener noreferrer">Philae card ↗</a><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-isis" target="_blank" rel="noopener noreferrer">Isis on the gods page ↗</a><a href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-3" target="_blank" rel="noopener noreferrer">Our Day 3 photos ↗</a></p>
+
+  <div class="pair">
+    <article class="card" style="--c: var(--small);">
+      <span class="kicker">The island</span>
+      <h2>A temple in the river</h2>
+      <dl class="facts">
+        <div><dt>Goddess</dt><dd>Isis, with Osiris, Horus and Hathor; also Nubian gods</dd></div>
+        <div><dt>Builders</dt><dd>Nectanebo I, Ptolemy II to XII, then Augustus, Tiberius, Hadrian and Trajan</dd></div>
+        <div><dt>Size</dt><dd>Agilkia, like the old Philae, is under 400 m long and about 130 m wide</dd></div>
+        <div><dt>Getting there</dt><dd>By motorboat from the Marina at Shellal, about ten minutes</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--lake-ink);">
+      <span class="kicker">The last temple</span>
+      <h2>Where hieroglyphs ended</h2>
+      <dl class="facts">
+        <div><dt>AD 394</dt><dd>The last dated hieroglyphic inscription, on the Gate of Hadrian</dd></div>
+        <div><dt>AD 452</dt><dd>The last known inscription in demotic, the everyday Egyptian script</dd></div>
+        <div><dt>c. AD 537</dt><dd>Emperor Justinian closes the temple; it becomes a church</dd></div>
+        <div><dt>1980</dt><dd>Reopened on Agilkia after the UNESCO rescue</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="planTitle" style="--c: var(--small);">
+    <h2 id="planTitle">Walking the island, south to north</h2>
+    <p class="section-note">The visit follows the route of the old processions: from the landing at the southern tip, along the colonnades, through two pylons and the columned hall to the sanctuary. Tap a number on the plan.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="40 120 290 470" role="img" aria-label="Simplified plan of Agilkia Island, north up. From the landing at the southern tip, the kiosk of Nectanebo I opens on a long court between two colonnades, with small temples on the east side. The first pylon leads to a forecourt with the birth house on the west, then the second pylon, the hypostyle hall and the sanctuary of Isis at the north. Hadrian's Gate lies west of the temple, the Temple of Hathor east of it and the Kiosk of Trajan on the east shore. Numbered markers match the notes.">
+          <rect x="40" y="120" width="290" height="470" fill="var(--lake)"/>
+          <path d="M150,135 C210,128 255,160 275,215 C300,265 318,330 300,390 C285,450 240,520 200,568 C185,585 160,585 150,565 C125,520 105,450 100,380 C95,300 95,200 150,135 Z" fill="var(--panel)" stroke="var(--line)" stroke-width="2"/>
+          <!-- landing and kiosk of Nectanebo I -->
+          <rect x="166" y="560" width="26" height="8" fill="var(--line)"/>
+          <rect class="ruin" x="168" y="530" width="20" height="18"/>
+          <!-- outer court with colonnades -->
+          <rect x="138" y="384" width="10" height="146" fill="var(--rock)" opacity="0.6"/><circle class="col" cx="143" cy="388" r="2.2"/><circle class="col" cx="143" cy="398" r="2.2"/><circle class="col" cx="143" cy="408" r="2.2"/><circle class="col" cx="143" cy="418" r="2.2"/><circle class="col" cx="143" cy="428" r="2.2"/><circle class="col" cx="143" cy="438" r="2.2"/><circle class="col" cx="143" cy="448" r="2.2"/><circle class="col" cx="143" cy="458" r="2.2"/><circle class="col" cx="143" cy="468" r="2.2"/><circle class="col" cx="143" cy="478" r="2.2"/><circle class="col" cx="143" cy="488" r="2.2"/><circle class="col" cx="143" cy="498" r="2.2"/><circle class="col" cx="143" cy="508" r="2.2"/><circle class="col" cx="143" cy="518" r="2.2"/>
+          <rect x="209" y="398" width="10" height="104" fill="var(--rock)" opacity="0.35" stroke="var(--ink-soft)" stroke-dasharray="3 3"/><circle class="col" cx="214" cy="402" r="2.2"/><circle class="col" cx="214" cy="414" r="2.2"/><circle class="col" cx="214" cy="426" r="2.2"/><circle class="col" cx="214" cy="438" r="2.2"/><circle class="col" cx="214" cy="450" r="2.2"/><circle class="col" cx="214" cy="462" r="2.2"/><circle class="col" cx="214" cy="474" r="2.2"/><circle class="col" cx="214" cy="486" r="2.2"/><circle class="col" cx="214" cy="498" r="2.2"/>
+          <!-- small temples on the east side -->
+          <rect class="ruin" x="226" y="388" width="20" height="16"/><rect class="ruin" x="232" y="438" width="14" height="12"/><rect class="ruin" x="222" y="358" width="16" height="12"/>
+          <!-- first pylon -->
+          <rect class="ruin" x="136" y="338" width="38" height="16"/><rect class="ruin" x="186" y="338" width="38" height="16"/>
+          <!-- forecourt, birth house, east colonnade -->
+          <rect class="ruin" x="118" y="256" width="34" height="76"/><circle class="col" cx="124" cy="262" r="2"/><circle class="col" cx="124" cy="273" r="2"/><circle class="col" cx="124" cy="284" r="2"/><circle class="col" cx="124" cy="295" r="2"/><circle class="col" cx="124" cy="306" r="2"/><circle class="col" cx="124" cy="317" r="2"/><circle class="col" cx="146" cy="262" r="2"/><circle class="col" cx="146" cy="273" r="2"/><circle class="col" cx="146" cy="284" r="2"/><circle class="col" cx="146" cy="295" r="2"/><circle class="col" cx="146" cy="306" r="2"/><circle class="col" cx="146" cy="317" r="2"/>
+          <rect class="ruin" x="200" y="262" width="14" height="70"/>
+          <!-- second pylon, set at a slight angle -->
+          <g transform="rotate(-4 180 246)"><rect class="ruin" x="146" y="240" width="28" height="13"/><rect class="ruin" x="186" y="240" width="28" height="13"/></g>
+          <!-- hypostyle, inner rooms, sanctuary -->
+          <rect class="ruin" x="160" y="205" width="44" height="32"/><circle class="col" cx="170" cy="214" r="2.4"/><circle class="col" cx="170" cy="228" r="2.4"/><circle class="col" cx="182" cy="214" r="2.4"/><circle class="col" cx="182" cy="228" r="2.4"/><circle class="col" cx="194" cy="214" r="2.4"/><circle class="col" cx="194" cy="228" r="2.4"/>
+          <rect class="ruin" x="164" y="168" width="36" height="36"/>
+          <rect x="174" y="170" width="16" height="14" fill="var(--small)" opacity="0.75"/>
+          <!-- Hadrian's gate, temple of Hathor, kiosk of Trajan -->
+          <rect class="ruin" x="112" y="206" width="22" height="12"/>
+          <rect class="ruin" x="226" y="208" width="26" height="24"/>
+          <rect x="262" y="272" width="40" height="50" fill="var(--rock)" opacity="0.5" stroke="var(--ink-soft)"/><circle class="col" cx="266" cy="276" r="2.2"/><circle class="col" cx="276" cy="276" r="2.2"/><circle class="col" cx="286" cy="276" r="2.2"/><circle class="col" cx="296" cy="276" r="2.2"/><circle class="col" cx="266" cy="318" r="2.2"/><circle class="col" cx="276" cy="318" r="2.2"/><circle class="col" cx="286" cy="318" r="2.2"/><circle class="col" cx="296" cy="318" r="2.2"/><circle class="col" cx="264" cy="286" r="2.2"/><circle class="col" cx="264" cy="297" r="2.2"/><circle class="col" cx="264" cy="308" r="2.2"/><circle class="col" cx="298" cy="286" r="2.2"/><circle class="col" cx="298" cy="297" r="2.2"/><circle class="col" cx="298" cy="308" r="2.2"/>
+          <!-- walking route -->
+          <path class="ray" d="M179,566 L179,540 L180,360 L180,250 L182,205" style="stroke: var(--small)"/>
+          <!-- labels -->
+          <text class="t-sub" x="176" y="580" text-anchor="end">landing</text>
+          <text class="t-lake" x="300" y="560" text-anchor="middle">NILE</text>
+          <g transform="translate(70,150)"><path d="M0,-16 L6,4 L0,-1 L-6,4 Z" fill="var(--lake-ink)"/><text class="t-sub" x="0" y="18" text-anchor="middle" style="fill: var(--lake-ink)">N</text></g>
+          <path d="M60,575 H125" stroke="var(--lake-ink)" stroke-width="2"/><path d="M60,571 V579 M125,571 V579" stroke="var(--lake-ink)" stroke-width="1.5"/>
+          <text class="t-sub" x="92" y="567" text-anchor="middle" style="fill: var(--lake-ink)">≈ 50 m</text>
+          <a class="mk" href="#ph-1"><circle cx="156" cy="539" r="9"/><text x="156" y="539">1</text></a><a class="mk" href="#ph-2"><circle cx="160" cy="470" r="9"/><text x="160" y="470">2</text></a><a class="mk" href="#ph-3"><circle cx="255" cy="418" r="9"/><text x="255" y="418">3</text></a><a class="mk" href="#ph-4"><circle cx="180" cy="330" r="8"/><text x="180" y="330">4</text></a><a class="mk" href="#ph-5"><circle cx="135" cy="294" r="9"/><text x="135" y="294">5</text></a><a class="mk" href="#ph-6"><circle cx="220" cy="246" r="9"/><text x="220" y="246">6</text></a>
+          <a class="mk" href="#ph-7"><circle cx="182" cy="221" r="8"/><text x="182" y="221">7</text></a><a class="mk" href="#ph-8"><circle cx="212" cy="180" r="8"/><text x="212" y="180">8</text></a><a class="mk" href="#ph-9"><circle cx="123" cy="195" r="9"/><text x="123" y="195">9</text></a><a class="mk" href="#ph-10"><circle cx="239" cy="220" r="8"/><text x="239" y="220">10</text></a><a class="mk" href="#ph-11"><circle cx="282" cy="297" r="9"/><text x="282" y="297">11</text></a><a class="mk" href="#ph-12"><circle cx="100" cy="470" r="9"/><text x="100" y="470">12</text></a>
+        </svg>
+        <p class="caption">Simplified plan of Agilkia Island with approximate positions. North is up; the pink dashed line is the processional route.</p>
+      </div>
+      <ol class="notes">
+        <li id="ph-1"><span class="num">1</span><div><h3>The landing and the Kiosk of Nectanebo I</h3><p>Boats tie up at the southern tip. The small gateway-hall here, with columns crowned by the face of Hathor, was built by Nectanebo I around 370 BC: it is the oldest building standing on the island.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-nectanebo1" target="_blank" rel="noopener noreferrer">Nectanebo I ↗</a></p></div></li>
+        <li id="ph-2"><span class="num">2</span><div><h3>The outer court</h3><p>A long, slightly wedge-shaped court leads north. The west colonnade, with dozens of columns whose capitals are all different, was decorated under the Roman emperors Augustus and Tiberius; its windows looked out to Bigeh. The east colonnade was never finished.</p></div></li>
+        <li id="ph-3"><span class="num">3</span><div><h3>Small temples on the east side</h3><p>Along the east side stand small shrines to Arensnuphis, a Nubian god, to Mandulis, the god of Kalabsha, and to Imhotep, Djoser&#39;s architect, worshipped here as a god of healing. Philae was holy to Egyptians and Nubians alike.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-djoser" target="_blank" rel="noopener noreferrer">Djoser and Imhotep ↗</a></p></div></li>
+        <li id="ph-4"><span class="num">4</span><div><h3>The first pylon</h3><p>The great gateway, about 18 m high, shows Ptolemy XII smiting enemies before Isis, Horus and Hathor. Inside the doorway, French soldiers of Napoleon&#39;s expedition carved a dated inscription in 1799.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy12" target="_blank" rel="noopener noreferrer">Ptolemy XII ↗</a></p></div></li>
+        <li id="ph-5"><span class="num">5</span><div><h3>The birth house</h3><p>On the west of the forecourt stands the mammisi, where the birth of Horus was celebrated: Isis gave birth to him in the papyrus marshes and hid him from Seth. Its columns carry Hathor heads, and its walls show Isis nursing the child.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-horus" target="_blank" rel="noopener noreferrer">Horus ↗</a></p></div></li>
+        <li id="ph-6"><span class="num">6</span><div><h3>The second pylon</h3><p>The second gateway is set at an angle to the first: the builders had to follow the shape of the rock and older buildings. Look for Ptolemy XII again, offering to the gods.</p></div></li>
+        <li id="ph-7"><span class="num">7</span><div><h3>The hypostyle hall</h3><p>Ten columns with flower capitals still keep some of their colours. When the temple became a church in the 6th century, Christians carved crosses into the walls and chiselled the faces off many figures, and the hall served as the church of St Stephen.</p></div></li>
+        <li id="ph-8"><span class="num">8</span><div><h3>The sanctuary of Isis</h3><p>The innermost room is small and dark. Its granite stand once held the boat-shrine of Isis&#39;s statue; it was dedicated by Ptolemy III and his queen Berenice II. Isis&#39;s cult continued here longer than anywhere else in Egypt.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-isis" target="_blank" rel="noopener noreferrer">Isis ↗</a> · <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy3" target="_blank" rel="noopener noreferrer">Ptolemy III ↗</a></p></div></li>
+        <li id="ph-9"><span class="num">9</span><div><h3>The Gate of Hadrian</h3><p>West of the temple, a Roman gateway shows Hapi, the god of the flood, crouching in a cave under the rocks of Bigeh with a snake coiled round him, pouring out the Nile. Here too is the last dated hieroglyphic inscription ever carved, on 24 August AD 394.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-hapi" target="_blank" rel="noopener noreferrer">Hapi ↗</a></p></div></li>
+        <li id="ph-10"><span class="num">10</span><div><h3>The Temple of Hathor</h3><p>A small temple east of the main one, begun under Ptolemy VI and VIII. Its reliefs show the god Bes and other musicians playing harps, drums and tambourines for the goddess of music and joy.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-hathor" target="_blank" rel="noopener noreferrer">Hathor ↗</a> · <a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-bes" target="_blank" rel="noopener noreferrer">Bes ↗</a></p></div></li>
+        <li id="ph-11"><span class="num">11</span><div><h3>The Kiosk of Trajan</h3><p>The island&#39;s most photographed building: fourteen columns joined by screen walls, on the east shore, built under the Roman emperor Trajan (AD 98–117) as a grand entrance from the river. It was never finished, and its roof was probably of wood. Visitors nicknamed it &#39;Pharaoh&#39;s Bed&#39;.</p></div></li>
+        <li id="ph-12"><span class="num">12</span><div><h3>Towards Bigeh</h3><p>Across the water lies Bigeh, the Abaton, believed to hold the tomb of Osiris. Only priests could set foot there; every ten days the statue of Isis was taken across by boat to pour milk offerings for her husband.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-osiris" target="_blank" rel="noopener noreferrer">Osiris ↗</a></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="rescueTitle">
+    <h2 id="rescueTitle">Drowned and saved</h2>
+    <p class="section-note">The first Aswan Dam, finished in 1902, flooded Philae for most of the year: for seventy years visitors rowed between the columns. The High Dam would have drowned it for good, so between 1972 and 1980 a UNESCO team built a cofferdam round the island, pumped it dry, cut the buildings into some 40,000 blocks and rebuilt them on Agilkia, a few hundred metres away, reshaped to match Philae's outline and orientation.</p>
+    <div class="figure" style="max-width: 560px;">
+      <svg viewBox="0 0 360 250" role="img" aria-label="Schematic map of the rescue, north up. The original island of Philae, now under water, lies beside the larger island of Bigeh. The temples were moved a few hundred metres north-west to Agilkia Island, between the old Aswan Dam to the north and the High Dam to the south.">
+          <rect width="360" height="250" fill="var(--lake)"/>
+          <path d="M10,22 H350" stroke="var(--ink-soft)" stroke-width="6"/><text class="t-sub" x="180" y="14" text-anchor="middle">old Aswan Dam (1902) · north</text>
+          <path d="M10,238 H350" stroke="var(--ink-soft)" stroke-width="6"/><text class="t-sub" x="180" y="232" text-anchor="middle">High Dam (1970) · south</text>
+          <path d="M70,120 C80,95 120,90 135,110 C150,135 140,190 110,200 C80,205 60,160 70,120 Z" class="rock"/>
+          <text class="t-label" x="105" y="150" text-anchor="middle">Bigeh</text>
+          <text class="t-sub" x="105" y="164" text-anchor="middle">Abaton, tomb</text><text class="t-sub" x="105" y="178" text-anchor="middle">of Osiris</text>
+          <path d="M160,140 C170,128 190,128 196,140 C202,155 196,178 180,182 C166,184 155,160 160,140 Z" class="orig"/>
+          <text class="t-sub" x="215" y="160" style="fill: var(--lake-ink)">original Philae,</text>
+          <text class="t-sub" x="215" y="174" style="fill: var(--lake-ink)">now under water</text>
+          <path d="M150,62 C165,50 190,52 196,66 C202,82 194,100 176,104 C160,106 145,80 150,62 Z" fill="var(--panel)" stroke="var(--small)" stroke-width="2"/>
+          <text class="t-label" x="232" y="76">Agilkia Island</text><text class="t-sub" x="232" y="90">the temples today</text>
+          <path class="ray" d="M178,130 C176,118 176,112 176,108" style="stroke: var(--small)"/><path d="M171,114 L176,106 L181,114" stroke="var(--small)" stroke-width="2" fill="none"/>
+        </svg>
+      <p class="caption">Schematic map, not to scale.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="timeTitle">
+    <h2 id="timeTitle">Philae through time</h2>
+    <ol class="timeline">
+      <li><span class="yr">c. 690–664 BC</span><p>Blocks of the Kushite pharaoh Taharqa show there was already a shrine on the island.</p></li>
+      <li><span class="yr">c. 370 BC</span><p>Nectanebo I, of the last native dynasty, builds the gateway-kiosk at the south end.</p></li>
+      <li><span class="yr">c. 280–250 BC</span><p>Ptolemy II begins the present Temple of Isis; his successors add the birth house, the pylons and the decoration.</p></li>
+      <li><span class="yr">c. 80–51 BC</span><p>Ptolemy XII, Cleopatra's father, decorates the great first pylon.</p></li>
+      <li><span class="yr">AD 1st–2nd c.</span><p>Roman emperors add the colonnades, the Gate of Hadrian and the Kiosk of Trajan.</p></li>
+      <li><span class="yr">24 Aug 394</span><p>The last dated hieroglyphic inscription is carved, on the Gate of Hadrian.</p></li>
+      <li><span class="yr">c. 537</span><p>Justinian has the temple closed; the hypostyle hall becomes a church.</p></li>
+      <li><span class="yr">1799</span><p>French troops of Napoleon's expedition reach Philae and carve their inscription in the first pylon.</p></li>
+      <li><span class="yr">1902</span><p>The first Aswan Dam floods the island for most of the year.</p></li>
+      <li><span class="yr">1972–1980</span><p>UNESCO rescue: cofferdam, dismantling in 1977, rebuilding on Agilkia, reopening in March 1980.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">For our visit</h2>
+    <div class="tips">
+      <div class="tip"><h3>Look back from the boat</h3><p>The best view of the island, with the Kiosk of Trajan on the shore, is from the water as you arrive and leave.</p></div>
+      <div class="tip"><h3>Find the French</h3><p>Inside the doorway of the first pylon, look for the inscription carved by Napoleon's soldiers in 1799.</p></div>
+      <div class="tip"><h3>Crosses and colours</h3><p>In the hypostyle hall, look up at the painted capitals, then find the Christian crosses cut into the walls.</p></div>
+      <div class="tip"><h3>The Nile's source</h3><p>Walk round to the Gate of Hadrian on the west side for Hapi in his cave, pouring out the river.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Part of <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">the Private Alimaña Tour ↗</a>. The plan is simplified; dates are approximate.</p>
+</div>
