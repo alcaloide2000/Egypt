@@ -84,13 +84,14 @@
   .v-btn:hover, .v-btn:focus-visible { background: rgba(255,255,255,0.24); outline: none; }
   .v-btn.danger { background: rgba(224,138,166,0.25); }
   .v-stage { position: relative; display: grid; place-items: center; min-height: 0; }
-  .v-stage img, .v-stage video { max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 6px; }
-  .v-stage video { width: 100%; background: #000; }
+  /* the photo or video always fits the space left between the top bar and the caption, so a tall photo can't push the caption off screen */
+  .v-stage img, .v-stage video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: contain; }
+  .v-nav { z-index: 1; }
   .v-stage [hidden] { display: none; }
   .v-nav { position: absolute; top: 50%; transform: translateY(-50%); }
   .v-prev { left: 0; } .v-next { right: 0; }
   .v-bottom { display: grid; gap: 0.45rem; padding-top: 0.5rem; max-width: 46rem; width: 100%; margin: 0 auto; }
-  .v-cap { width: 100%; font: inherit; font-size: 0.95rem; color: #f4ead8; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 10px; padding: 0.55rem 0.7rem; }
+  .v-cap { display: block; width: 100%; resize: none; overflow-y: auto; max-height: 32vh; line-height: 1.4; font: inherit; font-size: 0.95rem; color: #f4ead8; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.25); border-radius: 10px; padding: 0.55rem 0.7rem; }
   .v-cap::placeholder { color: rgba(244,234,216,0.6); }
   .v-cap[readonly] { border-color: transparent; background: transparent; padding-inline: 0; }
   .v-meta { font-family: var(--mono); font-size: 0.72rem; color: rgba(244,234,216,0.75); display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; align-items: center; }
@@ -121,7 +122,7 @@
   </div>
   <div class="v-bottom">
     <label for="vCap" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Caption</label>
-    <input class="v-cap" id="vCap" type="text" maxlength="200" placeholder="Add a caption…" autocomplete="off">
+    <textarea class="v-cap" id="vCap" rows="1" maxlength="200" placeholder="Add a caption…" autocomplete="off"></textarea>
     <div class="v-meta"><span id="vBy"></span><span id="vWhen"></span><span class="sp"></span>
       <a class="v-btn" id="vOpen" href="#" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;text-decoration:none;">Open file ↗</a>
       <button class="v-btn danger" id="vDel" type="button" hidden>Delete</button>
@@ -459,7 +460,7 @@
   }
   function openViewer(id) {
     lastFocus = document.activeElement;
-    showPhoto(id); viewer.hidden = false; $('vClose').focus();
+    showPhoto(id); viewer.hidden = false; fitCap(); $('vClose').focus();
   }
   function showPhoto(id) {
     var p = photos.filter(function (x) { return x.id === id; })[0]; if (!p) { closeViewer(); return; }
@@ -478,6 +479,7 @@
     $('vWhere').textContent = stopName(p.stop);
     vCap.value = p.caption || '';
     vCap.readOnly = !canWrite; vCap.placeholder = canWrite ? 'Add a caption…' : '';
+    fitCap();
     var when = new Date(p.taken || p.at);
     $('vWhen').textContent = isNaN(when) ? '' : when.toLocaleString(undefined, { weekday: 'short', day: 'numeric', month: 'short', hour: '2-digit', minute: '2-digit' });
     $('vBy').textContent = p.by && names[p.by] ? 'by ' + names[p.by] : '';
@@ -487,6 +489,10 @@
   }
   function step(dir) { if (!cur) return; var list = byStop[cur.stop] || [], i = list.indexOf(cur) + dir; if (list[i]) { saveCaption(); showPhoto(list[i].id); } }
   function closeViewer() { saveCaption(); vVid.pause(); viewer.hidden = true; cur = null; if (lastFocus) lastFocus.focus(); }
+  // grow the caption box to show the whole caption (it wraps over several lines on a phone)
+  function fitCap() { vCap.style.height = 'auto'; vCap.style.height = (vCap.scrollHeight + 2) + 'px'; }
+  vCap.addEventListener('input', fitCap);
+  window.addEventListener('resize', function () { if (!viewer.hidden) fitCap(); });
   var saving = Promise.resolve();
   function saveCaption() {
     if (!cur || !canWrite) return;
