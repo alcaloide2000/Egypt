@@ -1,0 +1,232 @@
+<title>Kom Ombo Double Temple</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: intro with the two gods side by side, the plan of the double temple beside its numbered notes, a timeline and tips. Shares its look with the Abu Simbel and Philae pages. Phone first: everything stacks. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --sobek: #3d7a4f; --horus: #2f5d9a;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --sobek: #7cc596; --horus: #8db4ea; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --sobek: #7cc596; --horus: #8db4ea; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--great); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--great); }
+  .mk:focus-visible { outline: none; }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .eyebrow { color: var(--sobek); }
+  .axis { fill: none; stroke-width: 2; stroke-dasharray: 5 4; }
+  .ruin { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 1; }
+  .col { fill: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+</style>
+
+
+
+<div class="page">
+  <p class="eyebrow">Upper Egypt · Temple of Sobek and Haroeris · c. 180 BC – AD 2nd c. · Day 4 of the Alimaña tour</p>
+  <h1>Kom Ombo, the double temple</h1>
+  <p class="lede">On a hill above a bend of the Nile, about 45 km north of Aswan, the Ptolemies built a temple for two gods at once. It is split down the middle: the northern half belongs to Haroeris, Horus the Elder, the falcon; the southern half to Sobek, the crocodile. Every gateway, hall and sanctuary is doubled, so there are two doors in every wall and two parallel paths to two altars.</p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy6" target="_blank" rel="noopener noreferrer">Kom Ombo card ↗</a><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-sobek" target="_blank" rel="noopener noreferrer">Sobek on the gods page ↗</a><a href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-4" target="_blank" rel="noopener noreferrer">Our Day 4 photos ↗</a></p>
+
+  <div class="pair">
+    <article class="card" style="--c: var(--horus);">
+      <span class="kicker">The northern half</span>
+      <h2>Haroeris, the falcon</h2>
+      <dl class="facts">
+        <div><dt>Who</dt><dd>Horus the Elder (Hor-wer), a sky god whose eyes were the sun and the moon</dd></div>
+        <div><dt>Look for</dt><dd>A falcon head with the double crown</dd></div>
+        <div><dt>Family</dt><dd>Worshipped with Tasenetnofret, &#39;the good sister&#39;, and their son Panebtawy, &#39;lord of the Two Lands&#39;</dd></div>
+        <div><dt>Side</dt><dd>Left as you walk in</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--sobek);">
+      <span class="kicker">The southern half</span>
+      <h2>Sobek, the crocodile</h2>
+      <dl class="facts">
+        <div><dt>Who</dt><dd>Lord of the river and its crocodiles, a god of strength and fertility</dd></div>
+        <div><dt>Look for</dt><dd>A crocodile head crowned with plumes and a sun disk</dd></div>
+        <div><dt>Family</dt><dd>Worshipped with Hathor and their son Khonsu</dd></div>
+        <div><dt>Side</dt><dd>Right as you walk in</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="planTitle" style="--c: var(--sobek);">
+    <h2 id="planTitle">Walking the temple, from the river to the gods</h2>
+    <p class="section-note">The visit comes up from the river through the gate, then heads east through the forecourt and the halls to the twin sanctuaries, round the corridors and out past the nilometer to the museum. Tap a number on the plan.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="0 0 360 400" role="img" aria-label="Simplified plan of the temple of Kom Ombo, north up, with the Nile to the west. The visitor path comes up from the river to the gate of Ptolemy XII in the south wall, near the chapel of Hathor; the ruined birth house stands by the river. Inside the enclosure, the forecourt leads east to the outer and inner hypostyle halls, three vestibules and the twin sanctuaries: the northern half of the temple belongs to Haroeris, the southern half to Sobek, each with its own doorway in every wall. Two corridors run round the inner temple. A well-shaped nilometer lies north-west of the forecourt and the Crocodile Museum south of the enclosure. Numbered markers match the notes.">
+          <rect x="0" y="0" width="360" height="400" fill="var(--panel)"/>
+          <path d="M0,0 H48 C58,90 40,180 54,260 C62,320 50,370 44,400 H0 Z" fill="var(--lake)"/>
+          <text class="t-lake" x="24" y="200" text-anchor="middle" transform="rotate(-90 24 200)">NILE</text>
+          <!-- enclosure wall -->
+          <rect x="96" y="70" width="252" height="262" fill="none" stroke="var(--ink-soft)" stroke-width="3"/>
+          <rect x="104" y="327" width="24" height="10" fill="var(--panel)"/>
+          <rect class="ruin" x="100" y="326" width="6" height="12"/><rect class="ruin" x="126" y="326" width="6" height="12"/>
+          <!-- birth house, chapel of Hathor, nilometer, museum -->
+          <rect class="ruin" x="60" y="250" width="30" height="40" opacity="0.7"/>
+          <rect class="ruin" x="140" y="296" width="20" height="20"/>
+          <circle cx="128" cy="92" r="11" fill="var(--lake)" stroke="var(--ink-soft)"/><circle cx="128" cy="92" r="5" fill="var(--lake-ink)" opacity="0.6"/>
+          <rect class="ruin" x="172" y="352" width="56" height="32"/>
+          <!-- ruined pylon and forecourt -->
+          <rect class="ruin" x="104" y="118" width="8" height="70"/><rect class="ruin" x="104" y="212" width="8" height="70"/>
+          <rect x="112" y="118" width="62" height="164" fill="var(--rock)" opacity="0.25"/>
+          <circle class="col" cx="118" cy="128" r="2.2"/><circle class="col" cx="130" cy="128" r="2.2"/><circle class="col" cx="142" cy="128" r="2.2"/><circle class="col" cx="154" cy="128" r="2.2"/><circle class="col" cx="166" cy="128" r="2.2"/><circle class="col" cx="118" cy="272" r="2.2"/><circle class="col" cx="130" cy="272" r="2.2"/><circle class="col" cx="142" cy="272" r="2.2"/><circle class="col" cx="154" cy="272" r="2.2"/><circle class="col" cx="166" cy="272" r="2.2"/><circle class="col" cx="166" cy="152" r="2.2"/><circle class="col" cx="166" cy="176" r="2.2"/><circle class="col" cx="166" cy="224" r="2.2"/><circle class="col" cx="166" cy="248" r="2.2"/>
+          <rect x="136" y="194" width="12" height="12" fill="var(--rock)" stroke="var(--ink-soft)"/>
+          <!-- outer and inner hypostyle halls -->
+          <rect class="ruin" x="174" y="128" width="30" height="144" fill-opacity="0.55"/><circle class="col" cx="180" cy="142" r="3"/><circle class="col" cx="180" cy="166" r="3"/><circle class="col" cx="180" cy="190" r="3"/><circle class="col" cx="180" cy="210" r="3"/><circle class="col" cx="180" cy="234" r="3"/><circle class="col" cx="180" cy="258" r="3"/><circle class="col" cx="195" cy="142" r="3"/><circle class="col" cx="195" cy="166" r="3"/><circle class="col" cx="195" cy="190" r="3"/><circle class="col" cx="195" cy="210" r="3"/><circle class="col" cx="195" cy="234" r="3"/><circle class="col" cx="195" cy="258" r="3"/>
+          <rect class="ruin" x="206" y="140" width="28" height="120" fill-opacity="0.55"/><circle class="col" cx="214" cy="152" r="2.4"/><circle class="col" cx="214" cy="176" r="2.4"/><circle class="col" cx="214" cy="224" r="2.4"/><circle class="col" cx="214" cy="248" r="2.4"/><circle class="col" cx="226" cy="152" r="2.4"/><circle class="col" cx="226" cy="176" r="2.4"/><circle class="col" cx="226" cy="224" r="2.4"/><circle class="col" cx="226" cy="248" r="2.4"/>
+          <!-- vestibules and sanctuaries -->
+          <rect class="ruin" x="236" y="146" width="15" height="108"/><rect class="ruin" x="252" y="150" width="15" height="100"/><rect class="ruin" x="268" y="154" width="14" height="92"/>
+          <rect x="284" y="160" width="22" height="34" fill="var(--horus)" opacity="0.7"/><rect x="284" y="206" width="22" height="34" fill="var(--sobek)" opacity="0.7"/>
+          <!-- corridors -->
+          <rect x="202" y="126" width="112" height="148" fill="none" stroke="var(--ink-soft)" stroke-width="1.2" stroke-dasharray="3 3"/>
+          <rect x="174" y="112" width="152" height="176" fill="none" stroke="var(--ink-soft)" stroke-width="1.6"/>
+          <!-- the two axes -->
+          <path class="axis" d="M106,176 H294" style="stroke: var(--horus)"/>
+          <path class="axis" d="M106,224 H294" style="stroke: var(--sobek)"/>
+          <!-- visitor path -->
+          <path class="ray" d="M50,350 C80,348 100,345 116,340" style="stroke: var(--great)"/>
+          <!-- labels -->
+          <text class="t-sub" x="300" y="152" text-anchor="middle" style="fill: var(--horus)">Haroeris</text>
+          <text class="t-sub" x="300" y="254" text-anchor="middle" style="fill: var(--sobek)">Sobek</text>
+          <text class="t-sub" x="234" y="372" text-anchor="start">museum</text>
+          <text class="t-sub" x="58" y="392" text-anchor="start">quay</text>
+          <g transform="translate(332,30)"><path d="M0,-16 L6,4 L0,-1 L-6,4 Z" fill="var(--ink-soft)"/><text class="t-sub" x="0" y="18" text-anchor="middle">N</text></g>
+          <path d="M240,44 H290" stroke="var(--ink-soft)" stroke-width="2"/><path d="M240,40 V48 M290,40 V48" stroke="var(--ink-soft)" stroke-width="1.5"/>
+          <text class="t-sub" x="265" y="36" text-anchor="middle">≈ 20 m</text>
+          <a class="mk" href="#ko-1"><circle cx="116" cy="336" r="9"/><text x="116" y="336">1</text></a><a class="mk" href="#ko-2"><circle cx="150" cy="306" r="9"/><text x="150" y="306">2</text></a><a class="mk" href="#ko-3"><circle cx="74" cy="270" r="9"/><text x="74" y="270">3</text></a><a class="mk" href="#ko-4"><circle cx="142" cy="150" r="9"/><text x="142" y="150">4</text></a><a class="mk" href="#ko-5"><circle cx="188" cy="200" r="9"/><text x="188" y="200">5</text></a><a class="mk" href="#ko-6"><circle cx="220" cy="200" r="9"/><text x="220" y="200">6</text></a><a class="mk" href="#ko-7"><circle cx="258" cy="200" r="9"/><text x="258" y="200">7</text></a><a class="mk" href="#ko-8"><circle cx="296" cy="200" r="9"/><text x="296" y="200">8</text></a><a class="mk" href="#ko-9"><circle cx="296" cy="133" r="9"/><text x="296" y="133">9</text></a><a class="mk" href="#ko-10"><circle cx="337" cy="262" r="9"/><text x="337" y="262">10</text></a><a class="mk" href="#ko-11"><circle cx="128" cy="92" r="9"/><text x="128" y="92">11</text></a><a class="mk" href="#ko-12"><circle cx="200" cy="368" r="9"/><text x="200" y="368">12</text></a>
+        </svg>
+        <p class="caption">Simplified plan with approximate positions. North is up; the blue and green dashed lines are the two axes, for Haroeris and Sobek.</p>
+      </div>
+      <ol class="notes">
+        <li id="ko-1"><span class="num">1</span><div><h3>The gate of Ptolemy XII</h3><p>The path from the river climbs to a gateway in the south side of the old mud-brick enclosure, put up by Ptolemy XII, Cleopatra&#39;s father, who also decorated the front halls. The hill, the <i>kom</i>, kept the temple above the flood.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy12" target="_blank" rel="noopener noreferrer">Ptolemy XII ↗</a></p></div></li>
+        <li id="ko-2"><span class="num">2</span><div><h3>The chapel of Hathor</h3><p>A small chapel near the gate, built under the Roman emperor Domitian. Mummified crocodiles from the local cemetery used to be piled up inside; they are now in the museum (12).</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-hathor" target="_blank" rel="noopener noreferrer">Hathor ↗</a></p></div></li>
+        <li id="ko-3"><span class="num">3</span><div><h3>The birth house</h3><p>The mammisi, where the birth of the god&#39;s child was celebrated, stood west of the forecourt, but the river has carried most of it away. One surviving relief shows Ptolemy VIII in a papyrus boat in the marshes.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy8" target="_blank" rel="noopener noreferrer">Ptolemy VIII ↗</a></p></div></li>
+        <li id="ko-4"><span class="num">4</span><div><h3>The forecourt</h3><p>Decorated under the emperor Tiberius. Only the lower parts of its sixteen columns survive, some still painted. In the middle stands the base of an altar: from here on, everything comes in pairs.</p></div></li>
+        <li id="ko-5"><span class="num">5</span><div><h3>The outer hypostyle hall</h3><p>The façade has two doorways, one for each god. Inside, ten columns with flower capitals hold a ceiling still blue in places, with flying vultures. On the walls Ptolemy XII is purified and crowned by the gods, Horus and Thoth among them.</p></div></li>
+        <li id="ko-6"><span class="num">6</span><div><h3>The inner hypostyle hall</h3><p>A smaller, darker hall of ten columns, from Ptolemy VIII&#39;s time. On the walls the king offers to Sobek on one side and to Haroeris on the other.</p></div></li>
+        <li id="ko-7"><span class="num">7</span><div><h3>Three vestibules</h3><p>Three narrow rooms, each a step higher than the last, each with a door for each god: the floor rises and the light fades as you near the gods, as in every Egyptian temple.</p></div></li>
+        <li id="ko-8"><span class="num">8</span><div><h3>The twin sanctuaries</h3><p>Haroeris&#39;s sanctuary lies to the north and Sobek&#39;s to the south. Only the black granite bases of their shrines are left. Between the two, below the floor, runs a hidden passage; guides tell how a priest hid there to speak as the god&#39;s oracle.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-sobek" target="_blank" rel="noopener noreferrer">Sobek ↗</a> · <a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-horus" target="_blank" rel="noopener noreferrer">Horus ↗</a></p></div></li>
+        <li id="ko-9"><span class="num">9</span><div><h3>The inner corridor</h3><p>A passage runs right round the sanctuaries, with small rooms opening off it. In its floor and walls are the openings of the crypts where the temple kept its treasures.</p></div></li>
+        <li id="ko-10"><span class="num">10</span><div><h3>The &#39;medical instruments&#39;</h3><p>On the back wall of the outer corridor, a Roman-period relief shows a king offering a set of tools: knives, hooks, forceps, sponges and scales, beside two women on birthing chairs. It is often called a set of surgical instruments; some scholars think they are ritual tools.</p></div></li>
+        <li id="ko-11"><span class="num">11</span><div><h3>The nilometer</h3><p>A round well with a staircase winding down to the water table, north-west of the forecourt. Priests read the height of the flood on its walls, which set the year&#39;s taxes.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-hapi" target="_blank" rel="noopener noreferrer">Hapi ↗</a></p></div></li>
+        <li id="ko-12"><span class="num">12</span><div><h3>The Crocodile Museum</h3><p>Opened in 2012 just outside the enclosure: mummified crocodiles of every size, from hatchlings to adults, with their eggs and clay coffins, from the animal cemetery of Sobek nearby.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="timeTitle">
+    <h2 id="timeTitle">Kom Ombo through time</h2>
+    <ol class="timeline">
+      <li><span class="yr">before 200 BC</span><p>A town called Nubt, &#39;the golden&#39;, Ombos in Greek, stands on the hill; blocks from an older temple were found on the site.</p></li>
+      <li><span class="yr">c. 180–145 BC</span><p>Ptolemy VI founds the present double temple.</p></li>
+      <li><span class="yr">c. 145–116 BC</span><p>Ptolemy VIII builds and decorates the inner halls, the vestibules and the sanctuaries.</p></li>
+      <li><span class="yr">c. 80–51 BC</span><p>Ptolemy XII adds the outer hypostyle hall and the gate.</p></li>
+      <li><span class="yr">AD 14–37</span><p>Under the emperor Tiberius the forecourt is decorated.</p></li>
+      <li><span class="yr">AD 1st–2nd c.</span><p>Roman emperors add the chapel of Hathor and carve the outer corridor, with the &#39;medical instruments&#39;.</p></li>
+      <li><span class="yr">later centuries</span><p>Floods eat away the front of the site, earthquakes bring down the roofs and the stone is reused; sand fills the halls.</p></li>
+      <li><span class="yr">1893</span><p>Jacques de Morgan clears the sand and restores the temple.</p></li>
+      <li><span class="yr">2012</span><p>The Crocodile Museum opens beside the temple.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">For our visit</h2>
+    <div class="tips">
+      <div class="tip"><h3>Count the doors</h3><p>Stand in the forecourt and look east: two doorways in every wall, one line for the falcon and one for the crocodile.</p></div>
+      <div class="tip"><h3>Look up</h3><p>In the outer hypostyle hall the ceiling and capitals still keep their blue, green and red.</p></div>
+      <div class="tip"><h3>Go round the back</h3><p>The &#39;medical instruments&#39; are easy to miss: walk the outer corridor to the back wall of the temple.</p></div>
+      <div class="tip"><h3>Finish with the crocodiles</h3><p>Leave time for the Crocodile Museum by the exit; it is small, cool and quick to see.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Part of <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">the Private Alimaña Tour ↗</a>. The plan is simplified; dates are approximate.</p>
+</div>
