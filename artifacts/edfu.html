@@ -1,0 +1,246 @@
+<title>Edfu, Temple of Horus</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: intro, the temple plan beside its numbered notes (followed from the birth house to the sanctuary), the Festival of the Beautiful Meeting with a small river map, a timeline and tips. Shares its look with the Abu Simbel, Philae and Kom Ombo pages. Phone first: everything stacks. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --horus: #2f5d9a;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --horus: #8db4ea; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --horus: #8db4ea; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--great); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--great); }
+  .mk:focus-visible { outline: none; }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .eyebrow { color: var(--horus); }
+  .ruin { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 1; }
+  .col { fill: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Upper Egypt · Temple of Horus · 237–57 BC · Day 5 of the Alimaña tour</p>
+  <h1>Edfu, the temple of Horus</h1>
+  <p class="lede">Halfway between Luxor and Aswan, on the west bank, stands the most complete temple in Egypt: roof, walls, pylon and enclosure are all still there. The Ptolemies built it for Horus of Behdet, the falcon god, over 180 years, and carved its walls with the story of his fight against Seth and the rites performed for him every day. Buried under sand and houses for centuries, it came out almost intact.</p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy3" target="_blank" rel="noopener noreferrer">Edfu card ↗</a><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-horus" target="_blank" rel="noopener noreferrer">Horus on the gods page ↗</a><a href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-5" target="_blank" rel="noopener noreferrer">Our Day 5 photos ↗</a></p>
+
+  <div class="pair">
+    <article class="card" style="--c: var(--horus);">
+      <span class="kicker">The temple</span>
+      <h2>A falcon&#39;s house</h2>
+      <dl class="facts">
+        <div><dt>God</dt><dd>Horus of Behdet, the falcon, often shown as a winged sun disk over the doors; with Hathor of Dendera and their son Harsomtus</dd></div>
+        <div><dt>Builders</dt><dd>Ptolemy III to Ptolemy XII, 237–57 BC</dd></div>
+        <div><dt>Size</dt><dd>About 137 m long; the pylon is about 36 m high</dd></div>
+        <div><dt>Facing</dt><dd>South, towards the river bend, unlike most temples, which face the Nile</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--small);">
+      <span class="kicker">Why it matters</span>
+      <h2>A temple you can read</h2>
+      <dl class="facts">
+        <div><dt>Complete</dt><dd>The only big temple with its roof, enclosure wall and pylon all standing</dd></div>
+        <div><dt>Written</dt><dd>Its walls give its own measurements, building dates and the yearly festivals</dd></div>
+        <div><dt>Mythical</dt><dd>The fullest version of the war between Horus and Seth</dd></div>
+        <div><dt>Nearby</dt><dd>Across the river lies Hierakonpolis, the ancient city of the falcon god</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="planTitle" style="--c: var(--horus);">
+    <h2 id="planTitle">Walking the temple, from the gate to the god</h2>
+    <p class="section-note">The visit starts at the birth house in front of the pylon and walks north through the court and the two halls, each darker and higher-floored than the last, to the sanctuary; then round the passage outside the temple and out past the nilometer. Tap a number on the plan.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="20 70 270 400" role="img" aria-label="Simplified plan of the Temple of Horus at Edfu, north up; the temple faces south. In front of the pylon, to the west, stands the birth house. The great pylon opens on a court with columns on three sides, then the outer hypostyle hall of eighteen columns, the inner hypostyle hall of twelve, the offering hall with the New Year chapel beside it, a vestibule and the sanctuary with its granite shrine, ringed by small chapels. A stone enclosure wall runs from the pylon round the whole temple, leaving a passage whose west wall carries the reliefs of Horus against Seth. The nilometer lies outside the wall to the east. Numbered markers match the notes.">
+          <rect x="20" y="70" width="270" height="400" fill="var(--panel)"/>
+          <!-- enclosure wall from the pylon round the temple -->
+          <path d="M76,364 V96 H224 V364" fill="none" stroke="var(--ink-soft)" stroke-width="3"/>
+          <!-- birth house, in front of the pylon to the west -->
+          <rect class="ruin" x="28" y="400" width="44" height="50"/><circle class="col" cx="34" cy="406" r="1.8"/><circle class="col" cx="34" cy="418" r="1.8"/><circle class="col" cx="34" cy="430" r="1.8"/><circle class="col" cx="34" cy="442" r="1.8"/><circle class="col" cx="66" cy="406" r="1.8"/><circle class="col" cx="66" cy="418" r="1.8"/><circle class="col" cx="66" cy="430" r="1.8"/><circle class="col" cx="66" cy="442" r="1.8"/><circle class="col" cx="44" cy="446" r="1.8"/><circle class="col" cx="56" cy="446" r="1.8"/>
+          <!-- pylon -->
+          <rect class="ruin" x="62" y="362" width="78" height="18"/><rect class="ruin" x="160" y="362" width="78" height="18"/>
+          <!-- court -->
+          <rect x="90" y="266" width="120" height="96" fill="var(--rock)" opacity="0.25"/><circle class="col" cx="100" cy="352" r="2.2"/><circle class="col" cx="112" cy="352" r="2.2"/><circle class="col" cx="124" cy="352" r="2.2"/><circle class="col" cx="136" cy="352" r="2.2"/><circle class="col" cx="148" cy="352" r="2.2"/><circle class="col" cx="160" cy="352" r="2.2"/><circle class="col" cx="172" cy="352" r="2.2"/><circle class="col" cx="184" cy="352" r="2.2"/><circle class="col" cx="196" cy="352" r="2.2"/><circle class="col" cx="96" cy="272" r="2.2"/><circle class="col" cx="96" cy="284" r="2.2"/><circle class="col" cx="96" cy="296" r="2.2"/><circle class="col" cx="96" cy="308" r="2.2"/><circle class="col" cx="96" cy="320" r="2.2"/><circle class="col" cx="96" cy="332" r="2.2"/><circle class="col" cx="96" cy="344" r="2.2"/><circle class="col" cx="204" cy="272" r="2.2"/><circle class="col" cx="204" cy="284" r="2.2"/><circle class="col" cx="204" cy="296" r="2.2"/><circle class="col" cx="204" cy="308" r="2.2"/><circle class="col" cx="204" cy="320" r="2.2"/><circle class="col" cx="204" cy="332" r="2.2"/><circle class="col" cx="204" cy="344" r="2.2"/>
+          <!-- outer hypostyle (18 columns) -->
+          <rect class="ruin" x="100" y="216" width="100" height="46" fill-opacity="0.55"/><circle class="col" cx="110" cy="225" r="2.8"/><circle class="col" cx="110" cy="238" r="2.8"/><circle class="col" cx="110" cy="251" r="2.8"/><circle class="col" cx="126" cy="225" r="2.8"/><circle class="col" cx="126" cy="238" r="2.8"/><circle class="col" cx="126" cy="251" r="2.8"/><circle class="col" cx="142" cy="225" r="2.8"/><circle class="col" cx="142" cy="238" r="2.8"/><circle class="col" cx="142" cy="251" r="2.8"/><circle class="col" cx="158" cy="225" r="2.8"/><circle class="col" cx="158" cy="238" r="2.8"/><circle class="col" cx="158" cy="251" r="2.8"/><circle class="col" cx="174" cy="225" r="2.8"/><circle class="col" cx="174" cy="238" r="2.8"/><circle class="col" cx="174" cy="251" r="2.8"/><circle class="col" cx="190" cy="225" r="2.8"/><circle class="col" cx="190" cy="238" r="2.8"/><circle class="col" cx="190" cy="251" r="2.8"/>
+          <!-- inner hypostyle (12 columns) -->
+          <rect class="ruin" x="108" y="184" width="84" height="30" fill-opacity="0.55"/><circle class="col" cx="120" cy="192" r="2.4"/><circle class="col" cx="120" cy="204" r="2.4"/><circle class="col" cx="140" cy="192" r="2.4"/><circle class="col" cx="140" cy="204" r="2.4"/><circle class="col" cx="160" cy="192" r="2.4"/><circle class="col" cx="160" cy="204" r="2.4"/><circle class="col" cx="180" cy="192" r="2.4"/><circle class="col" cx="180" cy="204" r="2.4"/>
+          <!-- offering hall, vestibule, sanctuary and chapels -->
+          <rect class="ruin" x="112" y="166" width="76" height="16"/>
+          <rect class="ruin" x="116" y="150" width="68" height="14"/>
+          <rect class="ruin" x="104" y="106" width="92" height="42" fill-opacity="0.5"/>
+          <rect x="136" y="112" width="28" height="34" fill="var(--horus)" opacity="0.75"/>
+          <rect x="144" y="118" width="12" height="12" fill="var(--panel)" opacity="0.8"/>
+          <!-- New Year chapel with its small open court, east of the offering hall -->
+          <rect class="ruin" x="196" y="160" width="18" height="16"/><rect x="196" y="176" width="18" height="10" fill="none" stroke="var(--ink-soft)" stroke-dasharray="2 2"/>
+          <!-- inner temple wall: the passage runs between it and the enclosure -->
+          <path d="M98,264 V100 H202 V264" fill="none" stroke="var(--ink-soft)" stroke-width="1.6"/>
+          <!-- nilometer east of the enclosure -->
+          <circle cx="252" cy="230" r="10" fill="var(--lake)" stroke="var(--ink-soft)"/><circle cx="252" cy="230" r="4" fill="var(--lake-ink)" opacity="0.6"/>
+          <!-- falcon statues -->
+          <path d="M146,392 l4,-8 l4,8 Z" fill="var(--ink)" opacity="0"/>
+          <!-- axis / visitor path -->
+          <path class="ray" d="M150,466 L150,386 L150,140" style="stroke: var(--horus)"/>
+          <!-- labels -->
+          <text class="t-sub" x="160" y="462">from the calèches</text>
+          <text class="t-sub" x="257" y="254" text-anchor="middle">nilometer</text>
+          <g transform="translate(266,92)"><path d="M0,-14 L5,3 L0,-1 L-5,3 Z" fill="var(--ink-soft)"/><text class="t-sub" x="0" y="15" text-anchor="middle">N</text></g>
+          <path d="M232,440 H278" stroke="var(--ink-soft)" stroke-width="2"/><path d="M232,436 V444 M278,436 V444" stroke="var(--ink-soft)" stroke-width="1.5"/>
+          <text class="t-sub" x="255" y="432" text-anchor="middle">≈ 30 m</text>
+          <a class="mk" href="#ed-1"><circle cx="48" cy="425" r="9"/><text x="48" y="425">1</text></a><a class="mk" href="#ed-2"><circle cx="120" cy="372" r="9"/><text x="120" y="372">2</text></a><a class="mk" href="#ed-3"><circle cx="150" cy="395" r="9"/><text x="150" y="395">3</text></a><a class="mk" href="#ed-4"><circle cx="150" cy="300" r="9"/><text x="150" y="300">4</text></a><a class="mk" href="#ed-5"><circle cx="150" cy="238" r="9"/><text x="150" y="238">5</text></a><a class="mk" href="#ed-6"><circle cx="150" cy="199" r="9"/><text x="150" y="199">6</text></a><a class="mk" href="#ed-7"><circle cx="128" cy="175" r="9"/><text x="128" y="175">7</text></a><a class="mk" href="#ed-8"><circle cx="222" cy="168" r="9"/><text x="222" y="168">8</text></a><a class="mk" href="#ed-9"><circle cx="150" cy="132" r="9"/><text x="150" y="132">9</text></a><a class="mk" href="#ed-10"><circle cx="186" cy="128" r="9"/><text x="186" y="128">10</text></a><a class="mk" href="#ed-11"><circle cx="84" cy="214" r="9"/><text x="84" y="214">11</text></a><a class="mk" href="#ed-12"><circle cx="274" cy="214" r="9"/><text x="274" y="214">12</text></a>
+        </svg>
+        <p class="caption">Simplified plan with approximate positions. North is up; the temple faces south. The blue dashed line is the main axis.</p>
+      </div>
+      <ol class="notes">
+        <li id="ed-1"><span class="num">1</span><div><h3>The birth house</h3><p>In front of the pylon, to the west, stands the mammisi built by Ptolemy VIII. Here the priests celebrated the birth of Harsomtus, the child of Horus and Hathor. Its reliefs show Hathor nursing the baby, and the dwarf god Bes, protector of births, grimaces from the tops of the columns.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-bes" target="_blank" rel="noopener noreferrer">Bes ↗</a> · <a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-hathor" target="_blank" rel="noopener noreferrer">Hathor ↗</a></p></div></li>
+        <li id="ed-2"><span class="num">2</span><div><h3>The pylon</h3><p>About 36 m high and 79 m wide, the tallest gateway of any surviving Egyptian temple. On both towers Ptolemy XII, Cleopatra&#39;s father, smites his enemies before Horus and Hathor. The slots in its face held flagpoles with pennants.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy12" target="_blank" rel="noopener noreferrer">Ptolemy XII ↗</a></p></div></li>
+        <li id="ed-3"><span class="num">3</span><div><h3>The granite falcons</h3><p>Horus guards the doors as a falcon wearing the double crown. One granite falcon stands by the pylon gateway; the best-preserved stands in the court in front of the hypostyle hall, the most photographed statue in the temple.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-horus" target="_blank" rel="noopener noreferrer">Horus ↗</a></p></div></li>
+        <li id="ed-4"><span class="num">4</span><div><h3>The court of offerings</h3><p>A great open court with 32 columns on three sides, each capital a different plant. Here the public could come at festivals; beyond the next doorway only priests went on.</p></div></li>
+        <li id="ed-5"><span class="num">5</span><div><h3>The outer hypostyle hall</h3><p>Eighteen columns in three rows hold up the roof. By the entrance are two tiny rooms: a library, whose wall lists the books it kept, and a room where the king, or the priest standing in for him, was purified before going in.</p></div></li>
+        <li id="ed-6"><span class="num">6</span><div><h3>The inner hypostyle hall</h3><p>Twelve columns, darker and lower: the Hall of Appearances, where the god&#39;s statue was brought out for processions. A small side room, the &#39;laboratory&#39;, has recipes for the incense and perfumed oils used in the rites carved on its walls.</p></div></li>
+        <li id="ed-7"><span class="num">7</span><div><h3>The offering hall and the stairs</h3><p>Food, drink and flowers were laid out here for Horus every day. Two staircases, one straight and one winding, lead to the roof; their walls show the priests carrying the god&#39;s statue up at New Year so that it could meet the sun.</p></div></li>
+        <li id="ed-8"><span class="num">8</span><div><h3>The New Year chapel</h3><p>A small chapel with its own open court beside the offering hall. On New Year&#39;s Day the statue rested here before going up to the roof; the ceiling shows the sky goddess Nut.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-nut" target="_blank" rel="noopener noreferrer">Nut ↗</a></p></div></li>
+        <li id="ed-9"><span class="num">9</span><div><h3>The sanctuary</h3><p>The heart of the temple. The polished grey granite shrine at the back, made for Nectanebo II around 350 BC, is the oldest thing in the temple: the Ptolemies built their temple around it. In front stands a modern copy of the sacred boat that carried Horus&#39;s statue in processions.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-nectanebo2" target="_blank" rel="noopener noreferrer">Nectanebo II ↗</a></p></div></li>
+        <li id="ed-10"><span class="num">10</span><div><h3>The chapels round the sanctuary</h3><p>A ring of small rooms opens off a corridor around the sanctuary, each for another god or a sacred object: Osiris, Min, Khonsu, Hathor, and the throne of Ra among them.</p></div></li>
+        <li id="ed-11"><span class="num">11</span><div><h3>Horus against Seth</h3><p>Between the temple and the enclosure wall runs a long passage. On the inner face of the west wall, the Triumph of Horus is told like a play: Horus, standing in a boat, harpoons his uncle Seth, shown as a small hippopotamus, to avenge his father Osiris.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-seth" target="_blank" rel="noopener noreferrer">Seth ↗</a> · <a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-osiris" target="_blank" rel="noopener noreferrer">Osiris ↗</a></p></div></li>
+        <li id="ed-12"><span class="num">12</span><div><h3>The nilometer</h3><p>Outside the east side of the enclosure, a stairway runs down to the water table. Marks on its walls showed how high the flood would rise, and so how big the harvest, and the taxes, would be.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-hapi" target="_blank" rel="noopener noreferrer">Hapi ↗</a></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="meetTitle">
+    <h2 id="meetTitle">The Festival of the Beautiful Meeting</h2>
+    <p class="section-note">Once a year, in the third month of summer, the statue of Hathor left her temple at Dendera by boat and sailed upstream to visit her husband Horus at Edfu, stopping at temples on the way. Horus came out to meet her, and the two gods spent about two weeks together among feasts, offerings and visits to the tombs of the gods buried near Edfu, before Hathor sailed home. You will see Dendera, the other end of the journey, on Day 7.</p>
+    <div class="figure" style="max-width: 520px;">
+      <svg viewBox="0 0 360 260" role="img" aria-label="Schematic map of the Nile from Dendera in the north to Edfu in the south. Each year Hathor's statue sailed upstream from her temple at Dendera, past Thebes and Hierakonpolis, to visit Horus at Edfu, then sailed home about two weeks later.">
+          <rect width="360" height="260" fill="var(--panel)"/>
+          <path d="M120,10 C150,40 230,40 250,70 C270,110 190,120 180,150 C170,190 200,220 190,252" fill="none" stroke="var(--lake)" stroke-width="16" stroke-linecap="round"/>
+          <path d="M120,10 C150,40 230,40 250,70 C270,110 190,120 180,150 C170,190 200,220 190,252" fill="none" stroke="var(--lake-ink)" stroke-width="2"/>
+          <circle cx="160" cy="28" r="5" fill="var(--small)"/><text class="t-label" x="144" y="32" text-anchor="end" style="fill: var(--small)">Dendera</text><text class="t-sub" x="144" y="48" text-anchor="end">Hathor&#39;s temple</text>
+          <circle cx="228" cy="112" r="4" fill="var(--ink-soft)"/><text class="t-sub" x="216" y="116" text-anchor="end">Thebes (Luxor)</text>
+          <circle cx="174" cy="196" r="4" fill="var(--ink-soft)"/><text class="t-sub" x="160" y="200" text-anchor="end">Hierakonpolis</text>
+          <circle cx="198" cy="226" r="5" fill="var(--horus)"/><text class="t-label" x="210" y="230" style="fill: var(--horus)">Edfu</text><text class="t-sub" x="210" y="246">Horus&#39;s temple</text>
+          <path class="ray" d="M270,40 C300,90 290,160 240,204" style="stroke: var(--small)"/><path d="M244,193 L238,206 L252,204" fill="none" stroke="var(--small)" stroke-width="2"/>
+          <text class="t-sub" x="290" y="126" style="fill: var(--small)">upstream,</text><text class="t-sub" x="290" y="141" style="fill: var(--small)">two weeks</text><text class="t-sub" x="290" y="156" style="fill: var(--small)">every year</text>
+          <text class="t-lake" x="96" y="140">NILE</text>
+        </svg>
+      <p class="caption">Schematic map, not to scale.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="timeTitle">
+    <h2 id="timeTitle">Edfu through time</h2>
+    <ol class="timeline">
+      <li><span class="yr">Old Kingdom</span><p>Edfu, ancient Behdet, is already a town and the capital of its province; tombs of its governors lie behind the temple.</p></li>
+      <li><span class="yr">c. 350 BC</span><p>Nectanebo II has the granite shrine made for an earlier temple on the site.</p></li>
+      <li><span class="yr">23 Aug 237 BC</span><p>Ptolemy III lays the foundation of the present temple.</p></li>
+      <li><span class="yr">212 BC</span><p>The main building is finished under Ptolemy IV.</p></li>
+      <li><span class="yr">142 BC</span><p>After the decoration is done, the temple is dedicated under Ptolemy VIII.</p></li>
+      <li><span class="yr">140–124 BC</span><p>The outer hypostyle hall is added in front.</p></li>
+      <li><span class="yr">57 BC</span><p>Under Ptolemy XII the court, the pylon and the great doors are finished, 180 years after the foundation. Building texts on the walls record each stage.</p></li>
+      <li><span class="yr">AD 4th–5th c.</span><p>Once the temples are closed, Christians deface many faces; sand and later a village gradually fill and cover the temple.</p></li>
+      <li><span class="yr">1798–99</span><p>Napoleon&#39;s scholars draw the temple half-buried, with houses on its roof.</p></li>
+      <li><span class="yr">from 1860</span><p>Auguste Mariette clears the sand and houses away, revealing the best-preserved temple in Egypt.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">For our visit</h2>
+    <div class="tips">
+      <div class="tip"><h3>By calèche</h3><p>From the river the usual way in is a horse-drawn calèche through the town, a short, bumpy and memorable ride.</p></div>
+      <div class="tip"><h3>Find the falcon</h3><p>The granite falcon in front of the hypostyle hall is the classic photo; go early before the groups gather round it.</p></div>
+      <div class="tip"><h3>Walk the passage</h3><p>Many visitors skip it: go round between the temple and the enclosure wall for Horus harpooning Seth.</p></div>
+      <div class="tip"><h3>Watch the light</h3><p>Inside, it gets darker with every hall towards the sanctuary, just as the builders meant.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Part of <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">the Private Alimaña Tour ↗</a>. The plan is simplified; dates are approximate.</p>
+</div>
