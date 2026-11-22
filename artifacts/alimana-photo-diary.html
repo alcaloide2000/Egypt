@@ -125,7 +125,7 @@
   </div>
   <div class="v-bottom">
     <label for="vCap" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);">Caption</label>
-    <textarea class="v-cap" id="vCap" rows="1" maxlength="200" placeholder="Add a caption…" autocomplete="off"></textarea>
+    <textarea class="v-cap" id="vCap" rows="1" maxlength="600" placeholder="Add a caption…" autocomplete="off"></textarea>
     <div class="v-meta"><span id="vBy"></span><span id="vWhen"></span><span class="sp"></span>
       <a class="v-btn" id="vOpen" href="#" target="_blank" rel="noopener noreferrer" style="display:inline-flex;align-items:center;text-decoration:none;">Open file ↗</a>
       <button class="v-btn danger" id="vDel" type="button" hidden>Delete</button>
@@ -514,7 +514,7 @@
   var saving = Promise.resolve();
   function saveCaption() {
     if (!cur || !canWrite) return;
-    var v = vCap.value.trim().slice(0, 200), p = cur;
+    var v = vCap.value.trim().slice(0, 600), p = cur;
     if (v === (p.caption || '')) return;
     saving = saving.then(function () { return db.collection('photos').doc(p.id).update({ caption: v }); }).catch(function () { setStatus('A caption could not be saved. Try again.', true); });
   }
