@@ -1,0 +1,299 @@
+<title>Edfu, Tempel des Horus</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout (German version): intro, the temple plan beside its numbered notes (followed from the birth house to the sanctuary), the Festival of the Beautiful Meeting with a small river map, a timeline and tips. Shares its look with the Abu Simbel, Philae and Kom Ombo pages. Phone first: everything stacks. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --horus: #2f5d9a;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --horus: #8db4ea; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --horus: #8db4ea; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--great); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--great); }
+  .mk:focus-visible { outline: none; }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .eyebrow { color: var(--horus); }
+  .hero { padding: 0; overflow: hidden; }
+  .hero svg { border-radius: 14px 14px 0 0; }
+  .hero figcaption { padding: 0 0.9rem 0.7rem; }
+  .pylon-key li { padding: 0.5rem 0.7rem; }
+  .pylon-key p { color: var(--ink); }
+  .see a { text-decoration: none; border-bottom: 1px solid var(--line); }
+  .ruin { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 1; }
+  .col { fill: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Oberägypten · Horustempel · 237–57 v. Chr. · Tag 5 der Alimaña-Reise · <a class="lang" href="https://claude.ai/artifact/KQ8oJAQRCnyB7QonPKpkPu" target="_blank" rel="noopener noreferrer" hreflang="en">English version ↗</a> · <a class="lang" href="https://claude.ai/artifact/EsBmPiiHuuDSxH5UaWiGaD" target="_blank" rel="noopener noreferrer" hreflang="es">Versión en español, con audioguía ↗</a></p>
+  <h1>Edfu, der Tempel des Horus</h1>
+  <p class="lede">Auf halbem Weg zwischen Luxor und Assuan, am Westufer, steht der vollständigste Tempel Ägyptens: Dach, Mauern, Pylon und Umfassungsmauer sind alle noch da. Die Ptolemäer bauten ihn 180 Jahre lang für Horus von Behdet, den Falkengott, und bedeckten seine Wände mit der Geschichte seines Kampfes gegen Seth und den Riten, die man ihm jeden Tag darbrachte. Jahrhundertelang unter Sand und Häusern begraben, kam er fast unversehrt wieder ans Licht.</p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy3" target="_blank" rel="noopener noreferrer">Edfu-Karte (englisch) ↗</a><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-horus" target="_blank" rel="noopener noreferrer">Horus auf der Götterseite (englisch) ↗</a><a href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-5" target="_blank" rel="noopener noreferrer">Unsere Fotos von Tag 5 ↗</a></p>
+
+  <figure class="figure hero" style="margin: 1.3rem 0 0;">
+    <svg viewBox="0 0 800 340" role="img" aria-label="Zeichnung der Front des Horustempels von Edfu unter klarem Himmel: die beiden großen Türme des Pylons, jeder mit zwei Flaggenmasten und roten Wimpeln und dem Umriss eines riesigen Königs, der seine Feinde erschlägt, das Tor dazwischen unter einer geflügelten Sonnenscheibe, ein dunkler Granitfalke des Horus davor, einige Besucher als Maßstab und Palmen auf beiden Seiten.">
+          <defs><linearGradient id="edfuSky" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#8fbcd4"/><stop offset="1" stop-color="#f3dcae"/></linearGradient></defs>
+          <rect width="800" height="340" fill="url(#edfuSky)"/>
+          <circle cx="690" cy="62" r="24" fill="#fff3c4" opacity="0.9"/>
+          <rect x="40" y="190" width="720" height="110" fill="#cfae74"/>
+          <line x1="40" y1="190" x2="760" y2="190" stroke="#a98149" stroke-width="2"/>
+          <path d="M186,300 L208,70 L330,70 L352,300 Z" fill="#dcbb7f"/><path d="M326,300 L326,70 L330,70 L352,300 Z" fill="#c39b5d"/><path d="M204,70 Q200,56 194,52 L344,52 Q338,56 334,70 Z" fill="#c39b5d" stroke="#a98149" stroke-width="1"/><line x1="207" y1="70" x2="187" y2="300" stroke="#a98149" stroke-width="2"/><line x1="331" y1="70" x2="351" y2="300" stroke="#a98149" stroke-width="2"/><path d="M235.72,72 L225.16,300 L233.16,300 L243.72,72 Z" fill="#b8925a"/><line x1="239.72" y1="72" x2="239.72" y2="8" stroke="#6b5232" stroke-width="3"/><path d="M239.72,10 Q253.72,12 265.72,20 Q253.72,22 239.72,26 Z" fill="#b5551f"/><rect x="247.72" y="140" width="7" height="7" fill="#6b5232"/><path d="M294.28,72 L304.84000000000003,300 L312.84000000000003,300 L302.28,72 Z" fill="#b8925a"/><line x1="298.28" y1="72" x2="298.28" y2="8" stroke="#6b5232" stroke-width="3"/><path d="M298.28,10 Q312.28,12 324.28,20 Q312.28,22 298.28,26 Z" fill="#b5551f"/><rect x="306.28" y="140" width="7" height="7" fill="#6b5232"/><g fill="none" stroke="#a98149" stroke-width="2" stroke-linecap="round"><circle cx="269.0" cy="150" r="9"/><path d="M263.0,140 L269.0,128 L275.0,140"/><path d="M259.0,162 L279.0,162 L282.0,225 L256.0,225 Z"/><path d="M260.0,225 L253.0,282 M278.0,225 L289.0,282"/><path d="M278.0,166 L293.0,132"/><circle cx="295.0" cy="127" r="5"/><path d="M260.0,168 L241.0,190"/><circle cx="233.0" cy="196" r="5"/><circle cx="224.0" cy="201" r="5"/><circle cx="215.0" cy="206" r="5"/></g><line x1="216" y1="88" x2="322" y2="88" stroke="#a98149" stroke-width="1" opacity="0.7"/><line x1="216" y1="108" x2="322" y2="108" stroke="#a98149" stroke-width="1" opacity="0.7"/><path d="M448,300 L470,70 L592,70 L614,300 Z" fill="#dcbb7f"/><path d="M448,300 L470,70 L474,70 L474,300 Z" fill="#c39b5d"/><path d="M466,70 Q462,56 456,52 L606,52 Q600,56 596,70 Z" fill="#c39b5d" stroke="#a98149" stroke-width="1"/><line x1="469" y1="70" x2="449" y2="300" stroke="#a98149" stroke-width="2"/><line x1="593" y1="70" x2="613" y2="300" stroke="#a98149" stroke-width="2"/><path d="M497.72,72 L487.16,300 L495.16,300 L505.72,72 Z" fill="#b8925a"/><line x1="501.72" y1="72" x2="501.72" y2="8" stroke="#6b5232" stroke-width="3"/><path d="M501.72,10 Q515.72,12 527.72,20 Q515.72,22 501.72,26 Z" fill="#b5551f"/><rect x="509.72" y="140" width="7" height="7" fill="#6b5232"/><path d="M556.28,72 L566.84,300 L574.84,300 L564.28,72 Z" fill="#b8925a"/><line x1="560.28" y1="72" x2="560.28" y2="8" stroke="#6b5232" stroke-width="3"/><path d="M560.28,10 Q574.28,12 586.28,20 Q574.28,22 560.28,26 Z" fill="#b5551f"/><rect x="568.28" y="140" width="7" height="7" fill="#6b5232"/><g fill="none" stroke="#a98149" stroke-width="2" stroke-linecap="round"><circle cx="531.0" cy="150" r="9"/><path d="M525.0,140 L531.0,128 L537.0,140"/><path d="M521.0,162 L541.0,162 L544.0,225 L518.0,225 Z"/><path d="M522.0,225 L515.0,282 M540.0,225 L551.0,282"/><path d="M540.0,166 L555.0,132"/><circle cx="557.0" cy="127" r="5"/><path d="M522.0,168 L503.0,190"/><circle cx="495.0" cy="196" r="5"/><circle cx="486.0" cy="201" r="5"/><circle cx="477.0" cy="206" r="5"/></g><line x1="478" y1="88" x2="584" y2="88" stroke="#a98149" stroke-width="1" opacity="0.7"/><line x1="478" y1="108" x2="584" y2="108" stroke="#a98149" stroke-width="1" opacity="0.7"/><rect x="352" y="128" width="96" height="172" fill="#dcbb7f"/><rect x="346" y="118" width="108" height="14" fill="#c39b5d" stroke="#a98149"/><rect x="378" y="168" width="44" height="132" fill="#4a3a28"/><circle cx="400" cy="146" r="6" fill="#d9a83c"/><path d="M393,146 C380,140 368,141 360,146 C368,151 380,151 393,147 Z M407,146 C420,140 432,141 440,146 C432,151 420,151 407,147 Z" fill="#2f5d9a"/>
+          <rect x="0" y="300" width="800" height="40" fill="#d8b77c"/>
+          <path d="M80,300 C83,225.0 78,180.0 82,150" fill="none" stroke="#7a5a34" stroke-width="5"/><path d="M82,150 q-18,4 -36,9.6" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M82,150 q18,4 36,9.6" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M82,150 q-12,-8 -24,-19.2" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M82,150 q12,-8 24,-19.2" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M82,150 q0,-12 0,-28.799999999999997" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M120,300 C117,240.0 122,204.0 118,180" fill="none" stroke="#7a5a34" stroke-width="5"/><path d="M118,180 q-18,4 -36,9.6" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M118,180 q18,4 36,9.6" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M118,180 q-12,-8 -24,-19.2" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M118,180 q12,-8 24,-19.2" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M118,180 q0,-12 0,-28.799999999999997" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M720,300 C717,230.0 722,188.0 718,160" fill="none" stroke="#7a5a34" stroke-width="5"/><path d="M718,160 q-18,4 -36,9.6" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M718,160 q18,4 36,9.6" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M718,160 q-12,-8 -24,-19.2" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M718,160 q12,-8 24,-19.2" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M718,160 q0,-12 0,-28.799999999999997" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M684,300 C687,245.0 682,212.0 686,190" fill="none" stroke="#7a5a34" stroke-width="5"/><path d="M686,190 q-18,4 -36,9.6" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M686,190 q18,4 36,9.6" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M686,190 q-12,-8 -24,-19.2" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M686,190 q12,-8 24,-19.2" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/><path d="M686,190 q0,-12 0,-28.799999999999997" fill="none" stroke="#5d7a3c" stroke-width="4" stroke-linecap="round"/>
+          <rect x="388" y="268" width="24" height="32" fill="#4b4a48"/><path d="M392,268 C390,252 394,240 400,236 C404,232 410,234 410,240 L414,242 L409,244 C412,252 411,262 408,268 Z" fill="#2f2e2c"/><path d="M397,236 L397,226 L405,226 L405,236 Z" fill="#2f2e2c"/><g fill="#3b2f25"><circle cx="330" cy="286" r="3"/><rect x="327" y="289" width="6" height="11" rx="2"/></g><g fill="#3b2f25"><circle cx="344" cy="286" r="3"/><rect x="341" y="289" width="6" height="11" rx="2"/></g><g fill="#3b2f25"><circle cx="470" cy="286" r="3"/><rect x="467" y="289" width="6" height="11" rx="2"/></g><g fill="#3b2f25"><circle cx="482" cy="286" r="3"/><rect x="479" y="289" width="6" height="11" rx="2"/></g><g fill="#3b2f25"><circle cx="495" cy="286" r="3"/><rect x="492" y="289" width="6" height="11" rx="2"/></g>
+        </svg>
+    <figcaption class="caption">Der Pylon von Edfu bei der Ankunft: etwa 36 m hoch. Eine Zeichnung, kein Foto.</figcaption>
+  </figure>
+
+  <div class="pair">
+    <article class="card" style="--c: var(--horus);">
+      <span class="kicker">Der Tempel</span>
+      <h2>Das Haus eines Falken</h2>
+      <dl class="facts">
+        <div><dt>Gott</dt><dd>Horus von Behdet, der Falke, oft als geflügelte Sonnenscheibe über den Türen dargestellt; mit Hathor von Dendera und ihrem Sohn Harsomtus</dd></div>
+        <div><dt>Bauherren</dt><dd>Ptolemaios III. bis Ptolemaios XII., 237–57 v. Chr.</dd></div>
+        <div><dt>Größe</dt><dd>Etwa 137 m lang; der Pylon ist etwa 36 m hoch</dd></div>
+        <div><dt>Ausrichtung</dt><dd>Nach Süden, zur Flussbiegung hin, anders als die meisten Tempel, die zum Nil blicken</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--small);">
+      <span class="kicker">Warum er wichtig ist</span>
+      <h2>Ein Tempel zum Lesen</h2>
+      <dl class="facts">
+        <div><dt>Vollständig</dt><dd>Der einzige große Tempel, dessen Dach, Umfassungsmauer und Pylon alle noch stehen</dd></div>
+        <div><dt>Beschriftet</dt><dd>Seine Wände nennen die eigenen Maße, die Baudaten und die jährlichen Feste</dd></div>
+        <div><dt>Mythisch</dt><dd>Die vollständigste Fassung des Krieges zwischen Horus und Seth</dd></div>
+        <div><dt>In der Nähe</dt><dd>Gegenüber am Fluss liegt Hierakonpolis, die alte Stadt des Falkengottes</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="planTitle" style="--c: var(--horus);">
+    <h2 id="planTitle">Rundgang durch den Tempel, vom Tor zum Gott</h2>
+    <p class="section-note">Der Besuch beginnt am Geburtshaus vor dem Pylon und führt nach Norden durch den Hof und die beiden Säulensäle, jeder dunkler und mit höherem Boden als der vorige, bis zum Allerheiligsten; dann um den Tempel herum durch den äußeren Umgang und hinaus am Nilometer vorbei. Tippen Sie auf eine Nummer im Plan.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="20 70 270 400" role="img" aria-label="Vereinfachter Plan des Horustempels von Edfu, Norden oben; der Tempel blickt nach Süden. Vor dem Pylon, im Westen, steht das Geburtshaus. Der große Pylon öffnet sich zu einem Hof mit Säulen an drei Seiten, dann folgen der äußere Säulensaal mit achtzehn Säulen, der innere mit zwölf, der Opfersaal mit der Neujahrskapelle daneben, ein Vorraum und das Allerheiligste mit seinem Granitschrein, umgeben von kleinen Kapellen. Eine Steinmauer läuft vom Pylon um den ganzen Tempel und lässt einen Umgang frei, dessen Westwand die Reliefs von Horus gegen Seth trägt. Das Nilometer liegt außerhalb der Mauer im Osten. Die Nummern entsprechen den Anmerkungen.">
+          <rect x="20" y="70" width="270" height="400" fill="var(--panel)"/>
+          <!-- enclosure wall from the pylon round the temple -->
+          <path d="M76,364 V96 H224 V364" fill="none" stroke="var(--ink-soft)" stroke-width="3"/>
+          <!-- birth house, in front of the pylon to the west -->
+          <rect class="ruin" x="28" y="400" width="44" height="50"/><circle class="col" cx="34" cy="406" r="1.8"/><circle class="col" cx="34" cy="418" r="1.8"/><circle class="col" cx="34" cy="430" r="1.8"/><circle class="col" cx="34" cy="442" r="1.8"/><circle class="col" cx="66" cy="406" r="1.8"/><circle class="col" cx="66" cy="418" r="1.8"/><circle class="col" cx="66" cy="430" r="1.8"/><circle class="col" cx="66" cy="442" r="1.8"/><circle class="col" cx="44" cy="446" r="1.8"/><circle class="col" cx="56" cy="446" r="1.8"/>
+          <!-- pylon -->
+          <rect class="ruin" x="62" y="362" width="78" height="18"/><rect class="ruin" x="160" y="362" width="78" height="18"/>
+          <!-- court -->
+          <rect x="90" y="266" width="120" height="96" fill="var(--rock)" opacity="0.25"/><circle class="col" cx="100" cy="352" r="2.2"/><circle class="col" cx="112" cy="352" r="2.2"/><circle class="col" cx="124" cy="352" r="2.2"/><circle class="col" cx="136" cy="352" r="2.2"/><circle class="col" cx="148" cy="352" r="2.2"/><circle class="col" cx="160" cy="352" r="2.2"/><circle class="col" cx="172" cy="352" r="2.2"/><circle class="col" cx="184" cy="352" r="2.2"/><circle class="col" cx="196" cy="352" r="2.2"/><circle class="col" cx="96" cy="272" r="2.2"/><circle class="col" cx="96" cy="284" r="2.2"/><circle class="col" cx="96" cy="296" r="2.2"/><circle class="col" cx="96" cy="308" r="2.2"/><circle class="col" cx="96" cy="320" r="2.2"/><circle class="col" cx="96" cy="332" r="2.2"/><circle class="col" cx="96" cy="344" r="2.2"/><circle class="col" cx="204" cy="272" r="2.2"/><circle class="col" cx="204" cy="284" r="2.2"/><circle class="col" cx="204" cy="296" r="2.2"/><circle class="col" cx="204" cy="308" r="2.2"/><circle class="col" cx="204" cy="320" r="2.2"/><circle class="col" cx="204" cy="332" r="2.2"/><circle class="col" cx="204" cy="344" r="2.2"/>
+          <!-- outer hypostyle (18 columns) -->
+          <rect class="ruin" x="100" y="216" width="100" height="46" fill-opacity="0.55"/><circle class="col" cx="110" cy="225" r="2.8"/><circle class="col" cx="110" cy="238" r="2.8"/><circle class="col" cx="110" cy="251" r="2.8"/><circle class="col" cx="126" cy="225" r="2.8"/><circle class="col" cx="126" cy="238" r="2.8"/><circle class="col" cx="126" cy="251" r="2.8"/><circle class="col" cx="142" cy="225" r="2.8"/><circle class="col" cx="142" cy="238" r="2.8"/><circle class="col" cx="142" cy="251" r="2.8"/><circle class="col" cx="158" cy="225" r="2.8"/><circle class="col" cx="158" cy="238" r="2.8"/><circle class="col" cx="158" cy="251" r="2.8"/><circle class="col" cx="174" cy="225" r="2.8"/><circle class="col" cx="174" cy="238" r="2.8"/><circle class="col" cx="174" cy="251" r="2.8"/><circle class="col" cx="190" cy="225" r="2.8"/><circle class="col" cx="190" cy="238" r="2.8"/><circle class="col" cx="190" cy="251" r="2.8"/>
+          <!-- inner hypostyle (12 columns) -->
+          <rect class="ruin" x="108" y="184" width="84" height="30" fill-opacity="0.55"/><circle class="col" cx="120" cy="192" r="2.4"/><circle class="col" cx="120" cy="204" r="2.4"/><circle class="col" cx="140" cy="192" r="2.4"/><circle class="col" cx="140" cy="204" r="2.4"/><circle class="col" cx="160" cy="192" r="2.4"/><circle class="col" cx="160" cy="204" r="2.4"/><circle class="col" cx="180" cy="192" r="2.4"/><circle class="col" cx="180" cy="204" r="2.4"/>
+          <!-- offering hall, vestibule, sanctuary and chapels -->
+          <rect class="ruin" x="112" y="166" width="76" height="16"/>
+          <rect class="ruin" x="116" y="150" width="68" height="14"/>
+          <rect class="ruin" x="104" y="106" width="92" height="42" fill-opacity="0.5"/>
+          <rect x="136" y="112" width="28" height="34" fill="var(--horus)" opacity="0.75"/>
+          <rect x="144" y="118" width="12" height="12" fill="var(--panel)" opacity="0.8"/>
+          <!-- New Year chapel with its small open court, east of the offering hall -->
+          <rect class="ruin" x="196" y="160" width="18" height="16"/><rect x="196" y="176" width="18" height="10" fill="none" stroke="var(--ink-soft)" stroke-dasharray="2 2"/>
+          <!-- inner temple wall: the passage runs between it and the enclosure -->
+          <path d="M98,264 V100 H202 V264" fill="none" stroke="var(--ink-soft)" stroke-width="1.6"/>
+          <!-- nilometer east of the enclosure -->
+          <circle cx="252" cy="230" r="10" fill="var(--lake)" stroke="var(--ink-soft)"/><circle cx="252" cy="230" r="4" fill="var(--lake-ink)" opacity="0.6"/>
+          <!-- falcon statues -->
+          <path d="M146,392 l4,-8 l4,8 Z" fill="var(--ink)" opacity="0"/>
+          <!-- axis / visitor path -->
+          <path class="ray" d="M150,466 L150,386 L150,140" style="stroke: var(--horus)"/>
+          <!-- labels -->
+          <text class="t-sub" x="160" y="462">von den Kutschen</text>
+          <text class="t-sub" x="257" y="254" text-anchor="middle">Nilometer</text>
+          <g transform="translate(266,92)"><path d="M0,-14 L5,3 L0,-1 L-5,3 Z" fill="var(--ink-soft)"/><text class="t-sub" x="0" y="15" text-anchor="middle">N</text></g>
+          <path d="M232,440 H278" stroke="var(--ink-soft)" stroke-width="2"/><path d="M232,436 V444 M278,436 V444" stroke="var(--ink-soft)" stroke-width="1.5"/>
+          <text class="t-sub" x="255" y="432" text-anchor="middle">≈ 30 m</text>
+          <a class="mk" href="#ed-1"><circle cx="48" cy="425" r="9"/><text x="48" y="425">1</text></a><a class="mk" href="#ed-2"><circle cx="120" cy="372" r="9"/><text x="120" y="372">2</text></a><a class="mk" href="#ed-3"><circle cx="150" cy="395" r="9"/><text x="150" y="395">3</text></a><a class="mk" href="#ed-4"><circle cx="150" cy="300" r="9"/><text x="150" y="300">4</text></a><a class="mk" href="#ed-5"><circle cx="150" cy="238" r="9"/><text x="150" y="238">5</text></a><a class="mk" href="#ed-6"><circle cx="150" cy="199" r="9"/><text x="150" y="199">6</text></a><a class="mk" href="#ed-7"><circle cx="128" cy="175" r="9"/><text x="128" y="175">7</text></a><a class="mk" href="#ed-8"><circle cx="222" cy="168" r="9"/><text x="222" y="168">8</text></a><a class="mk" href="#ed-9"><circle cx="150" cy="132" r="9"/><text x="150" y="132">9</text></a><a class="mk" href="#ed-10"><circle cx="186" cy="128" r="9"/><text x="186" y="128">10</text></a><a class="mk" href="#ed-11"><circle cx="84" cy="214" r="9"/><text x="84" y="214">11</text></a><a class="mk" href="#ed-12"><circle cx="274" cy="214" r="9"/><text x="274" y="214">12</text></a>
+        </svg>
+        <p class="caption">Vereinfachter Plan mit ungefähren Positionen. Norden ist oben; der Tempel blickt nach Süden. Die blaue gestrichelte Linie ist die Hauptachse.</p>
+      </div>
+      <ol class="notes">
+        <li id="ed-1"><span class="num">1</span><div><h3>Das Geburtshaus</h3><p>Vor dem Pylon, im Westen, steht das Mammisi, das Ptolemaios VIII. erbauen ließ. Hier feierten die Priester die Geburt des Harsomtus, des Kindes von Horus und Hathor. Seine Reliefs zeigen Hathor, die das Kind stillt, und von den Säulenköpfen schneidet der Zwerggott Bes, Beschützer der Geburten, Grimassen.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-bes" target="_blank" rel="noopener noreferrer">Bes ↗</a> · <a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-hathor" target="_blank" rel="noopener noreferrer">Hathor ↗</a></p></div></li>
+        <li id="ed-2"><span class="num">2</span><div><h3>Der Pylon</h3><p>Etwa 36 m hoch und 79 m breit: eines der höchsten Tempeltore Ägyptens, übertroffen nur vom unvollendeten ersten Pylon von Karnak. Auf beiden Türmen erschlägt Ptolemaios XII., der Vater Kleopatras, seine Feinde vor Horus und Hathor. Die Rillen in der Fassade hielten Flaggenmasten mit Wimpeln.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy12" target="_blank" rel="noopener noreferrer">Ptolemaios XII. (englisch) ↗</a> · <a href="#pylonTitle">Mehr zum Pylon ↓</a></p></div></li>
+        <li id="ed-3"><span class="num">3</span><div><h3>Die Granitfalken</h3><p>Horus bewacht die Türen als Falke mit der Doppelkrone. Ein Granitfalke steht am Tor des Pylons; der besterhaltene steht im Hof vor dem Säulensaal und ist die meistfotografierte Statue des Tempels.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-horus" target="_blank" rel="noopener noreferrer">Horus ↗</a></p></div></li>
+        <li id="ed-4"><span class="num">4</span><div><h3>Der Opferhof</h3><p>Ein großer offener Hof mit 32 Säulen an drei Seiten, jedes Kapitell eine andere Pflanze. Hierher durfte das Volk an Festtagen kommen; hinter der nächsten Tür gingen nur noch Priester weiter.</p><p class="see"><a href="#colsTitle">Die Säulen ↓</a></p></div></li>
+        <li id="ed-5"><span class="num">5</span><div><h3>Der äußere Säulensaal</h3><p>Achtzehn Säulen in drei Reihen tragen das Dach. Am Eingang liegen zwei winzige Räume: eine Bibliothek, deren Wand die aufbewahrten Bücher aufzählt, und ein Raum, in dem der König oder der Priester an seiner Stelle gereinigt wurde, bevor er eintrat.</p><p class="see"><a href="#colsTitle">Die Säulen ↓</a></p></div></li>
+        <li id="ed-6"><span class="num">6</span><div><h3>Der innere Säulensaal</h3><p>Zwölf Säulen, dunkler und niedriger: der Saal der Erscheinungen, aus dem die Götterstatue zu den Prozessionen herausgetragen wurde. Ein kleiner Seitenraum, das „Laboratorium“, trägt auf seinen Wänden die Rezepte für den Weihrauch und die duftenden Öle der Riten.</p></div></li>
+        <li id="ed-7"><span class="num">7</span><div><h3>Der Opfersaal und die Treppen</h3><p>Hier legte man Horus jeden Tag Speisen, Getränke und Blumen hin. Zwei Treppen, eine gerade und eine gewundene, führen aufs Dach; ihre Wände zeigen die Priester, die die Götterstatue zu Neujahr hinauftragen, damit sie der Sonne begegnet.</p></div></li>
+        <li id="ed-8"><span class="num">8</span><div><h3>Die Neujahrskapelle</h3><p>Eine kleine Kapelle mit eigenem offenem Hof neben dem Opfersaal. Am Neujahrstag ruhte die Statue hier, bevor sie aufs Dach getragen wurde; die Decke zeigt die Himmelsgöttin Nut.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-nut" target="_blank" rel="noopener noreferrer">Nut ↗</a></p></div></li>
+        <li id="ed-9"><span class="num">9</span><div><h3>Das Allerheiligste</h3><p>Das Herz des Tempels. Der polierte graue Granitschrein im Hintergrund, um 350 v. Chr. für Nektanebos II. angefertigt, ist das Älteste im Tempel: Die Ptolemäer bauten ihren Tempel um ihn herum. Davor steht eine moderne Nachbildung der heiligen Barke, die die Statue des Horus bei Prozessionen trug.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-nectanebo2" target="_blank" rel="noopener noreferrer">Nektanebos II. (englisch) ↗</a></p></div></li>
+        <li id="ed-10"><span class="num">10</span><div><h3>Die Kapellen um das Allerheiligste</h3><p>Ein Kranz kleiner Räume öffnet sich zu einem Gang rund um das Allerheiligste, jeder für einen anderen Gott oder einen heiligen Gegenstand: Osiris, Min, Chons, Hathor und der Thron des Re gehören dazu.</p></div></li>
+        <li id="ed-11"><span class="num">11</span><div><h3>Horus gegen Seth</h3><p>Zwischen dem Tempel und der Umfassungsmauer verläuft ein langer Umgang. Auf der Innenseite der Westmauer wird der Triumph des Horus wie ein Theaterstück erzählt: Horus steht in einem Boot und harpuniert seinen Onkel Seth, als kleines Nilpferd dargestellt, um seinen Vater Osiris zu rächen.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-seth" target="_blank" rel="noopener noreferrer">Seth ↗</a> · <a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-osiris" target="_blank" rel="noopener noreferrer">Osiris ↗</a></p></div></li>
+        <li id="ed-12"><span class="num">12</span><div><h3>Das Nilometer</h3><p>Außerhalb der Ostseite der Umfassung führt eine Treppe hinunter zum Grundwasser. Markierungen an den Wänden zeigten, wie hoch die Flut steigen würde, und damit, wie groß die Ernte und die Steuern ausfallen würden.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-hapi" target="_blank" rel="noopener noreferrer">Hapi ↗</a></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="pylonTitle">
+    <h2 id="pylonTitle">Der Pylon</h2>
+    <p class="section-note">Das große Tor ist das Erste, was man sieht, und der zuletzt fertiggestellte Teil des Tempels. Es ist Symbol, Plakatwand und eigenes Bauwerk zugleich.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="0 0 340 262" role="img" aria-label="Frontansicht des Pylons von Edfu, vereinfacht: zwei nach innen geneigte Türme, jeder mit einem geschwungenen Gesims, mit zwei senkrechten Rillen für hohe Flaggenmasten mit Wimpeln und kleinen Fenstern für die Klammern. Auf jedem Turm hebt ein riesiger König eine Keule über eine Gruppe Gefangener. Zwischen den Türmen das Tor mit einer geflügelten Sonnenscheibe darüber. Die Nummern entsprechen der Legende.">
+          <rect width="340" height="262" fill="var(--panel)"/>
+          <path class="ruin" d="M16,250 L30,62 L136,62 L150,250 Z"/><path d="M27,62 Q24,50 20,46 L146,46 Q142,50 139,62 Z" fill="var(--rock)" stroke="var(--ink-soft)"/><path d="M56.68000000000001,64 L50.52,250 L56.52,250 L62.68000000000001,64 Z" fill="var(--cut)" stroke="var(--ink-soft)" stroke-width="0.6"/><line x1="59.68000000000001" y1="64" x2="59.68000000000001" y2="14" stroke="var(--ink-soft)" stroke-width="2"/><path d="M59.68000000000001,16 L75.68,20 L59.68000000000001,26 Z" fill="var(--great)"/><rect x="65.68" y="128" width="6" height="6" fill="var(--ink-soft)"/><path d="M103.32,64 L109.47999999999999,250 L115.47999999999999,250 L109.32,64 Z" fill="var(--cut)" stroke="var(--ink-soft)" stroke-width="0.6"/><line x1="106.32" y1="64" x2="106.32" y2="14" stroke="var(--ink-soft)" stroke-width="2"/><path d="M106.32,16 L122.32,20 L106.32,26 Z" fill="var(--great)"/><rect x="112.32" y="128" width="6" height="6" fill="var(--ink-soft)"/><circle cx="85.0" cy="140" r="5" fill="var(--great)"/><path d="M79.0,147 L91.0,147 L93.0,190 L77.0,190 Z" fill="var(--great)"/><path d="M79.0,190 L75.0,226 M91.0,190 L97.0,226" stroke="var(--great)" stroke-width="3"/><path d="M90.0,150 L99.0,128" stroke="var(--great)" stroke-width="2.5"/><circle cx="100.0" cy="125" r="3.5" fill="var(--great)"/><path d="M80.0,152 L69.0,170" stroke="var(--great)" stroke-width="2.5"/><circle cx="65.0" cy="176" r="3" fill="var(--ink-soft)"/><circle cx="60.0" cy="179" r="3" fill="var(--ink-soft)"/><circle cx="55.0" cy="182" r="3" fill="var(--ink-soft)"/><path class="ruin" d="M190,250 L204,62 L310,62 L324,250 Z"/><path d="M201,62 Q198,50 194,46 L320,46 Q316,50 313,62 Z" fill="var(--rock)" stroke="var(--ink-soft)"/><path d="M230.68,64 L224.52,250 L230.52,250 L236.68,64 Z" fill="var(--cut)" stroke="var(--ink-soft)" stroke-width="0.6"/><line x1="233.68" y1="64" x2="233.68" y2="14" stroke="var(--ink-soft)" stroke-width="2"/><path d="M233.68,16 L249.68,20 L233.68,26 Z" fill="var(--great)"/><rect x="239.68" y="128" width="6" height="6" fill="var(--ink-soft)"/><path d="M277.32,64 L283.48,250 L289.48,250 L283.32,64 Z" fill="var(--cut)" stroke="var(--ink-soft)" stroke-width="0.6"/><line x1="280.32" y1="64" x2="280.32" y2="14" stroke="var(--ink-soft)" stroke-width="2"/><path d="M280.32,16 L296.32,20 L280.32,26 Z" fill="var(--great)"/><rect x="286.32" y="128" width="6" height="6" fill="var(--ink-soft)"/><circle cx="259.0" cy="140" r="5" fill="var(--great)"/><path d="M253.0,147 L265.0,147 L267.0,190 L251.0,190 Z" fill="var(--great)"/><path d="M253.0,190 L249.0,226 M265.0,190 L271.0,226" stroke="var(--great)" stroke-width="3"/><path d="M264.0,150 L273.0,128" stroke="var(--great)" stroke-width="2.5"/><circle cx="274.0" cy="125" r="3.5" fill="var(--great)"/><path d="M254.0,152 L243.0,170" stroke="var(--great)" stroke-width="2.5"/><circle cx="239.0" cy="176" r="3" fill="var(--ink-soft)"/><circle cx="234.0" cy="179" r="3" fill="var(--ink-soft)"/><circle cx="229.0" cy="182" r="3" fill="var(--ink-soft)"/><rect class="ruin" x="150" y="118" width="40" height="132"/><rect x="160" y="150" width="20" height="100" fill="var(--cut)" stroke="var(--ink-soft)"/><rect x="146" y="112" width="48" height="10" fill="var(--rock)" stroke="var(--ink-soft)"/><circle cx="170" cy="134" r="4" fill="var(--sun)"/><path d="M166,134 C158,130 152,131 148,134 C152,137 158,137 166,135 Z M174,134 C182,130 188,131 192,134 C188,137 182,137 174,135 Z" fill="var(--horus)"/>
+          <path d="M0,250 H340" stroke="var(--ink-soft)" stroke-width="2"/>
+          <g class="mk"><circle cx="85" cy="40" r="8"/><text x="85" y="40">1</text></g><g class="mk"><circle cx="62" cy="14" r="8"/><text x="62" y="14">2</text></g><g class="mk"><circle cx="112" cy="222" r="8"/><text x="112" y="222">3</text></g><g class="mk"><circle cx="124" cy="118" r="8"/><text x="124" y="118">4</text></g><g class="mk"><circle cx="70" cy="150" r="8"/><text x="70" y="150">5</text></g><g class="mk"><circle cx="170" cy="100" r="8"/><text x="170" y="100">6</text></g><g class="mk"><circle cx="170" cy="200" r="8"/><text x="170" y="200">7</text></g>
+        </svg>
+        <p class="caption">Frontansicht, vereinfacht und ohne Maßstab zwischen den Teilen.</p>
+      </div>
+      <ol class="notes pylon-key"><li><span class="num">1</span><div><p>Das geschwungene Gesims, das jeden Turm krönt</p></div></li><li><span class="num">2</span><div><p>Vier hohe Flaggenmasten, wohl aus Zedernholz vom Libanon, mit bunten Wimpeln</p></div></li><li><span class="num">3</span><div><p>Die Rillen, die die Masten hielten, zwei an jedem Turm</p></div></li><li><span class="num">4</span><div><p>Kleine Fenster für die Klammern, die die Masten befestigten</p></div></li><li><span class="num">5</span><div><p>Ptolemaios XII. erschlägt seine Feinde vor Horus und Hathor</p></div></li><li><span class="num">6</span><div><p>Die geflügelte Sonnenscheibe, die Gestalt des Horus von Behdet</p></div></li><li><span class="num">7</span><div><p>Das Tor, das einst hohe, mit Metall beschlagene Zedernholztüren trug</p></div></li></ol>
+    </div>
+    <div class="tips" style="margin-top: 1rem;"><div class="tip"><h3>Der Horizont in Stein</h3><p>Die beiden Türme ahmen die Hieroglyphe für Horizont nach: zwei Berge, zwischen denen die Sonne aufgeht. Wer durch das Tor ging, trat aus der Alltagswelt in die Welt des Gottes. Die Türme wurden auch mit Isis und Nephthys verbunden, die den Eingang bewachten.</p></div><div class="tip"><h3>Zuletzt gebaut</h3><p>Etwa 36 m hoch und 79 m breit, ungefähr wie ein zwölfstöckiges Haus. Die Bauinschriften an den Wänden sagen, dass Hof, Pylon und die großen Türen 57 v. Chr. unter Ptolemaios XII. fertig wurden, 180 Jahre nach der Gründung.</p></div><div class="tip"><h3>Das älteste Königsbild</h3><p>Der riesige König, der seine knienden Feinde an den Haaren packt und die Keule hebt, nimmt dieselbe Haltung ein wie Narmer auf der Narmer-Palette, rund 3000 Jahre früher. Ptolemaios XII., „der Flötenspieler“, war in Wirklichkeit ein schwacher König, der von Rom abhing; auf seinem Pylon ist er ein unbesiegbarer Pharao.</p></div><div class="tip"><h3>Flaggen, Treppen und Fenster</h3><p>Ein Mast mit Wimpel ist auch die Hieroglyphe für „Gott“, die Flaggen verkündeten also schon von Weitem, dass hier ein Gott wohnte. Jeder Turm ist hohl, mit einer Treppe, die an kleinen Lagerräumen vorbei nach oben führt, wo die Priester die Flaggen befestigten und den Himmel beobachteten; sie ist für Besucher gesperrt.</p></div></div>
+    <p class="see" style="margin-top: 0.8rem; font-family: var(--mono); font-size: 0.78rem;"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-narmer" target="_blank" rel="noopener noreferrer" style="color: var(--ink);">Narmer-Palette (englisch) ↗</a></p>
+  </section>
+
+  <section aria-labelledby="colsTitle">
+    <h2 id="colsTitle">Die Säulen und die Kunst</h2>
+    <p class="section-note">Die 62 Säulen von Edfu, 32 im Hof und 30 in den beiden Sälen, zeigen den ptolemäischen Stil am besten. Ägyptische Säulen hatten schon immer Pflanzen nachgeahmt; in ptolemäischer Zeit vereinten die Bildhauer viele Pflanzen in einem Kapitell und bedeckten jede Fläche mit Reliefs.</p>
+    <div class="figure" style="max-width: 600px; margin-bottom: 1rem;">
+      <svg viewBox="0 0 420 262" role="img" aria-label="Drei Säulenkapitelle nebeneinander. Links eine geschlossene Papyrusknospe, wie im Hof des Neuen Reiches in Luxor. In der Mitte eine offene Papyrusblüte in Glockenform, wie im großen Säulensaal von Karnak. Rechts ein ptolemäisches Kompositkapitell wie in Edfu: Die Glocke besteht aus Lagen von Blättern und Blüten und trägt einen hohen quadratischen Block.">
+          <rect width="420" height="262" fill="var(--panel)"/>
+          <rect class="ruin" x="61" y="112" width="28" height="104"/><ellipse cx="75" cy="218" rx="22" ry="5" fill="var(--rock)" stroke="var(--ink-soft)"/><path d="M61,200 l7,-14 l7,14 l7,-14 l7,14" fill="none" stroke="var(--ink-soft)" stroke-width="0.8"/><path class="ruin" d="M61,112 C49,98 51,76 63,62 L87,62 C99,76 101,98 89,112 Z"/><rect class="ruin" x="61" y="52" width="28" height="10"/><path d="M67,110 C63,92 65,74 69,64" fill="none" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M75,110 C71,92 73,74 77,64" fill="none" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M83,110 C79,92 81,74 85,64" fill="none" stroke="var(--ink-soft)" stroke-width="0.8"/><rect class="ruin" x="196" y="112" width="28" height="104"/><ellipse cx="210" cy="218" rx="22" ry="5" fill="var(--rock)" stroke="var(--ink-soft)"/><path d="M196,200 l7,-14 l7,14 l7,-14 l7,14" fill="none" stroke="var(--ink-soft)" stroke-width="0.8"/><path class="ruin" d="M196,112 C190,92 176,74 168,60 L252,60 C244,74 230,92 224,112 Z"/><rect class="ruin" x="194" y="50" width="32" height="10"/><path d="M210,110 L174,62" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M210,110 L192,62" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M210,110 L210,62" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M210,110 L228,62" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M210,110 L246,62" stroke="var(--ink-soft)" stroke-width="0.8"/><rect class="ruin" x="331" y="112" width="28" height="104"/><ellipse cx="345" cy="218" rx="22" ry="5" fill="var(--rock)" stroke="var(--ink-soft)"/><path d="M331,200 l7,-14 l7,14 l7,-14 l7,14" fill="none" stroke="var(--ink-soft)" stroke-width="0.8"/><path class="ruin" d="M331,112 C325,92 311,74 303,60 L387,60 C379,74 365,92 359,112 Z"/><path d="M327.0,112 Q331.5,96 336.0,112" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M336.0,112 Q340.5,96 345.0,112" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M345.0,112 Q349.5,96 354.0,112" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M354.0,112 Q358.5,96 363.0,112" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M318.0,98 Q322.5,82 327.0,98" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M327.0,98 Q331.5,82 336.0,98" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M336.0,98 Q340.5,82 345.0,98" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M345.0,98 Q349.5,82 354.0,98" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M354.0,98 Q358.5,82 363.0,98" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M363.0,98 Q367.5,82 372.0,98" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M309.0,84 Q313.5,68 318.0,84" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M318.0,84 Q322.5,68 327.0,84" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M327.0,84 Q331.5,68 336.0,84" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M336.0,84 Q340.5,68 345.0,84" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M345.0,84 Q349.5,68 354.0,84" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M354.0,84 Q358.5,68 363.0,84" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M363.0,84 Q367.5,68 372.0,84" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><path d="M372.0,84 Q376.5,68 381.0,84" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="328" y="26" width="34" height="34" fill="var(--rock)" stroke="var(--ink-soft)"/><rect x="299" y="58" width="92" height="4" fill="var(--horus)" opacity="0.5"/><text class="t-label" x="75" y="240" text-anchor="middle">Geschlossener Papyrus</text><text class="t-sub" x="75" y="254" text-anchor="middle">Neues Reich, Luxor</text><text class="t-label" x="210" y="240" text-anchor="middle">Offener Papyrus</text><text class="t-sub" x="210" y="254" text-anchor="middle">Säulensaal von Karnak</text><text class="t-label" x="345" y="240" text-anchor="middle">Komposit</text><text class="t-sub" x="345" y="254" text-anchor="middle">ptolemäisch, Edfu</text>
+        </svg>
+      <p class="caption">Drei Arten, eine Pflanze in Stein zu meißeln, vereinfacht. Die Kapitelle von Edfu gehören zur dritten Art.</p>
+    </div>
+    <div class="tips"><div class="tip"><h3>Ein Garten aus Stein</h3><p>Ein Tempel war ein Modell des ersten Landes, das aus den Wassern auftauchte. Seine Säulen sind die Pflanzen jenes ersten Sumpfes, Papyrus, Lotus und Palme, die vom Boden zu einer als Himmel bemalten Decke mit Geiern und Sternen wachsen.</p></div><div class="tip"><h3>Kompositkapitelle</h3><p>Jedes Kapitell stapelt zwei bis vier Lagen aus Blättern, Knospen und offenen Blüten über einer Glocke, manchmal mit Palmwedeln oder Weintrauben. Gehen Sie den Hof entlang: Benachbarte Kapitelle sind fast nie gleich, doch manche entsprechen ihrem Gegenstück auf der anderen Seite der Achse.</p></div><div class="tip"><h3>Schäfte voller Szenen</h3><p>Die Schäfte sind nicht glatt. Jeder trägt kleine Szenen des Königs, der den Göttern opfert, mit Hieroglyphenkolumnen; unten umhüllen gemeißelte Blätter den Stängel wie bei einer echten Pflanze, über einer runden Basis.</p></div><div class="tip"><h3>Die Schrankenwände</h3><p>An der Front des äußeren Saals sind die Säulen durch Wände verbunden, die bis etwa zur halben Höhe reichen und den König bei Reinigung und Krönung zeigen. Eine ptolemäische Idee: Licht fällt von oben ein, während der Saal dahinter vom Hof aus halb verborgen bleibt.</p></div><div class="tip"><h3>Ptolemäische Figuren</h3><p>Götter und Könige sind runder und fleischiger als in älteren Tempeln: volle Gesichter, weiche Bäuche, schwere Glieder, tief gemeißelt. Außen ist das Relief versenkt, damit es im harten Sonnenlicht Schatten wirft; innen ist es erhaben. Viele Gesichter und Hände in Reichweite wurden nach der Schließung des Tempels abgeschlagen.</p></div><div class="tip"><h3>Farbe und Rauch</h3><p>Alles war einst in kräftigem Blau, Grün, Rot und Gelb bemalt; Reste sind hoch oben an den Kapitellen erhalten. Die Decken der Säle sind schwarz vom Ruß der Feuer jener Menschen, die später darin wohnten.</p></div></div>
+  </section>
+
+  <section aria-labelledby="meetTitle">
+    <h2 id="meetTitle">Das Fest der schönen Begegnung</h2>
+    <p class="section-note">Einmal im Jahr, im dritten Sommermonat, verließ die Statue der Hathor ihren Tempel in Dendera per Schiff und fuhr flussaufwärts, um ihren Gemahl Horus in Edfu zu besuchen, mit Halt an Tempeln unterwegs. Horus kam ihr entgegen, und die beiden Götter verbrachten etwa zwei Wochen zusammen, mit Festmählern, Opfern und Besuchen an den Gräbern der bei Edfu bestatteten Götter, bevor Hathor heimfuhr. Dendera, das andere Ende der Reise, sehen wir an Tag 7.</p>
+    <div class="figure" style="max-width: 520px;">
+      <svg viewBox="0 0 360 260" role="img" aria-label="Schematische Karte des Nils von Dendera im Norden bis Edfu im Süden. Jedes Jahr fuhr die Statue der Hathor von ihrem Tempel in Dendera flussaufwärts, an Theben und Hierakonpolis vorbei, um Horus in Edfu zu besuchen, und kehrte etwa zwei Wochen später zurück.">
+          <rect width="360" height="260" fill="var(--panel)"/>
+          <path d="M120,10 C150,40 230,40 250,70 C270,110 190,120 180,150 C170,190 200,220 190,252" fill="none" stroke="var(--lake)" stroke-width="16" stroke-linecap="round"/>
+          <path d="M120,10 C150,40 230,40 250,70 C270,110 190,120 180,150 C170,190 200,220 190,252" fill="none" stroke="var(--lake-ink)" stroke-width="2"/>
+          <circle cx="160" cy="28" r="5" fill="var(--small)"/><text class="t-label" x="144" y="32" text-anchor="end" style="fill: var(--small)">Dendera</text><text class="t-sub" x="144" y="48" text-anchor="end">Tempel der Hathor</text>
+          <circle cx="228" cy="112" r="4" fill="var(--ink-soft)"/><text class="t-sub" x="216" y="116" text-anchor="end">Theben (Luxor)</text>
+          <circle cx="174" cy="196" r="4" fill="var(--ink-soft)"/><text class="t-sub" x="160" y="200" text-anchor="end">Hierakonpolis</text>
+          <circle cx="198" cy="226" r="5" fill="var(--horus)"/><text class="t-label" x="210" y="230" style="fill: var(--horus)">Edfu</text><text class="t-sub" x="210" y="246">Tempel des Horus</text>
+          <path class="ray" d="M270,40 C300,90 290,160 240,204" style="stroke: var(--small)"/><path d="M244,193 L238,206 L252,204" fill="none" stroke="var(--small)" stroke-width="2"/>
+          <text class="t-sub" x="290" y="126" style="fill: var(--small)">stromauf,</text><text class="t-sub" x="290" y="141" style="fill: var(--small)">zwei Wochen</text><text class="t-sub" x="290" y="156" style="fill: var(--small)">jedes Jahr</text>
+          <text class="t-lake" x="96" y="140">NIL</text>
+        </svg>
+      <p class="caption">Schematische Karte, nicht maßstabsgetreu.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="timeTitle">
+    <h2 id="timeTitle">Edfu im Lauf der Zeit</h2>
+    <ol class="timeline">
+      <li><span class="yr">Altes Reich</span><p>Edfu, das alte Behdet, ist schon eine Stadt und Hauptstadt seiner Provinz; die Gräber seiner Gouverneure liegen hinter dem Tempel.</p></li>
+      <li><span class="yr">um 350 v. Chr.</span><p>Nektanebos II. lässt den Granitschrein für einen älteren Tempel an derselben Stelle anfertigen.</p></li>
+      <li><span class="yr">23. Aug. 237 v. Chr.</span><p>Ptolemaios III. legt den Grundstein des heutigen Tempels.</p></li>
+      <li><span class="yr">212 v. Chr.</span><p>Unter Ptolemaios IV. ist das Hauptgebäude fertig.</p></li>
+      <li><span class="yr">142 v. Chr.</span><p>Nach Abschluss der Dekoration wird der Tempel unter Ptolemaios VIII. geweiht.</p></li>
+      <li><span class="yr">140–124 v. Chr.</span><p>Davor wird der äußere Säulensaal angefügt.</p></li>
+      <li><span class="yr">57 v. Chr.</span><p>Unter Ptolemaios XII. werden Hof, Pylon und die großen Türen fertig, 180 Jahre nach der Gründung. Bauinschriften an den Wänden halten jede Etappe fest.</p></li>
+      <li><span class="yr">4.–5. Jh. n. Chr.</span><p>Nach der Schließung der Tempel zerstören Christen viele Gesichter; Sand und später ein Dorf füllen und bedecken den Tempel allmählich.</p></li>
+      <li><span class="yr">1798–99</span><p>Napoleons Gelehrte zeichnen den halb verschütteten Tempel, mit Häusern auf dem Dach.</p></li>
+      <li><span class="yr">ab 1860</span><p>Auguste Mariette räumt Sand und Häuser weg und legt den besterhaltenen Tempel Ägyptens frei.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">Für unseren Besuch</h2>
+    <div class="tips">
+      <div class="tip"><h3>Mit der Kutsche</h3><p>Vom Fluss aus fährt man meist mit einer Pferdekutsche durch den Ort: eine kurze, holprige und unvergessliche Fahrt.</p></div>
+      <div class="tip"><h3>Den Falken finden</h3><p>Der Granitfalke vor dem Säulensaal ist das klassische Foto; kommen Sie früh, bevor sich die Gruppen um ihn drängen.</p></div>
+      <div class="tip"><h3>Den Umgang ablaufen</h3><p>Viele Besucher lassen ihn aus: Gehen Sie zwischen Tempel und Umfassungsmauer herum, um Horus beim Harpunieren des Seth zu sehen.</p></div>
+      <div class="tip"><h3>Auf das Licht achten</h3><p>Drinnen wird es mit jedem Saal zum Allerheiligsten hin dunkler, genau wie die Baumeister es wollten.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Teil der <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">Private Alimaña Tour ↗</a> (englisch). Der Plan ist vereinfacht; die Daten sind ungefähr.</p>
+</div>
