@@ -1,0 +1,271 @@
+<title>Karnak Temple</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: intro, a plan of the precinct of Amun beside numbered notes, a cut-away of the Great Hypostyle Hall, how to read Karnak, a timeline and tips. Shares its look with the temple guides. Phone first: everything stacks. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --amun: #3b5f9e;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --amun: #8fb0e8; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --amun: #8fb0e8; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--great); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--great); }
+  .mk:focus-visible { outline: none; }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .eyebrow { color: var(--amun); }
+  .ruin { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 1; }
+  .col { fill: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--amun); }
+</style>
+
+<div class="page">
+  <p class="eyebrow">East bank of Luxor · temple of Amun · c. 1950 BC to Roman times · Day 6 of the Alimaña tour</p>
+  <h1>Karnak</h1>
+  <p class="lede">The largest temple complex of the ancient world, home of Amun-Ra, king of the gods. For two thousand years pharaohs kept adding gateways, halls, obelisks and chapels, each in front of the last, so walking in from the river you go back in time. The heart of it is the walled precinct of Amun, about 25 hectares, with the Great Hypostyle Hall and its forest of 134 columns.</p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-karnak" target="_blank" rel="noopener noreferrer">Karnak card ↗</a><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-amun" target="_blank" rel="noopener noreferrer">Amun on the gods page ↗</a><a href="https://claude.ai/artifact/ESRCqbteiQ2G2YmxqrRz13" target="_blank" rel="noopener noreferrer">Hatshepsut temple guide ↗</a><a href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-6" target="_blank" rel="noopener noreferrer">Our Day 6 photos ↗</a></p>
+
+  <div class="pair">
+    <article class="card" style="--c: var(--amun);">
+      <span class="kicker">The temple</span>
+      <h2>Ipet-sut</h2>
+      <dl class="facts">
+        <div><dt>Where</dt><dd>The north of Luxor, ancient Thebes, on the east bank of the Nile</dd></div>
+        <div><dt>When</dt><dd>From c. 1950 BC to the Ptolemies and Romans</dd></div>
+        <div><dt>For</dt><dd>Amun-Ra, with Mut and Khonsu; Montu next door</dd></div>
+        <div><dt>Size</dt><dd>Three walled precincts; Amun&#39;s alone covers about 25 hectares</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--great);">
+      <span class="kicker">The highlights</span>
+      <h2>Do not miss</h2>
+      <dl class="facts">
+        <div><dt>Hall</dt><dd>The Great Hypostyle Hall, 134 columns, the 12 central ones about 21 m</dd></div>
+        <div><dt>Obelisk</dt><dd>Hatshepsut&#39;s, about 29.5 m, the tallest standing in Egypt</dd></div>
+        <div><dt>Shrine</dt><dd>The granite sanctuary of Amun&#39;s boat</dd></div>
+        <div><dt>Lake</dt><dd>The Sacred Lake and the scarab of Amenhotep III</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="planTitle" style="--c: var(--amun);">
+    <h2 id="planTitle">From the river to the god</h2>
+    <p class="section-note">Twelve stops along the main east–west axis, from the quay to the festival hall, then the lake and the open-air museum. Tap a number on the plan.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="0 0 560 380" role="img" aria-label="Simplified plan of the precinct of Amun at Karnak, north up, with the Nile to the west. From the old quay an avenue of ram-headed sphinxes leads east to the First Pylon, then the Great Court with the shrine of Seti II, the column of Taharqa, the temple of Ramesses III and the Bubastite Portal; the Second Pylon; the Great Hypostyle Hall; the Third and Fourth Pylons with the obelisk of Thutmose I; the hall with Hatshepsut&#39;s obelisk; the granite shrine of Philip Arrhidaeus; the empty Middle Kingdom court; and Thutmose III&#39;s festival hall, the Akh-menu, at the east end. A second axis runs south through four more pylons towards the temple of Mut and Luxor. The Sacred Lake lies south-east, with the giant scarab at its corner; the temple of Khonsu is in the south-west corner and the open-air museum north of the Great Court. Numbered markers match the notes.">
+          <rect width="560" height="380" fill="var(--panel)"/>
+          <rect x="0" y="0" width="26" height="380" fill="var(--water, #8fb6c9)" opacity="0.55"/>
+          <text class="t-sub" x="13" y="190" text-anchor="middle" transform="rotate(-90 13 190)">Nile</text>
+          <rect x="62" y="26" width="470" height="346" fill="none" stroke="var(--ink-soft)" stroke-dasharray="4 4"/>
+          <path d="M34,170 H470" stroke="var(--line)" stroke-dasharray="6 4"/>
+          <circle cx="40" cy="160" r="1.6" fill="var(--ink-soft)"/><circle cx="40" cy="180" r="1.6" fill="var(--ink-soft)"/><circle cx="47" cy="160" r="1.6" fill="var(--ink-soft)"/><circle cx="47" cy="180" r="1.6" fill="var(--ink-soft)"/><circle cx="54" cy="160" r="1.6" fill="var(--ink-soft)"/><circle cx="54" cy="180" r="1.6" fill="var(--ink-soft)"/><circle cx="61" cy="160" r="1.6" fill="var(--ink-soft)"/><circle cx="61" cy="180" r="1.6" fill="var(--ink-soft)"/><circle cx="68" cy="160" r="1.6" fill="var(--ink-soft)"/><circle cx="68" cy="180" r="1.6" fill="var(--ink-soft)"/><circle cx="75" cy="160" r="1.6" fill="var(--ink-soft)"/><circle cx="75" cy="180" r="1.6" fill="var(--ink-soft)"/>
+          <!-- first pylon and great court -->
+          <rect x="80" y="90" width="12" height="160" class="cut"/>
+          <rect x="92" y="100" width="78" height="140" fill="none" stroke="var(--ink-soft)"/>
+          <rect x="96" y="104" width="16" height="14" class="cut"/>
+          <circle cx="130" cy="170" r="3" fill="var(--amun)"/>
+          <rect x="118" y="214" width="32" height="48" class="cut"/>
+          <rect x="160" y="232" width="10" height="10" class="cut"/>
+          <!-- second pylon and hypostyle -->
+          <rect x="170" y="105" width="10" height="130" class="cut"/>
+          <rect x="180" y="110" width="65" height="120" fill="none" stroke="var(--ink-soft)"/>
+          <circle cx="186" cy="116" r="1.6" fill="var(--ink-soft)"/><circle cx="186" cy="125" r="1.6" fill="var(--ink-soft)"/><circle cx="186" cy="134" r="1.6" fill="var(--ink-soft)"/><circle cx="186" cy="143" r="1.6" fill="var(--ink-soft)"/><circle cx="186" cy="152" r="1.6" fill="var(--ink-soft)"/><circle cx="186" cy="161" r="1.6" fill="var(--ink-soft)"/><circle cx="186" cy="170" r="1.6" fill="var(--ink-soft)"/><circle cx="186" cy="179" r="1.6" fill="var(--ink-soft)"/><circle cx="186" cy="188" r="1.6" fill="var(--ink-soft)"/><circle cx="186" cy="197" r="1.6" fill="var(--ink-soft)"/><circle cx="186" cy="206" r="1.6" fill="var(--ink-soft)"/><circle cx="186" cy="215" r="1.6" fill="var(--ink-soft)"/><circle cx="186" cy="224" r="1.6" fill="var(--ink-soft)"/><circle cx="193" cy="116" r="1.6" fill="var(--ink-soft)"/><circle cx="193" cy="125" r="1.6" fill="var(--ink-soft)"/><circle cx="193" cy="134" r="1.6" fill="var(--ink-soft)"/><circle cx="193" cy="143" r="1.6" fill="var(--ink-soft)"/><circle cx="193" cy="152" r="1.6" fill="var(--ink-soft)"/><circle cx="193" cy="161" r="1.6" fill="var(--ink-soft)"/><circle cx="193" cy="170" r="1.6" fill="var(--ink-soft)"/><circle cx="193" cy="179" r="1.6" fill="var(--ink-soft)"/><circle cx="193" cy="188" r="1.6" fill="var(--ink-soft)"/><circle cx="193" cy="197" r="1.6" fill="var(--ink-soft)"/><circle cx="193" cy="206" r="1.6" fill="var(--ink-soft)"/><circle cx="193" cy="215" r="1.6" fill="var(--ink-soft)"/><circle cx="193" cy="224" r="1.6" fill="var(--ink-soft)"/><circle cx="200" cy="116" r="1.6" fill="var(--ink-soft)"/><circle cx="200" cy="125" r="1.6" fill="var(--ink-soft)"/><circle cx="200" cy="134" r="1.6" fill="var(--ink-soft)"/><circle cx="200" cy="143" r="1.6" fill="var(--ink-soft)"/><circle cx="200" cy="152" r="1.6" fill="var(--ink-soft)"/><circle cx="200" cy="161" r="1.6" fill="var(--ink-soft)"/><circle cx="200" cy="170" r="1.6" fill="var(--ink-soft)"/><circle cx="200" cy="179" r="1.6" fill="var(--ink-soft)"/><circle cx="200" cy="188" r="1.6" fill="var(--ink-soft)"/><circle cx="200" cy="197" r="1.6" fill="var(--ink-soft)"/><circle cx="200" cy="206" r="1.6" fill="var(--ink-soft)"/><circle cx="200" cy="215" r="1.6" fill="var(--ink-soft)"/><circle cx="200" cy="224" r="1.6" fill="var(--ink-soft)"/><circle cx="207" cy="116" r="1.6" fill="var(--ink-soft)"/><circle cx="207" cy="125" r="1.6" fill="var(--ink-soft)"/><circle cx="207" cy="134" r="1.6" fill="var(--ink-soft)"/><circle cx="207" cy="143" r="1.6" fill="var(--ink-soft)"/><circle cx="207" cy="152" r="2.6" fill="var(--ink-soft)"/><circle cx="207" cy="161" r="2.6" fill="var(--ink-soft)"/><circle cx="207" cy="170" r="2.6" fill="var(--ink-soft)"/><circle cx="207" cy="179" r="2.6" fill="var(--ink-soft)"/><circle cx="207" cy="188" r="2.6" fill="var(--ink-soft)"/><circle cx="207" cy="197" r="1.6" fill="var(--ink-soft)"/><circle cx="207" cy="206" r="1.6" fill="var(--ink-soft)"/><circle cx="207" cy="215" r="1.6" fill="var(--ink-soft)"/><circle cx="207" cy="224" r="1.6" fill="var(--ink-soft)"/><circle cx="214" cy="116" r="1.6" fill="var(--ink-soft)"/><circle cx="214" cy="125" r="1.6" fill="var(--ink-soft)"/><circle cx="214" cy="134" r="1.6" fill="var(--ink-soft)"/><circle cx="214" cy="143" r="1.6" fill="var(--ink-soft)"/><circle cx="214" cy="152" r="2.6" fill="var(--ink-soft)"/><circle cx="214" cy="161" r="2.6" fill="var(--ink-soft)"/><circle cx="214" cy="170" r="2.6" fill="var(--ink-soft)"/><circle cx="214" cy="179" r="2.6" fill="var(--ink-soft)"/><circle cx="214" cy="188" r="2.6" fill="var(--ink-soft)"/><circle cx="214" cy="197" r="1.6" fill="var(--ink-soft)"/><circle cx="214" cy="206" r="1.6" fill="var(--ink-soft)"/><circle cx="214" cy="215" r="1.6" fill="var(--ink-soft)"/><circle cx="214" cy="224" r="1.6" fill="var(--ink-soft)"/><circle cx="221" cy="116" r="1.6" fill="var(--ink-soft)"/><circle cx="221" cy="125" r="1.6" fill="var(--ink-soft)"/><circle cx="221" cy="134" r="1.6" fill="var(--ink-soft)"/><circle cx="221" cy="143" r="1.6" fill="var(--ink-soft)"/><circle cx="221" cy="152" r="2.6" fill="var(--ink-soft)"/><circle cx="221" cy="161" r="2.6" fill="var(--ink-soft)"/><circle cx="221" cy="170" r="2.6" fill="var(--ink-soft)"/><circle cx="221" cy="179" r="2.6" fill="var(--ink-soft)"/><circle cx="221" cy="188" r="2.6" fill="var(--ink-soft)"/><circle cx="221" cy="197" r="1.6" fill="var(--ink-soft)"/><circle cx="221" cy="206" r="1.6" fill="var(--ink-soft)"/><circle cx="221" cy="215" r="1.6" fill="var(--ink-soft)"/><circle cx="221" cy="224" r="1.6" fill="var(--ink-soft)"/><circle cx="228" cy="116" r="1.6" fill="var(--ink-soft)"/><circle cx="228" cy="125" r="1.6" fill="var(--ink-soft)"/><circle cx="228" cy="134" r="1.6" fill="var(--ink-soft)"/><circle cx="228" cy="143" r="1.6" fill="var(--ink-soft)"/><circle cx="228" cy="152" r="1.6" fill="var(--ink-soft)"/><circle cx="228" cy="161" r="1.6" fill="var(--ink-soft)"/><circle cx="228" cy="170" r="1.6" fill="var(--ink-soft)"/><circle cx="228" cy="179" r="1.6" fill="var(--ink-soft)"/><circle cx="228" cy="188" r="1.6" fill="var(--ink-soft)"/><circle cx="228" cy="197" r="1.6" fill="var(--ink-soft)"/><circle cx="228" cy="206" r="1.6" fill="var(--ink-soft)"/><circle cx="228" cy="215" r="1.6" fill="var(--ink-soft)"/><circle cx="228" cy="224" r="1.6" fill="var(--ink-soft)"/><circle cx="235" cy="116" r="1.6" fill="var(--ink-soft)"/><circle cx="235" cy="125" r="1.6" fill="var(--ink-soft)"/><circle cx="235" cy="134" r="1.6" fill="var(--ink-soft)"/><circle cx="235" cy="143" r="1.6" fill="var(--ink-soft)"/><circle cx="235" cy="152" r="1.6" fill="var(--ink-soft)"/><circle cx="235" cy="161" r="1.6" fill="var(--ink-soft)"/><circle cx="235" cy="170" r="1.6" fill="var(--ink-soft)"/><circle cx="235" cy="179" r="1.6" fill="var(--ink-soft)"/><circle cx="235" cy="188" r="1.6" fill="var(--ink-soft)"/><circle cx="235" cy="197" r="1.6" fill="var(--ink-soft)"/><circle cx="235" cy="206" r="1.6" fill="var(--ink-soft)"/><circle cx="235" cy="215" r="1.6" fill="var(--ink-soft)"/><circle cx="235" cy="224" r="1.6" fill="var(--ink-soft)"/>
+          <rect x="245" y="115" width="7" height="110" class="cut"/>
+          <rect x="262" y="125" width="5" height="90" class="cut"/>
+          <circle cx="257" cy="160" r="2.5" fill="var(--amun)"/>
+          <circle cx="275" cy="180" r="2.5" fill="var(--amun)"/>
+          <rect x="282" y="135" width="4" height="70" class="cut"/>
+          <rect x="292" y="140" width="4" height="60" class="cut"/>
+          <rect x="298" y="162" width="14" height="16" class="cut"/>
+          <rect x="314" y="140" width="24" height="60" fill="none" stroke="var(--ink-soft)" stroke-dasharray="2 2"/>
+          <!-- Akh-menu -->
+          <rect x="340" y="120" width="62" height="100" class="cut"/>
+          <path d="M350,140 H392 M350,170 H392 M350,200 H392" stroke="var(--line)"/>
+          <rect x="466" y="150" width="10" height="40" class="cut"/>
+          <!-- south axis, lake, Khonsu, museum -->
+          <path d="M267,225 V372" stroke="var(--line)" stroke-dasharray="6 4"/>
+          <rect x="250" y="244" width="34" height="6" class="cut"/><rect x="250" y="280" width="34" height="6" class="cut"/><rect x="250" y="314" width="34" height="6" class="cut"/><rect x="250" y="348" width="34" height="6" class="cut"/>
+          <rect x="296" y="248" width="72" height="56" fill="var(--water, #8fb6c9)" opacity="0.7" stroke="var(--ink-soft)"/>
+          <circle cx="298" cy="244" r="3" fill="var(--amun)"/>
+          <rect x="150" y="296" width="44" height="40" class="cut"/>
+          <rect x="100" y="40" width="70" height="38" fill="none" stroke="var(--ink-soft)" stroke-dasharray="2 2"/>
+          <text class="t-sub" x="332" y="296" text-anchor="middle">Sacred Lake</text>
+          <text class="t-sub" x="172" y="352" text-anchor="middle">Temple of Khonsu</text>
+          <text class="t-sub" x="292" y="366">to Mut and Luxor &#8595;</text>
+          <text class="t-sub" x="404" y="236">Akh-menu</text>
+          <text class="t-sub" x="440" y="146" text-anchor="middle">east gate</text>
+          <g transform="translate(520,350)"><path d="M0,-14 L5,3 L0,-1 L-5,3 Z" fill="var(--ink-soft)"/><text class="t-sub" x="0" y="15" text-anchor="middle">N</text></g>
+          <a class="mk" href="#kk-1"><circle cx="58" cy="196" r="9"/><text x="58" y="196">1</text></a><a class="mk" href="#kk-2"><circle cx="86" cy="128" r="9"/><text x="86" y="128">2</text></a><a class="mk" href="#kk-3"><circle cx="130" cy="140" r="9"/><text x="130" y="140">3</text></a><a class="mk" href="#kk-4"><circle cx="175" cy="128" r="9"/><text x="175" y="128">4</text></a><a class="mk" href="#kk-5"><circle cx="212" cy="170" r="9"/><text x="212" y="170">5</text></a><a class="mk" href="#kk-6"><circle cx="257" cy="140" r="9"/><text x="257" y="140">6</text></a><a class="mk" href="#kk-7"><circle cx="275" cy="200" r="9"/><text x="275" y="200">7</text></a><a class="mk" href="#kk-8"><circle cx="305" cy="170" r="9"/><text x="305" y="170">8</text></a><a class="mk" href="#kk-9"><circle cx="327" cy="140" r="9"/><text x="327" y="140">9</text></a><a class="mk" href="#kk-10"><circle cx="372" cy="170" r="9"/><text x="372" y="170">10</text></a><a class="mk" href="#kk-11"><circle cx="322" cy="266" r="9"/><text x="322" y="266">11</text></a><a class="mk" href="#kk-12"><circle cx="135" cy="60" r="9"/><text x="135" y="60">12</text></a>
+        </svg>
+        <p class="caption">Simplified plan of the precinct of Amun, not to scale; positions are approximate.</p>
+      </div>
+      <ol class="notes">
+        <li id="kk-1"><span class="num">1</span><div><h3>The quay and the ram avenue</h3><p>Karnak faced the river: boats moored at a quay in front of the temple, now high and dry. An avenue of ram-headed sphinxes leads to the gate; the ram was the sacred animal of Amun, and each one shelters a small statue of the king between its paws.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-amun" target="_blank" rel="noopener noreferrer">Amun ↗</a></p></div></li>
+        <li id="kk-2"><span class="num">2</span><div><h3>The First Pylon</h3><p>The last and largest gateway, about 113 m wide, probably begun under Nectanebo I in the 4th century BC and never finished: behind it, on the inside, are remains of the mud-brick ramp used to raise the blocks.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-nectanebo1" target="_blank" rel="noopener noreferrer">Nectanebo I ↗</a></p></div></li>
+        <li id="kk-3"><span class="num">3</span><div><h3>The Great Court</h3><p>On the left, the triple shrine of Seti II for the boats of Amun, Mut and Khonsu; in the middle, the one column still standing of the kiosk of the Kushite king Taharqa; on the right, the small temple of Ramesses III. In the far right corner, the Bubastite Portal lists the towns taken in Palestine by Sheshonq I, the &#39;Shishak&#39; of the Bible, around 925 BC.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-seti2" target="_blank" rel="noopener noreferrer">Seti II ↗</a> · <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-taharqa" target="_blank" rel="noopener noreferrer">Taharqa ↗</a> · <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses3" target="_blank" rel="noopener noreferrer">Ramesses III ↗</a></p></div></li>
+        <li id="kk-4"><span class="num">4</span><div><h3>The Second Pylon</h3><p>Built under Horemheb and filled with thousands of small blocks from Akhenaten&#39;s demolished temples to the Aten. In front stands a granite colossus of Ramesses II with a small princess at his feet, later re-inscribed by the high priest Pinedjem.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-horemheb" target="_blank" rel="noopener noreferrer">Horemheb ↗</a> · <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-akhenaten" target="_blank" rel="noopener noreferrer">Akhenaten ↗</a></p></div></li>
+        <li id="kk-5"><span class="num">5</span><div><h3>The Great Hypostyle Hall</h3><p>A forest of 134 columns over about 5,000 m², started under Seti I and finished by Ramesses II. The 12 central ones, about 21 m high, carried a raised roof with stone windows; the rest are shorter. Seti&#39;s reliefs are carved in fine raised relief, Ramesses&#39;s mostly in quicker sunk relief. Outside, the north wall shows Seti I&#39;s wars.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-seti1" target="_blank" rel="noopener noreferrer">Seti I ↗</a> · <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses2" target="_blank" rel="noopener noreferrer">Ramesses II ↗</a> · <a href="#hallTitle">The hall in section ↓</a></p></div></li>
+        <li id="kk-6"><span class="num">6</span><div><h3>The obelisk of Thutmose I</h3><p>Past Amenhotep III&#39;s Third Pylon, a narrow court holds the obelisk raised by Thutmose I, about 20 m tall, the oldest standing at Karnak. Here, at the time, was the front of the temple.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-thutmose1" target="_blank" rel="noopener noreferrer">Thutmose I ↗</a> · <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-amenhotep3" target="_blank" rel="noopener noreferrer">Amenhotep III ↗</a></p></div></li>
+        <li id="kk-7"><span class="num">7</span><div><h3>The obelisk of Hatshepsut</h3><p>Between the Fourth and Fifth Pylons rises the tallest ancient obelisk still standing in Egypt, about 29.5 m of Aswan granite, once tipped with gold-silver. Thutmose III later hid its lower part behind walls, which protected its inscriptions. The top of its fallen twin lies by the Sacred Lake.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-hatshepsut" target="_blank" rel="noopener noreferrer">Hatshepsut ↗</a> · <a href="https://claude.ai/artifact/ESRCqbteiQ2G2YmxqrRz13" target="_blank" rel="noopener noreferrer">Her temple ↗</a></p></div></li>
+        <li id="kk-8"><span class="num">8</span><div><h3>The granite shrine of Philip Arrhidaeus</h3><p>The heart of the temple, where Amun&#39;s boat rested. The present shrine of pink granite was rebuilt around 320 BC in the name of Philip Arrhidaeus, the half-brother of Alexander the Great, who ruled in name only; inside, the colours are still bright.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-alexander" target="_blank" rel="noopener noreferrer">Alexander ↗</a></p></div></li>
+        <li id="kk-9"><span class="num">9</span><div><h3>The Middle Kingdom court</h3><p>An open, empty space: here stood the first stone temple of Amun, built by Senusret I around 1950 BC. Everything else at Karnak grew outwards from this spot.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-senusret1" target="_blank" rel="noopener noreferrer">Senusret I ↗</a></p></div></li>
+        <li id="kk-10"><span class="num">10</span><div><h3>The Akh-menu</h3><p>Thutmose III&#39;s festival hall, &#39;Most splendid of monuments&#39;, with unusual columns shaped like tent poles, as in a royal campaign tent. In a side room, the &#39;Botanical Garden&#39; shows plants and animals the king brought back from Syria; another room held the Karnak King List, now in the Louvre.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-thutmose3" target="_blank" rel="noopener noreferrer">Thutmose III ↗</a></p></div></li>
+        <li id="kk-11"><span class="num">11</span><div><h3>The Sacred Lake</h3><p>Where the priests purified themselves and the sacred geese of Amun swam. At its north-west corner a giant granite scarab of Amenhotep III stands on a pillar: tradition says walking round it seven times brings luck, or a wedding.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-amenhotep3" target="_blank" rel="noopener noreferrer">Amenhotep III ↗</a></p></div></li>
+        <li id="kk-12"><span class="num">12</span><div><h3>The open-air museum</h3><p>North of the Great Court (extra ticket). Two chapels rebuilt from blocks found inside later pylons: the White Chapel of Senusret I, the oldest building at Karnak, with fine reliefs and a list of Egypt&#39;s provinces, and the Red Chapel of Hatshepsut, in red quartzite and black granite.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-senusret1" target="_blank" rel="noopener noreferrer">Senusret I ↗</a> · <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-hatshepsut" target="_blank" rel="noopener noreferrer">Hatshepsut ↗</a></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="hallTitle" style="--c: var(--amun);">
+    <h2 id="hallTitle">The Great Hypostyle Hall</h2>
+    <p class="section-note">About 102 by 53 m, big enough to hold Notre-Dame de Paris. The roof is gone in most places, but the columns still carry it in the centre, and you can see how the light came in.</p>
+    <div class="figure" style="max-width: 640px;">
+      <svg viewBox="0 0 340 230" role="img" aria-label="Simplified cross-section of the Great Hypostyle Hall, looking along the main axis. Two rows of very tall columns with open papyrus capitals carry the raised central roof; on each side, shorter columns with closed papyrus-bud capitals carry a lower roof. The difference in height is filled with stone window grilles, the clerestory, which let light in along the central aisle while the side aisles stay dark.">
+          <rect width="340" height="230" fill="var(--panel)"/>
+          <rect x="16" y="190" width="308" height="8" class="rock"/>
+          <rect x="16" y="120" width="112" height="10" class="cut"/>
+          <rect x="212" y="120" width="112" height="10" class="cut"/>
+          <rect x="128" y="88" width="84" height="10" class="cut"/>
+          <rect x="120" y="98" width="8" height="22" class="cut"/>
+          <rect x="212" y="98" width="8" height="22" class="cut"/>
+          <path d="M121,102 V118 M124,102 V118 M213,102 V118 M216,102 V118" stroke="var(--ink-soft)" stroke-width="0.8"/>
+          <rect class="pillar" x="30" y="130" width="14" height="60"/><path d="M28,130 Q37,121 46,130 Z" class="pillar"/><rect class="pillar" x="64" y="130" width="14" height="60"/><path d="M62,130 Q71,121 80,130 Z" class="pillar"/><rect class="pillar" x="98" y="130" width="14" height="60"/><path d="M96,130 Q105,121 114,130 Z" class="pillar"/><rect class="pillar" x="140" y="98" width="14" height="92"/><path d="M140,112 L131,98 L163,98 L154,112 Z" class="pillar"/><rect class="pillar" x="190" y="98" width="14" height="92"/><path d="M190,112 L181,98 L213,98 L204,112 Z" class="pillar"/><rect class="pillar" x="232" y="130" width="14" height="60"/><path d="M230,130 Q239,121 248,130 Z" class="pillar"/><rect class="pillar" x="266" y="130" width="14" height="60"/><path d="M264,130 Q273,121 282,130 Z" class="pillar"/><rect class="pillar" x="300" y="130" width="14" height="60"/><path d="M298,130 Q307,121 316,130 Z" class="pillar"/>
+          <path d="M128,110 L160,168 M212,110 L180,168" stroke="var(--sun)" stroke-width="2" stroke-dasharray="4 3" opacity="0.8"/>
+          <text class="t-sub" x="170" y="80" text-anchor="middle">raised central roof</text>
+          <text class="t-sub" x="232" y="94">window grilles</text>
+          <text class="t-sub" x="170" y="208" text-anchor="middle">12 open-papyrus</text>
+          <text class="t-sub" x="170" y="222" text-anchor="middle">columns, about 21 m</text>
+          <text class="t-sub" x="64" y="208" text-anchor="middle">122 bud columns</text>
+          <text class="t-sub" x="64" y="222" text-anchor="middle">about 15 m</text>
+          <text class="t-sub" x="276" y="208" text-anchor="middle">dark side</text>
+          <text class="t-sub" x="276" y="222" text-anchor="middle">aisles</text>
+        </svg>
+      <p class="caption">Simplified cross-section across the hall, not to scale.</p>
+    </div>
+    <div class="tips" style="margin-top: 1rem;"><div class="tip"><h3>A papyrus marsh in stone</h3><p>Every temple was a model of the world at creation. The columns are papyrus plants rising from the first marsh: open flowers in the sunlit centre, closed buds in the dark sides.</p></div><div class="tip"><h3>Light from above</h3><p>The only light came through the stone grilles high above the central aisle. Walking in, priests went from bright sun into deep shade, towards the hidden god.</p></div><div class="tip"><h3>Two styles, two kings</h3><p>Seti I decorated the north half in delicate raised relief; Ramesses II finished the south half mostly in deep sunk relief, quicker to carve and sharper in strong sun.</p></div><div class="tip"><h3>Fallen and raised</h3><p>In October 1899, eleven columns collapsed after their foundations were soaked by groundwater. They were rebuilt over the next years; the columns still stand on shallow footings.</p></div></div>
+  </section>
+
+  <section aria-labelledby="readTitle">
+    <h2 id="readTitle">How to read Karnak</h2>
+    <div class="tips"><div class="tip"><h3>Ipet-sut</h3><p>Its ancient name, &#39;the most select of places&#39;. It was Amun&#39;s house on earth, and the richest temple in Egypt: in the time of Ramesses III it owned land, herds, ships and tens of thousands of workers.</p></div><div class="tip"><h3>Two thousand years of building</h3><p>Some thirty pharaohs added to it, from Senusret I around 1950 BC to the Ptolemies and Romans. Each new gateway went in front of the last, so the oldest parts are deep inside and the youngest at the entrance.</p></div><div class="tip"><h3>A family of gods</h3><p>Amun-Ra, king of the gods, lived here with his wife Mut, whose precinct lies to the south, and their son Khonsu, the moon god, whose temple is in the south-west corner. The war god Montu has his own precinct to the north.</p></div><div class="tip"><h3>The Opet festival</h3><p>Each year at the flood, the boats of the three gods were carried along the 2.7 km avenue of sphinxes, or sailed upriver, to Luxor Temple, where the king&#39;s divine power was renewed. The avenue was cleared and reopened in 2021.</p></div></div>
+  </section>
+
+  <section aria-labelledby="timeTitle">
+    <h2 id="timeTitle">Karnak through time</h2>
+    <ol class="timeline">
+      <li><span class="yr">c. 1950 BC</span><p>Senusret I builds the first stone temple and the White Chapel.</p></li>
+      <li><span class="yr">c. 1500 BC</span><p>Thutmose I adds the Fourth and Fifth Pylons and his obelisks.</p></li>
+      <li><span class="yr">c. 1470 BC</span><p>Hatshepsut raises her obelisks and builds the Red Chapel.</p></li>
+      <li><span class="yr">c. 1445 BC</span><p>Thutmose III builds the Akh-menu, the Sacred Lake and records his wars in the Annals.</p></li>
+      <li><span class="yr">c. 1380 BC</span><p>Amenhotep III builds the Third Pylon.</p></li>
+      <li><span class="yr">c. 1350 BC</span><p>Akhenaten builds temples to the Aten east of Karnak; after his death they are pulled down and their blocks used as fill.</p></li>
+      <li><span class="yr">c. 1290–1213 BC</span><p>Seti I and Ramesses II build and decorate the Great Hypostyle Hall.</p></li>
+      <li><span class="yr">c. 925 BC</span><p>Sheshonq I carves his Palestinian campaign on the Bubastite Portal.</p></li>
+      <li><span class="yr">c. 690–664 BC</span><p>The Kushite king Taharqa builds his kiosk in the Great Court.</p></li>
+      <li><span class="yr">c. 370s BC</span><p>Work begins on the First Pylon, probably under Nectanebo I; it is never finished.</p></li>
+      <li><span class="yr">c. 320 BC</span><p>The granite shrine is rebuilt in the name of Philip Arrhidaeus.</p></li>
+      <li><span class="yr">1899</span><p>Eleven columns of the Hypostyle Hall collapse; they are re-erected.</p></li>
+      <li><span class="yr">2021</span><p>The avenue of sphinxes to Luxor Temple is reopened.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">For our visit</h2>
+    <div class="tips">
+      <div class="tip"><h3>Late afternoon</h3><p>After the west bank, Karnak is best as the sun drops: the light slants through the hypostyle columns and the stone turns gold.</p></div>
+      <div class="tip"><h3>Look for the colours</h3><p>High on the columns and under the architraves of the Hypostyle Hall, the original paint survives, recently cleaned.</p></div>
+      <div class="tip"><h3>Don&#39;t get lost</h3><p>The site is huge. Follow the main axis to the Akh-menu, then turn south to the lake; the café is by the lake.</p></div>
+      <div class="tip"><h3>Sound and light</h3><p>There is an evening sound and light show in the temple, a different way to see the hall lit up.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Part of <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">the Private Alimaña Tour ↗</a>. The plan is schematic; dates are approximate.</p>
+</div>
