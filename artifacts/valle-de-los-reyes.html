@@ -1,0 +1,273 @@
+<title>El Valle de los Reyes</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout (Spanish version, with the audio guide): intro, a profile of a royal tomb, the valley map beside numbered notes on the tombs, the Books of the Netherworld, a timeline and tips. Shares its look with the temple guides. Phone first: everything stacks. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --kv: #9a6c12;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --kv: #e2b74f; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --kv: #e2b74f; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--great); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  .audio { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--sun); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; }
+  .audio audio { width: 100%; margin: 0.4rem 0 0.8rem; }
+  .audio ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0.3rem 1rem; }
+  .audio button { all: unset; cursor: pointer; display: flex; gap: 0.6rem; width: 100%; box-sizing: border-box; padding: 0.35rem 0.4rem; border-radius: 6px; font-size: 0.9rem; }
+  .audio button:hover, .audio button:focus-visible { background: var(--bg); outline: 1px solid var(--line); }
+  .audio button[aria-current="true"] { background: var(--bg); font-weight: 600; }
+  .audio .at { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); min-width: 2.6rem; padding-top: 0.1rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--great); }
+  .mk:focus-visible { outline: none; }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .eyebrow { color: var(--kv); }
+  .ruin { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 1; }
+  .col { fill: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Orilla oeste de Luxor · tumbas reales · h. 1500–1070 a. C. · día 6 del viaje Alimaña · <a class="lang" href="https://claude.ai/artifact/TDqmmyV6vEBtU6zDTkSqSh" target="_blank" rel="noopener noreferrer" hreflang="en">English version ↗</a></p>
+  <h1>El Valle de los Reyes</h1>
+  <p class="lede">Durante casi 500 años, los faraones del Reino Nuevo se enterraron en un valle seco tras los acantilados de la Tebas occidental, bajo un pico con forma de pirámide. En lugar de construir pirámides, excavaron sus tumbas muy dentro de la roca y cubrieron las paredes con los libros que guiaban al rey muerto a través de la noche junto al sol. Se conocen más de 60 tumbas, numeradas de KV1 a KV64 por orden de descubrimiento; solo la de Tutankamón apareció casi intacta.</p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-tutankhamun" target="_blank" rel="noopener noreferrer">Ficha de Tutankamón (en inglés) ↗</a><a href="https://claude.ai/artifact/2BxeijiRHBny2UkhyPvtsh#god-ra" target="_blank" rel="noopener noreferrer">Ra en la página de los dioses ↗</a><a href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-6" target="_blank" rel="noopener noreferrer">Nuestras fotos del día 6 ↗</a><a href="#audioTitle">Audioguía ↓</a></p>
+
+  <div class="pair">
+    <article class="card" style="--c: var(--kv);">
+      <span class="kicker">El valle</span>
+      <h2>Un cementerio escondido</h2>
+      <dl class="facts">
+        <div><dt>Dónde</dt><dd>Un uadi del desierto en la orilla oeste de Luxor, detrás de los acantilados de Deir el-Bahari</dd></div>
+        <div><dt>Cuándo</dt><dd>h. 1500–1070 a. C., dinastías XVIII a XX</dd></div>
+        <div><dt>Tumbas</dt><dd>Más de 60, para reyes, reinas, príncipes y nobles; unas 25 eran de reyes</dd></div>
+        <div><dt>Encima</dt><dd>El-Qurn, un pico natural con forma de pirámide</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--great);">
+      <span class="kicker">Por qué aquí</span>
+      <h2>Lejos de los ladrones</h2>
+      <dl class="facts">
+        <div><dt>Escondido</dt><dd>Todas las pirámides habían sido saqueadas; un valle apartado con caminos vigilados era más seguro</dd></div>
+        <div><dt>Aparte</dt><dd>Los templos para el culto del rey estaban junto al río; las tumbas quedaban fuera de la vista</dd></div>
+        <div><dt>Constructores</dt><dd>Un pueblo de artesanos, Deir el-Medina, excavó y pintó las tumbas durante generaciones</dd></div>
+        <div><dt>Aun así, saqueadas</dt><dd>Casi todas las tumbas fueron robadas en la Antigüedad, a menudo por gente que sabía dónde cavar</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="audioTitle">
+    <h2 id="audioTitle">Audioguía</h2>
+    <p class="section-note">Unos nueve minutos en español para escuchar durante la visita: cómo es una tumba real, un capítulo por cada número del mapa y los libros del más allá. Pulsa un capítulo para saltar a él. Voz neuronal de Microsoft (Elvira).</p>
+    <div class="audio">
+      <audio id="guia" controls preload="metadata" src="valle-audioguia.mp3"></audio>
+      <ol id="capitulos"><li><button type="button" data-t="0.0"><span class="at">0:00</span>Bienvenida</button></li><li><button type="button" data-t="51.5"><span class="at">0:51</span>Cómo es una tumba real</button></li><li><button type="button" data-t="101.9"><span class="at">1:41</span>1. El centro de visitantes</button></li><li><button type="button" data-t="127.8"><span class="at">2:07</span>2. Tutankamón</button></li><li><button type="button" data-t="172.8"><span class="at">2:52</span>3. Ramsés quinto y sexto</button></li><li><button type="button" data-t="209.7"><span class="at">3:29</span>4. Seti primero</button></li><li><button type="button" data-t="244.4"><span class="at">4:04</span>5. Ramsés tercero</button></li><li><button type="button" data-t="267.4"><span class="at">4:27</span>6. Merenptah</button></li><li><button type="button" data-t="291.5"><span class="at">4:51</span>7. Ramsés cuarto</button></li><li><button type="button" data-t="316.2"><span class="at">5:16</span>8. Ramsés noveno</button></li><li><button type="button" data-t="333.5"><span class="at">5:33</span>9. Tausert y Setnajt</button></li><li><button type="button" data-t="354.4"><span class="at">5:54</span>10. Tutmosis tercero</button></li><li><button type="button" data-t="388.0"><span class="at">6:28</span>11. Amenhotep segundo</button></li><li><button type="button" data-t="414.7"><span class="at">6:54</span>12. Los hijos de Ramsés segundo</button></li><li><button type="button" data-t="445.4"><span class="at">7:25</span>Los libros del más allá</button></li><li><button type="button" data-t="503.0"><span class="at">8:23</span>Despedida</button></li></ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="tombTitle" style="--c: var(--kv);">
+    <h2 id="tombTitle">Cómo es una tumba real</h2>
+    <p class="section-note">Cada rey empezaba su tumba nada más subir al trono, y los obreros cavaban hasta que moría, así que los reinados largos dejaban tumbas largas. Las primeras tumbas giran en ángulo; desde finales de la dinastía XVIII entran rectas en la montaña, como el camino del sol a través de la noche.</p>
+    <div class="figure" style="max-width: 640px;">
+      <svg viewBox="0 0 520 230" role="img" aria-label="Perfil simplificado de una tumba real de las dinastías XIX y XX, excavada en línea recta en la ladera. Desde la entrada, al pie del acantilado, unos corredores en pendiente bajan por la roca hasta un pozo profundo, después una sala de pilares, más corredores y por fin la cámara funeraria con el sarcófago de piedra, en lo hondo de la montaña.">
+          <rect width="520" height="230" fill="var(--panel)"/>
+          <path d="M0,62 L60,62 L120,40 L200,22 L262,8 L330,24 L420,34 L520,30 L520,230 L0,230 Z" class="rock"/>
+          <path d="M0,62 H40" stroke="var(--ink-soft)" stroke-width="2"/>
+          <!-- entrance stairs and sloping corridors -->
+          <path d="M40,58 L58,58 L58,64 L66,64 L66,70 L74,70" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+          <path d="M40,52 L74,52 L210,92 L210,112 L74,72 L40,72 Z" class="cut"/>
+          <!-- well shaft -->
+          <rect x="210" y="92" width="26" height="74" class="cut"/>
+          <path d="M210,112 L236,112" stroke="var(--ink-soft)" stroke-dasharray="3 3"/>
+          <!-- pillared hall -->
+          <rect x="236" y="96" width="70" height="40" class="cut"/>
+          <rect class="pillar" x="252" y="100" width="6" height="36"/><rect class="pillar" x="280" y="100" width="6" height="36"/>
+          <!-- lower corridor and burial chamber -->
+          <path d="M306,112 L380,140 L380,160 L306,132 Z" class="cut"/>
+          <rect x="380" y="128" width="110" height="64" class="cut"/>
+          <path d="M380,128 Q435,108 490,128" fill="none" stroke="var(--ink-soft)"/>
+          <rect class="pillar" x="400" y="134" width="5" height="58"/><rect class="pillar" x="465" y="134" width="5" height="58"/>
+          <rect x="420" y="172" width="34" height="20" fill="var(--kv)" opacity="0.8"/>
+          <!-- labels -->
+          <text class="t-sub" x="40" y="44">entrada</text>
+          <text class="t-sub" x="56" y="112">corredores en pendiente</text>
+          <text class="t-sub" x="223" y="182" text-anchor="middle">pozo</text>
+          <text class="t-sub" x="271" y="90" text-anchor="middle">sala de pilares</text>
+          <text class="t-sub" x="435" y="205" text-anchor="middle">cámara funeraria</text>
+          <text class="t-sub" x="437" y="222" text-anchor="middle">y sarcófago</text>
+          <text class="t-sub" x="262" y="4" text-anchor="middle" dy="10">la ladera</text>
+        </svg>
+      <p class="caption">Perfil simplificado de una tumba recta de las dinastías XIX–XX. Las tumbas reales entran de unos 30 a 137 m en la roca.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="planTitle" style="--c: var(--kv);">
+    <h2 id="planTitle">Las tumbas que hay que conocer</h2>
+    <p class="section-note">Doce tumbas, del centro de visitantes hacia el interior del valle. Cuáles están abiertas cambia de un día a otro, así que mira el cartel de la entrada y elige tres. Pulsa un número del mapa.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="0 0 360 440" role="img" aria-label="Mapa esquemático del Valle de los Reyes, con la entrada abajo. Desde el centro de visitantes un camino sube por el valle principal, pasa junto a la tumba de Ramsés IV, cerca de la entrada, y la de los hijos de Ramsés II, y llega al centro, donde están juntas las tumbas de Tutankamón, Ramsés V y VI, Ramsés IX, Ramsés III y Merenptah. Un ramal oeste lleva a las tumbas de Seti I y Amenhotep II, un ramal este a la de Tausert y Setnajt, y el extremo sur a la de Tutmosis III, en lo alto de una grieta del acantilado bajo el pico de el-Qurn. Los números corresponden a las notas.">
+          <rect width="360" height="440" class="rock"/>
+          <path d="M180,440 L180,250 M180,250 C140,220 90,200 50,160 M180,250 C176,200 168,140 160,80 M180,250 C220,230 260,210 296,186" fill="none" stroke="var(--panel)" stroke-width="44" stroke-linecap="round"/>
+          <path d="M180,440 L180,250 M180,250 C140,220 90,200 50,160 M180,250 C176,200 168,140 160,80 M180,250 C220,230 260,210 296,186" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="5 5"/>
+          <path d="M120,30 L160,6 L200,30" fill="none" stroke="var(--ink-soft)" stroke-width="2"/>
+          <text class="t-sub" x="208" y="22">pico de el-Qurn</text>
+          <rect x="164" y="404" width="32" height="20" fill="var(--panel)" stroke="var(--ink-soft)"/>
+          <text class="t-sub" x="204" y="436">centro de visitantes</text>
+          <circle cx="240" cy="336" r="3" fill="var(--ink-soft)"/><text class="t-sub" x="246" y="332">KV7 Ramsés II</text>
+          <text class="t-sub" x="166" y="306">KV62</text><text class="t-sub" x="212" y="286">KV9</text><text class="t-sub" x="100" y="214">KV17</text><text class="t-sub" x="120" y="266">KV11</text><text class="t-sub" x="248" y="254">KV8</text><text class="t-sub" x="122" y="378">KV2</text><text class="t-sub" x="238" y="316">KV6</text><text class="t-sub" x="300" y="206">KV14</text><text class="t-sub" x="178" y="98">KV34</text><text class="t-sub" x="40" y="178">KV35</text><text class="t-sub" x="256" y="370">KV5</text>
+          <g transform="translate(330,404)"><path d="M0,-14 L5,3 L0,-1 L-5,3 Z" fill="var(--ink-soft)"/><text class="t-sub" x="0" y="15" text-anchor="middle">N</text></g>
+          <a class="mk" href="#kv-1"><circle cx="180" cy="418" r="9"/><text x="180" y="418">1</text></a><a class="mk" href="#kv-2"><circle cx="150" cy="292" r="9"/><text x="150" y="292">2</text></a><a class="mk" href="#kv-3"><circle cx="200" cy="270" r="9"/><text x="200" y="270">3</text></a><a class="mk" href="#kv-4"><circle cx="86" cy="196" r="9"/><text x="86" y="196">4</text></a><a class="mk" href="#kv-5"><circle cx="136" cy="248" r="9"/><text x="136" y="248">5</text></a><a class="mk" href="#kv-6"><circle cx="232" cy="236" r="9"/><text x="232" y="236">6</text></a><a class="mk" href="#kv-7"><circle cx="140" cy="362" r="9"/><text x="140" y="362">7</text></a><a class="mk" href="#kv-8"><circle cx="222" cy="300" r="9"/><text x="222" y="300">8</text></a><a class="mk" href="#kv-9"><circle cx="288" cy="186" r="9"/><text x="288" y="186">9</text></a><a class="mk" href="#kv-10"><circle cx="160" cy="82" r="9"/><text x="160" y="82">10</text></a><a class="mk" href="#kv-11"><circle cx="52" cy="158" r="9"/><text x="52" y="158">11</text></a><a class="mk" href="#kv-12"><circle cx="238" cy="352" r="9"/><text x="238" y="352">12</text></a>
+        </svg>
+        <p class="caption">Mapa esquemático, sin escala; posiciones aproximadas.</p>
+      </div>
+      <ol class="notes">
+        <li id="kv-1"><span class="num">1</span><div><h3>El centro de visitantes</h3><p>Empieza por la maqueta del valle bajo cristal, que muestra cómo las tumbas se adentran en las montañas, y luego sube en el trenecito eléctrico (el «tuf-tuf») hasta las tumbas. La entrada normal abre tres tumbas a elegir entre las abiertas ese día; unas pocas cuestan aparte.</p></div></li>
+        <li id="kv-2"><span class="num">2</span><div><h3>Tutankamón (KV62)</h3><p>Una tumba pequeña para un rey que murió con unos 19 años, hacia el 1323 a. C. Solo está pintada la cámara funeraria: su sucesor Ay celebra la Apertura de la Boca del rey muerto, y los babuinos de la primera hora de la noche vigilan desde la pared. Su momia está en una vitrina y su sarcófago de cuarcita sigue aquí; los tesoros que Howard Carter encontró el 4 de noviembre de 1922 están en el Gran Museo Egipcio, nuestro día 9. Entrada aparte.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-tutankhamun" target="_blank" rel="noopener noreferrer">Tutankamón (en inglés) ↗</a></p></div></li>
+        <li id="kv-3"><span class="num">3</span><div><h3>Ramsés V y VI (KV9)</h3><p>Empezada para Ramsés V y terminada para Ramsés VI. El techo de la cámara funeraria es el más espectacular del valle: la diosa del cielo, Nut, tendida dos veces, tragándose el sol por la tarde y dándolo a luz al amanecer. Los escombros y las chozas de los obreros que excavaron esta tumba cubrieron la entrada de la de Tutankamón, justo debajo, y la escondieron durante 3.000 años. Entrada aparte.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses6" target="_blank" rel="noopener noreferrer">Ramsés VI (en inglés) ↗</a> · <a href="https://claude.ai/artifact/2BxeijiRHBny2UkhyPvtsh#god-nut" target="_blank" rel="noopener noreferrer">Nut ↗</a></p></div></li>
+        <li id="kv-4"><span class="num">4</span><div><h3>Seti I (KV17)</h3><p>La tumba más larga del valle, unos 137 m, y la mejor tallada: todas las paredes en relieve pintado, con el primer techo astronómico sobre la cámara funeraria. La encontró Giovanni Belzoni en 1817; el sarcófago de alabastro está hoy en el Museo de Sir John Soane, en Londres. A menudo cerrada, y la entrada más cara cuando abre.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-seti1" target="_blank" rel="noopener noreferrer">Seti I (en inglés) ↗</a></p></div></li>
+        <li id="kv-5"><span class="num">5</span><div><h3>Ramsés III (KV11)</h3><p>La empezó su padre Setnajt y se terminó para Ramsés III. Unas salitas laterales del primer corredor muestran escenas poco comunes de la vida diaria y de los almacenes reales, entre ellas dos arpistas ciegos que cantan a los dioses, que le dieron su antiguo nombre, la Tumba de los Arpistas.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses3" target="_blank" rel="noopener noreferrer">Ramsés III (en inglés) ↗</a></p></div></li>
+        <li id="kv-6"><span class="num">6</span><div><h3>Merenptah (KV8)</h3><p>El decimotercer hijo de Ramsés II, que sobrevivió a doce hermanos mayores. Un corredor largo y empinado baja hasta una sala donde aún están las enormes tapas de granito rosa de su sarcófago; en la tapa interior el rey aparece tallado como Osiris.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-merneptah" target="_blank" rel="noopener noreferrer">Merenptah (en inglés) ↗</a></p></div></li>
+        <li id="kv-7"><span class="num">7</span><div><h3>Ramsés IV (KV2)</h3><p>Cerca de la entrada y abierta desde la Antigüedad: turistas griegos y romanos, y después monjes coptos, grabaron sus nombres en las paredes. En Turín se conserva un plano de esta misma tumba dibujado en papiro, uno de los planos de arquitectura más antiguos del mundo.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses4" target="_blank" rel="noopener noreferrer">Ramsés IV (en inglés) ↗</a></p></div></li>
+        <li id="kv-8"><span class="num">8</span><div><h3>Ramsés IX (KV6)</h3><p>Una tumba luminosa y cómoda, cerca del centro. Bajo este rey se celebraron los grandes juicios por robos de tumbas: los papiros recogen los interrogatorios de los ladrones que habían saqueado enterramientos reales.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses9" target="_blank" rel="noopener noreferrer">Ramsés IX (en inglés) ↗</a></p></div></li>
+        <li id="kv-9"><span class="num">9</span><div><h3>Tausert y Setnajt (KV14)</h3><p>Empezada para Tausert, una reina que gobernó como faraón por derecho propio; Setnajt, fundador de la dinastía siguiente, se la quedó y siguió excavando, así que tiene dos cámaras funerarias, una detrás de otra.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-twosret" target="_blank" rel="noopener noreferrer">Tausert (en inglés) ↗</a> · <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-setnakhte" target="_blank" rel="noopener noreferrer">Setnajt (en inglés) ↗</a></p></div></li>
+        <li id="kv-10"><span class="num">10</span><div><h3>Tutmosis III (KV34)</h3><p>Escondida en lo alto de una grieta al fondo del valle, se sube por unas empinadas escaleras metálicas. La cámara funeraria tiene la forma redondeada de un cartucho, y sus paredes muestran el Amduat dibujado como un enorme papiro desenrollado, con figuras como de palitos sobre un fondo amarillento; la sala anterior enumera 741 dioses.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-thutmose3" target="_blank" rel="noopener noreferrer">Tutmosis III (en inglés) ↗</a></p></div></li>
+        <li id="kv-11"><span class="num">11</span><div><h3>Amenhotep II (KV35)</h3><p>Una tumba profunda en el ramal oeste. En 1898 Victor Loret encontró en ella un escondite con las momias de otros nueve reyes, entre ellos Tutmosis IV, Amenhotep III y Merenptah, trasladadas allí por los sacerdotes hacia el 1000 a. C. para salvarlas de los ladrones. A menudo cerrada.</p></div></li>
+        <li id="kv-12"><span class="num">12</span><div><h3>Los hijos de Ramsés II (KV5)</h3><p>La tumba más grande de Egipto, con más de 120 corredores y salas, construida para los muchos hijos de Ramsés II. Durante mucho tiempo se creyó una tumba pequeña e inundada; Kent Weeks la exploró desde 1995. Cerrada al público; la tumba del propio Ramsés II, la KV7, está cerca, muy dañada por las riadas.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses2" target="_blank" rel="noopener noreferrer">Ramsés II (en inglés) ↗</a></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="booksTitle">
+    <h2 id="booksTitle">Los libros del más allá</h2>
+    <p class="section-note">Las pinturas no son decoración: son guías para el más allá, escritas solo para el rey. Reconocerlas hace más fácil leer cada tumba.</p>
+    <div class="tips"><div class="tip"><h3>El viaje nocturno del sol</h3><p>Cada tarde el dios sol Ra entraba en el mundo subterráneo en su barca y lo recorría durante las doce horas de la noche, luchando contra la serpiente Apofis, para renacer al amanecer. El rey muerto viajaba con él. Las paredes de la tumba son el mapa de ese viaje, hora a hora.</p></div><div class="tip"><h3>El Amduat</h3><p>«Lo que hay en el mundo subterráneo», el más antiguo de estos libros, con las doce horas de la noche. En las primeras tumbas, como la de Tutmosis III, está dibujado como un papiro gigante desenrollado por las paredes, con figuras sencillas como de palitos.</p></div><div class="tip"><h3>El Libro de las Puertas</h3><p>Otra vez la noche, pero cada hora termina en una puerta guardada por una serpiente que solo se abre con los nombres correctos. Aparece desde la tumba de Horemheb, a todo color.</p></div><div class="tip"><h3>La Letanía de Ra</h3><p>Un himno que enumera las 75 formas del dios sol, pintado cerca de la entrada de las tumbas ramésidas, a menudo con el disco solar entre un dios con cabeza de carnero y un escarabajo.</p></div><div class="tip"><h3>Las Cavernas y la Tierra</h3><p>Libros más tardíos muestran el mundo subterráneo como cavernas y profundidades de la tierra, donde se castiga a los enemigos de Ra mientras el disco solar y el cuerpo de Osiris quedan protegidos y renovados.</p></div><div class="tip"><h3>El cielo en el techo</h3><p>Las cámaras funerarias suelen tener el techo pintado como el cielo. El de Seti I muestra las constelaciones; en el de Ramsés VI el largo cuerpo de Nut se arquea dos veces sobre la sala, para el día y para la noche.</p></div></div>
+  </section>
+
+  <section aria-labelledby="timeTitle">
+    <h2 id="timeTitle">El valle a través del tiempo</h2>
+    <ol class="timeline">
+      <li><span class="yr">h. 1500 a. C.</span><p>Tutmosis I es el primer rey del que se sabe que se enterró en el valle, lejos de su templo junto al río; tumbas y templos quedan ya separados.</p></li>
+      <li><span class="yr">h. 1425 a. C.</span><p>Tutmosis III se entierra en la KV34, en lo alto del acantilado.</p></li>
+      <li><span class="yr">h. 1323 a. C.</span><p>Tutankamón se entierra en una tumba pequeña, la KV62, tras un reinado corto.</p></li>
+      <li><span class="yr">h. 1279 a. C.</span><p>Seti I se entierra en la KV17, la tumba más larga y mejor decorada.</p></li>
+      <li><span class="yr">h. 1157 a. C.</span><p>Los obreros de las tumbas de Deir el-Medina dejan de trabajar porque no llegan sus raciones, bajo Ramsés III: la primera huelga registrada de la historia.</p></li>
+      <li><span class="yr">h. 1110 a. C.</span><p>Bajo Ramsés IX se juzga a los ladrones de tumbas; los papiros recogen sus confesiones.</p></li>
+      <li><span class="yr">h. 1070 a. C.</span><p>La tumba de Ramsés XI, la KV4, la última tumba real, queda sin terminar y nunca se usa.</p></li>
+      <li><span class="yr">h. 1000 a. C.</span><p>Los sacerdotes desvendan, vuelven a vendar y esconden las momias reales en dos escondites, uno en la KV35.</p></li>
+      <li><span class="yr">1817</span><p>Giovanni Belzoni encuentra la tumba de Seti I.</p></li>
+      <li><span class="yr">1881 y 1898</span><p>Se encuentran los dos escondites reales: en Deir el-Bahari y después en la KV35.</p></li>
+      <li><span class="yr">4 nov. 1922</span><p>Howard Carter encuentra los escalones de la tumba de Tutankamón, casi intacta.</p></li>
+      <li><span class="yr">1995</span><p>Kent Weeks revela la enorme extensión de la KV5, la tumba de los hijos de Ramsés II.</p></li>
+      <li><span class="yr">2005</span><p>La KV63, el primer hallazgo nuevo desde 1922, resulta contener ataúdes y material de embalsamamiento, pero ninguna momia.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">Para nuestra visita</h2>
+    <div class="tips">
+      <div class="tip"><h3>Elige tus tres</h3><p>Buenas opciones si están abiertas: Ramsés III (KV11), Merenptah (KV8) y Ramsés IV (KV2) o Tutmosis III (KV34). Tutankamón y Ramsés V/VI necesitan entrada aparte.</p></div>
+      <div class="tip"><h3>Ve temprano</h3><p>El valle es una trampa de sol casi sin sombra, y las tumbas se llenan y se cargan a media mañana.</p></div>
+      <div class="tip"><h3>Fotos</h3><p>Las normas sobre fotos cambian; pregunta en la taquilla y no uses nunca el flash, que destiñe la pintura.</p></div>
+      <div class="tip"><h3>Lee los techos</h3><p>Mira hacia arriba según bajas: estrellas amarillas sobre azul quieren decir que estás bajo el cielo nocturno, cerca del rey.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Forma parte del <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">Private Alimaña Tour ↗</a> (en inglés). El mapa es esquemático; las fechas son aproximadas.</p>
+</div>
+<script>
+(() => {
+  const a = document.getElementById('guia');
+  const bs = [...document.querySelectorAll('#capitulos button')];
+  bs.forEach(b => b.addEventListener('click', () => { a.currentTime = +b.dataset.t; a.play().catch(() => {}); }));
+  a.addEventListener('timeupdate', () => {
+    let cur = 0; bs.forEach((b, i) => { if (a.currentTime >= +b.dataset.t - 0.2) cur = i; });
+    bs.forEach((b, i) => b.setAttribute('aria-current', i === cur && a.currentTime > 0 ? 'true' : 'false'));
+  });
+})();
+</script>
