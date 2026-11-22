@@ -1,0 +1,260 @@
+<title>Templo de Hatshepsut</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout (Spanish version, with the audio guide): intro, a front view of the three terraces beside numbered notes, the woman who was king, Punt and the divine birth, a timeline and tips. Shares its look with the temple guides. Phone first: everything stacks. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --hat: #2b7a80;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --hat: #6cc0c4; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --hat: #6cc0c4; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--great); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  .audio { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--sun); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; }
+  .audio audio { width: 100%; margin: 0.4rem 0 0.8rem; }
+  .audio ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0.3rem 1rem; }
+  .audio button { all: unset; cursor: pointer; display: flex; gap: 0.6rem; width: 100%; box-sizing: border-box; padding: 0.35rem 0.4rem; border-radius: 6px; font-size: 0.9rem; }
+  .audio button:hover, .audio button:focus-visible { background: var(--bg); outline: 1px solid var(--line); }
+  .audio button[aria-current="true"] { background: var(--bg); font-weight: 600; }
+  .audio .at { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); min-width: 2.6rem; padding-top: 0.1rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--great); }
+  .mk:focus-visible { outline: none; }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .eyebrow { color: var(--hat); }
+  .ruin { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 1; }
+  .col { fill: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--hat); }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Deir el-Bahari · orilla oeste de Luxor · h. 1473–1458 a. C. · día 6 del viaje Alimaña · <a class="lang" href="https://claude.ai/artifact/ESRCqbteiQ2G2YmxqrRz13" target="_blank" rel="noopener noreferrer" hreflang="en">English version ↗</a></p>
+  <h1>El templo de Hatshepsut</h1>
+  <p class="lede">Hatshepsut, una mujer que gobernó Egipto como rey, construyó su templo para el dios Amón y para su propia memoria en una bahía de acantilados verticales de la orilla oeste, justo al lado de un templo 500 años más antiguo. Tres terrazas de columnatas suben hacia la roca, unidas por largas rampas; su nombre antiguo era Dyeser-dyeseru, «el Sagrado de los Sagrados». Sus muros cuentan un viaje comercial al país de Punt y el nacimiento divino de la reina, y muestran dónde su sucesor intentó borrarla.</p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-hatshepsut" target="_blank" rel="noopener noreferrer">Ficha de Hatshepsut (en inglés) ↗</a><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-mentuhotep2" target="_blank" rel="noopener noreferrer">Ficha de Mentuhotep II (en inglés) ↗</a><a href="https://claude.ai/artifact/UmCdh2K4RjaCoyfPUAmFUV" target="_blank" rel="noopener noreferrer">Guía del Valle de los Reyes ↗</a><a href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-6" target="_blank" rel="noopener noreferrer">Nuestras fotos del día 6 ↗</a><a href="#audioTitle">Audioguía ↓</a></p>
+
+  <div class="pair">
+    <article class="card" style="--c: var(--hat);">
+      <span class="kicker">El templo</span>
+      <h2>Dyeser-dyeseru</h2>
+      <dl class="facts">
+        <div><dt>Dónde</dt><dd>Deir el-Bahari, una bahía en los acantilados de la Tebas occidental, frente a Karnak al otro lado del Nilo</dd></div>
+        <div><dt>Cuándo</dt><dd>Construido h. 1473–1458 a. C., dinastía XVIII</dd></div>
+        <div><dt>Para</dt><dd>Amón sobre todo, con capillas para Hathor, Anubis, Ra-Horajti y el culto de la reina y de su padre</dd></div>
+        <div><dt>No es una tumba</dt><dd>Un templo para su culto; su enterramiento estaba en el Valle de los Reyes, justo detrás del acantilado</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--great);">
+      <span class="kicker">La constructora</span>
+      <h2>Hatshepsut</h2>
+      <dl class="facts">
+        <div><dt>Reinado</dt><dd>h. 1479–1458 a. C., primero como regente y después como rey junto a su hijastro Tutmosis III</dd></div>
+        <div><dt>Nombres</dt><dd>Hatshepsut, «la primera de las nobles damas»; como rey, Maatkara</dd></div>
+        <div><dt>Arquitecto</dt><dd>Probablemente su mayordomo Senenmut</dd></div>
+        <div><dt>Modelo</dt><dd>El templo en terrazas de Mentuhotep II, al lado, que imitó y superó</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="audioTitle">
+    <h2 id="audioTitle">Audioguía</h2>
+    <p class="section-note">Unos ocho minutos en español para escuchar durante la visita: un capítulo por cada número del dibujo, de la llegada al santuario, y otro sobre la mujer que fue rey. Pulsa un capítulo para saltar a él. Voz neuronal de Microsoft (Elvira).</p>
+    <div class="audio">
+      <audio id="guia" controls preload="metadata" src="hatshepsut-audioguia.mp3"></audio>
+      <ol id="capitulos"><li><button type="button" data-t="0.0"><span class="at">0:00</span>Bienvenida</button></li><li><button type="button" data-t="55.5"><span class="at">0:55</span>1. La llegada</button></li><li><button type="button" data-t="76.2"><span class="at">1:16</span>2. El patio inferior</button></li><li><button type="button" data-t="98.0"><span class="at">1:38</span>3. El pórtico inferior</button></li><li><button type="button" data-t="124.2"><span class="at">2:04</span>4. Las rampas</button></li><li><button type="button" data-t="148.0"><span class="at">2:28</span>5. La columnata de Punt</button></li><li><button type="button" data-t="197.4"><span class="at">3:17</span>6. La columnata del nacimiento</button></li><li><button type="button" data-t="238.6"><span class="at">3:58</span>7. La capilla de Hathor</button></li><li><button type="button" data-t="270.3"><span class="at">4:30</span>8. La capilla de Anubis</button></li><li><button type="button" data-t="296.0"><span class="at">4:56</span>9. El pórtico superior</button></li><li><button type="button" data-t="326.1"><span class="at">5:26</span>10. El patio de las fiestas</button></li><li><button type="button" data-t="349.4"><span class="at">5:49</span>11. El santuario de Amón</button></li><li><button type="button" data-t="377.9"><span class="at">6:17</span>12. El patio del sol y las capillas reales</button></li><li><button type="button" data-t="407.6"><span class="at">6:47</span>La mujer que fue rey</button></li><li><button type="button" data-t="467.7"><span class="at">7:47</span>Despedida</button></li></ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="planTitle" style="--c: var(--hat);">
+    <h2 id="planTitle">Subiendo las tres terrazas</h2>
+    <p class="section-note">Doce paradas desde la llegada hasta el santuario en la roca. El templo mira al este, así que al subir el sur queda a la izquierda. Pulsa un número en el dibujo.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="0 0 560 340" role="img" aria-label="Vista frontal simplificada del templo de Hatshepsut, desde el este, con los acantilados de Deir el-Bahari detrás. Tres terrazas se elevan una sobre otra, cada una con una columnata delante, unidas por una rampa central. Abajo, el patio inferior y el pórtico inferior; en la terraza media, la columnata de Punt a la izquierda, al sur, y la del nacimiento a la derecha, al norte, con la capilla de Hathor en el extremo izquierdo y la de Anubis en el derecho; arriba, el pórtico de estatuas osiríacas de la reina, el patio de las fiestas detrás, el santuario excavado en el acantilado y, a los lados, el patio del sol y las capillas del culto real. El templo en ruinas de Mentuhotep II queda más abajo, a la izquierda. Los números corresponden a las notas.">
+          <rect width="560" height="340" fill="var(--panel)"/>
+          <path d="M0,250 L0,70 C40,40 90,30 140,36 C200,14 260,8 320,10 C380,8 440,18 500,30 C530,36 550,44 560,52 L560,300 L0,300 Z" class="rock"/>
+          <path d="M150,60 C190,48 230,52 260,40 M380,44 C420,54 460,50 500,62 M60,90 C80,80 100,84 120,76" fill="none" stroke="var(--ink-soft)" stroke-width="0.8" opacity="0.6"/>
+          <rect x="0" y="300" width="560" height="40" fill="var(--cut)"/>
+          <!-- Mentuhotep II -->
+          <rect x="14" y="276" width="86" height="24" class="cut"/>
+          <rect x="40" y="262" width="34" height="14" class="cut"/>
+          <rect class="pillar" x="20" y="280" width="3" height="20"/><rect class="pillar" x="29" y="280" width="3" height="20"/><rect class="pillar" x="38" y="280" width="3" height="20"/><rect class="pillar" x="47" y="280" width="3" height="20"/><rect class="pillar" x="56" y="280" width="3" height="20"/><rect class="pillar" x="65" y="280" width="3" height="20"/><rect class="pillar" x="74" y="280" width="3" height="20"/><rect class="pillar" x="83" y="280" width="3" height="20"/><rect class="pillar" x="92" y="280" width="3" height="20"/>
+          <!-- lower portico -->
+          <rect x="120" y="250" width="400" height="50" class="cut"/>
+          <rect class="pillar" x="126" y="256" width="5" height="44"/><rect class="pillar" x="140" y="256" width="5" height="44"/><rect class="pillar" x="154" y="256" width="5" height="44"/><rect class="pillar" x="168" y="256" width="5" height="44"/><rect class="pillar" x="182" y="256" width="5" height="44"/><rect class="pillar" x="196" y="256" width="5" height="44"/><rect class="pillar" x="210" y="256" width="5" height="44"/><rect class="pillar" x="224" y="256" width="5" height="44"/><rect class="pillar" x="238" y="256" width="5" height="44"/><rect class="pillar" x="252" y="256" width="5" height="44"/><rect class="pillar" x="266" y="256" width="5" height="44"/><rect class="pillar" x="280" y="256" width="5" height="44"/><rect class="pillar" x="294" y="256" width="5" height="44"/><rect class="pillar" x="336" y="256" width="5" height="44"/><rect class="pillar" x="350" y="256" width="5" height="44"/><rect class="pillar" x="364" y="256" width="5" height="44"/><rect class="pillar" x="378" y="256" width="5" height="44"/><rect class="pillar" x="392" y="256" width="5" height="44"/><rect class="pillar" x="406" y="256" width="5" height="44"/><rect class="pillar" x="420" y="256" width="5" height="44"/><rect class="pillar" x="434" y="256" width="5" height="44"/><rect class="pillar" x="448" y="256" width="5" height="44"/><rect class="pillar" x="462" y="256" width="5" height="44"/><rect class="pillar" x="476" y="256" width="5" height="44"/><rect class="pillar" x="490" y="256" width="5" height="44"/><rect class="pillar" x="504" y="256" width="5" height="44"/>
+          <!-- middle portico and chapels -->
+          <rect x="150" y="195" width="340" height="55" class="cut"/>
+          <rect class="pillar" x="156" y="202" width="5" height="48"/><rect class="pillar" x="170" y="202" width="5" height="48"/><rect class="pillar" x="184" y="202" width="5" height="48"/><rect class="pillar" x="198" y="202" width="5" height="48"/><rect class="pillar" x="212" y="202" width="5" height="48"/><rect class="pillar" x="226" y="202" width="5" height="48"/><rect class="pillar" x="240" y="202" width="5" height="48"/><rect class="pillar" x="254" y="202" width="5" height="48"/><rect class="pillar" x="268" y="202" width="5" height="48"/><rect class="pillar" x="282" y="202" width="5" height="48"/><rect class="pillar" x="296" y="202" width="5" height="48"/><rect class="pillar" x="338" y="202" width="5" height="48"/><rect class="pillar" x="352" y="202" width="5" height="48"/><rect class="pillar" x="366" y="202" width="5" height="48"/><rect class="pillar" x="380" y="202" width="5" height="48"/><rect class="pillar" x="394" y="202" width="5" height="48"/><rect class="pillar" x="408" y="202" width="5" height="48"/><rect class="pillar" x="422" y="202" width="5" height="48"/><rect class="pillar" x="436" y="202" width="5" height="48"/><rect class="pillar" x="450" y="202" width="5" height="48"/><rect class="pillar" x="464" y="202" width="5" height="48"/><rect class="pillar" x="478" y="202" width="5" height="48"/>
+          <rect x="112" y="212" width="38" height="38" class="cut"/>
+          <rect x="490" y="212" width="38" height="38" class="cut"/>
+          <!-- upper court and portico -->
+          <rect x="226" y="134" width="188" height="16" class="cut"/>
+          <rect x="220" y="150" width="200" height="45" class="cut"/>
+          <rect class="pillar" x="232" y="154" width="8" height="41"/><circle cx="236" cy="160" r="3.2" fill="var(--hat)" opacity="0.75"/><rect class="pillar" x="248" y="154" width="8" height="41"/><circle cx="252" cy="160" r="3.2" fill="var(--hat)" opacity="0.75"/><rect class="pillar" x="264" y="154" width="8" height="41"/><circle cx="268" cy="160" r="3.2" fill="var(--hat)" opacity="0.75"/><rect class="pillar" x="280" y="154" width="8" height="41"/><circle cx="284" cy="160" r="3.2" fill="var(--hat)" opacity="0.75"/><rect class="pillar" x="296" y="154" width="8" height="41"/><circle cx="300" cy="160" r="3.2" fill="var(--hat)" opacity="0.75"/><rect class="pillar" x="344" y="154" width="8" height="41"/><circle cx="348" cy="160" r="3.2" fill="var(--hat)" opacity="0.75"/><rect class="pillar" x="360" y="154" width="8" height="41"/><circle cx="364" cy="160" r="3.2" fill="var(--hat)" opacity="0.75"/><rect class="pillar" x="376" y="154" width="8" height="41"/><circle cx="380" cy="160" r="3.2" fill="var(--hat)" opacity="0.75"/><rect class="pillar" x="392" y="154" width="8" height="41"/><circle cx="396" cy="160" r="3.2" fill="var(--hat)" opacity="0.75"/><rect class="pillar" x="408" y="154" width="8" height="41"/><circle cx="412" cy="160" r="3.2" fill="var(--hat)" opacity="0.75"/>
+          <rect x="186" y="160" width="34" height="35" class="cut"/>
+          <rect x="420" y="160" width="34" height="35" class="cut"/>
+          <!-- sanctuary door in the cliff -->
+          <rect x="312" y="102" width="16" height="32" fill="var(--ink-soft)" opacity="0.55"/>
+          <!-- ramps -->
+          <rect x="304" y="250" width="32" height="70" fill="var(--panel)" stroke="var(--ink-soft)"/>
+          <rect x="304" y="195" width="32" height="55" fill="var(--panel)" stroke="var(--ink-soft)"/>
+          <path d="M304,262 H336 M304,274 H336 M304,286 H336 M304,298 H336 M304,310 H336 M304,207 H336 M304,219 H336 M304,231 H336 M304,243 H336" stroke="var(--line)"/>
+          <text class="t-sub" x="57" y="315" text-anchor="middle">Mentuhotep II</text>
+          <text class="t-sub" x="57" y="332" text-anchor="middle">h. 2000 a. C.</text>
+          <text class="t-sub" x="140" y="336">&#8592; sur</text>
+          <text class="t-sub" x="548" y="336" text-anchor="end">norte &#8594;</text>
+          <a class="mk" href="#ht-1"><circle cx="452" cy="318" r="9"/><text x="452" y="318">1</text></a><a class="mk" href="#ht-2"><circle cx="200" cy="318" r="9"/><text x="200" y="318">2</text></a><a class="mk" href="#ht-3"><circle cx="160" cy="276" r="9"/><text x="160" y="276">3</text></a><a class="mk" href="#ht-4"><circle cx="320" cy="276" r="9"/><text x="320" y="276">4</text></a><a class="mk" href="#ht-5"><circle cx="222" cy="222" r="9"/><text x="222" y="222">5</text></a><a class="mk" href="#ht-6"><circle cx="420" cy="222" r="9"/><text x="420" y="222">6</text></a><a class="mk" href="#ht-7"><circle cx="131" cy="231" r="9"/><text x="131" y="231">7</text></a><a class="mk" href="#ht-8"><circle cx="509" cy="231" r="9"/><text x="509" y="231">8</text></a><a class="mk" href="#ht-9"><circle cx="262" cy="174" r="9"/><text x="262" y="174">9</text></a><a class="mk" href="#ht-10"><circle cx="382" cy="142" r="9"/><text x="382" y="142">10</text></a><a class="mk" href="#ht-11"><circle cx="320" cy="88" r="9"/><text x="320" y="88">11</text></a><a class="mk" href="#ht-12"><circle cx="440" cy="174" r="9"/><text x="440" y="174">12</text></a>
+        </svg>
+        <p class="caption">Vista frontal simplificada, sin escala. Los patios detrás de cada columnata no se ven desde aquí.</p>
+      </div>
+      <ol class="notes">
+        <li id="ht-1"><span class="num">1</span><div><h3>La llegada</h3><p>Una calzada flanqueada por esfinges de la reina llegaba aquí desde un templo del valle, al borde de los campos, a cerca de un kilómetro; era el camino de la barca de Amón en la fiesta anual. Hoy un trenecito eléctrico trae a los visitantes desde el aparcamiento hasta el pie del templo.</p></div></li>
+        <li id="ht-2"><span class="num">2</span><div><h3>El patio inferior</h3><p>Un jardín delante del templo: en hoyos excavados en la roca crecían árboles, quizá entre ellos los árboles de incienso traídos de Punt, y junto a la rampa había dos estanques en forma de T. Hoy casi no crece nada, así que imagina sombra y agua.</p></div></li>
+        <li id="ht-3"><span class="num">3</span><div><h3>El pórtico inferior</h3><p>Dos columnatas, una a cada lado de la rampa. A la izquierda (sur), una barcaza lleva dos obeliscos gigantes de Asuán a Karnak, la pareja de la reina que hay allí; a la derecha, la reina aparece como esfinge aplastando a los enemigos de Egipto, y en los pantanos.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-karnak" target="_blank" rel="noopener noreferrer">Karnak (en inglés) ↗</a></p></div></li>
+        <li id="ht-4"><span class="num">4</span><div><h3>Las rampas</h3><p>Una rampa ancha sube a la terraza media y otra hasta arriba, en el único eje del templo, que apunta al otro lado del Nilo, hacia Karnak, a unos 4 km. Busca los leones tallados en los pretiles.</p></div></li>
+        <li id="ht-5"><span class="num">5</span><div><h3>La columnata de Punt</h3><p>Los relieves más famosos: la expedición que la reina envió en su año 9 a Punt, en algún lugar de la costa del mar Rojo o del Cuerno de África. Los barcos descargan junto a casas sobre pilotes; el jefe Parahu y su corpulenta esposa Ati reciben a los egipcios, que vuelven con oro, ébano, pieles de pantera, babuinos y 31 árboles de mirra en cestas. El bloque con Ati que se ve aquí es una copia; el original está en el Museo Egipcio de El Cairo.</p></div></li>
+        <li id="ht-6"><span class="num">6</span><div><h3>La columnata del nacimiento</h3><p>La legitimidad de Hatshepsut en imágenes. Amón visita a la reina Ahmose con la forma de su marido, Tutmosis I; el dios alfarero Jnum, con cabeza de carnero, modela a la niña y a su ka en su torno, y la diosa rana Heqet les da la vida. La criatura que nace está dibujada como un niño: las escenas siguen el viejo relato del nacimiento divino del rey.</p><p class="see"><a href="https://claude.ai/artifact/2BxeijiRHBny2UkhyPvtsh#god-amun" target="_blank" rel="noopener noreferrer">Amón ↗</a> · <a href="https://claude.ai/artifact/2BxeijiRHBny2UkhyPvtsh#god-khnum" target="_blank" rel="noopener noreferrer">Jnum ↗</a></p></div></li>
+        <li id="ht-7"><span class="num">7</span><div><h3>La capilla de Hathor</h3><p>En el extremo sur de la terraza media, con columnas rematadas por el rostro con orejas de vaca de Hathor, señora de esta montaña del oeste. La reina aparece bebiendo leche de la vaca Hathor. Detrás de las puertas de los santuarios interiores se tallaron pequeñas figuras arrodilladas de Senenmut, su mayordomo y arquitecto, donde pocos las verían.</p><p class="see"><a href="https://claude.ai/artifact/2BxeijiRHBny2UkhyPvtsh#god-hathor" target="_blank" rel="noopener noreferrer">Hathor ↗</a></p></div></li>
+        <li id="ht-8"><span class="num">8</span><div><h3>La capilla de Anubis</h3><p>En el extremo norte, con columnas de dieciséis lados y los mejores colores del templo. Muchas figuras de Hatshepsut fueron picadas; las de Tutmosis III, su hijastro, se dejaron intactas a su lado.</p><p class="see"><a href="https://claude.ai/artifact/2BxeijiRHBny2UkhyPvtsh#god-anubis" target="_blank" rel="noopener noreferrer">Anubis ↗</a></p></div></li>
+        <li id="ht-9"><span class="num">9</span><div><h3>El pórtico superior</h3><p>Una fila de grandes estatuas de Hatshepsut como Osiris, con los brazos cruzados sujetando el cayado y el mayal, y la doble corona. Se destrozaron después de su reinado; las que ves las ha recompuesto a partir de fragmentos la misión polaco-egipcia que trabaja aquí desde 1961.</p><p class="see"><a href="https://claude.ai/artifact/2BxeijiRHBny2UkhyPvtsh#god-osiris" target="_blank" rel="noopener noreferrer">Osiris ↗</a></p></div></li>
+        <li id="ht-10"><span class="num">10</span><div><h3>El patio de las fiestas</h3><p>Un patio abierto con una doble columnata. Una vez al año, en la Bella Fiesta del Valle, la barca de Amón cruzaba el río desde Karnak y pasaba aquí la noche, mientras los tebanos visitaban las tumbas de su familia y celebraban banquetes con sus muertos.</p></div></li>
+        <li id="ht-11"><span class="num">11</span><div><h3>El santuario de Amón</h3><p>Excavado directamente en el acantilado, en el eje del templo. Bajo Ptolomeo VIII, unos 1.300 años después, se añadió una sala para dos sabios divinizados, Imhotep, el constructor de la pirámide escalonada, y Amenhotep hijo de Hapu, y el lugar se convirtió en un santuario de curación.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy8" target="_blank" rel="noopener noreferrer">Ptolomeo VIII (en inglés) ↗</a></p></div></li>
+        <li id="ht-12"><span class="num">12</span><div><h3>El patio del sol y las capillas reales</h3><p>A la derecha (norte), un patio abierto con un gran altar para el dios sol Ra-Horajti; a la izquierda (sur), capillas para el culto de Hatshepsut y de su padre, Tutmosis I. Escondido más arriba, un templo de Tutmosis III quedó aplastado por un desprendimiento en la Antigüedad.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-thutmose1" target="_blank" rel="noopener noreferrer">Tutmosis I (en inglés) ↗</a> · <a href="https://claude.ai/artifact/2BxeijiRHBny2UkhyPvtsh#god-ra" target="_blank" rel="noopener noreferrer">Ra ↗</a></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="queenTitle" style="--c: var(--great);">
+    <h2 id="queenTitle">La mujer que fue rey</h2>
+    <p class="section-note">Otras mujeres tuvieron poder en Egipto, pero Hatshepsut es la que reinó más tiempo con todos los títulos de un rey, y cuyos monumentos cuentan mejor cómo lo hizo.</p>
+    <div class="tips"><div class="tip"><h3>De regente a rey</h3><p>Hija de Tutmosis I y esposa de su medio hermano Tutmosis II. Cuando él murió, hacia el 1479 a. C., gobernó en nombre de su hijo pequeño, Tutmosis III; a los pocos años se hizo coronar rey, y los dos reinaron juntos, con ella al mando, unos 20 años.</p></div><div class="tip"><h3>Vestida para el papel</h3><p>Las primeras estatuas muestran a una mujer con vestido de reina. Las posteriores le dan el faldellín, el tocado y la barba postiza de un rey, y un cuerpo de hombre. No era un disfraz: el cargo de faraón tenía una imagen fija, y ella la adoptó. Sus textos a menudo mantienen la gramática femenina.</p></div><div class="tip"><h3>Senenmut</h3><p>Su mayordomo y tutor de su hija Neferura, y probablemente el diseñador de este templo. Se hizo tallar en rincones escondidos del templo y excavó una tumba cuyos corredores pasan bajo el patio delantero, con el techo astronómico más antiguo que se conoce. Desaparece de los documentos antes de la muerte de la reina.</p></div><div class="tip"><h3>Un reinado pacífico</h3><p>Obras en Karnak, los obeliscos, el comercio con Punt y las minas del Sinaí, más que grandes guerras, aunque hay algunas campañas registradas. Su nombre como rey, Maatkara, significa «Maat es el alma de Ra».</p></div><div class="tip"><h3>Borrada</h3><p>Unos 20 años después de su muerte, al final del reinado de Tutmosis III, sus imágenes como rey fueron picadas y sus estatuas arrojadas a una cantera cercana. Probablemente no fue venganza sino política: hacer que la línea de reyes varones pareciera continua para su hijo, Amenhotep II.</p></div><div class="tip"><h3>Encontrada de nuevo</h3><p>Su tumba del Valle de los Reyes (KV20) estaba vacía. En 2007 una momia de la pequeña tumba KV60 se identificó como suya, en parte por un diente hallado en una caja con su nombre; no todos los especialistas están convencidos.</p></div></div>
+  </section>
+
+  <section aria-labelledby="timeTitle">
+    <h2 id="timeTitle">Deir el-Bahari a través del tiempo</h2>
+    <ol class="timeline">
+      <li><span class="yr">h. 2000 a. C.</span><p>Mentuhotep II, que reunificó Egipto, construye su templo en terrazas y su tumba en la bahía de Deir el-Bahari.</p></li>
+      <li><span class="yr">h. 1479 a. C.</span><p>Muere Tutmosis II; Hatshepsut gobierna en nombre del joven Tutmosis III.</p></li>
+      <li><span class="yr">h. 1473 a. C.</span><p>Se corona rey. Hacia esta fecha empiezan las obras de Dyeser-dyeseru, «el Sagrado de los Sagrados», que duran unos 15 años.</p></li>
+      <li><span class="yr">h. 1471 a. C.</span><p>Año 9: la expedición a Punt.</p></li>
+      <li><span class="yr">h. 1458 a. C.</span><p>Muere Hatshepsut; Tutmosis III reina solo.</p></li>
+      <li><span class="yr">h. 1440 a. C.</span><p>Se destruyen sus imágenes y estatuas; Tutmosis III construye su propio templo por encima del suyo.</p></li>
+      <li><span class="yr">h. 140 a. C.</span><p>Ptolomeo VIII añade en el santuario una capilla para Imhotep y Amenhotep hijo de Hapu.</p></li>
+      <li><span class="yr">siglo VII d. C.</span><p>Un monasterio copto se instala en la terraza superior, que da al lugar su nombre árabe, Deir el-Bahari, «el monasterio del norte».</p></li>
+      <li><span class="yr">1881</span><p>En un pozo de los acantilados, justo al sur del templo (DB320), se encuentra el Escondite Real, con las momias de Seti I, Ramsés II y muchos otros reyes.</p></li>
+      <li><span class="yr">década de 1890</span><p>Édouard Naville despeja el templo para la Egypt Exploration Fund.</p></li>
+      <li><span class="yr">década de 1920</span><p>Herbert Winlock recupera de la cantera las estatuas destrozadas de la reina; muchas están en Nueva York y El Cairo.</p></li>
+      <li><span class="yr">1961</span><p>La misión polaco-egipcia empieza su largo trabajo de estudio y restauración.</p></li>
+      <li><span class="yr">2007</span><p>Una momia de la KV60 se identifica como Hatshepsut.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">Para nuestra visita</h2>
+    <div class="tips">
+      <div class="tip"><h3>Luz y calor</h3><p>La bahía mira al este y guarda el calor; el sol de la mañana ilumina las columnatas. Gafas de sol y agua: la piedra blanca deslumbra.</p></div>
+      <div class="tip"><h3>Busca los huecos</h3><p>Recorre los muros buscando siluetas limpiamente picadas: ahí estaba la reina. Tutmosis III, a su lado, sigue intacto.</p></div>
+      <div class="tip"><h3>No te pierdas Punt</h3><p>Terraza media, a la izquierda de la rampa: los peces del mar Rojo, las casas sobre pilotes y los árboles llevados en cestas.</p></div>
+      <div class="tip"><h3>La misma mañana</h3><p>El Valle de los Reyes está justo al otro lado del acantilado que hay detrás del templo; un antiguo sendero sube por la cresta hasta él.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Forma parte del <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">Private Alimaña Tour ↗</a> (en inglés). El dibujo es esquemático; las fechas son aproximadas.</p>
+</div>
+<script>
+(() => {
+  const a = document.getElementById('guia');
+  const bs = [...document.querySelectorAll('#capitulos button')];
+  bs.forEach(b => b.addEventListener('click', () => { a.currentTime = +b.dataset.t; a.play().catch(() => {}); }));
+  a.addEventListener('timeupdate', () => {
+    let cur = 0; bs.forEach((b, i) => { if (a.currentTime >= +b.dataset.t - 0.2) cur = i; });
+    bs.forEach((b, i) => b.setAttribute('aria-current', i === cur && a.currentTime > 0 ? 'true' : 'false'));
+  });
+})();
+</script>
