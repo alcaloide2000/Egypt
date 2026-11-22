@@ -1,0 +1,246 @@
+<title>Das Tal der Könige</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout (German version, links only to other German pages): intro, a profile of a royal tomb, the valley map beside numbered notes on the tombs, the Books of the Netherworld, a timeline and tips. Shares its look with the temple guides. Phone first: everything stacks. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --kv: #9a6c12;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --kv: #e2b74f; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --kv: #e2b74f; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--great); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--great); }
+  .mk:focus-visible { outline: none; }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .eyebrow { color: var(--kv); }
+  .ruin { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 1; }
+  .col { fill: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Westufer von Luxor · Königsgräber · um 1500–1070 v. Chr. · <a class="lang" href="https://claude.ai/artifact/Nfp8icfGL1i5ERvh2cr7MQ" target="_blank" rel="noopener noreferrer" hreflang="de">Auch auf Deutsch: Edfu, der Tempel des Horus ↗</a></p>
+  <h1>Das Tal der Könige</h1>
+  <p class="lede">Fast 500 Jahre lang wurden die Pharaonen des Neuen Reiches in einem trockenen Tal hinter den Felsen des westlichen Theben bestattet, unter einem Gipfel in Form einer Pyramide. Statt Pyramiden zu bauen, ließen sie ihre Gräber tief in den Fels schlagen und die Wände mit den Büchern bedecken, die den toten König mit der Sonne durch die Nacht führten. Über 60 Gräber sind bekannt, nummeriert von KV1 bis KV64 in der Reihenfolge ihrer Entdeckung; nur das des Tutanchamun wurde fast unberührt gefunden.</p>
+  
+
+  <div class="pair">
+    <article class="card" style="--c: var(--kv);">
+      <span class="kicker">Das Tal</span>
+      <h2>Ein verborgener Friedhof</h2>
+      <dl class="facts">
+        <div><dt>Wo</dt><dd>Ein Wüstental am Westufer von Luxor, hinter den Felsen von Deir el-Bahari</dd></div>
+        <div><dt>Wann</dt><dd>um 1500–1070 v. Chr., 18. bis 20. Dynastie</dd></div>
+        <div><dt>Gräber</dt><dd>Über 60, für Könige, Königinnen, Prinzen und Adlige; etwa 25 gehörten Königen</dd></div>
+        <div><dt>Darüber</dt><dd>El-Qurn, ein natürlicher Gipfel in Form einer Pyramide</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--great);">
+      <span class="kicker">Warum hier</span>
+      <h2>Fern von den Räubern</h2>
+      <dl class="facts">
+        <div><dt>Versteckt</dt><dd>Alle Pyramiden waren ausgeraubt worden; ein abgelegenes Tal mit bewachten Wegen war sicherer</dd></div>
+        <div><dt>Getrennt</dt><dd>Die Tempel für den Kult der Könige standen am Fluss; die Gräber blieben außer Sicht</dd></div>
+        <div><dt>Erbauer</dt><dd>Ein Dorf von Facharbeitern in Deir el-Medina schlug und bemalte die Gräber über Generationen</dd></div>
+        <div><dt>Doch beraubt</dt><dd>Fast jedes Grab wurde schon im Altertum geplündert, oft von Leuten, die wussten, wo sie graben mussten</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="tombTitle" style="--c: var(--kv);">
+    <h2 id="tombTitle">Wie ein Königsgrab funktioniert</h2>
+    <p class="section-note">Jeder König begann sein Grab, sobald er den Thron bestieg, und die Arbeiter gruben bis zu seinem Tod; lange Regierungen ergaben also lange Gräber. Frühe Gräber knicken scharf ab; seit dem Ende der 18. Dynastie führen sie gerade in den Berg, wie der Weg der Sonne durch die Nacht.</p>
+    <div class="figure" style="max-width: 640px;">
+      <svg viewBox="0 0 520 230" role="img" aria-label="Vereinfachtes Profil eines Königsgrabes der 19. und 20. Dynastie, gerade in den Hang geschlagen. Vom Eingang am Fuß des Felsens führen abfallende Korridore hinab zu einem tiefen Schacht, dann zu einer Pfeilerhalle, weiteren Korridoren und schließlich zur Grabkammer mit dem Steinsarkophag, tief im Berg.">
+          <rect width="520" height="230" fill="var(--panel)"/>
+          <path d="M0,62 L60,62 L120,40 L200,22 L262,8 L330,24 L420,34 L520,30 L520,230 L0,230 Z" class="rock"/>
+          <path d="M0,62 H40" stroke="var(--ink-soft)" stroke-width="2"/>
+          <!-- entrance stairs and sloping corridors -->
+          <path d="M40,58 L58,58 L58,64 L66,64 L66,70 L74,70" fill="none" stroke="var(--ink-soft)" stroke-width="1.5"/>
+          <path d="M40,52 L74,52 L210,92 L210,112 L74,72 L40,72 Z" class="cut"/>
+          <!-- well shaft -->
+          <rect x="210" y="92" width="26" height="74" class="cut"/>
+          <path d="M210,112 L236,112" stroke="var(--ink-soft)" stroke-dasharray="3 3"/>
+          <!-- pillared hall -->
+          <rect x="236" y="96" width="70" height="40" class="cut"/>
+          <rect class="pillar" x="252" y="100" width="6" height="36"/><rect class="pillar" x="280" y="100" width="6" height="36"/>
+          <!-- lower corridor and burial chamber -->
+          <path d="M306,112 L380,140 L380,160 L306,132 Z" class="cut"/>
+          <rect x="380" y="128" width="110" height="64" class="cut"/>
+          <path d="M380,128 Q435,108 490,128" fill="none" stroke="var(--ink-soft)"/>
+          <rect class="pillar" x="400" y="134" width="5" height="58"/><rect class="pillar" x="465" y="134" width="5" height="58"/>
+          <rect x="420" y="172" width="34" height="20" fill="var(--kv)" opacity="0.8"/>
+          <!-- labels -->
+          <text class="t-sub" x="40" y="44">Eingang</text>
+          <text class="t-sub" x="56" y="112">abfallende Korridore</text>
+          <text class="t-sub" x="223" y="182" text-anchor="middle">Schacht</text>
+          <text class="t-sub" x="271" y="90" text-anchor="middle">Pfeilerhalle</text>
+          <text class="t-sub" x="435" y="205" text-anchor="middle">Grabkammer</text>
+          <text class="t-sub" x="437" y="222" text-anchor="middle">und Sarkophag</text>
+          <text class="t-sub" x="262" y="4" text-anchor="middle" dy="10">der Hang</text>
+        </svg>
+      <p class="caption">Vereinfachtes Profil eines geraden Grabes der 19.–20. Dynastie. Echte Gräber reichen etwa 30 bis 137 m in den Fels.</p>
+    </div>
+  </section>
+
+  <section aria-labelledby="planTitle" style="--c: var(--kv);">
+    <h2 id="planTitle">Die wichtigsten Gräber</h2>
+    <p class="section-note">Zwölf Gräber, vom Besucherzentrum ins Tal hinein. Welche geöffnet sind, wechselt von Tag zu Tag; sehen Sie auf die Tafel am Eingang und wählen Sie drei. Tippen Sie auf eine Nummer der Karte.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="0 0 360 440" role="img" aria-label="Schematische Karte des Tals der Könige, Eingang unten. Vom Besucherzentrum führt ein Weg das Haupttal hinauf, vorbei am Grab Ramses’ IV. nahe dem Eingang und am Grab der Söhne Ramses’ II., zur Mitte, wo die Gräber von Tutanchamun, Ramses V. und VI., Ramses IX., Ramses III. und Merenptah dicht beieinander liegen. Ein westlicher Seitenarm führt zu den Gräbern von Sethos I. und Amenophis II., ein östlicher zum Grab von Tausret und Sethnacht, und das Südende zum Grab Thutmosis’ III., hoch in einer Felsspalte unter dem Gipfel el-Qurn. Die Nummern entsprechen den Notizen.">
+          <rect width="360" height="440" class="rock"/>
+          <path d="M180,440 L180,250 M180,250 C140,220 90,200 50,160 M180,250 C176,200 168,140 160,80 M180,250 C220,230 260,210 296,186" fill="none" stroke="var(--panel)" stroke-width="44" stroke-linecap="round"/>
+          <path d="M180,440 L180,250 M180,250 C140,220 90,200 50,160 M180,250 C176,200 168,140 160,80 M180,250 C220,230 260,210 296,186" fill="none" stroke="var(--line)" stroke-width="2" stroke-dasharray="5 5"/>
+          <path d="M120,30 L160,6 L200,30" fill="none" stroke="var(--ink-soft)" stroke-width="2"/>
+          <text class="t-sub" x="208" y="22">Gipfel el-Qurn</text>
+          <rect x="164" y="404" width="32" height="20" fill="var(--panel)" stroke="var(--ink-soft)"/>
+          <text class="t-sub" x="204" y="436">Besucherzentrum</text>
+          <circle cx="240" cy="336" r="3" fill="var(--ink-soft)"/><text class="t-sub" x="246" y="332">KV7 Ramses II.</text>
+          <text class="t-sub" x="166" y="306">KV62</text><text class="t-sub" x="212" y="286">KV9</text><text class="t-sub" x="100" y="214">KV17</text><text class="t-sub" x="120" y="266">KV11</text><text class="t-sub" x="248" y="254">KV8</text><text class="t-sub" x="122" y="378">KV2</text><text class="t-sub" x="238" y="316">KV6</text><text class="t-sub" x="300" y="206">KV14</text><text class="t-sub" x="178" y="98">KV34</text><text class="t-sub" x="40" y="178">KV35</text><text class="t-sub" x="256" y="370">KV5</text>
+          <g transform="translate(330,404)"><path d="M0,-14 L5,3 L0,-1 L-5,3 Z" fill="var(--ink-soft)"/><text class="t-sub" x="0" y="15" text-anchor="middle">N</text></g>
+          <a class="mk" href="#kv-1"><circle cx="180" cy="418" r="9"/><text x="180" y="418">1</text></a><a class="mk" href="#kv-2"><circle cx="150" cy="292" r="9"/><text x="150" y="292">2</text></a><a class="mk" href="#kv-3"><circle cx="200" cy="270" r="9"/><text x="200" y="270">3</text></a><a class="mk" href="#kv-4"><circle cx="86" cy="196" r="9"/><text x="86" y="196">4</text></a><a class="mk" href="#kv-5"><circle cx="136" cy="248" r="9"/><text x="136" y="248">5</text></a><a class="mk" href="#kv-6"><circle cx="232" cy="236" r="9"/><text x="232" y="236">6</text></a><a class="mk" href="#kv-7"><circle cx="140" cy="362" r="9"/><text x="140" y="362">7</text></a><a class="mk" href="#kv-8"><circle cx="222" cy="300" r="9"/><text x="222" y="300">8</text></a><a class="mk" href="#kv-9"><circle cx="288" cy="186" r="9"/><text x="288" y="186">9</text></a><a class="mk" href="#kv-10"><circle cx="160" cy="82" r="9"/><text x="160" y="82">10</text></a><a class="mk" href="#kv-11"><circle cx="52" cy="158" r="9"/><text x="52" y="158">11</text></a><a class="mk" href="#kv-12"><circle cx="238" cy="352" r="9"/><text x="238" y="352">12</text></a>
+        </svg>
+        <p class="caption">Schematische Karte, ohne Maßstab; Lagen ungefähr.</p>
+      </div>
+      <ol class="notes">
+        <li id="kv-1"><span class="num">1</span><div><h3>Das Besucherzentrum</h3><p>Beginnen Sie am Glasmodell des Tals, das zeigt, wie tief die Gräber in die Berge reichen, und fahren Sie dann mit der kleinen Elektrobahn (der „Tuf-Tuf“) zu den Gräbern. Das normale Ticket öffnet drei Gräber nach Wahl unter den an diesem Tag geöffneten; einige kosten extra.</p></div></li>
+        <li id="kv-2"><span class="num">2</span><div><h3>Tutanchamun (KV62)</h3><p>Ein kleines Grab für einen König, der mit etwa 19 Jahren um 1323 v. Chr. starb. Nur die Grabkammer ist bemalt: Sein Nachfolger Eje vollzieht am toten König die Mundöffnung, und die Paviane der ersten Nachtstunde wachen von der Wand. Seine Mumie liegt in einer Glasvitrine, sein Quarzitsarkophag ist noch hier; die Schätze, die Howard Carter am 4. November 1922 fand, sind im Großen Ägyptischen Museum. Extra-Ticket.</p></div></li>
+        <li id="kv-3"><span class="num">3</span><div><h3>Ramses V. und VI. (KV9)</h3><p>Für Ramses V. begonnen und für Ramses VI. vollendet. Die Decke der Grabkammer ist die prächtigste im Tal: die Himmelsgöttin Nut, zweimal ausgestreckt, die abends die Sonne verschluckt und sie morgens neu gebiert. Schutt und Arbeiterhütten vom Bau dieses Grabes verdeckten den Eingang zu Tutanchamuns Grab direkt darunter und verbargen ihn 3000 Jahre lang. Extra-Ticket.</p></div></li>
+        <li id="kv-4"><span class="num">4</span><div><h3>Sethos I. (KV17)</h3><p>Das längste Grab im Tal, etwa 137 m, und das am feinsten gearbeitete: jede Wand in bemaltem erhabenem Relief, mit der ersten astronomischen Decke über der Grabkammer. Giovanni Belzoni fand es 1817; der Alabastersarkophag steht heute in Sir John Soane’s Museum in London. Oft geschlossen, und wenn geöffnet, das teuerste Ticket.</p></div></li>
+        <li id="kv-5"><span class="num">5</span><div><h3>Ramses III. (KV11)</h3><p>Von seinem Vater Sethnacht begonnen und für Ramses III. vollendet. Kleine Seitenräume am ersten Korridor zeigen ungewöhnliche Szenen des Alltags und der königlichen Vorratskammern, darunter zwei blinde Harfner, die für die Götter singen; daher sein alter Name, das Grab der Harfner.</p></div></li>
+        <li id="kv-6"><span class="num">6</span><div><h3>Merenptah (KV8)</h3><p>Der dreizehnte Sohn Ramses’ II., der zwölf ältere Brüder überlebte. Ein langer, steiler Korridor führt hinab zu einer Halle, in der noch die riesigen Deckel seiner Sarkophage aus Rosengranit liegen; auf dem inneren Deckel ist der König als Osiris gemeißelt.</p></div></li>
+        <li id="kv-7"><span class="num">7</span><div><h3>Ramses IV. (KV2)</h3><p>Nahe dem Eingang und seit dem Altertum offen: Griechische und römische Touristen und später koptische Mönche ritzten ihre Namen in die Wände. In Turin ist ein auf Papyrus gezeichneter Plan genau dieses Grabes erhalten, einer der ältesten Architekturpläne der Welt.</p></div></li>
+        <li id="kv-8"><span class="num">8</span><div><h3>Ramses IX. (KV6)</h3><p>Ein helles, leicht begehbares Grab nahe der Mitte. Unter diesem König fanden die großen Grabräuberprozesse statt: Papyri halten die Verhöre der Diebe fest, die Königsgräber geplündert hatten.</p></div></li>
+        <li id="kv-9"><span class="num">9</span><div><h3>Tausret und Sethnacht (KV14)</h3><p>Begonnen für Tausret, eine Königin, die als Pharao aus eigenem Recht regierte; Sethnacht, Gründer der nächsten Dynastie, übernahm es und grub weiter, daher hat es zwei Grabkammern hintereinander.</p></div></li>
+        <li id="kv-10"><span class="num">10</span><div><h3>Thutmosis III. (KV34)</h3><p>Hoch in einer Felsspalte am hinteren Ende des Tals versteckt und über steile Metalltreppen erreichbar. Die Grabkammer hat die abgerundete Form einer Kartusche, und ihre Wände zeigen das Amduat wie einen riesigen ausgerollten Papyrus, mit strichartigen Figuren auf gelblichem Grund; die Halle davor nennt 741 Götter.</p></div></li>
+        <li id="kv-11"><span class="num">11</span><div><h3>Amenophis II. (KV35)</h3><p>Ein tiefes Grab im westlichen Seitenarm. 1898 fand Victor Loret darin ein Versteck mit den Mumien neun weiterer Könige, darunter Thutmosis IV., Amenophis III. und Merenptah, die Priester um 1000 v. Chr. dorthin gebracht hatten, um sie vor Räubern zu retten. Oft geschlossen.</p></div></li>
+        <li id="kv-12"><span class="num">12</span><div><h3>Die Söhne Ramses’ II. (KV5)</h3><p>Das größte Grab Ägyptens, mit über 120 Korridoren und Räumen, gebaut für die vielen Söhne Ramses’ II. Lange für ein kleines, überflutetes Grab gehalten, wurde es ab 1995 von Kent Weeks erforscht. Für Besucher gesperrt; Ramses’ II. eigenes Grab, KV7, liegt in der Nähe, schwer durch Überschwemmungen beschädigt.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="booksTitle">
+    <h2 id="booksTitle">Die Unterweltsbücher</h2>
+    <p class="section-note">Die Malereien sind keine Dekoration: Sie sind Reiseführer für das Jenseits, nur für den König geschrieben. Wer sie erkennt, kann jedes Grab leichter lesen.</p>
+    <div class="tips"><div class="tip"><h3>Die nächtliche Reise der Sonne</h3><p>Jeden Abend trat der Sonnengott Ra mit seiner Barke in die Unterwelt ein und fuhr die zwölf Stunden der Nacht hindurch, kämpfte gegen die Schlange Apophis und wurde bei Tagesanbruch neu geboren. Der tote König reiste mit ihm. Die Grabwände sind die Karte dieser Reise, Stunde für Stunde.</p></div><div class="tip"><h3>Das Amduat</h3><p>„Was in der Unterwelt ist“, das älteste dieser Bücher, mit den zwölf Stunden der Nacht. In den frühen Gräbern, etwa dem Thutmosis’ III., ist es wie ein riesiger Papyrus an die Wände gezeichnet, mit einfachen strichartigen Figuren.</p></div><div class="tip"><h3>Das Pfortenbuch</h3><p>Wieder die Nacht, doch jede Stunde endet an einem Tor, das eine Schlange bewacht und das sich nur mit den richtigen Namen öffnet. Es erscheint ab dem Grab des Haremhab, in voller Farbe.</p></div><div class="tip"><h3>Die Sonnenlitanei</h3><p>Ein Hymnus, der die 75 Gestalten des Sonnengottes aufzählt, nahe den Eingängen der Ramessidengräber gemalt, oft mit der Sonnenscheibe zwischen einem widderköpfigen Gott und einem Skarabäus.</p></div><div class="tip"><h3>Höhlen und Erde</h3><p>Spätere Bücher zeigen die Unterwelt als Höhlen und Tiefen der Erde, in denen die Feinde des Ra bestraft werden, während Sonnenscheibe und Leib des Osiris geschützt und erneuert werden.</p></div><div class="tip"><h3>Der Himmel an der Decke</h3><p>Grabkammern haben oft eine als Himmel bemalte Decke. Die des Sethos I. zeigt die Sternbilder; bei Ramses VI. wölbt sich der lange Leib der Nut zweimal über den Raum, für Tag und Nacht.</p></div></div>
+  </section>
+
+  <section aria-labelledby="timeTitle">
+    <h2 id="timeTitle">Das Tal im Lauf der Zeit</h2>
+    <ol class="timeline">
+      <li><span class="yr">um 1500 v. Chr.</span><p>Thutmosis I. ist der erste König, von dem man weiß, dass er im Tal bestattet wurde, fern von seinem Tempel am Fluss; Gräber und Tempel sind nun getrennt.</p></li>
+      <li><span class="yr">um 1425 v. Chr.</span><p>Thutmosis III. wird in KV34 bestattet, hoch im Felsen.</p></li>
+      <li><span class="yr">um 1323 v. Chr.</span><p>Tutanchamun wird nach kurzer Regierung in einem kleinen Grab, KV62, bestattet.</p></li>
+      <li><span class="yr">um 1279 v. Chr.</span><p>Sethos I. wird in KV17 bestattet, dem längsten und schönsten Grab.</p></li>
+      <li><span class="yr">um 1157 v. Chr.</span><p>Die Grabarbeiter von Deir el-Medina legen unter Ramses III. wegen ausbleibender Rationen die Arbeit nieder: der erste bezeugte Streik der Geschichte.</p></li>
+      <li><span class="yr">um 1110 v. Chr.</span><p>Unter Ramses IX. wird Grabräubern der Prozess gemacht; die Papyri halten ihre Geständnisse fest.</p></li>
+      <li><span class="yr">um 1070 v. Chr.</span><p>Das Grab Ramses’ XI., KV4, das letzte Königsgrab, bleibt unvollendet und wird nie benutzt.</p></li>
+      <li><span class="yr">um 1000 v. Chr.</span><p>Priester wickeln die Königsmumien aus, neu ein und verstecken sie in zwei Verstecken, eines in KV35.</p></li>
+      <li><span class="yr">1817</span><p>Giovanni Belzoni findet das Grab Sethos’ I.</p></li>
+      <li><span class="yr">1881 und 1898</span><p>Die beiden königlichen Verstecke werden gefunden: in Deir el-Bahari, dann in KV35.</p></li>
+      <li><span class="yr">4. Nov. 1922</span><p>Howard Carter findet die Stufen zum fast unberührten Grab des Tutanchamun.</p></li>
+      <li><span class="yr">1995</span><p>Kent Weeks enthüllt die gewaltige Ausdehnung von KV5, dem Grab der Söhne Ramses’ II.</p></li>
+      <li><span class="yr">2005</span><p>KV63, der erste neue Fund seit 1922, enthält Särge und Balsamierungsmaterial, aber keine Mumie.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">Für den Besuch</h2>
+    <div class="tips">
+      <div class="tip"><h3>Wählen Sie drei</h3><p>Gute Wahl, wenn geöffnet: Ramses III. (KV11), Merenptah (KV8) und Ramses IV. (KV2) oder Thutmosis III. (KV34). Tutanchamun und Ramses V./VI. kosten extra.</p></div>
+      <div class="tip"><h3>Früh kommen</h3><p>Das Tal ist eine Sonnenfalle fast ohne Schatten, und die Gräber werden später am Vormittag voll und stickig.</p></div>
+      <div class="tip"><h3>Fotos</h3><p>Die Foto-Regeln ändern sich; fragen Sie an der Kasse und benutzen Sie nie Blitz, er bleicht die Farben.</p></div>
+      <div class="tip"><h3>Die Decken lesen</h3><p>Schauen Sie nach oben, je tiefer Sie gehen: Gelbe Sterne auf Blau bedeuten, dass Sie unter dem Nachthimmel sind, nah beim König.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Die Karte ist schematisch; die Daten sind ungefähr.</p>
+</div>
