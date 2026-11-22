@@ -41,6 +41,13 @@
   .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
   .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
   .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  .audio { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--sun); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; }
+  .audio audio { width: 100%; margin: 0.4rem 0 0.8rem; }
+  .audio ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0.3rem 1rem; }
+  .audio button { all: unset; cursor: pointer; display: flex; gap: 0.6rem; width: 100%; box-sizing: border-box; padding: 0.35rem 0.4rem; border-radius: 6px; font-size: 0.9rem; }
+  .audio button:hover, .audio button:focus-visible { background: var(--bg); outline: 1px solid var(--line); }
+  .audio button[aria-current="true"] { background: var(--bg); font-weight: 600; }
+  .audio .at { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); min-width: 2.6rem; padding-top: 0.1rem; }
   section { margin-top: clamp(2rem, 6vw, 3.25rem); }
   .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
 
@@ -109,6 +116,7 @@
   <p class="eyebrow">Westufer von Luxor · Königsgräber · um 1500–1070 v. Chr. · <a class="lang" href="https://claude.ai/artifact/Nfp8icfGL1i5ERvh2cr7MQ" target="_blank" rel="noopener noreferrer" hreflang="de">Auch auf Deutsch: Edfu, der Tempel des Horus ↗</a></p>
   <h1>Das Tal der Könige</h1>
   <p class="lede">Fast 500 Jahre lang wurden die Pharaonen des Neuen Reiches in einem trockenen Tal hinter den Felsen des westlichen Theben bestattet, unter einem Gipfel in Form einer Pyramide. Statt Pyramiden zu bauen, ließen sie ihre Gräber tief in den Fels schlagen und die Wände mit den Büchern bedecken, die den toten König mit der Sonne durch die Nacht führten. Über 60 Gräber sind bekannt, nummeriert von KV1 bis KV64 in der Reihenfolge ihrer Entdeckung; nur das des Tutanchamun wurde fast unberührt gefunden.</p>
+  <p class="links"><a href="#audioTitle">Audioführung ↓</a></p>
   
 
   <div class="pair">
@@ -133,6 +141,15 @@
       </dl>
     </article>
   </div>
+
+  <section aria-labelledby="audioTitle">
+    <h2 id="audioTitle">Audioführung</h2>
+    <p class="section-note">Etwa elf Minuten auf Deutsch zum Anhören während des Besuchs: wie ein Königsgrab funktioniert, ein Kapitel für jede Nummer der Karte und die Unterweltsbücher. Tippen Sie auf ein Kapitel, um dorthin zu springen. Neuronale Stimme von Microsoft (Tanja).</p>
+    <div class="audio">
+      <audio id="guia" controls preload="metadata" src="tal-der-koenige-audio-de.mp3"></audio>
+      <ol id="capitulos"><li><button type="button" data-t="0.0"><span class="at">0:00</span>Willkommen</button></li><li><button type="button" data-t="64.1"><span class="at">1:04</span>Wie ein Königsgrab funktioniert</button></li><li><button type="button" data-t="121.8"><span class="at">2:01</span>1. Das Besucherzentrum</button></li><li><button type="button" data-t="152.0"><span class="at">2:32</span>2. Tutanchamun</button></li><li><button type="button" data-t="203.4"><span class="at">3:23</span>3. Ramses der Fünfte und der Sechste</button></li><li><button type="button" data-t="249.1"><span class="at">4:09</span>4. Sethos der Erste</button></li><li><button type="button" data-t="290.7"><span class="at">4:50</span>5. Ramses der Dritte</button></li><li><button type="button" data-t="317.5"><span class="at">5:17</span>6. Merenptah</button></li><li><button type="button" data-t="347.1"><span class="at">5:47</span>7. Ramses der Vierte</button></li><li><button type="button" data-t="376.1"><span class="at">6:16</span>8. Ramses der Neunte</button></li><li><button type="button" data-t="395.2"><span class="at">6:35</span>9. Tausret und Sethnacht</button></li><li><button type="button" data-t="420.6"><span class="at">7:00</span>10. Thutmosis der Dritte</button></li><li><button type="button" data-t="458.0"><span class="at">7:38</span>11. Amenophis der Zweite</button></li><li><button type="button" data-t="490.1"><span class="at">8:10</span>12. Die Söhne Ramses’ des Zweiten</button></li><li><button type="button" data-t="528.1"><span class="at">8:48</span>Die Unterweltsbücher</button></li><li><button type="button" data-t="594.3"><span class="at">9:54</span>Abschied</button></li></ol>
+    </div>
+  </section>
 
   <section aria-labelledby="tombTitle" style="--c: var(--kv);">
     <h2 id="tombTitle">Wie ein Königsgrab funktioniert</h2>
@@ -244,3 +261,14 @@
 
   <p class="foot">Die Karte ist schematisch; die Daten sind ungefähr.</p>
 </div>
+<script>
+(() => {
+  const a = document.getElementById('guia');
+  const bs = [...document.querySelectorAll('#capitulos button')];
+  bs.forEach(b => b.addEventListener('click', () => { a.currentTime = +b.dataset.t; a.play().catch(() => {}); }));
+  a.addEventListener('timeupdate', () => {
+    let cur = 0; bs.forEach((b, i) => { if (a.currentTime >= +b.dataset.t - 0.2) cur = i; });
+    bs.forEach((b, i) => b.setAttribute('aria-current', i === cur && a.currentTime > 0 ? 'true' : 'false'));
+  });
+})();
+</script>
