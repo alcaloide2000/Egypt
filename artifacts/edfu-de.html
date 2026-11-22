@@ -41,6 +41,13 @@
   .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
   .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
   .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  .audio { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--sun); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; }
+  .audio audio { width: 100%; margin: 0.4rem 0 0.8rem; }
+  .audio ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0.3rem 1rem; }
+  .audio button { all: unset; cursor: pointer; display: flex; gap: 0.6rem; width: 100%; box-sizing: border-box; padding: 0.35rem 0.4rem; border-radius: 6px; font-size: 0.9rem; }
+  .audio button:hover, .audio button:focus-visible { background: var(--bg); outline: 1px solid var(--line); }
+  .audio button[aria-current="true"] { background: var(--bg); font-weight: 600; }
+  .audio .at { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); min-width: 2.6rem; padding-top: 0.1rem; }
   section { margin-top: clamp(2rem, 6vw, 3.25rem); }
   .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
 
@@ -115,7 +122,7 @@
   <p class="eyebrow">Oberägypten · Horustempel · 237–57 v. Chr. · Tag 5 der Alimaña-Reise · <a class="lang" href="https://claude.ai/artifact/KQ8oJAQRCnyB7QonPKpkPu" target="_blank" rel="noopener noreferrer" hreflang="en">English version ↗</a> · <a class="lang" href="https://claude.ai/artifact/EsBmPiiHuuDSxH5UaWiGaD" target="_blank" rel="noopener noreferrer" hreflang="es">Versión en español, con audioguía ↗</a></p>
   <h1>Edfu, der Tempel des Horus</h1>
   <p class="lede">Auf halbem Weg zwischen Luxor und Assuan, am Westufer, steht der vollständigste Tempel Ägyptens: Dach, Mauern, Pylon und Umfassungsmauer sind alle noch da. Die Ptolemäer bauten ihn 180 Jahre lang für Horus von Behdet, den Falkengott, und bedeckten seine Wände mit der Geschichte seines Kampfes gegen Seth und den Riten, die man ihm jeden Tag darbrachte. Jahrhundertelang unter Sand und Häusern begraben, kam er fast unversehrt wieder ans Licht.</p>
-  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy3" target="_blank" rel="noopener noreferrer">Edfu-Karte (englisch) ↗</a><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-horus" target="_blank" rel="noopener noreferrer">Horus auf der Götterseite (englisch) ↗</a><a href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-5" target="_blank" rel="noopener noreferrer">Unsere Fotos von Tag 5 ↗</a></p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy3" target="_blank" rel="noopener noreferrer">Edfu-Karte (englisch) ↗</a><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-horus" target="_blank" rel="noopener noreferrer">Horus auf der Götterseite (englisch) ↗</a><a href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-5" target="_blank" rel="noopener noreferrer">Unsere Fotos von Tag 5 ↗</a><a href="#audioTitle">Audioführung ↓</a></p>
 
   <figure class="figure hero" style="margin: 1.3rem 0 0;">
     <svg viewBox="0 0 800 340" role="img" aria-label="Zeichnung der Front des Horustempels von Edfu unter klarem Himmel: die beiden großen Türme des Pylons, jeder mit zwei Flaggenmasten und roten Wimpeln und dem Umriss eines riesigen Königs, der seine Feinde erschlägt, das Tor dazwischen unter einer geflügelten Sonnenscheibe, ein dunkler Granitfalke des Horus davor, einige Besucher als Maßstab und Palmen auf beiden Seiten.">
@@ -154,6 +161,15 @@
       </dl>
     </article>
   </div>
+
+  <section aria-labelledby="audioTitle">
+    <h2 id="audioTitle">Audioführung</h2>
+    <p class="section-note">Etwa zwölf Minuten auf Deutsch zum Anhören während des Besuchs: ein Kapitel für jede Nummer im Plan, dazu die Säulen und ihre Kunst und das Fest der schönen Begegnung. Tippen Sie auf ein Kapitel, um dorthin zu springen. Neuronale Stimme von Microsoft (Tanja).</p>
+    <div class="audio">
+      <audio id="guia" controls preload="metadata" src="edfu-audioguide-de.mp3"></audio>
+      <ol id="capitulos"><li><button type="button" data-t="0.0"><span class="at">0:00</span>Willkommen</button></li><li><button type="button" data-t="50.6"><span class="at">0:50</span>1. Das Geburtshaus</button></li><li><button type="button" data-t="79.0"><span class="at">1:19</span>2. Der Pylon</button></li><li><button type="button" data-t="227.8"><span class="at">3:47</span>3. Die Granitfalken</button></li><li><button type="button" data-t="252.9"><span class="at">4:12</span>4. Der Opferhof</button></li><li><button type="button" data-t="278.3"><span class="at">4:38</span>5. Der äußere Säulensaal</button></li><li><button type="button" data-t="306.3"><span class="at">5:06</span>Die Säulen und die Kunst</button></li><li><button type="button" data-t="441.2"><span class="at">7:21</span>6. Der innere Säulensaal</button></li><li><button type="button" data-t="469.6"><span class="at">7:49</span>7. Der Opfersaal und die Treppen</button></li><li><button type="button" data-t="496.3"><span class="at">8:16</span>8. Die Neujahrskapelle</button></li><li><button type="button" data-t="521.5"><span class="at">8:41</span>9. Das Allerheiligste</button></li><li><button type="button" data-t="557.6"><span class="at">9:17</span>10. Die Kapellen um das Allerheiligste</button></li><li><button type="button" data-t="582.6"><span class="at">9:42</span>11. Horus gegen Seth</button></li><li><button type="button" data-t="615.0"><span class="at">10:15</span>12. Das Nilometer</button></li><li><button type="button" data-t="637.8"><span class="at">10:37</span>Das Fest der schönen Begegnung</button></li><li><button type="button" data-t="678.3"><span class="at">11:18</span>Abschied</button></li></ol>
+    </div>
+  </section>
 
   <section aria-labelledby="planTitle" style="--c: var(--horus);">
     <h2 id="planTitle">Rundgang durch den Tempel, vom Tor zum Gott</h2>
@@ -297,3 +313,14 @@
 
   <p class="foot">Teil der <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">Private Alimaña Tour ↗</a> (englisch). Der Plan ist vereinfacht; die Daten sind ungefähr.</p>
 </div>
+<script>
+(() => {
+  const a = document.getElementById('guia');
+  const bs = [...document.querySelectorAll('#capitulos button')];
+  bs.forEach(b => b.addEventListener('click', () => { a.currentTime = +b.dataset.t; a.play().catch(() => {}); }));
+  a.addEventListener('timeupdate', () => {
+    let cur = 0; bs.forEach((b, i) => { if (a.currentTime >= +b.dataset.t - 0.2) cur = i; });
+    bs.forEach((b, i) => b.setAttribute('aria-current', i === cur && a.currentTime > 0 ? 'true' : 'false'));
+  });
+})();
+</script>
