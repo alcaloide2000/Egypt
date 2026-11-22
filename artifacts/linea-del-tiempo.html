@@ -1,0 +1,2283 @@
+<title>Línea del tiempo del antiguo Egipto</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Public+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+<style>
+  :root {
+    --bg: #ede3cc;
+    --bg-panel: #f7f1e1;
+    --ink: #2b2420;
+    --ink-soft: #5b4f3f;
+    --ochre: #b5551f;
+    --ochre-dim: #c97a44;
+    --nile: #2e6e77;
+    --nile-soft: #a9d0cb;
+    --sand-line: #c9b48c;
+    --gold: #a9791f;
+    --lapis: #2f5f8a;
+    --malachite: #3c7a5a;
+    --indigo: #5b4f8f;
+    --rose: #9c3f5e;
+    --solar: #c07a1f;
+    --turquoise: #0e8f8a;
+    --kush: #a1522e;
+    --persia: #7d3c6b;
+    --desert: #e3d4b0;
+    --shadow: rgba(43, 36, 32, 0.14);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c;
+      --bg-panel: #3a3936;
+      --ink: #ede3cc;
+      --ink-soft: #b8a98a;
+      --ochre: #e58a4d;
+      --ochre-dim: #c25f28;
+      --nile: #6fc2c4;
+      --nile-soft: #46514c;
+      --sand-line: #57544c;
+      --gold: #d9a83c;
+      --lapis: #6fa3d1;
+      --malachite: #5fae87;
+      --indigo: #a99bd9;
+      --rose: #e08aa6;
+      --solar: #e8a54d;
+      --turquoise: #4fd8d1;
+      --kush: #d98a5e;
+      --persia: #d494c4;
+      --desert: #35342f;
+      --shadow: rgba(0, 0, 0, 0.35);
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --bg: #302f2c;
+    --bg-panel: #3a3936;
+    --ink: #ede3cc;
+    --ink-soft: #b8a98a;
+    --ochre: #e58a4d;
+    --ochre-dim: #c25f28;
+    --nile: #6fc2c4;
+    --nile-soft: #46514c;
+    --sand-line: #57544c;
+    --gold: #d9a83c;
+    --lapis: #6fa3d1;
+    --malachite: #5fae87;
+    --indigo: #a99bd9;
+    --rose: #e08aa6;
+    --solar: #e8a54d;
+    --turquoise: #4fd8d1;
+    --kush: #d98a5e;
+    --persia: #d494c4;
+    --desert: #35342f;
+    --shadow: rgba(0, 0, 0, 0.35);
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Public Sans", ui-sans-serif, system-ui, sans-serif;
+    line-height: 1.5;
+  }
+
+  .page {
+    max-width: 1180px;
+    margin: 0 auto;
+    padding: clamp(1.5rem, 4vw, 3.5rem) clamp(1.25rem, 4vw, 2.5rem) 3rem;
+  }
+
+  .masthead {
+    max-width: 46rem;
+    margin-bottom: clamp(1.75rem, 4vw, 2.75rem);
+  }
+
+  .eyebrow {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--ochre);
+    margin: 0 0 0.9rem;
+  }
+
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-size: clamp(1.9rem, 4vw, 2.9rem);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.9rem;
+    text-wrap: balance;
+  }
+
+  .lede {
+    margin: 0;
+    max-width: 42rem;
+    color: var(--ink-soft);
+    font-size: 1.05rem;
+  }
+
+  .layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.55fr) minmax(280px, 1fr);
+    gap: clamp(1.25rem, 3vw, 2rem);
+    align-items: start;
+  }
+
+  @media (max-width: 860px) {
+    .layout { grid-template-columns: 1fr; }
+  }
+
+  .map-panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--sand-line);
+    border-radius: 14px;
+    padding: clamp(0.9rem, 2vw, 1.4rem);
+    box-shadow: 0 1px 2px var(--shadow);
+  }
+
+  .map-frame {
+    position: relative;
+  }
+
+  .map-frame > svg {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .hotspot {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    transform: translate(-50%, -50%);
+    background: transparent;
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    cursor: pointer;
+  }
+
+  .hotspot:hover,
+  .hotspot:focus-visible {
+    outline: none;
+  }
+
+  .hotspot:focus-visible {
+    box-shadow: 0 0 0 2px var(--accent, var(--gold));
+  }
+
+  .tooltip {
+    position: absolute;
+    width: 156px;
+    transform: translate(-50%, calc(-100% - 26px));
+    background: var(--bg-panel);
+    border: 1px solid var(--accent, var(--gold));
+    border-radius: 10px;
+    padding: 0.7rem 0.7rem 0.55rem;
+    box-shadow: 0 8px 20px var(--shadow);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s ease, transform 0.15s ease;
+    z-index: 5;
+  }
+
+  .hotspot:hover + .tooltip,
+  .hotspot:focus-visible + .tooltip {
+    opacity: 1;
+    transform: translate(-50%, calc(-100% - 34px));
+  }
+
+  .illustration {
+    display: block;
+    width: 100%;
+    height: auto;
+  }
+
+  .tooltip-caption {
+    margin: 0.5rem 0 0;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.62rem;
+    line-height: 1.4;
+    color: var(--ink-soft);
+    text-align: center;
+  }
+
+  .tooltip-caption strong {
+    display: block;
+    font-family: "Fraunces", serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent, var(--gold));
+    margin-bottom: 0.2rem;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .tooltip { transition: none; }
+  }
+
+  .map-caption {
+    margin: 0.75rem 0.25rem 0.1rem;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+  }
+
+  .info-panel {
+    position: sticky;
+    top: 1.5rem;
+  }
+
+  .info-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--sand-line);
+    border-radius: 14px;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+    box-shadow: 0 1px 2px var(--shadow);
+  }
+
+  .info-card.featured {
+    background: color-mix(in srgb, var(--accent, var(--ochre)) 18%, var(--bg-panel));
+    border-color: color-mix(in srgb, var(--accent, var(--ochre)) 45%, var(--sand-line));
+  }
+
+  .info-card.unlocated {
+    border-style: dashed;
+    box-shadow: none;
+  }
+
+  .info-card:target {
+    animation: card-jump-highlight 1.8s ease-out;
+  }
+  @keyframes card-jump-highlight {
+    0% { box-shadow: 0 0 0 3px var(--gold); }
+    100% { box-shadow: 0 1px 2px var(--shadow); }
+  }
+
+  .tag {
+    display: inline-block;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    color: var(--nile);
+    border: 1px solid var(--nile);
+    border-radius: 999px;
+    padding: 0.22rem 0.6rem;
+    margin-bottom: 0.9rem;
+  }
+
+  .info-card h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 1.5rem;
+    margin: 0 0 0.6rem;
+    text-wrap: balance;
+  }
+
+  .ancient-name {
+    color: var(--ochre);
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .info-card > p {
+    color: var(--ink-soft);
+    font-size: 0.96rem;
+    margin: 0 0 1.2rem;
+  }
+
+  .info-card > p a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sand-line); }
+  .info-card > p a:hover, .info-card > p a:focus-visible { border-bottom-color: currentColor; }
+
+  .coords {
+    margin: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+
+  .coords > div {
+    display: grid;
+    grid-template-columns: 7.5rem 1fr;
+    gap: 0.5rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--sand-line);
+  }
+
+  .coords > div:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .coords dt {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+  }
+
+  .coords dd {
+    margin: 0;
+    font-size: 0.92rem;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .coords dd.mono {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.88rem;
+  }
+
+  .wiki-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.32rem;
+    margin-top: 1.1rem;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.74rem;
+    letter-spacing: 0.02em;
+    text-decoration: none;
+    color: var(--ink);
+    border-bottom: 1px solid var(--sand-line);
+    padding-bottom: 0.15rem;
+  }
+
+  .wiki-link:hover,
+  .wiki-link:focus-visible {
+    border-bottom-color: currentColor;
+  }
+
+  .wiki-link:focus-visible {
+    outline: 2px solid currentColor;
+    outline-offset: 3px;
+  }
+
+  .river { fill: none; stroke: var(--nile-soft); stroke-width: 34; stroke-linecap: round; stroke-linejoin: round; }
+  .river-core { fill: none; stroke: var(--nile); stroke-width: 11; stroke-linecap: round; stroke-linejoin: round; }
+  .graticule { stroke: var(--sand-line); stroke-width: 1; stroke-dasharray: 3 5; }
+  .graticule-label {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    fill: var(--ink-soft);
+  }
+  .city-dot { fill: var(--bg-panel); stroke: var(--ink-soft); stroke-width: 1.6; }
+  .city-label {
+    font-family: "Public Sans", sans-serif;
+    font-size: 12.5px;
+    fill: var(--ink);
+  }
+  .city-label.sub {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 9.5px;
+    fill: var(--ink-soft);
+  }
+
+  .site-ring {
+    fill: none;
+    stroke: var(--ochre);
+    stroke-width: 1.4;
+    opacity: 0.55;
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: pulse 2.8s ease-out infinite;
+  }
+  .site-ring.d2 { animation-delay: 1.4s; }
+
+  @keyframes pulse {
+    0% { transform: scale(0.6); opacity: 0.6; }
+    100% { transform: scale(2.1); opacity: 0; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .site-ring { animation: none; opacity: 0.35; }
+  }
+
+  .site-label-main {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 15px;
+    fill: var(--ink);
+  }
+  .site-label {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 15px;
+    fill: var(--ochre);
+  }
+  .site-label.sub {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    fill: var(--ochre);
+  }
+
+  .compass text {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    fill: var(--ink-soft);
+  }
+  .compass path { fill: var(--ink-soft); }
+
+  .temple-ring {
+    fill: none;
+    stroke: var(--lapis);
+    stroke-width: 1.4;
+    opacity: 0.55;
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: pulse 2.8s ease-out infinite;
+    animation-delay: 2.1s;
+  }
+  .temple-ring.d2 { animation-delay: 0.7s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .temple-ring { animation: none; opacity: 0.35; }
+  }
+
+  .temple-label {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 15px;
+    fill: var(--lapis);
+  }
+  .temple-label.sub {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    fill: var(--lapis);
+  }
+
+  .palette-ring {
+    fill: none;
+    stroke: var(--gold);
+    stroke-width: 1.4;
+    opacity: 0.55;
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: pulse 2.8s ease-out infinite;
+    animation-delay: 0.7s;
+  }
+  .palette-ring.d2 { animation-delay: 2.1s; }
+
+  .palette-label {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 15px;
+    fill: var(--gold);
+  }
+  .palette-label.sub {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    fill: var(--ink-soft);
+  }
+
+  .fort-label.sub {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    fill: var(--ochre-dim);
+  }
+
+  .abu-ring {
+    fill: none;
+    stroke: var(--malachite);
+    stroke-width: 1.4;
+    opacity: 0.55;
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: pulse 2.8s ease-out infinite;
+    animation-delay: 1.4s;
+  }
+  .abu-ring.d2 { animation-delay: 2.8s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .abu-ring { animation: none; opacity: 0.35; }
+  }
+
+  .abu-label {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 15px;
+    fill: var(--malachite);
+  }
+  .abu-label.sub {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    fill: var(--malachite);
+  }
+
+  .saqqara-ring {
+    fill: none;
+    stroke: var(--indigo);
+    stroke-width: 1.4;
+    opacity: 0.55;
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: pulse 2.8s ease-out infinite;
+    animation-delay: 2.1s;
+  }
+  .saqqara-ring.d2 { animation-delay: 0.7s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .saqqara-ring { animation: none; opacity: 0.35; }
+  }
+
+  .saqqara-label {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 15px;
+    fill: var(--indigo);
+  }
+  .saqqara-label.sub {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    fill: var(--indigo);
+  }
+
+  .eleph-ring {
+    fill: none;
+    stroke: var(--indigo);
+    stroke-width: 1.4;
+    opacity: 0.55;
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: pulse 2.8s ease-out infinite;
+    animation-delay: 1.4s;
+  }
+  .eleph-ring.d2 { animation-delay: 2.8s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .eleph-ring { animation: none; opacity: 0.35; }
+  }
+
+  .eleph-label {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 15px;
+    fill: var(--indigo);
+  }
+  .eleph-label.sub {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    fill: var(--indigo);
+  }
+
+  .persia-ring {
+    fill: none;
+    stroke: var(--persia);
+    stroke-width: 1.4;
+    opacity: 0.55;
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: pulse 2.8s ease-out infinite;
+    animation-delay: 0.7s;
+  }
+  .persia-ring.d2 { animation-delay: 2.1s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .persia-ring { animation: none; opacity: 0.35; }
+  }
+
+  .persia-label {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 15px;
+    fill: var(--persia);
+  }
+  .persia-label.sub {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    fill: var(--persia);
+  }
+
+  .kush-ring {
+    fill: none;
+    stroke: var(--kush);
+    stroke-width: 1.4;
+    opacity: 0.55;
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: pulse 2.8s ease-out infinite;
+    animation-delay: 0.7s;
+  }
+  .kush-ring.d2 { animation-delay: 2.1s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .kush-ring { animation: none; opacity: 0.35; }
+  }
+
+  .kush-label {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 15px;
+    fill: var(--kush);
+  }
+  .kush-label.sub {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    fill: var(--kush);
+  }
+
+  .abydos-ring {
+    fill: none;
+    stroke: var(--rose);
+    stroke-width: 1.4;
+    opacity: 0.55;
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: pulse 2.8s ease-out infinite;
+    animation-delay: 0.7s;
+  }
+  .abydos-ring.d2 { animation-delay: 2.1s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .abydos-ring { animation: none; opacity: 0.35; }
+  }
+
+  .abydos-label {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 15px;
+    fill: var(--rose);
+  }
+  .abydos-label.sub {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    fill: var(--rose);
+  }
+
+  .solar-ring {
+    fill: none;
+    stroke: var(--solar);
+    stroke-width: 1.4;
+    opacity: 0.55;
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: pulse 2.8s ease-out infinite;
+    animation-delay: 2.1s;
+  }
+  .solar-ring.d2 { animation-delay: 0.7s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .solar-ring { animation: none; opacity: 0.35; }
+  }
+
+  .solar-label {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 15px;
+    fill: var(--solar);
+  }
+  .solar-label.sub {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    fill: var(--solar);
+  }
+
+  .turquoise-ring {
+    fill: none;
+    stroke: var(--turquoise);
+    stroke-width: 1.4;
+    opacity: 0.55;
+    transform-origin: center;
+    transform-box: fill-box;
+    animation: pulse 2.8s ease-out infinite;
+    animation-delay: 1.4s;
+  }
+  .turquoise-ring.d2 { animation-delay: 2.8s; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .turquoise-ring { animation: none; opacity: 0.35; }
+  }
+
+  .turquoise-label {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 15px;
+    fill: var(--turquoise);
+  }
+  .turquoise-label.sub {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    fill: var(--turquoise);
+  }
+
+  .legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.1rem;
+    margin: 0.7rem 0.25rem 0;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+  }
+  .legend-item { display: flex; align-items: center; gap: 0.45rem; }
+  .legend-item.is-featured, .tt-item.is-featured {
+    background: color-mix(in srgb, var(--hl, var(--ochre)) 18%, var(--bg-panel));
+    border-radius: 999px;
+  }
+  .legend-item.is-featured { padding: 0.1rem 0.65rem 0.1rem 0.5rem; font-weight: 600; color: var(--ink); text-decoration: none; }
+  .tt-item.is-featured { border-radius: 10px; padding: 0.45rem 0.6rem; margin: 0 -0.6rem; }
+  .tt-item.is-featured::before { left: calc(-0.5rem - 6px); top: calc(0.45rem + 0.35em); }
+  .tl-highlight { fill: var(--indigo); opacity: 0.16; }
+  .tl-era-mk { fill: var(--indigo); opacity: 0.1; stroke: var(--indigo); stroke-opacity: 0.35; stroke-width: 1; }
+  .tl-era-label.tl-era-mk-label { fill: var(--indigo); font-weight: 600; }
+  .legend-dot {
+    width: 0.6rem;
+    height: 0.6rem;
+    border-radius: 50%;
+    flex: none;
+  }
+
+  .section-break {
+    border: none;
+    border-top: 1px solid var(--sand-line);
+    margin: clamp(2.5rem, 6vw, 4rem) 0 clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  .section-heading {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(1.6rem, 3.2vw, 2.3rem);
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    margin: 0 0 0.9rem;
+    text-wrap: balance;
+  }
+
+  .chart-panel {
+    background: var(--bg-panel);
+    border: 1px solid var(--sand-line);
+    border-radius: 14px;
+    padding: clamp(0.75rem, 2vw, 1.25rem);
+    box-shadow: 0 1px 2px var(--shadow);
+    margin-top: clamp(1.75rem, 4vw, 2.5rem);
+    overflow-x: auto;
+  }
+
+  .chart-panel svg {
+    display: block;
+    width: 100%;
+    min-width: 900px;
+    height: auto;
+  }
+
+  .chart-caption {
+    margin: 0.75rem 0.25rem 0;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.02em;
+    color: var(--ink-soft);
+  }
+
+  .below-grid {
+    display: grid;
+    grid-template-columns: 1.3fr 1fr;
+    gap: clamp(1.25rem, 3vw, 2rem);
+    align-items: start;
+    margin-top: clamp(1.75rem, 4vw, 2.5rem);
+  }
+
+  @media (max-width: 760px) {
+    .below-grid { grid-template-columns: 1fr; }
+  }
+
+  .note-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--sand-line);
+    border-radius: 14px;
+    padding: clamp(1.25rem, 3vw, 1.75rem);
+    box-shadow: 0 1px 2px var(--shadow);
+  }
+
+  .note-card h3 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    margin: 0 0 0.9rem;
+  }
+
+  .note-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    gap: 0.85rem;
+  }
+
+  .note-list li {
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    gap: 0.75rem;
+    padding-bottom: 0.85rem;
+    border-bottom: 1px solid var(--sand-line);
+    font-size: 0.92rem;
+  }
+  .note-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+  .note-list a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sand-line); }
+  .note-list a:hover, .note-list a:focus-visible { border-bottom-color: currentColor; }
+
+  .note-year {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.82rem;
+    color: var(--ink-soft);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .see-also {
+    font-size: 0.95rem;
+    color: var(--ink-soft);
+  }
+  .see-also a {
+    color: var(--ochre);
+    text-decoration: none;
+    border-bottom: 1px solid var(--sand-line);
+  }
+  .see-also a:hover, .see-also a:focus-visible {
+    border-bottom-color: currentColor;
+  }
+
+  .tl-era-label {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    fill: var(--ink-soft);
+  }
+  .tl-axis { stroke: var(--ink-soft); stroke-width: 1.5; }
+  .tl-tick { stroke: var(--ink-soft); stroke-width: 1; opacity: 0.6; }
+  .tl-tick-label {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10.5px;
+    fill: var(--ink-soft);
+  }
+  .tl-break { stroke: var(--ink-soft); stroke-width: 1.4; }
+  .tl-leader { stroke-width: 1.2; opacity: 0.7; }
+  .tl-name {
+    font-family: "Fraunces", serif;
+    font-weight: 600;
+    font-size: 13px;
+  }
+  .tl-date {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 10px;
+    fill: var(--ink-soft);
+  }
+  .tl-link { cursor: pointer; }
+  .tl-link .tl-name { text-decoration: underline; text-decoration-color: transparent; text-underline-offset: 2px; transition: text-decoration-color 0.15s ease; }
+  .tl-link:hover .tl-name,
+  .tl-link:focus-visible .tl-name { text-decoration-color: currentColor; }
+  .tl-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+  }
+
+  .search-bar {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    background: var(--bg-panel);
+    border: 1px solid var(--sand-line);
+    border-radius: 999px;
+    padding: 0.6rem 0.6rem 0.6rem 1.1rem;
+    box-shadow: 0 1px 2px var(--shadow);
+    margin-bottom: clamp(1.5rem, 3vw, 2rem);
+  }
+  .search-bar:focus-within {
+    outline: 2px solid var(--ochre-dim);
+    outline-offset: 2px;
+  }
+
+  .search-icon {
+    flex: none;
+    color: var(--ink-soft);
+  }
+
+  .search-input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    color: var(--ink);
+    font-family: "Public Sans", sans-serif;
+    font-size: 1rem;
+    outline: none;
+  }
+  .search-input::placeholder { color: var(--ink-soft); }
+
+  .search-status {
+    flex: none;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+    white-space: nowrap;
+  }
+
+  .search-clear {
+    flex: none;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: 1.6rem;
+    height: 1.6rem;
+    border: none;
+    border-radius: 50%;
+    background: var(--sand-line);
+    color: var(--ink);
+    font-size: 0.9rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .search-clear:hover, .search-clear:focus-visible { background: var(--ochre-dim); color: var(--bg-panel); }
+  .search-bar.has-query .search-clear { display: flex; }
+
+  .info-card.is-hidden { display: none; }
+
+  .info-card mark {
+    background: var(--gold);
+    color: var(--bg-panel);
+    border-radius: 3px;
+    padding: 0 0.15em;
+    font-weight: 700;
+  }
+
+  .site-marker { transition: opacity 0.2s ease; }
+  .site-marker.is-dimmed { opacity: 0.16; }
+  .highlight-btn {
+    font: inherit;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    color: var(--accent, var(--ochre));
+    background: transparent;
+    border: 1px solid var(--accent, var(--ochre));
+    border-radius: 999px;
+    padding: 0.3rem 0.8rem;
+    margin: 0 0 0.9rem;
+    cursor: pointer;
+  }
+  .highlight-btn:hover, .highlight-btn:focus-visible { background: var(--accent, var(--ochre)); color: var(--bg-panel); outline: none; }
+
+  .tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 0 0 clamp(1.5rem, 3vw, 2.25rem);
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid var(--sand-line);
+  }
+  .tab {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: transparent;
+    border: 1px solid var(--sand-line);
+    border-radius: 999px;
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+  }
+  .tab:hover { color: var(--ink); border-color: var(--ink-soft); }
+  .tab[aria-selected="true"] {
+    color: var(--bg-panel);
+    background: var(--ochre);
+    border-color: var(--ochre);
+  }
+  .tab:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .lang-switch { display: flex; gap: 0.4rem; margin: 0 0 1.25rem; }
+  .lang-switch button {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    background: transparent;
+    border: 1px solid var(--sand-line);
+    border-radius: 999px;
+    padding: 0.35rem 0.8rem;
+    cursor: pointer;
+  }
+  .lang-switch button:hover { color: var(--ink); border-color: var(--ink-soft); }
+  .lang-switch button[aria-pressed="true"] { color: var(--bg-panel); background: var(--nile); border-color: var(--nile); }
+  .lang-switch button:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+
+  .route-strip {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.4rem 0.5rem;
+    margin: 1.2rem 0 0;
+    padding: 0;
+    list-style: none;
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+  }
+  .route-strip li + li::before { content: "→"; margin-right: 0.5rem; color: var(--nile); }
+
+  /* Tour through time: the tour's places in the order they were built */
+  .tour-time {
+    margin: 2.2rem 0 0;
+    background: var(--bg-panel);
+    border: 1px solid var(--sand-line);
+    border-radius: 14px;
+    padding: clamp(1.1rem, 2.5vw, 1.6rem);
+    box-shadow: 0 1px 2px var(--shadow);
+  }
+  .tour-time h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(1.35rem, 3vw, 1.7rem);
+    margin: 0 0 0.4rem;
+  }
+  .tour-time > p { color: var(--ink-soft); font-size: 0.93rem; margin: 0 0 1rem; max-width: 62ch; }
+  .tt-ribbon-wrap { overflow-x: auto; margin: 0 0 1.2rem; -webkit-overflow-scrolling: touch; }
+  .tt-ribbon { display: block; width: 100%; min-width: 640px; height: auto; }
+  .tt-ribbon .tt-band { fill: var(--sand-line); opacity: 0.28; }
+  .tt-ribbon .tt-band-label { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 8.5px; letter-spacing: 0.06em; fill: var(--ink-soft); }
+  .tt-ribbon .tt-axis { stroke: var(--ink-soft); stroke-width: 1.2; }
+  .tt-ribbon .tt-tick { stroke: var(--ink-soft); stroke-width: 1; }
+  .tt-ribbon .tt-tick-label { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 9px; fill: var(--ink-soft); }
+  .tt-ribbon .tt-span { stroke-width: 5; stroke-linecap: round; opacity: 0.55; }
+  .tt-ribbon .tt-dot { stroke: var(--bg-panel); stroke-width: 1.4; }
+  .tt-list { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--sand-line); display: grid; gap: 0.7rem; }
+  .tt-era {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0.8rem 0 0 -1.1rem;
+    padding-left: 1.1rem;
+    position: relative;
+  }
+  .tt-era:first-child { margin-top: 0; }
+  .tt-era::before {
+    content: "";
+    position: absolute;
+    left: -0.42rem;
+    top: 0.25em;
+    width: 0.7rem;
+    height: 0.7rem;
+    border-radius: 2px;
+    background: var(--sand-line);
+  }
+  .tt-item {
+    position: relative;
+    display: grid;
+    grid-template-columns: 9.5rem 1fr auto;
+    gap: 0.2rem 1rem;
+    align-items: baseline;
+  }
+  .tt-item::before {
+    content: "";
+    position: absolute;
+    left: calc(-1.1rem - 6px);
+    top: 0.35em;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--accent, var(--ochre));
+    box-shadow: 0 0 0 2px var(--bg-panel);
+  }
+  .tt-date { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.8rem; color: var(--ink-soft); }
+  .tt-place { font-family: "Fraunces", Georgia, serif; font-weight: 600; font-size: 1.02rem; color: var(--ink); }
+  a.tt-place { text-decoration: none; border-bottom: 1px solid var(--sand-line); }
+  a.tt-place:hover { border-bottom-color: var(--accent, var(--ochre)); }
+  .tt-what { display: block; color: var(--ink-soft); font-size: 0.86rem; }
+  .tt-what a { color: inherit; }
+  .tt-day {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.7rem;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+    color: var(--accent, var(--ochre));
+    border: 1px solid var(--accent, var(--ochre));
+    border-radius: 999px;
+    padding: 0.1rem 0.55rem;
+  }
+  .tt-day.draft { border-style: dashed; }
+  .tt-legend { margin: 1rem 0 0; font-size: 0.8rem; color: var(--ink-soft); }
+  @media (max-width: 700px) {
+    .tt-item { grid-template-columns: 1fr; }
+    .tt-day { justify-self: start; white-space: normal; }
+  }
+
+  .day-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(min(100%, 330px), 1fr));
+    gap: clamp(1rem, 2.5vw, 1.5rem);
+    margin-top: clamp(1.5rem, 3vw, 2rem);
+  }
+  .day-card {
+    background: var(--bg-panel);
+    border: 1px solid var(--sand-line);
+    border-top: 4px solid var(--accent, var(--ochre));
+    border-radius: 14px;
+    padding: clamp(1.1rem, 2.5vw, 1.5rem);
+    box-shadow: 0 1px 2px var(--shadow);
+  }
+  .day-num {
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent, var(--ochre));
+    margin: 0 0 0.4rem;
+  }
+  .day-card h3 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    margin: 0 0 0.6rem;
+  }
+  .day-card > p { color: var(--ink-soft); font-size: 0.93rem; margin: 0 0 0.9rem; }
+  .day-card > p a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sand-line); }
+  .day-card > p a:hover, .day-card > p a:focus-visible { border-bottom-color: currentColor; }
+  .stop-list { margin: 0; padding: 0; list-style: none; display: grid; gap: 0.5rem; }
+  .stop-list li {
+    font-size: 0.9rem;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .stop-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.55em;
+    width: 0.4rem;
+    height: 0.4rem;
+    border-radius: 50%;
+    background: var(--accent, var(--ochre));
+  }
+  .stop-list a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sand-line); }
+  .stop-list a:hover, .stop-list a:focus-visible { border-bottom-color: currentColor; }
+  .stop-note { display: block; color: var(--ink-soft); font-size: 0.84rem; }
+  .day-meta {
+    margin: 1rem 0 0;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--sand-line);
+    font-family: "IBM Plex Mono", ui-monospace, monospace;
+    font-size: 0.74rem;
+    color: var(--ink-soft);
+  }
+
+  .tour-show {
+    margin-top: clamp(1.5rem, 3vw, 2rem);
+    background: var(--bg-panel);
+    border: 1px solid var(--sand-line);
+    border-radius: 14px;
+    box-shadow: 0 1px 2px var(--shadow);
+    overflow: hidden;
+  }
+  .show-stage { display: grid; }
+  .show-slide {
+    grid-area: 1 / 1;
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+    align-items: center;
+    gap: clamp(1rem, 3vw, 2rem);
+    padding: clamp(1rem, 3vw, 1.75rem);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.7s ease, visibility 0s linear 0.7s;
+  }
+  .show-slide.is-active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.7s ease, visibility 0s;
+  }
+  @media (max-width: 700px) {
+    .show-slide { grid-template-columns: 1fr; align-items: start; }
+  }
+  .show-art {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    border: 1px solid var(--sand-line);
+  }
+  .show-slide.is-active .show-art .zoom {
+    animation: show-zoom 7s ease-out both;
+    transform-origin: 50% 70%;
+  }
+  @keyframes show-zoom { from { transform: scale(1); } to { transform: scale(1.07); } }
+  .show-slide.is-active .show-text > * { animation: show-rise 0.7s ease-out both; }
+  .show-slide.is-active .show-text > *:nth-child(2) { animation-delay: 0.12s; }
+  .show-slide.is-active .show-text > *:nth-child(3) { animation-delay: 0.24s; }
+  .show-slide.is-active .show-text > *:nth-child(4) { animation-delay: 0.36s; }
+  @keyframes show-rise { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: none; } }
+  .show-text .day-num { margin-bottom: 0.5rem; }
+  .show-text h3 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    line-height: 1.12;
+    margin: 0 0 0.7rem;
+    color: var(--accent, var(--ink));
+    text-wrap: balance;
+  }
+  .show-text p { margin: 0; color: var(--ink-soft); font-size: 0.98rem; }
+  .show-text ul { margin: 0.8rem 0 0; padding: 0; list-style: none; display: grid; gap: 0.3rem; font-size: 0.92rem; }
+  .show-text li::before { content: "◆ "; color: var(--accent, var(--ochre)); font-size: 0.7em; }
+
+  .show-route { display: block; width: 100%; height: auto; padding: 0 clamp(0.5rem, 2vw, 1rem); }
+  .route-line { stroke: var(--nile); stroke-width: 3; stroke-linecap: round; }
+  .route-trip { stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 3 4; fill: none; }
+  .route-stop { fill: var(--bg-panel); stroke: var(--ink-soft); stroke-width: 1.6; transition: fill 0.4s ease, stroke 0.4s ease; }
+  .route-stop.is-done { fill: var(--nile); stroke: var(--nile); }
+  .route-stop.is-here { fill: var(--ochre); stroke: var(--ochre); }
+  .route-label { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10px; fill: var(--ink-soft); }
+  .route-label-mobile { display: none; }
+  @media (max-width: 700px) {
+    .show-route { overflow: visible; margin-bottom: 1.7rem; }
+    .route-label-desktop { display: none; }
+    .route-label-mobile { display: inline; font-size: 23px; }
+  }
+  .route-flight { stroke: var(--ink-soft); stroke-width: 1.2; stroke-dasharray: 2 5; fill: none; opacity: 0.8; }
+  .route-plane { font-size: 12px; fill: var(--ink-soft); }
+  .show-route { overflow: visible; }
+  .route-boat { transition: transform 1.2s ease-in-out; }
+  .route-boat path { fill: var(--ochre); }
+
+  .show-controls {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.6rem clamp(0.75rem, 2vw, 1.25rem) 0.9rem;
+  }
+  .show-btn {
+    flex: none;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    border: 1px solid var(--sand-line);
+    background: var(--bg);
+    color: var(--ink);
+    font-size: 0.85rem;
+    line-height: 1;
+    cursor: pointer;
+  }
+  .show-btn:hover { border-color: var(--ink-soft); }
+  .show-btn:focus-visible, .show-dot:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .show-dots { display: flex; gap: 0.35rem; flex: 1; justify-content: center; flex-wrap: wrap; }
+  .show-dot {
+    width: 0.6rem;
+    height: 0.6rem;
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    background: var(--sand-line);
+    cursor: pointer;
+  }
+  .show-dot[aria-current="true"] { background: var(--ochre); }
+  .show-progress { height: 3px; background: var(--sand-line); }
+  .show-progress span { display: block; height: 100%; width: 0; background: var(--ochre); }
+  .show-progress span.is-running { animation: show-progress var(--show-ms, 7000ms) linear both; }
+  @keyframes show-progress { from { width: 0; } to { width: 100%; } }
+
+  @media (prefers-reduced-motion: reduce) {
+    .show-slide, .show-slide.is-active { transition: none; }
+    .show-slide.is-active .show-art .zoom,
+    .show-slide.is-active .show-text > * { animation: none; }
+    .route-boat { transition: none; }
+  }
+
+  .no-results {
+    padding: 1.5rem;
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    border: 1px dashed var(--sand-line);
+    border-radius: 14px;
+  }
+</style>
+<style>
+  .tl-back { display: inline-block; margin: 0 0 1.4rem; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 0.78rem; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--sand-line); }
+  .tl-back:hover, .tl-back:focus-visible { border-bottom-color: currentColor; }
+  /* on its own page the timeline is drawn near full size and scrolls sideways inside its panel */
+  .chart-panel svg { min-width: 2700px; }
+  .chart-panel .chart-caption { position: sticky; left: 0; }
+</style>
+
+<div class="page">
+  <a class="tl-back" href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k" target="_blank" rel="noopener noreferrer">Página principal (en inglés): mapa, fichas y viaje ↗</a>
+  <a class="tl-back" style="margin-left: 1.2rem;" href="https://claude.ai/artifact/TjdxykKbk3kF99VG1U344M" target="_blank" rel="noopener noreferrer" hreflang="en">English version ↗</a>
+
+  <section aria-labelledby="timelineHeading">
+    <p class="eyebrow">Alto y Bajo Egipto · 3500–200 a. C.</p>
+    <h1 class="section-heading" id="timelineHeading">Tres mil años, un río</h1>
+    <p class="lede">Los mismos lugares y gobernantes, colocados en el tiempo en vez de en el espacio: de la Hieracómpolis predinástica a la File ptolemaica, con un cuarto de milenio repleto de pirámides en medio. El eje se corta donde pasan siglos sin nada que mostrar aquí.</p>
+
+    <div class="chart-panel" aria-label="Línea del tiempo de monumentos del antiguo Egipto, del 3500 al 200 a. C.">
+      <svg viewBox="0 0 3097 1000" role="img" aria-labelledby="tlTitle tlDesc">
+        <title id="tlTitle">Línea del tiempo de lugares del antiguo Egipto y de Kush, del 3500 a. C. al siglo IV d. C.</title>
+        <desc id="tlDesc">Una línea del tiempo horizontal cortada, desde el 3500 a. C. Un grupo denso de pirámides del Reino Antiguo se sitúa entre el 2690 y el 2445 a. C.: lo abre el reinado de Djoser, h. 2670–2650 a. C., con su Pirámide escalonada de Saqqara; le siguen el reinado de Snefru, h. 2613–2589 a. C., con sus pirámides de Meidum y Dahshur, el de Kefrén, h. 2558–2532 a. C., con la segunda pirámide y la Gran Esfinge de Guiza, y el breve reinado de Shepseskaf, h. 2503–2498 a. C., que cerró la dinastía IV con una tumba en forma de sarcófago en lugar de una pirámide; y, al final del Reino Antiguo, los reinados de la dinastía VI de Pepi I, h. 2321–2287 a. C., y de Pepi II, h. 2278–2184 a. C., el más largo del Reino Antiguo, destacado. Antes están la Tumba pintada de Hieracómpolis, la Paleta de Narmer y el comienzo de las tumbas reales de Abidos. Tras el hueco del Primer Periodo Intermedio, un Mentuhotep I quizá legendario abre la dinastía XI tebana hacia el 2135 a. C.; una franja sombreada y rotulada marca el Reino Medio, desde la reunificación de Mentuhotep II hacia el 2055 a. C. hasta el corte del eje tras Sesostris III, y se prolonga hasta h. 1650 a. C. Intef II avanza hacia el norte hacia 2112–2063 a. C.; Mentuhotep II reunifica Egipto y funda el Reino Medio hacia 2055–2004 a. C.; Amenemhat I funda la dinastía XII y traslada la capital al norte hacia 1991–1962 a. C.; su hijo Sesostris I construye la Capilla Blanca de Karnak hacia 1971–1926 a. C.; el reinado de Amenemhat II, hacia 1919–1885 a. C., queda marcado por un tesoro de plata y lapislázuli de Mesopotamia y del Egeo enterrado en el templo de Montu en Tod; y Sesostris III, el rey más poderoso del Reino Medio, fortifica la frontera de Nubia hacia 1878–1839 a. C. Un pequeño tramo aparte marca el Segundo Periodo Intermedio: Nubkheperre Intef, rey tebano de la dinastía XVII, hacia 1571–1565 a. C., y después Kamose, el último rey de esa línea, que navega contra los hicsos hacia 1555–1550 a. C. El tramo del Reino Nuevo empieza con Ahmose I, que expulsa a los hicsos y construye la última pirámide egipcia en Abidos Sur hacia 1550–1525 a. C., junto a su reina Ahmose-Nefertari, luego divinizada y venerada en Deir el-Medina durante unos cuatro siglos. Le sigue enseguida su hijo Amenhotep I, hacia 1525–1504 a. C., el primer rey que separó su tumba de su templo funerario, tanto que su tumba nunca se ha encontrado. Después viene Tutmosis I, hacia 1504–1492 a. C., el primer rey cuyo entierro en el Valle de los Reyes está confirmado, que hizo campañas hasta el Éufrates y levantó obeliscos en Karnak. Su hijo Tutmosis II le sigue hacia 1493–1479 a. C.; fue esposo de Hatshepsut y, desde 2025, su tumba es la primera tumba real nueva confirmada desde la de Tutankamón. La propia Hatshepsut gobierna después como faraón hacia 1479–1458 a. C. y construye su templo de Deir el-Bahari junto al de Mentuhotep II. Tutmosis III gobierna solo desde h. 1458 hasta 1425 a. C.; es el rey guerrero de más éxito de Egipto, y sus Anales de Karnak relatan la batalla de Megido y unas dieciséis campañas más. Dos generaciones después, Amenhotep III gobierna en la cumbre de la riqueza imperial de Egipto, hacia 1391–1353 a. C., y construye el mayor templo funerario jamás intentado, del que hoy quedan los dos Colosos de Memnón. Le sigue de inmediato su hijo Akenatón, hacia 1353–1336 a. C., que abandona a los dioses tradicionales por el solo disco solar, Atón, y construye una nueva capital en Amarna: un reinado que los reyes posteriores borraron de los registros. Tras un breve hueco, Tutankamón reina de niño hacia 1332–1323 a. C. y restaura a los antiguos dioses; su pequeña tumba, hecha a toda prisa y hallada casi intacta en 1922, se convierte en el descubrimiento arqueológico más famoso de Egipto. El general Horemheb gobierna después hacia 1319–1292 a. C., termina la restauración y borra a los reyes de Amarna de la memoria oficial, antes de nombrar sucesor a su visir: Ramsés I, que reina apenas uno o dos años hacia 1292–1290 a. C. pero funda la dinastía XIX, y cuya momia reapareció en un museo canadiense antes de volver a Egipto en 2003. Su hijo Seti I gobierna hacia 1290–1279 a. C.: hace campañas en el extranjero, continúa la Gran Sala Hipóstila de Karnak, construye el templo de la Lista Real en Abidos y excava la tumba más larga del Valle de los Reyes, la primera decorada por completo. El hijo de Seti, Ramsés II, reina 66 años excepcionales, hacia 1279–1213 a. C.: lucha contra los hititas en Qadesh sin vencedor antes de firmar el tratado de paz más antiguo que se conserva, construye Abu Simbel y su Rameseum, y tiene más de cien hijos. Su decimotercer hijo, Merenptah, ya anciano, gobierna hacia 1213–1203 a. C., derrota una invasión de libios y Pueblos del Mar y deja la Estela de Merenptah, cuyas últimas líneas contienen la mención más antigua conocida de Israel. Su hijo Seti II gobierna hacia 1203–1197 a. C., disputado durante años en el sur por el rey rival Amenmeses; construye una pequeña capilla de descanso para las barcas sagradas en Karnak y se casa con Tausert, que después gobernaría Egipto. El niño rey Siptah reina hacia 1197–1191 a. C., un muchacho con un pie deforme que gobierna solo de nombre bajo Tausert y el canciller Bay. Tausert gobierna entonces como faraón por derecho propio hacia 1191–1189 a. C., una de las pocas mujeres rey de Egipto, antes de que su tumba y su templo sean usurpados y borrados por su sucesor Setnajt, que gobierna hacia 1189–1186 a. C., restablece el orden tras un periodo de caos y funda la dinastía XX como padre de Ramsés III. Ramsés III gobierna hacia 1186–1155 a. C.: derrota a los Pueblos del Mar en la batalla del Delta, construye Medinet Habu y muere en una conspiración del harén, después de la primera huelga registrada de la historia. Otros ocho reyes ramésidas se suceden rápidamente en los ochenta años siguientes, un periodo de decadencia creciente: Ramsés IV, hacia 1155–1149 a. C., que juzgó a los asesinos de su padre; Ramsés V, hacia 1149–1145 a. C., cuya momia muestra una posible viruela; Ramsés VI, hacia 1145–1137 a. C., que usurpó la tumba de su sobrino y sin querer enterró la entrada de la de Tutankamón bajo los escombros de la obra; Ramsés VII, hacia 1137–1130 a. C.; Ramsés VIII, hacia 1130–1129 a. C., el reinado más corto y peor documentado del grupo; Ramsés IX, hacia 1129–1111 a. C., cuya corte documentó el saqueo generalizado de tumbas; Ramsés X, hacia 1111–1107 a. C., apenas atestiguado; y por último Ramsés XI, hacia 1107–1077 a. C., el último rey del Reino Nuevo, cuyo reinado termina con Egipto dividido entre los Sumos Sacerdotes de Amón en Tebas y una nueva línea de reyes en el norte. Tras el Reino Nuevo, un tramo corto aparte marca a Piye, el rey de Kush que gobernaba desde Napata, reinó hacia 744–714 a. C. y conquistó Egipto hacia el 728 a. C., fundando su dinastía XXV; después a su hermano Shabaka, hacia 705–690 a. C., que gobernó Egipto directamente desde Menfis; al hijo de Piye, Taharqa, 690–664 a. C., que combatió las invasiones asirias y fue enterrado bajo la mayor pirámide de Kush; y por último a Tantamani, 664–656 a. C., el último rey kushita que gobernó Egipto, expulsado tras el saqueo asirio de Tebas. En paralelo desde el 664 a. C., y solo desde el 656 a. C., Psamético I de Sais reunifica Egipto y funda la dinastía XXVI, reinando hasta el 610 a. C.; le sigue su hijo Necao II, 610–595 a. C., que lucha en el Levante y empieza un canal hacia el mar Rojo; luego su hijo Psamético II, 595–589 a. C., que hizo campaña muy al interior de Nubia en el 592 a. C.; y Ahmose II (Amasis), 570–526 a. C., un general que quitó el trono a Apries y dio a los griegos su propio puerto comercial en Náucratis, y que murió meses antes de la conquista persa del 525 a. C. Sigue una corta barra persa: Cambises II, que conquistó Egipto en Pelusio en el 525 a. C. y lo gobernó como primer rey de la dinastía XXVII hasta el 522 a. C.; Darío I, 522–486 a. C., que terminó el canal de Necao al mar Rojo; Jerjes I, 486–465 a. C., que aplastó una revuelta egipcia en el 484 a. C.; Artajerjes I, 465–424 a. C., que se enfrentó a la revuelta de Inaros y a una flota ateniense; Darío II, 423–404 a. C., cuyo reinado iluminan los papiros arameos de Elefantina; y Artajerjes II, reconocido en Egipto solo del 404 a h. 400 a. C., cuando Egipto se independizó con Amirteo. Tras sesenta años de independencia llega una corta franja de la dinastía XXX con su fundador Nectanebo I, 380–362 a. C., que rechazó una invasión persa en el 373 a. C., y Nectanebo II, 360–342 a. C., el último faraón nativo, derrocado por la reconquista persa de 343–342 a. C. Siguen dos cortas barras persas: Artajerjes III, que reconquistó Egipto en el 343 a. C. y lo gobernó hasta el 338 a. C., y Darío III, 336–332 a. C., cuyo gobernador entregó Egipto a Alejandro Magno sin luchar; la breve barra del propio Alejandro, 332–323 a. C., cierra el tramo. Tras otro largo hueco vienen puntos sueltos posteriores: Abu Simbel hacia el 1250 a. C., dentro del propio reinado de Ramsés II; Ptolomeo I Sóter, general de Alejandro, rey de Egipto 305–282 a. C. y fundador de la dinastía ptolemaica; su hijo Ptolomeo II Filadelfo, 285–246 a. C., que terminó el Faro y construyó gran parte del templo de Isis de File; su hijo Ptolomeo III Evergetes, 246–222 a. C., que fundó el templo de Horus en Edfu; Ptolomeo IV Filopátor, 221–204 a. C., vencedor en Rafia; Ptolomeo V Epífanes, 204–180 a. C., el rey de la Piedra de Rosetta; Ptolomeo VI Filométor, 180–145 a. C., que fundó el templo de Kom Ombo; un marcador hueco para su joven hijo Ptolomeo VII, asesinado en el 145 a. C.; el tío y asesino del muchacho, Ptolomeo VIII Evergetes II, 145–116 a. C.; dos barras cortas para Ptolomeo IX Sóter II, 116–107 y 88–81 a. C., que saqueó Tebas tras su última revuelta, y entre ellas su hermano Ptolomeo X Alejandro I, 107–88 a. C.; un marcador hueco para el hijo de Ptolomeo X, Ptolomeo XI, asesinado en el 80 a. C. tras diecinueve días como rey; Ptolomeo XII Auletes, 80–58 y 55–51 a. C., padre de Cleopatra, que empezó el templo de Dendera; Ptolomeo XIII, 51–47 a. C., hermano y rival de ella, cuyos hombres mataron a Pompeyo; la propia Cleopatra VII, 51–30 a. C., la última gobernante de la dinastía; su hermano menor Ptolomeo XIV, 47–44 a. C.; y su hijo con César, Ptolomeo XV Cesarión, 44–30 a. C., el último de la línea; File hacia el 265 a. C.; y el templo de Dendera, empezado en el 54 a. C. y terminado bajo dominio romano. Solo Abidos abarca a la vez el grupo antiguo y el periodo posterior, con su templo de la Lista Real. Un último tramo aparte marca Meroe, muy al sur, en el reino de Kush y no en Egipto: un campo de pirámides reales construido desde h. 270 a. C., cuando se dice que el rey Arkamani fue el primero enterrado allí en lugar de en Napata, hasta el siglo IV d. C.</desc>
+
+        <!-- era bands -->
+        <rect x="80" y="55" width="300" height="245" fill="var(--sand-line)" opacity="0.22" />
+        <rect x="410" y="55" width="500" height="245" fill="var(--sand-line)" opacity="0.34" />
+        <rect x="1471" y="55" width="536" height="245" fill="var(--sand-line)" opacity="0.22" />
+        <rect x="2594" y="55" width="205" height="245" fill="var(--sand-line)" opacity="0.34" />
+        <rect x="2839" y="55" width="210" height="245" fill="var(--sand-line)" opacity="0.22" />
+        <!-- Middle Kingdom, highlighted: from Mentuhotep II's reunification, c. 2055 BC (x 1008), to the axis break after Senusret III; it runs on to c. 1650 BC inside the gap -->
+        <rect class="tl-era-mk" x="1008" y="55" width="216" height="245" rx="4" />
+
+        <text class="tl-era-label" x="230" y="45" text-anchor="middle">PREDINÁSTICO</text>
+        <text class="tl-era-label" x="660" y="45" text-anchor="middle">DINÁSTICO TEMPRANO Y REINO ANTIGUO</text>
+        <text class="tl-era-label tl-era-mk-label" x="1116" y="45" text-anchor="middle">REINO MEDIO</text>
+        <text class="tl-date" x="1116" y="72" text-anchor="middle">h. 2055–1650 a. C.</text>
+        <text class="tl-era-label" x="1739" y="45" text-anchor="middle">REINO NUEVO</text>
+        <text class="tl-era-label" x="2664" y="45" text-anchor="middle">PTOLEMAICO</text>
+        <text class="tl-era-label" x="2944" y="45" text-anchor="middle">KUSH</text>
+
+        <!-- Abydos dedicated lane: royal tombs, Predynastic to end of 2nd Dynasty -->
+        <line x1="155" y1="200" x2="155" y2="85" stroke="var(--rose)" stroke-width="1" stroke-dasharray="2 3" opacity="0.5" />
+        <line x1="380" y1="200" x2="380" y2="85" stroke="var(--rose)" stroke-width="1" stroke-dasharray="2 3" opacity="0.5" />
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-abydos" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Abydos">
+          <rect x="155" y="82" width="225" height="7" rx="3.5" fill="var(--rose)" />
+          <text class="tl-name" x="267" y="72" text-anchor="middle" fill="var(--rose)">Abidos: tumbas reales</text>
+          <text class="tl-date" x="267" y="106" text-anchor="middle">Predinástico – dinastía II (~3400–2686 a. C.)</text>
+        </a>
+
+        <!-- main axis -->
+        <line class="tl-axis" x1="80" y1="200" x2="380" y2="200" />
+        <line class="tl-axis" x1="410" y1="200" x2="910" y2="200" />
+        <line class="tl-axis" x1="940" y1="200" x2="1224" y2="200" />
+        <line class="tl-axis" x1="1262" y1="200" x2="1348" y2="200" />
+        <line class="tl-axis" x1="1471" y1="200" x2="2007" y2="200" />
+        <line class="tl-axis" x1="2594" y1="200" x2="2799" y2="200" />
+        <line class="tl-axis" x1="2839" y1="200" x2="3049" y2="200" />
+
+        <!-- break marks -->
+        <g class="tl-break">
+          <line x1="390" y1="193" x2="400" y2="207" />
+          <line x1="398" y1="193" x2="408" y2="207" />
+        </g>
+        <g class="tl-break">
+          <line x1="920" y1="193" x2="930" y2="207" />
+          <line x1="928" y1="193" x2="938" y2="207" />
+        </g>
+        <g class="tl-break">
+          <line x1="1234" y1="193" x2="1244" y2="207" />
+          <line x1="1242" y1="193" x2="1252" y2="207" />
+        </g>
+        <g class="tl-break">
+          <line x1="1441" y1="193" x2="1451" y2="207" />
+          <line x1="1449" y1="193" x2="1459" y2="207" />
+        </g>
+        <g class="tl-break">
+          <line x1="2017" y1="193" x2="2027" y2="207" />
+          <line x1="2025" y1="193" x2="2035" y2="207" />
+        </g>
+        <g class="tl-break">
+          <line x1="2809" y1="193" x2="2819" y2="207" />
+          <line x1="2817" y1="193" x2="2827" y2="207" />
+        </g>
+
+        <!-- Hierakonpolis: Painted Tomb, span -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-hierakonpolis" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Hieracómpolis">
+          <rect x="144" y="197" width="127" height="6" rx="3" fill="var(--ochre)" />
+          <line x1="207" y1="197" x2="207" y2="160" stroke="var(--ochre)" class="tl-leader" />
+          <text class="tl-name" x="207" y="150" text-anchor="middle" fill="var(--ochre)">Hieracómpolis</text>
+          <text class="tl-date" x="207" y="164" text-anchor="middle">Tumba pintada, h. 3500–3200 a. C.</text>
+        </a>
+
+        <!-- Gebtu (Koptos) colossi: point, contemporary with the Painted Tomb -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-gebtu" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Gebtu">
+          <circle cx="290" cy="200" r="4" fill="var(--gold)" />
+          <line x1="290" y1="204" x2="290" y2="225" stroke="var(--gold)" class="tl-leader" />
+          <text class="tl-name" x="290" y="240" text-anchor="middle" fill="var(--gold)">Gebtu</text>
+          <text class="tl-date" x="290" y="254" text-anchor="middle">h. 3300 a. C.</text>
+        </a>
+
+        <!-- Narmer Palette: point -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-narmer" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Paleta de Narmer">
+          <circle cx="375" cy="200" r="4.5" fill="var(--gold)" />
+          <line x1="375" y1="204" x2="375" y2="225" stroke="var(--gold)" class="tl-leader" />
+          <text class="tl-name" x="375" y="240" text-anchor="middle" fill="var(--gold)">Paleta de Narmer</text>
+          <text class="tl-date" x="375" y="254" text-anchor="middle">h. 3100 a. C.</text>
+        </a>
+
+        <!-- Khasekhemwy's enclosures: point -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-khasekhemwy" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha del fuerte de Jasejemuy">
+          <circle cx="415" cy="200" r="4.5" fill="var(--ochre-dim)" />
+          <line x1="415" y1="204" x2="415" y2="255" stroke="var(--ochre-dim)" class="tl-leader" />
+          <text class="tl-name" x="415" y="270" text-anchor="middle" fill="var(--ochre-dim)">Jasejemuy</text>
+          <text class="tl-date" x="415" y="284" text-anchor="middle">Fuerte y Gisr el-Mudir, h. 2690 a. C.</text>
+        </a>
+
+        <!-- Old Kingdom pyramids bracket -->
+        <!-- highlight behind Djoser's bar and label -->
+        <path class="tl-highlight" d="M440,193 h44 a4,4 0 0 1 4,4 v20 h68 a4,4 0 0 1 4,4 v28 a4,4 0 0 1 -4,4 h-110 a4,4 0 0 1 -4,-4 v-28 h-2 a4,4 0 0 1 -4,-4 v-20 a4,4 0 0 1 4,-4 z" />
+        <!-- Djoser: reign c. 2670–2650 BC (1.7 px/yr in this segment), Step Pyramid at Saqqara; label below the axis -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-djoser" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Djoser">
+          <rect x="445" y="197" width="34" height="6" rx="3" fill="var(--indigo)"><title>Djoser, h. 2670–2650 a. C.: la Pirámide escalonada de Saqqara</title></rect>
+          <line x1="460" y1="203" x2="460" y2="222" stroke="var(--indigo)" class="tl-leader" />
+          <text class="tl-name" x="456" y="234" fill="var(--indigo)">Djoser</text>
+          <text class="tl-date" x="456" y="248">h. 2670–2650 a. C.</text>
+        </a>
+        <circle cx="513" cy="200" r="4" fill="var(--indigo)" />
+        <circle cx="565" cy="200" r="4" fill="var(--indigo)" />
+        <!-- Sneferu: reign c. 2613–2589 BC (x 542–583 at 1.7 px/yr), in the lane under the axis; label below Djoser's, with a halo -->
+        <rect class="tl-highlight" x="538" y="202" width="49" height="11" rx="4" />
+        <rect class="tl-highlight" x="553" y="297" width="106" height="34" rx="5" />
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-sneferu" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Snefru">
+          <rect x="542" y="205" width="41" height="5" rx="2.5" fill="var(--indigo)"><title>Snefru, h. 2613–2589 a. C.: Meidum y Dahshur</title></rect>
+          <line x1="562" y1="210" x2="562" y2="297" stroke="var(--indigo)" class="tl-leader" />
+          <text class="tl-name" x="558" y="310" fill="var(--indigo)">Snefru</text>
+          <text class="tl-date" x="558" y="324">h. 2613–2589 a. C.</text>
+        </a>
+        <rect x="582" y="197" width="35" height="6" rx="3" fill="var(--indigo)" />
+        <rect class="tl-highlight" x="596" y="192" width="42" height="16" rx="5" />
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-giza" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Keops y Guiza"><rect x="600" y="197" width="34" height="6" rx="3" fill="var(--indigo)" opacity="0.85"><title>La Gran Pirámide de Keops en Guiza, h. 2580–2560 a. C.</title></rect></a>
+        <rect class="tl-highlight" x="634" y="192" width="54" height="16" rx="5" />
+        <rect class="tl-highlight" x="676" y="255" width="104" height="35" rx="5" />
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-khafre" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Kefrén">
+          <rect x="638" y="197" width="44" height="6" rx="3" fill="var(--indigo)" opacity="0.65"><title>Kefrén, h. 2558–2532 a. C.: la segunda pirámide y la Gran Esfinge</title></rect>
+          <line x1="684" y1="203" x2="684" y2="258" stroke="var(--indigo)" class="tl-leader" />
+          <text class="tl-name" x="680" y="270" fill="var(--indigo)">Kefrén</text>
+          <text class="tl-date" x="680" y="284">h. 2558–2532</text>
+        </a>
+        <rect x="682" y="197" width="50" height="6" rx="3" fill="var(--indigo)" opacity="0.5" />
+        <!-- Shepseskaf: reign c. 2503–2498 BC, the Mastabat al-Fir'aun at South Saqqara; label in the free lane under the axis -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-shepseskaf" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Shepseskaf">
+          <rect x="734" y="197" width="8" height="6" rx="2" fill="var(--indigo)" opacity="0.4"><title>Shepseskaf, h. 2503–2498 a. C.: la Mastabat al-Fir'aun, sin pirámide</title></rect>
+          <line x1="738" y1="203" x2="738" y2="242" stroke="var(--indigo)" class="tl-leader" />
+          <text class="tl-name" x="743" y="226" fill="var(--indigo)">Shepseskaf</text>
+          <text class="tl-date" x="743" y="240">h. 2503–2498</text>
+        </a>
+        <rect x="744" y="197" width="7" height="6" rx="2" fill="var(--indigo)" opacity="0.55" />
+        <path d="M445,190 L445,182 L751,182 L751,190" fill="none" stroke="var(--indigo)" stroke-width="1" opacity="0.6" />
+        <line x1="600" y1="182" x2="600" y2="172" stroke="var(--indigo)" class="tl-leader" />
+        <text class="tl-name" x="600" y="83" text-anchor="middle" fill="var(--indigo)">Pirámides del Reino Antiguo</text>
+        <text class="tl-date" x="600" y="99" text-anchor="middle">Saqqara 2670 · Elefantina 2630</text>
+        <text class="tl-date" x="600" y="112" text-anchor="middle">Meidum 2600 · Dahshur 2600–2570</text>
+        <text class="tl-date" x="600" y="125" text-anchor="middle">Guiza — Keops 2580–2560, Kefrén 2558–2532</text>
+        <text class="tl-date" x="600" y="138" text-anchor="middle">(+ Esfinge), Micerino h. 2510</text>
+        <text class="tl-date" x="600" y="151" text-anchor="middle">Shepseskaf h. 2500: sin pirámide, cierra la dinastía</text>
+        <text class="tl-date" x="600" y="164" text-anchor="middle">Userkaf h. 2494, dinastía V</text>
+        <text class="tl-date" x="600" y="177" text-anchor="middle">Mastaba de Ti, un noble, mediados de la din. V</text>
+
+        <!-- Death of Khufu: reign-end point, hollow marker distinguishes a biographical event from a monument -->
+        <rect class="tl-highlight" x="589" y="255" width="70" height="35" rx="5" />
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-giza" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Guiza">
+          <circle cx="624" cy="200" r="4" fill="var(--bg-panel)" stroke="var(--indigo)" stroke-width="1.8" />
+          <line x1="624" y1="204" x2="624" y2="255" stroke="var(--indigo)" class="tl-leader" stroke-dasharray="2 2" />
+          <text class="tl-name" x="624" y="270" text-anchor="middle" fill="var(--indigo)">Muere Keops</text>
+          <text class="tl-date" x="624" y="284" text-anchor="middle">h. 2566 a. C.</text>
+        </a>
+
+        <!-- Abusir: Sun Temples, span -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-abusir" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Abusir">
+          <rect x="755" y="197" width="67" height="6" rx="3" fill="var(--solar)" />
+          <line x1="788" y1="197" x2="788" y2="160" stroke="var(--solar)" class="tl-leader" />
+          <text class="tl-name" x="788" y="150" text-anchor="middle" fill="var(--solar)">Abusir</text>
+          <text class="tl-date" x="788" y="164" text-anchor="middle">Templos solares, h. 2490–2445</text>
+        </a>
+
+        <!-- Palermo Stone: point, no confirmed findspot -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-palermo" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Piedra de Palermo">
+          <circle cx="890" cy="200" r="4" fill="var(--ink-soft)" stroke="var(--bg-panel)" stroke-width="1" />
+          <line x1="890" y1="204" x2="890" y2="225" stroke="var(--ink-soft)" class="tl-leader" stroke-dasharray="2 2" />
+          <text class="tl-name" x="890" y="240" text-anchor="middle" fill="var(--ink-soft)">Piedra de Palermo</text>
+          <text class="tl-date" x="890" y="254" text-anchor="middle">grabada h. 2400</text>
+        </a>
+
+        <!-- Unas through Pepi II: end of the Old Kingdom, just before the axis break -->
+        <circle cx="892" cy="200" r="3.5" fill="var(--indigo)" />
+        <circle cx="899" cy="200" r="3.5" fill="var(--indigo)" opacity="0.8" />
+        <circle cx="906" cy="200" r="3.5" fill="var(--indigo)" opacity="0.6" />
+        <circle cx="913" cy="200" r="3.5" fill="var(--indigo)" opacity="0.4" />
+        <!-- Pepi I (c. 2321–2287 BC) and Pepi II (c. 2278–2184 BC): bars in the lane under the axis, just after the 2400 tick and before the break; squeezed, but in proportion to each other (34 and 94 years) -->
+        <!-- highlight behind Pepi II's bar and his name in the label -->
+        <rect class="tl-highlight" x="913" y="201" width="14" height="13" rx="4" />
+        <rect class="tl-highlight" x="912" y="256" width="50" height="21" rx="5" />
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-pepi" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Pepi I y Pepi II">
+          <rect x="911" y="205" width="3.5" height="5" rx="1.5" fill="var(--indigo)"><title>Pepi I, h. 2321–2287 a. C.: pirámide en Saqqara Sur, cuyo nombre se convirtió en Menfis</title></rect>
+          <rect x="915.5" y="205" width="9" height="5" rx="2.5" fill="var(--indigo)" opacity="0.7"><title>Pepi II, h. 2278–2184 a. C.: el reinado más largo del Reino Antiguo, y luego el hundimiento</title></rect>
+        </a>
+        <line x1="895" y1="204" x2="895" y2="255" stroke="var(--indigo)" class="tl-leader" />
+        <text class="tl-name" x="902" y="270" text-anchor="middle" fill="var(--indigo)">Unas → <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-pepi" target="_blank" rel="noopener noreferrer" class="tl-link"><tspan>Pepi I</tspan></a> → <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-pepi" target="_blank" rel="noopener noreferrer" class="tl-link"><tspan id="tlPepi2">Pepi II</tspan></a> → Ibi</text>
+        <text class="tl-date" x="902" y="284" text-anchor="middle">Últimas pirámides de Saqqara, 2375–2167</text>
+
+        <!-- Mentuhotep I "Tepy-a": point, possibly a legendary retroactive ancestor, no confirmed monument -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-mentuhotep1" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Mentuhotep I">
+          <circle cx="940" cy="200" r="4" fill="var(--bg-panel)" stroke="var(--turquoise)" stroke-width="1.8" />
+          <line x1="940" y1="196" x2="940" y2="160" stroke="var(--turquoise)" class="tl-leader" stroke-dasharray="2 2" />
+          <text class="tl-name" x="940" y="150" text-anchor="middle" fill="var(--turquoise)">Mentuhotep I</text>
+          <text class="tl-date" x="940" y="164" text-anchor="middle">¿legendario?, h. 2135</text>
+        </a>
+
+        <!-- Intef II: span, Theban 11th-Dynasty ruler who pushed north toward Abydos, forerunner of reunification -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-intef2" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Intef II">
+          <rect x="960" y="197" width="43" height="6" rx="3" fill="var(--turquoise)" opacity="0.7" />
+          <line x1="981" y1="204" x2="981" y2="225" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="981" y="240" text-anchor="middle" fill="var(--turquoise)">Intef II</text>
+          <text class="tl-date" x="981" y="254" text-anchor="middle">h. 2112–2063</text>
+        </a>
+
+        <!-- Mentuhotep II: span, reunifies Egypt after the First Intermediate Period, founds the Middle Kingdom -->
+        <rect class="tl-highlight" x="1006" y="192" width="53" height="16" rx="5" />
+        <rect class="tl-highlight" x="942" y="101" width="196" height="35" rx="5" />
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-mentuhotep2" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Mentuhotep II">
+          <rect x="1010" y="197" width="45" height="6" rx="3" fill="var(--turquoise)"><title>Mentuhotep II, h. 2055–2004 a. C.: reunifica Egipto; templo en Deir el-Bahari</title></rect>
+          <line x1="1040" y1="197" x2="1040" y2="137" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1040" y="116" text-anchor="middle" fill="var(--turquoise)">Mentuhotep II</text>
+          <text class="tl-date" x="1040" y="130" text-anchor="middle">Reunifica Egipto, h. 2055–2004 a. C.</text>
+        </a>
+
+        <!-- Amenemhat I: span, founds the 12th Dynasty, moves the capital north to Itjtawy near Lisht -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-amenemhat1" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Amenemhat I">
+          <rect x="1067" y="197" width="26" height="6" rx="3" fill="var(--turquoise)" opacity="0.55" />
+          <line x1="1080" y1="204" x2="1080" y2="225" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1080" y="240" text-anchor="middle" fill="var(--turquoise)">Amenemhat I</text>
+          <text class="tl-date" x="1080" y="254" text-anchor="middle">1991–1962 a. C.</text>
+        </a>
+
+        <!-- Senusret I: span, co-regent then sole ruler, the White Chapel at Karnak, Story of Sinuhe -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-senusret1" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Sesostris I">
+          <rect x="1103" y="197" width="40" height="6" rx="3" fill="var(--turquoise)" opacity="0.7" />
+          <line x1="1123" y1="197" x2="1123" y2="160" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1123" y="150" text-anchor="middle" fill="var(--turquoise)">Sesostris I</text>
+          <text class="tl-date" x="1128" y="164" text-anchor="middle">h. 1971–1926 a. C.</text>
+        </a>
+
+        <!-- Amenemhat II: span, Tod treasure — Mesopotamian and Aegean silver/lapis found at the Temple of Montu -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-tod" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Tod">
+          <rect x="1153" y="197" width="30" height="6" rx="3" fill="var(--turquoise)" opacity="0.4" />
+          <line x1="1168" y1="204" x2="1168" y2="225" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1183" y="240" fill="var(--turquoise)">Amenemhat II</text>
+          <text class="tl-date" x="1183" y="254">h. 1919–1885 a. C.</text>
+        </a>
+
+        <!-- Senusret III: span, Nubian fortress chain, Semna boundary decree, "careworn" realistic portraiture -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-senusret3" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Sesostris III">
+          <rect x="1189" y="197" width="35" height="6" rx="3" fill="var(--turquoise)" />
+          <line x1="1206" y1="197" x2="1206" y2="160" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1189" y="150" fill="var(--turquoise)">Sesostris III</text>
+          <text class="tl-date" x="1189" y="164">h. 1878–1839 a. C.</text>
+        </a>
+
+        <!-- Nubkheperre Intef: span, 17th Dynasty, Second Intermediate Period, tomb at Dra Abu el-Naga -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-nubkheperre" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Nubkheperre Intef">
+          <rect x="1262" y="197" width="43" height="6" rx="3" fill="var(--turquoise)" />
+          <line x1="1283" y1="204" x2="1283" y2="225" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1262" y="240" fill="var(--turquoise)">Nubkheperre</text>
+          <text class="tl-date" x="1262" y="254">1571–1565 a. C.</text>
+        </a>
+
+        <!-- Kamose: span, last king of the 17th Dynasty, war fleet against the Hyksos, Karnak stelae -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-kamose" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Kamose">
+          <rect x="1313" y="197" width="35" height="6" rx="3" fill="var(--turquoise)" opacity="0.75" />
+          <line x1="1330" y1="197" x2="1330" y2="160" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1313" y="150" fill="var(--turquoise)">Kamose</text>
+          <text class="tl-date" x="1313" y="164">1555–1550 a. C.</text>
+        </a>
+
+        <!-- Ahmose I: span, expels the Hyksos, founds the New Kingdom, last native pyramid at South Abydos -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ahmose1" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ahmose I">
+          <rect x="1471" y="197" width="40" height="6" rx="3" fill="var(--indigo)" />
+          <line x1="1491" y1="204" x2="1491" y2="225" stroke="var(--indigo)" class="tl-leader" />
+          <text class="tl-name" x="1471" y="240" fill="var(--indigo)">Ahmose I</text>
+          <text class="tl-date" x="1471" y="254">1550–1525 a. C.</text>
+        </a>
+
+        <!-- Amenhotep I: span, tomb never found, only royal mummy never unwrapped by modern archaeologists -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-amenhotep1" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Amenhotep I">
+          <rect x="1516" y="197" width="13" height="6" rx="3" fill="var(--turquoise)" />
+          <line x1="1523" y1="204" x2="1523" y2="225" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1562" y="240" text-anchor="start" fill="var(--turquoise)">Amenhotep I</text>
+          <text class="tl-date" x="1562" y="254" text-anchor="start">1525–1504</text>
+        </a>
+
+        <!-- Thutmose I: span, first king in the Valley of the Kings, reached the Euphrates, Karnak obelisks -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-thutmose1" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Tutmosis I">
+          <rect x="1534" y="197" width="15" height="6" rx="3" fill="var(--solar)" />
+          <line x1="1541" y1="197" x2="1541" y2="160" stroke="var(--solar)" class="tl-leader" />
+          <text class="tl-name" x="1619" y="150" text-anchor="start" fill="var(--solar)">Tutmosis I</text>
+          <text class="tl-date" x="1619" y="164" text-anchor="start">1504–1492 a. C.</text>
+        </a>
+
+        <!-- Thutmose II: span, husband of Hatshepsut, tomb rediscovered 2022 and confirmed 2025 -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-thutmose2" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Tutmosis II">
+          <rect x="1554" y="197" width="14" height="6" rx="3" fill="var(--turquoise)" />
+          <line x1="1561" y1="204" x2="1561" y2="225" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1646" y="240" text-anchor="start" fill="var(--turquoise)">Tutmosis II</text>
+          <text class="tl-date" x="1646" y="254" text-anchor="start">1493–1479 a. C.</text>
+        </a>
+
+        <!-- Hatshepsut: span, female pharaoh, Deir el-Bahari temple, Punt expedition, later erased by Thutmose III -->
+        <rect class="tl-highlight" x="1568" y="192" width="32" height="16" rx="5" />
+        <rect class="tl-highlight" x="1542" y="91" width="84" height="33" rx="5" />
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-hatshepsut" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Hatshepsut">
+          <rect x="1572" y="197" width="24" height="6" rx="3" fill="var(--turquoise)"><title>Hatshepsut, h. 1479–1458 a. C.: Deir el-Bahari, la expedición al Punt y los obeliscos de Karnak</title></rect>
+          <line x1="1584" y1="196" x2="1584" y2="125" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1584" y="106" text-anchor="middle" fill="var(--turquoise)">Hatshepsut</text>
+          <text class="tl-date" x="1584" y="120" text-anchor="middle">1479–1458 a. C.</text>
+        </a>
+
+        <!-- Thutmose III: span, Battle of Megiddo, Karnak Annals, tomb KV34 with the first complete Amduat -->
+        <!-- label moved close to its true position in row270: the old text-jump to x=1814 now sits inside the Seti I / Ramesses II / Abu Simbel cluster, over 130 years later, which reads as misplaced -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-thutmose3" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Tutmosis III">
+          <rect x="1600" y="197" width="33" height="6" rx="3" fill="var(--solar)" />
+          <line x1="1616" y1="204" x2="1616" y2="255" stroke="var(--solar)" class="tl-leader" />
+          <text class="tl-name" x="1600" y="270" text-anchor="middle" fill="var(--solar)">Tutmosis III</text>
+          <text class="tl-date" x="1600" y="284" text-anchor="middle">1458–1425</text>
+        </a>
+
+        <!-- Amenhotep III: span, mortuary temple + Colossi of Memnon, golden age of imperial wealth -->
+        <rect class="tl-highlight" x="1663" y="192" width="46" height="16" rx="5" />
+        <rect class="tl-highlight" x="1639" y="257" width="94" height="33" rx="5" />
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-amenhotep3" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Amenhotep III">
+          <rect x="1667" y="197" width="38" height="6" rx="3" fill="var(--turquoise)"><title>Amenhotep III, h. 1391–1353 a. C.: los Colosos de Memnón, el templo de Luxor y el tercer pilono de Karnak</title></rect>
+          <line x1="1686" y1="204" x2="1686" y2="255" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1686" y="270" text-anchor="middle" fill="var(--turquoise)">Amenhotep III</text>
+          <text class="tl-date" x="1686" y="284" text-anchor="middle">h. 1391–1353 a. C.</text>
+        </a>
+
+        <!-- Akhenaten: span, Aten monotheism, new capital at Amarna — third below-axis tier, rows 150/240/270 are full here -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-akhenaten" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Akenatón">
+          <rect x="1705" y="197" width="17" height="6" rx="3" fill="var(--solar)" />
+          <line x1="1714" y1="204" x2="1714" y2="290" stroke="var(--solar)" class="tl-leader" />
+          <text class="tl-name" x="1714" y="305" text-anchor="middle" fill="var(--solar)">Akenatón</text>
+          <text class="tl-date" x="1714" y="319" text-anchor="middle">h. 1353–1336 a. C.</text>
+        </a>
+
+        <!-- Tutankhamun: span, tomb found nearly intact 1922 — rows 150/240/270/305 are all full here, fourth below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-tutankhamun" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Tutankamón">
+          <rect x="1726" y="197" width="9" height="6" rx="3" fill="var(--gold)" />
+          <line x1="1730" y1="204" x2="1730" y2="325" stroke="var(--gold)" class="tl-leader" />
+          <text class="tl-name" x="1730" y="340" text-anchor="middle" fill="var(--gold)">Tutankamón</text>
+          <text class="tl-date" x="1730" y="354" text-anchor="middle">h. 1332–1323 a. C.</text>
+        </a>
+
+        <!-- Horemheb: span, general-turned-king, erased the Amarna kings — fifth below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-horemheb" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Horemheb">
+          <rect x="1739" y="197" width="27" height="6" rx="3" fill="var(--solar)" />
+          <line x1="1752" y1="204" x2="1752" y2="360" stroke="var(--solar)" class="tl-leader" />
+          <text class="tl-name" x="1752" y="375" text-anchor="middle" fill="var(--solar)">Horemheb</text>
+          <text class="tl-date" x="1752" y="389" text-anchor="middle">h. 1319–1292 a. C.</text>
+        </a>
+
+        <!-- Ramesses I: span, founds the 19th Dynasty, mummy lost in Canada for over a century — sixth below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses1" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ramsés I">
+          <rect x="1766" y="197" width="2" height="6" rx="1" fill="var(--gold)" />
+          <line x1="1767" y1="204" x2="1767" y2="395" stroke="var(--gold)" class="tl-leader" />
+          <text class="tl-name" x="1767" y="410" text-anchor="middle" fill="var(--gold)">Ramsés I</text>
+          <text class="tl-date" x="1767" y="424" text-anchor="middle">h. 1292–1290 a. C.</text>
+        </a>
+
+        <!-- Seti I: span, longest and first fully decorated tomb, Abydos King List, Karnak Hypostyle Hall -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-seti1" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Seti I">
+          <rect x="1768" y="197" width="11" height="6" rx="3" fill="var(--gold)" />
+          <line x1="1773" y1="197" x2="1773" y2="160" stroke="var(--gold)" class="tl-leader" />
+          <text class="tl-name" x="1773" y="150" text-anchor="middle" fill="var(--gold)">Seti I</text>
+          <text class="tl-date" x="1773" y="164" text-anchor="middle">h. 1290–1279 a. C.</text>
+        </a>
+
+        <!-- Ramesses II: span, 66-year reign encompassing Abu Simbel's construction — seventh below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses2" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ramsés II">
+          <rect x="1779" y="197" width="66" height="6" rx="3" fill="var(--gold)" opacity="0.45" />
+          <line x1="1812" y1="204" x2="1812" y2="430" stroke="var(--gold)" class="tl-leader" />
+          <text class="tl-name" x="1812" y="445" text-anchor="middle" fill="var(--gold)">Ramsés II</text>
+          <text class="tl-date" x="1812" y="459" text-anchor="middle">h. 1279–1213 a. C.</text>
+        </a>
+
+        <!-- Merneptah: span, Israel Stele, defeated Libyans and Sea Peoples — eighth below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-merneptah" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Merenptah">
+          <rect x="1845" y="197" width="10" height="6" rx="3" fill="var(--gold)" />
+          <line x1="1850" y1="204" x2="1850" y2="470" stroke="var(--gold)" class="tl-leader" />
+          <text class="tl-name" x="1850" y="485" text-anchor="middle" fill="var(--gold)">Merenptah</text>
+          <text class="tl-date" x="1850" y="499" text-anchor="middle">h. 1213–1203 a. C.</text>
+        </a>
+
+        <!-- Seti II: span, rivaled by Amenmesse, Karnak Way Station, married Twosret — ninth below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-seti2" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Seti II">
+          <rect x="1855" y="197" width="6" height="6" rx="2" fill="var(--solar)" />
+          <line x1="1858" y1="204" x2="1858" y2="510" stroke="var(--solar)" class="tl-leader" />
+          <text class="tl-name" x="1858" y="525" text-anchor="middle" fill="var(--solar)">Seti II</text>
+          <text class="tl-date" x="1858" y="539" text-anchor="middle">h. 1203–1197 a. C.</text>
+        </a>
+
+        <!-- Siptah: span, child king with a club foot, ruled under Twosret and Bay — tenth below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-siptah" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Siptah">
+          <rect x="1861" y="197" width="6" height="6" rx="2" fill="var(--gold)" />
+          <line x1="1864" y1="204" x2="1864" y2="550" stroke="var(--gold)" class="tl-leader" />
+          <text class="tl-name" x="1864" y="565" text-anchor="middle" fill="var(--gold)">Siptah</text>
+          <text class="tl-date" x="1864" y="579" text-anchor="middle">h. 1197–1191 a. C.</text>
+        </a>
+
+        <!-- Twosret: span, female pharaoh, ruled after Siptah, tomb and temple usurped by Setnakhte — eleventh below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-twosret" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Tausert">
+          <rect x="1867" y="197" width="2" height="6" rx="1" fill="var(--gold)" />
+          <line x1="1868" y1="204" x2="1868" y2="590" stroke="var(--gold)" class="tl-leader" />
+          <text class="tl-name" x="1868" y="605" text-anchor="middle" fill="var(--gold)">Tausert</text>
+          <text class="tl-date" x="1868" y="619" text-anchor="middle">h. 1191–1189 a. C.</text>
+        </a>
+
+        <!-- Setnakhte: span, founds the 20th Dynasty after chaos, Elephantine Stela, usurped Twosret's tomb — twelfth below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-setnakhte" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Setnajt">
+          <rect x="1869" y="197" width="3" height="6" rx="1.5" fill="var(--gold)" />
+          <line x1="1870" y1="204" x2="1870" y2="630" stroke="var(--gold)" class="tl-leader" />
+          <text class="tl-name" x="1870" y="645" text-anchor="middle" fill="var(--gold)">Setnajt</text>
+          <text class="tl-date" x="1870" y="659" text-anchor="middle">h. 1189–1186 a. C.</text>
+        </a>
+
+        <!-- Ramesses III: span, Sea Peoples, first labor strike, harem conspiracy — thirteenth below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses3" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ramsés III">
+          <rect x="1872" y="197" width="31" height="6" rx="3" fill="var(--turquoise)" />
+          <line x1="1887" y1="204" x2="1887" y2="665" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1887" y="680" text-anchor="middle" fill="var(--turquoise)">Ramsés III</text>
+          <text class="tl-date" x="1887" y="694" text-anchor="middle">h. 1186–1155 a. C.</text>
+        </a>
+
+        <!-- Ramesses IV: span, tried the harem conspirators, Great Harris Papyrus — fourteenth below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses4" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ramsés IV">
+          <rect x="1903" y="197" width="6" height="6" rx="2" fill="var(--turquoise)" />
+          <line x1="1906" y1="204" x2="1906" y2="700" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1906" y="715" text-anchor="middle" fill="var(--turquoise)">Ramsés IV</text>
+          <text class="tl-date" x="1906" y="729" text-anchor="middle">h. 1155–1149 a. C.</text>
+        </a>
+
+        <!-- Ramesses V: span, Wilbour Papyrus, mummy shows possible smallpox — fifteenth below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses5" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ramsés V">
+          <rect x="1909" y="197" width="4" height="6" rx="1.5" fill="var(--turquoise)" />
+          <line x1="1911" y1="204" x2="1911" y2="735" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1911" y="750" text-anchor="middle" fill="var(--turquoise)">Ramsés V</text>
+          <text class="tl-date" x="1911" y="764" text-anchor="middle">h. 1149–1145 a. C.</text>
+        </a>
+
+        <!-- Ramesses VI: span, usurped KV9, inadvertently hid Tutankhamun's tomb — sixteenth below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses6" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ramsés VI">
+          <rect x="1913" y="197" width="8" height="6" rx="2.5" fill="var(--turquoise)" />
+          <line x1="1917" y1="204" x2="1917" y2="770" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1917" y="785" text-anchor="middle" fill="var(--turquoise)">Ramsés VI</text>
+          <text class="tl-date" x="1917" y="799" text-anchor="middle">h. 1145–1137 a. C.</text>
+        </a>
+
+        <!-- Ramesses VII: span, continued economic strain — seventeenth below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses7" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ramsés VII">
+          <rect x="1921" y="197" width="7" height="6" rx="2" fill="var(--turquoise)" />
+          <line x1="1925" y1="204" x2="1925" y2="805" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1925" y="820" text-anchor="middle" fill="var(--turquoise)">Ramsés VII</text>
+          <text class="tl-date" x="1925" y="834" text-anchor="middle">h. 1137–1130 a. C.</text>
+        </a>
+
+        <!-- Ramesses VIII: span, shortest and least-documented reign — eighteenth below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses8" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ramsés VIII">
+          <rect x="1928" y="197" width="1" height="6" rx="0.5" fill="var(--turquoise)" />
+          <line x1="1928" y1="204" x2="1928" y2="840" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1928" y="855" text-anchor="middle" fill="var(--turquoise)">Ramsés VIII</text>
+          <text class="tl-date" x="1928" y="869" text-anchor="middle">h. 1130–1129 a. C.</text>
+        </a>
+
+        <!-- Ramesses IX: span, Tomb Robbery Papyri — nineteenth below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses9" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ramsés IX">
+          <rect x="1929" y="197" width="18" height="6" rx="3" fill="var(--turquoise)" />
+          <line x1="1938" y1="204" x2="1938" y2="875" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1938" y="890" text-anchor="middle" fill="var(--turquoise)">Ramsés IX</text>
+          <text class="tl-date" x="1938" y="904" text-anchor="middle">h. 1129–1111 a. C.</text>
+        </a>
+
+        <!-- Ramesses X: span, unfinished tomb, poorly documented — twentieth below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses10" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ramsés X">
+          <rect x="1947" y="197" width="4" height="6" rx="1.5" fill="var(--turquoise)" />
+          <line x1="1949" y1="204" x2="1949" y2="910" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1949" y="925" text-anchor="middle" fill="var(--turquoise)">Ramsés X</text>
+          <text class="tl-date" x="1949" y="939" text-anchor="middle">h. 1111–1107 a. C.</text>
+        </a>
+
+        <!-- Ramesses XI: span, Story of Wenamun, Herihor, end of the New Kingdom — twenty-first below-axis tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses11" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ramsés XI">
+          <rect x="1951" y="197" width="30" height="6" rx="3" fill="var(--turquoise)" />
+          <line x1="1966" y1="204" x2="1966" y2="945" stroke="var(--turquoise)" class="tl-leader" />
+          <text class="tl-name" x="1966" y="960" text-anchor="middle" fill="var(--turquoise)">Ramsés XI</text>
+          <text class="tl-date" x="1966" y="974" text-anchor="middle">h. 1107–1077 a. C.</text>
+        </a>
+
+        <!-- Abu Simbel: span -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-abusimbel" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Abu Simbel">
+          <rect x="1795" y="197" width="22" height="6" rx="3" fill="var(--malachite)" />
+          <line x1="1806" y1="204" x2="1806" y2="255" stroke="var(--malachite)" class="tl-leader" />
+          <text class="tl-name" x="1806" y="270" text-anchor="middle" fill="var(--malachite)">Abu Simbel</text>
+          <text class="tl-date" x="1806" y="284" text-anchor="middle">h. 1264–1244 a. C.</text>
+        </a>
+
+        <!-- Philae: span -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-philae" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de File">
+          <rect x="2615" y="197" width="55" height="6" rx="3" fill="var(--lapis)" />
+          <line x1="2642" y1="197" x2="2642" y2="160" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2642" y="150" text-anchor="middle" fill="var(--lapis)">File</text>
+          <text class="tl-date" x="2642" y="164" text-anchor="middle">Templo de Isis, 285</text>
+        </a>
+
+        <!-- Serapeum: still active in the Ptolemaic period, contemporary with Philae -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-serapeum" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Serapeum">
+          <circle cx="2600" cy="200" r="4" fill="var(--bg-panel)" stroke="var(--indigo)" stroke-width="1.8" />
+          <line x1="2600" y1="204" x2="2600" y2="647" stroke="var(--indigo)" class="tl-leader" stroke-dasharray="2 2" />
+          <text class="tl-name" x="2600" y="660" text-anchor="middle" fill="var(--indigo)">Serapeum aún en uso</text>
+          <text class="tl-date" x="2600" y="674" text-anchor="middle">Toros Apis, desde h. 1390 a. C.</text>
+        </a>
+
+        <!-- Ptolemy I Soter: satrap from 323 BC, king 305–282 BC; drawn in a lane just under the axis, below Philae's bar -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy1" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ptolomeo I">
+          <rect x="2632" y="205" width="13" height="5" rx="2.5" fill="var(--lapis)" />
+          <line x1="2632" y1="210" x2="2632" y2="612" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2628" y="625" fill="var(--lapis)">Ptolomeo I</text>
+          <text class="tl-date" x="2628" y="639">305–282 a. C.</text>
+        </a>
+        <!-- Ptolemy II Philadelphus: co-ruler from 285 BC, alone 282–246 BC; same lane under the axis -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy2" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ptolomeo II">
+          <rect x="2645" y="205" width="21" height="5" rx="2.5" fill="var(--lapis)" />
+          <line x1="2660" y1="210" x2="2660" y2="577" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2656" y="590" fill="var(--lapis)">Ptolomeo II</text>
+          <text class="tl-date" x="2656" y="604">285–246 a. C.</text>
+        </a>
+        <!-- Ptolemy III Euergetes: 246–222 BC; same lane under the axis -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy3" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ptolomeo III">
+          <rect x="2666" y="205" width="14" height="5" rx="2.5" fill="var(--lapis)" />
+          <line x1="2676" y1="210" x2="2676" y2="542" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2672" y="555" fill="var(--lapis)">Ptolomeo III</text>
+          <text class="tl-date" x="2672" y="569">246–222 a. C.</text>
+        </a>
+        <!-- Ptolemy IV Philopator: 221–204 BC; same lane under the axis -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy4" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ptolomeo IV">
+          <rect x="2681" y="205" width="10" height="5" rx="2.5" fill="var(--lapis)" />
+          <line x1="2686" y1="210" x2="2686" y2="507" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2682" y="520" fill="var(--lapis)">Ptolomeo IV</text>
+          <text class="tl-date" x="2682" y="534">221–204 a. C.</text>
+        </a>
+        <!-- Ptolemy V Epiphanes: 204–180 BC, the Rosetta Stone; same lane under the axis -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy5" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ptolomeo V">
+          <rect x="2691" y="205" width="14" height="5" rx="2.5" fill="var(--lapis)" />
+          <line x1="2700" y1="210" x2="2700" y2="472" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2696" y="485" fill="var(--lapis)">Ptolomeo V</text>
+          <text class="tl-date" x="2696" y="499">204–180 a. C.</text>
+        </a>
+        <!-- Ptolemy VI Philometor: 180–145 BC (with interruptions); same lane under the axis -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy6" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ptolomeo VI">
+          <rect x="2705" y="205" width="21" height="5" rx="2.5" fill="var(--lapis)" />
+          <line x1="2715" y1="210" x2="2715" y2="438" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2711" y="450" fill="var(--lapis)">Ptolomeo VI</text>
+          <text class="tl-date" x="2711" y="464">180–145 a. C.</text>
+        </a>
+        <!-- Ptolemy VIII Euergetes II (Physcon): king of Egypt 145–116 BC (earlier co-ruler 170–164 BC, then king of Cyrene) -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy8" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ptolomeo VIII">
+          <rect x="2726" y="197" width="17" height="6" rx="3" fill="var(--lapis)" />
+          <line x1="2740" y1="197" x2="2740" y2="63" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2736" y="45" fill="var(--lapis)">Ptolomeo VIII</text>
+          <text class="tl-date" x="2736" y="59">145–116 a. C.</text>
+        </a>
+        <!-- Ptolemy X Alexander I: 107–88 BC, between his brother Ptolemy IX's two reigns -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy10" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ptolomeo X">
+          <rect x="2748" y="197" width="11" height="6" rx="3" fill="var(--lapis)" />
+          <line x1="2753" y1="197" x2="2753" y2="98" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2749" y="80" fill="var(--lapis)">Ptolomeo X</text>
+          <text class="tl-date" x="2749" y="94">107–88 a. C.</text>
+        </a>
+        <!-- Ptolemy IX Soter II (Lathyros): two reigns, 116–107 BC and 88–81 BC, with his brother Ptolemy X in between -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy9" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ptolomeo IX">
+          <rect x="2743" y="197" width="5" height="6" rx="2.5" fill="var(--lapis)" />
+          <rect x="2759" y="197" width="4" height="6" rx="2" fill="var(--lapis)" />
+          <line x1="2761" y1="197" x2="2761" y2="133" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2757" y="115" fill="var(--lapis)">Ptolomeo IX</text>
+          <text class="tl-date" x="2757" y="129">116–107 y 88–81 a. C.</text>
+        </a>
+        <!-- Ptolemy XI Alexander II: reigned 19 days in 80 BC, lynched by the Alexandrians; a death marker, label ending before the Serapeum leader -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy11" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ptolomeo XI">
+          <circle cx="2764" cy="200" r="3.5" fill="var(--bg-panel)" stroke="var(--lapis)" stroke-width="1.6" />
+          <line x1="2764" y1="204" x2="2764" y2="402" stroke="var(--lapis)" class="tl-leader" stroke-dasharray="2 2" />
+          <text class="tl-name" x="2760" y="415" fill="var(--lapis)">Ptolomeo XI</text>
+          <text class="tl-date" x="2760" y="429">asesinado en 80 a. C.</text>
+        </a>
+        <!-- Ptolemy XII Neos Dionysos (Auletes): 80–58 BC and 55–51 BC; bars in the lane under the axis, top tier -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy12" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ptolomeo XII">
+          <rect x="2766" y="205" width="11" height="5" rx="2.5" fill="var(--lapis)" />
+          <rect x="2778" y="205" width="3" height="5" rx="1.5" fill="var(--lapis)" />
+          <line x1="2772" y1="210" x2="2772" y2="368" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2768" y="380" fill="var(--lapis)">Ptolomeo XII</text>
+          <text class="tl-date" x="2768" y="394">80–58 y 55–51 a. C.</text>
+        </a>
+        <!-- Ptolemy XIII Theos Philopator: 51–47 BC, with Cleopatra VII; top of the staircase -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy13" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ptolomeo XIII">
+          <rect x="2781" y="205" width="3" height="5" rx="1.5" fill="var(--lapis)" />
+          <line x1="2782" y1="210" x2="2782" y2="333" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2778" y="345" fill="var(--lapis)">Ptolomeo XIII</text>
+          <text class="tl-date" x="2778" y="359">51–47 a. C.</text>
+        </a>
+        <!-- Cleopatra VII: 51–30 BC, the last of the dynasty; a second lane under the Ptolemaic one, top of the staircase -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-cleopatra7" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Cleopatra VII">
+          <rect x="2781" y="212" width="12" height="5" rx="2.5" fill="var(--lapis)" />
+          <line x1="2789" y1="217" x2="2789" y2="263" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2787" y="275" fill="var(--lapis)">Cleopatra VII</text>
+          <text class="tl-date" x="2787" y="289">51–30 a. C.</text>
+        </a>
+        <!-- Ptolemy XIV: 47–44 BC, Cleopatra's younger brother and nominal co-ruler; a third lane under the axis -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy14" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ptolomeo XIV">
+          <rect x="2783" y="219" width="3" height="4" rx="1.5" fill="var(--lapis)" />
+          <line x1="2784" y1="223" x2="2784" y2="297" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2785" y="310" fill="var(--lapis)">Ptolomeo XIV</text>
+          <text class="tl-date" x="2785" y="324">47–44 a. C.</text>
+        </a>
+        <!-- Ptolemy XV Caesarion: 44–30 BC, co-ruler with Cleopatra; third lane, top of the staircase -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy15" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ptolomeo XV Cesarión">
+          <rect x="2787" y="219" width="6" height="4" rx="2" fill="var(--lapis)" />
+          <line x1="2791" y1="223" x2="2791" y2="228" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2792" y="240" fill="var(--lapis)">Cesarión</text>
+          <text class="tl-date" x="2792" y="254">Ptolomeo XV, 44–30 a. C.</text>
+        </a>
+        <!-- Ptolemy VII Neos Philopator: murdered 145 BC, a death marker above the axis between Philae and Dendera -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy7" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ptolomeo VII">
+          <circle cx="2726" cy="200" r="3.5" fill="var(--bg-panel)" stroke="var(--lapis)" stroke-width="1.6" />
+          <line x1="2726" y1="196" x2="2726" y2="133" stroke="var(--lapis)" class="tl-leader" stroke-dasharray="2 2" />
+          <text class="tl-name" x="2730" y="115" text-anchor="end" fill="var(--lapis)">Ptolomeo VII</text>
+          <text class="tl-date" x="2730" y="129" text-anchor="end">asesinado en 145 a. C.</text>
+        </a>
+
+        <!-- Dendera: point, begun well after Philae, continues past this chart's scope into Roman rule -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-dendera" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Dendera">
+          <circle cx="2779" cy="200" r="4.5" fill="var(--bg-panel)" stroke="var(--lapis)" stroke-width="1.8" />
+          <line x1="2779" y1="196" x2="2779" y2="160" stroke="var(--lapis)" class="tl-leader" stroke-dasharray="2 2" />
+          <text class="tl-name" x="2775" y="150" fill="var(--lapis)">Dendera</text>
+          <text class="tl-date" x="2775" y="164">Begun 54 a. C.</text>
+        </a>
+
+        <!-- Meroe: span, a separate kingdom (Kush), not Egypt — royal pyramid field spanning six centuries -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-meroe" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Meroe Pyramids">
+          <rect x="2839" y="197" width="210" height="6" rx="3" fill="var(--kush)" />
+          <line x1="2944" y1="197" x2="2944" y2="160" stroke="var(--kush)" class="tl-leader" />
+          <text class="tl-name" x="2944" y="150" text-anchor="middle" fill="var(--kush)">Pirámides de Meroe</text>
+          <text class="tl-date" x="2944" y="164" text-anchor="middle">Reino de Kush, Sudán</text>
+        </a>
+
+
+        <!-- 25th Dynasty segment (c. 760–650 BC): Piye, the Kushite king who conquered Egypt -->
+        <rect x="2047" y="55" width="113" height="245" fill="var(--sand-line)" opacity="0.28" />
+        <text class="tl-era-label" x="2104" y="45" text-anchor="middle">25TH DYN.</text>
+        <rect x="2160" y="55" width="146" height="245" fill="var(--sand-line)" opacity="0.16" />
+        <text class="tl-era-label" x="2233" y="45" text-anchor="middle">26TH DYN.</text>
+        <rect x="2306" y="55" width="140" height="245" fill="var(--sand-line)" opacity="0.3" />
+        <text class="tl-era-label" x="2376" y="45" text-anchor="middle">PERSA</text>
+        <rect x="2461" y="55" width="42" height="245" fill="var(--sand-line)" opacity="0.16" />
+        <text class="tl-era-label" x="2482" y="45" text-anchor="middle">DIN. XXX</text>
+        <!-- second Persian period (31st Dynasty), 343–332 BC: unlabelled sliver in the Persian shade -->
+        <rect x="2503" y="55" width="10" height="245" fill="var(--sand-line)" opacity="0.3" />
+        <!-- Alexander the Great, 332–323 BC: unlabelled sliver before the break -->
+        <rect x="2513" y="55" width="13" height="245" fill="var(--sand-line)" opacity="0.16" />
+        <line class="tl-axis" x1="2047" y1="200" x2="2526" y2="200" />
+        <g class="tl-break">
+          <line x1="2564" y1="193" x2="2574" y2="207" />
+          <line x1="2572" y1="193" x2="2582" y2="207" />
+        </g>
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-piye" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Piye">
+          <rect x="2064" y="197" width="33" height="6" rx="3" fill="var(--kush)" />
+          <line x1="2080" y1="197" x2="2080" y2="160" stroke="var(--kush)" class="tl-leader" />
+          <text class="tl-name" x="2084" y="150" text-anchor="end" fill="var(--kush)">Piye</text>
+          <text class="tl-date" x="2084" y="164" text-anchor="end">h. 744–714 a. C.</text>
+        </a>
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-shabaka" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Shabaka">
+          <rect x="2107" y="197" width="16" height="6" rx="3" fill="var(--kush)" opacity="0.8" />
+          <line x1="2115" y1="203" x2="2115" y2="225" stroke="var(--kush)" class="tl-leader" />
+          <text class="tl-name" x="2119" y="240" text-anchor="end" fill="var(--kush)">Shabaka</text>
+          <text class="tl-date" x="2119" y="254" text-anchor="end">h. 705–690 a. C.</text>
+        </a>
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-taharqa" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Taharqa">
+          <rect x="2123" y="197" width="28" height="6" rx="3" fill="var(--kush)" />
+          <line x1="2137" y1="197" x2="2137" y2="125" stroke="var(--kush)" class="tl-leader" />
+          <text class="tl-name" x="2133" y="115" fill="var(--kush)">Taharqa</text>
+          <text class="tl-date" x="2133" y="129">690–664 a. C.</text>
+        </a>
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-tantamani" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Tantamani">
+          <rect x="2152" y="197" width="9" height="6" rx="3" fill="var(--kush)" opacity="0.8" />
+          <line x1="2156" y1="203" x2="2156" y2="260" stroke="var(--kush)" class="tl-leader" />
+          <text class="tl-name" x="2160" y="275" text-anchor="end" fill="var(--kush)">Tantamani</text>
+          <text class="tl-date" x="2160" y="289" text-anchor="end">664–656 a. C.</text>
+        </a>
+        <g class="tl-tick"><line x1="2101" y1="200" x2="2101" y2="208" /></g>
+        <g class="tl-tick-label" text-anchor="end"><text x="2101" y="222">h. 760–323 a. C.</text></g>
+        <!-- Psamtik I: rules from Sais from 664 BC, alongside the last Kushite claim, alone from 656 BC; drawn in a lane just under the axis -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-psamtik1" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Psamético I">
+          <rect x="2152" y="205" width="59" height="5" rx="2.5" fill="var(--malachite)" />
+          <line x1="2200" y1="197" x2="2200" y2="90" stroke="var(--malachite)" class="tl-leader" />
+          <text class="tl-name" x="2196" y="80" fill="var(--malachite)">Psamético I</text>
+          <text class="tl-date" x="2196" y="94">664–610 a. C.</text>
+        </a>
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-necho2" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Necao II">
+          <rect x="2211" y="197" width="16" height="6" rx="3" fill="var(--malachite)" />
+          <line x1="2219" y1="203" x2="2219" y2="225" stroke="var(--malachite)" class="tl-leader" />
+          <text class="tl-name" x="2215" y="240" fill="var(--malachite)">Necao II</text>
+          <text class="tl-date" x="2215" y="254">610–595 a. C.</text>
+        </a>
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-psamtik2" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Psamético II">
+          <rect x="2227" y="197" width="7" height="6" rx="3" fill="var(--malachite)" />
+          <line x1="2230" y1="197" x2="2230" y2="125" stroke="var(--malachite)" class="tl-leader" />
+          <text class="tl-name" x="2226" y="115" fill="var(--malachite)">Psamético II</text>
+          <text class="tl-date" x="2226" y="129">595–589 a. C.</text>
+        </a>
+        <!-- Ahmose II (Amasis): 570–526 BC, the last long reign before the Persian conquest of 525 BC -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ahmose2" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Ahmose II">
+          <rect x="2254" y="197" width="48" height="6" rx="3" fill="var(--malachite)" />
+          <line x1="2290" y1="203" x2="2290" y2="262" stroke="var(--malachite)" class="tl-leader" />
+          <text class="tl-name" x="2286" y="275" fill="var(--malachite)">Ahmose II</text>
+          <text class="tl-date" x="2286" y="289">570–526 a. C.</text>
+        </a>
+        <!-- Cambyses II: Persian king, conquers Egypt at Pelusium in 525 BC and rules it until his death in 522 BC -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-cambyses" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Cambises II">
+          <rect x="2303" y="197" width="5" height="6" rx="2.5" fill="var(--persia)" />
+          <line x1="2305" y1="197" x2="2305" y2="90" stroke="var(--persia)" class="tl-leader" />
+          <text class="tl-name" x="2301" y="80" fill="var(--persia)">Cambises II</text>
+          <text class="tl-date" x="2301" y="94" dx="8">525–522 a. C.</text>
+        </a>
+        <!-- Darius I: rules Egypt 522–486 BC; completes Necho's canal, builds the Hibis temple at Kharga -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-darius1" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Darío I">
+          <rect x="2308" y="197" width="39" height="6" rx="3" fill="var(--persia)" />
+          <line x1="2330" y1="203" x2="2330" y2="228" stroke="var(--persia)" class="tl-leader" />
+          <text class="tl-name" x="2326" y="240" fill="var(--persia)">Darío I</text>
+          <text class="tl-date" x="2326" y="254">522–486 a. C.</text>
+        </a>
+        <!-- Xerxes I: rules Egypt 486–465 BC; crushes the revolt of 484 BC; no pin, no Egyptian monument -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-xerxes1" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Jerjes I">
+          <rect x="2347" y="197" width="23" height="6" rx="3" fill="var(--persia)" />
+          <line x1="2360" y1="197" x2="2360" y2="133" stroke="var(--persia)" class="tl-leader" />
+          <text class="tl-name" x="2356" y="115" fill="var(--persia)">Jerjes I</text>
+          <text class="tl-date" x="2356" y="129">486–465 a. C.</text>
+        </a>
+        <!-- Artaxerxes I: rules Egypt 465–424 BC; the revolt of Inaros and the Athenian expedition; no pin -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-artaxerxes1" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Artajerjes I">
+          <rect x="2369" y="197" width="44" height="6" rx="3" fill="var(--persia)" />
+          <line x1="2400" y1="203" x2="2400" y2="262" stroke="var(--persia)" class="tl-leader" />
+          <text class="tl-name" x="2396" y="275" fill="var(--persia)">Artajerjes I</text>
+          <text class="tl-date" x="2396" y="289">465–424 a. C.</text>
+        </a>
+        <!-- Darius II: rules Egypt 423–404 BC; the Elephantine papyri; Egypt breaks away as he dies -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-darius2" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Darío II">
+          <rect x="2414" y="197" width="21" height="6" rx="3" fill="var(--persia)" />
+          <line x1="2430" y1="197" x2="2430" y2="90" stroke="var(--persia)" class="tl-leader" />
+          <text class="tl-name" x="2426" y="80" fill="var(--persia)">Darío II</text>
+          <text class="tl-date" x="2426" y="94">423–404 a. C.</text>
+        </a>
+        <!-- Artaxerxes II: recognised in Egypt only 404–c. 400 BC, until Amyrtaeus's rule reached Elephantine -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-artaxerxes2" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Artajerjes II">
+          <rect x="2435" y="197" width="5" height="6" rx="2.5" fill="var(--persia)" />
+          <line x1="2440" y1="197" x2="2440" y2="133" stroke="var(--persia)" class="tl-leader" />
+          <text class="tl-name" x="2436" y="115" fill="var(--persia)">Artajerjes II</text>
+          <text class="tl-date" x="2436" y="129">404–h. 400 a. C.</text>
+        </a>
+        <!-- Nectanebo II (Nakhthorhebyt): 360–342 BC, last native pharaoh, until Artaxerxes III's reconquest -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-nectanebo2" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Nectanebo II">
+          <rect x="2483" y="197" width="20" height="6" rx="3" fill="var(--malachite)" />
+          <line x1="2493" y1="203" x2="2493" y2="297" stroke="var(--malachite)" class="tl-leader" />
+          <text class="tl-name" x="2489" y="310" fill="var(--malachite)">Nectanebo II</text>
+          <text class="tl-date" x="2489" y="324">360–342 a. C.</text>
+        </a>
+        <!-- Nectanebo I (Nakhtnebef): 380–362 BC, founder of the 30th Dynasty -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-nectanebo1" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Nectanebo I">
+          <rect x="2461" y="197" width="20" height="6" rx="3" fill="var(--malachite)" />
+          <line x1="2471" y1="203" x2="2471" y2="332" stroke="var(--malachite)" class="tl-leader" />
+          <text class="tl-name" x="2467" y="345" fill="var(--malachite)">Nectanebo I</text>
+          <text class="tl-date" x="2467" y="359">380–362 a. C.</text>
+        </a>
+        <!-- Artaxerxes III: reconquers Egypt in 343 BC, rules it until poisoned in 338 BC -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-artaxerxes3" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Artajerjes III">
+          <rect x="2502" y="197" width="5" height="6" rx="2.5" fill="var(--persia)" />
+          <line x1="2505" y1="203" x2="2505" y2="262" stroke="var(--persia)" class="tl-leader" />
+          <text class="tl-name" x="2501" y="275" fill="var(--persia)">Artajerjes III</text>
+          <text class="tl-date" x="2501" y="289">343–338 a. C.</text>
+        </a>
+        <!-- Darius III: rules Egypt 336–332 BC, until it surrenders to Alexander the Great -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-darius3" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Darío III">
+          <rect x="2509" y="197" width="5" height="6" rx="2.5" fill="var(--persia)" />
+          <line x1="2512" y1="197" x2="2512" y2="160" stroke="var(--persia)" class="tl-leader" />
+          <text class="tl-name" x="2508" y="150" fill="var(--persia)">Darío III</text>
+          <text class="tl-date" x="2508" y="164">336–332</text>
+        </a>
+        <!-- Alexander the Great: takes Egypt in 332 BC, founds Alexandria in 331 BC, dies in 323 BC -->
+        <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-alexander" target="_blank" rel="noopener noreferrer" class="tl-link" aria-label="Ir a la ficha de Alejandro Magno">
+          <rect x="2513" y="197" width="10" height="6" rx="3" fill="var(--lapis)" />
+          <line x1="2518" y1="203" x2="2518" y2="228" stroke="var(--lapis)" class="tl-leader" />
+          <text class="tl-name" x="2514" y="240" fill="var(--lapis)">Alexander</text>
+          <text class="tl-date" x="2514" y="254">332–323 a. C.</text>
+        </a>
+
+        <!-- year ticks -->
+        <g class="tl-tick">
+          <line x1="80" y1="200" x2="80" y2="208" />
+          <line x1="230" y1="200" x2="230" y2="208" />
+          <line x1="380" y1="200" x2="380" y2="208" />
+          <line x1="410" y1="200" x2="410" y2="208" />
+          <line x1="660" y1="200" x2="660" y2="208" />
+          <line x1="910" y1="200" x2="910" y2="208" />
+          <line x1="1082" y1="200" x2="1082" y2="208" />
+          <line x1="1305" y1="200" x2="1305" y2="208" />
+          <line x1="2664" y1="200" x2="2664" y2="208" />
+          <line x1="2944" y1="200" x2="2944" y2="208" />
+        </g>
+        <g class="tl-tick-label" text-anchor="middle">
+          <text x="80" y="222">3500</text>
+          <text x="230" y="222">3300 a. C.</text>
+          <text x="395" y="222">~3100–2690</text>
+          <text x="660" y="222">2500 a. C.</text>
+          <text x="910" y="222">2400</text>
+          <text x="1082" y="222">2135–1839</text>
+          <text x="1305" y="222">1571–1550</text>
+          <text x="2664" y="189">250 a. C.</text>
+          <text x="2944" y="222">270 a. C.–s. IV d. C.</text>
+        </g>
+      </svg>
+      <p class="chart-caption">Eje cortado: los años están a escala dentro de cada tramo, no entre los huecos. Desliza hacia los lados para moverte en el tiempo.</p>
+    </div>
+
+    <div class="legend">
+      <span class="legend-item"><span class="legend-dot" style="background:var(--ochre)"></span>Tumba pintada (Hieracómpolis)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--gold)"></span>Paleta de Narmer</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--gold)"></span>Gebtu, colosos de Min</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--rose)"></span>Abydos</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--ochre-dim)"></span>Recintos de Jasejemuy</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--indigo)"></span>De la pirámide escalonada a la verdadera</span>
+      <a class="legend-item is-featured" style="--hl: var(--indigo);" href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-djoser" target="_blank" rel="noopener noreferrer"><span class="legend-dot" style="background:var(--indigo)"></span>Djoser, Pirámide escalonada, h. 2670–2650 a. C.</a>
+      <a class="legend-item is-featured" style="--hl: var(--indigo);" href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-sneferu" target="_blank" rel="noopener noreferrer"><span class="legend-dot" style="background:var(--indigo)"></span>Snefru, Meidum y Dahshur, h. 2613–2589 a. C.</a>
+      <a class="legend-item is-featured" style="--hl: var(--indigo);" href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-giza" target="_blank" rel="noopener noreferrer"><span class="legend-dot" style="background:var(--indigo)"></span>Keops, Gran Pirámide, h. 2560 a. C.</a>
+      <a class="legend-item is-featured" style="--hl: var(--indigo);" href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-khafre" target="_blank" rel="noopener noreferrer"><span class="legend-dot" style="background:var(--indigo)"></span>Kefrén, segunda pirámide y Esfinge, h. 2558–2532 a. C.</a>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--solar)"></span>Abusir, templo solar</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--ink-soft)"></span>Piedra de Palermo</span>
+      <a class="legend-item is-featured" style="--hl: var(--indigo);" href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-pepi" target="_blank" rel="noopener noreferrer"><span class="legend-dot" style="background:var(--indigo)"></span>Pepi II, el reinado más largo, h. 2278–2184 a. C.</a>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Mentuhotep I (dudoso)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Intef II</span>
+      <span class="legend-item is-featured" style="--hl: var(--indigo);"><span class="legend-dot" style="background:var(--indigo); opacity: 0.45; border-radius: 2px;"></span>Reino Medio, h. 2055–1650 a. C. (sombreado)</span>
+      <a class="legend-item is-featured" style="--hl: var(--indigo);" href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-mentuhotep2" target="_blank" rel="noopener noreferrer"><span class="legend-dot" style="background:var(--turquoise)"></span>Mentuhotep II, reunifica Egipto, h. 2055–2004 a. C.</a>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Amenemhat I</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Sesostris I</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Amenemhat II</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Sesostris III</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Nubkheperre Intef</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Kamose</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--indigo)"></span>Ahmose I (última pirámide)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Amenhotep I</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--solar)"></span>Tutmosis I</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Tutmosis II</span>
+      <a class="legend-item is-featured" style="--hl: var(--indigo);" href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-hatshepsut" target="_blank" rel="noopener noreferrer"><span class="legend-dot" style="background:var(--turquoise)"></span>Hatshepsut, Deir el-Bahari, h. 1479–1458 a. C.</a>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--solar)"></span>Tutmosis III</span>
+      <a class="legend-item is-featured" style="--hl: var(--indigo);" href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-amenhotep3" target="_blank" rel="noopener noreferrer"><span class="legend-dot" style="background:var(--turquoise)"></span>Amenhotep III, Colosos de Memnón, h. 1391–1353 a. C.</a>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--solar)"></span>Akenatón</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--gold)"></span>Tutankamón</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--solar)"></span>Horemheb</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--gold)"></span>Ramsés I</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--gold)"></span>Seti I</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--gold)"></span>Ramsés II</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--gold)"></span>Merenptah</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--solar)"></span>Seti II</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--gold)"></span>Siptah</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--gold)"></span>Tausert</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--gold)"></span>Setnajt</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Ramsés III</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Ramsés IV</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Ramsés V</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Ramsés VI</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Ramsés VII</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Ramsés VIII</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Ramsés IX</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Ramsés X</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--turquoise)"></span>Ramsés XI</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Piye (dinastía XXV, Kush)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Shabaka (dinastía XXV, Kush)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Taharqa (dinastía XXV, Kush)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Tantamani (dinastía XXV, Kush)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Psamético I (dinastía XXVI)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Necao II (dinastía XXVI)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Psamético II (dinastía XXVI)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Ahmose II / Amasis (dinastía XXVI)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--persia)"></span>Cambises II (dinastía XXVII, persa)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--persia)"></span>Darío I (dinastía XXVII, persa)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--persia)"></span>Jerjes I (dinastía XXVII, persa)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--persia)"></span>Artajerjes I (dinastía XXVII, persa)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--persia)"></span>Darío II (dinastía XXVII, persa)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--persia)"></span>Artajerjes II (dinastía XXVII, persa)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Nectanebo I (dinastía XXX)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Nectanebo II (dinastía XXX)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--persia)"></span>Artajerjes III (dinastía XXXI, persa)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--persia)"></span>Darío III (dinastía XXXI, persa)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Alejandro Magno (Macedonian)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolomeo I Soter (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolomeo II Philadelphus (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolomeo III Euergetes (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolomeo IV Philopator (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolomeo V Epiphanes (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolomeo VI Philometor (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolomeo VII Neos Philopator (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolomeo VIII Euergetes II (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolomeo IX Soter II (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolomeo X Alexander I (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolomeo XI Alexander II (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolomeo XII Auletes (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolomeo XIII Theos Philopator (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Cleopatra VII (ptolemaica)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolomeo XIV (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Ptolomeo XV Cesarión (Ptolemaic)</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--malachite)"></span>Abu Simbel</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>File</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--lapis)"></span>Dendera</span>
+      <span class="legend-item"><span class="legend-dot" style="background:var(--kush)"></span>Pirámides de Meroe</span>
+    </div>
+
+    <div class="below-grid">
+      <div class="note-card">
+        <h3>Lo que el eje deja fuera</h3>
+        <p class="see-also" style="margin: -0.4rem 0 1rem;">Siete lugares tienen una segunda fecha que no tiene nada que ver con su construcción: cuando el mundo moderno los encontró o los trasladó. Son demasiado recientes para un eje antes de Cristo, así que van aquí.</p>
+        <ul class="note-list">
+          <li>
+            <span class="note-year">1821</span>
+            <span>El techo del zodiaco redondo de Dendera se recorta y se envía a París; hoy ocupa su lugar una copia de yeso.</span>
+          </li>
+          <li>
+            <span class="note-year">1827–35</span>
+            <span>Los ladrones sacan de su tumba el ataúd dorado de Nubkheperre Intef, que luego compra el Museo Británico.</span>
+          </li>
+          <li>
+            <span class="note-year">1859</span>
+            <span>La Piedra de Palermo aparece en una compra privada en Sicilia; nunca se anotó dónde se encontró en Egipto.</span>
+          </li>
+          <li>
+            <span class="note-year">1897–98</span>
+            <span>Se excava la Paleta de Narmer en Hieracómpolis, en el Depósito Principal del templo de Horus.</span>
+          </li>
+          <li>
+            <span class="note-year">1968</span>
+            <span>Los templos de Abu Simbel se cortan en más de 1.000 bloques y se reconstruyen más arriba, a salvo del lago Nasser.</span>
+          </li>
+          <li>
+            <span class="note-year">1977–80</span>
+            <span>El templo de Isis de File se desmonta y se traslada a la isla de Agilkia, a salvo de la Presa Alta de Asuán.</span>
+          </li>
+          <li>
+            <span class="note-year">2022–25</span>
+            <span>Se encuentra y se confirma la tumba de Tutmosis II en los uadis occidentales: la primera tumba real nueva desde 1922.</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="note-card">
+        <h3>Cómo leer el grupo</h3>
+        <p style="margin: -0.4rem 0 0; color: var(--ink-soft); font-size: 0.95rem;">Casi todo lo que pasa entre Djoser y Keops cabe en 110 años. La Pirámide escalonada de Saqqara, la pequeña pirámide de Elefantina, Meidum, las dos pirámides de Dahshur y la propia Gran Pirámide: cinco obras distintas, un largo aprendizaje para acertar con el ángulo de una pirámide, que termina en Guiza.</p>
+      </div>
+    </div>
+  </section>
+
+  <p class="chart-caption" style="margin-top: 2rem;">Cada nombre enlazado abre su ficha en la página principal (en inglés).</p>
+</div>
