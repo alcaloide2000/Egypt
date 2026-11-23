@@ -1,0 +1,232 @@
+<title>Luxor Temple</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: intro, a plan of the temple from the avenue of sphinxes to the sanctuary beside numbered notes, the Opet festival, layers of history, a timeline and tips. Shares its look with the temple guides. Phone first: everything stacks. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --lux: #7b4a8c;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --lux: #c79ad6; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --lux: #c79ad6; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--great); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--great); }
+  .mk:focus-visible { outline: none; }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .eyebrow { color: var(--lux); }
+  .ruin { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 1; }
+  .col { fill: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--lux); }
+</style>
+
+<div class="page">
+  <p class="eyebrow">East bank of Luxor · temple of Amun · c. 1390 BC to Roman times</p>
+  <h1>Luxor Temple</h1>
+  <p class="lede">In the middle of modern Luxor, by the river, stands the temple that Amun visited once a year from Karnak, 2.7 km to the north. Amenhotep III built most of it, Ramesses II gave it its great gateway, and Alexander the Great, the Romans, Christians and Muslims all left their mark. It is open into the evening, when the floodlit columns are at their most beautiful.</p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-amenhotep3" target="_blank" rel="noopener noreferrer">Amenhotep III card ↗</a><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-amun" target="_blank" rel="noopener noreferrer">Amun on the gods page ↗</a><a href="https://claude.ai/artifact/3nT4c7GL9wbhSUtZRoBuvH" target="_blank" rel="noopener noreferrer">Karnak guide ↗</a></p>
+
+  <div class="pair">
+    <article class="card" style="--c: var(--lux);">
+      <span class="kicker">The temple</span>
+      <h2>Ipet-resyt</h2>
+      <dl class="facts">
+        <div><dt>Where</dt><dd>The centre of Luxor, ancient Thebes, on the east bank of the Nile</dd></div>
+        <div><dt>When</dt><dd>Mainly c. 1390–1250 BC, with later additions to Roman times</dd></div>
+        <div><dt>For</dt><dd>Amun of Luxor, with Mut and Khonsu, and the divine power of the king</dd></div>
+        <div><dt>Length</dt><dd>About 260 m from the pylon to the sanctuary</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--great);">
+      <span class="kicker">The builders</span>
+      <h2>Two great kings</h2>
+      <dl class="facts">
+        <div><dt>Core</dt><dd>Amenhotep III: sanctuary, halls, sun court and colonnade</dd></div>
+        <div><dt>Front</dt><dd>Ramesses II: court, pylon, obelisks and colossi</dd></div>
+        <div><dt>Decoration</dt><dd>Tutankhamun and Horemheb carved the Opet festival on the colonnade</dd></div>
+        <div><dt>Later</dt><dd>Alexander the Great, the Romans and a 13th-century mosque</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="planTitle" style="--c: var(--lux);">
+    <h2 id="planTitle">From the avenue to the sanctuary</h2>
+    <p class="section-note">Twelve stops, walking south from the avenue of sphinxes into ever older and holier rooms. Tap a number on the plan.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="0 0 300 520" role="img" aria-label="Simplified plan of Luxor Temple, north at the top and the Nile to the west. From the north the avenue of sphinxes from Karnak reaches the First Pylon of Ramesses II, with an obelisk and colossal statues in front. Behind it lies the court of Ramesses II, set at a slight angle to the rest, with the mosque of Abu el-Haggag in its north-east corner and a triple shrine in the north-west. Then comes the long colonnade of Amenhotep III, his great sun court, the hypostyle hall, the Roman chapel, the barque shrine of Alexander the Great with the birth room to the east, and the sanctuary of Amenhotep III at the southern end. Numbered markers match the notes.">
+          <rect width="300" height="520" fill="var(--panel)"/>
+          <rect x="0" y="0" width="34" height="520" fill="var(--water, #8fb6c9)" opacity="0.55"/>
+          <text class="t-sub" x="17" y="260" text-anchor="middle" transform="rotate(-90 17 260)">Nile</text>
+          <circle cx="150" cy="8" r="2" fill="var(--ink-soft)"/><circle cx="170" cy="8" r="2" fill="var(--ink-soft)"/><circle cx="150" cy="16" r="2" fill="var(--ink-soft)"/><circle cx="170" cy="16" r="2" fill="var(--ink-soft)"/><circle cx="150" cy="24" r="2" fill="var(--ink-soft)"/><circle cx="170" cy="24" r="2" fill="var(--ink-soft)"/><circle cx="150" cy="32" r="2" fill="var(--ink-soft)"/><circle cx="170" cy="32" r="2" fill="var(--ink-soft)"/><circle cx="150" cy="40" r="2" fill="var(--ink-soft)"/><circle cx="170" cy="40" r="2" fill="var(--ink-soft)"/><circle cx="150" cy="48" r="2" fill="var(--ink-soft)"/><circle cx="170" cy="48" r="2" fill="var(--ink-soft)"/>
+          <g transform="rotate(-6 160 170)">
+            <rect x="92" y="60" width="136" height="14" class="cut"/>
+            <rect x="100" y="74" width="120" height="96" fill="none" stroke="var(--ink-soft)"/>
+            <circle cx="108" cy="82" r="1.6" fill="var(--ink-soft)"/><circle cx="108" cy="162" r="1.6" fill="var(--ink-soft)"/><circle cx="118" cy="82" r="1.6" fill="var(--ink-soft)"/><circle cx="118" cy="162" r="1.6" fill="var(--ink-soft)"/><circle cx="128" cy="82" r="1.6" fill="var(--ink-soft)"/><circle cx="128" cy="162" r="1.6" fill="var(--ink-soft)"/><circle cx="138" cy="82" r="1.6" fill="var(--ink-soft)"/><circle cx="138" cy="162" r="1.6" fill="var(--ink-soft)"/><circle cx="148" cy="82" r="1.6" fill="var(--ink-soft)"/><circle cx="148" cy="162" r="1.6" fill="var(--ink-soft)"/><circle cx="158" cy="82" r="1.6" fill="var(--ink-soft)"/><circle cx="158" cy="162" r="1.6" fill="var(--ink-soft)"/><circle cx="168" cy="82" r="1.6" fill="var(--ink-soft)"/><circle cx="168" cy="162" r="1.6" fill="var(--ink-soft)"/><circle cx="178" cy="82" r="1.6" fill="var(--ink-soft)"/><circle cx="178" cy="162" r="1.6" fill="var(--ink-soft)"/><circle cx="188" cy="82" r="1.6" fill="var(--ink-soft)"/><circle cx="188" cy="162" r="1.6" fill="var(--ink-soft)"/><circle cx="198" cy="82" r="1.6" fill="var(--ink-soft)"/><circle cx="198" cy="162" r="1.6" fill="var(--ink-soft)"/><circle cx="208" cy="82" r="1.6" fill="var(--ink-soft)"/><circle cx="208" cy="162" r="1.6" fill="var(--ink-soft)"/><circle cx="106" cy="92" r="1.6" fill="var(--ink-soft)"/><circle cx="106" cy="102" r="1.6" fill="var(--ink-soft)"/><circle cx="106" cy="112" r="1.6" fill="var(--ink-soft)"/><circle cx="106" cy="122" r="1.6" fill="var(--ink-soft)"/><circle cx="106" cy="132" r="1.6" fill="var(--ink-soft)"/><circle cx="106" cy="142" r="1.6" fill="var(--ink-soft)"/><circle cx="106" cy="152" r="1.6" fill="var(--ink-soft)"/><circle cx="214" cy="92" r="1.6" fill="var(--ink-soft)"/><circle cx="214" cy="102" r="1.6" fill="var(--ink-soft)"/><circle cx="214" cy="112" r="1.6" fill="var(--ink-soft)"/><circle cx="214" cy="122" r="1.6" fill="var(--ink-soft)"/><circle cx="214" cy="132" r="1.6" fill="var(--ink-soft)"/><circle cx="214" cy="142" r="1.6" fill="var(--ink-soft)"/><circle cx="214" cy="152" r="1.6" fill="var(--ink-soft)"/>
+            <rect x="104" y="80" width="26" height="20" class="cut"/>
+            <rect x="192" y="84" width="24" height="26" class="cut"/><circle cx="204" cy="97" r="7" fill="none" stroke="var(--ink-soft)"/>
+            <circle cx="142" cy="54" r="3" fill="var(--lux)"/>
+            <rect x="120" y="48" width="8" height="8" class="pillar"/><rect x="192" y="48" width="8" height="8" class="pillar"/>
+          </g>
+          <rect x="140" y="170" width="40" height="110" fill="none" stroke="var(--ink-soft)"/>
+          <circle cx="149" cy="178" r="3.2" fill="var(--ink-soft)"/><circle cx="171" cy="178" r="3.2" fill="var(--ink-soft)"/><circle cx="149" cy="192" r="3.2" fill="var(--ink-soft)"/><circle cx="171" cy="192" r="3.2" fill="var(--ink-soft)"/><circle cx="149" cy="206" r="3.2" fill="var(--ink-soft)"/><circle cx="171" cy="206" r="3.2" fill="var(--ink-soft)"/><circle cx="149" cy="220" r="3.2" fill="var(--ink-soft)"/><circle cx="171" cy="220" r="3.2" fill="var(--ink-soft)"/><circle cx="149" cy="234" r="3.2" fill="var(--ink-soft)"/><circle cx="171" cy="234" r="3.2" fill="var(--ink-soft)"/><circle cx="149" cy="248" r="3.2" fill="var(--ink-soft)"/><circle cx="171" cy="248" r="3.2" fill="var(--ink-soft)"/><circle cx="149" cy="262" r="3.2" fill="var(--ink-soft)"/><circle cx="171" cy="262" r="3.2" fill="var(--ink-soft)"/>
+          <rect x="100" y="280" width="120" height="70" fill="none" stroke="var(--ink-soft)"/>
+          <circle cx="108" cy="288" r="1.8" fill="var(--ink-soft)"/><circle cx="108" cy="296" r="1.8" fill="var(--ink-soft)"/><circle cx="117" cy="288" r="1.8" fill="var(--ink-soft)"/><circle cx="117" cy="296" r="1.8" fill="var(--ink-soft)"/><circle cx="126" cy="288" r="1.8" fill="var(--ink-soft)"/><circle cx="126" cy="296" r="1.8" fill="var(--ink-soft)"/><circle cx="135" cy="288" r="1.8" fill="var(--ink-soft)"/><circle cx="135" cy="296" r="1.8" fill="var(--ink-soft)"/><circle cx="144" cy="288" r="1.8" fill="var(--ink-soft)"/><circle cx="144" cy="296" r="1.8" fill="var(--ink-soft)"/><circle cx="153" cy="288" r="1.8" fill="var(--ink-soft)"/><circle cx="153" cy="296" r="1.8" fill="var(--ink-soft)"/><circle cx="162" cy="288" r="1.8" fill="var(--ink-soft)"/><circle cx="162" cy="296" r="1.8" fill="var(--ink-soft)"/><circle cx="171" cy="288" r="1.8" fill="var(--ink-soft)"/><circle cx="171" cy="296" r="1.8" fill="var(--ink-soft)"/><circle cx="180" cy="288" r="1.8" fill="var(--ink-soft)"/><circle cx="180" cy="296" r="1.8" fill="var(--ink-soft)"/><circle cx="189" cy="288" r="1.8" fill="var(--ink-soft)"/><circle cx="189" cy="296" r="1.8" fill="var(--ink-soft)"/><circle cx="198" cy="288" r="1.8" fill="var(--ink-soft)"/><circle cx="198" cy="296" r="1.8" fill="var(--ink-soft)"/><circle cx="207" cy="288" r="1.8" fill="var(--ink-soft)"/><circle cx="207" cy="296" r="1.8" fill="var(--ink-soft)"/><circle cx="108" cy="304" r="1.8" fill="var(--ink-soft)"/><circle cx="116" cy="304" r="1.8" fill="var(--ink-soft)"/><circle cx="204" cy="304" r="1.8" fill="var(--ink-soft)"/><circle cx="212" cy="304" r="1.8" fill="var(--ink-soft)"/><circle cx="108" cy="313" r="1.8" fill="var(--ink-soft)"/><circle cx="116" cy="313" r="1.8" fill="var(--ink-soft)"/><circle cx="204" cy="313" r="1.8" fill="var(--ink-soft)"/><circle cx="212" cy="313" r="1.8" fill="var(--ink-soft)"/><circle cx="108" cy="322" r="1.8" fill="var(--ink-soft)"/><circle cx="116" cy="322" r="1.8" fill="var(--ink-soft)"/><circle cx="204" cy="322" r="1.8" fill="var(--ink-soft)"/><circle cx="212" cy="322" r="1.8" fill="var(--ink-soft)"/><circle cx="108" cy="331" r="1.8" fill="var(--ink-soft)"/><circle cx="116" cy="331" r="1.8" fill="var(--ink-soft)"/><circle cx="204" cy="331" r="1.8" fill="var(--ink-soft)"/><circle cx="212" cy="331" r="1.8" fill="var(--ink-soft)"/><circle cx="108" cy="340" r="1.8" fill="var(--ink-soft)"/><circle cx="116" cy="340" r="1.8" fill="var(--ink-soft)"/><circle cx="204" cy="340" r="1.8" fill="var(--ink-soft)"/><circle cx="212" cy="340" r="1.8" fill="var(--ink-soft)"/>
+          <rect x="104" y="350" width="112" height="36" class="cut"/>
+          <circle cx="114" cy="356" r="1.8" fill="var(--ink-soft)"/><circle cx="114" cy="364" r="1.8" fill="var(--ink-soft)"/><circle cx="114" cy="372" r="1.8" fill="var(--ink-soft)"/><circle cx="114" cy="380" r="1.8" fill="var(--ink-soft)"/><circle cx="127" cy="356" r="1.8" fill="var(--ink-soft)"/><circle cx="127" cy="364" r="1.8" fill="var(--ink-soft)"/><circle cx="127" cy="372" r="1.8" fill="var(--ink-soft)"/><circle cx="127" cy="380" r="1.8" fill="var(--ink-soft)"/><circle cx="140" cy="356" r="1.8" fill="var(--ink-soft)"/><circle cx="140" cy="364" r="1.8" fill="var(--ink-soft)"/><circle cx="140" cy="372" r="1.8" fill="var(--ink-soft)"/><circle cx="140" cy="380" r="1.8" fill="var(--ink-soft)"/><circle cx="153" cy="356" r="1.8" fill="var(--ink-soft)"/><circle cx="153" cy="364" r="1.8" fill="var(--ink-soft)"/><circle cx="153" cy="372" r="1.8" fill="var(--ink-soft)"/><circle cx="153" cy="380" r="1.8" fill="var(--ink-soft)"/><circle cx="166" cy="356" r="1.8" fill="var(--ink-soft)"/><circle cx="166" cy="364" r="1.8" fill="var(--ink-soft)"/><circle cx="166" cy="372" r="1.8" fill="var(--ink-soft)"/><circle cx="166" cy="380" r="1.8" fill="var(--ink-soft)"/><circle cx="179" cy="356" r="1.8" fill="var(--ink-soft)"/><circle cx="179" cy="364" r="1.8" fill="var(--ink-soft)"/><circle cx="179" cy="372" r="1.8" fill="var(--ink-soft)"/><circle cx="179" cy="380" r="1.8" fill="var(--ink-soft)"/><circle cx="192" cy="356" r="1.8" fill="var(--ink-soft)"/><circle cx="192" cy="364" r="1.8" fill="var(--ink-soft)"/><circle cx="192" cy="372" r="1.8" fill="var(--ink-soft)"/><circle cx="192" cy="380" r="1.8" fill="var(--ink-soft)"/><circle cx="205" cy="356" r="1.8" fill="var(--ink-soft)"/><circle cx="205" cy="364" r="1.8" fill="var(--ink-soft)"/><circle cx="205" cy="372" r="1.8" fill="var(--ink-soft)"/><circle cx="205" cy="380" r="1.8" fill="var(--ink-soft)"/>
+          <rect x="110" y="386" width="100" height="84" class="cut"/>
+          <rect x="138" y="388" width="44" height="22" fill="none" stroke="var(--ink-soft)"/>
+          <rect x="146" y="424" width="28" height="24" fill="var(--lux)" opacity="0.35" stroke="var(--ink-soft)"/>
+          <rect x="190" y="412" width="20" height="30" fill="none" stroke="var(--ink-soft)"/>
+          <rect x="140" y="470" width="40" height="34" class="cut"/>
+          <text class="t-sub" x="210" y="20">from Karnak</text>
+          <g transform="translate(270,500)"><path d="M0,-14 L5,3 L0,-1 L-5,3 Z" fill="var(--ink-soft)"/><text class="t-sub" x="0" y="15" text-anchor="middle">N</text></g>
+          <a class="mk" href="#lu-1"><circle cx="188" cy="28" r="9"/><text x="188" y="28">1</text></a><a class="mk" href="#lu-2"><circle cx="246" cy="66" r="9"/><text x="246" y="66">2</text></a><a class="mk" href="#lu-3"><circle cx="92" cy="46" r="9"/><text x="92" y="46">3</text></a><a class="mk" href="#lu-4"><circle cx="150" cy="122" r="9"/><text x="150" y="122">4</text></a><a class="mk" href="#lu-5"><circle cx="236" cy="100" r="9"/><text x="236" y="100">5</text></a><a class="mk" href="#lu-6"><circle cx="196" cy="226" r="9"/><text x="196" y="226">6</text></a><a class="mk" href="#lu-7"><circle cx="160" cy="320" r="9"/><text x="160" y="320">7</text></a><a class="mk" href="#lu-8"><circle cx="230" cy="368" r="9"/><text x="230" y="368">8</text></a><a class="mk" href="#lu-9"><circle cx="160" cy="398" r="9"/><text x="160" y="398">9</text></a><a class="mk" href="#lu-10"><circle cx="160" cy="436" r="9"/><text x="160" y="436">10</text></a><a class="mk" href="#lu-11"><circle cx="236" cy="428" r="9"/><text x="236" y="428">11</text></a><a class="mk" href="#lu-12"><circle cx="160" cy="488" r="9"/><text x="160" y="488">12</text></a>
+        </svg>
+        <p class="caption">Simplified plan, not to scale; positions are approximate.</p>
+      </div>
+      <ol class="notes">
+        <li id="lu-1"><span class="num">1</span><div><h3>The avenue of sphinxes</h3><p>A processional road about 2.7 km long, lined with human-headed sphinxes, most of them set up by Nectanebo I around 370 BC, joined Luxor to Karnak. Buried under the town for centuries, it was dug out and reopened in 2021; you can still walk part of it.</p><p class="see"><a href="https://claude.ai/artifact/3nT4c7GL9wbhSUtZRoBuvH" target="_blank" rel="noopener noreferrer">Karnak guide ↗</a> · <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-nectanebo1" target="_blank" rel="noopener noreferrer">Nectanebo I ↗</a></p></div></li>
+        <li id="lu-2"><span class="num">2</span><div><h3>The First Pylon and the obelisk</h3><p>Ramesses II&#39;s gateway, about 65 m wide, carved with his battle of Kadesh against the Hittites. In front stands one red granite obelisk, about 25 m high; its twin was given to France and has stood in the Place de la Concorde in Paris since 1836.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses2" target="_blank" rel="noopener noreferrer">Ramesses II ↗</a></p></div></li>
+        <li id="lu-3"><span class="num">3</span><div><h3>The colossi of Ramesses II</h3><p>Two seated statues of Ramesses II guard the gate, with standing figures beside them; on the side of the thrones Nile gods tie the plants of the Two Lands, as at the Colossi of Memnon.</p></div></li>
+        <li id="lu-4"><span class="num">4</span><div><h3>The court of Ramesses II</h3><p>A court of 74 papyrus columns with statues of the king between them. Look at the plan: it is set at an angle to the older temple, perhaps to line up with the avenue to Karnak. In the north-west corner Ramesses kept an older triple shrine of Hatshepsut and Thutmose III for the boats of Amun, Mut and Khonsu.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-thutmose3" target="_blank" rel="noopener noreferrer">Thutmose III ↗</a></p></div></li>
+        <li id="lu-5"><span class="num">5</span><div><h3>The mosque of Abu el-Haggag</h3><p>Built in the 13th century on the sand and rubble that filled the court, in honour of a Sufi saint of Luxor, and still in use. Its old door hangs high on the wall: that was the ground level before the temple was dug out in the 1880s.</p></div></li>
+        <li id="lu-6"><span class="num">6</span><div><h3>The colonnade of Amenhotep III</h3><p>Fourteen giant columns with open papyrus capitals, built by Amenhotep III as the grand entrance of his temple. The walls behind them were carved under Tutankhamun with the Opet festival procession, and later taken over by Horemheb.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-amenhotep3" target="_blank" rel="noopener noreferrer">Amenhotep III ↗</a> · <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-tutankhamun" target="_blank" rel="noopener noreferrer">Tutankhamun ↗</a> · <a href="#opetTitle">The Opet festival ↓</a></p></div></li>
+        <li id="lu-7"><span class="num">7</span><div><h3>The sun court of Amenhotep III</h3><p>A vast court surrounded on three sides by double rows of papyrus-bundle columns, among the most elegant in Egypt. In 1989 workers found here a hidden pit with 26 fine statues, the Luxor cachette, now in the Luxor Museum.</p></div></li>
+        <li id="lu-8"><span class="num">8</span><div><h3>The hypostyle hall</h3><p>A hall of 32 columns, the entrance to the inner temple. From here on the rooms get smaller, darker and holier.</p></div></li>
+        <li id="lu-9"><span class="num">9</span><div><h3>The Roman chapel</h3><p>Around AD 300 the temple was inside a Roman fort, and this room became a shrine to the emperors: an old doorway was walled into an apse, and the walls were painted with the Roman tetrarchs and their court. The frescoes have been cleaned and are visible again over the older reliefs.</p></div></li>
+        <li id="lu-10"><span class="num">10</span><div><h3>The shrine of Alexander the Great</h3><p>In the room where Amun&#39;s boat rested, a barque shrine was rebuilt in the name of Alexander the Great, around 330 BC. Its walls show the Macedonian conqueror as a pharaoh, offering to Amun.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-alexander" target="_blank" rel="noopener noreferrer">Alexander ↗</a></p></div></li>
+        <li id="lu-11"><span class="num">11</span><div><h3>The birth room</h3><p>To the east, reliefs tell how Amenhotep III was born of the god: Amun visits his mother Mutemwia, and the potter god Khnum shapes the child on his wheel, as Hatshepsut had shown at Deir el-Bahari.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-khnum" target="_blank" rel="noopener noreferrer">Khnum ↗</a></p></div></li>
+        <li id="lu-12"><span class="num">12</span><div><h3>The sanctuary of Amenhotep III</h3><p>At the far end, the holy of holies where the statue of Amun of Luxor stood. It is the oldest and most hidden part of the temple.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-amun" target="_blank" rel="noopener noreferrer">Amun ↗</a></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="opetTitle" style="--c: var(--lux);">
+    <h2 id="opetTitle">The Opet festival</h2>
+    <p class="section-note">The reason the temple exists: once a year, for up to four weeks during the flood, the gods of Karnak came to stay.</p>
+    <div class="tips"><div class="tip"><h3>Amun&#39;s southern home</h3><p>Luxor Temple was Ipet-resyt, &#39;the southern sanctuary&#39; of Amun. It was not a temple for daily worship of a king, but a place where the god, and the king&#39;s divine power, were renewed each year.</p></div><div class="tip"><h3>The procession</h3><p>At the flood, the statues of Amun, Mut and Khonsu left Karnak in their gilded boats, carried by priests along the avenue of sphinxes or towed upriver, with music, dancers, acrobats and food for the crowds.</p></div><div class="tip"><h3>The king&#39;s ka</h3><p>In the dark of the sanctuary the king met the god and was united with his royal ka, his divine double. He came out reborn as the son of Amun, fit to rule another year.</p></div><div class="tip"><h3>Read it on the walls</h3><p>The colonnade walls show the whole festival as a strip cartoon: the boats leaving Karnak on the west side, the return on the east, with soldiers, musicians and butchers. They were carved for Tutankhamun around 1330 BC.</p></div></div>
+  </section>
+
+  <section aria-labelledby="layersTitle" style="--c: var(--great);">
+    <h2 id="layersTitle">Layers of history</h2>
+    <p class="section-note">Few places in Egypt show so many ages one on top of the other.</p>
+    <div class="tips"><div class="tip"><h3>Amenhotep III</h3><p>Built the core of the temple around 1380 BC: the sanctuary, the birth room, the hypostyle, the sun court and the colonnade.</p></div><div class="tip"><h3>Ramesses II</h3><p>A century later added the court, the First Pylon, the obelisks and the colossi, about 1270 BC.</p></div><div class="tip"><h3>Alexander the Great</h3><p>Rebuilt the barque shrine in his own name around 330 BC, to show he was the true heir of the pharaohs.</p></div><div class="tip"><h3>The Romans</h3><p>Turned the temple into the heart of a military camp around AD 300 and painted the emperors&#39; chapel.</p></div><div class="tip"><h3>Christians</h3><p>Built churches in and around the temple in the 5th and 6th centuries; traces remain near the entrance.</p></div><div class="tip"><h3>Muslims</h3><p>Raised the mosque of Abu el-Haggag on top of the buried court in the 13th century. Four religions have prayed on this spot.</p></div></div>
+  </section>
+
+  <section aria-labelledby="timeTitle">
+    <h2 id="timeTitle">Luxor Temple through time</h2>
+    <ol class="timeline">
+      <li><span class="yr">c. 1470 BC</span><p>Hatshepsut and Thutmose III build a way station for Amun&#39;s boat here, later kept in Ramesses II&#39;s court.</p></li>
+      <li><span class="yr">c. 1390–1353 BC</span><p>Amenhotep III builds the temple, from the sanctuary to the colonnade.</p></li>
+      <li><span class="yr">c. 1330 BC</span><p>Under Tutankhamun the colonnade walls are carved with the Opet festival.</p></li>
+      <li><span class="yr">c. 1270 BC</span><p>Ramesses II adds the court, the First Pylon, two obelisks and colossal statues.</p></li>
+      <li><span class="yr">c. 370 BC</span><p>Nectanebo I lines the avenue to Karnak with sphinxes.</p></li>
+      <li><span class="yr">c. 330 BC</span><p>The barque shrine is rebuilt in the name of Alexander the Great.</p></li>
+      <li><span class="yr">c. AD 300</span><p>A Roman legion&#39;s camp surrounds the temple; the emperors&#39; chapel is painted.</p></li>
+      <li><span class="yr">13th century</span><p>The mosque of Abu el-Haggag is built on the buried court.</p></li>
+      <li><span class="yr">1836</span><p>One of the two obelisks is set up in the Place de la Concorde, Paris.</p></li>
+      <li><span class="yr">1880s</span><p>Gaston Maspero begins clearing the temple of the village built on top of it.</p></li>
+      <li><span class="yr">1989</span><p>The cachette of 26 statues is found in the sun court.</p></li>
+      <li><span class="yr">2021</span><p>The avenue of sphinxes to Karnak is reopened.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">For our visit</h2>
+    <div class="tips">
+      <div class="tip"><h3>Go at dusk</h3><p>Arrive before sunset and stay as the floodlights come on: the colonnade and the colossi glow against the dark sky.</p></div>
+      <div class="tip"><h3>Look up at the mosque</h3><p>From the court of Ramesses II, find the mosque&#39;s high, blocked door: it shows how deep the temple was buried.</p></div>
+      <div class="tip"><h3>Find the Romans</h3><p>Past the hypostyle hall, the emperors&#39; chapel has faded painted figures in togas over the pharaohs&#39; reliefs.</p></div>
+      <div class="tip"><h3>Luxor Museum</h3><p>The statues of the 1989 cachette are a short walk north along the river, in the Luxor Museum.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Part of <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">the Private Alimaña Tour ↗</a>. The plan is schematic; dates are approximate.</p>
+</div>
