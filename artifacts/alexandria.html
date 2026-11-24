@@ -1,0 +1,293 @@
+<title>Alexandria Day Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: intro, a map of the city beside numbered notes, the Pharos, the catacombs of Kom el-Shoqafa, the Library, a timeline and tips. Shares its look with the temple guides. Phone first: everything stacks. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --alx: #1f6f8b;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --alx: #7cc3dc; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --alx: #7cc3dc; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--great); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--great); }
+  .mk:focus-visible { outline: none; }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .eyebrow { color: var(--alx); }
+  .ruin { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 1; }
+  .col { fill: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--alx); }
+  .mk.lost circle { fill: var(--panel); stroke: var(--ink); stroke-width: 1.4; stroke-dasharray: 3 2; }
+  .mk.lost text { fill: var(--ink); }
+  .key { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.4rem; }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Alexandria · city of Alexander and the Ptolemies · founded 331 BC · Day 8 of the Alimaña tour</p>
+  <h1>Alexandria in a Day</h1>
+  <p class="lede">Founded by Alexander the Great on the Mediterranean, Alexandria was for three hundred years the capital of the Ptolemies and the greatest city of the Greek world: the home of the Library, the Pharos lighthouse and Cleopatra. Most of the ancient city lies under the modern one or under the sea, so this guide follows our four stops, the Bibliotheca, Qaitbay, Pompey&#39;s Pillar and the catacombs, and shows what stood around them.</p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-alexander" target="_blank" rel="noopener noreferrer">Alexander card ↗</a><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-cleopatra7" target="_blank" rel="noopener noreferrer">Cleopatra VII card ↗</a><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">Day 8 in the tour ↗</a><a href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-8" target="_blank" rel="noopener noreferrer">Our Day 8 photos ↗</a></p>
+
+  <div class="pair">
+    <article class="card" style="--c: var(--alx);">
+      <span class="kicker">The city</span>
+      <h2>Alexander&#39;s city</h2>
+      <dl class="facts">
+        <div><dt>Where</dt><dd>On the Mediterranean, at the western edge of the Delta, about 220 km from Cairo</dd></div>
+        <div><dt>Founded</dt><dd>331 BC by Alexander the Great</dd></div>
+        <div><dt>Capital</dt><dd>Of the Ptolemies, 305–30 BC, and of Roman Egypt until AD 641</dd></div>
+        <div><dt>Famous for</dt><dd>The Library, the Pharos, Cleopatra and the tomb of Alexander</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--great);">
+      <span class="kicker">Our day</span>
+      <h2>Four stops</h2>
+      <dl class="facts">
+        <div><dt>Morning</dt><dd>Bibliotheca Alexandrina (1), then the Citadel of Qaitbay on the site of the Pharos (5)</dd></div>
+        <div><dt>Afternoon</dt><dd>Pompey&#39;s Pillar (11) and the catacombs of Kom el-Shoqafa (12)</dd></div>
+        <div><dt>On the way</dt><dd>The Corniche along the Eastern Harbour</dd></div>
+        <div><dt>If time</dt><dd>Kom el-Dikka (9) or the National Museum (10)</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="planTitle" style="--c: var(--alx);">
+    <h2 id="planTitle">Around the city</h2>
+    <p class="section-note">Twelve stops, from the Bibliotheca along the harbour to Qaitbay, through the centre and out to the Serapeum hill and the catacombs. Some places have vanished, under the sea or under the modern city. Tap a number on the map.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="0 0 400 310" role="img" aria-label="Simplified map of central Alexandria, north at the top. The Mediterranean fills the top. A peninsula, once the island of Pharos, runs out to the north-east, with the Citadel of Qaitbay on its tip where the Pharos lighthouse stood and its ruins now lie under water; its neck is the silted-up causeway called the Heptastadion. East of it the curved Eastern Harbour, with the sunken royal quarter, sweeps round to the cape where the Bibliotheca Alexandrina stands; the ancient Library and Mouseion were inland of it. The Anfushi tombs lie on the peninsula. In the city centre are the probable area of Alexander&#39;s lost tomb on the ancient Canopic Way, the Roman theatre of Kom el-Dikka and the National Museum. To the south-west stand Pompey&#39;s Pillar on the Serapeum hill and the catacombs of Kom el-Shoqafa, with Lake Mariout beyond. Solid markers are places to visit; dashed ones are places that have vanished. Numbered markers match the notes.">
+          <rect width="400" height="310" fill="var(--lake)"/>
+          <path d="M0,210 L50,206 L96,184 L110,160 L92,142 L60,134 L44,124 L62,104 L92,84 L118,68 L136,56 L150,58 L156,74 L170,98 L192,118 L214,128 L244,128 L268,120 L288,104 L302,82 L314,70 L324,78 L350,88 L400,96 L400,310 L0,310 Z" class="rock"/>
+          <rect x="0" y="286" width="400" height="24" class="lake"/>
+          <rect x="130" y="58" width="14" height="12" class="cut"/>
+          <path d="M120,160 H400" class="dash"/>
+          <path d="M150,96 L196,150" class="orig"/>
+          <text class="t-lake" x="290" y="30" text-anchor="middle">Mediterranean</text>
+          <text class="t-lake" x="232" y="74" text-anchor="middle">Eastern Harbour</text>
+          <text class="t-sub" x="8" y="168">Western</text>
+          <text class="t-sub" x="8" y="182">Harbour</text>
+          <text class="t-sub" x="350" y="176" text-anchor="middle">Canopic Way</text>
+          <text class="t-lake" x="290" y="302" text-anchor="middle">Lake Mariout</text>
+          <a class="mk" href="#ax-1"><circle cx="284" cy="102" r="9"/><text x="284" y="102">1</text></a><a class="mk lost" href="#ax-2"><circle cx="272" cy="140" r="9"/><text x="272" y="140">2</text></a><a class="mk lost" href="#ax-3"><circle cx="236" cy="96" r="9"/><text x="236" y="96">3</text></a><a class="mk lost" href="#ax-4"><circle cx="176" cy="124" r="9"/><text x="176" y="124">4</text></a><a class="mk" href="#ax-5"><circle cx="136" cy="70" r="9"/><text x="136" y="70">5</text></a><a class="mk lost" href="#ax-6"><circle cx="166" cy="44" r="9"/><text x="166" y="44">6</text></a><a class="mk" href="#ax-7"><circle cx="92" cy="117" r="9"/><text x="92" y="117">7</text></a><a class="mk lost" href="#ax-8"><circle cx="238" cy="160" r="9"/><text x="238" y="160">8</text></a><a class="mk" href="#ax-9"><circle cx="262" cy="180" r="9"/><text x="262" y="180">9</text></a><a class="mk" href="#ax-10"><circle cx="312" cy="146" r="9"/><text x="312" y="146">10</text></a><a class="mk" href="#ax-11"><circle cx="206" cy="236" r="9"/><text x="206" y="236">11</text></a><a class="mk" href="#ax-12"><circle cx="186" cy="262" r="9"/><text x="186" y="262">12</text></a>
+        </svg>
+        <p class="key"><span>● place to visit</span><span>◌ vanished or under water</span><span>- - ancient main street</span></p>
+        <p class="caption">Simplified map, not to scale; positions are approximate.</p>
+      </div>
+      <ol class="notes">
+        <li id="ax-1"><span class="num">1</span><div><h3>Bibliotheca Alexandrina</h3><p>The new library, opened in 2002 near the site of the ancient one: a huge disc of glass and aluminium tilted towards the sea like a rising sun, above a granite wall carved with letters from scripts all over the world. Inside are a vast reading room on terraced floors, an antiquities museum and a manuscripts museum. Outside stands a colossal granite Ptolemy raised from the harbour.</p><p class="see"><a href="#libraryTitle">The ancient Library ↓</a></p></div></li>
+        <li id="ax-2"><span class="num">2</span><div><h3>The Mouseion and the Library</h3><p>Nothing is left of the Mouseion, the &#39;shrine of the Muses&#39; where the Ptolemies paid scholars to live and work, or of its Library, the greatest of the ancient world. They stood in the royal quarter, the Brucheion, inland from the Eastern Harbour.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy1" target="_blank" rel="noopener noreferrer">Ptolemy I ↗</a> · <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy2" target="_blank" rel="noopener noreferrer">Ptolemy II ↗</a> · <a href="#libraryTitle">The Library ↓</a></p></div></li>
+        <li id="ax-3"><span class="num">3</span><div><h3>The sunken royal quarter</h3><p>The palaces of the Ptolemies, the little island of Antirhodos and the harbour of Cleopatra slid into the sea through earthquakes and subsidence. Divers mapping the bay since the 1990s have found sphinxes, statues of priests and paved floors a few metres down. The Corniche runs along the shore above them.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-cleopatra7" target="_blank" rel="noopener noreferrer">Cleopatra VII ↗</a></p></div></li>
+        <li id="ax-4"><span class="num">4</span><div><h3>The Heptastadion</h3><p>A causeway seven stadia long, about 1.2 km, joined the island of Pharos to the city and split the sea into two harbours. Sand built up on both sides over the centuries until it became the broad neck of land where the old quarters of Anfushi and Gomrok stand today.</p></div></li>
+        <li id="ax-5"><span class="num">5</span><div><h3>The Citadel of Qaitbay</h3><p>The Mamluk sultan Qaitbay built this fort in 1477–1479 on the tip of the old island, on the foundations of the Pharos and partly from its stones, to guard the coast against the Ottomans. Walk round the walls for the view back across the Eastern Harbour to the city.</p><p class="see"><a href="#pharosTitle">The Pharos ↓</a></p></div></li>
+        <li id="ax-6"><span class="num">6</span><div><h3>The Pharos</h3><p>The lighthouse of Alexandria, one of the Seven Wonders, stood here from about 280 BC: some 100 m tall, the highest building in the world after the pyramids of Giza. Earthquakes in the 14th century brought it down; its blocks and statues lie in the sea just off the fort.</p><p class="see"><a href="#pharosTitle">More on the Pharos ↓</a></p></div></li>
+        <li id="ax-7"><span class="num">7</span><div><h3>The tombs of Anfushi</h3><p>Rock-cut family tombs of the 3rd and 2nd centuries BC, a short walk from the fort, whose walls are painted to look like alabaster and marble blocks, with Egyptian gods beside Greek patterns. Open irregularly; ask Omarcel if there is time.</p></div></li>
+        <li id="ax-8"><span class="num">8</span><div><h3>The lost tomb of Alexander</h3><p>Ptolemy I seized Alexander&#39;s body on its way to Macedonia and brought it to Egypt; Ptolemy IV gave it a mausoleum, the Sema, where Caesar and Augustus came to see it. It vanished in late Roman times. Tradition places it near the crossing of the ancient main streets, by the Nabi Daniel mosque.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-alexander" target="_blank" rel="noopener noreferrer">Alexander ↗</a> · <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy4" target="_blank" rel="noopener noreferrer">Ptolemy IV ↗</a></p></div></li>
+        <li id="ax-9"><span class="num">9</span><div><h3>Kom el-Dikka</h3><p>In the city centre, excavations have uncovered a small Roman theatre with rows of marble seats, Roman baths and some twenty lecture halls of a late Roman school, the last home of Alexandrian learning in the 5th and 6th centuries AD.</p></div></li>
+        <li id="ax-10"><span class="num">10</span><div><h3>The National Museum</h3><p>An Italian-style mansion of the 1920s holding a compact collection from every age of the city: pharaonic statues, Greek and Roman sculpture, finds from the sunken harbour, Coptic and Islamic objects. Good for an hour if the day allows.</p></div></li>
+        <li id="ax-11"><span class="num">11</span><div><h3>Pompey&#39;s Pillar and the Serapeum</h3><p>A column of red Aswan granite about 27 m high, put up in AD 297 for the emperor Diocletian; medieval travellers wrongly thought Pompey was buried under it. It stands on the hill of the Serapeum, the great temple of Serapis, with two granite sphinxes and the underground galleries that held the temple&#39;s library.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy3" target="_blank" rel="noopener noreferrer">Ptolemy III ↗</a> · <a href="#serapisTitle">Serapis ↓</a></p></div></li>
+        <li id="ax-12"><span class="num">12</span><div><h3>The catacombs of Kom el-Shoqafa</h3><p>Roman-period tombs of the 2nd century AD cut three levels deep into the rock, where Egyptian gods appear in Roman dress: the most striking sight of the day.</p><p class="see"><a href="#catTitle">Inside the catacombs ↓</a></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="pharosTitle" style="--c: var(--alx);">
+    <h2 id="pharosTitle">The Pharos</h2>
+    <p class="section-note">The lighthouse that gave its name to all the others.</p>
+    <div class="figure" style="max-width: 420px;">
+      <svg viewBox="0 0 340 360" role="img" aria-label="Reconstruction drawing of the Pharos of Alexandria in three tiers on a low platform: a tall, slightly tapering square tower, then an octagonal tier, then a round lantern with a fire, crowned by a statue. A scale bar shows a height of about 100 m. Based on ancient descriptions and coins; details are uncertain.">
+          <rect width="340" height="360" fill="var(--panel)"/>
+          <rect x="0" y="338" width="340" height="22" class="lake"/>
+          <rect x="88" y="326" width="144" height="14" class="rock" stroke="var(--ink-soft)"/>
+          <path d="M108,326 L118,160 L202,160 L212,326 Z" class="rock" stroke="var(--ink-soft)"/>
+          <path d="M136,190 h8 v10 h-8z M176,190 h8 v10 h-8z M136,240 h8 v10 h-8z M176,240 h8 v10 h-8z M136,290 h8 v10 h-8z M176,290 h8 v10 h-8z" fill="var(--ink-soft)"/>
+          <path d="M126,160 L132,96 L188,96 L194,160 Z" class="cut"/>
+          <path d="M146,96 L146,160 M174,96 L174,160" stroke="var(--ink-soft)" stroke-width="0.8"/>
+          <rect x="142" y="62" width="36" height="34" class="cut"/>
+          <path d="M160,86 q-8,-10 0,-20 q8,10 0,20z" fill="var(--sun)"/>
+          <path d="M138,62 h44 l-6,-6 h-32z" class="rock" stroke="var(--ink-soft)"/>
+          <path d="M160,56 v-20 M154,42 h12 M160,36 l-3,-6 h6z" stroke="var(--ink)" stroke-width="2" fill="var(--ink)"/>
+          <path d="M268,326 V30" stroke="var(--ink-soft)" stroke-width="1"/>
+          <path d="M262,326 h12 M262,30 h12" stroke="var(--ink-soft)" stroke-width="1"/>
+          <text class="t-label" x="276" y="182">about</text>
+          <text class="t-label" x="276" y="198">100 m</text>
+          <line x1="40" y1="250" x2="110" y2="250" stroke="var(--ink-soft)" stroke-width="0.8"/>
+          <text class="t-sub" x="40" y="244">square tower</text>
+          <line x1="40" y1="130" x2="128" y2="130" stroke="var(--ink-soft)" stroke-width="0.8"/>
+          <text class="t-sub" x="40" y="124">octagonal tier</text>
+          <line x1="40" y1="80" x2="142" y2="80" stroke="var(--ink-soft)" stroke-width="0.8"/>
+          <text class="t-sub" x="40" y="74">lantern and fire</text>
+          <line x1="40" y1="40" x2="152" y2="40" stroke="var(--ink-soft)" stroke-width="0.8"/>
+          <text class="t-sub" x="40" y="34">statue</text>
+        </svg>
+      <p class="caption">Reconstruction from ancient descriptions and coins; the details are uncertain.</p>
+    </div>
+    <div class="tips" style="margin-top: 1rem;"><div class="tip"><h3>A wonder of the world</h3><p>Begun under Ptolemy I and finished under Ptolemy II around 280 BC, it was dedicated by Sostratus of Cnidus &#39;to the saviour gods, for those who sail the sea&#39;. Its fire, perhaps helped by bronze mirrors, could be seen far out at sea on a coast with no landmarks.</p></div><div class="tip"><h3>Three tiers</h3><p>Ancient writers and coins show a tall square tower, an octagonal tier and a round lantern topped by a statue, perhaps Zeus or Poseidon. A ramp inside let animals carry fuel up the tower.</p></div><div class="tip"><h3>Every lighthouse is a pharos</h3><p>The island&#39;s name became the word for a lighthouse in Greek, Latin and many modern languages: faro in Spanish and Italian, phare in French.</p></div><div class="tip"><h3>Brought down by earthquakes</h3><p>Damaged several times, it was ruined by the earthquakes of 1303 and 1323. When Qaitbay built his fort in 1477 he used the fallen blocks.</p></div><div class="tip"><h3>Found under the sea</h3><p>In 1994 divers led by Jean-Yves Empereur charted thousands of blocks off the fort: pieces of the tower, sphinxes, obelisks and colossal statues of a Ptolemy and a queen dressed as pharaoh and Isis. Some now stand outside the Bibliotheca and in the museums.</p></div><div class="tip"><h3>Seen from the fort</h3><p>From the walls of Qaitbay, look north-east over the water: the ruins lie only 6 to 8 m down, a few hundred metres away.</p></div></div>
+  </section>
+
+  <section aria-labelledby="catTitle" style="--c: var(--great);">
+    <h2 id="catTitle">Inside the catacombs of Kom el-Shoqafa</h2>
+    <p class="section-note">Egypt, Greece and Rome in one underground tomb, cut around the 2nd century AD.</p>
+    <div class="figure" style="max-width: 640px;">
+      <svg viewBox="0 0 440 300" role="img" aria-label="Simplified cross-section of the catacombs of Kom el-Shoqafa. From the ground a round shaft goes down with a spiral staircase wound round it. On the first level are a vestibule, a domed rotunda and the banquet hall for funeral meals, with the separate Hall of Caracalla beyond. On the second level is the main tomb, with its Egyptian-style facade guarded by two serpents, figures of Anubis in Roman armour, and the burial chamber surrounded by a gallery of niches for the dead. The third level is flooded by groundwater.">
+          <rect width="440" height="300" fill="var(--panel)"/>
+          <rect x="0" y="48" width="440" height="252" class="rock"/>
+          <path d="M0,48 H440" stroke="var(--ink-soft)" stroke-width="1.4"/>
+          <rect x="40" y="48" width="34" height="200" class="cut"/>
+          <path d="M40,64 L74,80 M40,96 L74,112 M40,128 L74,144 M40,160 L74,176 M40,192 L74,208" stroke="var(--ink-soft)" stroke-width="1"/>
+          <rect x="74" y="82" width="40" height="30" class="cut"/>
+          <circle cx="140" cy="94" r="22" class="cut"/>
+          <rect x="162" y="80" width="86" height="34" class="cut"/>
+          <rect x="296" y="78" width="118" height="36" class="cut"/>
+          <rect x="74" y="148" width="40" height="30" class="cut"/>
+          <rect x="114" y="140" width="34" height="46" class="cut"/>
+          <rect x="148" y="132" width="210" height="62" class="cut"/>
+          <path d="M152,136 V190 M354,136 V190" stroke="var(--ink-soft)" stroke-dasharray="3 3"/>
+          <rect x="190" y="146" width="100" height="34" fill="none" stroke="var(--ink-soft)"/>
+          <path d="M120,150 v30 M142,150 v30" stroke="var(--alx)" stroke-width="3"/>
+          <rect x="74" y="222" width="230" height="30" class="lake" stroke="var(--ink-soft)"/>
+          <text class="t-sub" x="20" y="40">ground</text>
+          <text class="t-sub" x="57" y="270" text-anchor="middle">spiral stair</text>
+          <text class="t-sub" x="57" y="285" text-anchor="middle">round a shaft</text>
+          <text class="t-sub" x="140" y="70" text-anchor="middle">rotunda</text>
+          <text class="t-sub" x="205" y="70" text-anchor="middle">banquet hall</text>
+          <text class="t-sub" x="355" y="70" text-anchor="middle">Hall of Caracalla</text>
+          <text class="t-sub" x="131" y="206" text-anchor="middle">facade</text>
+          <text class="t-sub" x="240" y="167" text-anchor="middle">burial chamber</text>
+          <text class="t-sub" x="300" y="206" text-anchor="middle">gallery of niches</text>
+          <text class="t-sub" x="190" y="241" text-anchor="middle">third level, flooded</text>
+        </svg>
+      <p class="caption">Simplified section, not to scale.</p>
+    </div>
+    <div class="tips" style="margin-top: 1rem;"><div class="tip"><h3>A donkey&#39;s discovery</h3><p>The catacombs were found in 1900, the story goes, when a donkey pulling a cart fell through the ground into the shaft. The name means &#39;mound of shards&#39;, after the broken pottery that covered the hill.</p></div><div class="tip"><h3>Down the spiral stair</h3><p>A staircase winds round a round shaft; the dead were lowered down the middle on ropes. Its first landing leads to a domed rotunda and to the banquet hall, where relatives ate funeral meals on stone benches.</p></div><div class="tip"><h3>Two worlds on one facade</h3><p>The main tomb has an Egyptian front, with papyrus columns, a winged sun disk and Horus falcons, but Greek touches; two bearded serpents, the good spirit Agathodaimon, wear the double crown and guard the door.</p></div><div class="tip"><h3>Anubis the legionary</h3><p>Beside the inner door, Anubis and a second jackal-headed figure stand in the armour and cloak of Roman soldiers. Inside, the dead man and woman are carved with Egyptian poses and Roman faces, and Anubis, Thoth and Horus tend a mummy on a lion bed.</p></div><div class="tip"><h3>Hundreds of niches</h3><p>Round the burial chamber runs a corridor with rows of shelf-like niches, loculi, for later burials. The tomb was used for generations, probably by a burial club as well as one family.</p></div><div class="tip"><h3>The Hall of Caracalla</h3><p>A neighbouring tomb, reached through a hole in the wall, held the bones of horses and young men. It is linked, without proof, to the massacre of Alexandria&#39;s youth by the emperor Caracalla in AD 215.</p></div></div>
+  </section>
+
+  <section aria-labelledby="serapisTitle" style="--c: var(--alx);">
+    <h2 id="serapisTitle">Serapis and the Serapeum</h2>
+    <div class="tips"><div class="tip"><h3>A god for Greeks and Egyptians</h3><p>Ptolemy I promoted Serapis, a new god joining Osiris-Apis, the dead Apis bull of Memphis, to the look of a Greek Zeus: bearded, with a corn measure on his head.</p></div><div class="tip"><h3>The Serapeum</h3><p>Ptolemy III built him a great temple on this hill, later rebuilt by the Romans. Its galleries held a &#39;daughter library&#39;, and a statue of the Apis bull from Hadrian&#39;s time was found here.</p></div><div class="tip"><h3>The end of the temple</h3><p>In AD 391, under the emperor Theodosius, Christians led by the bishop Theophilus pulled the Serapeum down, a moment often taken as the end of the ancient world in Alexandria.</p></div></div>
+  </section>
+
+  <section aria-labelledby="libraryTitle" style="--c: var(--great);">
+    <h2 id="libraryTitle">The ancient Library</h2>
+    <div class="tips"><div class="tip"><h3>All the books in the world</h3><p>Founded under Ptolemy I and Ptolemy II, around 290–280 BC, the Library tried to own every Greek book. Ships in the harbour, it was said, had their books copied and the copies given back.</p></div><div class="tip"><h3>The scholars</h3><p>Euclid wrote his geometry here, Eratosthenes measured the size of the Earth, Callimachus made the first library catalogue, and Jewish scholars translated the Hebrew Bible into Greek, the Septuagint.</p></div><div class="tip"><h3>Not one fire</h3><p>The Library did not end in a single blaze. Caesar&#39;s fire in 48 BC burned books near the harbour, scholars were driven out under Ptolemy VIII, the royal quarter was wrecked in the 270s AD, and the Serapeum was destroyed in AD 391. The tale of a caliph burning it in 642 is a later legend.</p></div><div class="tip"><h3>Cleopatra&#39;s city</h3><p>Alexandria was the capital of the Ptolemies for three centuries. Cleopatra VII lived in its palaces with Caesar and then Antony, and died here in 30 BC, when Egypt became a Roman province.</p></div></div>
+  </section>
+
+  <section aria-labelledby="timeTitle">
+    <h2 id="timeTitle">Alexandria through time</h2>
+    <ol class="timeline">
+      <li><span class="yr">331 BC</span><p>Alexander the Great founds the city on a strip of land between the sea and Lake Mariout.</p></li>
+      <li><span class="yr">323–283 BC</span><p>Ptolemy I makes Alexandria the capital and brings Alexander&#39;s body here; the Mouseion and Library are founded.</p></li>
+      <li><span class="yr">c. 280 BC</span><p>The Pharos is finished under Ptolemy II.</p></li>
+      <li><span class="yr">c. 240 BC</span><p>Ptolemy III builds the Serapeum; Eratosthenes measures the Earth.</p></li>
+      <li><span class="yr">48–30 BC</span><p>Caesar, then Antony, with Cleopatra VII; she dies in 30 BC and Egypt becomes Roman.</p></li>
+      <li><span class="yr">2nd century AD</span><p>The catacombs of Kom el-Shoqafa are cut.</p></li>
+      <li><span class="yr">AD 297</span><p>Pompey&#39;s Pillar is raised for Diocletian.</p></li>
+      <li><span class="yr">AD 391</span><p>The Serapeum is destroyed.</p></li>
+      <li><span class="yr">AD 641–642</span><p>The Arab conquest; Fustat, later Cairo, becomes the capital.</p></li>
+      <li><span class="yr">1303 and 1323</span><p>Earthquakes ruin the Pharos.</p></li>
+      <li><span class="yr">1477–1479</span><p>Sultan Qaitbay builds his fort on its site.</p></li>
+      <li><span class="yr">1900</span><p>The catacombs of Kom el-Shoqafa are found.</p></li>
+      <li><span class="yr">1994</span><p>Divers chart the ruins of the Pharos off the fort.</p></li>
+      <li><span class="yr">2002</span><p>The Bibliotheca Alexandrina opens.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">For our visit</h2>
+    <div class="tips">
+      <div class="tip"><h3>An early start</h3><p>The drive from Cairo takes about three hours each way, so leave early and keep the day to the four main stops.</p></div>
+      <div class="tip"><h3>The Bibliotheca is closed some days</h3><p>It usually closes on Fridays and holidays; Wednesday is fine. Check bag rules at the entrance.</p></div>
+      <div class="tip"><h3>Catacombs: no photos?</h3><p>Photography rules underground change; ask at the ticket office. The stairs are steep and the air is humid.</p></div>
+      <div class="tip"><h3>Lunch by the sea</h3><p>Alexandria is famous for its fish: a fish restaurant near Qaitbay or on the Corniche fits between the morning and afternoon stops.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Part of <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">the Private Alimaña Tour ↗</a>. The map is schematic; dates are approximate.</p>
+</div>
