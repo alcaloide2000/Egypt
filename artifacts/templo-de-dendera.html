@@ -1,0 +1,265 @@
+<title>Templo de Hathor, Dendera</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: intro, a plan of the precinct and temple beside numbered notes, the zodiac, Hathor, a timeline and tips. Shares its look with the temple guides. Phone first: everything stacks. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --hat2: #2f6f9a;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --hat2: #8cc0e6; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --hat2: #8cc0e6; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--great); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  .audio { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--sun); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; }
+  .audio audio { width: 100%; margin: 0.4rem 0 0.8rem; }
+  .audio ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0.3rem 1rem; }
+  .audio button { all: unset; cursor: pointer; display: flex; gap: 0.6rem; width: 100%; box-sizing: border-box; padding: 0.35rem 0.4rem; border-radius: 6px; font-size: 0.9rem; }
+  .audio button:hover, .audio button:focus-visible { background: var(--bg); outline: 1px solid var(--line); }
+  .audio button[aria-current="true"] { background: var(--bg); font-weight: 600; }
+  .audio .at { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); min-width: 2.6rem; padding-top: 0.1rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--great); }
+  .mk:focus-visible { outline: none; }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .eyebrow { color: var(--hat2); }
+  .ruin { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 1; }
+  .col { fill: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--hat2); }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Dendera · templo de Hathor · del 54 a. C. a época romana · día 7 del viaje Alimaña · <a class="lang" href="https://claude.ai/artifact/BZHb4TdCwgpJoeRpJvx5Ah" target="_blank" rel="noopener noreferrer" hreflang="en">English version ↗</a></p>
+  <h1>El templo de Hathor en Dendera</h1>
+  <p class="lede">Uno de los templos mejor conservados de Egipto, todavía con su techo, sus criptas y sus escaleras, construido para Hathor, diosa del amor, la música y la alegría. Se empezó en tiempos del padre de Cleopatra y lo terminaron emperadores romanos: dentro, un bosque de columnas con el rostro de Hathor sostiene un techo pintado con el cielo, y en el muro trasero aparece la propia Cleopatra con su hijo de Julio César.</p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-dendera" target="_blank" rel="noopener noreferrer">Ficha de Dendera (en inglés) ↗</a><a href="https://claude.ai/artifact/2BxeijiRHBny2UkhyPvtsh#god-hathor" target="_blank" rel="noopener noreferrer">Hathor en la página de los dioses ↗</a><a href="#audioTitle">Audioguía ↓</a><a href="https://claude.ai/artifact/EsBmPiiHuuDSxH5UaWiGaD" target="_blank" rel="noopener noreferrer">Guía de Edfu ↗</a></p>
+
+  <div class="pair">
+    <article class="card" style="--c: var(--hat2);">
+      <span class="kicker">El templo</span>
+      <h2>La casa de Hathor</h2>
+      <dl class="facts">
+        <div><dt>Dónde</dt><dd>Dendera, en la orilla oeste frente a Qena, unos 60 km al norte de Luxor</dd></div>
+        <div><dt>Cuándo</dt><dd>Empezado en el 54 a. C. bajo Ptolomeo XII; decorado hasta el siglo I d. C.</dd></div>
+        <div><dt>Para</dt><dd>Hathor, con su esposo Horus de Edfu y su hijo Ihy</dd></div>
+        <div><dt>Conserva</dt><dd>El techo, las escaleras, las criptas y buena parte del color</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--great);">
+      <span class="kicker">No te lo pierdas</span>
+      <h2>Cuatro imprescindibles</h2>
+      <dl class="facts">
+        <div><dt>Techo</dt><dd>El techo astronómico azul del pronaos</dd></div>
+        <div><dt>Azotea</dt><dd>Las escaleras, las capillas de la azotea y la copia del zodiaco</dd></div>
+        <div><dt>Cripta</dt><dd>El relieve de la «lámpara de Dendera»</dd></div>
+        <div><dt>Cleopatra</dt><dd>La reina y Cesarión en el muro trasero</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="audioTitle">
+    <h2 id="audioTitle">Audioguía</h2>
+    <p class="section-note">Unos ocho minutos en español para escuchar durante la visita: un capítulo por cada número del plano y otro sobre Hathor, la dorada. Pulsa un capítulo para saltar a él. Voz neuronal de Microsoft (Elvira).</p>
+    <div class="audio">
+      <audio id="guia" controls preload="metadata" src="dendera-audioguia.mp3"></audio>
+      <ol id="capitulos"><li><button type="button" data-t="0.0"><span class="at">0:00</span>Bienvenida</button></li><li><button type="button" data-t="38.1"><span class="at">0:38</span>1. La puerta</button></li><li><button type="button" data-t="59.6"><span class="at">0:59</span>2. Los mammisis</button></li><li><button type="button" data-t="91.7"><span class="at">1:31</span>3. La iglesia cristiana</button></li><li><button type="button" data-t="113.6"><span class="at">1:53</span>4. El sanatorio</button></li><li><button type="button" data-t="135.1"><span class="at">2:15</span>5. El pronaos y las columnas hathóricas</button></li><li><button type="button" data-t="173.2"><span class="at">2:53</span>6. El techo astronómico</button></li><li><button type="button" data-t="206.1"><span class="at">3:26</span>7. La Sala de las Apariciones</button></li><li><button type="button" data-t="232.9"><span class="at">3:52</span>8. El santuario</button></li><li><button type="button" data-t="257.0"><span class="at">4:17</span>9. Las criptas</button></li><li><button type="button" data-t="287.4"><span class="at">4:47</span>10. Las escaleras</button></li><li><button type="button" data-t="313.4"><span class="at">5:13</span>11. La azotea y el zodiaco</button></li><li><button type="button" data-t="368.2"><span class="at">6:08</span>12. Cleopatra en el muro trasero</button></li><li><button type="button" data-t="401.1"><span class="at">6:41</span>Hathor, la dorada</button></li><li><button type="button" data-t="440.1"><span class="at">7:20</span>Despedida</button></li></ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="planTitle" style="--c: var(--hat2);">
+    <h2 id="planTitle">Alrededor y dentro del templo</h2>
+    <p class="section-note">Doce paradas: primero el recinto, luego el interior del templo, bajando a las criptas, subiendo a la azotea y rodeando hasta el muro trasero. Pulsa un número en el plano.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="0 0 380 520" role="img" aria-label="Plano simplificado del recinto de Dendera, con la entrada abajo. Una puerta en la muralla de adobe lleva al templo de Hathor, que está enfrente. A la izquierda del camino están los dos mammisis, con las ruinas de una iglesia cristiana entre ellos, y más allá el sanatorio. El templo tiene un amplio pronaos con 24 columnas hathóricas y el techo astronómico, luego la Sala de las Apariciones, las salas de ofrendas y al fondo el santuario rodeado de capillas, con criptas en los muros. Escaleras a ambos lados llevan a la azotea, donde están el quiosco de Año Nuevo y las capillas de Osiris con el zodiaco. Cleopatra y Cesarión están tallados en la cara exterior del muro trasero. El lago sagrado queda a la derecha y el pequeño templo de Isis detrás. Los números corresponden a las notas.">
+          <rect width="380" height="520" fill="var(--panel)"/>
+          <rect x="10" y="40" width="360" height="470" fill="none" stroke="var(--ink-soft)" stroke-dasharray="5 4"/>
+          <rect x="222" y="500" width="28" height="18" class="cut"/>
+          <rect x="140" y="320" width="192" height="80" class="cut"/>
+          <circle cx="158" cy="336" r="3" fill="var(--ink-soft)"/><circle cx="158" cy="352" r="3" fill="var(--ink-soft)"/><circle cx="158" cy="368" r="3" fill="var(--ink-soft)"/><circle cx="158" cy="384" r="3" fill="var(--ink-soft)"/><circle cx="184" cy="336" r="3" fill="var(--ink-soft)"/><circle cx="184" cy="352" r="3" fill="var(--ink-soft)"/><circle cx="184" cy="368" r="3" fill="var(--ink-soft)"/><circle cx="184" cy="384" r="3" fill="var(--ink-soft)"/><circle cx="210" cy="336" r="3" fill="var(--ink-soft)"/><circle cx="210" cy="352" r="3" fill="var(--ink-soft)"/><circle cx="210" cy="368" r="3" fill="var(--ink-soft)"/><circle cx="210" cy="384" r="3" fill="var(--ink-soft)"/><circle cx="236" cy="336" r="3" fill="var(--ink-soft)"/><circle cx="236" cy="352" r="3" fill="var(--ink-soft)"/><circle cx="236" cy="368" r="3" fill="var(--ink-soft)"/><circle cx="236" cy="384" r="3" fill="var(--ink-soft)"/><circle cx="262" cy="336" r="3" fill="var(--ink-soft)"/><circle cx="262" cy="352" r="3" fill="var(--ink-soft)"/><circle cx="262" cy="368" r="3" fill="var(--ink-soft)"/><circle cx="262" cy="384" r="3" fill="var(--ink-soft)"/><circle cx="288" cy="336" r="3" fill="var(--ink-soft)"/><circle cx="288" cy="352" r="3" fill="var(--ink-soft)"/><circle cx="288" cy="368" r="3" fill="var(--ink-soft)"/><circle cx="288" cy="384" r="3" fill="var(--ink-soft)"/><circle cx="314" cy="336" r="3" fill="var(--ink-soft)"/><circle cx="314" cy="352" r="3" fill="var(--ink-soft)"/><circle cx="314" cy="368" r="3" fill="var(--ink-soft)"/><circle cx="314" cy="384" r="3" fill="var(--ink-soft)"/>
+          <rect x="152" y="132" width="168" height="188" class="cut"/>
+          <rect x="196" y="160" width="80" height="60" fill="none" stroke="var(--ink-soft)"/>
+          <rect x="222" y="170" width="28" height="40" fill="var(--hat2)" opacity="0.35"/>
+          <path d="M152,250 H320 M152,284 H320" stroke="var(--ink-soft)" stroke-width="0.8"/>
+          <rect x="300" y="262" width="18" height="18" fill="none" stroke="var(--ink-soft)"/>
+          <rect x="286" y="138" width="28" height="22" fill="none" stroke="var(--ink-soft)" stroke-dasharray="2 2"/>
+          <rect x="40" y="372" width="64" height="42" class="cut"/>
+          <rect x="44" y="322" width="56" height="28" fill="none" stroke="var(--ink-soft)" stroke-dasharray="2 2"/>
+          <rect x="40" y="250" width="64" height="46" fill="none" stroke="var(--ink-soft)"/>
+          <rect x="40" y="430" width="56" height="34" class="cut"/>
+          <rect x="300" y="430" width="56" height="44" fill="var(--water, #8fb6c9)" opacity="0.4" stroke="var(--ink-soft)"/>
+          <rect x="250" y="56" width="50" height="34" class="cut"/>
+          <text class="t-sub" x="236" y="314" text-anchor="middle">pronaos</text>
+          <text class="t-sub" x="328" y="488" text-anchor="middle">lago sagrado</text>
+          <text class="t-sub" x="275" y="50" text-anchor="middle">templo de Isis</text>
+          <text class="t-sub" x="72" y="480" text-anchor="middle">mammisi de Nectanebo</text>
+          <text class="t-sub" x="72" y="244" text-anchor="middle">sanatorio</text>
+          <a class="mk" href="#dn-1"><circle cx="236" cy="494" r="9"/><text x="236" y="494">1</text></a><a class="mk" href="#dn-2"><circle cx="72" cy="392" r="9"/><text x="72" y="392">2</text></a><a class="mk" href="#dn-3"><circle cx="72" cy="336" r="9"/><text x="72" y="336">3</text></a><a class="mk" href="#dn-4"><circle cx="72" cy="276" r="9"/><text x="72" y="276">4</text></a><a class="mk" href="#dn-5"><circle cx="236" cy="404" r="9"/><text x="236" y="404">5</text></a><a class="mk" href="#dn-6"><circle cx="300" cy="346" r="9"/><text x="300" y="346">6</text></a><a class="mk" href="#dn-7"><circle cx="236" cy="286" r="9"/><text x="236" y="286">7</text></a><a class="mk" href="#dn-8"><circle cx="236" cy="196" r="9"/><text x="236" y="196">8</text></a><a class="mk" href="#dn-9"><circle cx="176" cy="222" r="9"/><text x="176" y="222">9</text></a><a class="mk" href="#dn-10"><circle cx="296" cy="252" r="9"/><text x="296" y="252">10</text></a><a class="mk" href="#dn-11"><circle cx="300" cy="150" r="9"/><text x="300" y="150">11</text></a><a class="mk" href="#dn-12"><circle cx="236" cy="116" r="9"/><text x="236" y="116">12</text></a>
+        </svg>
+        <p class="caption">Plano simplificado, sin escala; posiciones aproximadas.</p>
+      </div>
+      <ol class="notes">
+        <li id="dn-1"><span class="num">1</span><div><h3>La puerta</h3><p>Una puerta monumental de piedra de los emperadores romanos Domiciano y Trajano se abre en la gran muralla de adobe que rodea el recinto sagrado. Desde aquí la fachada del templo llena la vista.</p></div></li>
+        <li id="dn-2"><span class="num">2</span><div><h3>Los mammisis</h3><p>Dos pequeños templos, las «casas del nacimiento», donde cada año se celebraba el nacimiento de Ihy, hijo de Hathor y Horus: uno romano, decorado bajo Trajano, con figuras del dios enano Bes, protector de madres y bebés, y otro más antiguo empezado por Nectanebo I hacia el 370 a. C.</p><p class="see"><a href="https://claude.ai/artifact/2BxeijiRHBny2UkhyPvtsh#god-bes" target="_blank" rel="noopener noreferrer">Bes ↗</a> · <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-nectanebo1" target="_blank" rel="noopener noreferrer">Nectanebo I (en inglés) ↗</a></p></div></li>
+        <li id="dn-3"><span class="num">3</span><div><h3>La iglesia cristiana</h3><p>Entre los dos mammisis se alzan los muros de una basílica del siglo V, una de las iglesias más antiguas de Egipto, construida con bloques del mammisi más antiguo cuando los templos ya se habían cerrado.</p></div></li>
+        <li id="dn-4"><span class="num">4</span><div><h3>El sanatorio</h3><p>Habitaciones de adobe donde los enfermos venían a dormir y a bañarse en agua que había corrido sobre textos mágicos, esperando un sueño curativo de Hathor: un antiguo hospital de la fe.</p></div></li>
+        <li id="dn-5"><span class="num">5</span><div><h3>El pronaos y las columnas hathóricas</h3><p>La gran sala de columnas de la fachada, construida bajo el emperador Tiberio: 24 enormes columnas cuyos capiteles son el rostro de Hathor, con orejas de vaca, en sus cuatro lados, coronado por una pequeña capilla como su sonajero sagrado, el sistro. Los cristianos picaron muchos de esos rostros.</p><p class="see"><a href="https://claude.ai/artifact/2BxeijiRHBny2UkhyPvtsh#god-hathor" target="_blank" rel="noopener noreferrer">Hathor ↗</a></p></div></li>
+        <li id="dn-6"><span class="num">6</span><div><h3>El techo astronómico</h3><p>Mira hacia arriba: el techo del pronaos es un mapa del cielo, con el largo cuerpo de la diosa Nut que se traga el sol y lo da a luz, las horas del día y de la noche, los decanos y los signos del zodiaco. Limpiado de siglos de hollín en las décadas de 2000 y 2010, sus azules y dorados vuelven a brillar.</p><p class="see"><a href="https://claude.ai/artifact/2BxeijiRHBny2UkhyPvtsh#god-nut" target="_blank" rel="noopener noreferrer">Nut ↗</a> · <a href="#zodiacTitle">El zodiaco ↓</a></p></div></li>
+        <li id="dn-7"><span class="num">7</span><div><h3>La Sala de las Apariciones</h3><p>Una sala más pequeña de seis columnas donde la estatua de la diosa aparecía en las fiestas. Las salas laterales guardaban los tesoros del templo: una era el laboratorio, con recetas de perfumes y aceites sagrados talladas en los muros.</p></div></li>
+        <li id="dn-8"><span class="num">8</span><div><h3>El santuario</h3><p>Al fondo, el oscuro santuario guardaba la barca sagrada de Hathor, rodeado por un corredor de capillas para los dioses que compartían el templo. Las salas son más pequeñas y oscuras a medida que se avanza.</p></div></li>
+        <li id="dn-9"><span class="num">9</span><div><h3>Las criptas</h3><p>Estrechas cámaras ocultas en el grosor de los muros y bajo el suelo guardaban las estatuas más valiosas del templo. En una hay tallada una gran flor de loto que da a luz una serpiente dentro de una larga burbuja: un mito de la creación, no, como dicen algunos, una bombilla antigua.</p></div></li>
+        <li id="dn-10"><span class="num">10</span><div><h3>Las escaleras</h3><p>Dos escaleras suben a la azotea, talladas con sacerdotes que llevan en procesión la estatua de la diosa. En Año Nuevo la subían a un pequeño quiosco de la azotea para unirla con los rayos del sol naciente, y la bajaban por la otra escalera.</p></div></li>
+        <li id="dn-11"><span class="num">11</span><div><h3>La azotea y el zodiaco</h3><p>En la azotea hay pequeñas capillas para los misterios de Osiris. El techo de una tenía el famoso zodiaco circular, arrancado en 1821 y llevado a París; está en el Louvre, y en su lugar hay una copia. La vista sobre los campos hasta el Nilo es maravillosa.</p><p class="see"><a href="https://claude.ai/artifact/2BxeijiRHBny2UkhyPvtsh#god-osiris" target="_blank" rel="noopener noreferrer">Osiris ↗</a> · <a href="#zodiacTitle">El zodiaco ↓</a></p></div></li>
+        <li id="dn-12"><span class="num">12</span><div><h3>Cleopatra en el muro trasero</h3><p>Rodea el templo hasta la cara exterior del muro trasero: Cleopatra VII y su hijo de Julio César, Cesarión, hacen ofrendas a los dioses, tallados a mayor tamaño que el natural. Es una de las poquísimas imágenes grandes de la famosa reina.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-cleopatra7" target="_blank" rel="noopener noreferrer">Cleopatra VII (en inglés) ↗</a> · <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ptolemy15" target="_blank" rel="noopener noreferrer">Cesarión (en inglés) ↗</a></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="zodiacTitle" style="--c: var(--hat2);">
+    <h2 id="zodiacTitle">El zodiaco de Dendera</h2>
+    <p class="section-note">El único mapa circular completo del cielo que se conserva del antiguo Egipto.</p>
+    <div class="figure" style="max-width: 480px;">
+      <svg viewBox="-30 0 400 300" role="img" aria-label="Esquema del zodiaco circular de Dendera: un disco del cielo sostenido por cuatro diosas en las esquinas, con los doce signos del zodiaco en un anillo y, alrededor, los treinta y seis decanos, los grupos de estrellas egipcios que marcaban las horas de la noche.">
+          <rect x="-30" width="400" height="300" fill="var(--panel)"/>
+          <circle cx="170" cy="150" r="104" fill="none" stroke="var(--ink-soft)"/>
+          <circle cx="170" cy="150" r="80" fill="none" stroke="var(--line)"/>
+          <circle cx="240.0" cy="150.0" r="1.3" fill="var(--ink-soft)"/><circle cx="238.9" cy="162.2" r="1.3" fill="var(--ink-soft)"/><circle cx="235.8" cy="173.9" r="1.3" fill="var(--ink-soft)"/><circle cx="230.6" cy="185.0" r="1.3" fill="var(--ink-soft)"/><circle cx="223.6" cy="195.0" r="1.3" fill="var(--ink-soft)"/><circle cx="215.0" cy="203.6" r="1.3" fill="var(--ink-soft)"/><circle cx="205.0" cy="210.6" r="1.3" fill="var(--ink-soft)"/><circle cx="193.9" cy="215.8" r="1.3" fill="var(--ink-soft)"/><circle cx="182.2" cy="218.9" r="1.3" fill="var(--ink-soft)"/><circle cx="170.0" cy="220.0" r="1.3" fill="var(--ink-soft)"/><circle cx="157.8" cy="218.9" r="1.3" fill="var(--ink-soft)"/><circle cx="146.1" cy="215.8" r="1.3" fill="var(--ink-soft)"/><circle cx="135.0" cy="210.6" r="1.3" fill="var(--ink-soft)"/><circle cx="125.0" cy="203.6" r="1.3" fill="var(--ink-soft)"/><circle cx="116.4" cy="195.0" r="1.3" fill="var(--ink-soft)"/><circle cx="109.4" cy="185.0" r="1.3" fill="var(--ink-soft)"/><circle cx="104.2" cy="173.9" r="1.3" fill="var(--ink-soft)"/><circle cx="101.1" cy="162.2" r="1.3" fill="var(--ink-soft)"/><circle cx="100.0" cy="150.0" r="1.3" fill="var(--ink-soft)"/><circle cx="101.1" cy="137.8" r="1.3" fill="var(--ink-soft)"/><circle cx="104.2" cy="126.1" r="1.3" fill="var(--ink-soft)"/><circle cx="109.4" cy="115.0" r="1.3" fill="var(--ink-soft)"/><circle cx="116.4" cy="105.0" r="1.3" fill="var(--ink-soft)"/><circle cx="125.0" cy="96.4" r="1.3" fill="var(--ink-soft)"/><circle cx="135.0" cy="89.4" r="1.3" fill="var(--ink-soft)"/><circle cx="146.1" cy="84.2" r="1.3" fill="var(--ink-soft)"/><circle cx="157.8" cy="81.1" r="1.3" fill="var(--ink-soft)"/><circle cx="170.0" cy="80.0" r="1.3" fill="var(--ink-soft)"/><circle cx="182.2" cy="81.1" r="1.3" fill="var(--ink-soft)"/><circle cx="193.9" cy="84.2" r="1.3" fill="var(--ink-soft)"/><circle cx="205.0" cy="89.4" r="1.3" fill="var(--ink-soft)"/><circle cx="215.0" cy="96.4" r="1.3" fill="var(--ink-soft)"/><circle cx="223.6" cy="105.0" r="1.3" fill="var(--ink-soft)"/><circle cx="230.6" cy="115.0" r="1.3" fill="var(--ink-soft)"/><circle cx="235.8" cy="126.1" r="1.3" fill="var(--ink-soft)"/><circle cx="238.9" cy="137.8" r="1.3" fill="var(--ink-soft)"/>
+          <circle cx="170.0" cy="58.0" r="3" fill="var(--hat2)"/><text class="t-sub" x="170.0" y="35.0" text-anchor="middle">Aries</text><circle cx="216.0" cy="70.3" r="3" fill="var(--hat2)"/><text class="t-sub" x="229.0" y="50.8" text-anchor="start">Tauro</text><circle cx="249.7" cy="104.0" r="3" fill="var(--hat2)"/><text class="t-sub" x="272.2" y="94.0" text-anchor="start">Géminis</text><circle cx="262.0" cy="150.0" r="3" fill="var(--hat2)"/><text class="t-sub" x="288.0" y="153.0" text-anchor="start">Cáncer</text><circle cx="249.7" cy="196.0" r="3" fill="var(--hat2)"/><text class="t-sub" x="272.2" y="212.0" text-anchor="start">Leo</text><circle cx="216.0" cy="229.7" r="3" fill="var(--hat2)"/><text class="t-sub" x="229.0" y="255.2" text-anchor="start">Virgo</text><circle cx="170.0" cy="242.0" r="3" fill="var(--hat2)"/><text class="t-sub" x="170.0" y="271.0" text-anchor="middle">Libra</text><circle cx="124.0" cy="229.7" r="3" fill="var(--hat2)"/><text class="t-sub" x="111.0" y="255.2" text-anchor="end">Escorpio</text><circle cx="90.3" cy="196.0" r="3" fill="var(--hat2)"/><text class="t-sub" x="67.8" y="212.0" text-anchor="end">Sagitario</text><circle cx="78.0" cy="150.0" r="3" fill="var(--hat2)"/><text class="t-sub" x="52.0" y="153.0" text-anchor="end">Capricornio</text><circle cx="90.3" cy="104.0" r="3" fill="var(--hat2)"/><text class="t-sub" x="67.8" y="94.0" text-anchor="end">Acuario</text><circle cx="124.0" cy="70.3" r="3" fill="var(--hat2)"/><text class="t-sub" x="111.0" y="50.8" text-anchor="end">Piscis</text>
+          <circle cx="283.1" cy="247.6" r="6" fill="none" stroke="var(--ink-soft)"/><circle cx="56.9" cy="247.6" r="6" fill="none" stroke="var(--ink-soft)"/><circle cx="56.9" cy="52.4" r="6" fill="none" stroke="var(--ink-soft)"/><circle cx="283.1" cy="52.4" r="6" fill="none" stroke="var(--ink-soft)"/>
+          <text class="t-sub" x="170" y="146" text-anchor="middle">36 decanos</text>
+          <text class="t-sub" x="170" y="160" text-anchor="middle">en el anillo interior</text>
+        </svg>
+      <p class="caption">Esquema del zodiaco, sin escala; los signos están repartidos por igual, no como están tallados.</p>
+    </div>
+    <div class="tips" style="margin-top: 1rem;"><div class="tip"><h3>Un cielo babilonio en Egipto</h3><p>Los doce signos del zodiaco llegaron a Egipto desde Babilonia a través de los griegos; aquí se mezclan con figuras de estrellas egipcias como el hipopótamo y la pata de toro (la Osa Mayor) y con los 36 decanos, los grupos de estrellas que marcaban las horas de la noche.</p></div><div class="tip"><h3>Sostenido por diosas</h3><p>El disco del cielo lo sostienen cuatro diosas de pie y ocho espíritus con cabeza de halcón: una manera de dibujar el firmamento como una cúpula apoyada en soportes.</p></div><div class="tip"><h3>Una fecha en las estrellas</h3><p>En él aparecen dos eclipses; los astrónomos los han identificado con los del 52 y el 51 a. C., así que el zodiaco se talló en tiempos de Cleopatra.</p></div><div class="tip"><h3>Llevado a París</h3><p>En 1821 el francés Lelorrain lo arrancó con sierras y pólvora y lo envió a Francia. Está en el Louvre; la copia de yeso de la azotea muestra dónde estaba.</p></div></div>
+  </section>
+
+  <section aria-labelledby="hathorTitle" style="--c: var(--great);">
+    <h2 id="hathorTitle">Hathor, la dorada</h2>
+    <div class="tips"><div class="tip"><h3>La dorada</h3><p>Hathor era la diosa del amor, la música, la danza, la alegría y la embriaguez, «la Dorada». Se la representaba como una mujer con cuernos de vaca y disco solar, como una vaca o como un rostro con orejas de vaca, como en las columnas de aquí.</p></div><div class="tip"><h3>El Ojo de Ra</h3><p>En un mito, el dios sol la envió como su Ojo feroz para castigar a los humanos rebeldes; solo se calmó con cerveza teñida de rojo para que pareciera sangre. Sus fiestas incluían una fiesta de la embriaguez para recordarlo.</p></div><div class="tip"><h3>El Hermoso Encuentro</h3><p>Cada verano la estatua de Hathor navegaba río arriba de Dendera a Edfu para visitar a su esposo Horus, en una fiesta de dos semanas. Su hijo era Ihy, el joven dios músico celebrado en los mammisis.</p></div><div class="tip"><h3>Música para la diosa</h3><p>El sistro, un sonajero sagrado, y el collar menat eran sus instrumentos. Los capiteles de las columnas imitan el sistro, así que todo el pronaos es una sala de música en piedra.</p></div></div>
+  </section>
+
+  <section aria-labelledby="timeTitle">
+    <h2 id="timeTitle">Dendera a través del tiempo</h2>
+    <ol class="timeline">
+      <li><span class="yr">Reino Antiguo y Nuevo</span><p>Aquí se alzan templos anteriores a Hathor; inscripciones posteriores afirman que sus planos se remontan a la época de los constructores de pirámides.</p></li>
+      <li><span class="yr">h. 370 a. C.</span><p>Nectanebo I construye un mammisi.</p></li>
+      <li><span class="yr">54 a. C.</span><p>Bajo Ptolomeo XII, padre de Cleopatra, se empieza el templo actual.</p></li>
+      <li><span class="yr">h. 50–30 a. C.</span><p>Se tallan Cleopatra VII y Cesarión en el muro trasero; el zodiaco se hace hacia el 50 a. C.</p></li>
+      <li><span class="yr">14–37 d. C.</span><p>Bajo el emperador Tiberio se construye el pronaos con sus columnas hathóricas.</p></li>
+      <li><span class="yr">h. 100 d. C.</span><p>Se decora el mammisi romano bajo Trajano; Domiciano y Trajano construyen la puerta.</p></li>
+      <li><span class="yr">Siglo V</span><p>Se construye una basílica cristiana entre los mammisis; se pican rostros del templo.</p></li>
+      <li><span class="yr">1798–1799</span><p>Los sabios de Napoleón dibujan el templo y el zodiaco.</p></li>
+      <li><span class="yr">1821</span><p>El zodiaco circular se lleva a París.</p></li>
+      <li><span class="yr">Décadas de 2000 y 2010</span><p>Se limpia el techo del pronaos y reaparecen sus colores.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">Para nuestra visita</h2>
+    <div class="tips">
+      <div class="tip"><h3>Primero, mira arriba</h3><p>En el pronaos, detente y mira el techo antes que nada; una linterna pequeña o la del móvil ayuda en las salas más oscuras.</p></div>
+      <div class="tip"><h3>Sube a la azotea</h3><p>Sube por una escalera y baja por la otra, como hacían los sacerdotes; las capillas de la azotea y la vista merecen la pena.</p></div>
+      <div class="tip"><h3>Pregunta por la cripta</h3><p>A la cripta del relieve del loto y la serpiente se llega por un pasadizo bajo; pregunta al guarda cuál está abierta.</p></div>
+      <div class="tip"><h3>Rodea el templo</h3><p>No te vayas sin ver a Cleopatra y Cesarión en la cara exterior del muro trasero, y las gárgolas con cabeza de león de los lados.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Forma parte del <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">Private Alimaña Tour ↗</a> (en inglés). El plano es esquemático; las fechas son aproximadas.</p>
+</div>
+<script>
+(() => {
+  const a = document.getElementById('guia');
+  const bs = [...document.querySelectorAll('#capitulos button')];
+  bs.forEach(b => b.addEventListener('click', () => { a.currentTime = +b.dataset.t; a.play().catch(() => {}); }));
+  a.addEventListener('timeupdate', () => {
+    let cur = 0; bs.forEach((b, i) => { if (a.currentTime >= +b.dataset.t - 0.2) cur = i; });
+    bs.forEach((b, i) => b.setAttribute('aria-current', i === cur && a.currentTime > 0 ? 'true' : 'false'));
+  });
+})();
+</script>
