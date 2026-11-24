@@ -1,0 +1,246 @@
+<title>Temple of Seti I, Abydos</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: intro, a plan of the L-shaped temple beside numbered notes, the King List, the art of Seti I, Abydos city of Osiris, a timeline and tips. Shares its look with the temple guides. Phone first: everything stacks. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --aby: #5f6f2a;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --aby: #b8c97c; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --aby: #b8c97c; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--great); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--great); }
+  .mk:focus-visible { outline: none; }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .eyebrow { color: var(--aby); }
+  .ruin { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 1; }
+  .col { fill: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--aby); }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Abydos · temple of Seti I · c. 1290–1279 BC · Day 7 of the Alimaña tour</p>
+  <h1>The Temple of Seti I at Abydos</h1>
+  <p class="lede">Abydos was the holy city of Osiris, god of the dead, where every Egyptian hoped to make a pilgrimage. Here Seti I built a temple unlike any other: L-shaped, with seven chapels side by side and some of the most beautiful reliefs ever carved, still bright with colour. In a side gallery he and the young Ramesses II honour 76 kings before them, the famous Abydos King List.</p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-abydos" target="_blank" rel="noopener noreferrer">Abydos card ↗</a><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-seti1" target="_blank" rel="noopener noreferrer">Seti I card ↗</a><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-osiris" target="_blank" rel="noopener noreferrer">Osiris on the gods page ↗</a><a href="https://claude.ai/artifact/SAnQiyf3p9kjpkZEbggBoi#day-7" target="_blank" rel="noopener noreferrer">Our Day 7 photos ↗</a></p>
+
+  <div class="pair">
+    <article class="card" style="--c: var(--aby);">
+      <span class="kicker">The temple</span>
+      <h2>The house of millions of years of Seti</h2>
+      <dl class="facts">
+        <div><dt>Where</dt><dd>Abydos, about 160 km north of Luxor, on the edge of the western desert</dd></div>
+        <div><dt>When</dt><dd>Begun by Seti I c. 1290 BC, finished by Ramesses II</dd></div>
+        <div><dt>For</dt><dd>Osiris, Isis and Horus, Amun-Ra, Ra-Horakhty, Ptah, the deified Seti, and the royal ancestors</dd></div>
+        <div><dt>Shape</dt><dd>An L, with a wing to the side and seven chapels in a row</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--great);">
+      <span class="kicker">Do not miss</span>
+      <h2>Four highlights</h2>
+      <dl class="facts">
+        <div><dt>Relief</dt><dd>Seti&#39;s raised relief in the second hypostyle hall and the chapels</dd></div>
+        <div><dt>List</dt><dd>The King List in the Gallery of the Lists</dd></div>
+        <div><dt>Osireion</dt><dd>The sunken &#39;tomb of Osiris&#39; behind the temple</dd></div>
+        <div><dt>Curiosity</dt><dd>The &#39;helicopter&#39; hieroglyphs in the first hall</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="planTitle" style="--c: var(--aby);">
+    <h2 id="planTitle">Through Seti&#39;s temple</h2>
+    <p class="section-note">Twelve stops, from the courts to the seven chapels, then the side wing, the Osireion and Ramesses II&#39;s temple. Tap a number on the plan.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="0 0 392 520" role="img" aria-label="Simplified plan of the temple of Seti I at Abydos, entrance at the bottom. Two ruined courts lead to the portico of Ramesses II, the first hypostyle hall of 24 columns and the second of 36 columns, then a row of seven chapels for Seti, Ptah, Ra-Horakhty, Amun-Ra, Osiris, Isis and Horus. Behind them lies the Osiris suite. A wing turns off to the left, giving the temple its L shape: the Gallery of the Lists with the King List, the hall of Sokar and Nefertem, and the corridor of the bull leading out to the back. Behind the temple, sunk in the ground, is the Osireion. The temple of Ramesses II lies a short walk away. Numbered markers match the notes.">
+          <rect width="392" height="520" fill="var(--panel)"/>
+          <rect x="80" y="444" width="220" height="70" fill="none" stroke="var(--ink-soft)" stroke-dasharray="4 3"/>
+          <path d="M80,480 H300" stroke="var(--ink-soft)" stroke-dasharray="4 3"/>
+          <rect x="80" y="408" width="220" height="24" class="cut"/>
+          <rect class="pillar" x="85" y="414" width="6" height="12"/><rect class="pillar" x="103" y="414" width="6" height="12"/><rect class="pillar" x="121" y="414" width="6" height="12"/><rect class="pillar" x="139" y="414" width="6" height="12"/><rect class="pillar" x="157" y="414" width="6" height="12"/><rect class="pillar" x="175" y="414" width="6" height="12"/><rect class="pillar" x="193" y="414" width="6" height="12"/><rect class="pillar" x="211" y="414" width="6" height="12"/><rect class="pillar" x="229" y="414" width="6" height="12"/><rect class="pillar" x="247" y="414" width="6" height="12"/><rect class="pillar" x="265" y="414" width="6" height="12"/><rect class="pillar" x="283" y="414" width="6" height="12"/>
+          <rect x="80" y="348" width="220" height="54" fill="none" stroke="var(--ink-soft)"/>
+          <circle cx="88" cy="362" r="2.4" fill="var(--ink-soft)"/><circle cx="106" cy="362" r="2.4" fill="var(--ink-soft)"/><circle cx="124" cy="362" r="2.4" fill="var(--ink-soft)"/><circle cx="142" cy="362" r="2.4" fill="var(--ink-soft)"/><circle cx="160" cy="362" r="2.4" fill="var(--ink-soft)"/><circle cx="178" cy="362" r="2.4" fill="var(--ink-soft)"/><circle cx="196" cy="362" r="2.4" fill="var(--ink-soft)"/><circle cx="214" cy="362" r="2.4" fill="var(--ink-soft)"/><circle cx="232" cy="362" r="2.4" fill="var(--ink-soft)"/><circle cx="250" cy="362" r="2.4" fill="var(--ink-soft)"/><circle cx="268" cy="362" r="2.4" fill="var(--ink-soft)"/><circle cx="286" cy="362" r="2.4" fill="var(--ink-soft)"/><circle cx="88" cy="386" r="2.4" fill="var(--ink-soft)"/><circle cx="106" cy="386" r="2.4" fill="var(--ink-soft)"/><circle cx="124" cy="386" r="2.4" fill="var(--ink-soft)"/><circle cx="142" cy="386" r="2.4" fill="var(--ink-soft)"/><circle cx="160" cy="386" r="2.4" fill="var(--ink-soft)"/><circle cx="178" cy="386" r="2.4" fill="var(--ink-soft)"/><circle cx="196" cy="386" r="2.4" fill="var(--ink-soft)"/><circle cx="214" cy="386" r="2.4" fill="var(--ink-soft)"/><circle cx="232" cy="386" r="2.4" fill="var(--ink-soft)"/><circle cx="250" cy="386" r="2.4" fill="var(--ink-soft)"/><circle cx="268" cy="386" r="2.4" fill="var(--ink-soft)"/><circle cx="286" cy="386" r="2.4" fill="var(--ink-soft)"/>
+          <rect x="80" y="268" width="220" height="68" fill="none" stroke="var(--ink-soft)"/>
+          <circle cx="88" cy="282" r="2.4" fill="var(--ink-soft)"/><circle cx="106" cy="282" r="2.4" fill="var(--ink-soft)"/><circle cx="124" cy="282" r="2.4" fill="var(--ink-soft)"/><circle cx="142" cy="282" r="2.4" fill="var(--ink-soft)"/><circle cx="160" cy="282" r="2.4" fill="var(--ink-soft)"/><circle cx="178" cy="282" r="2.4" fill="var(--ink-soft)"/><circle cx="196" cy="282" r="2.4" fill="var(--ink-soft)"/><circle cx="214" cy="282" r="2.4" fill="var(--ink-soft)"/><circle cx="232" cy="282" r="2.4" fill="var(--ink-soft)"/><circle cx="250" cy="282" r="2.4" fill="var(--ink-soft)"/><circle cx="268" cy="282" r="2.4" fill="var(--ink-soft)"/><circle cx="286" cy="282" r="2.4" fill="var(--ink-soft)"/><circle cx="88" cy="302" r="2.4" fill="var(--ink-soft)"/><circle cx="106" cy="302" r="2.4" fill="var(--ink-soft)"/><circle cx="124" cy="302" r="2.4" fill="var(--ink-soft)"/><circle cx="142" cy="302" r="2.4" fill="var(--ink-soft)"/><circle cx="160" cy="302" r="2.4" fill="var(--ink-soft)"/><circle cx="178" cy="302" r="2.4" fill="var(--ink-soft)"/><circle cx="196" cy="302" r="2.4" fill="var(--ink-soft)"/><circle cx="214" cy="302" r="2.4" fill="var(--ink-soft)"/><circle cx="232" cy="302" r="2.4" fill="var(--ink-soft)"/><circle cx="250" cy="302" r="2.4" fill="var(--ink-soft)"/><circle cx="268" cy="302" r="2.4" fill="var(--ink-soft)"/><circle cx="286" cy="302" r="2.4" fill="var(--ink-soft)"/><circle cx="88" cy="322" r="2.4" fill="var(--ink-soft)"/><circle cx="106" cy="322" r="2.4" fill="var(--ink-soft)"/><circle cx="124" cy="322" r="2.4" fill="var(--ink-soft)"/><circle cx="142" cy="322" r="2.4" fill="var(--ink-soft)"/><circle cx="160" cy="322" r="2.4" fill="var(--ink-soft)"/><circle cx="178" cy="322" r="2.4" fill="var(--ink-soft)"/><circle cx="196" cy="322" r="2.4" fill="var(--ink-soft)"/><circle cx="214" cy="322" r="2.4" fill="var(--ink-soft)"/><circle cx="232" cy="322" r="2.4" fill="var(--ink-soft)"/><circle cx="250" cy="322" r="2.4" fill="var(--ink-soft)"/><circle cx="268" cy="322" r="2.4" fill="var(--ink-soft)"/><circle cx="286" cy="322" r="2.4" fill="var(--ink-soft)"/>
+          <rect x="82" y="206" width="27" height="56" class="cut"/><rect x="113" y="206" width="27" height="56" class="cut"/><rect x="144" y="206" width="27" height="56" class="cut"/><rect x="175" y="206" width="27" height="56" class="cut"/><rect x="206" y="206" width="27" height="56" class="cut"/><rect x="237" y="206" width="27" height="56" class="cut"/><rect x="268" y="206" width="27" height="56" class="cut"/>
+          <rect x="80" y="140" width="220" height="60" class="cut"/>
+          <rect class="pillar" x="110" y="160" width="6" height="6"/><rect class="pillar" x="140" y="160" width="6" height="6"/><rect class="pillar" x="170" y="160" width="6" height="6"/><rect class="pillar" x="200" y="160" width="6" height="6"/><rect class="pillar" x="230" y="160" width="6" height="6"/><rect class="pillar" x="260" y="160" width="6" height="6"/>
+          <rect x="12" y="206" width="66" height="130" fill="none" stroke="var(--ink-soft)"/>
+          <rect x="16" y="210" width="58" height="50" class="cut"/>
+          <rect x="16" y="280" width="62" height="20" fill="var(--aby)" opacity="0.3" stroke="var(--ink-soft)"/>
+          <rect x="16" y="310" width="58" height="24" class="cut"/>
+          <rect x="140" y="44" width="100" height="56" fill="var(--water, #8fb6c9)" opacity="0.35" stroke="var(--ink-soft)"/>
+          <rect class="pillar" x="158" y="60" width="6" height="6"/><rect class="pillar" x="158" y="84" width="6" height="6"/><rect class="pillar" x="174" y="60" width="6" height="6"/><rect class="pillar" x="174" y="84" width="6" height="6"/><rect class="pillar" x="190" y="60" width="6" height="6"/><rect class="pillar" x="190" y="84" width="6" height="6"/><rect class="pillar" x="206" y="60" width="6" height="6"/><rect class="pillar" x="206" y="84" width="6" height="6"/><rect class="pillar" x="222" y="60" width="6" height="6"/><rect class="pillar" x="222" y="84" width="6" height="6"/>
+          <text class="t-sub" x="190" y="126" text-anchor="middle">Osireion (sunken)</text>
+          <text class="t-sub" x="306" y="236">7 chapels</text>
+          <text class="t-sub" x="306" y="176">Osiris suite</text>
+          <text class="t-sub" x="306" y="304">36 columns</text>
+          <text class="t-sub" x="306" y="378">24 columns</text>
+          <text class="t-sub" x="306" y="424">portico</text>
+          <text class="t-sub" x="306" y="482">courts</text>
+          <text class="t-sub" x="300" y="14" text-anchor="end">to Ramesses II&#39;s temple</text>
+          <text class="t-sub" x="45" y="352" text-anchor="middle">wing</text>
+          <a class="mk" href="#ab-1"><circle cx="190" cy="476" r="9"/><text x="190" y="476">1</text></a><a class="mk" href="#ab-2"><circle cx="190" cy="438" r="9"/><text x="190" y="438">2</text></a><a class="mk" href="#ab-3"><circle cx="130" cy="374" r="9"/><text x="130" y="374">3</text></a><a class="mk" href="#ab-4"><circle cx="190" cy="312" r="9"/><text x="190" y="312">4</text></a><a class="mk" href="#ab-5"><circle cx="112" cy="234" r="9"/><text x="112" y="234">5</text></a><a class="mk" href="#ab-6"><circle cx="250" cy="176" r="9"/><text x="250" y="176">6</text></a><a class="mk" href="#ab-7"><circle cx="46" cy="290" r="9"/><text x="46" y="290">7</text></a><a class="mk" href="#ab-8"><circle cx="46" cy="236" r="9"/><text x="46" y="236">8</text></a><a class="mk" href="#ab-9"><circle cx="46" cy="326" r="9"/><text x="46" y="326">9</text></a><a class="mk" href="#ab-10"><circle cx="260" cy="374" r="9"/><text x="260" y="374">10</text></a><a class="mk" href="#ab-11"><circle cx="190" cy="72" r="9"/><text x="190" y="72">11</text></a><a class="mk" href="#ab-12"><circle cx="326" cy="30" r="9"/><text x="326" y="30">12</text></a>
+        </svg>
+        <p class="caption">Simplified plan, not to scale; positions are approximate.</p>
+      </div>
+      <ol class="notes">
+        <li id="ab-1"><span class="num">1</span><div><h3>The courts and the pylon</h3><p>The temple was entered through a pylon and two open courts, now mostly ruined. Seti I died before the front was finished, and his son Ramesses II completed it, so the outer parts carry Ramesses&#39;s quicker sunk relief.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses2" target="_blank" rel="noopener noreferrer">Ramesses II ↗</a></p></div></li>
+        <li id="ab-2"><span class="num">2</span><div><h3>The portico</h3><p>A row of twelve square pillars carved with Ramesses II before the gods. There were once seven doors here, one for each of the seven chapels inside; Ramesses walled up all but the central one.</p></div></li>
+        <li id="ab-3"><span class="num">3</span><div><h3>The first hypostyle hall</h3><p>Twenty-four papyrus columns, decorated after Seti&#39;s death by Ramesses II. Compare the deep, simpler carving here with the next hall: the change of king shows in the stone.</p></div></li>
+        <li id="ab-4"><span class="num">4</span><div><h3>The second hypostyle hall</h3><p>Thirty-six columns and some of the finest raised relief ever carved in Egypt, made for Seti I himself: delicate faces, fine wigs and jewellery, the king offering to the gods in scenes of perfect calm. Much original colour survives.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-seti1" target="_blank" rel="noopener noreferrer">Seti I ↗</a></p></div></li>
+        <li id="ab-5"><span class="num">5</span><div><h3>The seven chapels</h3><p>A row of seven sanctuaries, unique in Egypt, each with its own door and axis: for the deified Seti, Ptah, Ra-Horakhty, Amun-Ra, Osiris, Isis and Horus. Their vaulted ceilings, cut from great blocks, keep their painted stars, and the walls show the daily ritual of washing, dressing and feeding the god.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-ptah" target="_blank" rel="noopener noreferrer">Ptah ↗</a> · <a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-amun" target="_blank" rel="noopener noreferrer">Amun ↗</a> · <a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-ra" target="_blank" rel="noopener noreferrer">Ra ↗</a></p></div></li>
+        <li id="ab-6"><span class="num">6</span><div><h3>The Osiris suite</h3><p>Behind the chapel of Osiris lies a hall and further chapels for Osiris, Isis and Horus: the mysteries of the god&#39;s death and rebirth, at the heart of Abydos. Among the reliefs is Isis as a kite hovering over Osiris, conceiving their son Horus.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-osiris" target="_blank" rel="noopener noreferrer">Osiris ↗</a> · <a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-isis" target="_blank" rel="noopener noreferrer">Isis ↗</a> · <a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-horus" target="_blank" rel="noopener noreferrer">Horus ↗</a></p></div></li>
+        <li id="ab-7"><span class="num">7</span><div><h3>The Gallery of the Lists</h3><p>In the side wing, Seti I and the young prince Ramesses offer to 76 cartouches of earlier kings, from Menes, the first, down to Seti: the Abydos King List, one of the most important documents of Egyptian history.</p><p class="see"><a href="#listTitle">The King List ↓</a></p></div></li>
+        <li id="ab-8"><span class="num">8</span><div><h3>The hall of Sokar and Nefertem</h3><p>A columned hall for Sokar, the falcon god of the Memphite necropolis, and Nefertem, the young god of the lotus, with small chapels beyond: Memphis honoured inside the temple of Osiris.</p></div></li>
+        <li id="ab-9"><span class="num">9</span><div><h3>The corridor of the bull</h3><p>A staircase corridor leading out towards the back of the temple. On its wall Ramesses II, still a prince, lassoes a wild bull while his father Seti holds it by the tail, a lively scene from a ritual for the gods.</p></div></li>
+        <li id="ab-10"><span class="num">10</span><div><h3>The &#39;helicopter&#39; hieroglyphs</h3><p>On a beam high in the first hypostyle hall, some signs look like a helicopter and a submarine. They are an accident: Seti&#39;s titles were filled with plaster and recut with Ramesses&#39;s, and as the plaster fell out the two sets of signs mixed. A famous internet myth, and a nice lesson in re-carving.</p></div></li>
+        <li id="ab-11"><span class="num">11</span><div><h3>The Osireion</h3><p>Behind the temple, sunk deep in the ground, lies a strange building of huge granite pillars around a water channel: a symbolic tomb of Osiris made for Seti I, perhaps imagined as the island that rose from the first waters. Groundwater often floods it; you look down on it from above.</p><p class="see"><a href="https://claude.ai/artifact/XwXFmoRfJCzEmt8bgrej2o#god-osiris" target="_blank" rel="noopener noreferrer">Osiris ↗</a></p></div></li>
+        <li id="ab-12"><span class="num">12</span><div><h3>The temple of Ramesses II</h3><p>A short walk to the north-west, Ramesses II&#39;s own smaller temple keeps some of the brightest colours in Egypt and scenes of the battle of Kadesh. A second King List from it is in the British Museum.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses2" target="_blank" rel="noopener noreferrer">Ramesses II ↗</a></p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="listTitle" style="--c: var(--aby);">
+    <h2 id="listTitle">The Abydos King List</h2>
+    <p class="section-note">A roll-call of the ancestors, carved so that Seti could offer to every legitimate king before him.</p>
+    <div class="figure" style="max-width: 640px;">
+      <svg viewBox="0 0 540 150" role="img" aria-label="Schematic of the Abydos King List: two rows of 38 cartouches, 76 royal names in order from Menes to Seti I, read from right to left, and below them a third row repeating Seti I&#39;s own names.">
+          <rect width="540" height="150" fill="var(--panel)"/>
+          <rect x="14.0" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="27.6" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="41.2" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="54.8" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="68.4" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="82.0" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="95.6" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="109.2" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="122.8" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="136.4" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="150.0" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="163.6" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="177.2" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="190.8" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="204.4" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="218.0" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="231.6" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="245.2" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="258.8" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="272.4" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="286.0" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="299.6" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="313.2" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="326.8" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="340.4" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="354.0" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="367.6" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="381.2" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="394.8" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="408.4" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="422.0" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="435.6" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="449.2" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="462.8" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="476.4" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="490.0" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="503.6" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="517.2" y="40" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="14.0" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="27.6" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="41.2" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="54.8" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="68.4" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="82.0" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="95.6" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="109.2" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="122.8" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="136.4" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="150.0" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="163.6" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="177.2" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="190.8" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="204.4" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="218.0" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="231.6" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="245.2" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="258.8" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="272.4" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="286.0" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="299.6" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="313.2" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="326.8" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="340.4" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="354.0" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="367.6" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="381.2" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="394.8" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="408.4" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="422.0" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="435.6" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="449.2" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="462.8" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="476.4" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="490.0" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="503.6" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="517.2" y="66" width="11" height="20" rx="5" fill="var(--panel)" stroke="var(--ink-soft)" stroke-width="0.8"/><rect x="14.0" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="27.6" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="41.2" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="54.8" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="68.4" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="82.0" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="95.6" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="109.2" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="122.8" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="136.4" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="150.0" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="163.6" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="177.2" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="190.8" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="204.4" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="218.0" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="231.6" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="245.2" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="258.8" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="272.4" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="286.0" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="299.6" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="313.2" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="326.8" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="340.4" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="354.0" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="367.6" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="381.2" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="394.8" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="408.4" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="422.0" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="435.6" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="449.2" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="462.8" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="476.4" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="490.0" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="503.6" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/><rect x="517.2" y="92" width="11" height="20" rx="5" fill="var(--aby)" opacity="0.45"/>
+          <text class="t-sub" x="526" y="28" text-anchor="end">start here: Menes, the first king</text>
+          <text class="t-sub" x="14" y="28">read from right to left</text>
+          <text class="t-sub" x="270" y="134" text-anchor="middle">third row: Seti I&#39;s names, repeated</text>
+        </svg>
+      <p class="caption">Schematic layout of the list, not to scale.</p>
+    </div>
+    <div class="tips" style="margin-top: 1rem;"><div class="tip"><h3>76 kings in order</h3><p>Two rows of 38 cartouches run from Menes, the legendary unifier of Egypt, to Seti I himself, with a third row repeating Seti&#39;s names. Seti and his son burn incense and recite praise to them as ancestors.</p></div><div class="tip"><h3>Who is missing</h3><p>It is an official family tree, not a history book. Hatshepsut is left out, and so are Akhenaten, Smenkhkare, Tutankhamun and Ay, the kings of the Amarna age; the foreign Hyksos and most rulers of the troubled intermediate periods are skipped too.</p></div><div class="tip"><h3>Why it matters</h3><p>With the Turin papyrus and the Palermo Stone, it is one of the main sources for the order of the kings. It was cleared and copied in 1864; a damaged twin from Ramesses II&#39;s temple has been in the British Museum since 1837.</p></div><div class="tip"><h3>Prince Ramesses</h3><p>The boy reading from a papyrus roll beside Seti is the future Ramesses II, shown with the sidelock of youth. Seti was preparing his son, and the dynasty&#39;s claim, for the future.</p></div></div>
+  </section>
+
+  <section aria-labelledby="artTitle" style="--c: var(--great);">
+    <h2 id="artTitle">The art of Seti I</h2>
+    <p class="section-note">Many think these are the finest reliefs of the New Kingdom.</p>
+    <div class="tips"><div class="tip"><h3>Raised and sunk relief</h3><p>Seti&#39;s craftsmen cut away the background, leaving figures standing out in fine raised relief; Ramesses&#39;s team cut figures into the surface, sunk relief, quicker and bolder. The two halls side by side are the best place in Egypt to see the difference.</p></div><div class="tip"><h3>Colour</h3><p>Away from the sun, the chapels and inner halls keep their blues, reds and yellows, often brighter than anything at Karnak or Luxor.</p></div><div class="tip"><h3>Seti&#39;s face</h3><p>Seti I is shown again and again with a gentle, idealised face. His mummy, found in the royal cache in 1881, is one of the best preserved of any pharaoh, and it looks strikingly like his portraits.</p></div><div class="tip"><h3>Built in white limestone</h3><p>Unlike the sandstone temples further south, the inner temple is of fine white limestone, which allowed the extraordinary detail of the carving.</p></div></div>
+  </section>
+
+  <section aria-labelledby="cityTitle" style="--c: var(--aby);">
+    <h2 id="cityTitle">Abydos, city of Osiris</h2>
+    <div class="tips"><div class="tip"><h3>The tomb of Osiris</h3><p>Abydos was the holiest place in Egypt for Osiris, god of the dead: here his head, or all of his body, was said to be buried after Seth killed him. Every Egyptian hoped to make the pilgrimage, in life or in death.</p></div><div class="tip"><h3>The first kings</h3><p>Behind the town, at Umm el-Qa&#39;ab, the kings of the 1st Dynasty and their predecessors were buried around 3000 BC. Later Egyptians believed one of these tombs, King Djer&#39;s, was the tomb of Osiris himself.</p></div><div class="tip"><h3>Mysteries and stelae</h3><p>Each year a festival re-enacted the death and rebirth of Osiris, with a procession to his tomb. Thousands of people set up stelae and small chapels along the route so as to share in it for ever.</p></div><div class="tip"><h3>Omm Sety</h3><p>An Englishwoman, Dorothy Eady, believed she had been a priestess in Seti&#39;s temple in a former life. She lived at Abydos from 1956 until her death in 1981, known as Omm Sety, and helped the archaeologists working here.</p></div></div>
+  </section>
+
+  <section aria-labelledby="timeTitle">
+    <h2 id="timeTitle">Abydos through time</h2>
+    <ol class="timeline">
+      <li><span class="yr">c. 3200–2900 BC</span><p>The earliest kings are buried at Umm el-Qa&#39;ab, behind Abydos.</p></li>
+      <li><span class="yr">c. 2000–1700 BC</span><p>Abydos becomes the great centre of Osiris; pilgrims leave thousands of stelae.</p></li>
+      <li><span class="yr">c. 1290 BC</span><p>Seti I begins his temple and the Osireion.</p></li>
+      <li><span class="yr">c. 1279 BC</span><p>Seti dies; Ramesses II finishes the front of the temple and builds his own nearby.</p></li>
+      <li><span class="yr">c. 1213–1203 BC</span><p>Merneptah decorates parts of the Osireion.</p></li>
+      <li><span class="yr">Greek and Roman times</span><p>Visitors call the temple the Memnonium and leave graffiti; the oracle of the god Bes is consulted here.</p></li>
+      <li><span class="yr">1837</span><p>The King List from Ramesses II&#39;s temple is taken to London.</p></li>
+      <li><span class="yr">1864</span><p>Seti&#39;s King List is cleared and copied.</p></li>
+      <li><span class="yr">1903</span><p>The Osireion is discovered by Margaret Murray working with Flinders Petrie.</p></li>
+      <li><span class="yr">1956–1981</span><p>Omm Sety lives and works at Abydos.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">For our visit</h2>
+    <div class="tips">
+      <div class="tip"><h3>Inside first</h3><p>The best things are indoors: the second hypostyle hall, the chapels and the King List. Give them most of your time.</p></div>
+      <div class="tip"><h3>Compare the halls</h3><p>Walk from the first hypostyle into the second and look closely at the carving: Ramesses&#39;s sunk relief, then Seti&#39;s raised relief.</p></div>
+      <div class="tip"><h3>Find the helicopter</h3><p>Ask the guide or a guardian to point out the beam in the first hall; it is high up and easy to miss.</p></div>
+      <div class="tip"><h3>Same day as Dendera</h3><p>Abydos and Dendera make a long day from Luxor; Abydos is the farther one, so it is usually seen first.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Part of <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">the Private Alimaña Tour ↗</a>. The plan is schematic; dates are approximate.</p>
+</div>
