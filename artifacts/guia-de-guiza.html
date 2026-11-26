@@ -1,0 +1,294 @@
+<title>Guía de Guiza</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout (Spanish version): intro, a plan of the plateau beside numbered notes, the Great Pyramid's interior, the Sphinx, the workers, a timeline and tips. Shares its look with the temple guides. Phone first: everything stacks. With a Spanish audio guide. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --giz: #5b4f8f;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --giz: #a99bd9; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --giz: #a99bd9; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--giz); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  .audio { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--sun); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; }
+  .audio audio { width: 100%; margin: 0.4rem 0 0.8rem; }
+  .audio ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0.3rem 1rem; }
+  .audio button { all: unset; cursor: pointer; display: flex; gap: 0.6rem; width: 100%; box-sizing: border-box; padding: 0.35rem 0.4rem; border-radius: 6px; font-size: 0.9rem; }
+  .audio button:hover, .audio button:focus-visible { background: var(--bg); outline: 1px solid var(--line); }
+  .audio button[aria-current="true"] { background: var(--bg); font-weight: 600; }
+  .audio .at { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); min-width: 2.6rem; padding-top: 0.1rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--great); }
+  .mk:focus-visible { outline: none; }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .ruin { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 1; }
+  .col { fill: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--giz); }
+  .mk.lost circle { fill: var(--panel); stroke: var(--ink); stroke-width: 1.4; stroke-dasharray: 3 2; }
+  .mk.lost text { fill: var(--ink); }
+  .key { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.4rem; }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Guiza · pirámides de Keops, Kefrén y Micerino · construidas h. 2560&ndash;2510 a. C. · día 9 del viaje Alimaña · <a class="lang" href="https://claude.ai/artifact/5TtAeNgKVmFZF6vJQKRmaz" target="_blank" rel="noopener noreferrer" hreflang="en">English version ↗</a></p>
+  <h1>Las pirámides de Guiza</h1>
+  <p class="lede">La última Maravilla del mundo antiguo que sigue en pie, y la única pirámide egipcia que casi todo el mundo sabría nombrar: tres pirámides reales construidas en apenas dos generaciones, la Gran Esfinge tallada en roca vigilándolas, y el pequeño poblado de quienes de verdad las construyeron, redescubierto solo en los años noventa, a un corto paseo hacia el sur.</p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-giza" target="_blank" rel="noopener noreferrer">Ficha de Guiza (en inglés) ↗</a><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-khafre" target="_blank" rel="noopener noreferrer">Ficha de Kefrén (en inglés) ↗</a><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-sphinx" target="_blank" rel="noopener noreferrer">Ficha de la Esfinge (en inglés) ↗</a><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">El día 9 del viaje (en inglés) ↗</a><a href="#audioTitle">Audioguía ↓</a></p>
+
+  <div class="pair">
+    <article class="card" style="--c: var(--giz);">
+      <span class="kicker">La meseta</span>
+      <h2>Tres reyes, una generación</h2>
+      <dl class="facts">
+        <div><dt>Dónde</dt><dd>Guiza, a unos 18 km al suroeste del centro de El Cairo, en el borde del desierto</dd></div>
+        <div><dt>Construidas</dt><dd>H. 2560–2510 a. C., de Keops a Micerino, IV Dinastía</dd></div>
+        <div><dt>Para</dt><dd>Keops, su hijo Kefrén y su nieto Micerino</dd></div>
+        <div><dt>Famosa por</dt><dd>La única Maravilla antigua que sigue en pie, la Gran Esfinge, la barca solar de Keops</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--great);">
+      <span class="kicker">No te lo pierdas</span>
+      <h2>Cuatro imprescindibles</h2>
+      <dl class="facts">
+        <div><dt>La escala</dt><dd>De pie en la base de la Gran Pirámide, mirando hacia arriba</dd></div>
+        <div><dt>La Esfinge</dt><dd>Rodéala hasta su frente, entre las patas, para ver la cara completa</dd></div>
+        <div><dt>La vista</dt><dd>El mirador al sur de la meseta, las tres pirámides en un mismo encuadre</dd></div>
+        <div><dt>Los constructores</dt><dd>El poblado y el cementerio de los obreros, la prueba de que no eran esclavos</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="audioTitle">
+    <h2 id="audioTitle">Audioguía</h2>
+    <p class="section-note">Unos ocho minutos en español para escuchar durante la visita: un capítulo por cada número del plano, con capítulos largos sobre el interior de la Gran Pirámide, la barca solar, la Esfinge y los obreros. Pulsa un capítulo para saltar a él. Voz neuronal de Microsoft (Elvira).</p>
+    <div class="audio">
+      <audio id="guia" controls preload="metadata" src="guiza-audioguia.mp3"></audio>
+      <ol id="capitulos"><li><button type="button" data-t="0.0"><span class="at">0:00</span>Bienvenida</button></li><li><button type="button" data-t="35.0"><span class="at">0:35</span>1. La Gran Pirámide de Keops</button></li><li><button type="button" data-t="123.7"><span class="at">2:03</span>2. Las pirámides de las reinas</button></li><li><button type="button" data-t="148.4"><span class="at">2:28</span>3. Los fosos de las barcas</button></li><li><button type="button" data-t="198.5"><span class="at">3:18</span>4. La Pirámide de Kefrén</button></li><li><button type="button" data-t="223.5"><span class="at">3:43</span>5. El Templo del Valle de Kefrén</button></li><li><button type="button" data-t="250.5"><span class="at">4:10</span>6. La Gran Esfinge</button></li><li><button type="button" data-t="318.3"><span class="at">5:18</span>7. La Pirámide de Micerino</button></li><li><button type="button" data-t="348.4"><span class="at">5:48</span>8. El poblado y el cementerio de los obreros</button></li><li><button type="button" data-t="387.1"><span class="at">6:27</span>9. El mirador de la panorámica</button></li><li><button type="button" data-t="408.8"><span class="at">6:48</span>10. El Gran Museo Egipcio</button></li><li><button type="button" data-t="433.3"><span class="at">7:13</span>Despedida</button></li></ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="planTitle" style="--c: var(--giz);">
+    <h2 id="planTitle">Por la meseta</h2>
+    <p class="section-note">Diez paradas, desde la pirámide de Keops al noreste, hacia el suroeste pasando por Kefrén y la Esfinge hasta Micerino, y luego al sur hasta el poblado de los obreros y el mirador. Pulsa un número en el plano.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="0 0 420 320" role="img" aria-label="Plano simplificado de la meseta de Guiza, con el norte arriba. La Gran Pirámide de Keops se alza al noreste, con sus tres pequeñas pirámides de reinas al lado y un foso de barca al sur, donde se halló la barca solar. Al suroeste se alza la Pirámide de Kefrén, de aspecto más alto por estar sobre roca más elevada, con su calzada bajando hacia el este hasta su Templo del Valle y la Gran Esfinge agazapada delante, mirando al este. Más al suroeste se alza la pirámide, más pequeña, de Micerino, con tres pirámides de reinas propias. Al sur de la Esfinge se encuentra el poblado y el cementerio de los obreros. Un mirador para la panorámica clásica se encuentra más al sur, en terreno elevado. El Gran Museo Egipcio está señalado al noreste, fuera del yacimiento antiguo. Los números corresponden a las notas.">
+          <rect width="420" height="320" fill="var(--panel)"/>
+          <path d="M0,0 L420,0 L420,320 L0,320 Z" fill="var(--bg)"/>
+          <rect x="10" y="10" width="400" height="300" fill="none" stroke="var(--ink-soft)" stroke-dasharray="5 4"/>
+          <path d="M276,66 L336,186 L216,186 Z" class="rock" stroke="var(--ink-soft)"/>
+          <circle cx="300" cy="150" r="3" class="queen"/><circle cx="310" cy="156" r="3" class="queen"/><circle cx="320" cy="150" r="3" class="queen"/>
+          <rect x="258" y="176" width="16" height="10" class="cut"/>
+          <path d="M196,110 L242,206 L150,206 Z" class="rock" stroke="var(--ink-soft)"/>
+          <path d="M196,206 L326,180" class="dash"/>
+          <path d="M100,150 L128,220 L72,220 Z" class="rock" stroke="var(--ink-soft)"/>
+          <circle cx="86" cy="226" r="2.6" class="queen"/><circle cx="94" cy="230" r="2.6" class="queen"/><circle cx="102" cy="226" r="2.6" class="queen"/>
+          <path d="M320,178 L340,205 L368,205 L352,185 L336,178 Z" fill="var(--ink-soft)"/>
+          <rect x="300" y="250" width="70" height="26" fill="none" stroke="var(--ink-soft)" stroke-dasharray="2 2"/>
+          <circle cx="196" cy="282" r="7" fill="none" stroke="var(--ink-soft)"/>
+          <rect x="330" y="30" width="48" height="26" class="cut"/>
+          <text class="t-sub" x="276" y="56" text-anchor="middle">Keops</text>
+          <text class="t-sub" x="196" y="100" text-anchor="middle">Kefrén</text>
+          <text class="t-sub" x="100" y="140" text-anchor="middle">Micerino</text>
+          <text class="t-sub" x="340" y="222" text-anchor="middle">poblado de</text>
+          <text class="t-sub" x="335" y="245" text-anchor="middle">obreros</text>
+          <text class="t-sub" x="196" y="300" text-anchor="middle">mirador</text>
+          <text class="t-sub" x="354" y="46" text-anchor="middle">GEM</text>
+          <a class="mk" href="#gz-1"><circle cx="276" cy="100" r="9"/><text x="276" y="100">1</text></a><a class="mk lost" href="#gz-2"><circle cx="258" cy="160" r="9"/><text x="258" y="160">2</text></a><a class="mk" href="#gz-3"><circle cx="300" cy="140" r="9"/><text x="300" y="140">3</text></a><a class="mk" href="#gz-4"><circle cx="196" cy="150" r="9"/><text x="196" y="150">4</text></a><a class="mk" href="#gz-5"><circle cx="322" cy="182" r="9"/><text x="322" y="182">5</text></a><a class="mk" href="#gz-6"><circle cx="340" cy="190" r="9"/><text x="340" y="190">6</text></a><a class="mk" href="#gz-7"><circle cx="100" cy="190" r="9"/><text x="100" y="190">7</text></a><a class="mk" href="#gz-8"><circle cx="335" cy="262" r="9"/><text x="335" y="262">8</text></a><a class="mk" href="#gz-9"><circle cx="196" cy="282" r="9"/><text x="196" y="282">9</text></a><a class="mk lost" href="#gz-10"><circle cx="354" cy="42" r="9"/><text x="354" y="42">10</text></a>
+        </svg>
+        <p class="key"><span>● lugar para visitar</span><span>◌ cerca, fuera del yacimiento</span><span>- - calzada</span></p>
+        <p class="caption">Plano simplificado, sin escala; posiciones aproximadas.</p>
+      </div>
+      <ol class="notes">
+        <li id="gz-1"><span class="num">1</span><div><h3>La Gran Pirámide de Keops</h3><p>La pirámide más grande jamás construida, y la única Maravilla antigua que sigue en pie: 230 m de lado, con una altura original de 146,6 m. Mantuvo el récord de construcción humana más alta durante unos 3.800 años, hasta que se terminó la aguja de la catedral de Lincoln, hacia 1311.</p><p class="see"><a href="#insideTitle">Dentro de la pirámide ↓</a></p></div></li>
+        <li id="gz-2"><span class="num">2</span><div><h3>Las pirámides de las reinas</h3><p>Tres pequeñas pirámides subsidiarias al este de la de Keops, construidas para sus reinas, entre ellas su madre Hetepheres I, cuyo ajuar funerario intacto, vuelto a enterrar aquí tras el saqueo de su tumba original, se encontró cerca en 1925, todavía dorado.</p></div></li>
+        <li id="gz-3"><span class="num">3</span><div><h3>Los fosos de las barcas</h3><p>Dos fosos largos y estrechos al sur de la Gran Pirámide guardaban los barcos de cedro desmontados de Keops, sellados para su uso en el más allá. Uno, abierto en 1954, contenía la «barca solar» de 43 m casi perfectamente conservada; hoy está al otro lado de la carretera, en el Gran Museo Egipcio, y ya no en este foso.</p><p class="see"><a href="#boatTitle">La barca solar ↓</a></p></div></li>
+        <li id="gz-4"><span class="num">4</span><div><h3>La Pirámide de Kefrén</h3><p>El hijo de Keops construyó su pirámide sobre roca 10 m más alta, así que sigue pareciendo la más alta del perfil aunque sea algo menor. Cerca de su cima conserva todavía un casquete de la caliza pulida original que una vez cubrió todas las pirámides de aquí: el único lugar donde se puede ver cómo quedaban terminadas.</p></div></li>
+        <li id="gz-5"><span class="num">5</span><div><h3>El Templo del Valle de Kefrén</h3><p>Un templo severo, casi sin decoración, de enormes bloques de granito y caliza al pie de la calzada de Kefrén, donde se purificaba su cuerpo antes del enterramiento. En 1860 los excavadores hallaron una fila de sus estatuas selladas en un pozo del suelo; la más fina está hoy en el Museo Egipcio de El Cairo.</p></div></li>
+        <li id="gz-6"><span class="num">6</span><div><h3>La Gran Esfinge</h3><p>Un cuerpo de león con rostro de rey, de 73 m de largo y 20 m de alto, tallado directamente en un afloramiento de roca madre que sobraba al cantear bloques para el complejo de Kefrén: no se levantó con bloques como todo lo demás aquí, sino que se rebajó hasta darle forma. Mira hacia el este, y se identifica generalmente con el rostro de Kefrén.</p><p class="see"><a href="#sphinxTitle">Más sobre la Esfinge ↓</a></p></div></li>
+        <li id="gz-7"><span class="num">7</span><div><h3>La Pirámide de Micerino</h3><p>La más pequeña y la última de las tres, apenas una décima parte del volumen de la de su abuelo Keops. Sus hiladas inferiores conservan todavía el granito rojo traído 900 km río abajo desde Asuán, un revestimiento que se interrumpe de golpe a media altura, sin terminar cuando murió Micerino. Tres pequeñas pirámides de reinas se alinean a su lado.</p></div></li>
+        <li id="gz-8"><span class="num">8</span><div><h3>El poblado y el cementerio de los obreros</h3><p>Al sur de la Esfinge, panaderías, cervecerías y barracones para los miles que construyeron las pirámides, hallados por Zahi Hawass y Mark Lehner desde los años noventa. Al lado, un cementerio de enterramientos en regla para los propios obreros zanjó una vieja discusión para siempre.</p><p class="see"><a href="#workersTitle">Quién construyó las pirámides ↓</a></p></div></li>
+        <li id="gz-9"><span class="num">9</span><div><h3>El mirador de la panorámica</h3><p>Una pequeña elevación de desierto abierto al sur de la meseta, el lugar clásico para la foto de postal: las tres pirámides alineadas, sin nada moderno en el encuadre si se elige bien el ángulo. Camellos y caballos esperan aquí a los jinetes; acuerda el precio antes de montar.</p></div></li>
+        <li id="gz-10"><span class="num">10</span><div><h3>El Gran Museo Egipcio</h3><p>A unos 2 km al noreste de la meseta, inaugurado en 2023–24: el nuevo hogar del tesoro completo de Tutankamón, expuesto junto por primera vez, y de la barca solar de Keops, trasladada aquí en 2021. No forma parte del yacimiento antiguo, pero sí del plan de hoy.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="insideTitle" style="--c: var(--giz);">
+    <h2 id="insideTitle">Dentro de la Gran Pirámide</h2>
+    <p class="section-note">Una entrada aparte, una subida empinada por un pasadizo estrecho, y uno de los espacios más extraños de la arquitectura antigua.</p>
+    <div class="figure" style="max-width: 460px;">
+      <svg viewBox="0 0 360 340" role="img" aria-label="Sección simplificada de la Gran Pirámide. Un pasadizo descendente desde la entrada original, en la cara norte, se divide: una rama sigue bajando hasta una cámara sin terminar excavada en la roca, la otra gira hacia un pasadizo ascendente. Este da a la Gran Galería, un corredor alto de muros en voladizo, con la pequeña Cámara de la Reina a la que se llega por un pasadizo lateral más abajo. En lo alto de la Gran Galería, un corto pasadizo lleva a la Cámara del Rey, una sala de granito techada por cinco cámaras de descarga bajas apiladas encima, la superior rematada como una tienda de campaña. Un vacío hallado recientemente se encuentra sobre la Gran Galería, todavía sin explorar.">
+          <path d="M20,320 L180,20 L340,320 Z" class="rock" stroke="var(--ink-soft)" stroke-width="1.4"/>
+          <path d="M160,60 L120,140" stroke="var(--ink)" stroke-width="3" fill="none"/>
+          <path d="M120,140 L90,220" stroke="var(--ink)" stroke-width="3" fill="none"/>
+          <path d="M120,140 L190,170" stroke="var(--ink)" stroke-width="3" fill="none"/>
+          <rect x="150" y="178" width="55" height="26" class="cut" transform="rotate(-27 150 178)"/>
+          <path d="M190,170 L232,150" stroke="var(--ink)" stroke-width="5" fill="none" opacity="0.85"/>
+          <rect x="150" y="150" width="34" height="20" fill="none" stroke="var(--ink-soft)" stroke-dasharray="2 2"/>
+          <rect x="205" y="122" width="54" height="30" class="cut" transform="rotate(-27 205 122)"/>
+          <g transform="translate(232,118) rotate(-27)">
+            <rect x="0" y="-8" width="10" height="16" fill="none" stroke="var(--giz)" stroke-width="1.4"/>
+            <rect x="0" y="-19" width="10" height="9" fill="none" stroke="var(--giz)" stroke-width="1.2"/>
+            <rect x="0" y="-29" width="10" height="8" fill="none" stroke="var(--giz)" stroke-width="1.2"/>
+            <rect x="0" y="-38" width="10" height="7" fill="none" stroke="var(--giz)" stroke-width="1.2"/>
+            <path d="M0,-46 L10,-46 L5,-54 Z" fill="none" stroke="var(--giz)" stroke-width="1.2"/>
+          </g>
+          <path d="M160,100 h40 l10,-14 h-60 z" fill="none" stroke="var(--sun)" stroke-width="1.6" stroke-dasharray="4 3"/>
+          <text class="t-sub" x="60" y="300" text-anchor="middle">cámara sin</text>
+          <text class="t-sub" x="60" y="312" text-anchor="middle">terminar</text>
+          <text class="t-sub" x="78" y="236" text-anchor="middle">Cámara de</text>
+          <text class="t-sub" x="78" y="247" text-anchor="middle">la Reina</text>
+          <text class="t-sub" x="178" y="192" text-anchor="middle">Gran Galería</text>
+          <text class="t-sub" x="270" y="135" text-anchor="middle">Cámara del Rey</text>
+          <text class="t-sub" x="258" y="96" text-anchor="middle">cámaras de descarga</text>
+          <text class="t-sub" x="205" y="88" text-anchor="middle">Big Void (2017)</text>
+          <text class="t-sub" x="180" y="30" text-anchor="middle">entrada original</text>
+        </svg>
+      <p class="caption">Sección simplificada, sin escala; basada en levantamientos publicados.</p>
+    </div>
+    <div class="tips" style="margin-top: 1rem;"><div class="tip"><h3>La Gran Galería</h3><p>Unos 47 m de largo y 8,6 m de alto, con sus muros en voladizo estrechándose hilada a hilada hacia un techo angosto: uno de los espacios más impresionantes de cualquier pirámide, y probablemente usado para guardar los tapones de granito que sellaron el pasadizo tras el enterramiento.</p></div><div class="tip"><h3>La Cámara del Rey</h3><p>Una sala de granito lisa y tallada con precisión que solo contiene el sarcófago vacío y sin tapa de Keops, demasiado grande para haber entrado una vez levantados los muros. Sobre su techo plano, cinco cámaras de descarga bajas se apilan hacia arriba para repartir el peso de la mampostería superior.</p></div><div class="tip"><h3>El nombre de Keops en ocre rojo</h3><p>En 1837 el ingeniero Howard Vyse voló con pólvora el acceso a las cámaras de descarga y encontró el único texto hallado jamás dentro de la pirámide: marcas de cuadrillas de obreros pintadas en ocre rojo, que nombran a Keops y fechan la construcción en su reinado.</p></div><div class="tip"><h3>El Big Void</h3><p>En 2017 un equipo que escaneaba la pirámide con muones de rayos cósmicos encontró un espacio oculto de al menos 30 m de largo sobre la Gran Galería. Su función sigue sin conocerse y nadie ha entrado en él; Mark Lehner ha sugerido que podría servir simplemente para aliviar el peso sobre el techo de la Galería.</p></div><div class="tip"><h3>Aquí no hay relieves</h3><p>A diferencia de templos como Dendera o Karnak, las pirámides de Keops y Kefrén están completamente desnudas por dentro: ni una sola escena tallada ni un jeroglífico, solo las marcas de cantera de Keops. La de Micerino es la excepción: su cámara funeraria tiene paneles tallados, pero sin pintar, con el motivo de «fachada de palacio», la primera decoración jamás tallada en las salas internas de una pirámide. El verdadero relieve pintado de Guiza está en las mastabas de las familias nobles cercanas, como la capilla, ricamente decorada, de la reina Meresankh III en el Cementerio Este.</p></div></div>
+  </section>
+
+  <section aria-labelledby="sphinxTitle" style="--c: var(--great);">
+    <h2 id="sphinxTitle">La Gran Esfinge</h2>
+    <div class="tips"><div class="tip"><h3>Tallada, no construida</h3><p>Los canteros que cortaban bloques para el complejo de Kefrén dejaron en su sitio un afloramiento bajo de roca de mala calidad; los escultores lo tallaron después hasta darle forma de león echado con cabeza de rey, en vez de levantarlo con piedra de cantera como las pirámides de al lado.</p></div><div class="tip"><h3>Un rostro erosionado</h3><p>Le falta la nariz desde hace siglos, probablemente rota por iconoclastas o buscadores de recuerdos bastante antes de la época de Napoleón, diga lo que diga la leyenda popular, ya que dibujos del siglo XVIII ya la muestran perdida.</p></div><div class="tip"><h3>Enterrada en arena</h3><p>La Esfinge ha sido desenterrada de la arena del desierto más de una vez desde la Antigüedad, sobre todo por el joven príncipe Tutmosis IV, que más tarde afirmó en una estela entre sus patas que la Esfinge le había prometido el trono en un sueño si la liberaba de la arena.</p></div><div class="tip"><h3>El Templo de la Esfinge</h3><p>Delante de la Esfinge, un templo aparte, casi sin decoración, de enormes bloques de caliza, guardó en su día veinticuatro estatuas del dios sol en sus distintas formas diarias; hoy han desaparecido casi todas, pero los muros centrales, macizos, siguen en pie.</p></div><div class="tip"><h3>Antes pintada de rojo</h3><p>El rostro conserva todavía restos de pigmento rojo, con manchas de azul y amarillo en otras partes del cuerpo; ya en el siglo I d. C. el escritor romano Plinio el Viejo describía su rostro como rojo. Como toda superficie tallada en Egipto, nunca se pensó para quedar en piedra desnuda.</p></div></div>
+  </section>
+
+  <section aria-labelledby="boatTitle" style="--c: var(--giz);">
+    <h2 id="boatTitle">La barca solar de Keops</h2>
+    <div class="tips"><div class="tip"><h3>Hallada por casualidad, 1954</h3><p>Limpiando escombros junto a la Gran Pirámide, el arqueólogo Kamal el-Mallakh encontró un foso sellado de enormes bloques de caliza. Dentro, desmontado en más de 1.200 piezas, había un barco completo de cedro, nunca usado en el agua, construido para el viaje de Keops tras la muerte.</p></div><div class="tip"><h3>Trece años para reconstruirla</h3><p>El restaurador Hag Ahmed Youssef Moustafa pasó más de una década volviendo a montarla sin ningún plano escrito que seguir, leyendo las propias marcas de montaje que los constructores originales dejaron en la madera.</p></div><div class="tip"><h3>Todavía estanca</h3><p>Con 43 m de largo, es una de las embarcaciones de madera más antiguas, grandes y mejor conservadas de la Antigüedad en todo el mundo, tan cercana a ser navegable que se han botado réplicas construidas según su mismo diseño.</p></div><div class="tip"><h3>Trasladada en 2021</h3><p>Tras décadas expuesta en un pequeño museo construido sobre su propio foso, la barca recorrió el corto trayecto hasta el Gran Museo Egipcio en agosto de 2021, embalada en una cuna climatizada sobre un transportador teledirigido. Un segundo foso, todavía sin abrir, sigue junto al primero.</p></div></div>
+  </section>
+
+  <section aria-labelledby="workersTitle" style="--c: var(--great);">
+    <h2 id="workersTitle">Quién construyó las pirámides</h2>
+    <div class="tips"><div class="tip"><h3>No eran esclavos</h3><p>Las excavaciones al sur de la Esfinge desde los años noventa, dirigidas por Zahi Hawass y Mark Lehner, hallaron panaderías, cervecerías y barracones capaces de alimentar a miles de personas, y después un cementerio donde los propios obreros fueron enterrados con un cuidado funerario sencillo pero genuino, no arrojados sin más.</p></div><div class="tip"><h3>Una mano de obra rotatoria</h3><p>La mayoría eran probablemente campesinos egipcios movilizados para cumplir un periodo de trabajo obligatorio, organizados en cuadrillas con nombres como «Amigos de Keops», y no una clase esclava permanente; trabajaban por turnos según el calendario agrícola.</p></div><div class="tip"><h3>Huesos curados</h3><p>Los esqueletos del cementerio de los obreros muestran huesos rotos que habían soldado, algunos al parecer tras recibir atención médica: una prueba de que a los enfermos y heridos se los trataba, no se los abandonaba.</p></div><div class="tip"><h3>Un poblado entero, no un campamento</h3><p>Moldes de pan, espinas de pescado y restos de ganado en el poblado de los obreros apuntan a una dieta variada; el asentamiento tenía panaderías y cervecerías construidas a escala industrial, pensadas para funcionar durante años, no semanas.</p></div></div>
+  </section>
+
+  <section aria-labelledby="timeTitle">
+    <h2 id="timeTitle">Guiza a través del tiempo</h2>
+    <ol class="timeline">
+      <li><span class="yr">h. 2560 a. C.</span><p>Keops termina la Gran Pirámide, la primera y mayor de las tres.</p></li>
+      <li><span class="yr">h. 2550 a. C.</span><p>Su hijo Kefrén construye la Segunda Pirámide y, con toda probabilidad, la Gran Esfinge.</p></li>
+      <li><span class="yr">h. 2510 a. C.</span><p>Su nieto Micerino construye la Tercera Pirámide, que queda con su revestimiento de granito sin terminar.</p></li>
+      <li><span class="yr">h. 1401 a. C.</span><p>El príncipe Tutmosis IV libera de arena a la Esfinge y erige su Estela del Sueño entre sus patas.</p></li>
+      <li><span class="yr">1837</span><p>Howard Vyse vuela con pólvora el acceso a las cámaras de descarga sobre la Cámara del Rey y halla el nombre de Keops en ocre rojo.</p></li>
+      <li><span class="yr">1860</span><p>Los excavadores de Auguste Mariette encuentran las estatuas de Kefrén selladas en su Templo del Valle.</p></li>
+      <li><span class="yr">1925</span><p>Se halla, intacto y todavía dorado, el ajuar funerario de la reina Hetepheres I, cerca de las pirámides de las reinas.</p></li>
+      <li><span class="yr">1954</span><p>Kamal el-Mallakh descubre la barca solar desmontada de Keops en su foso sellado.</p></li>
+      <li><span class="yr">Años 1990–2000</span><p>Zahi Hawass y Mark Lehner excavan el poblado y el cementerio de los obreros al sur de la Esfinge.</p></li>
+      <li><span class="yr">2017</span><p>Un escaneo con muones revela el «Big Void» oculto sobre la Gran Galería.</p></li>
+      <li><span class="yr">2021</span><p>La barca solar de Keops se traslada al Gran Museo Egipcio.</p></li>
+      <li><span class="yr">2023–2024</span><p>Se inaugura el Gran Museo Egipcio junto a la meseta.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">Para nuestra visita</h2>
+    <div class="tips">
+      <div class="tip"><h3>Compra aparte la entrada al interior</h3><p>La entrada general al yacimiento no incluye el acceso al interior de la Gran Pirámide; es una entrada aparte, de aforo limitado, mejor comprarla pronto o con antelación. El interior se recorre agachado, por una subida empinada, no apto para quien se sienta incómodo en espacios estrechos.</p></div>
+      <div class="tip"><h3>Sal pronto</h3><p>Viniendo directamente de Saqqara, conviene llegar a la meseta antes del calor del mediodía y de las multitudes de autobuses turísticos; la luz también es mejor para las fotos.</p></div>
+      <div class="tip"><h3>Acuerda los precios de antemano</h3><p>Los paseos en camello o a caballo, los «guías» de la entrada y los ofrecimientos para hacerte una foto llevan siempre un precio que rara vez se menciona hasta después: acuérdalo, o recházalo, antes de que empiece nada.</p></div>
+      <div class="tip"><h3>La barca ya está en el museo</h3><p>No busques el antiguo edificio del Museo de la Barca Solar junto a la pirámide: se desmontó al trasladar la barca. Espera en el Gran Museo Egipcio, nuestra parada de más tarde hoy.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Forma parte del <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">Private Alimaña Tour ↗</a> (en inglés). El plano es esquemático; las fechas son aproximadas.</p>
+</div>
+<script>
+(() => {
+  const a = document.getElementById('guia');
+  const bs = [...document.querySelectorAll('#capitulos button')];
+  bs.forEach(b => b.addEventListener('click', () => { a.currentTime = +b.dataset.t; a.play().catch(() => {}); }));
+  a.addEventListener('timeupdate', () => {
+    let cur = 0; bs.forEach((b, i) => { if (a.currentTime >= +b.dataset.t - 0.2) cur = i; });
+    bs.forEach((b, i) => b.setAttribute('aria-current', i === cur && a.currentTime > 0 ? 'true' : 'false'));
+  });
+})();
+</script>
