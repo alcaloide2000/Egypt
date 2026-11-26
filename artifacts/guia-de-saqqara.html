@@ -1,0 +1,284 @@
+<title>Guía de Saqqara</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: intro, un plano de la necrópolis junto a notas numeradas, las galerías subterráneas de Dyoser, los Textos de las Pirámides, las mastabas pintadas, el Serapeo, una cronología y consejos. Comparte el estilo de las guías de los templos. Diseño para móvil primero: todo se apila. Con audioguía en español. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --saq: #7a5a1e;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --saq: #d9ab5c; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --saq: #d9ab5c; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--saq); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  .audio { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--sun); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; }
+  .audio audio { width: 100%; margin: 0.4rem 0 0.8rem; }
+  .audio ol { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 15rem), 1fr)); gap: 0.3rem 1rem; }
+  .audio button { all: unset; cursor: pointer; display: flex; gap: 0.6rem; width: 100%; box-sizing: border-box; padding: 0.35rem 0.4rem; border-radius: 6px; font-size: 0.9rem; }
+  .audio button:hover, .audio button:focus-visible { background: var(--bg); outline: 1px solid var(--line); }
+  .audio button[aria-current="true"] { background: var(--bg); font-weight: 600; }
+  .audio .at { font-family: var(--mono); font-size: 0.75rem; color: var(--ink-soft); min-width: 2.6rem; padding-top: 0.1rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--saq); }
+  .mk:focus-visible { outline: none; }
+  .mk.lost circle { fill: var(--panel); stroke: var(--ink); stroke-width: 1.4; stroke-dasharray: 3 2; }
+  .mk.lost text { fill: var(--ink); }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .ruin { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 1; }
+  .col { fill: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+  .key { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.4rem; }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Saqqara · Pirámide escalonada de Dyoser, los Textos de las Pirámides, mastabas pintadas · construida c. 2670&ndash;2184 a.C. · Día 9 del tour Alimaña · <a class="lang" href="https://claude.ai/artifact/VitcYZpfzYaG128hunGWgk" target="_blank" rel="noopener noreferrer" hreflang="en">English version ↗</a></p>
+  <h1>Saqqara</h1>
+  <p class="lede">El cementerio del antiguo Menfis durante más de tres mil años, y donde empezó la idea misma de pirámide: la Pirámide Escalonada de Dyoser, el edificio de piedra a gran escala más antiguo del planeta, junto a los primeros textos religiosos jamás tallados, las mejores mastabas pintadas del Reino Antiguo, y una galería subterránea de toros sagrados momificados. Más tranquilo que Guiza, y lo primero del plan de hoy.</p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-saqqara" target="_blank" rel="noopener noreferrer">Ficha de Saqqara ↗</a><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-djoser" target="_blank" rel="noopener noreferrer">Ficha de Dyoser ↗</a><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-serapeum" target="_blank" rel="noopener noreferrer">Ficha del Serapeo ↗</a><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">Día 9 en el tour ↗</a><a href="#audioTitle">Audioguía ↓</a></p>
+
+  <div class="pair">
+    <article class="card" style="--c: var(--saq);">
+      <span class="kicker">La necrópolis</span>
+      <h2>La primera pirámide de Egipto</h2>
+      <dl class="facts">
+        <div><dt>Dónde</dt><dd>Saqqara, unos 30 km al sur del centro de El Cairo, en la necrópolis de Menfis</dd></div>
+        <div><dt>Construida</dt><dd>c. 2670&ndash;2650 a.C. para Dyoser, III Dinastía; usada como cementerio hasta la época ptolemaica</dd></div>
+        <div><dt>Para</dt><dd>El rey Dyoser, diseñada por su funcionario Imhotep, y luego docenas de reyes y nobles después de él</dd></div>
+        <div><dt>Famosa por</dt><dd>El monumento de piedra tallada más antiguo del mundo, los Textos de las Pirámides, los mejores relieves pintados del Reino Antiguo</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--great);">
+      <span class="kicker">Imprescindible</span>
+      <h2>Cuatro puntos clave</h2>
+      <dl class="facts">
+        <div><dt>La Pirámide Escalonada</dt><dd>Seis niveles que crecen por etapas, cada uno una pirámide completa rediseñada más grande</dd></div>
+        <div><dt>Los azulejos azules</dt><dd>Cámaras subterráneas revestidas de fayenza, imitando el palacio de esteras del rey</dd></div>
+        <div><dt>La cacería de Ti</dt><dd>La escena de relieve más famosa de todo el Reino Antiguo</dd></div>
+        <div><dt>Las 33 salas de Mereruka</dt><dd>La tumba privada más grande y mejor pintada de la necrópolis</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="audioTitle">
+    <h2 id="audioTitle">Audioguía</h2>
+    <p class="section-note">Unos siete minutos en español para escuchar durante la visita: un capítulo por cada número del plano, con capítulos largos sobre la Pirámide Escalonada, las tumbas pintadas, el Serapeo y los Textos de las Pirámides. Pulsa un capítulo para saltar a él. Voz neuronal de Microsoft (Elvira).</p>
+    <div class="audio">
+      <audio id="guia" controls preload="metadata" src="saqqara-audioguia.mp3"></audio>
+      <ol id="capitulos"><li><button type="button" data-t="0.0"><span class="at">0:00</span>Bienvenida</button></li><li><button type="button" data-t="36.1"><span class="at">0:36</span>1. El Museo Imhotep</button></li><li><button type="button" data-t="61.9"><span class="at">1:01</span>2. La Pirámide Escalonada de Dyoser</button></li><li><button type="button" data-t="125.9"><span class="at">2:05</span>3. El Patio del Heb-Sed</button></li><li><button type="button" data-t="151.5"><span class="at">2:31</span>4. La Tumba Sur y el serdab</button></li><li><button type="button" data-t="180.3"><span class="at">3:00</span>5. Gisr el-Mudir</button></li><li><button type="button" data-t="197.1"><span class="at">3:17</span>6. La Pirámide de Userkaf</button></li><li><button type="button" data-t="215.1"><span class="at">3:35</span>7. La Mastaba de Ti</button></li><li><button type="button" data-t="280.5"><span class="at">4:40</span>8. El Serapeo</button></li><li><button type="button" data-t="346.1"><span class="at">5:46</span>9. La Pirámide de Unas</button></li><li><button type="button" data-t="397.9"><span class="at">6:37</span>10. Teti y Mereruka</button></li><li><button type="button" data-t="419.1"><span class="at">6:59</span>Despedida</button></li></ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="planTitle" style="--c: var(--saq);">
+    <h2 id="planTitle">Por la necrópolis</h2>
+    <p class="section-note">Diez paradas, desde el Museo Imhotep en la entrada, pasando por el recinto de Dyoser, hacia el este a las mastabas pintadas y el Serapeo, y al norte hacia Teti y Mereruka. Toca un número en el plano.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="0 0 420 320" role="img" aria-label="Plano simplificado de Saqqara, con el norte arriba. El Museo Imhotep está en la entrada, al noroeste. El recinto rectangular de Dyoser ocupa el centro, con la Pirámide Escalonada de seis niveles dentro, el Patio del Heb-Sed a su este y la Tumba Sur en el extremo sur del recinto. El recinto de piedra sin labrar de Gisr el-Mudir está más al oeste, fuera del muro de Dyoser. La pirámide en ruinas de Userkaf está justo al noreste del recinto. Al este del recinto, muy cerca uno de otro, están la Mastaba de Ti y el Serapeo subterráneo. Al sur del recinto está la pequeña Pirámide de Unas. Al norte del recinto, la Pirámide de Teti está junto a la gran Mastaba de Mereruka. Los números coinciden con las notas.">
+          <rect width="420" height="320" fill="var(--panel)"/>
+          <path d="M0,0 L420,0 L420,320 L0,320 Z" fill="var(--bg)"/>
+          <rect x="10" y="10" width="400" height="300" fill="none" stroke="var(--ink-soft)" stroke-dasharray="5 4"/>
+          <rect x="140" y="90" width="150" height="150" fill="none" stroke="var(--saq)" stroke-width="1.6"/>
+          <path d="M175,115 L255,115 L245,205 L185,205 Z" class="rock" stroke="var(--ink-soft)"/>
+          <rect x="195" y="130" width="12" height="60" class="cut" opacity="0.5"/>
+          <rect x="215" y="135" width="12" height="55" class="cut" opacity="0.5"/>
+          <rect x="245" y="130" width="30" height="40" fill="none" stroke="var(--ink-soft)" stroke-dasharray="2 2"/>
+          <circle cx="215" cy="225" r="8" fill="none" stroke="var(--ink-soft)"/>
+          <rect x="40" y="110" width="70" height="60" fill="none" stroke="var(--ink-soft)" stroke-dasharray="3 3"/>
+          <path d="M300,70 L326,120 L274,120 Z" class="rock" stroke="var(--ink-soft)" opacity="0.8"/>
+          <rect x="300" y="150" width="34" height="24" class="cut"/>
+          <circle cx="330" cy="190" r="9" fill="none" stroke="var(--ink-soft)" stroke-dasharray="2 2"/>
+          <path d="M205,262 L225,292 L185,292 Z" class="rock" stroke="var(--ink-soft)" opacity="0.8"/>
+          <path d="M280,40 L300,70 L260,70 Z" class="rock" stroke="var(--ink-soft)" opacity="0.8"/>
+          <rect x="255" y="42" width="34" height="22" class="cut"/>
+          <rect x="30" y="30" width="46" height="26" class="cut"/>
+          <text class="t-sub" x="215" y="106" text-anchor="middle">Dyoser</text>
+          <text class="t-sub" x="75" y="104" text-anchor="middle">Gisr el-Mudir</text>
+          <text class="t-sub" x="300" y="64" text-anchor="middle">Userkaf</text>
+          <text class="t-sub" x="330" y="146" text-anchor="middle">Ti</text>
+          <text class="t-sub" x="330" y="204" text-anchor="middle">Serapeo</text>
+          <text class="t-sub" x="205" y="256" text-anchor="middle">Unas</text>
+          <text class="t-sub" x="272" y="36" text-anchor="middle">Teti y Mereruka</text>
+          <text class="t-sub" x="53" y="26" text-anchor="middle">Museo Imhotep</text>
+          <a class="mk" href="#sq-1"><circle cx="53" cy="43" r="9"/><text x="53" y="43">1</text></a><a class="mk" href="#sq-2"><circle cx="215" cy="130" r="9"/><text x="215" y="130">2</text></a><a class="mk" href="#sq-3"><circle cx="258" cy="150" r="9"/><text x="258" y="150">3</text></a><a class="mk" href="#sq-4"><circle cx="215" cy="225" r="9"/><text x="215" y="225">4</text></a><a class="mk lost" href="#sq-5"><circle cx="75" cy="140" r="9"/><text x="75" y="140">5</text></a><a class="mk lost" href="#sq-6"><circle cx="300" cy="90" r="9"/><text x="300" y="90">6</text></a><a class="mk" href="#sq-7"><circle cx="317" cy="162" r="9"/><text x="317" y="162">7</text></a><a class="mk" href="#sq-8"><circle cx="330" cy="190" r="9"/><text x="330" y="190">8</text></a><a class="mk" href="#sq-9"><circle cx="205" cy="277" r="9"/><text x="205" y="277">9</text></a><a class="mk" href="#sq-10"><circle cx="272" cy="55" r="9"/><text x="272" y="55">10</text></a>
+        </svg>
+        <p class="key"><span>● parada</span><span>◌ en ruinas o subterráneo</span></p>
+        <p class="caption">Plano simplificado, sin escala; las posiciones son aproximadas.</p>
+      </div>
+      <ol class="notes">
+        <li id="sq-1"><span class="num">1</span><div><h3>El Museo Imhotep</h3><p>En la entrada del yacimiento: estatuas, relieves y objetos hallados en Saqqara, incluida la base inscrita con el nombre y los títulos de Imhotep, la única prueba contemporánea que lo vincula con la pirámide de Dyoser. Una buena primera o última parada, merece 30&ndash;45 minutos.</p></div></li>
+        <li id="sq-2"><span class="num">2</span><div><h3>La Pirámide Escalonada de Dyoser</h3><p>El centro de toda la necrópolis: empezó como una mastaba cuadrada, luego se amplió hacia fuera y hacia arriba al menos dos veces más, hasta asentarse en seis niveles desiguales de unos 60&nbsp;m de altura. El monumento de piedra tallada a gran escala más antiguo del mundo, diseñado para Dyoser por su funcionario Imhotep.</p><p class="see"><a href="#djoserTitle">Cómo creció la Pirámide Escalonada ↓</a></p></div></li>
+        <li id="sq-3"><span class="num">3</span><div><h3>El Patio del Heb-Sed</h3><p>Un patio largo al este de la pirámide bordeado de capillas de piedra falsas, talladas para imitar madera, caña y esteras de papiro pero macizas por dentro &mdash; construidas para que el espíritu de Dyoser corriera para siempre la carrera jubilar del Heb-Sed en el más allá.</p></div></li>
+        <li id="sq-4"><span class="num">4</span><div><h3>La Tumba Sur y el serdab</h3><p>En el extremo sur del recinto, una segunda versión, más pequeña, de los aposentos funerarios del rey, probablemente para su espíritu o sus vísceras. Junto a la cara norte de la pirámide, una pequeña cámara sellada llamada serdab permite asomarse por dos agujeros a una réplica de la estatua de Dyoser &mdash; el original está en el Museo Egipcio de El Cairo.</p></div></li>
+        <li id="sq-5"><span class="num">5</span><div><h3>Gisr el-Mudir</h3><p>Un enorme recinto de piedra sin labrar unos cientos de metros al oeste del muro de Dyoser, más antiguo que su pirámide y nunca terminado ni explicado. Nunca se ha hallado ninguna estructura en su interior.</p></div></li>
+        <li id="sq-6"><span class="num">6</span><div><h3>La Pirámide de Userkaf</h3><p>Fundador de la V Dinastía, enterrado justo al noreste del recinto de Dyoser, pero con poco esmero: una mampostería interior de mala calidad que hoy la deja pareciendo una simple colina cónica, nada que ver con el revestimiento liso que una vez llevó.</p></div></li>
+        <li id="sq-7"><span class="num">7</span><div><h3>La Mastaba de Ti</h3><p>No es en absoluto la tumba de un rey: Ti fue un funcionario que sirvió a varios faraones de la V Dinastía, y su mastaba conserva los mejores relieves no reales del Reino Antiguo, entre ellos la famosa escena de Ti observando una cacería de hipopótamos en la marisma.</p><p class="see"><a href="#tombsTitle">Las tumbas pintadas ↓</a></p></div></li>
+        <li id="sq-8"><span class="num">8</span><div><h3>El Serapeo</h3><p>Una larga galería subterránea excavada en la roca, que guarda los cuerpos momificados de los toros sagrados Apis en sarcófagos de granito de hasta 70 toneladas cada uno. La pieza que desentona aquí: todo lo demás en este plano es del Reino Antiguo, pero el Serapeo es del Reino Nuevo en adelante.</p><p class="see"><a href="#serapeumTitle">Más sobre el Serapeo ↓</a></p></div></li>
+        <li id="sq-9"><span class="num">9</span><div><h3>La Pirámide de Unas</h3><p>Una pirámide pequeña y poco llamativa de la V Dinastía al sur del recinto de Dyoser &mdash; salvo por lo que hay tallado dentro: la escritura religiosa más antigua conocida, cubriendo las paredes de la cámara funeraria.</p><p class="see"><a href="#textsTitle">Los Textos de las Pirámides ↓</a></p></div></li>
+        <li id="sq-10"><span class="num">10</span><div><h3>Teti y Mereruka</h3><p>Al norte del recinto de Dyoser: la pirámide de Teti, la primera de la VI Dinastía y la segunda en llevar Textos de las Pirámides, junto a la mastaba de su visir y yerno Mereruka &mdash; con 33 salas, la tumba privada más grande y decorada de Saqqara.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="djoserTitle" style="--c: var(--saq);">
+    <h2 id="djoserTitle">Cómo creció la Pirámide Escalonada</h2>
+    <p class="section-note">La primera pirámide de Egipto no se planeó como pirámide &mdash; se convirtió en una, a la vista de sus propias costuras de construcción.</p>
+    <div class="figure" style="max-width: 460px;">
+      <svg viewBox="0 0 360 260" role="img" aria-label="Diagrama simplificado que muestra el crecimiento de la Pirámide Escalonada por etapas: primero una mastaba cuadrada y baja, luego ampliada hacia fuera por todos los lados, después elevada y ampliada de nuevo en una pirámide de cuatro escalones, y finalmente extendida una vez más hasta la pirámide de seis escalones que se alza hoy, con las etapas posteriores dibujadas como contornos alrededor del núcleo sólido anterior.">
+        <rect x="20" y="220" width="320" height="10" fill="var(--rock)"/>
+        <rect x="140" y="195" width="80" height="25" class="cut" opacity="0.9"/>
+        <path d="M155,195 L165,160 L195,160 L205,195 Z" fill="none" stroke="var(--ink-soft)" stroke-dasharray="3 2"/>
+        <path d="M130,195 L150,120 L210,120 L230,195 Z" fill="none" stroke="var(--ink-soft)" stroke-dasharray="3 2"/>
+        <path d="M110,195 L145,60 L215,60 L250,195 Z" class="rock" stroke="var(--ink)" stroke-width="1.6"/>
+        <path d="M118,185 h124 M126,155 h108 M134,125 h92 M142,95 h76" stroke="var(--ink-soft)" stroke-width="1" opacity="0.7"/>
+        <text class="t-sub" x="180" y="213" text-anchor="middle">1: mastaba</text>
+        <text class="t-sub" x="180" y="150" text-anchor="middle">2&ndash;3: ampliada, 4 niveles</text>
+        <text class="t-sub" x="180" y="78" text-anchor="middle">4: final, 6 niveles</text>
+      </svg>
+      <p class="caption">Diagrama de crecimiento simplificado, sin escala; basado en la reconstrucción de las fases de construcción de Jean-Philippe Lauer.</p>
+    </div>
+    <div class="tips" style="margin-top: 1rem;"><div class="tip"><h3>De mastaba a pirámide</h3><p>El arquitecto de Dyoser, Imhotep, empezó con una mastaba cuadrada de techo plano, la tumba real estándar de la época, y luego la fue ampliando hacia fuera y hacia arriba &mdash; cuatro escalones, luego seis &mdash; antes de fijar el diseño final. Las costuras entre cada etapa todavía son visibles hoy en la mampostería.</p></div><div class="tip"><h3>Seis kilómetros bajo tierra</h3><p>Bajo la pirámide y los patios se extiende un laberinto de pozos, túneles, cámaras y almacenes, con un pozo central de unos 7&nbsp;m de lado excavado unos 28&nbsp;m en la roca &mdash; mucho más de lo que necesitaría un simple enterramiento.</p></div><div class="tip"><h3>Azulejos azules, no pintura</h3><p>Varias cámaras subterráneas están revestidas de miles de pequeños azulejos de fayenza azul-verde incrustados en la piedra, enmarcados por paneles de caliza tallada &mdash; no relieve pintado sino azulejo vidriado, imitando las esteras de caña que habrían colgado de las paredes del palacio real del rey en Menfis.</p></div><div class="tip"><h3>40.000 vasijas de piedra</h3><p>Los excavadores hallaron unas cuarenta mil vasijas de piedra almacenadas en las galerías subterráneas, muchas inscritas con nombres de reyes de la I y la II Dinastía &mdash; ya reliquias antiguas cuando Dyoser fue enterrado, lo que sugiere que el propio lugar tiene una historia aún más larga.</p></div></div>
+  </section>
+
+  <section aria-labelledby="textsTitle" style="--c: var(--great);">
+    <h2 id="textsTitle">Los Textos de las Pirámides</h2>
+    <p class="section-note">Las pirámides de Guiza están calladas por dentro. En Saqqara, dos generaciones después, eso cambió para siempre.</p>
+    <div class="tips"><div class="tip"><h3>Unas rompe el silencio</h3><p>Todas las pirámides anteriores a Unas, incluidas las tres de Guiza, estaban desnudas por dentro. Unas, el último rey de la V Dinastía, fue el primero en cubrir las paredes de su cámara funeraria con hechizos jeroglíficos tallados y originalmente pintados, pensados para protegerlo y resucitarlo &mdash; 283 de ellos, el cuerpo de escritura religiosa más antiguo y mejor conservado que sobrevive del Reino Antiguo.</p></div><div class="tip"><h3>Teti continúa</h3><p>Teti, el primer rey de la VI Dinastía, mandó tallar el segundo conjunto conocido de Textos de las Pirámides en su propia pirámide cercana. Su tumba se construyó con poco esmero, sobre escombros y piedra pequeña, así que los visitantes describen sus textos como menos uniformemente conservados que los de Unas &mdash; vale la pena verlos igualmente, pero Unas es la prioridad.</p></div><div class="tip"><h3>Un más allá de mil años</h3><p>Los hechizos escritos primero para Unas no se quedaron reales ni quietos: se copiaron y ampliaron en los Textos de los Sarcófagos que usaban los nobles en el Reino Medio, que a su vez alimentaron el Libro de los Muertos, todavía copiado para egipcios corrientes más de mil años después.</p></div><div class="tip"><h3>Tallados, luego pintados</h3><p>Como cualquier otra inscripción jeroglífica en las guías de este hub, los textos se tallaron directamente en la piedra y luego se pintaron, originalmente en azul-verde, así que las paredes de caliza blanca se leían antaño como columnas de color vivo, no la piedra gris desnuda que se ve hoy.</p></div></div>
+  </section>
+
+  <section aria-labelledby="tombsTitle" style="--c: var(--small);">
+    <h2 id="tombsTitle">Las tumbas pintadas</h2>
+    <p class="section-note">Si Guiza es donde vas por la escala, Saqqara es donde vas por el color. Son los mejores relieves pintados que se conservan del Reino Antiguo, todos tallados para funcionarios, no para reyes.</p>
+    <div class="tips"><div class="tip"><h3>La cacería de hipopótamos de Ti</h3><p>Ti fue supervisor de los templos solares y las pirámides bajo varios reyes de la V Dinastía, y la escena más famosa de su mastaba lo muestra de pie, sereno, sobre una barca de papiro, empequeñecido por la escala del propio relieve, observando abajo a hombres que arponean hipopótamos y cocodrilos en la marisma &mdash; probablemente una escena de Ti triunfando sobre el caos, ya que los hipopótamos estaban vinculados al dios Seth.</p></div><div class="tip"><h3>Un registro de la vida cotidiana</h3><p>Más allá de la cacería, las paredes de Ti llevan escenas de labranza, construcción de barcas, metalurgia y pastoreo en relieve pintado, talladas con un detalle inusualmente fino y seguro &mdash; menos un monumento al poder real que un registro de cómo era la vida corriente mientras se levantaban las pirámides cercanas.</p></div><div class="tip"><h3>Las 33 salas de Mereruka</h3><p>Una generación después, Mereruka &mdash; visir bajo Teti y casado con su hija &mdash; construyó la tumba privada más grande de Saqqara: 33 salas decoradas para él, su esposa y su hijo, con relieves pintados de pesca, caza, orfebres trabajando y músicos, algunas de las superficies con más color que sobreviven del Reino Antiguo.</p></div><div class="tip"><h3>Kagemni y Ptahhotep cerca</h3><p>Dos mastabas más de funcionarios muy cerca, las de Kagemni y Ptahhotep, se suman al mismo grupo de tumbas del Reino Antiguo finamente talladas y pintadas &mdash; si hay alguna tumba abierta cuando visitemos además de Ti y Mereruka, es muy probable que sea una de estas dos.</p></div></div>
+  </section>
+
+  <section aria-labelledby="serapeumTitle" style="--c: var(--saq);">
+    <h2 id="serapeumTitle">El Serapeo</h2>
+    <p class="section-note">Todo lo demás en este plano es del Reino Antiguo. El Serapeo es más de mil años más joven &mdash; y casi completamente sin decorar.</p>
+    <div class="tips"><div class="tip"><h3>El toro sagrado Apis</h3><p>Cada toro Apis, elegido por unas marcas específicas y venerado en vida como imagen viva del dios Ptah, se momificaba al morir y se enterraba aquí en un sarcófago de granito de hasta 70 toneladas, cortado y pulido a espejo sin ninguna decoración tallada.</p></div><div class="tip"><h3>Un túnel construido a lo largo de siglos</h3><p>Los primeros enterramientos individuales de Apis empezaron hacia el 1390 a.C. bajo Amenhotep III; Khaemuaset, hijo de Ramsés II, los conectó en la larga galería única visible hoy durante la XIX Dinastía, y los enterramientos continuaron hasta la época ptolemaica, más de mil años después.</p></div><div class="tip"><h3>Hallado casi vacío</h3><p>Auguste Mariette redescubrió el Serapeo en 1850 siguiendo una esfinge medio enterrada de la que había leído en un texto de época romana; casi todos los sarcófagos ya habían sido abiertos y saqueados en la antigüedad, pero un enterramiento intacto, pasado por alto por los saqueadores, se halló en 1852.</p></div><div class="tip"><h3>Lleva tu propia luz</h3><p>Las galerías son oscuras incluso con la iluminación del yacimiento; una linterna de mano ayuda mucho a apreciar la escala de los sarcófagos y las marcas de herramientas en su granito pulido.</p></div></div>
+  </section>
+
+  <section aria-labelledby="timeTitle">
+    <h2 id="timeTitle">Saqqara a través del tiempo</h2>
+    <ol class="timeline">
+      <li><span class="yr">antes de c. 2670 a.C.</span><p>Se construye el recinto de piedra sin labrar de Gisr el-Mudir, por razones todavía desconocidas, antes que cualquier otra cosa en Saqqara.</p></li>
+      <li><span class="yr">c. 2670&ndash;2650 a.C.</span><p>El arquitecto de Dyoser, Imhotep, construye la Pirámide Escalonada, ampliando una simple mastaba hasta seis niveles &mdash; la primera pirámide del mundo.</p></li>
+      <li><span class="yr">c. 2494&ndash;2487 a.C.</span><p>Userkaf, fundador de la V Dinastía, construye su pirámide justo al noreste del recinto de Dyoser.</p></li>
+      <li><span class="yr">c. 2450 a.C.</span><p>El funcionario Ti es enterrado en su mastaba, con sus paredes talladas con la cacería de hipopótamos y escenas de la vida cotidiana.</p></li>
+      <li><span class="yr">c. 2375&ndash;2345 a.C.</span><p>Unas se convierte en el primer rey en hacer tallar los Textos de las Pirámides en la cámara funeraria de su pirámide.</p></li>
+      <li><span class="yr">c. 2345&ndash;2323 a.C.</span><p>Teti, primer rey de la VI Dinastía, es enterrado cerca con el segundo conjunto conocido de Textos de las Pirámides.</p></li>
+      <li><span class="yr">c. 2340 a.C.</span><p>El visir de Teti, Mereruka, construye su mastaba de 33 salas junto a la pirámide del rey.</p></li>
+      <li><span class="yr">c. 1390 a.C.</span><p>Comienzan los primeros enterramientos individuales de toros Apis en lo que será el Serapeo.</p></li>
+      <li><span class="yr">c. 1250 a.C.</span><p>Khaemuaset, hijo de Ramsés II, conecta los enterramientos de Apis en una sola galería.</p></li>
+      <li><span class="yr">1850&ndash;1852</span><p>Auguste Mariette redescubre el Serapeo y encuentra un enterramiento de Apis intacto, sin saquear.</p></li>
+      <li><span class="yr">1926&ndash;1963</span><p>Jean-Philippe Lauer dedica la mayor parte de su vida laboral a excavar y reconstruir el complejo de Dyoser.</p></li>
+      <li><span class="yr">Años 2020</span><p>Siguen apareciendo nuevos pozos funerarios, sarcófagos y hallazgos por toda la meseta; el Museo Imhotep se actualiza con regularidad.</p></li>
+    </ol>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">Para nuestra visita</h2>
+    <div class="tips">
+      <div class="tip"><h3>La primera parada del día</h3><p>Saqqara va antes que Guiza en el plan de hoy, unos 20&nbsp;km más lejos de El Cairo pero más tranquila a la hora de apertura, antes de que lleguen los autobuses de grupos &mdash; llegar pronto importa aquí incluso más que en Guiza.</p></div>
+      <div class="tip"><h3>Las entradas son un mosaico</h3><p>El yacimiento principal, el interior de la Pirámide Escalonada, el Museo Imhotep y el Serapeo suelen venderse como entradas separadas, y los precios y combinaciones que se reportan cambian a menudo &mdash; no te fíes de ninguna cifra de antemano; confirma qué incluye en la taquilla o con nuestro guía.</p></div>
+      <div class="tip"><h3>Calzado con agarre, linterna, protección solar</h3><p>La meseta es desierto abierto con casi nada de sombra, y tanto el interior de la pirámide como el Serapeo tienen escalones de piedra irregulares y pasos bajos &mdash; un calzado cómodo y con agarre importa, y una linterna pequeña ayuda en las galerías oscuras del Serapeo.</p></div>
+      <div class="tip"><h3>No te saltes el museo pequeño</h3><p>Es fácil dejar el Museo Imhotep para "luego" y acabar sin tiempo &mdash; guarda la base de estatua que nombra al propio Imhotep, así que merece encajarlo a propósito, no como algo de relleno.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Parte de <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">el tour privado Alimaña ↗</a>. El plano es esquemático; las fechas son aproximadas.</p>
+</div>
+<script>
+(() => {
+  const a = document.getElementById('guia');
+  const bs = [...document.querySelectorAll('#capitulos button')];
+  bs.forEach(b => b.addEventListener('click', () => { a.currentTime = +b.dataset.t; a.play().catch(() => {}); }));
+  a.addEventListener('timeupdate', () => {
+    let cur = 0; bs.forEach((b, i) => { if (a.currentTime >= +b.dataset.t - 0.2) cur = i; });
+    bs.forEach((b, i) => b.setAttribute('aria-current', i === cur && a.currentTime > 0 ? 'true' : 'false'));
+  });
+})();
+</script>
