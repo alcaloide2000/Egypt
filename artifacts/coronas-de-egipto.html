@@ -1,0 +1,129 @@
+<title>Las coronas del Norte y del Sur</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: título, tres bocetos lado a lado (roja, blanca, doble) con su ficha debajo, y una nota sobre dónde verlas. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --red: #b23a2e; --white: #f6f1e4; --gold: #c99a2e; --cobra: #3c7a5a;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --red: #d2584a; --white: #ece6d6; --gold: #e2b74f; --cobra: #5fae87; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --red: #d2584a; --white: #ece6d6; --gold: #e2b74f; --cobra: #5fae87; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1000px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--red); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(1.9rem, 5vw, 2.8rem); line-height: 1.08; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: 1.3rem; margin: 0; }
+  p { margin: 0; }
+  .lede { max-width: 44rem; color: var(--ink-soft); font-size: 1.05rem; }
+  .crowns { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 1rem; margin-top: 1.75rem; }
+  .crown { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 1rem 1.1rem 1.2rem; display: grid; gap: 0.6rem; align-content: start; min-width: 0; }
+  .crown svg { display: block; width: 100%; max-width: 240px; height: auto; margin: 0 auto; }
+  .name { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-soft); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 5.6rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+  .crown p.note { font-size: 0.9rem; color: var(--ink-soft); }
+  .ink { stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
+  .red { fill: var(--red); } .white { fill: var(--white); }
+  .shade { fill: var(--ink); opacity: 0.08; }
+  .ground { stroke: var(--line); stroke-width: 2; }
+  .lab { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .where { margin-top: 1.75rem; background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 1rem 1.1rem; max-width: 46rem; }
+  .where ul { margin: 0.5rem 0 0; padding-left: 1.1rem; display: grid; gap: 0.35rem; font-size: 0.92rem; }
+  .cap { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 1rem; }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Las Dos Tierras · símbolos del faraón</p>
+  <h1>Las coronas del Norte y del Sur</h1>
+  <p class="lede">Egipto eran dos tierras: el Bajo Egipto, el Delta, al norte, y el Alto Egipto, el valle del Nilo, al sur. Cada una tenía su corona, y el faraón, «Señor de las Dos Tierras», las llevaba juntas en una sola.</p>
+
+  <div class="crowns">
+    <article class="crown">
+      <svg viewBox="-90 0 190 226" role="img" aria-label="Boceto de la corona roja del norte: un gorro bajo delante, una pieza alta y recta detrás y un fino tallo que sale hacia delante y termina en espiral.">
+        <line class="ground" x1="-70" y1="206" x2="70" y2="206"/>
+        <path class="red ink" d="M-36,206 L-36,150 Q-36,144 -30,144 L10,144 L12,62 Q12,56 18,56 L30,56 Q36,56 36,62 L36,206 Z"/>
+        <path class="shade" d="M12,144 L12,62 Q12,56 18,56 L22,56 L22,206 L12,206 Z"/>
+        <path class="ink" fill="none" d="M10,144 C-6,128 -34,112 -40,92 C-44,78 -30,70 -24,80 C-20,87 -27,93 -32,88"/>
+        <path fill="var(--cobra)" class="ink" stroke-width="1.4" d="M-36,178 q-10,-4 -8,-16 q4,-8 10,-2 q2,6 -2,10"/>
+        <text class="lab" x="40" y="100">pieza alta</text>
+        <text class="lab" x="-84" y="66">espiral</text>
+      </svg>
+      <span class="name">Corona roja · Deshret</span>
+      <h2>Norte: Bajo Egipto</h2>
+      <dl class="facts">
+        <div><dt>Tierra</dt><dd>El Delta, con capital antigua en Buto</dd></div>
+        <div><dt>Diosa</dt><dd>Uadyet, la cobra</dd></div>
+        <div><dt>Forma</dt><dd>Gorro bajo con una pieza alta detrás y un tallo en espiral delante</dd></div>
+      </dl>
+    </article>
+
+    <article class="crown">
+      <svg viewBox="-90 0 190 226" role="img" aria-label="Boceto de la corona blanca del sur: una mitra alta y cónica, como un bolo, que termina arriba en un remate redondeado.">
+        <line class="ground" x1="-70" y1="206" x2="70" y2="206"/>
+        <path class="white ink" d="M-32,206 C-36,160 -30,118 -22,84 C-17,60 -12,42 -8,32 Q0,22 8,32 C12,42 17,60 22,84 C30,118 36,160 32,206 Z"/>
+        <circle class="white ink" cx="0" cy="24" r="9"/>
+        <path class="shade" d="M10,40 C18,70 26,120 30,206 L20,206 C18,140 14,90 6,46 Z"/>
+        <path fill="var(--gold)" class="ink" stroke-width="1.4" d="M-30,176 q-12,2 -14,-10 q4,-10 12,-4 l2,6"/>
+        <text class="lab" x="14" y="22">remate</text>
+      </svg>
+      <span class="name">Corona blanca · Hedjet</span>
+      <h2>Sur: Alto Egipto</h2>
+      <dl class="facts">
+        <div><dt>Tierra</dt><dd>El valle del Nilo, con capital antigua en Nejen (Hieracómpolis)</dd></div>
+        <div><dt>Diosa</dt><dd>Nejbet, el buitre</dd></div>
+        <div><dt>Forma</dt><dd>Mitra alta y cónica, como un bolo, con remate redondeado</dd></div>
+      </dl>
+    </article>
+
+    <article class="crown">
+      <svg viewBox="-90 0 190 226" role="img" aria-label="Boceto de la doble corona: la corona blanca encajada dentro de la roja, con la espiral delante y la cobra y el buitre en la frente.">
+        <line class="ground" x1="-70" y1="206" x2="70" y2="206"/>
+        <path class="white ink" d="M-26,150 C-26,118 -20,92 -14,70 C-10,52 -8,40 -4,32 Q2,24 8,32 C11,42 13,56 14,70 L14,150 Z"/>
+        <circle class="white ink" cx="2" cy="25" r="8"/>
+        <path class="red ink" d="M-36,206 L-36,150 Q-36,144 -30,144 L10,144 L12,62 Q12,56 18,56 L30,56 Q36,56 36,62 L36,206 Z"/>
+        <path class="shade" d="M12,144 L12,62 Q12,56 18,56 L22,56 L22,206 L12,206 Z"/>
+        <path class="ink" fill="none" d="M10,144 C-6,128 -34,112 -40,92 C-44,78 -30,70 -24,80 C-20,87 -27,93 -32,88"/>
+        <path fill="var(--cobra)" class="ink" stroke-width="1.4" d="M-36,182 q-10,-4 -8,-16 q4,-8 10,-2 q2,6 -2,10"/>
+        <path fill="var(--gold)" class="ink" stroke-width="1.4" d="M-36,196 q-12,2 -14,-8 q4,-9 12,-3 l2,5"/>
+        <text class="lab" x="-86" y="220">cobra y buitre</text>
+      </svg>
+      <span class="name">Doble corona · Pschent</span>
+      <h2>Las Dos Tierras unidas</h2>
+      <dl class="facts">
+        <div><dt>Nombre</dt><dd>En egipcio <i>sejemty</i>, «las dos poderosas»; pschent es la forma griega</dd></div>
+        <div><dt>Frente</dt><dd>Cobra y buitre juntos, Uadyet y Nejbet</dd></div>
+        <div><dt>Forma</dt><dd>La corona blanca encajada dentro de la roja</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section class="where" aria-labelledby="whereTitle">
+    <h2 id="whereTitle">Dónde las habéis visto en el viaje</h2>
+    <ul>
+      <li>En la Paleta de Narmer, hacia el 3100 a. C., el mismo rey aparece con la corona blanca en una cara y con la roja en la otra.</li>
+      <li>En los relieves de los templos, fijaos en el rey: según la escena lleva la corona roja, la blanca o la doble.</li>
+      <li>Horus, como rey de Egipto, suele llevar la doble corona: así la lleva el gran halcón de granito ante el templo de Edfu.</li>
+      <li>No se ha encontrado nunca ninguna corona real: probablemente eran de tela, cuero o fibras, y se perdieron.</li>
+    </ul>
+  </section>
+
+  <p class="cap">Bocetos simplificados, sin escala, a partir de las imágenes de relieves y estatuas.</p>
+</div>
