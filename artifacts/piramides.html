@@ -1,0 +1,236 @@
+<title>De la pirámide escalonada a la perfecta</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: one to-scale row of four profiles read left to right, an overlay that compares their angles, then one card per step. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --stone: #d9c49a; --djoser: #5b4f8f; --meidum: #b5551f; --bent: #a9791f; --red: #9c3f5e;
+    --khufu: #2f5f8a; --khafre: #3c7a5a; --menkaure: #7d3c6b; --granite: #b0645a;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) { --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --stone: #4a463e; --djoser: #a99bd9; --meidum: #e58a4d; --bent: #d9a83c; --red: #e08aa6;
+    --khufu: #6fa3d1; --khafre: #5fae87; --menkaure: #d494c4; --granite: #a8574d; color-scheme: dark; } }
+  :root[data-theme="dark"] { --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --stone: #4a463e; --djoser: #a99bd9; --meidum: #e58a4d; --bent: #d9a83c; --red: #e08aa6;
+    --khufu: #6fa3d1; --khafre: #5fae87; --menkaure: #d494c4; --granite: #a8574d; color-scheme: dark; }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1100px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--meidum); margin: 0 0 0.8rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(1.9rem, 4.5vw, 2.9rem); line-height: 1.08; margin: 0 0 0.8rem; text-wrap: balance; }
+  .lede { max-width: 44rem; color: var(--ink-soft); font-size: 1.05rem; margin: 0; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: 1.35rem; margin: 0 0 0.3rem; }
+  .panel { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.9rem, 2.5vw, 1.4rem); margin-top: clamp(1.5rem, 4vw, 2.25rem); }
+  .panel > p { color: var(--ink-soft); font-size: 0.92rem; margin: 0 0 0.8rem; max-width: 60ch; }
+  .scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .scroll svg { display: block; width: 100%; height: auto; }
+  .row-svg { min-width: 1300px; }
+  .ov-svg { min-width: 520px; max-width: 760px; margin: 0 auto; }
+  .panel > p.caption, .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin: 0.6rem 0 0; }
+  svg text { fill: var(--ink-soft); }
+  .ground { stroke: var(--ink-soft); stroke-width: 1.2; }
+  .ghost { fill: none; stroke: var(--ink-soft); stroke-width: 1; stroke-dasharray: 4 4; opacity: 0.7; }
+  .fill { fill: var(--stone); stroke-width: 1.4; stroke-linejoin: round; }
+  .rubble { fill: var(--stone); opacity: 0.55; stroke: none; }
+  .plan { fill: none; stroke-width: 1.3; stroke-dasharray: 5 4; }
+  .knee { stroke-width: 1; stroke-dasharray: 2 3; }
+  .pyr[data-p="djoser"] .fill { stroke: var(--djoser); }
+  .pyr[data-p="meidum"] .fill, .pyr[data-p="meidum"] .plan { stroke: var(--meidum); }
+  .pyr[data-p="bent"] .fill, .pyr[data-p="bent"] .knee { stroke: var(--bent); }
+  .pyr[data-p="red"] .fill { stroke: var(--red); }
+  .pyr[data-p="khufu"] .fill { stroke: var(--khufu); } .pyr[data-p="khafre"] .fill { stroke: var(--khafre); } .pyr[data-p="menkaure"] .fill { stroke: var(--menkaure); }
+  .granite { fill: var(--granite); stroke: var(--menkaure); stroke-width: 1.4; stroke-linejoin: round; }
+  .arrow { stroke: var(--ink-soft); stroke-width: 1.4; fill: none; }
+  #ah path { fill: var(--ink-soft); }
+  .l-name { font-family: var(--display); font-weight: 600; font-size: 14px; }
+  .lab[data-p="djoser"] .l-name { fill: var(--djoser); } .lab[data-p="meidum"] .l-name { fill: var(--meidum); }
+  .lab[data-p="bent"] .l-name { fill: var(--bent); } .lab[data-p="red"] .l-name { fill: var(--red); }
+  .lab[data-p="khufu"] .l-name { fill: var(--khufu); } .lab[data-p="khafre"] .l-name { fill: var(--khafre); } .lab[data-p="menkaure"] .l-name { fill: var(--menkaure); }
+  .l-sub, .note, .scale text { font-family: var(--mono); font-size: 10px; }
+  .scale line { stroke: var(--ink-soft); stroke-width: 1.4; }
+  .ov { fill: none; stroke-width: 2; stroke-linejoin: round; }
+  .ov.dashed { stroke-dasharray: 6 4; }
+  .ov[data-p="djoser"] { stroke: var(--djoser); } .ov[data-p="meidum"] { stroke: var(--meidum); }
+  .ov[data-p="bent"] { stroke: var(--bent); } .ov[data-p="red"] { stroke: var(--red); }
+  .ov[data-p="khufu"] { stroke: var(--khufu); } .ov[data-p="khafre"] { stroke: var(--khafre); }
+  .ang { font-family: var(--mono); font-size: 11px; }
+  .ang.c-djoser { fill: var(--djoser); } .ang.c-meidum { fill: var(--meidum); } .ang.c-bent { fill: var(--bent); } .ang.c-red { fill: var(--red); } .ang.c-khufu { fill: var(--khufu); } .ang.c-khafre { fill: var(--khafre); }
+  /* focus: hovering or selecting a card dims the other three profiles */
+  .pyr, .lab, .ov { transition: opacity 0.2s ease; }
+  [data-focus] .pyr, [data-focus] .lab, [data-focus] .ov { opacity: 0.22; }
+  [data-focus="djoser"] [data-p="djoser"], [data-focus="meidum"] [data-p="meidum"],
+  [data-focus="bent"] [data-p="bent"], [data-focus="red"] [data-p="red"],
+  [data-focus="khufu"] [data-p="khufu"], [data-focus="khafre"] [data-p="khafre"], [data-focus="menkaure"] [data-p="menkaure"] { opacity: 1; }
+  .group-title { font-family: var(--display); font-weight: 600; font-size: 1.35rem; margin: clamp(1.75rem, 4vw, 2.5rem) 0 0; }
+  .group-title + .cards { margin-top: 0.9rem !important; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: clamp(0.9rem, 2vw, 1.25rem); margin-top: clamp(1.5rem, 4vw, 2.25rem); }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1.1rem 1.15rem; display: flex; flex-direction: column; gap: 0.55rem; min-width: 0; outline: none; }
+  .card:focus-visible { box-shadow: 0 0 0 2px var(--c); }
+  .card[data-p="djoser"] { --c: var(--djoser); } .card[data-p="meidum"] { --c: var(--meidum); }
+  .card[data-p="bent"] { --c: var(--bent); } .card[data-p="red"] { --c: var(--red); }
+  .card[data-p="khufu"] { --c: var(--khufu); } .card[data-p="khafre"] { --c: var(--khafre); } .card[data-p="menkaure"] { --c: var(--menkaure); }
+  .card p.step { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.04em; color: var(--ink-soft); margin: 0; display: flex; gap: 0.5rem; align-items: baseline; }
+  .num { font-family: var(--display); font-weight: 600; font-size: 1.5rem; line-height: 1; color: var(--c); }
+  .card h3 { font-family: var(--display); font-weight: 600; font-size: 1.2rem; line-height: 1.2; margin: 0; color: var(--ink); }
+  .card p { margin: 0; font-size: 0.9rem; color: var(--ink-soft); }
+  .stats { margin: 0; display: grid; gap: 0.3rem; }
+  .stats div { display: grid; grid-template-columns: 4.8rem 1fr; gap: 0.5rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .stats dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); }
+  .stats dd { margin: 0; font-size: 0.86rem; font-variant-numeric: tabular-nums; }
+  .card p.lesson { color: var(--ink); font-weight: 600; font-size: 0.88rem; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; margin-top: auto !important; padding-top: 0.3rem; }
+  .links a, .foot a { font-family: var(--mono); font-size: 0.74rem; color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .links a:focus-visible, .foot a:hover, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .foot { margin-top: 2rem; font-size: 0.85rem; color: var(--ink-soft); display: flex; flex-wrap: wrap; gap: 0.4rem 1.2rem; }
+  @media (prefers-reduced-motion: reduce) { .pyr, .lab, .ov { transition: none; } }
+</style>
+
+<div class="page" id="page">
+  <p class="eyebrow">Reino Antiguo · h. 2670–2510 a. C. · <a class="lang" href="https://claude.ai/artifact/PzqKHPPSanH3YdBq8Szd3e" target="_blank" rel="noopener noreferrer" hreflang="en">English version ↗</a></p>
+  <h1>De la pirámide escalonada a la pirámide perfecta</h1>
+  <p class="lede">En unos ochenta años, los constructores egipcios pasaron de la escalera de piedra de Djoser en Saqqara a la Pirámide Roja de caras lisas de Snofru en Dahshur, y cada pirámide corrigió un problema de la anterior. El hijo, el nieto y el bisnieto de Snofru llevaron después lo aprendido a Guiza. Todos los dibujos usan la misma escala, a partir de las medidas reales.</p>
+
+  <section class="panel" aria-labelledby="rowTitle">
+    <h2 id="rowTitle">Siete pirámides, una sola escala</h2>
+    <p>Vistas de perfil en el orden en que se construyeron, de Saqqara a Guiza pasando por Meidum y Dahshur. Desliza hacia el lado para verlas todas.</p>
+    <div class="scroll">
+      <svg class="row-svg" viewBox="0 0 1735 300" role="img" aria-label="Vistas de perfil a escala: la pirámide de seis escalones de Djoser, de 62,5 m; la torre que queda en Meidum, de unos 65 m, dentro de su perfil previsto de 92 m; la Pirámide Acodada, de 101 m, cuyo ángulo pasa de 54,5 a 43,4 grados a unos 47 m; la Pirámide Roja, de 104 m a 43,4 grados; y en Guiza la Gran Pirámide de Keops, de 146,6 m a 51,8 grados, la de Kefrén, de 143,5 m a 53,1 grados, y la de Micerino, de 65,5 m a 51,3 grados, con su revestimiento inferior de granito.">
+        <defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 Z"/></marker></defs>
+<line class="ground" x1="20" y1="232" x2="1715" y2="232"/>
+<g class="pyr" data-p="djoser"><polygon points="40.0,232.0 173.1,232.0 170.7,220.5 42.4,220.5" class="fill"/><polygon points="49.9,220.5 163.2,220.5 160.8,209.1 52.3,209.1" class="fill"/><polygon points="59.8,209.1 153.3,209.1 150.9,197.6 62.2,197.6" class="fill"/><polygon points="69.2,197.6 144.0,197.6 141.5,186.2 71.6,186.2" class="fill"/><polygon points="78.5,186.2 134.6,186.2 132.2,174.7 80.9,174.7" class="fill"/><polygon points="87.3,174.7 125.8,174.7 123.4,163.2 89.7,163.2" class="fill"/></g>
+<g class="pyr" data-p="meidum"><polygon points="225.1,232.0 383.5,232.0 304.3,130.8" class="plan"/><polygon points="225.1,232.0 383.5,232.0 354.9,208.9 253.7,208.9" class="rubble"/><polygon points="262.5,208.9 346.1,208.9 341.7,183.6 266.9,183.6" class="fill"/><polygon points="273.5,183.6 335.1,183.6 331.8,169.3 276.8,169.3" class="fill"/><polygon points="283.4,169.3 325.2,169.3 323.0,160.5 285.6,160.5" class="fill"/></g>
+<g class="pyr" data-p="bent"><polygon points="435.5,232.0 643.0,232.0 606.1,180.3 543.2,120.8 535.3,120.8 472.4,180.3" class="fill"/><line class="knee" x1="472.4" y1="180.3" x2="606.1" y2="180.3"/><text class="note" x="539.2" y="194.3" text-anchor="middle">quiebro a unos 47 m</text></g>
+<g class="pyr" data-p="red"><polygon points="695.0,232.0 937.0,232.0 816.0,117.2" class="fill"/></g>
+<g class="pyr" data-p="khufu"><polygon points="989.0,232.0 1242.3,232.0 1115.6,70.7" class="fill"/></g>
+<g class="pyr" data-p="khafre"><polygon points="1294.3,232.0 1531.1,232.0 1412.7,74.1" class="fill"/></g>
+<g class="pyr" data-p="menkaure"><polygon points="1583.1,232.0 1695.5,232.0 1639.3,159.9" class="fill"/><polygon points="1583.1,232.0 1695.5,232.0 1685.0,218.8 1593.7,218.8" class="granite"/></g>
+<g class="lab" data-p="djoser"><text class="l-name" x="106.6" y="256" text-anchor="middle">1 · Djoser</text><text class="l-sub" x="106.6" y="272" text-anchor="middle">Saqqara · 62,5 m</text><text class="l-sub" x="106.6" y="286" text-anchor="middle">seis escalones</text></g>
+<g class="lab" data-p="meidum"><text class="l-name" x="304.3" y="256" text-anchor="middle">2 · Meidum</text><text class="l-sub" x="304.3" y="272" text-anchor="middle">prevista h. 92 m · hoy h. 65 m</text><text class="l-sub" x="304.3" y="286" text-anchor="middle">escalonada forrada lisa, h. 52°</text></g>
+<g class="lab" data-p="bent"><text class="l-name" x="539.2" y="256" text-anchor="middle">3 · Acodada</text><text class="l-sub" x="539.2" y="272" text-anchor="middle">Dahshur · 101 m</text><text class="l-sub" x="539.2" y="286" text-anchor="middle">54,5° y luego 43,4°</text></g>
+<g class="lab" data-p="red"><text class="l-name" x="816.0" y="256" text-anchor="middle">4 · Roja</text><text class="l-sub" x="816.0" y="272" text-anchor="middle">Dahshur · 104 m</text><text class="l-sub" x="816.0" y="286" text-anchor="middle">43,4° de arriba abajo</text></g>
+<g class="lab" data-p="khufu"><text class="l-name" x="1115.6" y="256" text-anchor="middle">5 · Keops</text><text class="l-sub" x="1115.6" y="272" text-anchor="middle">Guiza · 146,6 m</text><text class="l-sub" x="1115.6" y="286" text-anchor="middle">51,8°, sobre la roca</text></g>
+<g class="lab" data-p="khafre"><text class="l-name" x="1412.7" y="256" text-anchor="middle">6 · Kefrén</text><text class="l-sub" x="1412.7" y="272" text-anchor="middle">Guiza · 143,5 m</text><text class="l-sub" x="1412.7" y="286" text-anchor="middle">53,1°, sobre roca más alta</text></g>
+<g class="lab" data-p="menkaure"><text class="l-name" x="1639.3" y="256" text-anchor="middle">7 · Micerino</text><text class="l-sub" x="1639.3" y="272" text-anchor="middle">Guiza · 65,5 m</text><text class="l-sub" x="1639.3" y="286" text-anchor="middle">51,3°, base de granito</text></g>
+<path class="arrow" d="M183.1,218 L215.1,218" marker-end="url(#ah)"/>
+<path class="arrow" d="M393.5,218 L425.5,218" marker-end="url(#ah)"/>
+<path class="arrow" d="M653.0,218 L685.0,218" marker-end="url(#ah)"/>
+<path class="arrow" d="M947.0,218 L979.0,218" marker-end="url(#ah)"/>
+<path class="arrow" d="M1252.3,218 L1284.3,218" marker-end="url(#ah)"/>
+<path class="arrow" d="M1541.1,218 L1573.1,218" marker-end="url(#ah)"/>
+<text class="note" x="324.3" y="124.8" text-anchor="start">perfil previsto</text>
+<g class="scale"><line x1="40" y1="34" x2="95.0" y2="34"/><line x1="40" y1="29" x2="40" y2="39"/><line x1="95.0" y1="29" x2="95.0" y2="39"/><text x="40" y="24">50 m</text></g>
+      </svg>
+    </div>
+    <p class="caption">Perfiles simplificados a partir de medidas publicadas. La base de Djoser mide 121 m de este a oeste por 109 m de norte a sur, y la de Micerino 102,2 por 104,6 m; se dibuja el lado este–oeste. Las alturas son las originales, con el revestimiento; la de Keops mide hoy unos 138,5 m.</p>
+  </section>
+
+  <section class="panel" aria-labelledby="ovTitle">
+    <h2 id="ovTitle">El problema del ángulo</h2>
+    <p>Los perfiles, uno encima de otro. Meidum probó unos 52° y fracasó; la Pirámide Acodada empezó aún más inclinada y bajó a los 43,4°, el ángulo seguro de la Pirámide Roja. Sobre la roca firme de Guiza, Keops y Kefrén pudieron volver a 52–53°. Micerino, con 51,3°, repite el ángulo de Keops a un tamaño mucho menor, así que no aparece aquí.</p>
+    <div class="scroll">
+      <svg class="ov-svg" viewBox="0 0 660 320" role="img" aria-label="Seis perfiles superpuestos sobre un mismo eje: Djoser escalonada, el perfil previsto de Meidum a unos 52 grados, la Pirámide Acodada a 54,5 y luego 43,4 grados, la Pirámide Roja a 43,4 grados, Keops a 51,8 grados y Kefrén a 53,1 grados.">
+<line class="ground" x1="10" y1="300" x2="650" y2="300"/>
+<polygon points="128.5,300.0 531.5,300.0 330.0,43.4" class="ov" data-p="khufu"/>
+<polygon points="141.6,300.0 518.4,300.0 330.0,48.9" class="ov" data-p="khafre"/>
+<polygon points="137.5,300.0 522.5,300.0 330.0,117.3" class="ov" data-p="red"/>
+<polygon points="165.0,300.0 495.0,300.0 436.4,217.8 336.2,123.1 323.8,123.1 223.6,217.8" class="ov" data-p="bent"/>
+<polygon points="204.0,300.0 456.0,300.0 330.0,139.0" class="ov dashed" data-p="meidum"/>
+<polygon points="435.9,300.0 432.0,281.8 420.1,281.8 420.1,281.8 416.3,263.5 404.4,263.5 404.4,263.5 400.5,245.3 389.5,245.3 389.5,245.3 385.6,227.1 374.6,227.1 374.6,227.1 370.8,208.9 360.6,208.9 360.6,208.9 356.8,190.6 303.2,190.6 299.4,208.9 299.4,208.9 289.2,208.9 285.4,227.1 285.4,227.1 274.4,227.1 270.5,245.3 270.5,245.3 259.5,245.3 255.6,263.5 255.6,263.5 243.7,263.5 239.9,281.8 239.9,281.8 228.0,281.8 224.1,300.0" class="ov" data-p="djoser"/>
+<text class="ang c-djoser" x="14" y="30">1 Djoser: seis escalones</text>
+<text class="ang c-meidum" x="14" y="48">2 Meidum: h. 52°, previsto</text>
+<text class="ang c-bent" x="14" y="66">3 Acodada: 54,5° → 43,4°</text>
+<text class="ang c-red" x="14" y="84">4 Roja: 43,4°</text>
+<text class="ang c-khufu" x="14" y="102">5 Keops: 51,8°</text>
+<text class="ang c-khafre" x="14" y="120">6 Kefrén: 53,1°</text>
+      </svg>
+    </div>
+  </section>
+
+  <h2 class="group-title" id="g1">Aprender a construir una pirámide</h2>
+  <section class="cards" aria-labelledby="g1">
+    <article class="card" data-p="djoser" tabindex="0">
+      <p class="step"><span class="num">1</span>Saqqara · dinastía III · h. 2670–2650 a. C.</p>
+      <h3>Pirámide escalonada de Djoser</h3>
+      <dl class="stats"><div><dt>Altura</dt><dd>62.5 m</dd></div><div><dt>Base</dt><dd>121 × 109 m</dd></div><div><dt>Forma</dt><dd>seis escalones</dd></div></dl>
+      <p>Imhotep, el arquitecto de Djoser, construyó el primer monumento de Egipto hecho por completo en piedra. Empezó como una mastaba cuadrada, una tumba de techo plano, y creció por etapas hasta tener seis escalones, cada uno una mastaba más pequeña sobre la de abajo. Las piedras se inclinan hacia dentro en capas, lo que da estabilidad al conjunto.</p>
+      <p class="lesson">La idea: apilar mastabas para hacer una escalera hacia el cielo.</p>
+      <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-djoser" target="_blank" rel="noopener noreferrer">Ficha en la página principal (en inglés) ↗</a><a href="https://es.wikipedia.org/wiki/Pir%C3%A1mide_de_Zoser" target="_blank" rel="noopener noreferrer">Wikipedia ↗</a></p>
+    </article>
+    <article class="card" data-p="meidum" tabindex="0">
+      <p class="step"><span class="num">2</span>Meidum · final de la dinastía III a dinastía IV · h. 2600 a. C.</p>
+      <h3>Pirámide de Meidum</h3>
+      <dl class="stats"><div><dt>Prevista</dt><dd>h. 92 m, base de 144 m</dd></div><div><dt>Hoy</dt><dd>torre de h. 65 m</dd></div><div><dt>Ángulo</dt><dd>c. 52°</dd></div></dl>
+      <p>Probablemente se empezó para Huni como pirámide escalonada de siete y luego ocho escalones. Snofru rellenó después los escalones y le añadió un revestimiento exterior liso: el primer intento de pirámide perfecta. Pero el revestimiento se apoyaba en arena y no en roca, y no estaba trabado con el núcleo. Más tarde se desprendió, y la torre escalonada quedó en pie sobre sus propios escombros. Todavía se discute cuándo se derrumbó.</p>
+      <p class="lesson">La lección: una piel lisa necesita un buen cimiento y un núcleo trabado.</p>
+      <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-sneferu" target="_blank" rel="noopener noreferrer">Ficha en la página principal (en inglés) ↗</a><a href="https://es.wikipedia.org/wiki/Pir%C3%A1mide_de_Meidum" target="_blank" rel="noopener noreferrer">Wikipedia ↗</a></p>
+    </article>
+    <article class="card" data-p="bent" tabindex="0">
+      <p class="step"><span class="num">3</span>Dahshur · Snofru, dinastía IV · h. 2600 a. C.</p>
+      <h3>Pirámide Acodada</h3>
+      <dl class="stats"><div><dt>Altura</dt><dd>101 m</dd></div><div><dt>Base</dt><dd>188.6 m</dd></div><div><dt>Ángulo</dt><dd>54,5° y luego 43,4°</dd></div></dl>
+      <p>Se proyectó desde el principio como pirámide perfecta, con una inclinación fuerte de 54,5°. El suelo blando de arcilla empezó a ceder y las cámaras se agrietaron, así que los constructores pasaron a unos 43,4° más suaves a unos 47 m de altura, y de ahí su quiebro. Conserva buena parte de su fino revestimiento de caliza blanca.</p>
+      <p class="lesson">El arreglo: bajar el ángulo y reducir el peso.</p>
+      <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-dahshur" target="_blank" rel="noopener noreferrer">Ficha en la página principal (en inglés) ↗</a><a href="https://es.wikipedia.org/wiki/Pir%C3%A1mide_acodada" target="_blank" rel="noopener noreferrer">Wikipedia ↗</a></p>
+    </article>
+    <article class="card" data-p="red" tabindex="0">
+      <p class="step"><span class="num">4</span>Dahshur · Snofru, dinastía IV · h. 2590 a. C.</p>
+      <h3>Pirámide Roja</h3>
+      <dl class="stats"><div><dt>Altura</dt><dd>104 m</dd></div><div><dt>Base</dt><dd>220 m</dd></div><div><dt>Ángulo</dt><dd>43.4°</dd></div></dl>
+      <p>La tercera pirámide de Snofru usó el ángulo más seguro de 43,4° desde la base y está sobre un terreno más firme. Funcionó: es la primera pirámide de caras lisas lograda, y debe su nombre a la caliza rojiza de su núcleo, ahora que ha perdido el revestimiento blanco. Probablemente fue la tumba de Snofru. Una generación después, su hijo Keops construyó la Gran Pirámide de Guiza, más inclinada, a 51,8°, sobre roca firme.</p>
+      <p class="lesson">El resultado: la primera pirámide perfecta, y el modelo para Guiza.</p>
+      <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-dahshur" target="_blank" rel="noopener noreferrer">Ficha en la página principal (en inglés) ↗</a><a href="https://es.wikipedia.org/wiki/Pir%C3%A1mide_roja" target="_blank" rel="noopener noreferrer">Wikipedia ↗</a></p>
+    </article>
+  </section>
+
+  <h2 class="group-title" id="g2">Guiza: la pirámide perfeccionada</h2>
+  <section class="cards" aria-labelledby="g2">
+    <article class="card" data-p="khufu" tabindex="0">
+      <p class="step"><span class="num">5</span>Guiza · dinastía IV · h. 2580–2560 a. C.</p>
+      <h3>Gran Pirámide de Keops</h3>
+      <dl class="stats"><div><dt>Altura</dt><dd>146,6 m, hoy 138,5 m</dd></div><div><dt>Base</dt><dd>230.3 m</dd></div><div><dt>Ángulo</dt><dd>51.8°</dd></div></dl>
+      <p>El hijo de Snofru llevó las lecciones de Dahshur a la meseta de Guiza, donde la pirámide podía asentarse sobre roca caliza firme. Así, el ángulo fuerte que se había intentado en Meidum fue por fin seguro. Se emplearon unos 2,3 millones de bloques, y sus caras miran al norte, sur, este y oeste con un error de una fracción de grado. Los papiros hallados en Wadi al-Jarf, el diario de un funcionario llamado Merer, cuentan cómo los barcos traían piedra de revestimiento de Tura en el año 27 de Keops. Fue el edificio más alto del mundo durante unos 3.800 años.</p>
+      <p class="lesson">La cumbre: la roca firme hace seguro el ángulo fuerte.</p>
+      <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-giza" target="_blank" rel="noopener noreferrer">Ficha en la página principal (en inglés) ↗</a><a href="https://es.wikipedia.org/wiki/Gran_Pir%C3%A1mide_de_Guiza" target="_blank" rel="noopener noreferrer">Wikipedia ↗</a></p>
+    </article>
+    <article class="card" data-p="khafre" tabindex="0">
+      <p class="step"><span class="num">6</span>Guiza · dinastía IV · h. 2558–2532 a. C.</p>
+      <h3>Pirámide de Kefrén</h3>
+      <dl class="stats"><div><dt>Altura</dt><dd>143,5 m, hoy 136,4 m</dd></div><div><dt>Base</dt><dd>215.3 m</dd></div><div><dt>Ángulo</dt><dd>53.1°</dd></div></dl>
+      <p>El hijo de Keops la construyó un poco más pequeña pero más inclinada, sobre una roca unos 10 m más alta, así que desde muchos puntos parece más alta que la de su padre. Es la única pirámide de Guiza que conserva parte de su revestimiento liso de caliza, cerca de la cima. Su calzada baja hasta el templo del valle, junto a la Gran Esfinge, tallada durante su reinado.</p>
+      <p class="lesson">El efecto: más inclinada y más alta, con la Esfinge a sus pies.</p>
+      <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-khafre" target="_blank" rel="noopener noreferrer">Ficha en la página principal (en inglés) ↗</a><a href="https://es.wikipedia.org/wiki/Pir%C3%A1mide_de_Kefr%C3%A9n" target="_blank" rel="noopener noreferrer">Wikipedia ↗</a></p>
+    </article>
+    <article class="card" data-p="menkaure" tabindex="0">
+      <p class="step"><span class="num">7</span>Guiza · dinastía IV · h. 2510 a. C.</p>
+      <h3>Pirámide de Micerino</h3>
+      <dl class="stats"><div><dt>Altura</dt><dd>65.5 m</dd></div><div><dt>Base</dt><dd>102.2 × 104.6 m</dd></div><div><dt>Ángulo</dt><dd>51.3°</dd></div></dl>
+      <p>Menos de una décima parte del volumen de la de Keops, pero con el revestimiento más lujoso: sus dieciséis hiladas inferiores eran de granito rojo traído de Asuán, a más de 800 km río arriba. El granito nunca se llegó a alisar del todo, señal de que las obras se pararon a su muerte. Su hijo Shepseskaf terminó los templos en adobe y no construyó ninguna pirámide.</p>
+      <p class="lesson">El fin de una época: después de Micerino, las pirámides fueron más pequeñas.</p>
+      <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-giza" target="_blank" rel="noopener noreferrer">Ficha en la página principal (en inglés) ↗</a><a href="https://es.wikipedia.org/wiki/Pir%C3%A1mide_de_Micerino" target="_blank" rel="noopener noreferrer">Wikipedia ↗</a></p>
+    </article>
+  </section>
+
+  <p class="foot"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k" target="_blank" rel="noopener noreferrer">Ancient Egypt History Main Points (en inglés) ↗</a><a href="https://claude.ai/artifact/EMAUdhDxkPGrfZcTenuoBz" target="_blank" rel="noopener noreferrer">Curso UNED, clase 1 en detalle ↗</a></p>
+</div>
+
+<script>
+  (function () {
+    var page = document.getElementById('page');
+    var cards = document.querySelectorAll('.card');
+    function setFocus(p) { if (p) page.setAttribute('data-focus', p); else page.removeAttribute('data-focus'); }
+    cards.forEach(function (c) {
+      c.addEventListener('mouseenter', function () { setFocus(c.dataset.p); });
+      c.addEventListener('mouseleave', function () { setFocus(null); });
+      c.addEventListener('focus', function () { setFocus(c.dataset.p); });
+      c.addEventListener('blur', function () { setFocus(null); });
+    });
+  })();
+</script>
