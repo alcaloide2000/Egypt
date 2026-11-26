@@ -1,0 +1,210 @@
+<title>Grand Egyptian Museum Guide</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  /* Layout: intro, a schematic plan of the museum beside numbered notes, the Tutankhamun treasures as a numbered list, the Khufu boat, tips. Shares its look with the temple guides. Phone first: everything stacks. */
+  :root {
+    --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
+    --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
+    --great: #b5551f; --small: #9c3f5e; --sun: #c99a2e;
+    --gem: #8a6a1c;
+    --display: "Fraunces", Georgia, serif;
+    --body: "Public Sans", system-ui, sans-serif;
+    --mono: "IBM Plex Mono", ui-monospace, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+      --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+      --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --gem: #e0b85a; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #302f2c; --panel: #3a3936; --ink: #ede3cc; --ink-soft: #b8a98a; --line: #57544c;
+    --rock: #5a5244; --cut: #2b2a27; --lake: #3d5552; --lake-ink: #6fc2c4;
+    --great: #e58a4d; --small: #e08aa6; --sun: #e2b74f; --gem: #e0b85a; color-scheme: dark;
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: var(--body); line-height: 1.55; }
+  .page { max-width: 1080px; margin: 0 auto; padding-block: clamp(1.5rem, 4vw, 3rem) 3rem;
+    padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+  .eyebrow { font-family: var(--mono); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--great); margin: 0 0 0.7rem; }
+  h1 { font-family: var(--display); font-weight: 600; font-size: clamp(2rem, 6vw, 3.2rem); line-height: 1.04; margin: 0 0 0.8rem; text-wrap: balance; }
+  h2 { font-family: var(--display); font-weight: 600; font-size: clamp(1.35rem, 3.5vw, 1.8rem); line-height: 1.15; margin: 0 0 0.5rem; text-wrap: balance; }
+  h3 { font-family: var(--display); font-weight: 600; font-size: 1.15rem; margin: 0 0 0.35rem; }
+  p { margin: 0; }
+  .lede { max-width: 46rem; color: var(--ink-soft); font-size: 1.05rem; }
+  a { color: inherit; }
+  .links a, .note a, .foot a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .links a:hover, .note a:hover, .foot a:hover, .links a:focus-visible, .foot a:focus-visible { border-bottom-color: currentColor; }
+  .links { display: flex; flex-wrap: wrap; gap: 0.4rem 1.1rem; margin-top: 0.9rem; font-family: var(--mono); font-size: 0.78rem; }
+  section { margin-top: clamp(2rem, 6vw, 3.25rem); }
+  .section-note { color: var(--ink-soft); font-size: 0.94rem; max-width: 46rem; margin-bottom: 1rem; }
+
+  .pair { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 1rem; margin-top: 1.5rem; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-top: 4px solid var(--c); border-radius: 12px; padding: 1rem 1.1rem 1.1rem; display: grid; gap: 0.55rem; min-width: 0; }
+  .card .kicker { font-family: var(--mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--c); }
+  .facts { margin: 0; display: grid; gap: 0.3rem; }
+  .facts div { display: grid; grid-template-columns: 6.2rem 1fr; gap: 0.6rem; padding-bottom: 0.3rem; border-bottom: 1px solid var(--line); }
+  .facts dt { font-family: var(--mono); font-size: 0.68rem; text-transform: uppercase; letter-spacing: 0.06em; color: var(--ink-soft); padding-top: 0.15rem; }
+  .facts dd { margin: 0; font-size: 0.9rem; }
+
+  .figure { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: clamp(0.75rem, 2vw, 1.2rem); }
+  .figure svg { display: block; width: 100%; height: auto; }
+  .caption { font-family: var(--mono); font-size: 0.72rem; color: var(--ink-soft); margin-top: 0.6rem; }
+  svg text { font-family: var(--body); }
+  .t-label { font-size: 13px; font-weight: 600; fill: var(--ink); }
+  .t-sub { font-family: var(--mono); font-size: 10px; fill: var(--ink-soft); }
+  .t-lake { font-family: var(--display); font-style: italic; font-size: 15px; fill: var(--lake-ink); letter-spacing: 0.08em; }
+  .rock { fill: var(--rock); }
+  .cut { fill: var(--cut); stroke: var(--ink-soft); stroke-width: 1; }
+  .lake { fill: var(--lake); }
+  .pillar { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 0.8; }
+  .king { fill: var(--great); }
+  .queen { fill: var(--small); }
+  .ray { stroke: var(--sun); stroke-width: 2.4; stroke-dasharray: 6 5; fill: none; }
+  .sunbody { fill: var(--sun); }
+  .dash { fill: none; stroke: var(--ink-soft); stroke-width: 1.4; stroke-dasharray: 5 5; }
+  .orig { fill: none; stroke: var(--lake-ink); stroke-width: 1.4; stroke-dasharray: 4 4; }
+  .mk circle { fill: var(--ink); }
+  .mk text { fill: var(--panel); font-family: var(--mono); font-size: 10px; font-weight: 500; text-anchor: middle; dominant-baseline: central; }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--great); }
+  .mk:focus-visible { outline: none; }
+
+  .plan { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(1rem, 3vw, 1.75rem); align-items: start; }
+  @media (max-width: 760px) { .plan { grid-template-columns: 1fr; } }
+  .plan .figure { position: sticky; top: calc(env(safe-area-inset-top, 0px) + 0.75rem); }
+  @media (max-width: 760px) { .plan .figure { position: static; } }
+  .notes { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.5rem; counter-reset: n; }
+  .notes li { display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.7rem; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.7rem 0.8rem; scroll-margin-top: 1rem; }
+  .notes li:target { border-color: var(--c); box-shadow: 0 0 0 2px var(--c); }
+  .num { width: 1.6rem; height: 1.6rem; border-radius: 50%; background: var(--ink); color: var(--panel); display: grid; place-items: center; font-family: var(--mono); font-size: 0.78rem; }
+  .notes h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .notes p { font-size: 0.9rem; color: var(--ink-soft); }
+  .notes .see { margin-top: 0.35rem; font-family: var(--mono); font-size: 0.72rem; }
+  .notes .see a { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); }
+
+  .timeline { list-style: none; margin: 0; padding: 0 0 0 1.1rem; border-left: 2px solid var(--line); display: grid; gap: 0.8rem; max-width: 50rem; }
+  .timeline li { position: relative; display: grid; grid-template-columns: 6.5rem 1fr; gap: 0.8rem; }
+  .timeline li::before { content: ""; position: absolute; left: calc(-1.1rem - 6px); top: 0.45em; width: 10px; height: 10px; border-radius: 50%; background: var(--great); box-shadow: 0 0 0 2px var(--bg); }
+  .timeline .yr { font-family: var(--mono); font-size: 0.82rem; color: var(--ink-soft); font-variant-numeric: tabular-nums; }
+  .timeline p { font-size: 0.93rem; }
+  @media (max-width: 520px) { .timeline li { grid-template-columns: 1fr; gap: 0.1rem; } }
+
+  .tips { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 240px), 1fr)); gap: 0.8rem; }
+  .tip { background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 0.8rem 0.9rem; }
+  .tip h3 { font-size: 1rem; }
+  .tip p { font-size: 0.9rem; color: var(--ink-soft); }
+  .eyebrow a.lang { color: var(--ink); text-decoration: none; border-bottom: 1px solid var(--line); letter-spacing: 0.06em; }
+  .eyebrow { color: var(--gem); }
+  .ruin { fill: var(--rock); stroke: var(--ink-soft); stroke-width: 1; }
+  .col { fill: var(--ink-soft); }
+  .foot { margin-top: 2.5rem; font-size: 0.85rem; color: var(--ink-soft); }
+  .mk:hover circle, .mk:focus-visible circle { fill: var(--gem); }
+  .tut { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 260px), 1fr)); gap: 0.7rem; }
+  .tut li { background: var(--panel); border: 1px solid var(--line); border-top: 3px solid var(--sun); border-radius: 10px; padding: 0.75rem 0.85rem; display: grid; grid-template-columns: 1.9rem 1fr; gap: 0.6rem; scroll-margin-top: 1rem; }
+  .tut li:target { box-shadow: 0 0 0 2px var(--sun); }
+  .tut h3 { font-size: 1rem; margin: 0.05rem 0 0.2rem; }
+  .tut p { font-size: 0.9rem; color: var(--ink-soft); }
+</style>
+
+<div class="page">
+  <p class="eyebrow">Giza · Grand Egyptian Museum · Day 9 of the Alimaña tour</p>
+  <h1>The Grand Egyptian Museum</h1>
+  <p class="lede">The largest museum in the world given to a single civilisation, beside the pyramids of Giza: a colossal Ramesses II in the hall, a staircase of giant statues climbing towards a window on the pyramids, galleries that walk through three thousand years, and, for the first time, the whole treasure of Tutankhamun in one place.</p>
+  <p class="links"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-tutankhamun" target="_blank" rel="noopener noreferrer">Tutankhamun card ↗</a><a href="https://claude.ai/artifact/5TtAeNgKVmFZF6vJQKRmaz" target="_blank" rel="noopener noreferrer">Giza guide ↗</a><a href="https://claude.ai/artifact/LhPedrneFkJ3RFa6Ttaz9y" target="_blank" rel="noopener noreferrer">Guía de Guiza ↗</a><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">Day 9 in the tour ↗</a></p>
+
+  <div class="pair">
+    <article class="card" style="--c: var(--gem);">
+      <span class="kicker">The museum</span>
+      <h2>A museum for the pyramids</h2>
+      <dl class="facts">
+        <div><dt>Where</dt><dd>On the edge of the Giza plateau, about 2 km from the pyramids</dd></div>
+        <div><dt>Opened</dt><dd>In stages from 2023; officially inaugurated on 1 November 2025</dd></div>
+        <div><dt>Holds</dt><dd>Around 100,000 objects, from prehistory to Roman Egypt</dd></div>
+        <div><dt>Star</dt><dd>The complete Tutankhamun collection</dd></div>
+      </dl>
+    </article>
+    <article class="card" style="--c: var(--great);">
+      <span class="kicker">With little time</span>
+      <h2>Four musts</h2>
+      <dl class="facts">
+        <div><dt>Hall</dt><dd>Ramesses II in the Grand Atrium (2)</dd></div>
+        <div><dt>Stairs</dt><dd>The Grand Staircase up to the pyramid view (3, 4)</dd></div>
+        <div><dt>Gold</dt><dd>The Tutankhamun galleries (8)</dd></div>
+        <div><dt>Boat</dt><dd>Khufu&#39;s boat, if there is time (9)</dd></div>
+      </dl>
+    </article>
+  </div>
+
+  <section aria-labelledby="planTitle" style="--c: var(--gem);">
+    <h2 id="planTitle">Through the museum</h2>
+    <p class="section-note">Ten stops, from the obelisk outside, through the hall and up the staircase, then the main galleries, Tutankhamun and the boat. Tap a number on the plan.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="0 0 400 320" role="img" aria-label="Schematic plan of the Grand Egyptian Museum, entrance at the bottom. Outside the entrance is the plaza with the hanging obelisk. Inside, the Grand Atrium holds the colossal statue of Ramesses II, and the Grand Staircase rises behind it to the upper floor, ending at a window facing the pyramids. To the left on the upper floor are the twelve main galleries in three bands, from prehistory to the Roman period. To the right are the Tutankhamun galleries. The Khufu boat museum is in its own building to the right of the entrance. Numbered markers match the notes.">
+          <rect width="400" height="320" fill="var(--panel)"/>
+          <path d="M20,270 L380,270 L380,60 L230,20 L170,20 L20,60 Z" class="rock" stroke="var(--ink-soft)"/>
+          <rect x="150" y="200" width="100" height="70" class="cut"/>
+          <path d="M165,200 L180,60 L220,60 L235,200 Z" class="cut"/>
+          <path d="M172,180 h56 M174,160 h52 M176,140 h48 M178,120 h44 M179,100 h42 M180,80 h40" stroke="var(--ink-soft)" stroke-width="0.8"/>
+          <rect x="40" y="70" width="110" height="160" class="cut"/>
+          <path d="M40,123 H150 M40,177 H150" stroke="var(--ink-soft)" stroke-dasharray="3 3"/>
+          <rect x="250" y="70" width="110" height="80" class="cut"/>
+          <rect x="290" y="210" width="80" height="56" class="cut" stroke-dasharray="4 3"/>
+          <path d="M200,300 v-28" stroke="var(--ink-soft)" stroke-width="1.4"/>
+          <text class="t-sub" x="200" y="214" text-anchor="middle">Grand Atrium</text>
+          <text class="t-sub" x="200" y="50" text-anchor="middle">view of the pyramids</text>
+          <text class="t-sub" x="95" y="64" text-anchor="middle">12 main galleries</text>
+          <text class="t-sub" x="305" y="64" text-anchor="middle">Tutankhamun</text>
+          <text class="t-sub" x="330" y="204" text-anchor="middle">Khufu boat</text>
+          <text class="t-sub" x="236" y="300">entrance</text>
+          <a class="mk" href="#gm-1"><circle cx="200" cy="292" r="9"/><text x="200" y="292">1</text></a><a class="mk" href="#gm-2"><circle cx="200" cy="236" r="9"/><text x="200" y="236">2</text></a><a class="mk" href="#gm-3"><circle cx="200" cy="176" r="9"/><text x="200" y="176">3</text></a><a class="mk" href="#gm-4"><circle cx="200" cy="104" r="9"/><text x="200" y="104">4</text></a><a class="mk" href="#gm-5"><circle cx="92" cy="92" r="9"/><text x="92" y="92">5</text></a><a class="mk" href="#gm-6"><circle cx="92" cy="150" r="9"/><text x="92" y="150">6</text></a><a class="mk" href="#gm-7"><circle cx="92" cy="208" r="9"/><text x="92" y="208">7</text></a><a class="mk" href="#gm-8"><circle cx="308" cy="110" r="9"/><text x="308" y="110">8</text></a><a class="mk" href="#gm-9"><circle cx="330" cy="250" r="9"/><text x="330" y="250">9</text></a><a class="mk" href="#gm-10"><circle cx="60" cy="282" r="9"/><text x="60" y="282">10</text></a>
+        </svg>
+        <p class="caption">Schematic plan, not to scale; the real layout is more complex, so follow the museum&#39;s signs.</p>
+      </div>
+      <ol class="notes">
+        <li id="gm-1"><span class="num">1</span><div><h3>The hanging obelisk</h3><p>Outside the entrance, a granite obelisk of Ramesses II stands raised on supports, so you can walk underneath and see the king&#39;s cartouche carved on its base, a part no one was ever meant to see. It came from Tanis in the Delta.</p></div></li>
+        <li id="gm-2"><span class="num">2</span><div><h3>Ramesses II in the Grand Atrium</h3><p>The colossal red granite statue of Ramesses II, about 11 m tall and some 83 tonnes, greets you in the entrance hall. It stood for decades in a Cairo square, was moved to Giza in 2006 and placed here in 2018.</p><p class="see"><a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#card-ramesses2" target="_blank" rel="noopener noreferrer">Ramesses II card ↗</a></p></div></li>
+        <li id="gm-3"><span class="num">3</span><div><h3>The Grand Staircase</h3><p>A six-storey staircase lined with dozens of colossal statues, sarcophagi and architectural pieces, arranged by themes: the image of the king, the houses of the gods, the service of the gods and the journey to the afterlife. Take it slowly on the way up.</p></div></li>
+        <li id="gm-4"><span class="num">4</span><div><h3>The view of the pyramids</h3><p>At the top of the staircase, a huge window frames the pyramids of Giza, about 2 km away: the museum was laid out on a line towards them.</p><p class="see"><a href="https://claude.ai/artifact/5TtAeNgKVmFZF6vJQKRmaz" target="_blank" rel="noopener noreferrer">Giza guide ↗</a></p></div></li>
+        <li id="gm-5"><span class="num">5</span><div><h3>Galleries: prehistory to the Old Kingdom</h3><p>The main galleries run in time order. The first part covers the earliest Egyptians, the first kings and the age of the pyramids: statues of Old Kingdom kings and officials, tomb goods and everyday objects.</p></div></li>
+        <li id="gm-6"><span class="num">6</span><div><h3>Galleries: Middle and New Kingdom</h3><p>Royal statues of the Middle Kingdom, then the empire of the New Kingdom: Hatshepsut, Thutmose III, Amenhotep III, Akhenaten and the Ramessides, with objects from temples and tombs across Egypt.</p></div></li>
+        <li id="gm-7"><span class="num">7</span><div><h3>Galleries: Late Period to Roman Egypt</h3><p>The last centuries of pharaonic Egypt, the Ptolemies and Roman Egypt: Greek-style portraits, mummy portraits and the meeting of Egyptian and Greek gods you saw in Alexandria.</p></div></li>
+        <li id="gm-8"><span class="num">8</span><div><h3>The Tutankhamun galleries</h3><p>For the first time the whole contents of his tomb, more than 5,000 objects, are shown together, in the order they were found by Howard Carter in 1922. Allow at least an hour.</p><p class="see"><a href="#tutTitle">Highlights ↓</a> · <a href="https://claude.ai/artifact/TDqmmyV6vEBtU6zDTkSqSh" target="_blank" rel="noopener noreferrer">Valley of the Kings guide ↗</a></p></div></li>
+        <li id="gm-9"><span class="num">9</span><div><h3>The Khufu boat museum</h3><p>In its own building: Khufu&#39;s cedar boat, 43 m long, found in 1954 beside the Great Pyramid and moved here in 2021. Its twin, the second boat, is being rebuilt from its pieces, sometimes in view of visitors.</p><p class="see"><a href="#boatTitle">The boat ↓</a></p></div></li>
+        <li id="gm-10"><span class="num">10</span><div><h3>Gardens and the building</h3><p>The building, by the Irish architects Heneghan Peng, has a vast translucent stone facade patterned with triangles, a nod to the pyramids. Its gardens and terraces have cafés and shade.</p></div></li>
+      </ol>
+    </div>
+  </section>
+
+  <section aria-labelledby="tutTitle" style="--c: var(--sun);">
+    <h2 id="tutTitle">Tutankhamun: eight things to find</h2>
+    <p class="section-note">His tomb, KV62 in the Valley of the Kings, was found almost intact by Howard Carter on 4 November 1922.</p>
+    <ol class="tut"><li id="tk-1"><span class="num">1</span><div><h3>The gold mask</h3><p>Over 10 kg of gold inlaid with lapis lazuli, carnelian and glass, placed directly over the mummy&#39;s head and shoulders. The vulture and cobra on the brow are Nekhbet and Wadjet, the two goddesses of the crowns.</p></div></li><li id="tk-2"><span class="num">2</span><div><h3>The innermost coffin</h3><p>Of solid gold, about 110 kg, the innermost of three nested coffins inside a stone sarcophagus. The king holds the crook and flail of Osiris.</p></div></li><li id="tk-3"><span class="num">3</span><div><h3>The gilded shrines</h3><p>Four great shrines of gilded wood, fitted one inside another like boxes, filled the burial chamber almost wall to wall around the sarcophagus.</p></div></li><li id="tk-4"><span class="num">4</span><div><h3>The golden throne</h3><p>The back shows Tutankhamun and his wife Ankhesenamun under the rays of the Aten, the sun disk of Akhenaten&#39;s religion: made before the young king returned Egypt to Amun.</p></div></li><li id="tk-5"><span class="num">5</span><div><h3>The chariots</h3><p>Six chariots, taken apart to fit into the tomb, some for display and some for hunting or war, with their gilded and inlaid bodies.</p></div></li><li id="tk-6"><span class="num">6</span><div><h3>The meteorite dagger</h3><p>One of two daggers wrapped with the mummy has a blade of iron from a meteorite, at a time when iron was rarer than gold.</p></div></li><li id="tk-7"><span class="num">7</span><div><h3>The canopic shrine</h3><p>A gilded shrine guarded by four goddesses with outstretched arms, Isis, Nephthys, Neith and Selket, held the alabaster chest with the king&#39;s embalmed organs.</p></div></li><li id="tk-8"><span class="num">8</span><div><h3>Everyday things</h3><p>Sandals, gloves, linen, board games, beds, boxes of food and wine jars: the belongings of a young man who died at about nineteen, around 1323 BC.</p></div></li></ol>
+  </section>
+
+  <section aria-labelledby="boatTitle" style="--c: var(--gem);">
+    <h2 id="boatTitle">Khufu&#39;s boat</h2>
+    <div class="tips">
+      <div class="tip"><h3>Found in a sealed pit</h3><p>In 1954 Kamal el-Mallakh opened a pit beside the Great Pyramid and found a cedar boat taken apart into more than 1,200 pieces, made for Khufu around 2560 BC.</p></div>
+      <div class="tip"><h3>Rebuilt without a plan</h3><p>The restorer Hag Ahmed Youssef Moustafa spent more than a decade putting it back together, guided only by the builders&#39; marks on the wood.</p></div>
+      <div class="tip"><h3>Moved in one piece</h3><p>In August 2021 the 43 m boat travelled from the pyramid to the museum in a climate-controlled cradle on a remote-controlled vehicle.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="tipsTitle">
+    <h2 id="tipsTitle">For our visit</h2>
+    <div class="tips">
+      <div class="tip"><h3>Tutankhamun first or last?</h3><p>The Tutankhamun galleries are the busiest. If the queue is short when you arrive, go there first and see the rest after.</p></div>
+      <div class="tip"><h3>Pace yourself</h3><p>The museum is enormous and the walks are long. After a morning at Saqqara and Giza, choose the four musts and leave the rest.</p></div>
+      <div class="tip"><h3>Look for the pyramids</h3><p>Stop at the top of the staircase and at the windows of the galleries: the pyramids appear again and again in the views.</p></div>
+      <div class="tip"><h3>Photos</h3><p>Photography without flash is usually allowed in the galleries; check the signs, as some rooms may have their own rules.</p></div>
+    </div>
+  </section>
+
+  <p class="foot">Part of <a href="https://claude.ai/artifact/5LEkwRrpG4KFAx377J5y7k#tour" target="_blank" rel="noopener noreferrer">the Private Alimaña Tour ↗</a>. The plan is schematic; check the museum&#39;s own map on the day.</p>
+</div>
