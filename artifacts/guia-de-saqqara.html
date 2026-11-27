@@ -5,7 +5,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
-  /* Layout: intro, un plano de la necrópolis junto a notas numeradas, las galerías subterráneas de Dyoser, los Textos de las Pirámides, las mastabas pintadas, la Mastaba de Ti sala por sala, el Serapeo, una cronología y consejos. Comparte el estilo de las guías de los templos. Diseño para móvil primero: todo se apila. Con audioguía en español. */
+  /* Layout: intro, un plano de la necrópolis junto a notas numeradas, las galerías subterráneas de Dyoser, los Textos de las Pirámides, las mastabas pintadas, la Mastaba de Ti y la de Mereruka sala por sala, el Serapeo, una cronología y consejos. Comparte el estilo de las guías de los templos. Diseño para móvil primero: todo se apila. Con audioguía en español. */
   :root {
     --bg: #ede3cc; --panel: #f7f1e1; --ink: #2b2420; --ink-soft: #5b4f3f; --line: #c9b48c;
     --rock: #d6bf92; --cut: #f7f1e1; --lake: #a9d0cb; --lake-ink: #2e6e77;
@@ -145,10 +145,10 @@
 
   <section aria-labelledby="audioTitle">
     <h2 id="audioTitle">Audioguía</h2>
-    <p class="section-note">Unos nueve minutos y medio en español para escuchar durante la visita: un capítulo por cada número del plano, con capítulos largos sobre la Pirámide Escalonada, la Mastaba de Ti sala por sala, el Serapeo y los Textos de las Pirámides. Pulsa un capítulo para saltar a él. Voz neuronal de Microsoft (Elvira).</p>
+    <p class="section-note">Unos doce minutos en español para escuchar durante la visita: un capítulo por cada número del plano, con capítulos largos sobre la Pirámide Escalonada, la Mastaba de Ti y la de Mereruka sala por sala, el Serapeo y los Textos de las Pirámides. Pulsa un capítulo para saltar a él. Voz neuronal de Microsoft (Elvira).</p>
     <div class="audio">
       <audio id="guia" controls preload="metadata" src="saqqara-audioguia.mp3"></audio>
-      <ol id="capitulos"><li><button type="button" data-t="0.0"><span class="at">0:00</span>Bienvenida</button></li><li><button type="button" data-t="36.1"><span class="at">0:36</span>1. El Museo Imhotep</button></li><li><button type="button" data-t="61.9"><span class="at">1:01</span>2. La Pirámide Escalonada de Dyoser</button></li><li><button type="button" data-t="125.9"><span class="at">2:05</span>3. El Patio del Heb-Sed</button></li><li><button type="button" data-t="151.5"><span class="at">2:31</span>4. La Tumba Sur y el serdab</button></li><li><button type="button" data-t="180.3"><span class="at">3:00</span>5. Gisr el-Mudir</button></li><li><button type="button" data-t="197.1"><span class="at">3:17</span>6. La Pirámide de Userkaf</button></li><li><button type="button" data-t="215.1"><span class="at">3:35</span>7. La Mastaba de Ti</button></li><li><button type="button" data-t="413.6"><span class="at">6:53</span>8. El Serapeo</button></li><li><button type="button" data-t="479.1"><span class="at">7:59</span>9. La Pirámide de Unas</button></li><li><button type="button" data-t="531.0"><span class="at">8:51</span>10. Teti y Mereruka</button></li><li><button type="button" data-t="552.2"><span class="at">9:12</span>Despedida</button></li></ol>
+      <ol id="capitulos"><li><button type="button" data-t="0.0"><span class="at">0:00</span>Bienvenida</button></li><li><button type="button" data-t="36.1"><span class="at">0:36</span>1. El Museo Imhotep</button></li><li><button type="button" data-t="61.9"><span class="at">1:01</span>2. La Pirámide Escalonada de Dyoser</button></li><li><button type="button" data-t="125.9"><span class="at">2:05</span>3. El Patio del Heb-Sed</button></li><li><button type="button" data-t="151.5"><span class="at">2:31</span>4. La Tumba Sur y el serdab</button></li><li><button type="button" data-t="180.3"><span class="at">3:00</span>5. Gisr el-Mudir</button></li><li><button type="button" data-t="197.1"><span class="at">3:17</span>6. La Pirámide de Userkaf</button></li><li><button type="button" data-t="215.1"><span class="at">3:35</span>7. La Mastaba de Ti</button></li><li><button type="button" data-t="413.6"><span class="at">6:53</span>8. El Serapeo</button></li><li><button type="button" data-t="479.1"><span class="at">7:59</span>9. La Pirámide de Unas</button></li><li><button type="button" data-t="531.0"><span class="at">8:51</span>10. Teti y Mereruka</button></li><li><button type="button" data-t="682.2"><span class="at">11:22</span>Despedida</button></li></ol>
     </div>
   </section>
 
@@ -198,7 +198,7 @@
         <li id="sq-7"><span class="num">7</span><div><h3>La Mastaba de Ti</h3><p>No es en absoluto la tumba de un rey: Ti fue un funcionario que sirvió a varios faraones de la V Dinastía, y su mastaba conserva los mejores relieves no reales del Reino Antiguo, entre ellos la famosa escena de Ti observando una cacería de hipopótamos en la marisma.</p><p class="see"><a href="#tiTitle">La mastaba, sala por sala ↓</a> · <a href="#tombsTitle">Las tumbas pintadas ↓</a></p></div></li>
         <li id="sq-8"><span class="num">8</span><div><h3>El Serapeo</h3><p>Una larga galería subterránea excavada en la roca, que guarda los cuerpos momificados de los toros sagrados Apis en sarcófagos de granito de hasta 70 toneladas cada uno. La pieza que desentona aquí: todo lo demás en este plano es del Reino Antiguo, pero el Serapeo es del Reino Nuevo en adelante.</p><p class="see"><a href="#serapeumTitle">Más sobre el Serapeo ↓</a></p></div></li>
         <li id="sq-9"><span class="num">9</span><div><h3>La Pirámide de Unas</h3><p>Una pirámide pequeña y poco llamativa de la V Dinastía al sur del recinto de Dyoser &mdash; salvo por lo que hay tallado dentro: la escritura religiosa más antigua conocida, cubriendo las paredes de la cámara funeraria.</p><p class="see"><a href="#textsTitle">Los Textos de las Pirámides ↓</a></p></div></li>
-        <li id="sq-10"><span class="num">10</span><div><h3>Teti y Mereruka</h3><p>Al norte del recinto de Dyoser: la pirámide de Teti, la primera de la VI Dinastía y la segunda en llevar Textos de las Pirámides, junto a la mastaba de su visir y yerno Mereruka &mdash; con 33 salas, la tumba privada más grande y decorada de Saqqara.</p></div></li>
+        <li id="sq-10"><span class="num">10</span><div><h3>Teti y Mereruka</h3><p>Al norte del recinto de Dyoser: la pirámide de Teti, la primera de la VI Dinastía y la segunda en llevar Textos de las Pirámides, junto a la mastaba de su visir y yerno Mereruka &mdash; con 33 salas, la tumba privada más grande y decorada de Saqqara.</p><p class="see"><a href="#merTitle">La mastaba de Mereruka, sala por sala ↓</a></p></div></li>
       </ol>
     </div>
   </section>
@@ -237,7 +237,7 @@
 
   <section aria-labelledby="tiTitle" style="--c: var(--small);">
     <h2 id="tiTitle">La Mastaba de Ti, sala por sala</h2>
-    <p class="section-note">Ti vivió en la V Dinastía y alcanzó su mayor poder bajo el rey Niuserra (c. 2445Ti vivió hacia el 2400 a.&nbsp;C., en la V Dinastía, bajo el rey Niuserra.ndash;2421 a.Ti vivió hacia el 2400 a.&nbsp;C., en la V Dinastía, bajo el rey Niuserra.nbsp;C.). Su mastaba es un edificio de piedra con patio, corredores y capilla, y casi cada pared está cubierta de relieves. Este plano simplificado sigue el camino del visitante desde la entrada, al norte, hasta la capilla del fondo. Toca un número.</p>
+    <p class="section-note">Ti vivió en la V Dinastía y alcanzó su mayor poder bajo el rey Niuserra (c. 2445&ndash;2421 a.&nbsp;C.). Su mastaba es un edificio de piedra con patio, corredores y capilla, y casi cada pared está cubierta de relieves. Este plano simplificado sigue el camino del visitante desde la entrada, al norte, hasta la capilla del fondo. Toca un número.</p>
     <div class="plan">
       <div class="figure">
         <svg viewBox="0 0 420 360" role="img" aria-label="Plano simplificado de la Mastaba de Ti, con el norte arriba. La entrada, con un pórtico de dos pilares, está en el lado norte y da a un gran patio con doce pilares. En el centro del patio se abre el pozo que baja a la cámara funeraria, bajo tierra. Desde la esquina sureste del patio un corredor baja hacia el sur; a su lado se abre una sala pequeña, el almacén. Al final del corredor se entra, hacia el oeste, en la capilla, una sala grande con dos pilares. En su pared oeste están las dos puertas falsas, y al sur de la capilla está el serdab, la cámara cerrada de la estatua, con ranuras en la pared. Los números coinciden con las notas.">
@@ -291,6 +291,58 @@
       <div class="tip"><h3>Cómo leer una pared</h3><p>Las escenas van en franjas horizontales, como renglones. El tamaño marca la importancia: Ti es el más grande, su familia más pequeña, los trabajadores aún más. No es una escena que ocurra en un momento, sino un catálogo de todo lo que su finca le daría para siempre.</p></div>
       <div class="tip"><h3>Una tumba de familia</h3><p>Neferhetepes, la esposa de Ti, aparece a su lado en muchas escenas, y sus hijos también. Ella era sacerdotisa y tiene su propia puerta falsa. La tumba era el lugar de culto de toda la familia, donde los vivos traían comida y repetían sus nombres.</p></div>
       <div class="tip"><h3>Mariette y la arena</h3><p>Auguste Mariette, el mismo que descubrió el Serapeo, la desenterró en 1865. La arena la había protegido durante milenios, y por eso los relieves conservan un relieve tan nítido y restos de color.</p></div>
+    </div>
+  </section>
+
+  <section aria-labelledby="merTitle" style="--c: var(--small);">
+    <h2 id="merTitle">La Mastaba de Mereruka, sala por sala</h2>
+    <p class="section-note">Mereruka, también llamado Meri, fue visir del rey Teti hacia el 2340 a.&nbsp;C., en la VI Dinastía, y estaba casado con su hija. Su mastaba, pegada a la pirámide del rey, es la tumba privada más grande de Saqqara: unas 33 salas repartidas en tres partes, la suya, la de su esposa y la de su hijo. Este plano simplificado sigue el recorrido habitual. Toca un número.</p>
+    <div class="plan">
+      <div class="figure">
+        <svg viewBox="0 0 420 300" role="img" aria-label="Plano simplificado de la Mastaba de Mereruka, con el norte arriba. Es un gran rectángulo dividido en tres partes. La entrada está en el lado sur, a la derecha. La parte de Mereruka ocupa el este y el centro: un pasillo de entrada, varias salas decoradas en fila y, al norte, una gran sala de seis pilares con la estatua de Mereruka en un nicho de la pared norte. La parte de su esposa Watetjethor ocupa el oeste, y la de su hijo Meryteti, añadida después, el noroeste. Los números coinciden con las notas.">
+          <rect width="420" height="300" fill="var(--bg)"/>
+          <rect x="20" y="30" width="380" height="250" class="rock"/>
+          <rect x="30" y="40" width="100" height="230" class="cut"/>
+          <rect x="140" y="40" width="120" height="70" class="cut"/>
+          <rect x="270" y="40" width="120" height="110" class="cut"/>
+          <rect class="pillar" x="290" y="66" width="9" height="9"/><rect class="pillar" x="326" y="66" width="9" height="9"/><rect class="pillar" x="362" y="66" width="9" height="9"/><rect class="pillar" x="290" y="112" width="9" height="9"/><rect class="pillar" x="326" y="112" width="9" height="9"/><rect class="pillar" x="362" y="112" width="9" height="9"/>
+          <rect x="314" y="40" width="22" height="8" fill="var(--small)"/>
+          <rect x="140" y="120" width="120" height="70" class="cut"/>
+          <rect x="140" y="200" width="60" height="70" class="cut"/>
+          <rect x="210" y="200" width="70" height="70" class="cut"/>
+          <rect x="290" y="160" width="100" height="70" class="cut"/>
+          <rect x="300" y="240" width="40" height="40" class="cut" stroke="none"/>
+          <rect x="300" y="240" width="40" height="40" fill="none" stroke="var(--ink-soft)" stroke-dasharray="3 3"/>
+          <text class="t-sub" x="330" y="296" text-anchor="middle">entrada</text>
+          <text class="t-sub" x="330" y="140" text-anchor="middle">sala de 6 pilares</text>
+          <text class="t-sub" x="310" y="57" text-anchor="end">estatua</text>
+          <text class="t-sub" x="80" y="58" text-anchor="middle">Watetjethor</text>
+          <text class="t-sub" x="80" y="72" text-anchor="middle">(esposa)</text>
+          <text class="t-sub" x="200" y="100" text-anchor="middle">Meryteti (hijo)</text>
+          <text class="t-sub" x="345" y="222" text-anchor="middle">marisma</text>
+          <text class="t-sub" x="246" y="262" text-anchor="middle">talleres</text>
+          <text class="t-sub" x="170" y="262" text-anchor="middle">el lecho</text>
+          <text class="t-sub" x="200" y="136" text-anchor="middle">animales</text>
+          <text class="t-sub" x="200" y="150" text-anchor="middle">y escribas</text>
+          <a class="mk" href="#mr-1"><circle cx="318" cy="262" r="9"/><text x="318" y="262">1</text></a><a class="mk" href="#mr-2"><circle cx="318" cy="190" r="9"/><text x="318" y="190">2</text></a><a class="mk" href="#mr-3"><circle cx="250" cy="214" r="9"/><text x="250" y="214">3</text></a><a class="mk" href="#mr-4"><circle cx="214" cy="170" r="9"/><text x="214" y="170">4</text></a><a class="mk" href="#mr-5"><circle cx="170" cy="214" r="9"/><text x="170" y="214">5</text></a><a class="mk" href="#mr-6"><circle cx="320" cy="100" r="9"/><text x="320" y="100">6</text></a><a class="mk" href="#mr-7"><circle cx="64" cy="160" r="9"/><text x="64" y="160">7</text></a><a class="mk" href="#mr-8"><circle cx="190" cy="70" r="9"/><text x="190" y="70">8</text></a>
+        </svg>
+        <p class="caption">Plano esquemático: la distribución real tiene muchas más salas pequeñas, y la colocación de las escenas es aproximada.</p>
+      </div>
+      <ol class="notes">
+        <li id="mr-1"><span class="num">1</span><div><h3>La entrada: Mereruka pintando</h3><p>En el pasillo de entrada, una escena única: Mereruka sentado ante un caballete, pincel en mano, pintando las tres estaciones del año egipcio (inundación, siembra y cosecha), con su pequeño hijo a su lado. Es el dueño de la tumba presentándose como creador del mundo que vamos a ver dentro.</p></div></li>
+        <li id="mr-2"><span class="num">2</span><div><h3>La marisma</h3><p>Como Ti, Mereruka caza en una barca de papiro, con arpón, mientras sus hombres capturan hipopótamos. Mirad el agua con calma: peces de especies reconocibles, un cocodrilo que espera a que una hipopótama dé a luz, y entre los papiros ranas, saltamontes y nidos asaltados por pequeños carnívoros.</p></div></li>
+        <li id="mr-3"><span class="num">3</span><div><h3>Los talleres</h3><p>Orfebres que funden metal soplando por cañas y ensartan collares, muchos de ellos enanos, que en el Reino Antiguo eran artesanos de joyas muy apreciados; también carpinteros, escultores y fabricantes de vasijas de piedra. Encima, sus breves diálogos en jeroglíficos.</p></div></li>
+        <li id="mr-4"><span class="num">4</span><div><h3>Animales y escribas</h3><p>Ganado, gacelas, íbices y antílopes, y una escena famosa: hienas tumbadas boca arriba a las que cebaban a la fuerza. Cerca, los escribas hacen cuentas, y los jefes de aldea que no han pagado sus impuestos son llevados a rastras ante el visir y castigados: la justicia del Estado, en piedra.</p></div></li>
+        <li id="mr-5"><span class="num">5</span><div><h3>El lecho y el arpa</h3><p>Una de las escenas más íntimas de todo Egipto: Mereruka sentado en un gran lecho, y su esposa Watetjethor, hija del rey Teti, tocando el arpa para él. Bajo el lecho, los criados preparan la habitación.</p></div></li>
+        <li id="mr-6"><span class="num">6</span><div><h3>La sala de los seis pilares</h3><p>La sala principal, la capilla de las ofrendas. En la pared norte, Mereruka sale de su puerta falsa en una estatua de tamaño natural, como si bajara a recibir la mesa de ofrendas de piedra que tiene delante. En los pilares y las paredes, danzarinas, juegos de niños, barcas para el viaje funerario y el traslado de estatuas.</p></div></li>
+        <li id="mr-7"><span class="num">7</span><div><h3>La parte de Watetjethor</h3><p>Al oeste, la esposa tiene su propia serie de salas, su puerta falsa y su pozo funerario. Se presenta como «hija del rey de su cuerpo» y sacerdotisa de Hathor. Sus hijos, entre ellos Meryteti, aparecen con ella. Su otro nombre era Seshseshet.</p></div></li>
+        <li id="mr-8"><span class="num">8</span><div><h3>La parte de Meryteti</h3><p>Al noroeste, unas salas añadidas para el hijo, Meryteti, cuyo nombre significa «amado de Teti». Muestra que la tumba era un monumento familiar, ampliado con el tiempo, donde los vivos traerían ofrendas a toda la familia.</p></div></li>
+      </ol>
+    </div>
+    <div class="tips" style="margin-top: 1rem;">
+      <div class="tip"><h3>El hombre más poderoso tras el rey</h3><p>Mereruka acumuló títulos: visir, jefe de la justicia, supervisor de la ciudad de la pirámide de Teti y jefe de sus sacerdotes. Por eso su tumba está pegada a la del rey: servirlo en vida y en la muerte.</p></div>
+      <div class="tip"><h3>Ti y Mereruka</h3><p>Ti vivió unos cien años antes. Comparadlos: los temas son los mismos (la marisma, el campo, los oficios), pero Mereruka tiene más salas, más figuras y escenas más variadas y anecdóticas, con el color mejor conservado en muchas paredes.</p></div>
+      <div class="tip"><h3>Kagemni, el vecino</h3><p>Al lado está la mastaba de Kagemni, otro visir de Teti, con escenas de pesca, ganado y danzas. Si está abierta, merece la visita: es más pequeña y suele estar más tranquila. La descubrió Jacques de Morgan en 1893, como la de Mereruka.</p></div>
     </div>
   </section>
 
